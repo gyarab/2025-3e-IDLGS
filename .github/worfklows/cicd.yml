@@ -1,0 +1,83 @@
+name: Code control
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  codecount:
+    runs-on: ubuntu-latest
+    name: "Code counting @ ${{ github.ref_name }}"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run CLOC		
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+      - name: Count
+        run: |
+            npm ci
+            npm run cloc
+  prettier:
+    runs-on: ubuntu-latest
+    name: "Prettier @ ${{ github.ref_name }}"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Prettier		
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+      - name: Install and format
+        run: |
+          npm ci
+          npx prettier --write src/
+      - name: Commit changes
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "Glorious Revolutionary Code Formatter"
+          git add -A
+          if [[ -n $(git commit -am "[AUTOMATIC] Code formatting") ]]; then
+            echo "1=1"
+            echo "1=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "0=1"
+            echo "0=1" >> "$GITHUB_OUTPUT"
+          fi
+          git push
+  analysis:
+    runs-on: ubuntu-latest
+    name: "Static Analysis @ ${{ github.ref_name }}"
+    needs: prettier
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Use Node.js 20"
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+      - name: "Run ESLint"
+        run: |
+          npm ci
+          npm run eslint
+      - name: "Make .env file"
+        run : |
+         touch .env
+         echo DATABASE_URL=\"\" >> .env
+         echo GOOGLE_CLIENT_ID=\"\" >> .env
+         echo GOOGLE_CLIENT_SECRET=\"\" >> .env
+         echo GOOGLE_REFRESH_TOKEN=\"\" >> .env
+         echo CLOUDINARY_CLOUD_NAME=\"\" >> .env
+         echo CLOUDINARY_API_KEY=\"\" >> .env
+         echo CLOUDINARY_API_SECRET=\"\" >> .env
+         echo CLOUDINARY_URL=\"\" >> .env
+      - name: "Run SvelteKit Check"
+        run: |
+          npm run sveltekit
