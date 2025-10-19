@@ -23,24 +23,24 @@
 
 		messages = [...messages, { role: 'user', content: userMessage }];
 
-			isLoading = true;
-			try {
-				const response = await aiService.generateResponse(userMessage);
-				messages = [...messages, { role: 'assistant', content: response }];
-			} catch (err: any) {
-				// show the real error message in the chat and log full error
-				const message = err?.message ?? String(err);
-				console.error('[ChatBot] AI error:', err);
-				messages = [
-					...messages,
-					{
-						role: 'assistant',
-						content: `Error: ${message}`,
-					},
-				];
-			} finally {
-				isLoading = false;
-			}
+		isLoading = true;
+		try {
+			const response = await aiService.generateResponse(userMessage);
+			messages = [...messages, { role: 'assistant', content: response }];
+		} catch (err: any) {
+			// show the real error message in the chat and log full error
+			const message = err?.message ?? String(err);
+			console.error('[ChatBot] AI error:', err);
+			messages = [
+				...messages,
+				{
+					role: 'assistant',
+					content: `Error: ${message}`
+				}
+			];
+		} finally {
+			isLoading = false;
+		}
 	}
 </script>
 
