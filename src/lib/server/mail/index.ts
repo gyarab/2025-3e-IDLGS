@@ -1,8 +1,7 @@
 import nodemailer from 'nodemailer';
 import type SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { error } from '@sveltejs/kit';
-import * as dataSchema from '$lib/server/db/schema';
-import { db } from '$lib/server/db';
+import { getSetting } from '../settings';
 
 type MailerType = nodemailer.Transporter<SMTPTransport.SentMessageInfo, SMTPTransport.Options>;
 export let transporter: MailerType | undefined = undefined;
