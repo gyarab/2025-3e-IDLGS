@@ -57,7 +57,7 @@
 		"vitest-browser-svelte": "^1.1.0"
 	},
 	"dependencies": {
-		"nodemailer": "^7.0.9",
+		"nodemailer": "^7.0.11",
 		"wrangler": "^4.43.0"
 	}
 }
