@@ -161,3 +161,9 @@ export const interactiveElement = pgTable("interactiveElement", {
 	uuid: text("uuid").notNull().$defaultFn(() => crypto.randomUUID()),
 	rawData: text("rawData").notNull().default(""),
 });
+
+export const setting = pgTable("setting", {
+	id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+	key: text("key").notNull().default(""),
+	value: text("value").notNull().default(""),
+});
