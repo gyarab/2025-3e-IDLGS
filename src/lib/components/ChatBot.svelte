@@ -6,11 +6,6 @@
 
 	const DOMPurify = createDOMPurify(typeof window !== 'undefined' ? (window as any) : undefined);
 
-	type Message = {
-		role: 'user' | 'assistant';
-		content: string;
-	};
-
 	let isOpen = false;
 	let messages: Message[] = [];
 	let currentMessage = '';
@@ -34,6 +29,7 @@
 		isLoading = true;
 		try {
 			const response = await aiService.generateResponse(userMessage);
+			// const response = await aiService.makeResponse(messages);
 			messages = [...messages, { role: 'assistant', content: response }];
 		} catch (err: any) {
 			messages = [...messages, { role: 'assistant', content: `Error: ${err?.message ?? err}` }];
@@ -172,7 +168,7 @@
 		right: 8px;
 		width: 40vw;
 		height: 60vh;
-		min-height: 150px;
+		min-height: 160px;
 		min-width: 300px;
 		background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
 		border-radius: 16px;
