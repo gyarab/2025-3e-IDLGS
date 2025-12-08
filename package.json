@@ -39,7 +39,7 @@
 		"@types/markdown-it": "^14.1.2",
 		"@types/node": "^24",
 		"@types/nodemailer": "^7.0.4",
-		"@vitest/browser": "^3.2.4",
+		"@vitest/browser": "^4.0.15",
 		"drizzle-kit": "^0.31.8",
 		"drizzle-orm": "^0.45.0",
 		"eslint": "^9.38.0",
