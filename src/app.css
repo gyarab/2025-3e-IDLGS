@@ -27,7 +27,22 @@
 	h2 {
 		@apply text-2xl font-medium;
 	}
+	h3 {
+		@apply text-xl font-medium;
+	}
 	textarea {
 		@apply overflow-hidden rounded-lg border-0 border-b-2! border-white bg-black/30 outline-0 outline-white placeholder:text-white focus:outline-1;
+	}
+	button {
+		@apply flex flex-row gap-1 justify-center items-center rounded-lg hover:brightness-80 focus:brightness-60 p-3 font-medium;
+	}
+	.button-primary {
+		@apply bg-linear-to-tr to-emerald-500 from-violet-700;
+	}
+	.button-violet {
+		@apply bg-violet-700;
+	}
+	.button-green {
+		@apply bg-emerald-500;
 	}
 }

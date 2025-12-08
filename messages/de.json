@@ -6,5 +6,7 @@
 	"askMeAnything": "Frag mich alles...",
 	"aiAssistant": "KI-Assistent",
 	"sendMessage": "Nachricht senden",
-	"closeAIAssistant": "KI-Assistent schließen"
+	"closeAIAssistant": "KI-Assistent schließen",
+	"anErrorOccurred": "Ein Fehler ist aufgetreten",
+	"goToHomePage": "Zur Startseite gehen"
 }

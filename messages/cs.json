@@ -6,5 +6,7 @@
 	"askMeAnything": "Zeptej se mě na cokoliv...",
 	"aiAssistant": "AI Asistent",
 	"sendMessage": "Odeslat zprávu",
-	"closeAIAssistant": "Zavřít AI asistenta"
+	"closeAIAssistant": "Zavřít AI asistenta",
+	"anErrorOccurred": "Došlo k chybě",
+	"goToHomePage": "Jít na domovskou stránku"
 }

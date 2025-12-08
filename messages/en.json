@@ -6,5 +6,7 @@
 	"askMeAnything": "Ask me anything...",
 	"aiAssistant": "AI Assistant",
 	"sendMessage": "Send Message",
-	"closeAIAssistant": "Close AI Assistant"
+	"closeAIAssistant": "Close AI Assistant",
+	"anErrorOccurred": "An error occurred",
+	"goToHomePage": "Go to Home Page"
 }
