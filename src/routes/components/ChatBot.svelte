@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { aiService } from '$lib/ai';
 	import markdownit from 'markdown-it';
+	import { m } from '$lib/paraglide/messages';
 
 	const mdi = markdownit();
 
@@ -16,11 +17,6 @@
 	let isLoading = false;
 	let inputRef: HTMLTextAreaElement;
 	let isMobile = false;
-
-	const toggleChat = () => {
-		isOpen = !isOpen;
-		if (isOpen) setTimeout(() => inputRef?.focus(), 0);
-	};
 
 	const handleSubmit = async () => {
 		if (!currentMessage.trim()) return;
@@ -83,315 +79,90 @@
 	};
 </script>
 
-<div class="chatbot-container" class:open={isOpen}>
-	<button class="chat-toggle" on:click={toggleChat}>
-		{#if isOpen}
-			❌
-		{:else}
-			✨
-		{/if}
-	</button>
+<div
+	class="
+		absolute right-2 bottom-2 z-30 max-h-1/3 max-w-1/4 rounded-lg
+		p-5
+		bg-linear-to-tr from-emerald-500 to-violet-700
+		hover:brightness-80 active:brightness-60
+	"
+>
+	{#if !isOpen}
+		<button
+			class="h-full w-full text-3xl"
+			aria-label={m.aiAssistant()}
+			onclick={() => (isOpen = true)}
+		>
+			<i class="ri-chat-smile-ai-line"></i>
+		</button>
+	{:else}
+		<div
+			class="flex w-full flex-col gap-4"
+			aria-label={m.aiAssistant()}
+			role="dialog"
+			tabindex="-1"
+			onkeydown={(e) => {
+				if (e.key != 'Escape') return;
+				isOpen = false;
+			}}
+		>
+			{#if messages.length > 0}
+				<div class="flex grow flex-col gap-2 rounded-lg bg-white p-2 text-black">
+					{#each messages as message, i (i)}
+						<div class="flex flex-row gap-2">
+							<span class="text-violet-700">
+								{#if message.role === 'user'}
+									<i class="ri-user-3-fill"></i>
+								{:else}
+									<i class="ri-robot-3-fill"></i>
+								{/if}
+							</span>
+							{#if message.role === 'assistant'}
+								<div>{@html renderMarkdown(message.content)}</div>
+							{:else}
+								<p>{message.content}</p>
+							{/if}
+						</div>
+					{/each}
+					{#if isLoading}
+						<div>
+							<span>֎</span>
+							<p>Thinking...</p>
+						</div>
+					{/if}
+				</div>
+			{/if}
 
-	{#if isOpen}
-		<div class="chat-window">
-			<div class="chat-messages">
-				{#each messages as message, i (i)}
-					<div class="message {message.role}">
-						<span class="avatar">
-							{message.role === 'user' ? '👤' : '🤖'}
-						</span>
-						{#if message.role === 'assistant'}
-							<div class="assistant-content">{@html renderMarkdown(message.content)}</div>
-						{:else}
-							<p>{message.content}</p>
-						{/if}
-					</div>
-				{/each}
-				{#if isLoading}
-					<div class="message assistant">
-						<span class="avatar">֎</span>
-						<p>Thinking...</p>
-					</div>
-				{/if}
-			</div>
-
-			<form on:submit|preventDefault={handleSubmit} class="chat-input">
+			<form onsubmit={handleSubmit} class="flex w-full flex-row items-center gap-2">
 				<textarea
 					bind:this={inputRef}
 					bind:value={currentMessage}
-					placeholder="Type your message..."
-					on:keydown={handleKeydown}
+					placeholder={m.askMeAnything()}
+					onkeydown={handleKeydown}
 					rows="1"
+					class="grow"
 				></textarea>
-				<button type="submit" disabled={isLoading || !currentMessage}> ➤ </button>
+				<button
+					type="submit"
+					disabled={isLoading || !currentMessage}
+					aria-label={m.sendMessage()}
+					class="group text-2xl"
+				>
+					<i class="ri-send-plane-fill group-hover:hidden"></i>
+					<i class="ri-send-plane-line not-group-hover:hidden"></i>
+				</button>
+				<button
+					type="button"
+					aria-label={m.closeAIAssistant()}
+					class="group text-2xl"
+					onclick={() => {
+						isOpen = false;
+					}}
+				>
+					<i class="ri-close-circle-fill group-hover:hidden"></i>
+					<i class="ri-close-circle-line not-group-hover:hidden"></i>
+				</button>
 			</form>
 		</div>
 	{/if}
 </div>
-
-<!-- TODO convert this to tailwind (-MB) -->
-<style>
-	.chatbot-container {
-		position: fixed;
-		bottom: 20px;
-		right: 20px;
-		z-index: 1000;
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-			'Cantarell', sans-serif;
-	}
-
-	.chat-toggle {
-		width: 56px;
-		height: 56px;
-		border-radius: 50%;
-		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-		border: none;
-		color: white;
-		font-size: 1.6rem;
-		cursor: pointer;
-		margin: 0 8px;
-		box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
-		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.chat-toggle:hover {
-		transform: scale(1.1);
-		box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
-	}
-
-	.chat-toggle:active {
-		transform: scale(0.95);
-	}
-
-	.chat-window {
-		position: absolute;
-		bottom: 68px;
-		right: 8px;
-		width: 40vw;
-		height: 60vh;
-		min-height: 160px;
-		min-width: 300px;
-		background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-		border-radius: 16px;
-		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-		display: flex;
-		flex-direction: column;
-		overflow: hidden;
-		animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-	}
-	@media (max-width: 768px) {
-		.chat-window {
-			position: fixed;
-			bottom: 80px;
-			width: 96vw;
-			right: 2%;
-		}
-	}
-
-	.chat-messages {
-		flex-grow: 1;
-		overflow-y: auto;
-		padding: 1.5rem;
-		display: flex;
-		flex-direction: column;
-		gap: 0.75rem;
-		background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
-	}
-
-	.chat-messages::-webkit-scrollbar {
-		width: 6px;
-	}
-
-	.chat-messages::-webkit-scrollbar-track {
-		background: transparent;
-	}
-
-	.chat-messages::-webkit-scrollbar-thumb {
-		background: #ddd;
-		border-radius: 3px;
-	}
-
-	.chat-messages::-webkit-scrollbar-thumb:hover {
-		background: #bbb;
-	}
-
-	.message {
-		display: flex;
-		gap: 0.75rem;
-		align-items: flex-end;
-		animation: slideInMessage 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-	}
-
-	.message.user {
-		flex-direction: row-reverse;
-		justify-content: flex-end;
-		align-self: end;
-	}
-
-	.message p {
-		margin: 0;
-		padding: 0.5rem 1rem;
-		border-radius: 1.25rem;
-		word-break: break-word;
-		line-height: 1.4;
-		font-size: 0.95rem;
-	}
-
-	.user p {
-		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-		color: white;
-		box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-		border-radius: 1.25rem 0.25rem 1.25rem 1.25rem;
-	}
-
-	.assistant p {
-		background: #e8eef7;
-		color: #333;
-		border-radius: 0.25rem 1.25rem 1.25rem 1.25rem;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-	}
-
-	.avatar {
-		font-size: 1.4rem;
-		flex-shrink: 0;
-	}
-
-	.chat-input {
-		padding: 1rem;
-		display: flex;
-		gap: 0.75rem;
-		border-top: 1px solid #e5e7eb;
-		background: #fff;
-		border-bottom-left-radius: 16px;
-		border-bottom-right-radius: 16px;
-	}
-
-	.chat-input textarea {
-		flex-grow: 1;
-		padding: 0.5rem 1rem;
-		border: 1px solid #e5e7eb;
-		border-radius: 1.5rem;
-		font-size: 0.95rem;
-		transition: all 0.2s;
-		font-family: inherit;
-		resize: none;
-		max-height: 120px;
-		overflow-y: auto;
-	}
-
-	.chat-input textarea:focus {
-		outline: none;
-		border-color: #667eea;
-		box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-	}
-
-	.chat-input textarea::placeholder {
-		color: #999;
-	}
-
-	/* Rendered markdown container for assistant messages */
-	.assistant .assistant-content,
-	.message .assistant-content {
-		padding: 0.5rem 1rem;
-		background: #e8eef7;
-		color: #333;
-		border-radius: 0.25rem 1.25rem 1.25rem 1.25rem;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-		overflow: auto;
-	}
-
-	/* Table styling inside messages */
-	.assistant .assistant-content table,
-	.message .assistant-content table {
-		width: 100%;
-		border-collapse: collapse;
-		margin-top: 0.25rem;
-		margin-bottom: 0.25rem;
-	}
-
-	.assistant .assistant-content th,
-	.message .assistant-content th {
-		background: #dfe9f3;
-		padding: 0.35rem 0.5rem;
-		text-align: left;
-		border: 1px solid #cfdde9;
-	}
-
-	.assistant .assistant-content td,
-	.message .assistant-content td {
-		padding: 0.35rem 0.5rem;
-		border: 1px solid #e6eef6;
-	}
-
-	/* Code blocks */
-	.assistant .assistant-content pre,
-	.message .assistant-content pre {
-		background: #0f1722;
-		color: #e6eef6;
-		padding: 0.75rem;
-		border-radius: 8px;
-		overflow: auto;
-		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New',
-			monospace;
-		font-size: 0.85rem;
-	}
-
-	.assistant .assistant-content code,
-	.message .assistant-content code {
-		background: rgba(0, 0, 0, 0.04);
-		padding: 0.15rem 0.3rem;
-		border-radius: 4px;
-	}
-
-	.chat-input button {
-		padding: 0.75rem 1.25rem;
-		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-		color: white;
-		border: none;
-		border-radius: 1.5rem;
-		cursor: pointer;
-		font-weight: 600;
-		font-size: 0.9rem;
-		transition: all 0.2s;
-		box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-	}
-
-	.chat-input button:hover:not(:disabled) {
-		transform: translateY(-2px);
-		box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-	}
-
-	.chat-input button:active:not(:disabled) {
-		transform: translateY(0);
-	}
-
-	.chat-input button:disabled {
-		opacity: 0.6;
-		cursor: not-allowed;
-	}
-
-	@keyframes slideUp {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	@keyframes slideInMessage {
-		from {
-			opacity: 0;
-			transform: translateY(10px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-</style>

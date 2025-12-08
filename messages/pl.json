@@ -1,5 +1,10 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"hello_world": "Hello, {name} from pl!",
-	"welcomeBackMessageName": "Witamy ponownie, {name}!"
+	"welcomeBackMessageName": "Witamy ponownie, {name}!",
+	"thinking": "Myślę...",
+	"askMeAnything": "Zapytaj mnie o cokolwiek...",
+	"aiAssistant": "Asystent AI",
+	"sendMessage": "Wyślij wiadomość",
+	"closeAIAssistant": "Zamknij asystenta AI"
 }

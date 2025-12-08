@@ -61,6 +61,7 @@
 	},
 	"dependencies": {
 		"markdown-it": "^14.1.0",
-		"postgres": "^3.4.7"
+		"postgres": "^3.4.7",
+		"remixicon": "^4.7.0"
 	}
 }

@@ -54,11 +54,11 @@
 	class="
 	flex aspect-square flex-col gap-2
 	rounded-lg border-2 border-{color} bg-{color}/30
-	p-2 perspective-[1600px]
+	perspective-[1600px] overflow-hidden
 	"
 	style="transform: rotateX({yRotation}deg) rotateY({xRotation}deg) translateZ(0);"
 >
-	<div class="flex w-full grow flex-col backdrop-blur-2xl">
+	<div class="flex w-full grow flex-col backdrop-blur-2xl p-2 rounded-lg">
 		{text}
 	</div>
 </div>

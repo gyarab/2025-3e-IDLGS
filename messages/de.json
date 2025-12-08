@@ -1,5 +1,10 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"hello_world": "Hello, {name} from de!",
-	"welcomeBackMessageName": "Willkommen zurück, {name}!"
+	"welcomeBackMessageName": "Willkommen zurück, {name}!",
+	"thinking": "Ich denke...",
+	"askMeAnything": "Frag mich alles...",
+	"aiAssistant": "KI-Assistent",
+	"sendMessage": "Nachricht senden",
+	"closeAIAssistant": "KI-Assistent schließen"
 }

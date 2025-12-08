@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
+	import 'remixicon/fonts/remixicon.css'
 	import Navbar from './Navbar.svelte';
 	import ChatBot from './components/ChatBot.svelte';
 
