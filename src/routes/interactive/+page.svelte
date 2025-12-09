@@ -4,10 +4,9 @@
 	import { browser } from '$app/environment';
 	import { error } from '@sveltejs/kit';
 	import { onDestroy, onMount } from 'svelte';
-	import * as resin from '$lib/interactive/index';
 
 	let canvas: HTMLCanvasElement = $state() as HTMLCanvasElement;
-	let ie: resin.RInteractive | undefined = $state();
+	let context: CanvasRenderingContext2D = $state() as CanvasRenderingContext2D;
 
 	onMount(() => {
 		if (!browser) return;
@@ -15,10 +14,8 @@
 		let rect = document.getElementById('workspace')?.getBoundingClientRect();
 		if (!rect) throw error(418);
 
-		canvas.width = rect?.width;
-		canvas.height = rect?.height;
-
-		ie = new resin.RInteractive();
+		canvas.width = rect?.width/5;
+		canvas.height = rect?.height/5;
 	});
 	onDestroy(() => {});
 </script>
@@ -38,7 +35,18 @@
 		</div>
 		<div class="flex grow flex-col rounded-lg bg-neutral-600 p-5">
 			<h3>Manage RESIN element</h3>
-
+			<div class="flex flex-col gap-2 w-full">
+				<div class="flex flex-row gap-2 w-full">
+					<span>
+						Width:
+					</span>
+				</div>
+				<div class="flex flex-row gap-2 w-full">
+					<span>
+						Height:
+					</span>
+				</div>
+			</div>
 			<div class="grow"></div>
 			<div class="grid grid-cols-2 gap-2">
 				<button class="button-violet group">

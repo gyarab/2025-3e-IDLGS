@@ -1,8 +1,5 @@
 /*
 	RESIN Interactive Element System
-
-	All values are in percentages.
-
 	Author: Martin Bykov
 */
 
@@ -14,16 +11,17 @@ export class RElement {
 	visible: boolean = true;
 	bgcolor: string = "#aaaaaa";
 	fgcolor: string = "#000000";
+	rounded: number = 0;
 
 	constructor() {
 
 	}
 };
 
-export class RElementInputSmall extends RElement {
-	
-};
+export class RAnswerElement extends RElement {
+	answer: string = "";
 
-export class RInteractive {
-
+	checkAnswer(): boolean {
+		return false;
+	}
 };
