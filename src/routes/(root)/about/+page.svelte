@@ -87,7 +87,7 @@
   <!-- Call‑to‑Action -->
   <div class="text-center">
     <a href="/demo"
-       class="inline-block px-8 py-3 bg-indigo-600 text-white rounded-md font-medium hover:bg-indigo-700 transition-colors">
+       class="inline-block px-8 py-3 bg-emerald-500 text-white rounded-md font-medium hover:bg-indigo-700 transition-colors">
       View Demo
     </a>
   </div>
