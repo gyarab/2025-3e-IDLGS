@@ -14,7 +14,7 @@ const config = {
 				'font-src': ['self', 'fonts.gstatic.com'],
 				'script-src': ['self', '*.cloudflare.com', '*.vercel.com', '*.vercel-scripts.com', '*.posthog.com'],
 				'object-src': ['self'],
-				'img-src': ['self', 'res.cloudinary.com'],
+				'img-src': ['self', 'res.cloudinary.com', 'data:'],
 				//sveltekit announcer issue + we use this
 				'style-src': ['self', 'fonts.googleapis.com', 'unsafe-inline'],
 				'frame-ancestors': ['none'],

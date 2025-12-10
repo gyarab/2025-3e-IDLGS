@@ -6,5 +6,8 @@
 	"askMeAnything": "Спроси меня о чем угодно...",
 	"aiAssistant": "AI Ассистент",
 	"sendMessage": "Отправить сообщение",
-	"closeAIAssistant": "Закрыть AI Ассистента"
+	"closeAIAssistant": "Закрыть AI Ассистента",
+	"anErrorOccurred": "Произошла ошибка",
+	"goToHomePage": "Перейти на главную страницу",
+	"noElementsYet": "Пока нет элементов"
 }
