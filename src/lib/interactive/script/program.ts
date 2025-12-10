@@ -1,5 +1,3 @@
 //TODO program object containing blocks
 
-export class RProgram {
-    
-};
+export class RProgram {}

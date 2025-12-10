@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { onMount } from "svelte";
-	import { fade } from "svelte/transition";
+	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 
-	let { children, showModal = $bindable(), cssClass = "" } = $props();
+	let { children, showModal = $bindable(), cssClass = '' } = $props();
 	let dialog: HTMLDialogElement | undefined = $state();
 	let clickable: HTMLDivElement | undefined = $state();
 
@@ -18,7 +18,7 @@
 </script>
 
 {#key showModal}
-	<div class="absolute! w-0! h-0! p-0! m-0! *:bg-transparent">
+	<div class="absolute! m-0! h-0! w-0! p-0! *:bg-transparent">
 		<dialog
 			transition:fade|global={{ duration: 250 }}
 			bind:this={dialog}
@@ -26,18 +26,16 @@
 			onclick={(e) => {
 				if (!clickable?.contains(e.target as Node)) dialog?.close();
 			}}
-			class="max-w-screen w-screen min-h-screen min-w-screen
+			class="min-h-screen w-screen max-w-screen min-w-screen
 		backdrop:bg-linear-to-tr backdrop:from-violet-700/70 backdrop:to-emerald-500/70"
 		>
-			<div
-				class=" w-full flex flex-col justify-center items-center grow min-h-screen"
-			>
+			<div class=" flex min-h-screen w-full grow flex-col items-center justify-center">
 				<div
 					bind:this={clickable}
 					class="
 				{cssClass
 						? cssClass
-						: 'bg-neutral-500!'} flex flex-col p-5 text-left rounded-2xl max-w-4/5 mt-5 mb-5 text-white max-lg:min-w-9/10 lg:min-w-2/3 grow
+						: 'bg-neutral-500!'} mt-5 mb-5 flex max-w-4/5 grow flex-col rounded-2xl p-5 text-left text-white max-lg:min-w-9/10 lg:min-w-2/3
 			"
 				>
 					{@render children?.()}

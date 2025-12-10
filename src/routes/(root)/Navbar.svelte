@@ -11,9 +11,5 @@
 
 	<a href="/about">About</a>
 
-	<button
-		class="rounded-lg bg-emerald-700 p-2 font-medium text-neutral-100"
-	>
-		Get Started
-	</button>
+	<button class="rounded-lg bg-emerald-700 p-2 font-medium text-neutral-100"> Get Started </button>
 </div>

@@ -33,7 +33,7 @@
 			// const response = await aiService.makeResponse(messages);
 			//messages = [...messages, { role: 'assistant', content: response }];
 			//TEMP
-			messages = [...messages, { role: 'assistant', content: "AI not available!" }];
+			messages = [...messages, { role: 'assistant', content: 'AI not available!' }];
 		} catch (err) {
 			messages = [...messages, { role: 'assistant', content: `Error: ${(err as Error).message}` }];
 		} finally {

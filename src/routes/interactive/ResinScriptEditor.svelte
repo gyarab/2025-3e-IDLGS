@@ -7,12 +7,12 @@ Author: Martin Bykov
 -->
 
 <script lang="ts">
-	import ResinScriptBlock from "./ResinScriptBlock.svelte";
+	import ResinScriptBlock from './ResinScriptBlock.svelte';
 
 	let {
 		closeModal = $bindable()
 	}: {
-		closeModal: boolean
+		closeModal: boolean;
 	} = $props();
 </script>
 
@@ -30,25 +30,24 @@ Author: Martin Bykov
 		<!-- TODO -->
 
 		<ResinScriptBlock />
-		
 	</div>
 
-	<div class="flex flex-row gap-2 w-full">
+	<div class="flex w-full flex-row gap-2">
 		<button class="button-green group">
-			<i class="not-group-hover:hidden ri-save-3-line"></i>
-			<i class="group-hover:hidden ri-save-3-fill"></i>
+			<i class="ri-save-3-line not-group-hover:hidden"></i>
+			<i class="ri-save-3-fill group-hover:hidden"></i>
 			Validate and save
 		</button>
 		<button class="button-violet group">
-			<i class="not-group-hover:hidden ri-save-3-line"></i>
-			<i class="group-hover:hidden ri-save-3-fill"></i>
+			<i class="ri-save-3-line not-group-hover:hidden"></i>
+			<i class="ri-save-3-fill group-hover:hidden"></i>
 			Help and documentation
 		</button>
 		<div class="grow"></div>
 		<!-- TODO confirm modal -->
-		<button class="button-violet group" onclick={() => closeModal = false}>
-			<i class="not-group-hover:hidden ri-delete-bin-line"></i>
-			<i class="group-hover:hidden ri-delete-bin-fill"></i>
+		<button class="button-violet group" onclick={() => (closeModal = false)}>
+			<i class="ri-delete-bin-line not-group-hover:hidden"></i>
+			<i class="ri-delete-bin-fill group-hover:hidden"></i>
 			Discard changes
 		</button>
 	</div>

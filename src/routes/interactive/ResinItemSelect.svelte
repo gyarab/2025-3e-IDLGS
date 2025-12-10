@@ -4,16 +4,16 @@
 		icon,
 		onclick
 	}: {
-		name: string,
-		icon: string,
-		onclick: (e: MouseEvent) => void
+		name: string;
+		icon: string;
+		onclick: (e: MouseEvent) => void;
 	} = $props();
 </script>
 
-<button 
-	class="flex flex-col gap-2 items-center justify-center p-2 rounded-lg bg-neutral-500 group hover:bg-emerald-500"
+<button
+	class="group flex flex-col items-center justify-center gap-2 rounded-lg bg-neutral-500 p-2 hover:bg-emerald-500"
 	onclick={(e) => onclick(e)}
-	>
+>
 	<span class="flex flex-col gap-2 text-2xl">
 		<i class="ri-{icon}-fill group-hover:hidden"></i>
 		<i class="ri-{icon}-line not-group-hover:hidden"></i>

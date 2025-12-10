@@ -99,7 +99,7 @@ Author: Martin Bykov
 				Canvas height: {elementHeightShowValue}px
 			</span>
 		</div>
-		<div class="flex w-full flex-col gap-2 max-w-1/2">
+		<div class="flex w-full max-w-1/2 flex-col gap-2">
 			<div>{el.parsed}</div>
 		</div>
 	</div>

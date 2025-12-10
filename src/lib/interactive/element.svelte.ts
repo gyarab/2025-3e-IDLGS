@@ -9,14 +9,14 @@ export class RElement {
 	width: number = $state(0);
 	height: number = $state(0);
 	visible: boolean = $state(true);
-	bgcolor: string = $state("#aaaaaa");
-	fgcolor: string = $state("#000000");
+	bgcolor: string = $state('#aaaaaa');
+	fgcolor: string = $state('#000000');
 	rounded: number = $state(0);
 	opacity: number = $state(1);
 	uuid: string = $state(crypto.randomUUID());
 
 	constructor(
-		x: number, 
+		x: number,
 		y: number,
 		width: number,
 		height: number,
@@ -24,8 +24,8 @@ export class RElement {
 		bgcolor: string,
 		fgcolor: string,
 		rounded: number,
-		opacity: number,
-	) {	
+		opacity: number
+	) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -49,14 +49,14 @@ export class RElement {
 			rounded: this.rounded,
 			opacity: this.opacity,
 			uuid: this.uuid
-		}
+		};
 	}
-};
+}
 
 export class RAnswerElement extends RElement {
-	answer: string = "";
+	answer: string = '';
 
 	checkAnswer(): boolean {
 		return false;
 	}
-};
+}

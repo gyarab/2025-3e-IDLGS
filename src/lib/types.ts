@@ -7,6 +7,6 @@ export enum QuestionTypeEnum {
 }
 
 export type Message = {
-	role: "developer" | "user" | "assistant";
+	role: 'developer' | 'user' | 'assistant';
 	content: string;
-}
+};

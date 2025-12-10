@@ -1,7 +1,4 @@
 <script lang="ts">
-
 </script>
 
-<div class="bg-black min-h-[20vh] p-5">
-
-</div>
+<div class="min-h-[20vh] bg-black p-5"></div>

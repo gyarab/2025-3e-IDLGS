@@ -29,9 +29,12 @@ justify-center bg-linear-to-tr from-emerald-500 to-violet-700
 		{#if page.status == 404}
 			<!-- TODO message -->
 		{/if}
-		<button class="button-primary w-full" onclick={() => {
-			goto("/");
-		}}>
+		<button
+			class="button-primary w-full"
+			onclick={() => {
+				goto('/');
+			}}
+		>
 			<i class="ri-arrow-go-back-line"></i>
 			{m.goToHomePage()}
 		</button>

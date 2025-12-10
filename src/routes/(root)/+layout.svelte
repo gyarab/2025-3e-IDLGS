@@ -11,7 +11,7 @@
 >
 	<Navbar />
 	<div class="h-[10lvh] w-full"></div>
-	<div class="flex w-full grow flex-col relative">
+	<div class="relative flex w-full grow flex-col">
 		{@render children?.()}
 		<ChatBot />
 	</div>

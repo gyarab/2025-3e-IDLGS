@@ -32,7 +32,7 @@ Author: Martin Bykov
 >
 	{getType(el)}
 	<div class="grow"></div>
-	<div 
+	<div
 		class=""
 		onclick={() => {
 			el.visible = !el.visible;

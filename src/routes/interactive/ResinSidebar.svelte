@@ -51,7 +51,7 @@
 		<div class="grow"></div>
 		{el.y.toFixed()}%
 	</span>
-	
+
 	<h3>Graphical settings</h3>
 
 	<span class="flex w-full flex-row items-center gap-2">
@@ -70,13 +70,13 @@
 	<span class="flex w-full flex-row items-center gap-2">
 		Roundness
 		<div class="grow"></div>
-		<input type="range" min='0' max='100' bind:value={el.rounded} />
+		<input type="range" min="0" max="100" bind:value={el.rounded} />
 	</span>
 
 	<span class="flex w-full flex-row items-center gap-2">
 		Opacity
 		<div class="grow"></div>
-		<input type="range" min='0' max='1' step='0.01' bind:value={el.opacity} />
+		<input type="range" min="0" max="1" step="0.01" bind:value={el.opacity} />
 	</span>
 
 	<span class="flex w-full flex-row items-center gap-2">
