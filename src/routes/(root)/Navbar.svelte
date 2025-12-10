@@ -5,16 +5,14 @@
 
 	<div class="grow"></div>
 
-	<a href="?">Home</a>
+	<a href="/">Home</a>
 
 	<a href="?">Topics</a>
 
-	<a href="?">About</a>
+	<a href="/about">About</a>
 
 	<button
-		class="
-		rounded-lg bg-emerald-700 p-2 font-medium text-neutral-100
-	"
+		class="rounded-lg bg-emerald-700 p-2 font-medium text-neutral-100"
 	>
 		Get Started
 	</button>

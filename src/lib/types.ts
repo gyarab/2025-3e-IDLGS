@@ -5,3 +5,8 @@ export enum QuestionTypeEnum {
 	FILLIN = 2, //fill in part of text
 	REMOVEWRONG = 3 //nehodici se skrtnete
 }
+
+export type Message = {
+	role: "developer" | "user" | "assistant";
+	content: string;
+}
