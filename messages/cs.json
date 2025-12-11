@@ -9,5 +9,16 @@
 	"closeAIAssistant": "Zavřít AI asistenta",
 	"anErrorOccurred": "Došlo k chybě",
 	"goToHomePage": "Jít na domovskou stránku",
-	"noElementsYet": "Zatím žádné prvky"
+	"noElementsYet": "Zatím žádné prvky",
+	"login": "Přihlásit se",
+	"textbookNameShort": "IDLGS",
+	"orIfYouDontHaveAnAccount": "nebo pokud nemáte účet",
+	"signUp": "Zaregistrovat se",
+	"enterYourEmail": "Zadejte svůj e-mail",
+	"viewDemo": "Zobrazit demo",
+	"enterYourPassword": "Zadejte své heslo",
+	"showPassword": "Zobrazit heslo",
+	"hidePassword": "Skrýt heslo",
+	"forgotPassword": "Zapomněli jste heslo?",
+	"reset": "Resetovat"
 }

@@ -33,10 +33,10 @@
 
 	<!-- abstract + hover effects -->
 	<div class="grid grid-cols-2 gap-4 *:text-xl">
-		<button class="rounded-lg border-2 border-emerald-500 text-emerald-500"> Log in </button>
-		<button class="rounded-lg bg-emerald-500 p-3 font-medium text-neutral-100">
+		<a class="flex flex-col gap-2 items-center justify-center rounded-lg border-2 border-emerald-500 text-emerald-500" href="/login"> Log in </a>
+		<a class="flex flex-col gap-2 items-center justify-center rounded-lg bg-emerald-500 p-3 font-medium text-neutral-100" href="/contact">
 			Request a demo
-		</button>
+		</a>
 	</div>
 
 	<div

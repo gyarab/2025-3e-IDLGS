@@ -9,5 +9,16 @@
 	"closeAIAssistant": "Close AI Assistant",
 	"anErrorOccurred": "An error occurred",
 	"goToHomePage": "Go to Home Page",
-	"noElementsYet": "No elements yet"
+	"noElementsYet": "No elements yet",
+	"login": "Log In",
+	"textbookNameShort": "IDLGS",
+	"orIfYouDontHaveAnAccount": "or if you don't have an account",
+	"signUp": "Sign Up",
+	"enterYourEmail": "Enter your email",
+	"viewDemo": "View Demo",
+	"enterYourPassword": "Enter your password",
+	"showPassword": "Show Password",
+	"hidePassword": "Hide Password",
+	"forgotPassword": "Forgot Password?",
+	"reset": "Reset"
 }

@@ -54,7 +54,7 @@
 	class="
 	flex aspect-square flex-col gap-2
 	overflow-hidden rounded-lg
-	border-2 perspective-[1600px]
+	border-2 perspective-[1600px] shadow
 	"
 	style="background-color: rgb({r} {g} {b} / 30%); border-color: rgb({r} {g} {b} / 30%); transform: rotateX({yRotation}deg) rotateY({xRotation}deg) translateZ(0);"
 >

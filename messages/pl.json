@@ -9,5 +9,16 @@
 	"closeAIAssistant": "Zamknij asystenta AI",
 	"anErrorOccurred": "Wystąpił błąd",
 	"goToHomePage": "Przejdź do strony głównej",
-	"noElementsYet": "Brak elementów"
+	"noElementsYet": "Brak elementów",
+	"login": "Zaloguj się",
+	"textbookNameShort": "IDLGS",
+	"orIfYouDontHaveAnAccount": "lub jeśli nie masz konta",
+	"signUp": "Zarejestruj się",
+	"enterYourEmail": "Wprowadź swój e-mail",
+	"viewDemo": "Zobacz demo",
+	"enterYourPassword": "Wprowadź swoje hasło",
+	"showPassword": "Pokaż hasło",
+	"hidePassword": "Ukryj hasło",
+	"forgotPassword": "Zapomniałeś hasła?",
+	"reset": "Resetuj"
 }

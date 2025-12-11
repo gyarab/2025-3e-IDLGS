@@ -43,11 +43,15 @@
 		@apply bg-linear-to-tr from-violet-700 to-emerald-500;
 	}
 	.button-violet {
-		@apply bg-violet-700;
+		@apply bg-violet-700 text-white!;
 	}
 	.button-green {
-		@apply bg-emerald-500;
+		@apply bg-emerald-500 text-white!;
 	}
 
 	/* TODO fix checkbox styles */
+
+	.input-text {
+		@apply w-full rounded-lg bg-black/20 border-2 border-emerald-500 placeholder:text-violet-700/50 text-violet-700;
+	}
 }

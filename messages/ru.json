@@ -9,5 +9,16 @@
 	"closeAIAssistant": "Закрыть AI Ассистента",
 	"anErrorOccurred": "Произошла ошибка",
 	"goToHomePage": "Перейти на главную страницу",
-	"noElementsYet": "Пока нет элементов"
+	"noElementsYet": "Пока нет элементов",
+	"login": "Войти",
+	"textbookNameShort": "IDLGS",
+	"orIfYouDontHaveAnAccount": "или если у вас нет аккаунта",
+	"signUp": "Зарегистрироваться",
+	"enterYourEmail": "Введите ваш email",
+	"viewDemo": "Посмотреть демо",
+	"enterYourPassword": "Введите ваш пароль",
+	"showPassword": "Показать пароль",
+	"hidePassword": "Скрыть пароль",
+	"forgotPassword": "Забыли пароль?",
+	"reset": "Сбросить"
 }
