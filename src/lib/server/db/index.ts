@@ -3,11 +3,10 @@
 	Martin Bykov
 */
 
-import 'dotenv/config';
 import { drizzle } from 'drizzle-orm/postgres-js';
-import { env } from '$env/dynamic/private';
 import postgres from 'postgres';
 import * as schema from './schema';
+import { env } from '$env/dynamic/private';
 
 if (!env.DATABASE_URL) throw Error('DATABASE_URL not set!');
 

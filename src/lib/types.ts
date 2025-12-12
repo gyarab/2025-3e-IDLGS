@@ -10,3 +10,15 @@ export type Message = {
 	role: 'developer' | 'user' | 'assistant';
 	content: string;
 };
+
+export type UserType = {
+	uuid: string;
+	email: string;
+	createdAt: Date;
+	birthday: string;
+	lang: string;
+	streak: number;
+	verified: boolean;
+	extended: boolean;
+	admin: boolean;
+}

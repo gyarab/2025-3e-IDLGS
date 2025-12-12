@@ -3,7 +3,7 @@ import { RateLimiter } from 'sveltekit-rate-limiter/server';
 
 const limiter = new RateLimiter({
 	// A rate is defined as [number, unit]
-	IPUA: [2, 's'] // IP + User Agent limiter
+	IPUA: [5, 's'] // IP + User Agent limiter
 });
 
 //returns if passes check

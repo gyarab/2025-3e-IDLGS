@@ -5,9 +5,8 @@
 </script>
 
 <svelte:head>
-	<!-- TODO -->
 	<title>
-		{m.hello_world({ name: 'idlgs' })}
+		{m.textbookNameShort()} - {m.textbookNameLong()}
 	</title>
 </svelte:head>
 
