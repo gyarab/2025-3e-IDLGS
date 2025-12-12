@@ -8,6 +8,10 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
+	interface Window {
+		/* eslint-disable @typescript-eslint/no-explicit-any */
+		turnstile: any;
+	}
 }
 
 export {};

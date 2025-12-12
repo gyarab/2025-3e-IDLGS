@@ -20,5 +20,19 @@
 	"showPassword": "Zobrazit heslo",
 	"hidePassword": "Skrýt heslo",
 	"forgotPassword": "Zapomněli jste heslo?",
-	"reset": "Resetovat"
+	"reset": "Resetovat",
+	"textbookNameLong": "Interaktivní Digitální Vždělávací a Známkovací Systém",
+	"allRightsReserved": "Všechna práva vyhrazena.",
+	"language": "Jazyk",
+	"languageName": "Čeština",
+	"rememberMe": "Zapamatovat si mě",
+	"overview": "Přehled",
+	"coursesAndTextbooks": "Kurzy a učebnice",
+	"streak": "Série",
+	"dailyChallenges": "Denní výzvy",
+	"day0": "dní",
+	"day1": "den",
+	"day234": "dny",
+	"day5": "dní",
+	"logout": "Odhlásit se"
 }

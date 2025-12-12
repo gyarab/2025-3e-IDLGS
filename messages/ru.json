@@ -20,5 +20,18 @@
 	"showPassword": "Показать пароль",
 	"hidePassword": "Скрыть пароль",
 	"forgotPassword": "Забыли пароль?",
-	"reset": "Сбросить"
+	"reset": "Сбросить",
+	"textbookNameLong": "Интерактивная Цифровая Система Обучения и Оценки",
+	"allRightsReserved": "Все права защищены.",
+	"language": "Язык",
+	"languageName": "Русский",
+	"rememberMe": "Запомнить меня",
+	"overview": "Обзор",
+	"coursesAndTextbooks": "Курсы и учебники",
+	"streak": "Серия",
+	"dailyChallenges": "Ежедневные задания",
+	"day0": "дней",
+	"day1": "день",
+	"day234": "дня",
+	"day5": "дней"
 }

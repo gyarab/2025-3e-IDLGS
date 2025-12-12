@@ -20,5 +20,19 @@
 	"showPassword": "Show Password",
 	"hidePassword": "Hide Password",
 	"forgotPassword": "Forgot Password?",
-	"reset": "Reset"
+	"reset": "Reset",
+	"textbookNameLong": "Interactive Digital Learning and Grading System",
+	"allRightsReserved": "All rights reserved.",
+	"language": "Language",
+	"languageName": "English",
+	"rememberMe": "Remember Me",
+	"overview": "Overview",
+	"coursesAndTextbooks": "Courses and Textbooks",
+	"streak": "Streak",
+	"dailyChallenges": "Daily Challenges",
+	"day0": "days",
+	"day1": "day",
+	"day234": "days",
+	"day5": "days",
+	"logout": "Log Out"
 }

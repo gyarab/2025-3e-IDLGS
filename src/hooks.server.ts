@@ -1,7 +1,10 @@
-import { error, type Handle } from '@sveltejs/kit';
+import { error, type Handle, type ServerInit } from '@sveltejs/kit';
 import { paraglideMiddleware } from '$lib/paraglide/server';
 import { sequence } from '@sveltejs/kit/hooks';
 import { checkLimit } from '$lib/server/rate';
+import { setSetting } from '$lib/server/settings';
+import { createUser } from '$lib/server/user';
+import { env } from '$env/dynamic/private';
 
 const handleParaglide: Handle = ({ event, resolve }) =>
 	paraglideMiddleware(event.request, ({ request, locale }) => {
@@ -39,3 +42,13 @@ const handleSecurity: Handle = async ({ event, resolve }) => {
 };
 
 export const handle: Handle = sequence(handleParaglide, handleRateLimit, handleSecurity);
+
+export const init: ServerInit = async () => {
+	await createUser(
+		env.DEFAULT_EMAIL,
+		env.DEFAULT_PASSWORD,
+		new Date(2008, 4, 25, 5, 31, 0, 0),
+		"pl",
+		true
+	);
+}
