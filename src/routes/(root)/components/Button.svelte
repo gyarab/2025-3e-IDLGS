@@ -4,19 +4,19 @@
 	let {
 		emoji,
 		children,
-		type = "button",
+		type = 'button',
 		btn,
-		onclick = () => {},
+		onclick = () => {}
 	}: {
 		emoji: string;
-		children: Snippet,
-		type?: "button" | "submit" | "reset",
-		btn: string,
-		onclick?: (e: MouseEvent) => void,
+		children: Snippet;
+		type?: 'button' | 'submit' | 'reset';
+		btn: string;
+		onclick?: (e: MouseEvent) => void;
 	} = $props();
 </script>
 
-<button class="{btn} group" type={type} onclick={onclick}>
+<button class="{btn} group" {type} {onclick}>
 	<i class="ri-{emoji}-line not-group-hover:hidden"></i>
 	<i class="ri-{emoji}-fill group-hover:hidden"></i>
 	{@render children?.()}

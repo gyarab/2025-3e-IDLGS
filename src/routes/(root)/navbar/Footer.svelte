@@ -11,9 +11,7 @@
 					{m.textbookNameLong()}
 				</p>
 			</div>
-			<div>
-				© Martin Bykov, Ali Yunussov, Kira Stepanova 2025-2026
-			</div>
+			<div>© Martin Bykov, Ali Yunussov, Kira Stepanova 2025-2026</div>
 			<div>
 				{m.allRightsReserved()}
 			</div>

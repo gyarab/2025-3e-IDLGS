@@ -48,7 +48,7 @@ export const init: ServerInit = async () => {
 		env.DEFAULT_EMAIL,
 		env.DEFAULT_PASSWORD,
 		new Date(2008, 4, 25, 5, 31, 0, 0),
-		"pl",
+		'pl',
 		true
 	);
-}
+};

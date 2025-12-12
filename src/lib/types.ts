@@ -21,4 +21,4 @@ export type UserType = {
 	verified: boolean;
 	extended: boolean;
 	admin: boolean;
-}
+};

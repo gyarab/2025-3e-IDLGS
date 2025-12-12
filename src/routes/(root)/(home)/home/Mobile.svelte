@@ -2,6 +2,4 @@
 	let { data } = $props();
 </script>
 
-<div class="lg:hidden">
-
-</div>
+<div class="lg:hidden"></div>

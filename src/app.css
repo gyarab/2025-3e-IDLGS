@@ -53,9 +53,9 @@
 	}
 
 	.input-text {
-		@apply w-full rounded-lg bg-black/20 border-2 border-emerald-500 placeholder:text-violet-700/50 text-violet-700 placeholder:font-light!;
+		@apply w-full rounded-lg border-2 border-emerald-500 bg-black/20 text-violet-700 placeholder:font-light! placeholder:text-violet-700/50;
 	}
 	.input-checkbox {
-		@apply appearance-auto bg-white! accent-violet-700 text-violet-700 outline-0 rounded-lg hover:brightness-80;
+		@apply appearance-auto rounded-lg bg-white! text-violet-700 accent-violet-700 outline-0 hover:brightness-80;
 	}
 }

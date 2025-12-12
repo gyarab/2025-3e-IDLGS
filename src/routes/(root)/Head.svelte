@@ -62,7 +62,8 @@
 	"
 			>
 				<Card delay={100} text="Lorem ipsum dolor sit amet consectetur adipisicing elit." />
-				<Card delay={600}
+				<Card
+					delay={600}
 					text="Eum veritatis praesentium sint eveniet hic ipsum, dolor voluptate vitae, neque magnam ea
 			exercitationem"
 				/>

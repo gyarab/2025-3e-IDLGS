@@ -1,5 +1,5 @@
 import { db } from '$lib/server/db/index.js';
-import * as dataSchema from "$lib/server/db/schema.js";
+import * as dataSchema from '$lib/server/db/schema.js';
 import { fail, redirect } from '@sveltejs/kit';
 import { checkLimit } from '$lib/server/rate/index.js';
 
@@ -10,13 +10,7 @@ export const load = async (event) => {
 };
 
 export const actions = {
-	createTextbook: async (event) => {
-
-	},
-	copyTextbook: async (event) => {
-
-	},
-	createCourse: async (event) => {
-
-	},
+	createTextbook: async (event) => {},
+	copyTextbook: async (event) => {},
+	createCourse: async (event) => {}
 };

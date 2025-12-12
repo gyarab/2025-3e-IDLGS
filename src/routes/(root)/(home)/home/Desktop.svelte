@@ -27,19 +27,19 @@
 				<h2 class="w-full text-left">{m.welcomeBackMessageName({ name: 'NAME TODO' })}</h2>
 
 				<WideCard>
-					<div class="w-full grid grid-cols-2 gap-10 *:flex *:flex-col *:gap-2">
+					<div class="grid w-full grid-cols-2 gap-10 *:flex *:flex-col *:gap-2">
 						<div>
-							<div class="flex flex-row w-full gap-2 items-center">
+							<div class="flex w-full flex-row items-center gap-2">
 								{#if data.user.extended}
-								<i class="ri-fire-fill text-5xl text-amber-600"></i>
-								{:else}								
-								<i class="ri-fire-line text-5xl text-neutral-300"></i>
+									<i class="ri-fire-fill text-5xl text-amber-600"></i>
+								{:else}
+									<i class="ri-fire-line text-5xl text-neutral-300"></i>
 								{/if}
 								<h2>{m.streak()}: {data.user.streak} {writeDays(data.user.streak)}</h2>
 							</div>
 						</div>
 						<div>
-							<div class="flex flex-row w-full gap-2 items-center">
+							<div class="flex w-full flex-row items-center gap-2">
 								<i class="ri-calendar-todo-line text-5xl text-neutral-300"></i>
 								<h2>{m.dailyChallenges()}</h2>
 							</div>
@@ -58,7 +58,7 @@
 							r={Math.random() * 100 + 125}
 							g={Math.random() * 100 + 125}
 							b={Math.random() * 100 + 125}
-							delay={i*100}
+							delay={i * 100}
 						/>
 					{/each}
 				</div>

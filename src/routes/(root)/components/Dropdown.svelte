@@ -4,7 +4,7 @@
 
 	let inUse = $state(false);
 
-	let { children, content, icon, downDirection, css, } = $props();
+	let { children, content, icon, downDirection, css } = $props();
 
 	let ready = $state(false);
 	onMount(() => {
@@ -15,7 +15,7 @@
 {#if ready}
 	{#key ready}
 		<button
-			class="{css} relative flex flex-row gap-1 hover:brightness-100! **:font-light"
+			class="{css} relative flex flex-row gap-1 **:font-light hover:brightness-100!"
 			onclick={() => {
 				inUse = !inUse;
 			}}

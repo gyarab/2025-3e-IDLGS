@@ -16,7 +16,9 @@
 			<input
 				type={passwordVisible ? 'text' : 'password'}
 				name={formName}
-				class="{cssClass} {passwordVisible ? '' : 'font-medium'} input-text overflow-hidden rounded-e-none!"
+				class="{cssClass} {passwordVisible
+					? ''
+					: 'font-medium'} input-text overflow-hidden rounded-e-none!"
 				placeholder={placeholder === '' ? m.enterYourPassword() : placeholder}
 				required
 				bind:value

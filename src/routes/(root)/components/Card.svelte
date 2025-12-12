@@ -55,11 +55,11 @@
 	class="
 	flex aspect-square flex-col gap-2
 	overflow-hidden rounded-lg
-	border-2 perspective-[1600px] shadow
+	border-2 shadow perspective-[1600px]
 	"
 	style="background-color: rgb({r} {g} {b} / 30%); border-color: rgb({r} {g} {b} / 30%); transform: rotateX({yRotation}deg) rotateY({xRotation}deg) translateZ(0);"
 	in:fly|global={{ x: 0, y: 100, opacity: 0, duration: 500, delay: delay }}
-	>
+>
 	<div class="flex w-full grow flex-col rounded-lg p-2 backdrop-blur-2xl">
 		{text}
 	</div>

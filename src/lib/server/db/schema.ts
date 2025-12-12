@@ -22,8 +22,7 @@ export const user = pgTable('user', {
 	streak: integer('streak').notNull().default(0),
 	verified: boolean('verified').notNull().default(false),
 	extended: boolean('extended').notNull().default(false),
-	admin: boolean('admin').notNull().default(false),
-	
+	admin: boolean('admin').notNull().default(false)
 });
 
 export const userVerification = pgTable('userVerification', {
@@ -242,4 +241,3 @@ export const school = pgTable('school', {
 	name: text('name').notNull().default(''),
 	productkey: text('productkey').notNull().default('')
 });
-

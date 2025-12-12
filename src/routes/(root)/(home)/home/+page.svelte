@@ -12,5 +12,5 @@
 	</title>
 </svelte:head>
 
-<Desktop data={data} />
-<Mobile data={data} />
+<Desktop {data} />
+<Mobile {data} />
