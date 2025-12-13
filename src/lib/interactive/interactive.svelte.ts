@@ -19,6 +19,10 @@ import { RElementInputTextSmall } from './elements/inputtextsmall';
 import { RElementLetterInput } from './elements/letterinput';
 import { RElementText } from './elements/text';
 import { RElementVideoPlayer } from './elements/video';
+import type { RScriptBlock } from './script/block';
+import { RScriptBlockVariableDefinition } from './script/blocks/variable';
+
+export const RESIN_MAX_ELEMENTS = 1000;
 
 //main element class
 //array is polymorphic
@@ -30,6 +34,7 @@ export class RInteractive {
 	aspect: number = $state(16 / 9);
 
 	addElement(
+		name: string,
 		x: number,
 		y: number,
 		width: number,
@@ -40,11 +45,13 @@ export class RInteractive {
 		rounded: number,
 		opacity: number
 	) {
+		if(this.elements.length >= RESIN_MAX_ELEMENTS) return;
 		this.elements.push(
-			new RElement(x, y, width, height, visible, bgcolor, fgcolor, rounded, opacity)
+			new RElement(name, x, y, width, height, visible, bgcolor, fgcolor, rounded, opacity)
 		);
 	}
 	addElementDone(el: RElement) {
+		if(this.elements.length >= RESIN_MAX_ELEMENTS) return;
 		this.elements.push(el);
 	}
 
@@ -78,4 +85,10 @@ export const getType = (el: RElement) => {
 	else if (el instanceof RElementText) return 'RElementText';
 	else if (el instanceof RElementVideoPlayer) return 'RElementVideoPlayer';
 	else return 'RElement?';
+};
+
+
+export const getBlockType = (b: RScriptBlock) => {
+	if(b instanceof RScriptBlockVariableDefinition) return 'RScriptBlockVariableDefinition';
+	//TODO
 };

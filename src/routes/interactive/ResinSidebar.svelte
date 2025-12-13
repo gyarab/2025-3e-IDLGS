@@ -1,7 +1,8 @@
 <script lang="ts">
 	import type { RElement } from '$lib/interactive/element.svelte';
+	import { getType } from '$lib/interactive/interactive.svelte';
 	import ResinModal from './ResinModal.svelte';
-	import ResinScriptEditor from './ResinScriptEditor.svelte';
+	import ResinScriptEditor from './script/ResinScriptEditor.svelte';
 
 	let {
 		el
@@ -14,6 +15,18 @@
 
 <div class="flex max-h-screen flex-col gap-2 overflow-hidden bg-neutral-500 p-5">
 	<h3>Manage element</h3>
+
+	<span class="flex w-full flex-row items-center gap-2">
+		Name:
+		<div class="grow"></div>
+		<input type="text" bind:value={el.name} class="input-text-resin" />
+	</span>
+
+	<span class="flex w-full flex-row items-center gap-2">
+		Type:
+		<div class="grow"></div>
+		{getType(el)}
+	</span>
 
 	<button
 		class="button-green group"

@@ -58,4 +58,7 @@
 	.input-checkbox {
 		@apply appearance-auto rounded-lg bg-white! text-violet-700 accent-violet-700 outline-0 hover:brightness-80;
 	}
+	.input-text-resin {
+		@apply rounded-lg border-2 text-violet-700 placeholder:font-light! placeholder:text-violet-700/50;
+	}
 }

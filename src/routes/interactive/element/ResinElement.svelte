@@ -10,58 +10,46 @@ Author: Martin Bykov
 	//TODO snap to 100%
 
 	import { browser } from '$app/environment';
+	import { RESIN_MIN_ELEMENT_SIZE, type RElement } from '$lib/interactive/element.svelte';
 	import { onDestroy, onMount } from 'svelte';
 
 	let {
-		x = $bindable(),
-		y = $bindable(),
-		width = $bindable(),
-		height = $bindable(),
-		visible,
-		bgcolor,
-		fgcolor,
-		rounded,
-		uuid,
+		el = $bindable(),
 		uuidVariable = $bindable(),
 		mousePosX,
 		mousePosY,
 		canvasWidth,
 		canvasHeight,
-		opacity
 	}: {
-		x: number;
-		y: number;
-		width: number;
-		height: number;
-		visible: boolean;
-		bgcolor: string;
-		fgcolor: string;
-		rounded: number;
-		uuid: string;
+		el: RElement;
 		uuidVariable: string;
 		mousePosX: number;
 		mousePosY: number;
 		canvasWidth: number;
 		canvasHeight: number;
-		opacity: number;
 	} = $props();
 
 	let dragBeginX = $derived(mousePosX);
 	let dragBeginY = $derived(mousePosY);
 	let widthBegin = $state(0);
 	let heightBegin = $state(0);
+	let aspectBegin = $state(0);
 	let xBegin = $state(0);
 	let yBegin = $state(0);
 	let isDragging = $state(false);
 	let isDraggingPosition = $state(false);
+	let shiftPressed = $state(false);
 
 	const odoHandler = (e: DragEvent) => {
 		if (!isDragging) return;
 
-		e.preventDefault();
-
-		width = widthBegin + ((e.pageX - dragBeginX) / canvasWidth) * 100;
-		height = heightBegin + ((e.pageY - dragBeginY) / canvasHeight) * 100;
+		if (!shiftPressed) {
+			el.width = widthBegin + ((e.pageX - dragBeginX) / canvasWidth) * 100;
+			el.height = heightBegin + ((e.pageY - dragBeginY) / canvasHeight) * 100;
+		} else {
+			el.width = widthBegin + ((e.pageX - dragBeginX) / canvasWidth) * 100 * aspectBegin;
+			el.height = heightBegin + ((e.pageX - dragBeginX) / canvasHeight) * 100;
+		}
 
 		return false;
 	};
@@ -69,48 +57,62 @@ Author: Martin Bykov
 	const odoPosHandler = (e: DragEvent) => {
 		if (!isDraggingPosition) return;
 
-		e.preventDefault();
-
-		x = xBegin + ((e.pageX - dragBeginX) / canvasWidth) * 100;
-		y = yBegin + ((e.pageY - dragBeginY) / canvasHeight) * 100;
+		el.x = xBegin + ((e.pageX - dragBeginX) / canvasWidth) * 100;
+		el.y = yBegin + ((e.pageY - dragBeginY) / canvasHeight) * 100;
 
 		return false;
+	};
+
+	const keyHandler = (e: KeyboardEvent) => {
+		shiftPressed = e.shiftKey;
 	};
 
 	onMount(() => {
 		if (!browser) return;
 
-		widthBegin = width;
-		heightBegin = height;
+		widthBegin = el.width;
+		heightBegin = el.height;
+		aspectBegin = widthBegin / heightBegin;
 
 		addEventListener('dragover', odoHandler);
 		addEventListener('dragover', odoPosHandler);
+		addEventListener('keydown', keyHandler);
+		addEventListener('keyup', keyHandler);
 	});
 	onDestroy(() => {
 		if (!browser) return;
 
 		removeEventListener('dragover', odoHandler);
 		removeEventListener('dragover', odoPosHandler);
+		removeEventListener('keydown', keyHandler);
+		removeEventListener('keyup', keyHandler);
+	});
+
+	$effect(() => {
+		el.x = Math.max(0, Math.min(el.x, 100-el.width));
+		el.y = Math.max(0, Math.min(el.y, 100-el.height));
+		el.width = Math.max(RESIN_MIN_ELEMENT_SIZE, Math.min(el.width, 100-el.x));
+		el.height = Math.max(RESIN_MIN_ELEMENT_SIZE, Math.min(el.height, 100-el.y));
 	});
 </script>
 
 <div
-	class="absolute z-45 {visible ? '' : 'hidden'} 	{uuid === uuidVariable
+	class="absolute z-35 {el.visible ? '' : 'hidden'} 	{el.uuid === uuidVariable
 		? 'border-2 border-violet-700'
 		: ''}"
 	style="
-		top:              {y}%;
-		left:             {x}%;
-		width:            {width}%;
-		height:           {height}%;
-		border-radius:    {rounded}px;
+		top:              {el.y}%;
+		left:             {el.x}%;
+		width:            {el.width}%;
+		height:           {el.height}%;
+		border-radius:    {el.rounded}px;
 		"
 	role="main"
 	ondragstart={(e) => {
 		e.stopPropagation();
 		isDraggingPosition = true;
-		xBegin = x;
-		yBegin = y;
+		xBegin = el.x;
+		yBegin = el.y;
 	}}
 	ondragend={() => {
 		isDraggingPosition = false;
@@ -121,33 +123,36 @@ Author: Martin Bykov
 		class="
 	h-full w-full overflow-hidden
 	"
-		id={uuid}
+		id={el.uuid}
 		style="
-		background-color: {bgcolor};
-		color:            {fgcolor};
-		border-radius:    {rounded}px;
-		opacity:          {opacity};
+		background-color: {el.bgcolor};
+		color:            {el.fgcolor};
+		border-radius:    {el.rounded}px;
+		opacity:          {el.opacity};
 	"
 		onclick={() => {
-			if (uuidVariable == uuid) uuidVariable = '';
-			else uuidVariable = uuid;
+			if (uuidVariable == el.uuid) uuidVariable = '';
+			else uuidVariable = el.uuid;
 		}}
 		aria-label="RESIN ELEMENT"
 	>
+		
+
 		Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque fugiat dignissimos, facilis et
 		suscipit repudiandae molestias placeat sint. Ad voluptates tempora mollitia illo quas error
 		commodi modi minus fuga repudiandae.
 	</button>
 
-	{#if uuidVariable == uuid}
+	{#if uuidVariable == el.uuid}
 		<div
-			class="absolute -right-10 -bottom-10 z-50 flex flex-row items-center gap-0 rounded-full bg-emerald-500 text-2xl opacity-100!"
+			class="absolute right-10 bottom-10 z-50 flex flex-row items-center gap-0 rounded-full bg-emerald-500 text-2xl opacity-100!"
 			role="main"
 			ondragstart={(e) => {
 				e.stopPropagation();
 				isDragging = true;
-				widthBegin = width;
-				heightBegin = height;
+				widthBegin = el.width;
+				heightBegin = el.height;
+				aspectBegin = widthBegin / heightBegin;
 			}}
 			ondragend={() => {
 				isDragging = false;
