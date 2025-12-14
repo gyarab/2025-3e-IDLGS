@@ -9,8 +9,7 @@ Aplikace by měla splňovat následující požadavky:
 - Jednoduché rozšiřování vlastními modulya
 - Sbírání dat a dávání rad jak studentům, tak i přehled profesorům
 
-Aplikace by měla podle plánů být otestována jak na Gymnáziu Arabská pod vedením pana prof. Hrozinky, tak také paní prof. Irenou Skolilovou na Gymnáziu Nad Álejí. Testování bude probíhat nejpozději od prosince.
-
+Aplikace by měla podle plánů být otestována jak na Gymnáziu Arabská pod vedením pana prof. Hrozinky, tak také paní prof. Irenou Skolilovou na Gymnáziu Nad Álejí. Testování bude probíhat v roce 2026.
 # Digitální učebnice
 Jedná se o soubor formátovaných článků s interaktivními prvky. Učebnici je možné použít v několika kurzech.
 Učebnice se smí kopírovat a upravovat i během její využití v kurzu/kurzech.
