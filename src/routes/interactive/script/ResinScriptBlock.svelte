@@ -4,10 +4,6 @@ RESIN
 Single script block
 Author: Martin Bykov
 
-TODO
-
-TODO render connectors with canvas (use instead of background)
-
 -->
 
 <script lang="ts">
@@ -37,15 +33,17 @@ TODO render connectors with canvas (use instead of background)
 	onDestroy(() => {});
 
 	let {
-		block
+		block,
+		uuid = $bindable(""),
 	}: {
 		block: RScriptBlock;
+		uuid: string;
 	} = $props();
 </script>
 
-<div
+<button
 	class="
-absolute z-40 flex flex-col rounded-lg p-2 font-medium
+absolute z-40 flex flex-row rounded-lg p-2 font-medium items-center
 "
 	style="
 	background-color: #00000000;
@@ -55,6 +53,12 @@ absolute z-40 flex flex-col rounded-lg p-2 font-medium
 	width:            {block.width}%;
 	height:           {block.height}%;
 "
+onclick={() => {
+	uuid = block.uuid;
+}}
 >
 	<canvas {id} class="absolute top-0 left-0 z-41 h-full w-full">Canvas not supported.</canvas>
-</div>
+	<div class="grow-2"></div>
+	<div class="grow z-42">{block.text}</div>
+	<div class="grow-7"></div>
+</button>

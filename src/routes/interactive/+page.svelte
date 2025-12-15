@@ -17,7 +17,7 @@ Author: Martin Bykov
 	import ResinListElement from './element/ResinListElement.svelte';
 	import ResinSidebar from './ResinSidebar.svelte';
 	import { RElement } from '$lib/interactive/element.svelte';
-	import ResinElementAddition from './ResinElementAddition.svelte';
+	import ResinElementAddition from './element/ResinElementAddition.svelte';
 	import { gcd } from '$lib/math';
 
 	let el: RInteractive = $state(new RInteractive());

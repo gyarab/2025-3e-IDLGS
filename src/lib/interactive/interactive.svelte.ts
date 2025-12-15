@@ -21,6 +21,7 @@ import { RElementText } from './elements/text';
 import { RElementVideoPlayer } from './elements/video';
 import type { RScriptBlock } from './script/block.svelte';
 import { RScriptBlockVariableDefinition } from './script/blocks/variable';
+import { RProgram } from './script/program.svelte';
 
 export const RESIN_MAX_ELEMENTS = 1000;
 
@@ -33,6 +34,8 @@ export class RInteractive {
 
 	//aspect ratio as x/y
 	aspect: number = $state(16 / 9);
+
+	script: RProgram = $state(new RProgram());
 
 	addElement(
 		name: string,

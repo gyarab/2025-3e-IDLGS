@@ -34,7 +34,11 @@ export class RScriptBlock {
 
 	commented: boolean = $state(true);
 
+	text: string = $state("");
+	uuid: string = $state("");
+
 	constructor(
+		text: string,
 		x: number,
 		y: number,
 		width: number,
@@ -43,6 +47,7 @@ export class RScriptBlock {
 		fgcolor: string,
 		commented: boolean
 	) {
+		this.text = text;
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -50,12 +55,13 @@ export class RScriptBlock {
 		this.bgcolor = bgcolor;
 		this.fgcolor = fgcolor;
 		this.commented = commented;
+		this.uuid = crypto.randomUUID();
 	}
 
 	drawBackground = (ctx: CanvasRenderingContext2D) => {
 		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-		if(this.commented) {
+		if (this.commented) {
 			ctx.fillStyle = RESIN_COMMENT_COLOR;
 			ctx.globalAlpha = 0.75;
 		}
@@ -65,47 +71,63 @@ export class RScriptBlock {
 		}
 
 		ctx.beginPath();
-		
+
 		//body
-		ctx.rect(0, RESIN_CONNECTION_Y_SIZE, ctx.canvas.width, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE * 2);
-		
+		ctx.rect(0, RESIN_CONNECTION_Y_SIZE * 2, ctx.canvas.width, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE * 4);
+
 		//rounded start
-		ctx.roundRect(0, 0, RESIN_CONNECTION_PADDING, ctx.canvas.height, [RESIN_RADIUS, 0, 0, RESIN_RADIUS]);
+		ctx.roundRect(0, RESIN_CONNECTION_Y_SIZE, RESIN_CONNECTION_PADDING, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE * 2, [RESIN_RADIUS, 0, 0, RESIN_RADIUS]);
 
 		//rounded end
-		ctx.roundRect(ctx.canvas.width-RESIN_CONNECTION_PADDING, 0, RESIN_CONNECTION_PADDING, ctx.canvas.height, [0, RESIN_RADIUS, RESIN_RADIUS, 0]);
+		ctx.roundRect(ctx.canvas.width - RESIN_CONNECTION_PADDING, RESIN_CONNECTION_Y_SIZE, RESIN_CONNECTION_PADDING, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE * 2, [0, RESIN_RADIUS, RESIN_RADIUS, 0]);
 
 		ctx.fill();
 
 		let x = RESIN_CONNECTION_PADDING;
 
 		ctx.beginPath();
-		ctx.moveTo(RESIN_CONNECTION_PADDING, ctx.canvas.height);
+		ctx.moveTo(RESIN_CONNECTION_PADDING, ctx.canvas.height-RESIN_CONNECTION_Y_SIZE);
 
-		for (let c of this.connectionBottom) {
+		for (const c of this.connectionBottom) {
 			switch (c) {
-				case 'R':
-					ctx.arcTo(x, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE, x + RESIN_CONNECTION_X_SIZE / 2, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE, RESIN_CONNECTION_Y_SIZE / 2);
-					ctx.arcTo(x + RESIN_CONNECTION_X_SIZE, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE, x + RESIN_CONNECTION_X_SIZE, ctx.canvas.height, RESIN_CONNECTION_Y_SIZE / 2);
-					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, ctx.canvas.height);
+				//inside
+				case 'r':
+					ctx.arcTo(x, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE*2, x + RESIN_CONNECTION_X_SIZE / 2, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE*2, RESIN_CONNECTION_Y_SIZE / 2);
+					ctx.arcTo(x + RESIN_CONNECTION_X_SIZE, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE*2, x + RESIN_CONNECTION_X_SIZE, ctx.canvas.height-RESIN_CONNECTION_Y_SIZE, RESIN_CONNECTION_Y_SIZE / 2);
+					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE);
+					break;
+				case 'a':
+					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE / 2, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE*2);
+					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, ctx.canvas.height-RESIN_CONNECTION_Y_SIZE);
+					break;
+				case 's':
+					ctx.lineTo(x, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE*2);
+					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE*2);
+					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, ctx.canvas.height-RESIN_CONNECTION_Y_SIZE);
+					break;
+				//outside
+				case 'R': 
+					ctx.arcTo(x, ctx.canvas.height, x + RESIN_CONNECTION_X_SIZE / 2, ctx.canvas.height, RESIN_CONNECTION_Y_SIZE / 2);
+					ctx.arcTo(x + RESIN_CONNECTION_X_SIZE, ctx.canvas.height, x + RESIN_CONNECTION_X_SIZE, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE, RESIN_CONNECTION_Y_SIZE / 2);
+					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE);
 					break;
 				case 'A':
-					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE / 2, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE);
-					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, ctx.canvas.height);
+					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE / 2, ctx.canvas.height);
+					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, ctx.canvas.height-RESIN_CONNECTION_Y_SIZE);
 					break;
 				case 'S':
-					ctx.lineTo(x, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE);
-					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE);
+					ctx.lineTo(x, ctx.canvas.height);
 					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, ctx.canvas.height);
+					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, ctx.canvas.height-RESIN_CONNECTION_Y_SIZE);
 					break;
 			}
 			x += RESIN_CONNECTION_X_SIZE + RESIN_CONNECTION_SPACING;
-			ctx.lineTo(x, ctx.canvas.height);
+			ctx.lineTo(x, ctx.canvas.height-RESIN_CONNECTION_Y_SIZE);
 		}
 
-		ctx.lineTo(ctx.canvas.width - RESIN_CONNECTION_PADDING, ctx.canvas.height);
-		ctx.lineTo(ctx.canvas.width - RESIN_CONNECTION_PADDING, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE);
-		ctx.lineTo(RESIN_CONNECTION_PADDING, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE);
+		ctx.lineTo(ctx.canvas.width - RESIN_CONNECTION_PADDING, ctx.canvas.height-RESIN_CONNECTION_Y_SIZE);
+		ctx.lineTo(ctx.canvas.width - RESIN_CONNECTION_PADDING, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE*2);
+		ctx.lineTo(RESIN_CONNECTION_PADDING, ctx.canvas.height - RESIN_CONNECTION_Y_SIZE*2);
 
 		ctx.fill();
 
@@ -114,54 +136,65 @@ export class RScriptBlock {
 		x = RESIN_CONNECTION_PADDING;
 
 		ctx.beginPath();
-		ctx.moveTo(RESIN_CONNECTION_PADDING, 0);
+		ctx.moveTo(RESIN_CONNECTION_PADDING, RESIN_CONNECTION_Y_SIZE);
 
-		//TODO add inverted variants too!
-		//add 2 types: O(ut) and I(n)
-		//OUT types out on bottom in on top
-		//IN types in on bottom out on top
-		//(easier comparison this way)
-		for (let c of this.connectionTop) {
+		for (const c of this.connectionTop) {
 			switch (c) {
-				case 'R':
-					ctx.arcTo(x, RESIN_CONNECTION_Y_SIZE, x + RESIN_CONNECTION_X_SIZE / 2,  RESIN_CONNECTION_Y_SIZE, RESIN_CONNECTION_Y_SIZE / 2);
-					ctx.arcTo(x + RESIN_CONNECTION_X_SIZE, RESIN_CONNECTION_Y_SIZE, x + RESIN_CONNECTION_X_SIZE, 0, RESIN_CONNECTION_Y_SIZE / 2);
+				//outside
+				case 'r':
+					ctx.arcTo(x, 0, x + RESIN_CONNECTION_X_SIZE / 2, 0, RESIN_CONNECTION_Y_SIZE / 2);
+					ctx.arcTo(x + RESIN_CONNECTION_X_SIZE, 0, x + RESIN_CONNECTION_X_SIZE, RESIN_CONNECTION_Y_SIZE, RESIN_CONNECTION_Y_SIZE / 2);
+					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, RESIN_CONNECTION_Y_SIZE);
+					break;
+				case 'a':
+					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE / 2, 0);
+					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, RESIN_CONNECTION_Y_SIZE);
+					break;
+				case 's':
+					ctx.lineTo(x, 0);
 					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, 0);
+					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, RESIN_CONNECTION_Y_SIZE);
+					break;
+				//inside
+				case 'R':
+					ctx.arcTo(x, RESIN_CONNECTION_Y_SIZE*2, x + RESIN_CONNECTION_X_SIZE / 2, RESIN_CONNECTION_Y_SIZE*2, RESIN_CONNECTION_Y_SIZE / 2);
+					ctx.arcTo(x + RESIN_CONNECTION_X_SIZE, RESIN_CONNECTION_Y_SIZE*2, x + RESIN_CONNECTION_X_SIZE, RESIN_CONNECTION_Y_SIZE, RESIN_CONNECTION_Y_SIZE / 2);
+					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, RESIN_CONNECTION_Y_SIZE);
 					break;
 				case 'A':
-					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE / 2, RESIN_CONNECTION_Y_SIZE);
-					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, 0);
+					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE / 2, RESIN_CONNECTION_Y_SIZE*2);
+					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, RESIN_CONNECTION_Y_SIZE);
 					break;
 				case 'S':
-					ctx.lineTo(x, RESIN_CONNECTION_Y_SIZE);
+					ctx.lineTo(x, RESIN_CONNECTION_Y_SIZE*2);
+					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, RESIN_CONNECTION_Y_SIZE*2);
 					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, RESIN_CONNECTION_Y_SIZE);
-					ctx.lineTo(x + RESIN_CONNECTION_X_SIZE, 0);
 					break;
 			}
 
 			x += RESIN_CONNECTION_X_SIZE + RESIN_CONNECTION_SPACING;
-			ctx.lineTo(x, 0);
+			ctx.lineTo(x, RESIN_CONNECTION_Y_SIZE);
 		}
 
-		ctx.lineTo(ctx.canvas.width-RESIN_CONNECTION_PADDING, 0);
-		ctx.lineTo(ctx.canvas.width-RESIN_CONNECTION_PADDING, RESIN_CONNECTION_Y_SIZE);
-		ctx.lineTo(RESIN_CONNECTION_PADDING, RESIN_CONNECTION_Y_SIZE);
+		ctx.lineTo(ctx.canvas.width - RESIN_CONNECTION_PADDING, RESIN_CONNECTION_Y_SIZE);
+		ctx.lineTo(ctx.canvas.width - RESIN_CONNECTION_PADDING, RESIN_CONNECTION_Y_SIZE*2);
+		ctx.lineTo(RESIN_CONNECTION_PADDING, RESIN_CONNECTION_Y_SIZE*2);
 
 		ctx.fill();
 
 		//comment indicator
 
-		if(this.commented) {
+		if (this.commented) {
 			ctx.strokeStyle = RESIN_COMMENT_INDICATION_COLOR;
 			ctx.lineWidth = 10;
 
 			ctx.beginPath();
 
-			ctx.moveTo(ctx.canvas.width*8.5/10, ctx.canvas.height+10);
-			ctx.lineTo(ctx.canvas.width*9.0/10, -10);
+			ctx.moveTo(ctx.canvas.width * 8.5 / 10, ctx.canvas.height-RESIN_CONNECTION_Y_SIZE);
+			ctx.lineTo(ctx.canvas.width * 9.0 / 10, RESIN_CONNECTION_Y_SIZE);
 
-			ctx.moveTo(ctx.canvas.width*9.0/10, ctx.canvas.height+10);
-			ctx.lineTo(ctx.canvas.width*9.5/10, -10);
+			ctx.moveTo(ctx.canvas.width * 9.0 / 10, ctx.canvas.height-RESIN_CONNECTION_Y_SIZE);
+			ctx.lineTo(ctx.canvas.width * 9.5 / 10, RESIN_CONNECTION_Y_SIZE);
 
 			ctx.stroke();
 		}
@@ -170,12 +203,10 @@ export class RScriptBlock {
 
 //B before A
 export const isCompatibleBefore = (a: RScriptBlock, b: RScriptBlock): boolean => {
-	//TODO compare connections
-	return true;
+	return b.connectionBottom == a.connectionTop;
 }
 
 //B after A
 export const isCompatibleAfter = (a: RScriptBlock, b: RScriptBlock): boolean => {
-	//TODO compare connections
-	return true;
+	return b.connectionTop == a.connectionBottom;
 }
