@@ -34,5 +34,10 @@
 	"day1": "day",
 	"day234": "days",
 	"day5": "days",
-	"logout": "Log Out"
+	"logout": "Log Out",
+	"addNew": "Add New",
+	"open": "Open",
+	"resultingGrade": "Resulting Grade",
+	"assignments": "Assignments",
+	"noAssignmentsYet": "No assignments yet"
 }

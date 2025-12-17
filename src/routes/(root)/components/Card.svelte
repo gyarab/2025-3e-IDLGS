@@ -3,7 +3,7 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 
-	let { text, r = 115, g = 115, b = 115, delay = 0 } = $props();
+	let { children, r = 115, g = 115, b = 115, delay = 0, perspective, onclick = () => {} } = $props();
 
 	let rect: DOMRect | undefined = $state(undefined);
 	let value = $state(crypto.randomUUID());
@@ -56,11 +56,17 @@
 	flex aspect-square flex-col gap-2
 	overflow-hidden rounded-lg
 	border-2 shadow perspective-[1600px]
+	hover:border-neutral-300!
 	"
-	style="background-color: rgb({r} {g} {b} / 30%); border-color: rgb({r} {g} {b} / 30%); transform: rotateX({yRotation}deg) rotateY({xRotation}deg) translateZ(0);"
+	style="background-color: rgb({r} {g} {b} / 30%); border-color: rgb({r} {g} {b} / 30%); {perspective ? "transform: rotateX({yRotation}deg) rotateY({xRotation}deg) translateZ(0);" : ""}"
 	in:fly|global={{ x: 0, y: 100, opacity: 0, duration: 500, delay: delay }}
 >
-	<div class="flex w-full grow flex-col rounded-lg p-2 backdrop-blur-2xl">
-		{text}
-	</div>
+	<button 
+		class="flex w-full grow flex-col rounded-lg p-2 backdrop-blur-2xl hover:backdrop-brightness-120"
+		onclick={() => {
+			onclick();
+		}}
+		>
+		{@render children?.()}
+	</button>
 </div>

@@ -4,6 +4,8 @@ import { sequence } from '@sveltejs/kit/hooks';
 import { checkLimit } from '$lib/server/rate';
 import { createUser } from '$lib/server/user';
 import { env } from '$env/dynamic/private';
+import { db } from '$lib/server/db';
+import * as dataSchema from '$lib/server/db/schema.js';
 
 const handleParaglide: Handle = ({ event, resolve }) =>
 	paraglideMiddleware(event.request, ({ request, locale }) => {
@@ -43,11 +45,13 @@ const handleSecurity: Handle = async ({ event, resolve }) => {
 export const handle: Handle = sequence(handleParaglide, handleRateLimit, handleSecurity);
 
 export const init: ServerInit = async () => {
-	await createUser(
-		env.DEFAULT_EMAIL,
-		env.DEFAULT_PASSWORD,
-		new Date(2008, 4, 25, 5, 31, 0, 0),
-		'pl',
-		true
-	);
+	if ((await db.select().from(dataSchema.user)).length == 0) {
+		await createUser(
+			env.DEFAULT_EMAIL,
+			env.DEFAULT_PASSWORD,
+			new Date(2008, 4, 25, 5, 31, 0, 0),
+			'pl',
+			true
+		);
+	}
 };

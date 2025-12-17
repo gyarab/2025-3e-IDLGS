@@ -34,5 +34,10 @@
 	"day1": "Tag",
 	"day234": "Tage",
 	"day5": "Tage",
-	"logout": "Abmelden"
+	"logout": "Abmelden",
+	"addNew": "Neu hinzufügen",
+	"open": "Öffnen",
+	"resultingGrade": "Ergebnisnote",
+	"assignments": "Aufgaben",
+	"noAssignmentsYet": "Noch keine Aufgaben"
 }

@@ -34,5 +34,10 @@
 	"day1": "den",
 	"day234": "dny",
 	"day5": "dní",
-	"logout": "Odhlásit se"
+	"logout": "Odhlásit se",
+	"addNew": "Přidat nové",
+	"open": "Otevřít",
+	"resultingGrade": "Výsledná známka",
+	"assignments": "Úkoly",
+	"noAssignmentsYet": "Zatím žádné úkoly"
 }

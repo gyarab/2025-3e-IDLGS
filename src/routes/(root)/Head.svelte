@@ -61,13 +61,14 @@
 		grid w-2/3 grid-cols-3 gap-8
 	"
 			>
-				<Card delay={100} text="Lorem ipsum dolor sit amet consectetur adipisicing elit." />
-				<Card
-					delay={600}
-					text="Eum veritatis praesentium sint eveniet hic ipsum, dolor voluptate vitae, neque magnam ea
-			exercitationem"
-				/>
-				<Card delay={1100} text="enim tempora est minus delectus. Autem, assumenda quod!" />
+				<Card delay={100} perspective={false}>orem ipsum dolor sit amet consectetur adipisicing elit."</Card>
+				<Card delay={600} perspective={false}>
+					Eum veritatis praesentium sint eveniet hic ipsum, dolor voluptate vitae, neque magnam ea
+					exercitationem
+				</Card>
+				<Card delay={1100} perspective={false}>
+					enim tempora est minus delectus. Autem, assumenda quod
+				</Card>
 			</div>
 
 			<div class="grow"></div>

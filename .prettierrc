@@ -1,9 +1,29 @@
 {
-	"useTabs": true,
+	"arrowParens": "always",
+	"bracketSameLine": false,
+	"objectWrap": "preserve",
+	"bracketSpacing": true,
+	"semi": true,
+	"experimentalOperatorPosition": "end",
+	"experimentalTernaries": false,
 	"singleQuote": true,
-	"trailingComma": "none",
-	"printWidth": 100,
-	"plugins": ["prettier-plugin-svelte", "prettier-plugin-tailwindcss"],
+	"jsxSingleQuote": false,
+	"quoteProps": "as-needed",
+	"trailingComma": "all",
+	"singleAttributePerLine": true,
+	"htmlWhitespaceSensitivity": "css",
+	"vueIndentScriptAndStyle": false,
+	"proseWrap": "preserve",
+	"insertPragma": false,
+	"printWidth": 80,
+	"requirePragma": false,
+	"tabWidth": 4,
+	"useTabs": true,
+	"embeddedLanguageFormatting": "auto",
+	"plugins": [
+		"prettier-plugin-svelte",
+		"prettier-plugin-tailwindcss"
+	],
 	"overrides": [
 		{
 			"files": "*.svelte",

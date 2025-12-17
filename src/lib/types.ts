@@ -22,3 +22,41 @@ export type UserType = {
 	extended: boolean;
 	admin: boolean;
 };
+
+export type TextbookType = {
+	uuid: string;
+	description: string;
+	summary: string;
+	createdAt: Date;
+	modifiedAt: Date;
+	red: number;
+	green: number;
+	blue: number;
+	name: string;
+};
+
+export type ChapterType = {
+	uuid: string;
+	name: string;
+	summary: string;
+	textbookId: number;
+};
+
+export type ArticleType = {
+	uuid: string;
+	name: string;
+	text: string;
+	chapterId: number;
+};
+
+export type CourseType = {
+	uuid: string;
+	description: string;
+	createdAt: Date;
+	modifiedAt: Date;
+	red: number;
+	green: number;
+	blue: number;
+	name: string;
+};
+

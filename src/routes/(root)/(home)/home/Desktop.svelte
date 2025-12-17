@@ -4,8 +4,11 @@
 	import Card from '../../components/Card.svelte';
 	import WideCard from '../../components/WideCard.svelte';
 	import { writeDays } from '$lib/plural';
+	import CreationModal from './creationModal/CreationModal.svelte';
+	import CourseCard from './components/CourseCard.svelte';
 
 	let ready = $state(false);
+	let creationModal = $state(false);
 
 	onMount(() => {
 		ready = true;
@@ -49,16 +52,41 @@
 
 				<h2 class="w-full text-left">{m.coursesAndTextbooks()}</h2>
 				<div class="grid grid-cols-4 gap-2">
+					<Card
+						perspective={false}
+						onclick={() => {
+							creationModal = true;
+						}}
+					>
+						<div class="group flex w-full grow flex-col gap-2 items-center justify-center">
+							<span class="text-5xl">
+								<i class="ri ri-add-circle-line group-hover:hidden"></i>
+								<i class="ri-add-circle-fill not-group-hover:hidden"></i>
+							</span>
+							<span class="text-3xl">
+								{m.addNew()}
+							</span>
+						</div>
+					</Card>
+
 					<!-- TEMP list of cards -->
 					{#each { length: 15 } as a, i (i)}
 						<!-- temp eslint workaround TODO remove -->
 						<span class="hidden">{a}</span>
-						<Card
-							text={crypto.randomUUID()}
-							r={Math.random() * 100 + 125}
-							g={Math.random() * 100 + 125}
-							b={Math.random() * 100 + 125}
+
+						<CourseCard
+							perspective={false}
 							delay={i * 100}
+							course={{
+								uuid: "fasgdgsg",
+								createdAt: new Date(),
+								modifiedAt: new Date(),
+								description: "fawsdfs",
+								red: Math.random() * 100 + 125,
+								green: Math.random() * 100 + 125,
+								blue: Math.random() * 100 + 125,
+								name: "namam"
+							}}
 						/>
 					{/each}
 				</div>
@@ -68,3 +96,5 @@
 		</div>
 	{/key}
 {/if}
+
+<CreationModal bind:showModal={creationModal} />
