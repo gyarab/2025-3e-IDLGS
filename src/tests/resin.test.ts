@@ -15,4 +15,3 @@ describe('RESIN test - interpreter', () => {
 		expect(1 + 2).toBe(3);
 	});
 });
-

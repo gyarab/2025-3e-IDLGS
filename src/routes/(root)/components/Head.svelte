@@ -34,8 +34,12 @@
 			<div class="grow"></div>
 
 			<h5 class="flex flex-col items-center gap-2">
-				<span class="text-4xl font-medium leading-9 p-0 m-0">{m.electronicIntegratedAiPowered()}</span>
-				<span class="text-emerald-500 text-7xl font-bold">{m.learningAndGradingSystem()}</span>
+				<span class="m-0 p-0 text-4xl leading-9 font-medium"
+					>{m.electronicIntegratedAiPowered()}</span
+				>
+				<span class="text-7xl font-bold text-emerald-500"
+					>{m.learningAndGradingSystem()}</span
+				>
 			</h5>
 			<p class="w-1/2 text-center text-2xl">
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi

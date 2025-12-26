@@ -21,14 +21,15 @@
 
 	let showScriptingModal = $state(false);
 
-	let maxRoundnessLimit = $derived(Math.trunc(Math.min(
-		el.width*0.01*canvasX,
-		el.height*0.01*canvasY
-	)/2));
+	let maxRoundnessLimit = $derived(
+		Math.trunc(
+			Math.min(el.width * 0.01 * canvasX, el.height * 0.01 * canvasY) / 2,
+		),
+	);
 </script>
 
 <div
-	class="flex max-h-screen flex-col gap-2 overflow-hidden bg-neutral-500 p-5 max-w-2/10 *:w-full *:max-w-full"
+	class="flex max-h-screen max-w-2/10 flex-col gap-2 overflow-hidden bg-neutral-500 p-5 *:w-full *:max-w-full"
 >
 	<h3>{m.manageElement()}</h3>
 
@@ -105,7 +106,7 @@
 		/>
 	</div>
 
-	<div class="flex w-full flex-row items-center gap-2 max-w-full">
+	<div class="flex w-full max-w-full flex-row items-center gap-2">
 		<span>
 			{m.roundness()}
 		</span>
@@ -114,7 +115,7 @@
 		</span>
 		<input
 			type="range"
-			class="p-0 w-fit! grow!"
+			class="w-fit! grow! p-0"
 			min="0"
 			max={maxRoundnessLimit}
 			bind:value={el.rounded}
@@ -126,11 +127,11 @@
 			{m.opacity()}
 		</span>
 		<span>
-			{Math.round(el.opacity*100)}%
+			{Math.round(el.opacity * 100)}%
 		</span>
 		<input
 			type="range"
-			class="p-0 w-fit! grow!"
+			class="w-fit! grow! p-0"
 			min="0"
 			max="1"
 			step="0.01"

@@ -110,7 +110,7 @@ absolute z-40 flex flex-row items-center rounded-lg p-2 font-medium
 		}}
 		draggable="true"
 	>
-		<div class="flex h-full w-full flex-row items-center gap-2 grow">
+		<div class="flex h-full w-full grow flex-row items-center gap-2">
 			<div class="grow-2"></div>
 			<div class="z-42 grow">{block.text}</div>
 			<div class="grow-7"></div>

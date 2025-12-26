@@ -18,5 +18,5 @@
 		<i class="ri-{icon}-fill group-hover:hidden"></i>
 		<i class="ri-{icon}-line not-group-hover:hidden"></i>
 	</span>
-	<h4 class="overflow-scroll text-ellipsis w-full text-nowrap">{name}</h4>
+	<h4 class="w-full overflow-scroll text-nowrap text-ellipsis">{name}</h4>
 </button>

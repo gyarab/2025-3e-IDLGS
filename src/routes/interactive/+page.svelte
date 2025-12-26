@@ -155,7 +155,7 @@ Author: Martin Bykov
 		</div>
 	</div>
 	<div
-		class="flex max-h-screen flex-col gap-2 overflow-hidden bg-neutral-500 p-5 max-w-3/10"
+		class="flex max-h-screen max-w-3/10 flex-col gap-2 overflow-hidden bg-neutral-500 p-5"
 	>
 		<h2>RESIN {m.interactiveElementEditor()}</h2>
 
@@ -181,7 +181,8 @@ Author: Martin Bykov
 		<div class="flex grow flex-col gap-2 rounded-lg bg-neutral-600 p-5">
 			<h3>{m.manageElement()}</h3>
 			<div class="flex flex-row gap-2">
-				{m.aspectRatio()} {el.aspect.toFixed(2)}:1
+				{m.aspectRatio()}
+				{el.aspect.toFixed(2)}:1
 				<span class="italic opacity-70"
 					>{elementWidthShowValue /
 						gcdAspect}:{elementHeightShowValue / gcdAspect}</span
@@ -212,7 +213,7 @@ Author: Martin Bykov
 				px
 			</div>
 			<!-- TODO implement -->
-			<div class="flex flex-row items-center gap-2 items-center">
+			<div class="flex flex-row items-center gap-2">
 				{m.snapping()}:
 				<input
 					type="checkbox"
@@ -224,21 +225,29 @@ Author: Martin Bykov
 			<div class="grow"></div>
 			<div class="grid grid-cols-3 gap-2">
 				<button class="button-violet group">
-					<i class="ri-import-line text-xl not-group-hover:hidden"></i>
+					<i class="ri-import-line text-xl not-group-hover:hidden"
+					></i>
 					<i class="ri-import-fill text-xl group-hover:hidden"></i>
 					{m.import()}
 				</button>
 				<button class="button-green group">
-					<i class="ri-export-line text-xl not-group-hover:hidden"></i>
+					<i class="ri-export-line text-xl not-group-hover:hidden"
+					></i>
 					<i class="ri-export-fill text-xl group-hover:hidden"></i>
 					{m.export()}
 				</button>
 				<!-- TODO confirmation modal -->
-				<button class="button-green group" onclick={() => {
-					el = new RInteractive();
-				}}>
-					<i class="ri-delete-bin-2-line text-xl not-group-hover:hidden"></i>
-					<i class="ri-delete-bin-2-fill text-xl group-hover:hidden"></i>
+				<button
+					class="button-green group"
+					onclick={() => {
+						el = new RInteractive();
+					}}
+				>
+					<i
+						class="ri-delete-bin-2-line text-xl not-group-hover:hidden"
+					></i>
+					<i class="ri-delete-bin-2-fill text-xl group-hover:hidden"
+					></i>
 					{m.clear()}
 				</button>
 			</div>
