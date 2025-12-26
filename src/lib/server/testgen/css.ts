@@ -1,0 +1,3 @@
+export const TEST_GENERATION_BOILERPLATE_CSS = `
+
+`;

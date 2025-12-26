@@ -12,25 +12,13 @@ Author: Martin Bykov
 	import { browser } from '$app/environment';
 	import { RInteractive } from '$lib/interactive/interactive.svelte';
 	import { onDestroy, onMount } from 'svelte';
-	import ResinElement from './ResinElement.svelte';
-	import ResinItemSelect from './ResinItemSelect.svelte';
-	import { RElementAIChat } from '$lib/interactive/elements/aichat';
-	import ResinListElement from './ResinListElement.svelte';
+	import ResinElement from './element/ResinElement.svelte';
+
+	import ResinListElement from './element/ResinListElement.svelte';
 	import ResinSidebar from './ResinSidebar.svelte';
 	import { RElement } from '$lib/interactive/element.svelte';
-	import { RElementArrowPoint } from '$lib/interactive/elements/arrowpoint';
-	import { RElementCard } from '$lib/interactive/elements/card';
-	import { RElementCartesian } from '$lib/interactive/elements/cartesian';
-	import { RElementCheckbox } from '$lib/interactive/elements/checkbox';
-	import { RElementCodeInput } from '$lib/interactive/elements/codeinput';
-	import { RElementEmbedFrame } from '$lib/interactive/elements/embed';
-	import { RElementGraph } from '$lib/interactive/elements/graph';
-	import { RElementImage } from '$lib/interactive/elements/image';
-	import { RElementInputTextSmall } from '$lib/interactive/elements/inputtextsmall';
-	import { RElementInputTextArea } from '$lib/interactive/elements/inputtextarea';
-	import { RElementLetterInput } from '$lib/interactive/elements/letterinput';
-	import { RElementText } from '$lib/interactive/elements/text';
-	import { RElementVideoPlayer } from '$lib/interactive/elements/video';
+	import ResinElementAddition from './element/ResinElementAddition.svelte';
+	import { gcd } from '$lib/math';
 
 	let el: RInteractive = $state(new RInteractive());
 
@@ -48,6 +36,15 @@ Author: Martin Bykov
 	let heightBegin = $state(0);
 	let isDragging = $state(false);
 
+	let shiftPressed = $state(false);
+
+	let widthMax = $state(0);
+	let heightMax = $state(0);
+
+	const keyHandler = (e: KeyboardEvent) => {
+		shiftPressed = e.shiftKey;
+	};
+
 	const mmHandler = (e: MouseEvent) => {
 		mousePosX = e.pageX;
 		mousePosY = e.pageY;
@@ -56,32 +53,61 @@ Author: Martin Bykov
 	const odoHandler = (e: DragEvent) => {
 		if (!isDragging) return;
 
-		e.preventDefault();
-		elementWidthShowValue = widthBegin + (e.pageX - dragBeginX) * 2;
-		elementHeightShowValue = heightBegin + (e.pageY - dragBeginY) * 2;
+		if (!shiftPressed) {
+			elementWidthShowValue = widthBegin + (e.pageX - dragBeginX) * 2;
+			elementHeightShowValue = heightBegin + (e.pageY - dragBeginY) * 2;
+			el.aspect = elementHeightShowValue / elementWidthShowValue;
+		} else {
+			elementWidthShowValue = widthBegin + (e.pageX - dragBeginX) * 2 * el.aspect;
+			elementHeightShowValue = heightBegin + (e.pageX - dragBeginX) * 2;
+		}
 	};
 
 	onMount(() => {
 		if (!browser) return;
 
-		let rect = document
-			.getElementById('workspace')
-			?.getBoundingClientRect();
-		if (!rect) throw Error('No workspace element found!');
+		const elem = document.getElementById('workspace');
+		if (!elem) throw Error('No workspace element found!');
+		const rect = elem.getBoundingClientRect();
 
 		elementWidthShowValue = rect.width / 3;
 		elementHeightShowValue = rect.height / 3;
 		widthBegin = elementWidthShowValue;
 		heightBegin = elementHeightShowValue;
 
+		widthMax = rect.width;
+		heightMax = rect.height;
+
+		new ResizeObserver((data: ResizeObserverEntry[], observer: ResizeObserver) => {
+			widthMax =  data[0].contentRect.width;
+			heightMax = data[0].contentRect.height;
+
+			elementWidthShowValue = Math.min(elementWidthShowValue, widthMax);
+			elementHeightShowValue = Math.min(elementHeightShowValue, heightMax);
+
+			observer.observe(elem);
+		}).observe(elem);
+
 		addEventListener('mousemove', mmHandler);
 		addEventListener('dragover', odoHandler);
+		addEventListener('keydown', keyHandler);
+		addEventListener('keyup', keyHandler);
 	});
 	onDestroy(() => {
 		if (!browser) return;
 
 		removeEventListener('mousemove', mmHandler);
 		removeEventListener('dragover', odoHandler);
+		removeEventListener('keydown', keyHandler);
+		removeEventListener('keyup', keyHandler);
+	});
+
+	let gcdAspect = $derived(gcd(elementWidthShowValue, elementHeightShowValue));
+
+	$effect(() => {
+		elementWidthShowValue = Math.min(Math.max(0, elementWidthShowValue), widthMax);
+		elementHeightShowValue = Math.min(Math.max(0, elementHeightShowValue), heightMax);
+		el.aspect = elementWidthShowValue / elementHeightShowValue;
 	});
 </script>
 
@@ -89,19 +115,19 @@ Author: Martin Bykov
 	<title>RESIN</title>
 </svelte:head>
 
-<div class="relative flex w-full grow flex-row">
-	<div class="absolute top-2 left-3/10 flex flex-col gap-0">
-		<div class="flex w-full flex-row gap-2">
+<div class="relative flex h-screen max-h-screen min-h-screen w-full grow flex-row">
+	<div class="absolute top-2 left-3/10 flex w-fit max-w-1/2 flex-col gap-0 bg-black/40 z-50 text-xs">
+		<div class="flex flex-row gap-2">
 			<span>
 				Canvas width: {elementWidthShowValue}px
 			</span>
 		</div>
-		<div class="flex w-full flex-row gap-2">
+		<div class="flex flex-row gap-2">
 			<span>
 				Canvas height: {elementHeightShowValue}px
 			</span>
 		</div>
-		<div class="flex w-full max-w-1/2 flex-col gap-2">
+		<div class="flex flex-col gap-2">
 			<div>{el.parsed}</div>
 		</div>
 	</div>
@@ -109,111 +135,9 @@ Author: Martin Bykov
 		class="flex max-h-screen flex-col gap-2 overflow-hidden bg-neutral-500 p-5"
 	>
 		<h2>RESIN interactive element builder</h2>
-		<div
-			class="flex max-h-1/3 grow flex-col gap-2 rounded-lg bg-neutral-600 p-5"
-		>
-			<h3>Add new elements</h3>
-			<div class="grid grid-cols-3 gap-2 overflow-scroll">
-				<ResinItemSelect
-					onclick={() => {
-						el?.addElementDone(new RElementAIChat());
-					}}
-					name="AI Chat"
-					icon="speak-ai"
-				/>
-				<ResinItemSelect
-					onclick={() => {
-						el?.addElementDone(new RElementArrowPoint());
-					}}
-					name="Arrow point"
-					icon="arrow-left-right"
-				/>
-				<ResinItemSelect
-					onclick={() => {
-						el?.addElementDone(new RElementCard());
-					}}
-					name="Card"
-					icon="checkbox-blank"
-				/>
-				<ResinItemSelect
-					onclick={() => {
-						el?.addElementDone(new RElementCartesian());
-					}}
-					name="Cartesian"
-					icon="layout-grid"
-				/>
-				<ResinItemSelect
-					onclick={() => {
-						el?.addElementDone(new RElementCheckbox());
-					}}
-					name="Checkbox"
-					icon="checkbox"
-				/>
-				<ResinItemSelect
-					onclick={() => {
-						el?.addElementDone(new RElementCodeInput());
-					}}
-					name="Code input"
-					icon="code-s-slash"
-				/>
-				<ResinItemSelect
-					onclick={() => {
-						el?.addElementDone(new RElementEmbedFrame());
-					}}
-					name="Embed"
-					icon="artboard"
-				/>
-				<ResinItemSelect
-					onclick={() => {
-						el?.addElementDone(new RElementGraph());
-					}}
-					name="Graph"
-					icon="bar-chart-grouped"
-				/>
-				<ResinItemSelect
-					onclick={() => {
-						el?.addElementDone(new RElementImage());
-					}}
-					name="Image"
-					icon="image-2"
-				/>
-				<ResinItemSelect
-					onclick={() => {
-						el?.addElementDone(new RElementInputTextArea());
-					}}
-					name="Input text area"
-					icon="keyboard-box"
-				/>
-				<ResinItemSelect
-					onclick={() => {
-						el?.addElementDone(new RElementInputTextSmall());
-					}}
-					name="Input text small"
-					icon="keyboard"
-				/>
-				<ResinItemSelect
-					onclick={() => {
-						el?.addElementDone(new RElementLetterInput());
-					}}
-					name="Letter input"
-					icon="edit-box"
-				/>
-				<ResinItemSelect
-					onclick={() => {
-						el?.addElementDone(new RElementText());
-					}}
-					name="Text"
-					icon="file-text"
-				/>
-				<ResinItemSelect
-					onclick={() => {
-						el?.addElementDone(new RElementVideoPlayer());
-					}}
-					name="Video"
-					icon="video"
-				/>
-			</div>
-		</div>
+
+		<ResinElementAddition {el} />
+
 		<div class="flex grow flex-col gap-2 rounded-lg bg-neutral-600 p-5">
 			<h3>Current elements</h3>
 			{#key el}
@@ -233,7 +157,36 @@ Author: Martin Bykov
 		</div>
 		<div class="flex grow flex-col gap-2 rounded-lg bg-neutral-600 p-5">
 			<h3>Manage RESIN</h3>
-			Aspect ratio TODO
+			<div class="flex flex-row gap-2">
+				Aspect ratio: {el.aspect.toFixed(2)}:1
+				<span class="italic opacity-70"
+					>{elementWidthShowValue / gcdAspect}:{elementHeightShowValue / gcdAspect}</span
+				>
+			</div>
+			<div class="flex flex-row items-center gap-2">
+				Width:
+				<input
+					type="number"
+					min="0"
+					bind:value={elementWidthShowValue}
+					name="width"
+					class="input-text-resin grow"
+					placeholder="Width"
+				/>
+				px
+			</div>
+			<div class="flex flex-row items-center gap-2">
+				Height:
+				<input
+					type="number"
+					min="0"
+					bind:value={elementHeightShowValue}
+					name="height"
+					class="input-text-resin grow"
+					placeholder="Width"
+				/>
+				px
+			</div>
 			<div class="grow"></div>
 			<div class="grid grid-cols-2 gap-2">
 				<button class="button-violet group">
@@ -256,38 +209,30 @@ Author: Martin Bykov
 		class="flex grow-20 flex-col items-center justify-center gap-2 bg-linear-to-tr from-violet-700 to-emerald-500"
 	>
 		<div
-			class="relative rounded-lg bg-white p-5"
+			class="relative max-h-screen rounded-lg bg-white"
 			bind:clientWidth={elementWidthShowValue}
 			bind:clientHeight={elementHeightShowValue}
 			style="width: {elementWidthShowValue}px; height: {elementHeightShowValue}px;"
 		>
-			{#key el}
-				{#each el?.elements as element (element.uuid)}
-					<ResinElement
-						bind:x={element.x}
-						bind:y={element.y}
-						bind:width={element.width}
-						bind:height={element.height}
-						visible={element.visible}
-						bgcolor={element.bgcolor}
-						fgcolor={element.fgcolor}
-						rounded={element.rounded}
-						uuid={element.uuid}
-						bind:uuidVariable={selectedElementUuid}
-						{mousePosX}
-						{mousePosY}
-						canvasWidth={elementWidthShowValue}
-						canvasHeight={elementHeightShowValue}
-						opacity={element.opacity}
-					/>
-				{/each}
-			{/key}
+			<span class="absolute h-full w-full">
+				{#key el}
+					{#each el?.elements as element, i (element.uuid)}
+						<ResinElement
+							bind:el={el.elements[i]}
+							bind:uuidVariable={selectedElementUuid}
+							{mousePosX}
+							{mousePosY}
+							canvasWidth={elementWidthShowValue}
+							canvasHeight={elementHeightShowValue}
+						/>
+					{/each}
+				{/key}
+			</span>
 			<div
-				class="absolute -right-10 -bottom-10 z-40 flex flex-row items-center gap-0 rounded-full bg-violet-700 text-2xl"
+				class="absolute right-0 bottom-0 z-40 flex flex-row items-center gap-0 text-emerald-500 text-2xl"
 				role="main"
-				ondragstart={(e) => {
+				ondragstart={() => {
 					isDragging = true;
-					e.stopPropagation();
 					dragBeginX = mousePosX;
 					dragBeginY = mousePosY;
 					widthBegin = elementWidthShowValue;
@@ -299,13 +244,14 @@ Author: Martin Bykov
 				}}
 			>
 				<i class="ri-drag-move-2-line"></i>
-				<span class="p-1 text-base"> Canvas size </span>
 			</div>
 		</div>
 	</div>
 	{#if selectedElementUuid != ''}
-		<ResinSidebar
+		<ResinSidebar 
 			el={el.getElementByUuid(selectedElementUuid) as RElement}
-		/>
+			{mousePosX}
+			{mousePosY}
+		 />
 	{/if}
 </div>

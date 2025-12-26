@@ -3,7 +3,10 @@
 	Author: Martin Bykov
 */
 
+export const RESIN_MIN_ELEMENT_SIZE = 2;
+
 export class RElement {
+	name: string = $state("");
 	x: number = $state(0);
 	y: number = $state(0);
 	width: number = $state(0);
@@ -16,6 +19,7 @@ export class RElement {
 	uuid: string = $state(crypto.randomUUID());
 
 	constructor(
+		name: string,
 		x: number,
 		y: number,
 		width: number,
@@ -26,6 +30,7 @@ export class RElement {
 		rounded: number,
 		opacity: number,
 	) {
+		this.name = name;
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -39,6 +44,7 @@ export class RElement {
 
 	toObject(): object {
 		return {
+			name: this.name,
 			x: this.x,
 			y: this.y,
 			width: this.width,

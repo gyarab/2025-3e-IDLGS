@@ -39,5 +39,6 @@
 	"open": "Öffnen",
 	"resultingGrade": "Ergebnisnote",
 	"assignments": "Aufgaben",
-	"noAssignmentsYet": "Noch keine Aufgaben"
+	"noAssignmentsYet": "Noch keine Aufgaben",
+	"addCommentToScriptBlock": "Kommentar zum Skriptblock hinzufügen"
 }

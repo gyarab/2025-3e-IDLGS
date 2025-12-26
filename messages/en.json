@@ -39,5 +39,6 @@
 	"open": "Open",
 	"resultingGrade": "Resulting Grade",
 	"assignments": "Assignments",
-	"noAssignmentsYet": "No assignments yet"
+	"noAssignmentsYet": "No assignments yet",
+	"addCommentToScriptBlock": "Add comment to script block"
 }

@@ -39,6 +39,9 @@
 	button {
 		@apply flex flex-row items-center justify-center gap-1 rounded-lg p-3 font-medium hover:brightness-80 active:brightness-60;
 	}
+	.button-none {
+		@apply p-0! gap-1;
+	}
 	.button-primary {
 		@apply bg-linear-to-tr from-violet-700 to-emerald-500 text-white!;
 	}
@@ -57,5 +60,18 @@
 	}
 	.input-checkbox {
 		@apply appearance-auto rounded-lg bg-white! text-violet-700 accent-violet-700 outline-0 hover:brightness-80;
+	}
+
+	@media print {
+		body {
+			@apply bg-white! bg-none! text-black! **:border-black! **:bg-white! **:bg-none! **:text-black!;
+		}
+		#contentarea {
+			width: 100%;
+		}
+	}
+
+	.input-text-resin {
+		@apply rounded-lg border-2 text-violet-700 placeholder:font-light! placeholder:text-violet-700/50;
 	}
 }

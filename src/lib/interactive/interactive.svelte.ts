@@ -19,6 +19,12 @@ import { RElementInputTextSmall } from './elements/inputtextsmall';
 import { RElementLetterInput } from './elements/letterinput';
 import { RElementText } from './elements/text';
 import { RElementVideoPlayer } from './elements/video';
+import type { RScriptBlock } from './script/block.svelte';
+import { RScriptBlockVariableRead, RScriptBlockVariableWrite } from './script/blocks/variable';
+import { RProgram } from './script/program.svelte';
+
+export const RESIN_MAX_ELEMENTS = 1000;
+export const RESIN_MAX_SNAP = 5;
 
 //main element class
 //array is polymorphic
@@ -29,7 +35,10 @@ export class RInteractive {
 	//aspect ratio as x/y
 	aspect: number = $state(16 / 9);
 
+	script: RProgram = $state(new RProgram());
+
 	addElement(
+		name: string,
 		x: number,
 		y: number,
 		width: number,
@@ -40,21 +49,13 @@ export class RInteractive {
 		rounded: number,
 		opacity: number,
 	) {
+		if(this.elements.length >= RESIN_MAX_ELEMENTS) return;
 		this.elements.push(
-			new RElement(
-				x,
-				y,
-				width,
-				height,
-				visible,
-				bgcolor,
-				fgcolor,
-				rounded,
-				opacity,
-			),
+			new RElement(name, x, y, width, height, visible, bgcolor, fgcolor, rounded, opacity)
 		);
 	}
 	addElementDone(el: RElement) {
+		if(this.elements.length >= RESIN_MAX_ELEMENTS) return;
 		this.elements.push(el);
 	}
 
@@ -72,22 +73,9 @@ export class RInteractive {
 }
 
 export const getType = (el: RElement) => {
-	if (el instanceof RElementAIChat) return 'RElementAIChat';
-	else if (el instanceof RElementArrowPoint) return 'RElementArrowPoint';
-	else if (el instanceof RElementAudioPlayer) return 'RElementAudioPlayer';
-	else if (el instanceof RElementCard) return 'RElementCard';
-	else if (el instanceof RElementCartesian) return 'RElementCartesian';
-	else if (el instanceof RElementCheckbox) return 'RElementCheckbox';
-	else if (el instanceof RElementCodeInput) return 'RElementCodeInput';
-	else if (el instanceof RElementEmbedFrame) return 'RElementEmbedFrame';
-	else if (el instanceof RElementGraph) return 'RElementGraph';
-	else if (el instanceof RElementImage) return 'RElementImage';
-	else if (el instanceof RElementInputTextArea)
-		return 'RElementInputTextArea';
-	else if (el instanceof RElementInputTextSmall)
-		return 'RElementInputTextSmall';
-	else if (el instanceof RElementLetterInput) return 'RElementLetterInput';
-	else if (el instanceof RElementText) return 'RElementText';
-	else if (el instanceof RElementVideoPlayer) return 'RElementVideoPlayer';
-	else return 'RElement?';
+	return el.constructor.name;
+};
+
+export const getBlockType = (b: RScriptBlock) => {
+	return b.constructor.name;
 };

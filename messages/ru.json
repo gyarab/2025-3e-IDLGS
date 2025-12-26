@@ -39,5 +39,6 @@
 	"open": "Открыть",
 	"resultingGrade": "Итоговая оценка",
 	"assignments": "Задания",
-	"noAssignmentsYet": "Пока нет заданий"
+	"noAssignmentsYet": "Пока нет заданий",
+	"addCommentToScriptBlock": "Добавить комментарий к блоку скрипта"
 }

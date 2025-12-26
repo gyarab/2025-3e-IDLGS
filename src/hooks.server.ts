@@ -1,7 +1,6 @@
-import { error, type Handle, type ServerInit } from '@sveltejs/kit';
+import { type Handle, type ServerInit } from '@sveltejs/kit';
 import { paraglideMiddleware } from '$lib/paraglide/server';
 import { sequence } from '@sveltejs/kit/hooks';
-import { checkLimit } from '$lib/server/rate';
 import { createUser } from '$lib/server/user';
 import { env } from '$env/dynamic/private';
 import { db } from '$lib/server/db';
@@ -16,13 +15,6 @@ const handleParaglide: Handle = ({ event, resolve }) =>
 				html.replace('%paraglide.lang%', locale),
 		});
 	});
-
-const handleRateLimit: Handle = async ({ event, resolve }) => {
-	if (await checkLimit(event)) {
-		return resolve(event);
-	}
-	return error(429);
-};
 
 //https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html
 //If something doesn't work: play around with this.
@@ -45,11 +37,7 @@ const handleSecurity: Handle = async ({ event, resolve }) => {
 	return response;
 };
 
-export const handle: Handle = sequence(
-	handleParaglide,
-	handleRateLimit,
-	handleSecurity,
-);
+export const handle: Handle = sequence(handleParaglide, handleSecurity);
 
 export const init: ServerInit = async () => {
 	if ((await db.select().from(dataSchema.user)).length == 0) {

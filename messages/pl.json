@@ -39,5 +39,6 @@
 	"open": "Otwórz",
 	"resultingGrade": "Ostateczna ocena",
 	"assignments": "Zadania",
-	"noAssignmentsYet": "Brak zadań"
+	"noAssignmentsYet": "Brak zadań",
+	"addCommentToScriptBlock": "Dodaj komentarz do bloku skryptu"
 }
