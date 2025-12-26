@@ -1,3 +1,5 @@
+//Anticheat on client
+
 export const enableAnticheatMode = () => {};
 
-export const disableAnticheadMode = () => {};
+export const disableAnticheatMode = () => {};
