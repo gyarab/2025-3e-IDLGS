@@ -45,7 +45,7 @@
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.12.4",
 		"globals": "^16.4.0",
-		"nodemailer": "^7.0.11",
+		"nodemailer": "^7.0.12",
 		"playwright": "^1.55.1",
 		"prettier": "^3.7.4",
 		"prettier-plugin-svelte": "^3.4.1",
