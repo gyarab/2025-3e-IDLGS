@@ -39,5 +39,6 @@
 	"open": "Otevřít",
 	"resultingGrade": "Výsledná známka",
 	"assignments": "Úkoly",
-	"noAssignmentsYet": "Zatím žádné úkoly"
+	"noAssignmentsYet": "Zatím žádné úkoly",
+	"addCommentToScriptBlock": "Přidat komentář k bloku"
 }
