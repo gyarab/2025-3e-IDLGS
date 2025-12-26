@@ -34,5 +34,10 @@
 	"day1": "dzień",
 	"day234": "dni",
 	"day5": "dni",
-	"logout": "Wyloguj się"
+	"logout": "Wyloguj się",
+	"addNew": "Dodaj nowe",
+	"open": "Otwórz",
+	"resultingGrade": "Ostateczna ocena",
+	"assignments": "Zadania",
+	"noAssignmentsYet": "Brak zadań"
 }

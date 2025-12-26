@@ -58,4 +58,13 @@
 	.input-checkbox {
 		@apply appearance-auto rounded-lg bg-white! text-violet-700 accent-violet-700 outline-0 hover:brightness-80;
 	}
+
+	@media print {
+		body{ 
+			@apply bg-none! bg-white! text-black! **:text-black! **:bg-none! **:bg-white! **:border-black!; 
+		}
+		#contentarea{ 
+			width: 100%;
+		}
+	}
 }
