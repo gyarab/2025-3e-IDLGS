@@ -5,7 +5,6 @@ import {
 } from '$lib/server/user/index.js';
 import { fail, redirect } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
-import { db } from '$lib/server/db/index.js';
 import * as dataSchema from '$lib/server/db/schema.js';
 import { eq } from 'drizzle-orm';
 import { EMAIL_REGEX } from '$lib/server/user/index.js';
@@ -44,7 +43,7 @@ export const actions = {
 		}
 
 		const user = (
-			await db
+			await event.locals.db
 				.select()
 				.from(dataSchema.user)
 				.where(eq(dataSchema.user.email, email))
@@ -59,7 +58,7 @@ export const actions = {
 		}
 
 		const session = (
-			await db
+			await event.locals.db
 				.insert(dataSchema.userSession)
 				.values({
 					user: user.id,

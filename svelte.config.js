@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-vercel';
+import adapter from '@sveltejs/adapter-cloudflare';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -7,18 +7,17 @@ const config = {
 	// for more information about preprocessors
 	preprocess: vitePreprocess(),
 	kit: { 
-		adapter: adapter(),
 		csp: {
 			directives: {
 				'default-src': ['none'],
 				'font-src': ['self', 'fonts.gstatic.com'],
-				'script-src': ['self', '*.cloudflare.com', '*.vercel.com', '*.vercel-scripts.com', '*.posthog.com'],
+				'script-src': ['self', '*.cloudflare.com'],
 				'object-src': ['self'],
 				'img-src': ['self', 'res.cloudinary.com', 'data:'],
 				//sveltekit announcer issue + we use this
 				'style-src': ['self', 'fonts.googleapis.com', 'unsafe-inline'],
 				'frame-ancestors': ['none'],
-				'connect-src': ['self', '*.posthog.com'],
+				'connect-src': ['self', 'notifications.martinbykov.eu'],
 				'frame-src': ['*.cloudflare.com', 'www.youtube-nocookie.com', 'youtube-nocookie.com', 'youtube.com', 'www.youtube.com', 'consent.youtube.com'],
 				'media-src': ['self'],
 				'base-uri': ['self']
@@ -30,11 +29,11 @@ const config = {
 			mode: 'auto',
 		},
 		adapter: adapter({
-			split: true,
+			config: "wrangler.jsonc",
+			fallback: "plaintext",
 		}),
 		csrf: {
-			//TODO add domain: we'll probably use textbook.martinbykov.eu
-			trustedOrigins: ['*.gyarab.cz', '*.martinbykov.eu', 'http://localhost:5173']
+			trustedOrigins: ['*.gyarab.cz', '*.martinbykov.eu']
 		}
 	}
 };

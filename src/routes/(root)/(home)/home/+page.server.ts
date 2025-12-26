@@ -1,4 +1,3 @@
-import { db } from '$lib/server/db/index.js';
 import * as dataSchema from '$lib/server/db/schema.js';
 import { fail, redirect } from '@sveltejs/kit';
 import { getUser } from '$lib/server/user/index.js';
@@ -10,7 +9,7 @@ export const load = async (event) => {
 
 	return {
 		//TODO fix and abstract to loadCourses function
-		courses: await db.select().from(dataSchema.course),
+		courses: await event.locals.db.select().from(dataSchema.course),
 	};
 };
 

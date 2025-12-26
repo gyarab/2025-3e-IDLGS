@@ -1,12 +1,11 @@
 import { redirect } from '@sveltejs/kit';
-import { db } from '$lib/server/db/index.js';
 import * as dataSchema from '$lib/server/db/schema.js';
 import { eq } from 'drizzle-orm';
 
 export const load = async (event) => {
 	const cookie = event.cookies.get('session');
 
-	await db
+	await event.locals.db
 		.delete(dataSchema.userSession)
 		.where(eq(dataSchema.userSession.token, cookie as string));
 

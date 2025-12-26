@@ -1,12 +1,22 @@
 // See https://svelte.dev/docs/kit/types#app.d.ts
+
+import type { DBType } from "$lib/server/db/types";
+import type { Hyperdrive } from "@cloudflare/workers-types";
+
 // for information about these interfaces
 declare global {
 	namespace App {
 		// interface Error {}
-		// interface Locals {}
+		interface Locals {
+			db: DBType;
+		}
 		// interface PageData {}
 		// interface PageState {}
-		// interface Platform {}
+		interface Platform {
+			env: {
+				HYPERDRIVE: Hyperdrive;
+			}
+		}
 	}
 	interface Window {
 		/* eslint-disable @typescript-eslint/no-explicit-any */

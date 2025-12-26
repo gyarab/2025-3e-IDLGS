@@ -3,8 +3,9 @@ import { paraglideMiddleware } from '$lib/paraglide/server';
 import { sequence } from '@sveltejs/kit/hooks';
 import { createUser } from '$lib/server/user';
 import { env } from '$env/dynamic/private';
-import { db } from '$lib/server/db';
 import * as dataSchema from '$lib/server/db/schema.js';
+import { drizzle } from 'drizzle-orm/postgres-js';
+import postgres from 'postgres';
 
 const handleParaglide: Handle = ({ event, resolve }) =>
 	paraglideMiddleware(event.request, ({ request, locale }) => {
@@ -37,16 +38,37 @@ const handleSecurity: Handle = async ({ event, resolve }) => {
 	return response;
 };
 
-export const handle: Handle = sequence(handleParaglide, handleSecurity);
+const handleDatabase: Handle = async ({ event, resolve }) => {
+	event.locals.db = drizzle(
+		postgres(event.platform?.env.HYPERDRIVE.connectionString as string, {
+			prepare: false,
+			max: 1,
+			max_lifetime: 60,
+		}),
+		{ schema: dataSchema },
+	);
 
-export const init: ServerInit = async () => {
-	if ((await db.select().from(dataSchema.user)).length == 0) {
-		await createUser(
-			env.DEFAULT_EMAIL,
-			env.DEFAULT_PASSWORD,
-			new Date(2008, 4, 25, 5, 31, 0, 0),
-			'pl',
-			true,
-		);
-	}
+	return resolve(event);
 };
+
+//dev only
+const handleDefaultUser: Handle = async ({ event, resolve }) => {
+	if(env.DEV == "true") {
+		if ((await event.locals.db.select().from(dataSchema.user)).length == 0) {
+			await createUser(
+				event.locals.db,
+				env.DEFAULT_EMAIL,
+				env.DEFAULT_PASSWORD,
+				new Date(2008, 4, 25, 5, 31, 0, 0),
+				'pl',
+				true,
+			);
+		}
+	}
+
+	return resolve(event);
+};
+
+export const handle: Handle = sequence(handleParaglide, handleSecurity, handleDatabase, handleDefaultUser);
+
+export const init: ServerInit = async () => {};

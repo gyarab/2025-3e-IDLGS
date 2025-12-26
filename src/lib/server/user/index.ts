@@ -1,25 +1,25 @@
 import type { UserType } from '$lib/types';
 import { checkSetting } from '../settings';
 import * as crypto from 'node:crypto';
-import { db } from '$lib/server/db/index.js';
 import * as dataSchema from '$lib/server/db/schema.js';
 import type { RequestEvent } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
+import type { DBType } from '../db/types';
 
-export const setPassword = async (password: string): Promise<void> => {
+export const setPassword = async (db: DBType, password: string): Promise<void> => {
 	const salt = crypto.randomUUID();
 	//cloudflare workers has 100000 iteration limit
 	const iterations = Math.trunc(9000 + Math.random() * 90000);
 
 	await checkSetting(
-		'password',
+		db, 'password',
 		crypto
 			.pbkdf2Sync(password, salt, iterations, 64, 'sha512')
 			.toString('hex'),
 	);
 
-	await checkSetting('salt', salt);
-	await checkSetting('iterations', String(iterations));
+	await checkSetting(db, 'salt', salt);
+	await checkSetting(db, 'iterations', String(iterations));
 };
 
 export const validateTurnstile = async (
@@ -64,6 +64,7 @@ export const hashPassword = (
 };
 
 export const createUser = async (
+	db: DBType,
 	email: string,
 	password: string,
 	birthday: Date,
@@ -96,7 +97,7 @@ export const getUser = async (
 		return undefined;
 	}
 
-	const token = await db
+	const token = await event.locals.db
 		.select()
 		.from(dataSchema.userSession)
 		.where(eq(dataSchema.userSession.token, cookie))
@@ -104,14 +105,14 @@ export const getUser = async (
 	if (token.length == 0) return undefined;
 
 	if (token[0].expiresAt <= new Date()) {
-		await db
+		await event.locals.db
 			.delete(dataSchema.userSession)
 			.where(eq(dataSchema.userSession.token, cookie));
 		return undefined;
 	}
 
 	return (
-		await db
+		await event.locals.db
 			.select()
 			.from(dataSchema.user)
 			.where(eq(dataSchema.user.id, token[0].user))

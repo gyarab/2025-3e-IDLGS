@@ -67,19 +67,19 @@
 			>
 				<Card
 					delay={100}
-					perspective={false}
+					perspective={true}
 					>orem ipsum dolor sit amet consectetur adipisicing elit."</Card
 				>
 				<Card
 					delay={600}
-					perspective={false}
+					perspective={true}
 				>
 					Eum veritatis praesentium sint eveniet hic ipsum, dolor
 					voluptate vitae, neque magnam ea exercitationem
 				</Card>
 				<Card
 					delay={1100}
-					perspective={false}
+					perspective={true}
 				>
 					enim tempora est minus delectus. Autem, assumenda quod
 				</Card>

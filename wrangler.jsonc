@@ -1,0 +1,38 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "ucebnice",
+	"main": "./.cloudflare/worker.js",
+	"compatibility_date": "2025-12-26",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"workers_dev": false,
+	"route": {
+		"pattern": "martinbykov.eu",
+		"zone_name": "martinbykov.eu",
+		"custom_domain": true
+	},
+	"vars": {
+		"DEV": "false",
+	},
+	"keep_vars": true,
+	"assets": {
+		"binding": "ASSETS",
+		"directory": ".svelte-kit/cloudflare",
+	},
+	"observability": {
+		"logs": {
+			"enabled": true,
+			"head_sampling_rate": 1,
+			"invocation_logs": true,
+			"persist": true
+		}
+	},
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "fb83f596c24b4b19a23faff6706f6d28",
+			"localConnectionString": "postgres://root:mysecretpassword@localhost:5432/local",
+		}
+	]
+}

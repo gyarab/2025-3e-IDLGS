@@ -1,8 +1,8 @@
 import * as dataSchema from '$lib/server/db/schema';
 import { eq, count } from 'drizzle-orm';
-import { db } from '$lib/server/db';
+import { type DBType } from '../db/types';
 
-export const getSetting = async (key: string): Promise<string> => {
+export const getSetting = async (db: DBType, key: string): Promise<string> => {
 	const value = await db
 		.select()
 		.from(dataSchema.setting)
@@ -12,7 +12,7 @@ export const getSetting = async (key: string): Promise<string> => {
 	return value.length === 0 ? '' : value[0].value;
 };
 
-export const setSetting = async (key: string, value: string): Promise<void> => {
+export const setSetting = async (db: DBType, key: string, value: string): Promise<void> => {
 	//get count first
 
 	const len = (
@@ -41,6 +41,7 @@ export const setSetting = async (key: string, value: string): Promise<void> => {
 };
 
 export const checkSetting = async (
+	db: DBType, 
 	key: string,
 	value: string,
 ): Promise<void> => {
