@@ -60,10 +60,10 @@
 	}
 
 	@media print {
-		body{ 
-			@apply bg-none! bg-white! text-black! **:text-black! **:bg-none! **:bg-white! **:border-black!; 
+		body {
+			@apply bg-white! bg-none! text-black! **:border-black! **:bg-white! **:bg-none! **:text-black!;
 		}
-		#contentarea{ 
+		#contentarea {
 			width: 100%;
 		}
 	}
