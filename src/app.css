@@ -78,4 +78,16 @@
 	.input-text-resin {
 		@apply rounded-lg border-2 text-violet-700 placeholder:font-light! placeholder:text-violet-700/50;
 	}
+
+	a:hover {
+		@apply underline decoration-dotted decoration-1;
+	}
+
+	nav a {
+		@apply  text-emerald-500 decoration-emerald-500;
+	}
+
+	nav a:hover {
+		@apply text-violet-700 decoration-violet-700;
+	}
 }

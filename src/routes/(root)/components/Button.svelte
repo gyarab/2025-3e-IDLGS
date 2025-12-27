@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import HoverEmoji from './HoverEmoji.svelte';
 
 	let {
 		emoji,
@@ -21,7 +22,6 @@
 	{type}
 	{onclick}
 >
-	<i class="ri-{emoji}-line not-group-hover:hidden"></i>
-	<i class="ri-{emoji}-fill group-hover:hidden"></i>
+	<HoverEmoji {emoji} />
 	{@render children?.()}
 </button>

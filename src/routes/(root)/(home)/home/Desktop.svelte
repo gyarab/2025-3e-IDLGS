@@ -26,14 +26,14 @@
 			<div class="absolute z-2! h-full w-full bg-violet-800/60"></div>
 
 			<div class="z-3 flex w-3/4 grow flex-col gap-2">
-				<div class="min-h-[10vh]"></div>
+				<div class="min-h-[5vh]"></div>
 				<h2 class="w-full text-left">
 					{m.welcomeBackMessageName({ name: 'NAME TODO' })}
 				</h2>
 
 				<WideCard>
 					<div
-						class="grid w-full grid-cols-2 gap-10 *:flex *:flex-col *:gap-2"
+						class="grid w-full grid-cols-2 gap-10 *:flex *:flex-col *:gap-2 min-h-[30vh]"
 					>
 						<div>
 							<div
@@ -67,6 +67,7 @@
 					</div>
 				</WideCard>
 
+				<div class="h-[5vh]"></div>
 				<h2 class="w-full text-left">{m.coursesAndTextbooks()}</h2>
 				<div class="grid grid-cols-4 gap-2">
 					<Card

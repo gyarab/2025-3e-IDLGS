@@ -1,9 +1,9 @@
 <script lang="ts">
 	let {
-		text,
+		text = "",
 		color,
 	}: {
-		text: string;
+		text?: string;
 		color: string;
 	} = $props();
 </script>
@@ -13,14 +13,16 @@
 		style="background-color: {color};"
 		class="h-0.5 grow"
 	></div>
-	<div
-		style="color: {color};"
-		class=""
-	>
-		{text}
-	</div>
-	<div
-		style="background-color: {color};"
-		class="h-0.5 grow"
-	></div>
+	{#if text && text.length > 0}
+		<div
+			style="color: {color};"
+			class=""
+		>
+			{text}
+		</div>
+		<div
+			style="background-color: {color};"
+			class="h-0.5 grow"
+		></div>
+	{/if}
 </div>

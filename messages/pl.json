@@ -87,5 +87,11 @@
 	"addNewElement": "Dodaj nowy element",
 	"snapping": "Przyciąganie",
 	"learningAndGradingSystem": "System nauczania i oceniania",
-	"electronicIntegratedAiPowered": "Elektroniczny, zintegrowany i zasilany AI"
+	"electronicIntegratedAiPowered": "Elektroniczny, zintegrowany i zasilany AI",
+	"home": "Strona główna",
+	"aboutUs": "O nas",
+	"contact": "Kontakt",
+	"course": "Kurs",
+	"textbook": "Podręcznik",
+	"selectItemWhichYouWantToCreate": "Wybierz element, który chcesz utworzyć"
 }

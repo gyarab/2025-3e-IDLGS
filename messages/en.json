@@ -87,5 +87,11 @@
 	"addNewElement": "Add New Element",
 	"snapping": "Snapping",
 	"learningAndGradingSystem": "Learning and Grading System",
-	"electronicIntegratedAiPowered": "Electronic, Integrated, and AI-Powered"
+	"electronicIntegratedAiPowered": "Electronic, Integrated, and AI-Powered",
+	"home": "Home",
+	"aboutUs": "About Us",
+	"contact": "Contact",
+	"course": "Course",
+	"textbook": "Textbook",
+	"selectItemWhichYouWantToCreate": "Select the item which you want to create"
 }

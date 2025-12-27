@@ -87,5 +87,11 @@
 	"addNewElement": "Neues Element hinzufügen",
 	"snapping": "Einrasten",
 	"electronicIntegratedAiPowered": "Elektronisch, integriert und KI-gestützt",
-	"learningAndGradingSystem": "Interaktives digitales Lern- und Bewertungssystem"
+	"learningAndGradingSystem": "Interaktives digitales Lern- und Bewertungssystem",
+	"home": "Startseite",
+	"aboutUs": "Über uns",
+	"contact": "Kontakt",
+	"course": "Kurs",
+	"textbook": "Lehrbuch",
+	"selectItemWhichYouWantToCreate": "Wählen Sie das Element aus, das Sie erstellen möchten"
 }

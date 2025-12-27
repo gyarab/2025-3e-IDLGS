@@ -87,5 +87,11 @@
 	"addNewElement": "Přidat nový prvek",
 	"snapping": "Přichytávání",
 	"electronicIntegratedAiPowered": "Elektronický integrovaný a poháněný AI",
-	"learningAndGradingSystem": "Interaktivní digitální vzdělávací a známkovací systém"
+	"learningAndGradingSystem": "Interaktivní digitální vzdělávací a známkovací systém",
+	"home": "Domů",
+	"aboutUs": "O nás",
+	"contact": "Kontakt",
+	"course": "Kurz",
+	"textbook": "Učebnice",
+	"selectItemWhichYouWantToCreate": "Vyberte položku, kterou chcete vytvořit"
 }

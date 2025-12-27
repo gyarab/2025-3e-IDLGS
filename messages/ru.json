@@ -87,5 +87,11 @@
 	"addNewElement": "Добавить новый элемент",
 	"snapping": "Привязка",
 	"electronicIntegratedAiPowered": "Электронная, интегрированная и с поддержкой ИИ",
-	"learningAndGradingSystem": "Система обучения и оценки"
+	"learningAndGradingSystem": "Система обучения и оценки",
+	"home": "Главная",
+	"aboutUs": "О нас",
+	"contact": "Контакт",
+	"course": "Курс",
+	"textbook": "Учебник",
+	"selectItemWhichYouWantToCreate": "Выберите элемент, который хотите создать"
 }

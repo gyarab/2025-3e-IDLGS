@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Navbar from './navbar/Navbar.svelte';
-	import Footer from './navbar/Footer.svelte';
-	import NavbarMobile from './navbar/NavbarMobile.svelte';
-	import NavbarLoggedIn from './navbar/NavbarLoggedIn.svelte';
-	import NavbarLoggedInMobile from './navbar/NavbarLoggedInMobile.svelte';
+	import Navbar from './components/navbar/Navbar.svelte';
+	import Footer from './components/navbar/Footer.svelte';
+	import NavbarMobile from './components/navbar/NavbarMobile.svelte';
+	import NavbarLoggedIn from './components/navbar/NavbarLoggedIn.svelte';
+	import NavbarLoggedInMobile from './components/navbar/NavbarLoggedInMobile.svelte';
 
 	let { children, data } = $props();
 </script>

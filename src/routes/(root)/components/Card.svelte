@@ -11,6 +11,7 @@
 		delay = 0,
 		perspective,
 		onclick = () => {},
+		forceSquare = true
 	} = $props();
 
 	let rect: DOMRect | undefined = $state(undefined);
@@ -61,13 +62,13 @@
 <div
 	id={value}
 	class="
-	flex aspect-square flex-col gap-2
+	flex {forceSquare ? 'aspect-square' : ''} flex-col gap-2
 	overflow-hidden rounded-lg
 	border-2 shadow perspective-[1600px]
 	hover:border-neutral-300!
 	"
 	style="background-color: rgb({r} {g} {b} / 30%); border-color: rgb({r} {g} {b} / 30%); {perspective
-		? 'transform: rotateX({yRotation}deg) rotateY({xRotation}deg) translateZ(0);'
+		? `transform: rotateX(${yRotation}deg) rotateY(${xRotation}deg) translateZ(0);`
 		: ''}"
 	in:fly|global={{ x: 0, y: 100, opacity: 0, duration: 500, delay: delay }}
 >
