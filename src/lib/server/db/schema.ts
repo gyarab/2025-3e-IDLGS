@@ -179,8 +179,8 @@ export const assignmentComment = pgTable('assignmentComment', {
 
 export const question = pgTable('question', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
-	//QuestionTypeEnum
-	type: integer('type').notNull().default(-1),
+	//AIGenerationQuestionType
+	type: text('type').notNull().default(''),
 	question: text('answer').notNull().default(''),
 	answer: text('answer').notNull().default(''),
 	name: text('name').notNull().default(''),
@@ -189,6 +189,8 @@ export const question = pgTable('question', {
 		.notNull(),
 	reportCount: integer('reportCount').notNull().default(0),
 	ai: boolean('ai').notNull().default(false),
+	//aiTextRepresentation
+	aitr: text('aitr').notNull().default(""),
 });
 
 export const courseCodes = pgTable('courseCode', {

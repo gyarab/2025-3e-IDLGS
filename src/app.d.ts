@@ -1,7 +1,7 @@
 // See https://svelte.dev/docs/kit/types#app.d.ts
 
 import type { DBType } from '$lib/server/db/types';
-import type { Hyperdrive } from '@cloudflare/workers-types';
+import type { Ai, Hyperdrive } from '@cloudflare/workers-types';
 
 // for information about these interfaces
 declare global {
@@ -15,6 +15,7 @@ declare global {
 		interface Platform {
 			env: {
 				HYPERDRIVE: Hyperdrive;
+				AI: Ai;
 			};
 		}
 	}

@@ -1,10 +1,4 @@
-export enum QuestionTypeEnum {
-	UNKNOWN = -1,
-	ABCD = 0, //multiple choice, incl. images, not neccesarily 4 options
-	TF = 1, //true false,
-	FILLIN = 2, //fill in part of text
-	REMOVEWRONG = 3, //nehodici se skrtnete
-}
+//DB Types
 
 export type UserType = {
 	uuid: string;
@@ -54,3 +48,13 @@ export type CourseType = {
 	blue: number;
 	name: string;
 };
+
+//Cloudflare AI workers
+//Question generation
+
+export type AIMessageType = {
+	role: "system" | "user";
+	content: string;
+};
+
+export type AIGenerationQuestionType = "QT:ABC" | "QT:ABCD" | "QT:ABCDE" | "QT:ABCDEF" | "QT:TF" | "QT:FILL" | "QT:OPEN" | "QT:CROSS";

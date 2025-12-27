@@ -34,5 +34,8 @@
 			"id": "fb83f596c24b4b19a23faff6706f6d28",
 			"localConnectionString": "postgres://root:mysecretpassword@localhost:5432/local",
 		}
-	]
+	],
+	"ai": {
+		"binding": "AI"
+	}
 }
