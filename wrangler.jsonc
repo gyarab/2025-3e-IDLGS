@@ -8,7 +8,7 @@
 	],
 	"workers_dev": false,
 	"route": {
-		"pattern": "martinbykov.eu",
+		"pattern": "ucebnice.martinbykov.eu",
 		"zone_name": "martinbykov.eu",
 		"custom_domain": true
 	},
