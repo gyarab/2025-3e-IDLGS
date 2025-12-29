@@ -8,7 +8,7 @@
 		type = 'button',
 		btn,
 		onclick = () => {},
-		flip = false
+		flip = false,
 	}: {
 		emoji: string;
 		children: Snippet;

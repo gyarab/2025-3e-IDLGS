@@ -2,13 +2,15 @@
 	import { m } from '$lib/paraglide/messages';
 	import { locales } from '$lib/paraglide/runtime';
 
-	let { messages = [
-		m.education,
-		m.learning,
-		m.development,
-		m.motivation,
-		m.technology,
-	] } = $props();
+	let {
+		messages = [
+			m.education,
+			m.learning,
+			m.development,
+			m.motivation,
+			m.technology,
+		],
+	} = $props();
 </script>
 
 <div
