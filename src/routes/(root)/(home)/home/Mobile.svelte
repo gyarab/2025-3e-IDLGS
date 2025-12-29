@@ -6,8 +6,8 @@
 		data,
 	}: {
 		data: {
-			courses: CourseType[];
-			textbooks: TextbookType[];
+			courses: Promise<CourseType[]>;
+			textbooks: Promise<TextbookType[]>;
 			user: UserType;
 		};
 	} = $props();
@@ -15,6 +15,6 @@
 	let searchValue = $state('');
 </script>
 
-<div class="lg:hidden">
-	{JSON.stringify(data)}
+<div class="xl:hidden">
+	
 </div>

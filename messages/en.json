@@ -133,5 +133,18 @@
 	"step": "Step",
 	"outOf": "out of",
 	"next": "Next",
-	"back": "Back"
+	"back": "Back",
+	"loading": "Loading",
+	"itsTakingLongerThanExpected": "It's taking longer than expected",
+	"textbookColor": "Textbook Color",
+	"textbookDescription": "Textbook Description",
+	"textbookName": "Textbook Name",
+	"enterTextbookDescription": "Enter Textbook Description",
+	"enterTextbookName": "Enter Textbook Name",
+	"textbookChaptersAndArticles": "Textbook Chapters and Articles",
+	"youCanAlwaysChangeThisLater": "You can always change this later",
+	"administration": "Administration",
+	"help": "Help",
+	"mainHelpPage": "Main Help Page",
+	"moreInformation": "More Information"
 }

@@ -3,7 +3,7 @@
 	import Button from './Button.svelte';
 	import { m } from '$lib/paraglide/messages';
 
-	let { delay, title, text } = $props();
+	let { delay, title, text, emoji } = $props();
 </script>
 
 <Card
@@ -13,7 +13,7 @@
 >
 	<div class="flex w-full grow flex-col gap-2">
 		<h2 class="w-full text-left text-2xl">
-			<i class="ri-lightbulb-ai-fill"></i>
+			<i class="ri-{emoji}-fill"></i>
 			{title}.
 		</h2>
 		<p class="text-left text-lg font-light">

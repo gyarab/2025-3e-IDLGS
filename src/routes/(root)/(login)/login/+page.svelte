@@ -52,11 +52,11 @@
 {#key ready}
 	<div
 		data-sveltekit-reload
-		class="relative flex w-full grow flex-col items-center justify-center gap-2 bg-linear-to-tr from-emerald-500 to-violet-700 p-10"
+		class="relative flex w-full grow flex-col items-center justify-center gap-2 p-10"
 	>
 		<WordBackground />
 		<Card
-			css="max-lg:min-w-9/10 lg:min-w-1/3 z-11"
+			css="max-xl:min-w-9/10 xl:min-w-1/3 z-11"
 			perspective={false}
 			forceSquare={false}
 			padding="p-3"

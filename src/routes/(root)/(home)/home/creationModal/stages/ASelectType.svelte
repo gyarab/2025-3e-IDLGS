@@ -6,7 +6,7 @@
 	let { value = $bindable(''), stage = $bindable(0) } = $props();
 </script>
 
-<div class="flex w-full grow flex-col gap-2">
+<div class="flex w-full grow flex-col gap-2 z-10">
 	<h1 class="text-2xl font-medium">{m.selectItemWhichYouWantToCreate()}</h1>
 	<div
 		class="

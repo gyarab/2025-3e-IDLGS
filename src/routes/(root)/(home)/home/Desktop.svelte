@@ -7,6 +7,8 @@
 	import CreationModal from './creationModal/CreationModal.svelte';
 	import CourseCard from './components/CourseCard.svelte';
 	import type { CourseType, TextbookType, UserType } from '$lib/types';
+	import LoadingAnimation from '../../components/LoadingAnimation.svelte';
+	import TextbookCard from './components/TextbookCard.svelte';
 
 	let ready = $state(false);
 	let creationModal = $state(false);
@@ -19,23 +21,44 @@
 		data,
 	}: {
 		data: {
-			courses: CourseType[];
-			textbooks: TextbookType[];
+			courses: Promise<CourseType[]>;
+			textbooks: Promise<TextbookType[]>;
 			user: UserType;
 		};
 	} = $props();
 
 	let searchValue = $state('');
+
+	let allItems: (
+		| (CourseType & { type: 'c' })
+		| (TextbookType & { type: 't' })
+	)[] = $derived.by(() => {
+		let c: CourseType[] = [];
+		let t: TextbookType[] = [];
+
+		data.courses.then((v) => {
+			c = v;
+		});
+		data.textbooks.then((v) => {
+			t = v;
+		});
+
+		return [
+			...[...c].map((v) => {
+				return { ...v, type: 'c' as const };
+			}),
+			...[...t].map((v) => {
+				return { ...v, type: 't' as const };
+			}),
+		].sort((a, b) => b.modifiedAt.getTime() - a.modifiedAt.getTime());
+	});
 </script>
 
 {#if ready}
 	{#key ready}
 		<div
-			class="relative flex grow flex-col items-center justify-center bg-[url(/testimage.jpg)] bg-contain bg-fixed max-lg:hidden"
+			class="flex grow flex-col items-center justify-center max-xl:hidden w-full"
 		>
-			<!-- cover -->
-			<div class="absolute z-2! h-full w-full bg-violet-800/60"></div>
-
 			<div class="z-3 flex w-3/4 grow flex-col gap-2">
 				<div class="min-h-[5vh]"></div>
 				<h2 class="w-full text-left">
@@ -79,7 +102,7 @@
 				</WideCard>
 
 				<div class="h-[5vh]"></div>
-				<div class="flex w-full grow flex-row gap-2">
+				<div class="flex h-fit w-full flex-row gap-2">
 					<h2 class="text-left">{m.coursesAndTextbooks()}</h2>
 					<div class="grow"></div>
 					<input
@@ -89,48 +112,76 @@
 						placeholder={m.searchCoursesAndTextbooks()}
 					/>
 				</div>
-				<div class="grid grid-cols-4 gap-2">
-					<Card
-						perspective={false}
-						onclick={() => {
-							creationModal = true;
-						}}
-						hover={true}
-					>
-						<div
-							class="group flex w-full grow flex-col items-center justify-center gap-2"
-						>
-							<span class="text-5xl">
-								<i
-									class="ri ri-add-circle-line group-hover:hidden"
-								></i>
-								<i
-									class="ri-add-circle-fill not-group-hover:hidden"
-								></i>
-							</span>
-							<span class="text-3xl">
-								{m.addNew()}
-							</span>
-						</div>
-					</Card>
 
-					{#each data.courses as course, i (course.uuid)}
-						<CourseCard
+				{#await Promise.all([data.courses, data.textbooks])}
+					<div
+						class="flex w-full grow flex-col items-center justify-center"
+					>
+						<LoadingAnimation />
+					</div>
+				{:then}
+					<div class="grid grid-cols-4 gap-2">
+						<Card
 							perspective={false}
-							delay={i * 100}
-							course={{
-								uuid: 'fasgdgsg',
-								createdAt: new Date(),
-								modifiedAt: new Date(),
-								description: 'fawsdfs',
-								red: Math.random() * 100 + 125,
-								green: Math.random() * 100 + 125,
-								blue: Math.random() * 100 + 125,
-								name: 'namam',
+							onclick={() => {
+								creationModal = true;
 							}}
-						/>
-					{/each}
-				</div>
+							hover={true}
+						>
+							<div
+								class="group flex w-full grow flex-col items-center justify-center gap-2"
+							>
+								<span class="text-5xl">
+									<i
+										class="ri ri-add-circle-line group-hover:hidden"
+									></i>
+									<i
+										class="ri-add-circle-fill not-group-hover:hidden"
+									></i>
+								</span>
+								<span class="text-3xl">
+									{m.addNew()}
+								</span>
+							</div>
+						</Card>
+
+						{#each allItems as item, i (item.uuid)}
+							{#if item.type == 'c'}
+								<CourseCard
+									perspective={false}
+									delay={i * 100}
+									course={{
+										uuid: 'fasgdgsg',
+										createdAt: new Date(),
+										modifiedAt: new Date(),
+										description: 'fawsdfs',
+										red: Math.random() * 100 + 125,
+										green: Math.random() * 100 + 125,
+										blue: Math.random() * 100 + 125,
+										name: 'namam',
+										subject: 'biologie',
+									}}
+								/>
+							{:else}
+								<TextbookCard
+									perspective={false}
+									delay={i * 100}
+									textbook={{
+										uuid: 'fasgdgsg',
+										createdAt: new Date(),
+										modifiedAt: new Date(),
+										description: 'fawsdfs',
+										red: Math.random() * 100 + 125,
+										green: Math.random() * 100 + 125,
+										blue: Math.random() * 100 + 125,
+										name: 'namam',
+										summary: '',
+									}}
+								/>
+							{/if}
+						{/each}
+					</div>
+				{/await}
 			</div>
 
 			<div class="min-h-[10vh] grow"></div>

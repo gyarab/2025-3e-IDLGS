@@ -5,6 +5,8 @@
 	import { goto } from '$app/navigation';
 	import { fade, slide } from 'svelte/transition';
 	import LearnMoreHeadCard from './LearnMoreHeadCard.svelte';
+	import { getImageBackgroundClassRaw } from "$lib";
+	import { getLocale } from "$lib/paraglide/runtime";
 
 	let ready = $state(false);
 
@@ -21,13 +23,8 @@
 		>
 			<!-- bg image -->
 			<div
-				class="absolute z-1! h-[94svh] max-h-[94svh] min-h-[94svh] w-screen max-w-screen min-w-screen"
-			>
-				<img
-					src="./testimage.jpg"
-					alt="BG"
-				/>
-			</div>
+				class="absolute z-1! h-[94svh] max-h-[94svh] min-h-[94svh] w-screen max-w-screen min-w-screen {getImageBackgroundClassRaw(1)}"
+			></div>
 
 			<!-- cover -->
 			<div class="absolute z-2! h-full w-full bg-violet-800/60"></div>
@@ -45,7 +42,7 @@
 					class="flex flex-row gap-4 text-7xl font-bold text-white **:decoration-5"
 					in:fade|global={{ duration: 500, delay: 500 }}
 				>
-					<!-- always 3 words -->
+					<!-- always textbook 1 word, connector 1 word -->
 					<span
 						class="underline decoration-violet-700 decoration-dashed"
 					>
@@ -57,8 +54,8 @@
 					<span
 						class="underline decoration-emerald-500 decoration-dotted"
 					>
-						{m.textbookAndClassroom().split(' ')[2]}
-					</span>
+						{m.textbookAndClassroom().split(' ').slice(2).join(' ')}
+				</span>
 				</span>
 			</h5>
 			<p class="flex flex-row gap-2 text-center text-2xl">
@@ -120,16 +117,19 @@
 	"
 			>
 				<LearnMoreHeadCard
+					emoji="lightbulb-ai"
 					delay={2500}
 					title={m.innovative()}
 					text={m.innovativeTextMicrolearningPsychologyMotivation()}
 				/>
 				<LearnMoreHeadCard
+					emoji="quill-pen-ai"
 					delay={3000}
 					title={m.designedWithCare()}
 					text={m.designedWithCareText()}
 				/>
 				<LearnMoreHeadCard
+					emoji="speak-ai"
 					delay={3500}
 					title={m.AIPowered()}
 					text={m.AIPoweredTextQuestionGenerationTestGenerationAntiCheatingRephrasing()}

@@ -11,4 +11,4 @@
 	let { data } = $props();
 </script>
 
-<div class="relative flex w-full grow flex-col items-center lg:hidden"></div>
+<div class="relative flex w-full grow flex-col items-center xl:hidden"></div>

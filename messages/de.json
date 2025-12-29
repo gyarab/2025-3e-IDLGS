@@ -133,5 +133,18 @@
 	"step": "Schritt",
 	"outOf": "von",
 	"next": "Weiter",
-	"back": "Zurück"
+	"back": "Zurück",
+	"loading": "Wird geladen",
+	"itsTakingLongerThanExpected": "Es dauert länger als erwartet",
+	"textbookColor": "Lehrbuchfarbe",
+	"textbookDescription": "Lehrbuchbeschreibung",
+	"textbookName": "Lehrbuchname",
+	"enterTextbookDescription": "Geben Sie die Lehrbuchbeschreibung ein",
+	"enterTextbookName": "Geben Sie den Lehrbuchnamen ein",
+	"textbookChaptersAndArticles": "Lehrbuchkapitel und -artikel",
+	"youCanAlwaysChangeThisLater": "Sie können dies später jederzeit ändern",
+	"administration": "Verwaltung",
+	"help": "Hilfe",
+	"mainHelpPage": "Haupt-Hilfeseite",
+	"moreInformation": "Weitere Informationen"
 }

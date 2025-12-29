@@ -14,7 +14,7 @@ export const userCourseLinker = pgTable('userCourseLinker', {
 		.notNull(),
 });
 
-export const userTextbookLinker = pgTable('userCourseLinker', {
+export const userTextbookLinker = pgTable('userTextbookLinker', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
 	editor: boolean('editor').notNull().default(false),
 	owner: boolean('owner').notNull().default(false),

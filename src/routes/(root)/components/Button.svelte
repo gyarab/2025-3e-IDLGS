@@ -9,18 +9,21 @@
 		btn,
 		onclick = () => {},
 		flip = false,
+		disabled = false,
 	}: {
 		emoji: string;
 		children: Snippet;
 		type?: 'button' | 'submit' | 'reset';
 		btn: string;
 		onclick?: (e: MouseEvent) => void;
-		flip: boolean;
+		flip?: boolean;
+		disabled?: boolean;
 	} = $props();
 </script>
 
 <button
 	class="{btn} group"
+	disabled={disabled}
 	{type}
 	{onclick}
 >

@@ -3,7 +3,7 @@
 </script>
 
 <div
-	class="flex min-h-[20vh] flex-col items-center bg-black p-5 max-lg:hidden print:hidden"
+	class="flex min-h-[20vh] flex-col items-center bg-black p-5 max-xl:hidden print:hidden"
 >
 	<div
 		class="grid w-8/10 grid-cols-2 gap-10 *:flex *:h-full *:grow *:flex-col *:gap-2"

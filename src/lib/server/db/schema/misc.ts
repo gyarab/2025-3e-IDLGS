@@ -9,3 +9,9 @@ export const blog = pgTable('blog', {
 		.references(() => user.id)
 		.notNull(),
 });
+
+export const subject = pgTable('subject', {
+	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
+	name: text('name').notNull().default(''),
+	description: text('description').notNull().default(''),
+});

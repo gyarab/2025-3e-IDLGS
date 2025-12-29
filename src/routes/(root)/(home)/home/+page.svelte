@@ -8,8 +8,8 @@
 		data,
 	}: {
 		data: {
-			courses: CourseType[];
-			textbooks: TextbookType[];
+			courses: Promise<CourseType[]>;
+			textbooks: Promise<TextbookType[]>;
 			user: UserType;
 		};
 	} = $props();

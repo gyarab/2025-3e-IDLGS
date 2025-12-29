@@ -1,6 +1,7 @@
 //DB Types
 
 export type UserType = {
+	id: number;
 	uuid: string;
 	email: string;
 	createdAt: Date;
@@ -51,6 +52,7 @@ export type CourseType = {
 	green: number;
 	blue: number;
 	name: string;
+	subject: string;
 };
 
 //Cloudflare AI workers

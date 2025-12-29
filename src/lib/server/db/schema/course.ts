@@ -61,6 +61,7 @@ export const course = pgTable('course', {
 	red: integer('red').notNull().default(255),
 	green: integer('green').notNull().default(255),
 	blue: integer('blue').notNull().default(255),
+	uuid: text('uuid').notNull().$defaultFn(() => crypto.randomUUID())
 });
 
 export const assignment = pgTable('assignment', {

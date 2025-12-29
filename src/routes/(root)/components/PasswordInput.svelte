@@ -17,7 +17,7 @@
 		{#if label.length != 0}
 			<h3 class="whitespace-nowrap">{label}:</h3>
 		{/if}
-		<br class="lg:hidden" />
+		<br class="xl:hidden" />
 		<div
 			class="flex w-full flex-row items-center justify-center overflow-hidden"
 		>

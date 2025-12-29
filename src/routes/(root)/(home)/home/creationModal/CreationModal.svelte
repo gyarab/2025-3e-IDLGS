@@ -8,6 +8,8 @@
 	import Review from './stages/FReview.svelte';
 	import TextbookArticles from './stages/DTextbookArticles.svelte';
 	import CourseTextbookSelect from './stages/BCourseTextbookSelect.svelte';
+	import { step } from '$lib/paraglide/messages';
+	import type { CourseType } from '$lib/types';
 
 	let {
 		showModal = $bindable(),
@@ -17,6 +19,12 @@
 
 	let stage = $state(0);
 	let selected = $state('');
+
+	let name: string = $state("");
+	let description: string = $state("");
+	let red: number = $state(0);
+	let green: number = $state(0);
+	let blue: number = $state(0);
 </script>
 
 {#key stage}
@@ -35,28 +43,30 @@
 		<!-- course only -->
 		{#if selected == 'course'}
 			{#if stage == 1}
-				<CourseTextbookSelect />
+				<CourseTextbookSelect bind:step={stage} />
 			{:else if stage == 2}
-				<CourseBasicInfo />
+				<CourseBasicInfo bind:step={stage} bind:name bind:red bind:green bind:blue bind:description/>
 			{:else if stage == 3}
-				<CourseGrading />
+				<CourseGrading bind:step={stage} {name} {red} {green} {blue} {description} />
 			{/if}
-		{/if}
-
 		<!-- textbook only -->
-		{#if selected == 'textbook'}
+		{:else if selected == 'textbook'}
 			{#if stage == 2}
-				<TextbookBasicInfo />
+				<TextbookBasicInfo bind:step={stage} bind:name bind:red bind:green bind:blue bind:description />
 			{:else if stage == 3}
-				<TextbookArticles />
+				<TextbookArticles bind:step={stage} {name} {red} {green} {blue} {description} />
+			{/if}
+		{:else}
+			{#if stage != 0 && stage < 4}
+				INVALID SITUATION.
 			{/if}
 		{/if}
 
 		<!-- both -->
 		{#if stage == 4}
-			<Ownership />
+			<Ownership bind:step={stage} {name} {red} {green} {blue} {description} />
 		{:else if stage == 5}
-			<Review />
+			<Review bind:step={stage} {name} {red} {green} {blue} {description} />
 		{/if}
 	</Modal>
 {/key}

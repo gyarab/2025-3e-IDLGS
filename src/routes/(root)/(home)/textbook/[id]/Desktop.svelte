@@ -15,7 +15,7 @@
 <div
 	class="
 	relative flex w-full grow flex-row justify-center *:flex
-	*:flex-col max-lg:hidden
+	*:flex-col max-xl:hidden
 "
 >
 	<div class="min-w-1/5 bg-red-900">Sidebar</div>

@@ -7,11 +7,13 @@
 		maxStep,
 		onclickLast,
 		onclickNext,
+		disableConditionNext
 	}: {
 		currentStep: number;
 		maxStep: number;
 		onclickNext: () => void;
 		onclickLast: () => void;
+		disableConditionNext: boolean;
 	} = $props();
 </script>
 
@@ -19,8 +21,9 @@
 	<Button
 		btn="button-white"
 		emoji="arrow-left-s"
+		onclick={onclickLast}
 	>
-		{m.next()}
+		{m.back()}
 	</Button>
 
 	<div class="grow"></div>
@@ -46,7 +49,9 @@
 		btn="button-white"
 		emoji="arrow-right-s"
 		flip={true}
+		onclick={onclickNext}
+		disabled={disableConditionNext}
 	>
-		{m.back()}
+		{m.next()}
 	</Button>
 </div>

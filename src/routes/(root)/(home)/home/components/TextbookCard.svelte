@@ -9,12 +9,9 @@
 		onclick = () => {},
 	}: {
 		textbook: TextbookType;
-		r: number;
-		g: number;
-		b: number;
 		delay: number;
 		perspective: boolean;
-		onclick: () => void;
+		onclick?: () => void;
 	} = $props();
 </script>
 

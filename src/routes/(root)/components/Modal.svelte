@@ -24,7 +24,10 @@
 			bind:this={dialog}
 			onclose={() => (showModal = false)}
 			onclick={(e) => {
-				if (!clickable?.contains(e.target as Node)) dialog?.close();
+				if (!clickable?.contains(e.target as Node)) {
+					dialog?.close();
+					showModal = false;
+				}
 			}}
 			class="backdrop:black/70 min-h-screen w-screen max-w-screen
 		min-w-screen backdrop:bg-linear-to-tr"
@@ -37,7 +40,7 @@
 					class="
 				{cssClass
 						? cssClass
-						: 'bg-white!'} mt-5 mb-5 flex max-w-4/5 grow flex-col rounded-2xl text-left text-white max-lg:h-screen max-lg:w-screen max-lg:min-w-9/10 lg:max-h-[66svh] lg:min-w-2/3 lg:p-5
+						: 'bg-white!'} mt-5 mb-5 flex max-w-4/5 grow flex-col rounded-2xl text-left text-white max-xl:h-screen max-xl:w-screen max-xl:min-w-9/10 xl:max-h-[66svh] xl:min-w-2/3 xl:p-5
 			"
 				>
 					{@render children?.()}

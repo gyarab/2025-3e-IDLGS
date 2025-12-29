@@ -37,7 +37,7 @@
 					class="
 				{cssClass
 						? cssClass
-						: 'bg-neutral-500!'} mt-5 mb-5 flex max-w-4/5 grow flex-col rounded-2xl p-5 text-left text-white max-lg:min-w-9/10 lg:min-w-2/3
+						: 'bg-neutral-500!'} mt-5 mb-5 flex max-w-4/5 grow flex-col rounded-2xl p-5 text-left text-white max-xl:min-w-9/10 xl:min-w-2/3
 			"
 				>
 					{@render children?.()}
