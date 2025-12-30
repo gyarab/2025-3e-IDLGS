@@ -7,9 +7,12 @@
 
 <div class="flex w-full grow flex-col gap-2">
 	<h2>{m.textbookChaptersAndArticles()}</h2>
+	<div class="flex flex-col gap-2 grow">
+
+	</div>
 	<NextPrevious
-		currentStep={3}
-		maxStep={5}
+		currentStep={2}
+		maxStep={4}
 		onclickLast={() => {
 			step = 2;
 		}}
@@ -17,5 +20,6 @@
 			step = 4;
 		}}
 		disableConditionNext={false}
+		message={m.youCanAlwaysChangeThisLater()}
 	/>
 </div>

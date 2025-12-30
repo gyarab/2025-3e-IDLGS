@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
 	import NextPrevious from '../components/NextPrevious.svelte';
+	import Textarea from "$component/Textarea.svelte"
 
 	let {
 		step = $bindable(0),
@@ -18,7 +19,7 @@
 <div class="flex w-full grow flex-col gap-2">
 	<h2>{m.generalTextbookSettings()}</h2>
 	<div class="flex flex-row items-center gap-2">
-		<h2 class="text-xl">{m.textbookName()}</h2>
+		<h2 class="text-xl">{m.textbookName()}:</h2>
 		<input
 			type="text"
 			class="input-text"
@@ -27,7 +28,7 @@
 		/>
 	</div>
 	<div class="flex flex-row items-center gap-2">
-		<h2 class="text-xl">{m.textbookColor()}</h2>
+		<h2 class="text-xl">{m.textbookColor()}:</h2>
 		<input
 			type="color"
 			bind:value={color}
@@ -38,16 +39,15 @@
 		</span>
 	</div>
 	<div class="flex grow flex-col gap-2">
-		<h2 class="text-xl">{m.textbookDescription()}</h2>
-		<textarea
-			class="input-text grow"
+		<h2 class="text-xl">{m.textbookDescription()}:</h2>
+		<Textarea 
 			bind:value={description}
 			placeholder={m.enterTextbookDescription()}
-		></textarea>
+		/>
 	</div>
 	<NextPrevious
-		currentStep={2}
-		maxStep={5}
+		currentStep={1}
+		maxStep={4}
 		onclickLast={() => {
 			step = 0;
 		}}
@@ -55,5 +55,6 @@
 			step = 3;
 		}}
 		disableConditionNext={description.length == 0 || name.length == 0}
+		message={m.youCanAlwaysChangeThisLater()}
 	/>
 </div>

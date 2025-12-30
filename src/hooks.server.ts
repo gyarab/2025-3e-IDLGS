@@ -53,20 +53,18 @@ const handleDatabase: Handle = async ({ event, resolve }) => {
 
 //dev only
 const handleDefaultUser: Handle = async ({ event, resolve }) => {
-	if (env.DEV == 'true') {
-		if ((await event.locals.db.select().from(schema.user)).length == 0) {
-			await createUser(
-				event.locals.db,
-				env.DEFAULT_EMAIL,
-				'IDLGS',
-				'Administration',
-				'',
-				env.DEFAULT_PASSWORD,
-				new Date(2008, 4, 25, 5, 31, 0, 0),
-				'pl',
-				true,
-			);
-		}
+	if ((await event.locals.db.select().from(schema.user)).length == 0) {
+		await createUser(
+			event.locals.db,
+			env.DEFAULT_EMAIL,
+			'IDLGS',
+			'Administration',
+			'',
+			env.DEFAULT_PASSWORD,
+			new Date(2008, 4, 25, 5, 31, 0, 0),
+			'pl',
+			true,
+		);
 	}
 
 	return resolve(event);
@@ -79,4 +77,4 @@ export const handle: Handle = sequence(
 	handleDefaultUser,
 );
 
-export const init: ServerInit = async () => {};
+export const init: ServerInit = async () => { };

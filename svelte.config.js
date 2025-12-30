@@ -7,6 +7,11 @@ const config = {
 	// for more information about preprocessors
 	preprocess: vitePreprocess(),
 	kit: {
+		alias: {
+			'$lib': 'src/lib/',
+			'$src': 'src/',
+			'$component': 'src/routes/(root)/components/'
+		},
 		csp: {
 			directives: {
 				'default-src': ['none'],

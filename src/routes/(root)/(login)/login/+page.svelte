@@ -22,7 +22,7 @@
 			const id = window.turnstile.render(node, {
 				sitekey: '0x4AAAAAABlMZWB6LlSqCWXH',
 				size: 'flexible',
-				theme: 'dark',
+				theme: 'light',
 				'refresh-timeout': 'auto',
 				'refresh-expired': 'auto',
 				language: getLocale() as string,
