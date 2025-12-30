@@ -112,7 +112,6 @@
 	"AIPoweredTextQuestionGenerationTestGenerationAntiCheatingRephrasing": "Zasilane AI: generowanie pytań, generowanie testów, zapobieganie oszustwom, parafrazowanie i wiele innych możliwości, które znacznie pomagają zarówno nauczycielom, jak i uczniom w poprawie środowiska do nauki i pracy.",
 	"learnMore": "Dowiedz się więcej",
 	"doesItSoundGood": "Brzmi dobrze?",
-	"writeToUs": "Napisz do nas",
 	"registerForADemo": "Zarejestruj się na demo",
 	"stillHaveQuestions": "Masz jeszcze pytania?",
 	"ourVision": "Nasza wizja",
@@ -148,5 +147,6 @@
 	"mainHelpPage": "Główna strona pomocy",
 	"moreInformation": "Więcej informacji",
 	"compileAndExport": "Kompiluj i eksportuj",
-	"pressShiftToMaintainAspectRatio": "Naciśnij Shift, aby zachować proporcje"
+	"pressShiftToMaintainAspectRatio": "Naciśnij Shift, aby zachować proporcje",
+	"contactUs": "Skontaktuj się z nami"
 }

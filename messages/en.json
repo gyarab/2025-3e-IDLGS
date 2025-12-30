@@ -112,7 +112,6 @@
 	"AIPoweredTextQuestionGenerationTestGenerationAntiCheatingRephrasing": "AI-Powered: question generation, test generation, anti-cheating, rephrasing, and many more possibilities that drastically help both teachers and students to improve the environment for both learning and working.",
 	"learnMore": "Learn More",
 	"doesItSoundGood": "Sounds good?",
-	"writeToUs": "Write to us",
 	"registerForADemo": "Register for a Demo",
 	"stillHaveQuestions": "Still have questions?",
 	"ourVision": "Our Vision",
@@ -148,5 +147,6 @@
 	"mainHelpPage": "Main Help Page",
 	"moreInformation": "More Information",
 	"compileAndExport": "Compile and Export",
-	"pressShiftToMaintainAspectRatio": "Press Shift to maintain aspect ratio"
+	"pressShiftToMaintainAspectRatio": "Press Shift to maintain aspect ratio",
+	"contactUs": "Contact Us"
 }

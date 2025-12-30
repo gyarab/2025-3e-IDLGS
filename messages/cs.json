@@ -112,7 +112,6 @@
 	"AIPoweredTextQuestionGenerationTestGenerationAntiCheatingRephrasing": "Poháněna AI: generování otázek, generování testů, prevence podvádění, parafrázování a mnoho dalších možností, které razantně pomahají učitelům i studentům ke zlepšení prostředí pro jak učení, tak i práci.",
 	"learnMore": "Zjistit více",
 	"doesItSoundGood": "Zní to dobře?",
-	"writeToUs": "Napište nám",
 	"registerForADemo": "Zaregistrujte se na demo",
 	"stillHaveQuestions": "Stále máte otázky?",
 	"ourVision": "Naše vize",
@@ -148,5 +147,6 @@
 	"mainHelpPage": "Hlavní stránka nápovědy",
 	"moreInformation": "Více informací",
 	"compileAndExport": "Kompilovat a exportovat",
-	"pressShiftToMaintainAspectRatio": "Stiskněte Shift pro zachování poměru stran"
+	"pressShiftToMaintainAspectRatio": "Stiskněte Shift pro zachování poměru stran",
+	"contactUs": "Kontaktujte nás"
 }

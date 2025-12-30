@@ -112,7 +112,6 @@
 	"AIPoweredTextQuestionGenerationTestGenerationAntiCheatingRephrasing": "С поддержкой ИИ: генерация вопросов, создание тестов, предотвращение мошенничества, перефразирование и многие другие возможности, которые значительно помогают как учителям, так и студентам улучшить среду для обучения и работы.",
 	"learnMore": "Узнать больше",
 	"doesItSoundGood": "Звучит хорошо?",
-	"writeToUs": "Напишите нам",
 	"registerForADemo": "Зарегистрируйтесь на демонстрацию",
 	"stillHaveQuestions": "Остались вопросы?",
 	"ourVision": "Наше видение",
@@ -148,5 +147,6 @@
 	"mainHelpPage": "Главная страница помощи",
 	"moreInformation": "Больше информации",
 	"compileAndExport": "Компилировать и экспортировать",
-	"pressShiftToMaintainAspectRatio": "Нажмите Shift, чтобы сохранить соотношение сторон"
+	"pressShiftToMaintainAspectRatio": "Нажмите Shift, чтобы сохранить соотношение сторон",
+	"contactUs": "Свяжитесь с нами"
 }

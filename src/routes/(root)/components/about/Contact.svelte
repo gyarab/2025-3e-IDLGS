@@ -32,7 +32,7 @@
 				in:fly|global={ABOUT_ANIMATION_SECOND}
 				class="flex-nowrap text-6xl font-bold text-nowrap text-emerald-500"
 			>
-				{m.writeToUs()}!
+				{m.contactUs()}!
 			</h2>
 		</div>
 	{/key}
