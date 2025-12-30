@@ -89,7 +89,7 @@
 			if (uuidVariable == el.uuid) uuidVariable = '';
 			else uuidVariable = el.uuid;
 		}}
-		aria-label={"RESIN"}
+		aria-label={'RESIN'}
 	>
 		<div class="h-full w-full"></div>
 	</button>
@@ -145,7 +145,7 @@
 		if (!shiftPressed) {
 			el.width += dx;
 			el.height += dy;
-			aspectBegin = el.width/el.height;
+			aspectBegin = el.width / el.height;
 		} else {
 			el.width += dx * aspectBegin;
 			el.height += dx;
@@ -153,4 +153,3 @@
 	}}
 	element={sizeElement}
 />
-

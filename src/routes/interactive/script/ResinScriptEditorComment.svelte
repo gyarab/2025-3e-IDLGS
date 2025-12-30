@@ -1,14 +1,12 @@
 <script lang="ts">
-	import {
-		type RScriptComment,
-	} from '$lib/interactive/script/comment.svelte';
+	import { type RScriptComment } from '$lib/interactive/script/comment.svelte';
 	import Dragger from '../components/DraggerRaw.svelte';
 
 	let {
 		comment = $bindable(),
 		uuid = $bindable(''),
 		editorWidth,
-		editorHeight
+		editorHeight,
 	}: {
 		comment: RScriptComment;
 		uuid: string;
@@ -26,7 +24,7 @@
 
 <button
 	class="
-absolute z-39 flex flex-row items-center rounded-lg p-2 font-medium overflow-hidden text-ellipsis
+absolute z-39 flex flex-row items-center overflow-hidden rounded-lg p-2 font-medium text-ellipsis
 "
 	style="
 	background-color: #ffd9b7;
@@ -42,7 +40,7 @@ absolute z-39 flex flex-row items-center rounded-lg p-2 font-medium overflow-hid
 	}}
 	bind:this={commentElement}
 >
-	<div class="w-full h-full flex flex-col gap-2 justify-center items-center">
+	<div class="flex h-full w-full flex-col items-center justify-center gap-2">
 		{comment.text}
 	</div>
 </button>

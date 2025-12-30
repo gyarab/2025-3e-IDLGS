@@ -35,7 +35,7 @@
 			class="flex w-full grow flex-col items-center justify-center max-xl:hidden"
 		>
 			<div class="z-3 flex w-3/4 grow flex-col gap-2">
-				<div class="min-h-[5vh] h-[5vh]"></div>
+				<div class="h-[5vh] min-h-[5vh]"></div>
 
 				<h2 class="w-full text-left">
 					{m.welcomeBackMessageName({ name: data.user.name })}
@@ -43,7 +43,7 @@
 
 				<WelcomeCard user={data.user} />
 
-				<div class="min-h-[5vh] h-[5vh]"></div>
+				<div class="h-[5vh] min-h-[5vh]"></div>
 
 				<div class="flex h-fit w-full flex-row gap-2">
 					<h2 class="text-left">{m.coursesAndTextbooks()}</h2>
@@ -64,12 +64,12 @@
 					</div>
 				{:then [courses, textbooks]}
 					{@const allItems = [
-						...([...courses].map((v) => {
+						...[...courses].map((v) => {
 							return { ...v, type: 'c' as const };
-						})),
-						...([...textbooks].map((v) => {
+						}),
+						...[...textbooks].map((v) => {
 							return { ...v, type: 't' as const };
-						})),
+						}),
 					].sort(
 						(a, b) =>
 							b.modifiedAt.getTime() - a.modifiedAt.getTime(),

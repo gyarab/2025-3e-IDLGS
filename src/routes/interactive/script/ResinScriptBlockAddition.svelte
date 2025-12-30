@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
 	import Button from '../../(root)/components/Button.svelte';
-	import ResinScriptBlockSelect from "./ResinScriptBlockSelect.svelte"
+	import ResinScriptBlockSelect from './ResinScriptBlockSelect.svelte';
 </script>
 
 <div class="flex w-3/10 flex-col">

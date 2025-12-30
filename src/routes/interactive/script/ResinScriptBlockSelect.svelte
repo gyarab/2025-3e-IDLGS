@@ -2,6 +2,4 @@
 	//TODO
 </script>
 
-<div class="flex flex-row">
-	
-</div>
+<div class="flex flex-row"></div>

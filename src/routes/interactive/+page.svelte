@@ -50,7 +50,7 @@ Author: Martin Bykov
 	const keyDownHandler = (e: KeyboardEvent) => {
 		if (selectedElementUuid) {
 			let elem = el.getElementByUuid(selectedElementUuid);
-			if(elem) {
+			if (elem) {
 				switch (e.key) {
 					case 'ArrowLeft':
 						elem.x--;
@@ -70,12 +70,12 @@ Author: Martin Bykov
 				}
 			}
 		}
-	}
+	};
 
 	onMount(() => {
 		if (!browser) return;
-		if(!workspaceElement || !dragSizeElement) return;
-		
+		if (!workspaceElement || !dragSizeElement) return;
+
 		const rect = workspaceElement.getBoundingClientRect();
 
 		elementWidthShowValue = rect.width / 3;
@@ -84,22 +84,17 @@ Author: Martin Bykov
 		widthMax = rect.width;
 		heightMax = rect.height;
 
-		ro = new ResizeObserver(
-			(data: ResizeObserverEntry[]) => {
-				widthMax = data[0].contentRect.width;
-				heightMax = data[0].contentRect.height;
+		ro = new ResizeObserver((data: ResizeObserverEntry[]) => {
+			widthMax = data[0].contentRect.width;
+			heightMax = data[0].contentRect.height;
 
-				elementWidthShowValue = Math.min(
-					elementWidthShowValue,
-					widthMax,
-				);
-				elementHeightShowValue = Math.min(
-					elementHeightShowValue,
-					heightMax,
-				);
-			},
-		);
-		
+			elementWidthShowValue = Math.min(elementWidthShowValue, widthMax);
+			elementHeightShowValue = Math.min(
+				elementHeightShowValue,
+				heightMax,
+			);
+		});
+
 		ro.observe(workspaceElement);
 
 		addEventListener('keydown', keyHandler);

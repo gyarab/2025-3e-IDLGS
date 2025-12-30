@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { browser } from "$app/environment";
-	import { onDestroy, onMount } from "svelte";
+	import { browser } from '$app/environment';
+	import { onDestroy, onMount } from 'svelte';
 
 	let {
 		x = $bindable(0),
@@ -48,13 +48,12 @@
 		let dx = ((e.pageX - dragBeginX) / width) * 100;
 		let dy = ((e.pageY - dragBeginY) / height) * 100;
 
-		if(overrideDragFunction != undefined) {
+		if (overrideDragFunction != undefined) {
 			overrideDragFunction(dx, dy);
-		}
-		else {
+		} else {
 			x += dx;
 			y += dy;
-		}	
+		}
 
 		snappingFunction();
 
@@ -65,17 +64,17 @@
 	};
 
 	onMount(() => {
-		if(!browser || !element) return;
+		if (!browser || !element) return;
 
 		element.addEventListener('mousedown', dragStartHandler);
 		addEventListener('mousemove', dragHandler);
 		addEventListener('mouseup', dragEndHandler);
-	})
+	});
 	onDestroy(() => {
-		if(!browser || !element) return;
+		if (!browser || !element) return;
 
 		element.removeEventListener('mousedown', dragStartHandler);
 		removeEventListener('mousemove', dragHandler);
 		removeEventListener('mouseup', dragEndHandler);
-	})
+	});
 </script>

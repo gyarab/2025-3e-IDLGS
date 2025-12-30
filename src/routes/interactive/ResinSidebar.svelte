@@ -9,7 +9,7 @@
 		el,
 		canvasX,
 		canvasY,
-		snappingAllowed
+		snappingAllowed,
 	}: {
 		el: RElement;
 		canvasX: number;
