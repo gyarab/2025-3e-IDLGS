@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { enhance } from "$app/forms";
-	import type { Snippet } from "svelte";
-	import LoadingAnimationHandler from "./LoadingAnimationHandler.svelte";
+	import { enhance } from '$app/forms';
+	import type { Snippet } from 'svelte';
+	import LoadingAnimationHandler from './LoadingAnimationHandler.svelte';
 
 	let {
 		children,
@@ -13,10 +13,10 @@
 		failure = async () => {},
 		action,
 	}: {
-		children: Snippet,
-		cssClass?: string,
-		loading?: boolean,
-		reset?: boolean,
+		children: Snippet;
+		cssClass?: string;
+		loading?: boolean;
+		reset?: boolean;
 		invalidateAll?: boolean;
 		success?: (data: unknown) => Promise<void>;
 		failure?: (data: unknown) => Promise<void>;
@@ -28,7 +28,7 @@
 	method="POST"
 	use:enhance={() => {
 		loading = true;
-		return async({ update, result }) => {
+		return async ({ update, result }) => {
 			await update({ reset: reset, invalidateAll: invalidateAll });
 
 			if (result.type == 'success') {
@@ -38,10 +38,10 @@
 			}
 
 			loading = false;
-		}
+		};
 	}}
 	enctype="multipart/form-data"
-	class="{cssClass ? cssClass : 'flex w-full grow flex-col gap-2'}"
+	class={cssClass ? cssClass : 'flex w-full grow flex-col gap-2'}
 	{action}
 >
 	{#if loading}

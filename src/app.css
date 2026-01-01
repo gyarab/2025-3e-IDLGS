@@ -69,7 +69,7 @@
 		@apply appearance-auto rounded-lg bg-white! text-violet-700 accent-violet-700 outline-0 hover:brightness-80;
 	}
 	.input-color {
-		@apply border-2 border-white rounded-lg active:outline-2 outline-white outline-offset-2;
+		@apply rounded-lg border-2 border-white outline-offset-2 outline-white active:outline-2;
 	}
 	input {
 		@apply min-w-0;

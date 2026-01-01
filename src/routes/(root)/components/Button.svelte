@@ -3,14 +3,14 @@
 	import HoverEmoji from './HoverEmoji.svelte';
 
 	let {
-		emoji="",
+		emoji = '',
 		children,
 		type = 'button',
 		btn,
 		onclick = () => {},
 		flip = false,
 		disabled = false,
-		cssClass = "",
+		cssClass = '',
 	}: {
 		emoji?: string;
 		children: Snippet;

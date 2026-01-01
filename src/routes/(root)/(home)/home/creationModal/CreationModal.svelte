@@ -63,9 +63,7 @@
 					bind:description
 				/>
 			{:else if stage == 3}
-				<CourseGrading
-					bind:step={stage}
-				/>
+				<CourseGrading bind:step={stage} />
 			{/if}
 			<!-- textbook only -->
 		{:else if selected == 'textbook'}
@@ -94,9 +92,7 @@
 
 		<!-- both -->
 		{#if stage == 4}
-			<Ownership
-				bind:step={stage}
-			/>
+			<Ownership bind:step={stage} />
 		{:else if stage == 5}
 			<Review
 				bind:step={stage}

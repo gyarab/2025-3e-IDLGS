@@ -57,9 +57,7 @@
 			forceSquare={false}
 			padding="p-3"
 		>
-			<Form
-				action="?/login"
-			>
+			<Form action="?/login">
 				<h2 class="w-full text-left text-white">{m.login()}</h2>
 
 				<input
@@ -85,9 +83,9 @@
 					<label for="remember">{m.rememberMe()}</label>
 				</div>
 
-					{#key ready && window.turnstile}
-						<div use:turnstile></div>
-					{/key}
+				{#key ready && window.turnstile}
+					<div use:turnstile></div>
+				{/key}
 
 				<Button
 					emoji="login-box"

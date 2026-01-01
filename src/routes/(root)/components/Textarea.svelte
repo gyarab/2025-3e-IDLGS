@@ -19,10 +19,10 @@
 		linkify: true,
 		typographer: true,
 		xhtmlOut: true,
-		langPrefix: "language-",
-		highlight: (str: string, lang:string) => {
+		langPrefix: 'language-',
+		highlight: (str: string, lang: string) => {
 			return hljs.highlightAuto(str, [lang]).value;
-		}
+		},
 	});
 
 	let element: HTMLTextAreaElement | undefined = $state(undefined);
@@ -40,9 +40,9 @@
 	{/if}
 
 	{#if preview}
-		<div class="input-text idlgsText w-full! grow! p-2 relative z-11">
+		<div class="input-text idlgsText relative z-11 w-full! grow! p-2">
 			{@html content}
-			<div class="absolute bottom-2 right-2 z-10 text-2xl opacity-30">
+			<div class="absolute right-2 bottom-2 z-10 text-2xl opacity-30">
 				<i class="ri-eye-line"></i>
 				{m.preview()}
 			</div>

@@ -40,4 +40,4 @@
 	</div>
 </div>
 
-<FeedbackModal bind:showModal={showFeedbackModal}/>
+<FeedbackModal bind:showModal={showFeedbackModal} />
