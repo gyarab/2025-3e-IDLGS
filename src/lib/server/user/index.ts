@@ -18,7 +18,7 @@ export const setPassword = async (
 		db,
 		'password',
 		crypto
-			.pbkdf2Sync(password, salt, iterations, 64, 'sha512')
+			.pbkdf2Sync(Buffer.from(password), salt, iterations, 64, 'sha512')
 			.toString('hex'),
 	);
 
@@ -60,7 +60,7 @@ export const hashPassword = (
 
 	return {
 		password: crypto
-			.pbkdf2Sync(password, lsalt, lamount, 64, 'sha512')
+			.pbkdf2Sync(Buffer.from(password), lsalt, lamount, 64, 'sha512')
 			.toString('hex'),
 		salt: lsalt,
 		amount: lamount,

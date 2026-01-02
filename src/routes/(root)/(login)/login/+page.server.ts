@@ -51,7 +51,7 @@ export const actions = {
 		)[0];
 
 		const hashedPassword = crypto
-			.pbkdf2Sync(password, user.salt, user.iterations, 64, 'sha512')
+			.pbkdf2Sync(Buffer.from(password), user.salt, user.iterations, 64, 'sha512')
 			.toString('hex');
 
 		if (
