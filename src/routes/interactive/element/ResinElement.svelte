@@ -64,7 +64,7 @@
 <div
 	bind:this={elementElement}
 	class="absolute z-35 {el.visible ? '' : 'hidden'} 	{el.uuid === uuidVariable
-		? 'border-2 border-violet-700'
+		? 'border-2 border-violet-800'
 		: ''}"
 	style="
 		top:              {el.y}%;
@@ -95,7 +95,7 @@
 	</button>
 	{#if uuidVariable == el.uuid}
 		<div
-			class="absolute right-0 bottom-0 z-40 flex flex-row items-center gap-0 text-2xl text-violet-700 opacity-100!"
+			class="absolute right-0 bottom-0 z-40 flex flex-row items-center gap-0 text-2xl text-violet-800 opacity-100!"
 			aria-label={m.elementSize()}
 			bind:this={sizeElement}
 		>

@@ -27,7 +27,7 @@
 				if (!clickable?.contains(e.target as Node)) dialog?.close();
 			}}
 			class="min-h-screen w-screen max-w-screen min-w-screen
-		backdrop:bg-linear-to-tr backdrop:from-violet-700/70 backdrop:to-emerald-500/70"
+		backdrop:bg-linear-to-tr backdrop:from-violet-800/70 backdrop:to-emerald-600/70"
 		>
 			<div
 				class=" flex min-h-screen w-full grow flex-col items-center justify-center"

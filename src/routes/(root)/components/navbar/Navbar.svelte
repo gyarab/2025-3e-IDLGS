@@ -25,9 +25,9 @@
 		<Logo />
 
 		<LangDropdown
-			css="button-transparent text-emerald-500"
+			css="button-transparent text-emerald-600"
 			cssLocal={''}
-			cssSelector={'text-violet-700 hover:text-emerald-500 bg-white hover:bg-emerald-500 hover:text-white'}
+			cssSelector={'text-violet-800 hover:text-emerald-600 bg-white hover:bg-emerald-600 hover:text-white'}
 			bind:langValue={value}
 		/>
 

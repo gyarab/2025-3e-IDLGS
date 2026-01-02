@@ -7,14 +7,14 @@
 		maxStep,
 		onclickLast,
 		onclickNext,
-		disableConditionNext,
+		disableConditionNext = false,
 		message = m.youCanAlwaysChangeThisLater(),
 	}: {
 		currentStep: number;
 		maxStep: number;
 		onclickNext: () => void;
 		onclickLast: () => void;
-		disableConditionNext: boolean;
+		disableConditionNext?: boolean;
 		message?: string;
 	} = $props();
 </script>

@@ -19,7 +19,7 @@
 /* Scrollbar */
 :root {
 	overflow: scroll;
-	scrollbar-color: var(--color-emerald-500) rgba(0, 0, 0, 0);
+	scrollbar-color: var(--color-emerald-600) rgba(0, 0, 0, 0);
 	scrollbar-width: auto;
 }
 
@@ -47,26 +47,26 @@
 		@apply gap-1 p-0!;
 	}
 	.button-primary {
-		@apply bg-linear-to-tr from-violet-700 to-emerald-500 text-white!;
+		@apply bg-linear-to-tr from-violet-800 to-emerald-600 text-white!;
 	}
 	.button-violet {
-		@apply bg-violet-700 text-white!;
+		@apply bg-violet-900 text-white!;
 	}
 	.button-green {
-		@apply bg-emerald-500 text-white!;
+		@apply bg-emerald-600 text-white!;
 	}
 	.button-white {
-		@apply bg-white text-violet-700;
+		@apply bg-white text-violet-800;
 	}
 	.button-transparent {
 		@apply bg-transparent;
 	}
 
 	.input-text {
-		@apply min-w-0 rounded-lg border-0 bg-neutral-700/40 text-white placeholder:font-light! placeholder:text-white placeholder:opacity-80 backdrop:blur-2xl;
+		@apply backdrop-blur min-w-0 rounded-lg border-0 bg-neutral-700/40 text-white placeholder:font-light! placeholder:text-white placeholder:opacity-80 backdrop:blur-2xl;
 	}
 	.input-checkbox {
-		@apply appearance-auto rounded-lg bg-white! text-violet-700 accent-violet-700 outline-0 hover:brightness-80;
+		@apply appearance-auto rounded-lg bg-white! text-violet-800 accent-violet-800 outline-0 hover:brightness-80;
 	}
 	.input-color {
 		@apply rounded-lg border-2 border-white outline-offset-2 outline-white active:outline-2;
@@ -85,7 +85,7 @@
 	}
 
 	.input-text-resin {
-		@apply rounded-lg border-2 text-violet-700 placeholder:font-light! placeholder:text-violet-700/50;
+		@apply rounded-lg border-2 text-violet-800 placeholder:font-light! placeholder:text-violet-800/50;
 	}
 
 	a:hover {
@@ -93,17 +93,17 @@
 	}
 
 	nav#loggedOutNavbar a {
-		@apply text-emerald-500 decoration-emerald-500;
+		@apply text-emerald-600 decoration-emerald-600;
 	}
 
 	nav#loggedOutNavbar a:hover {
-		@apply text-violet-700 decoration-violet-700;
+		@apply text-violet-800 decoration-violet-800;
 	}
 
 	nav#loggedInNavbar a {
 		@apply text-white decoration-white;
 	}
 	nav#loggedInNavbar a:hover {
-		@apply text-emerald-500 decoration-emerald-500;
+		@apply text-emerald-600 decoration-emerald-600;
 	}
 }

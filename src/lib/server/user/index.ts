@@ -77,6 +77,9 @@ export const createUser = async (
 	birthday: Date,
 	lang: string,
 	admin: boolean,
+	textbooks: boolean,
+	courses: boolean,
+	resin: boolean,
 ): Promise<UserType> => {
 	const pass = hashPassword(password);
 
@@ -94,6 +97,9 @@ export const createUser = async (
 				admin: admin,
 				lang: lang,
 				birthday: `${birthday.getFullYear()}-${birthday.getMonth() + 1}-${birthday.getDate()}`,
+				canCreateCourses: courses,
+				canCreateTextbooks: textbooks,
+				canCreateResin: resin,
 			})
 			.returning()
 	)[0];

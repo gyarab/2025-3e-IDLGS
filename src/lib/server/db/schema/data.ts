@@ -2,12 +2,7 @@ import {
 	pgTable,
 	text,
 	integer,
-	timestamp,
-	date,
-	boolean,
-	check,
 } from 'drizzle-orm/pg-core';
-import { sql } from 'drizzle-orm';
 
 export const image = pgTable('image', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),

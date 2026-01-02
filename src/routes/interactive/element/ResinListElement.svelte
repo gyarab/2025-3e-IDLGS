@@ -22,8 +22,8 @@ Author: Martin Bykov
 <button
 	class="
 	flex flex-row items-end gap-2 rounded-lg p-2
-	{uuidVariable == el.uuid ? 'bg-violet-800' : 'bg-neutral-500'}
-	hover:bg-violet-800
+	{uuidVariable == el.uuid ? 'bg-violet-900' : 'bg-neutral-500'}
+	hover:bg-violet-900
 	"
 	onclick={() => {
 		if (uuidVariable == el.uuid) uuidVariable = '';

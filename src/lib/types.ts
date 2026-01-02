@@ -15,6 +15,9 @@ export type UserType = {
 	surname: string;
 	degree: string;
 	background: number;
+	canCreateCourses: boolean;
+	canCreateTextbooks: boolean;
+	canCreateResin: boolean;
 };
 
 export type TextbookType = {

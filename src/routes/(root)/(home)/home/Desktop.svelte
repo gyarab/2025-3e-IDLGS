@@ -33,12 +33,13 @@
 {#if ready}
 	{#key ready}
 		<div
-			class="flex w-full grow flex-col items-center justify-center max-xl:hidden"
+			class="flex w-full grow flex-col items-center max-xl:hidden"
 		>
 			<div class="z-3 flex w-3/4 grow flex-col gap-2">
 				<div class="h-[5vh] min-h-[5vh]"></div>
 
 				<h2 class="w-full text-left">
+					<i class="ri-user-smile-line"></i>
 					{m.welcomeBackMessageName({ name: data.user.name })}
 				</h2>
 

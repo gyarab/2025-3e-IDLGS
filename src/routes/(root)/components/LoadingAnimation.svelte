@@ -23,7 +23,7 @@
 </script>
 
 <div class="flex flex-col items-center gap-0">
-	<div class="flex flex-row gap-1 text-emerald-500">
+	<div class="flex flex-row gap-1 text-emerald-600">
 		<i class="ri-circle-fill animate-bounce [animation-delay:-0.66s]"></i>
 		<i class="ri-circle-fill animate-bounce [animation-delay:-0.33s]"></i>
 		<i class="ri-circle-fill animate-bounce"></i>

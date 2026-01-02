@@ -19,7 +19,7 @@
 {#if ready}
 	{#key ready}
 		<div
-			class="relative flex h-[94svh] w-full flex-col items-center justify-center gap-6 overflow-hidden bg-violet-800 text-neutral-100 *:z-3"
+			class="relative flex h-[94svh] w-full flex-col items-center justify-center gap-6 overflow-hidden bg-violet-900 text-neutral-100 *:z-3"
 		>
 			<!-- bg image -->
 			<div
@@ -29,7 +29,7 @@
 			></div>
 
 			<!-- cover -->
-			<div class="absolute z-2! h-full w-full bg-violet-800/60"></div>
+			<div class="absolute z-2! h-full w-full bg-violet-900/60"></div>
 
 			<div class="grow"></div>
 
@@ -46,7 +46,7 @@
 				>
 					<!-- always textbook 1 word, connector 1 word -->
 					<span
-						class="underline decoration-violet-700 decoration-dashed"
+						class="underline decoration-violet-800 decoration-dashed"
 					>
 						{m.textbookAndClassroom().split(' ')[0]}
 					</span>
@@ -54,7 +54,7 @@
 						{m.textbookAndClassroom().split(' ')[1]}
 					</span>
 					<span
-						class="underline decoration-emerald-500 decoration-dotted"
+						class="underline decoration-emerald-600 decoration-dotted"
 					>
 						{m.textbookAndClassroom().split(' ').slice(2).join(' ')}
 					</span>

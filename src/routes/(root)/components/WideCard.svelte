@@ -25,7 +25,7 @@
 	<div
 		class="flex w-full grow flex-col rounded-lg {cssOverride.length > 0
 			? cssOverride
-			: 'p-5'} backdrop-blur-2xl"
+			: 'p-5'} backdrop-blur"
 	>
 		{@render children?.()}
 	</div>

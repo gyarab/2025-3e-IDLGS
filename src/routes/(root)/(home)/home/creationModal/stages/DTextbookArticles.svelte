@@ -24,7 +24,7 @@
 </script>
 
 <div class="flex w-full grow flex-col gap-2">
-	<div class="flex w-full flex-row items-center justify-center gap-2">
+	<div class="flex w-full flex-row items-center gap-2">
 		<h2>{m.textbookChaptersAndArticles()}</h2>
 		<p class="opacity-50">
 			{m.selectChapterOrArticleByClickingOnIt()}.
@@ -33,48 +33,42 @@
 	</div>
 	<div
 		class="
-		flex grow flex-row gap-4
+		flex grow flex-row gap-4 justify-center w-full
 		*:flex *:flex-col *:gap-2
 	"
 		style="color: rgb({red}, {green}, {blue});"
 	>
-		<div class="w-3/10">
+		<div class="grow w-5/11 min-w-5/11">
 			<h2 class="text-white!">{m.chapters()}</h2>
 			<ItemList
 				bind:items={chapterNames}
 				bind:selectedItem={selectedChapterName}
-				onclick={() => {}}
 			>
 				{m.noChapters()}
 			</ItemList>
 		</div>
-		<div class="w-3/10">
+		<div class="grow w-5/11 min-w-5/11">
 			<h2 class="text-white!">{m.articles()}</h2>
 			{#if chapterNames.length > 0}
-				<ItemList
-					bind:items={articleNames}
-					bind:selectedItem={selectedArticleName}
-					onclick={() => {}}
-				>
-					{m.noArticles()}
-				</ItemList>
+				{#if selectedChapterName.length > 0}
+					<ItemList
+						bind:items={articleNames}
+						bind:selectedItem={selectedArticleName}
+					>
+						{m.noArticles()}
+					</ItemList>
+				{:else}
+					<div
+						class="flex w-full grow flex-col items-center justify-center text-white opacity-50"
+					>
+						{m.noChapterSelected()}
+					</div>
+				{/if}
 			{:else}
 				<div
 					class="flex w-full grow flex-col items-center justify-center text-white opacity-50"
 				>
 					{m.toCreateArticlesFirstAddAChapter()}
-				</div>
-			{/if}
-		</div>
-		<div class="grow text-white!">
-			<h2 class="">{m.articleOverview()}</h2>
-			{#if selectedArticleName}
-				<div class="flex w-full grow flex-col gap-2"></div>
-			{:else}
-				<div
-					class="flex w-full grow flex-col items-center justify-center opacity-50"
-				>
-					{m.noArticleSelected()}
 				</div>
 			{/if}
 		</div>

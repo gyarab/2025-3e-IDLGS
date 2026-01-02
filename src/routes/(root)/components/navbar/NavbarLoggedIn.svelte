@@ -22,7 +22,7 @@
 <div class="flex h-[6svh] w-full print:hidden"></div>
 <nav
 	id="loggedInNavbar"
-	class="fixed top-0 left-0 z-50! flex h-[6svh] w-full flex-col items-center justify-center bg-violet-700 max-xl:hidden print:hidden"
+	class="fixed top-0 left-0 z-50! flex h-[6svh] w-full flex-col items-center justify-center bg-violet-900 max-xl:hidden print:hidden"
 >
 	<div
 		class="fixed z-40! flex w-8/10 flex-row items-center gap-10 font-medium text-white!"
@@ -32,7 +32,7 @@
 		<LangDropdown
 			css="button-transparent"
 			cssLocal={''}
-			cssSelector={'text-violet-700 hover:text-emerald-500 bg-white hover:bg-emerald-500 hover:text-white'}
+			cssSelector={'text-violet-800 hover:text-emerald-600 bg-white hover:bg-emerald-600 hover:text-white'}
 			bind:langValue={value}
 		/>
 

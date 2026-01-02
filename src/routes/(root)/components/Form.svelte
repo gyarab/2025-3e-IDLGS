@@ -6,7 +6,7 @@
 	let {
 		children,
 		cssClass,
-		loading = $bindable(true),
+		loading = $bindable(false),
 		reset = false,
 		invalidateAll = true,
 		success = async () => {},

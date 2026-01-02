@@ -69,7 +69,7 @@
 	class="
 	flex {forceSquare ? 'aspect-square' : ''} flex-col gap-2
 	overflow-hidden rounded-lg
-	border-2 shadow perspective-[1600px]
+	border-2 shadow-xl perspective-[1600px]
 	{hover ? 'hover:border-neutral-300!' : ''}
 	{css}
 	"
@@ -80,7 +80,7 @@
 >
 	<button
 		class="
-		flex w-full grow flex-col rounded-lg {padding} backdrop-blur-2xl hover:brightness-100!
+		flex w-full grow flex-col rounded-lg {padding} backdrop-blur hover:brightness-100!
 		{hover ? 'hover:backdrop-brightness-120' : ''}
 		"
 		onclick={() => {

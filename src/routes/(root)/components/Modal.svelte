@@ -23,7 +23,7 @@
 </script>
 
 {#key showModal}
-	<div class="absolute! z-49! m-0! h-0! w-0! p-0! *:bg-transparent">
+	<div class="absolute! z-45! m-0! h-0! w-0! p-0! *:bg-transparent">
 		<dialog
 			transition:fade|global={{ duration: 250 }}
 			bind:this={dialog}
@@ -35,10 +35,10 @@
 				}
 			}}
 			class="backdrop:black/70 min-h-screen w-screen max-w-screen
-		min-w-screen backdrop:bg-linear-to-tr"
+		min-w-screen"
 		>
 			<div
-				class=" flex min-h-screen w-full grow flex-col items-center justify-center"
+				class="flex min-h-screen w-full grow flex-col items-center justify-center"
 			>
 				<div
 					bind:this={clickable}

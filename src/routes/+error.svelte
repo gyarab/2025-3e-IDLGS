@@ -13,17 +13,17 @@
 <div
 	class="
 relative flex w-full grow flex-col items-center
-justify-center bg-linear-to-tr from-emerald-500 to-violet-700
+justify-center bg-linear-to-tr from-emerald-600 to-violet-800
 "
 >
 	<div class="flex flex-col gap-2 rounded-lg bg-white p-5">
-		<div class="text-xl text-violet-700">
+		<div class="text-xl text-violet-800">
 			{m.anErrorOccurred()}:
 		</div>
-		<div class="text-9xl font-medium text-emerald-500">
+		<div class="text-9xl font-medium text-emerald-600">
 			{page.status}
 		</div>
-		<div class="text-2xl text-violet-700">
+		<div class="text-2xl text-violet-800">
 			{page.error?.message}
 		</div>
 		{#if page.status == 404}

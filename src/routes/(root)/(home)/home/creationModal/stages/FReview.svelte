@@ -25,7 +25,7 @@
 		currentStep={type == 'course' ? 5 : 4}
 		maxStep={type == 'course' ? 5 : 4}
 		onclickLast={() => {
-			step = type == 'course' ? 4 : 3;
+			step = 4;
 		}}
 		onclickNext={() => {}}
 		disableConditionNext={description.length == 0 || name.length == 0}

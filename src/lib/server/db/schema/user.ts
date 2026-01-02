@@ -41,6 +41,9 @@ export const user = pgTable('user', {
 	degree: text('degree').notNull(),
 	//personalization: if 0 draw letters, otherwise images from array
 	background: integer('background').notNull().default(1),
+	canCreateTextbooks: boolean('canCreateTextbooks').notNull().default(false),
+	canCreateCourses: boolean('canCreateCourses').notNull().default(false),
+	canCreateResin: boolean('canCreateResin').notNull().default(false),
 });
 
 export const userVerification = pgTable('userVerification', {

@@ -12,7 +12,7 @@
 		blue = $bindable(0),
 	} = $props();
 
-	let color = $state('#6507cf'); //bg-violet-700
+	let color = $state('#6507cf'); //bg-violet-900
 	$effect(() => {
 		red = parseInt(color.slice(1, 3), 16);
 		green = parseInt(color.slice(3, 5), 16);

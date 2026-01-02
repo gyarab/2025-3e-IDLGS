@@ -258,7 +258,7 @@ Author: Martin Bykov
 	<div
 		id="workspace"
 		bind:this={workspaceElement}
-		class="flex grow-20 flex-col items-center justify-center gap-2 bg-linear-to-tr from-violet-700 to-emerald-500"
+		class="flex grow-20 flex-col items-center justify-center gap-2 bg-linear-to-tr from-violet-800 to-emerald-600"
 	>
 		<div
 			class="relative max-h-screen rounded-lg bg-white"
@@ -280,7 +280,7 @@ Author: Martin Bykov
 				{/key}
 			</span>
 			<div
-				class="absolute right-0 bottom-0 flex flex-row items-center gap-0 text-2xl text-emerald-500"
+				class="absolute right-0 bottom-0 flex flex-row items-center gap-0 text-2xl text-emerald-600"
 				bind:this={dragSizeElement}
 			>
 				<i class="ri-drag-move-2-line"></i>

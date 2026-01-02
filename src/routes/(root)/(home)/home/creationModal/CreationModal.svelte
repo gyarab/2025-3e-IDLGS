@@ -23,12 +23,13 @@
 	let name: string = $state('');
 	let description: string = $state('');
 
-	//default values = tailwind's bg-violet-700
+	//default values = tailwind's bg-violet-900
 	let red: number = $state(101);
 	let green: number = $state(7);
 	let blue: number = $state(207);
 
 	//course only
+	let selectedTextbookUuid: string = $state("");
 
 	//textbook only
 	let articleNames: string[] = $state([]);
@@ -38,8 +39,8 @@
 {#key stage}
 	<Modal
 		bind:showModal
-		cssClass="bg-violet-700"
-		cssStyle="background-color: rgb({red}, {green}, {blue}) !important;"
+		cssClass="backdrop-blur"
+		cssStyle="background-color: rgb({red}, {green}, {blue}, 0.5) !important;"
 	>
 		{#if stage == 0}
 			<!-- both -->
@@ -52,7 +53,7 @@
 		<!-- course only -->
 		{#if selected == 'course'}
 			{#if stage == 1}
-				<CourseTextbookSelect bind:step={stage} />
+				<CourseTextbookSelect bind:step={stage} bind:selectedTextbookUuid />
 			{:else if stage == 2}
 				<CourseBasicInfo
 					bind:step={stage}
@@ -92,7 +93,7 @@
 
 		<!-- both -->
 		{#if stage == 4}
-			<Ownership bind:step={stage} />
+			<Ownership bind:step={stage} {selected} />
 		{:else if stage == 5}
 			<Review
 				bind:step={stage}

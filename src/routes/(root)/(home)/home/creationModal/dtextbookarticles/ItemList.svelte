@@ -6,16 +6,15 @@
 	let {
 		items = $bindable([]),
 		selectedItem = $bindable(''),
-		onclick,
 		children,
 	}: {
 		items: string[];
 		selectedItem: string;
-		onclick: () => void;
 		children: Snippet;
 	} = $props();
 
 	let inputValue: string = $state('');
+	let editMode: number = $state(-1);
 </script>
 
 <div class="flex min-w-0 grow flex-col">
@@ -28,18 +27,29 @@
 					<div
 						class="
 					flex w-full
-					flex-row items-center gap-2 rounded-lg
+					flex-row items-center gap-0 rounded-lg
 					{item == selectedItem ? 'bg-white' : '*:not-hover:text-white *:hover:bg-white'}
 				"
 					>
 						<Button
-							cssClass="ps-2 text-lg grow justify-start"
+							cssClass="text-lg grow justify-start"
 							btn="button-transparent"
 							onclick={() => {
 								selectedItem = item;
 							}}
 						>
 							{item}
+						</Button>
+						<Button
+							btn="button-transparent"
+							emoji="edit"
+							cssClass=""
+							onclick={() => {
+								editMode = i;
+								inputValue = items[editMode];
+							}}
+						>
+							{m.edit()}
 						</Button>
 						<Button
 							btn="button-transparent"
@@ -63,24 +73,34 @@
 			{/if}
 		{/key}
 		<div class="flex w-full flex-row gap-2 p-2">
-			<input
-				type="text"
-				bind:value={inputValue}
-				class="input-text"
-				placeholder={m.enterName()}
-			/>
+				<input
+					type="text"
+					name="editvalue"
+					bind:value={inputValue}
+					class="input-text grow"
+					placeholder={m.enterName()}
+				/>
 			<Button
-				emoji={'add-circle'}
+				emoji={editMode != -1 ? 'save-3' : 'add-circle'}
 				onclick={() => {
-					items.push(inputValue);
+					if(editMode == -1) {
+						items.push(inputValue);
+					}
+					else {
+						items[editMode] = inputValue;
+						editMode = -1;
+					}
 					inputValue = '';
-					onclick();
 				}}
 				btn="button-transparent"
 				cssClass="flex flex-row gap-1 flex-nowrap min-w-fit bg-white"
-				disabled={inputValue.length === 0}
+				disabled={editMode == -1 && inputValue.length === 0 || editMode != -1 && items[editMode].length === 0}
 			>
-				{m.addNew()}
+				{#if editMode != -1}
+					{m.save()}
+				{:else}
+					{m.addNew()}
+				{/if}
 			</Button>
 		</div>
 	</div>
