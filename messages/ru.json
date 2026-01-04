@@ -203,5 +203,19 @@
 	"bachelorsDegree": "Бакалавр",
 	"degree": "Степень",
 	"phdDegree": "Доктор философии",
-	"noDegree": "Без степени"
+	"noDegree": "Без степени",
+	"update": "Обновить",
+	"privacyPolicy": "Политика конфиденциальности",
+	"termsOfService": "Условия обслуживания",
+	"setAPassword": "Установить пароль",
+	"setPassword": "Установить пароль",
+	"newPassword": "Новый пароль",
+	"confirmPassword": "Подтвердить пароль",
+	"passwordsDoNotMatch": "Пароли не совпадают",
+	"continue": "Продолжить",
+	"passwordMustBeAtLeast10CharactersLong": "Пароль должен быть не менее 10 символов",
+	"passwordMustContainAnUppercaseLetter": "Пароль должен содержать заглавную букву",
+	"passwordMustContainALowercaseLetter": "Пароль должен содержать строчную букву",
+	"passwordMustContainANumber": "Пароль должен содержать цифру",
+	"passwordMustContainASpecialCharacter": "Пароль должен содержать специальный символ"
 }

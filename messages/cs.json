@@ -203,5 +203,19 @@
 	"mastersDegree": "Magistr",
 	"bachelorsDegree": "Bakalář",
 	"phdDegree": "Ph.D.",
-	"noDegree": "Bez titulu"
+	"noDegree": "Bez titulu",
+	"update": "Aktualizovat",
+	"privacyPolicy": "Zásady ochrany osobních údajů",
+	"termsOfService": "Podmínky služby",
+	"setAPassword": "Nastavit heslo",
+	"setPassword": "Nastavit heslo",
+	"newPassword": "Nové heslo",
+	"confirmPassword": "Potvrdit heslo",
+	"passwordsDoNotMatch": "Hesla se neshodují",
+	"continue": "Pokračovat",
+	"passwordMustBeAtLeast10CharactersLong": "Heslo musí mít alespoň 10 znaků",
+	"passwordMustContainAnUppercaseLetter": "Heslo musí obsahovat velké písmeno",
+	"passwordMustContainALowercaseLetter": "Heslo musí obsahovat malé písmeno",
+	"passwordMustContainANumber": "Heslo musí obsahovat číslici",
+	"passwordMustContainASpecialCharacter": "Heslo musí obsahovat speciální znak"
 }

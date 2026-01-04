@@ -203,5 +203,19 @@
 	"mastersDegree": "Magister",
 	"bachelorsDegree": "Licencjat",
 	"phdDegree": "Doktorat",
-	"noDegree": "Brak stopnia naukowego"
+	"noDegree": "Brak stopnia naukowego",
+	"update": "Aktualizuj",
+	"privacyPolicy": "Polityka prywatności",
+	"termsOfService": "Warunki świadczenia usług",
+	"setAPassword": "Ustaw hasło",
+	"setPassword": "Ustaw hasło",
+	"newPassword": "Nowe hasło",
+	"confirmPassword": "Potwierdź hasło",
+	"passwordsDoNotMatch": "Hasła nie pasują do siebie",
+	"continue": "Kontynuuj",
+	"passwordMustBeAtLeast10CharactersLong": "Hasło musi mieć co najmniej 10 znaków",
+	"passwordMustContainAnUppercaseLetter": "Hasło musi zawierać wielką literę",
+	"passwordMustContainALowercaseLetter": "Hasło musi zawierać małą literę",
+	"passwordMustContainANumber": "Hasło musi zawierać cyfrę",
+	"passwordMustContainASpecialCharacter": "Hasło musi zawierać znak specjalny"
 }

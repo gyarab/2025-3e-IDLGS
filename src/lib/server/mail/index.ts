@@ -1,17 +1,32 @@
-import type { DBType } from '../db/types';
+import type { RequestEvent } from '@sveltejs/kit';
+import { env } from '$env/dynamic/private';
 
 //using my notifications.martinbykov.eu API, its HTTPS only -MB
-//TODO wait for update of API
 
 export const sendMail = async (
-	db: DBType,
+	event: RequestEvent,
 	subject: string,
 	message: string,
 	target: string,
 ): Promise<boolean> => {
-	return true;
-};
+	try {
+		const response = await event.fetch('https://notifications.martinbykov.eu/email', {
+			body: JSON.stringify({
+				sendkey: env.API_KEY_MAIL,
+				subject: subject,
+				message: message,
+				target: target,
+			}),
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			method: 'POST'
+		});
 
-export const verifyEmailSend = async (db: DBType): Promise<boolean> => {
-	return true;
+		if (response.status < 300) return true;
+		else return false;
+	} catch (e) {
+		console.log("SendMail failed: ", JSON.stringify(e));
+		return false;
+	}
 };

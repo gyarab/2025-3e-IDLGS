@@ -1,15 +1,13 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import { m } from '$lib/paraglide/messages';
 	import { onMount } from 'svelte';
-	import Button from '../../components/Button.svelte';
-	import HorizontalLine from '../../components/HorizontalLine.svelte';
-	import PasswordInput from '../../components/PasswordInput.svelte';
+	import Button from '../../../components/Button.svelte';
+	import HorizontalLine from '../../../components/HorizontalLine.svelte';
+	import PasswordInput from '../../../components/PasswordInput.svelte';
 	import { browser } from '$app/environment';
 	import { getLocale } from '$lib/paraglide/runtime';
-	import Card from '../../components/Card.svelte';
-	import WordBackground from '../../components/WordBackground.svelte';
-	import Form from '../../components/Form.svelte';
+	import Card from '../../../components/Card.svelte';
+	import Form from '../../../components/Form.svelte';
 
 	let ready = $state(false);
 
@@ -47,10 +45,8 @@
 
 {#if ready}
 	<div
-		data-sveltekit-reload
 		class="relative flex w-full grow flex-col items-center justify-center gap-2 p-10"
 	>
-		<WordBackground />
 		<Card
 			css="max-xl:min-w-9/10 xl:min-w-1/3 z-11"
 			perspective={false}

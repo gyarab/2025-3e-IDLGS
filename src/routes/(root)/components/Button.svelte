@@ -30,10 +30,7 @@
 	{onclick}
 >
 	{#if !flip && emoji.length > 0}
-		<HoverEmoji {emoji} />
+		<HoverEmoji {emoji} {disabled} />
 	{/if}
 	{@render children?.()}
-	{#if flip && emoji.length > 0}
-		<HoverEmoji {emoji} />
-	{/if}
 </button>

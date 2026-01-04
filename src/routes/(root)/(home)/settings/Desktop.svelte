@@ -3,6 +3,9 @@
 	import type { UserType } from '$lib/types';
 	import LoadingAnimationHandler from '../../components/LoadingAnimationHandler.svelte';
 	import WideCard from '../../components/WideCard.svelte';
+	import TextInput from '../../components/TextInput.svelte';
+	import Button from '../../components/Button.svelte';
+	import SelectionInput from '../../components/SelectionInput.svelte';
 
 	let {
 		data,
@@ -11,6 +14,8 @@
 			user: UserType;
 		};
 	} = $props();
+
+	let degreeValue = $derived(data.user.degree);
 </script>
 
 <div class="flex w-full grow flex-col items-center max-xl:hidden">
@@ -31,9 +36,29 @@
 						<i class="ri-user-3-line"></i>
 						{m.personalInfo()}
 					</h3>
-					<div class="flex w-full flex-row gap-2">
-						{m.degree()}
-					</div>
+
+					<input type="hidden" name="degree" bind:value={degreeValue} />
+					<SelectionInput 
+						names={[]}
+						values={[]}
+						bind:value={degreeValue}
+					/>
+
+					<TextInput 
+						label={m.firstName()}
+						name="name"
+						placeholder={m.enterName()}
+					/>
+				</div>
+
+				<div class="flex flex-row w-full gap-2">
+					<div class="grow"></div>
+					<Button
+						emoji="save-3"
+						btn="button-primary"
+					>
+						{m.update()}
+					</Button>
 				</div>
 			</WideCard>
 		</div>

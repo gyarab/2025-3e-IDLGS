@@ -16,7 +16,7 @@
 	class="
 	flex h-fit w-full
 	flex-col gap-2
-	overflow-hidden rounded-lg border-2 shadow
+	overflow-hidden rounded-lg border-2 shadow-xl hover:shadow-2xl
 	{cssParentOverride}
 	"
 	style="background-color: rgb({r} {g} {b} / 30%); border-color: rgb({r} {g} {b} / 30%);"

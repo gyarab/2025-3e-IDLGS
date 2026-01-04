@@ -44,6 +44,10 @@ export const user = pgTable('user', {
 	canCreateTextbooks: boolean('canCreateTextbooks').notNull().default(false),
 	canCreateCourses: boolean('canCreateCourses').notNull().default(false),
 	canCreateResin: boolean('canCreateResin').notNull().default(false),
+	//force good passwords
+	setPassword: boolean('setPassword').notNull().default(false),
+	//disable for teachers
+	dailyChallenges: boolean('dailyChallenges').notNull().default(true),
 });
 
 export const userVerification = pgTable('userVerification', {

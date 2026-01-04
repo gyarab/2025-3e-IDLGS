@@ -20,15 +20,27 @@
 				</p>
 			</div>
 			<div>
-				© Martin Bykov, Kira Stepanova, 2025-{new Date().getFullYear()}
+				© 
+				<a href="mailto:martin.bykov.s@gyarab.cz">Martin Bykov</a>,
+				<a href="mailto:kira.stepanova.s@gyarab.cz">Kira Stepanova</a>,
+				2025-{new Date().getFullYear()}
 			</div>
 			<div>
 				{m.allRightsReserved()}
 			</div>
 		</div>
 		<div>
+			<a href="/privacy">
+				<i class="ri-file-list-line"></i>
+				{m.privacyPolicy()}
+			</a>
+			<a href="/tos">
+				<i class="ri-file-list-fill"></i>
+				{m.termsOfService()}
+			</a>
+
 			<Button
-				btn="button-transparent"
+				btn="button-transparent justify-start! p-0!"
 				emoji="feedback"
 				onclick={() => {
 					showFeedbackModal = true;

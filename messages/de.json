@@ -203,5 +203,19 @@
 	"bachelorsDegree": "Bachelorabschluss",
 	"phdDegree": "Doktortitel",
 	"noDegree": "Kein Abschluss",
-	"degree": "Abschluss"
+	"degree": "Abschluss",
+	"update": "Aktualisieren",
+	"privacyPolicy": "Datenschutz-Bestimmungen",
+	"termsOfService": "Nutzungsbedingungen",
+	"setAPassword": "Passwort festlegen",
+	"setPassword": "Passwort festlegen",
+	"newPassword": "Neues Passwort",
+	"confirmPassword": "Passwort bestätigen",
+	"passwordsDoNotMatch": "Passwörter stimmen nicht überein",
+	"continue": "Weiter",
+	"passwordMustBeAtLeast10CharactersLong": "Das Passwort muss mindestens 10 Zeichen lang sein",
+	"passwordMustContainAnUppercaseLetter": "Das Passwort muss einen Großbuchstaben enthalten",
+	"passwordMustContainALowercaseLetter": "Das Passwort muss einen Kleinbuchstaben enthalten",
+	"passwordMustContainANumber": "Das Passwort muss eine Zahl enthalten",
+	"passwordMustContainASpecialCharacter": "Das Passwort muss ein Sonderzeichen enthalten"
 }

@@ -9,6 +9,9 @@
 		step: number;
 		selected: string;
 	} = $props();
+
+	//TODO write user email/name+surname, then search in DB using fetch after button click
+	//not with every character but timeout when character not written
 </script>
 
 <div class="flex w-full grow flex-col gap-2">
@@ -17,7 +20,9 @@
 			? m.addPeopleToCourse()
 			: m.addAuthorsToTextbook()}
 	</h2>
-	<div class="grow"></div>
+	<div class="flex flex-col gap-2 grow">
+
+	</div>
 	<NextPrevious
 		currentStep={selected == 'course' ? 4 : 3}
 		maxStep={selected == 'course' ? 5 : 4}

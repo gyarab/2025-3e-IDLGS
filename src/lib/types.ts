@@ -18,6 +18,8 @@ export type UserType = {
 	canCreateCourses: boolean;
 	canCreateTextbooks: boolean;
 	canCreateResin: boolean;
+	setPassword: boolean;
+	dailyChallenges: boolean;
 };
 
 export type TextbookType = {

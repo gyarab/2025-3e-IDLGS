@@ -44,3 +44,28 @@ export const ABOUT_ANIMATION_SECOND = {
 	x: 500,
 	opacity: 0,
 };
+
+export const checkPassword = (password: string): {
+	all: boolean;
+	length: boolean;
+	capital: boolean;
+	lowercase: boolean;
+	number: boolean;
+	special: boolean;
+} => {
+	//i love regex -MB
+	const length = password.length > 10;
+	const capital = /[A-Z]+/gu.test(password);
+	const lowercase = /[a-z]+/gu.test(password);
+	const number = /[0-9]+/gu.test(password);
+	const special =  /[^a-zA-Z0-9]+/gu.test(password);
+
+	return {
+		length,
+		capital,
+		lowercase,
+		number,
+		special,
+		all: length && capital && lowercase && number && special
+	}
+}

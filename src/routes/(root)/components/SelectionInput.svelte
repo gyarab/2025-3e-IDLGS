@@ -1,0 +1,26 @@
+<script lang="ts">
+
+	let {
+		names,
+		values,
+		value = $bindable("")
+	}: {
+		names: string[],
+		values: string[],
+		value: string
+	} = $props();
+
+</script>
+
+<div class="flex flex-row gap-0 *:first:rounded-s-2xl! *:last:rounded-e-2xl! *:rounded-none">
+	{#each values as v, i (v)}
+		<button 
+			onclick={() => {
+				value = v;
+			}}
+			class=""
+		>
+			{names[i]}
+		</button>
+	{/each}
+</div>

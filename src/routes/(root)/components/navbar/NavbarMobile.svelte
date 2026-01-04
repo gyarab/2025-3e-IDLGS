@@ -1,5 +1,4 @@
 <script lang="ts">
 </script>
 
-<div class="flex w-full print:hidden"></div>
-<nav></nav>
+<nav class="xl:hidden flex fixed bottom-0 left-0 z-50!"></nav>

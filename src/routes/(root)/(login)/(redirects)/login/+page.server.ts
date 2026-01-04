@@ -3,18 +3,14 @@ import {
 	USER_SESSION_LENGTH_REMEMBER,
 	validateTurnstile,
 } from '$lib/server/user/index.js';
-import { fail, redirect } from '@sveltejs/kit';
+import { fail } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
 import { schema } from '$lib/server/db/mainSchema';
 import { eq } from 'drizzle-orm';
 import { EMAIL_REGEX } from '$lib/server/user/index.js';
 import * as crypto from 'node:crypto';
 
-export const load = async (event) => {
-	if ((await event.parent()).user) {
-		redirect(303, '/home');
-	}
-};
+export const load = async () => {};
 
 export const actions = {
 	login: async (event) => {

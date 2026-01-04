@@ -8,7 +8,8 @@
 		label = '',
 		placeholder = '',
 		cssClass = '',
-		value = $bindable(''),
+		value = $bindable(''), 
+		children = undefined,
 	} = $props();
 </script>
 
@@ -50,5 +51,4 @@
 			</button>
 		</div>
 	</div>
-	<!-- TODO force good passwords -->
 </div>

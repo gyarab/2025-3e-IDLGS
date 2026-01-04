@@ -203,5 +203,19 @@
 	"mastersDegree": "Master's Degree",
 	"bachelorsDegree": "Bachelor's Degree",
 	"phdDegree": "PhD Degree",
-	"noDegree": "No Degree"
+	"noDegree": "No Degree",
+	"update": "Update",
+	"privacyPolicy": "Privacy Policy",
+	"termsOfService": "Terms of Service",
+	"setAPassword": "Set a Password",
+	"setPassword": "Set Password",
+	"newPassword": "New Password",
+	"confirmPassword": "Confirm Password",
+	"passwordsDoNotMatch": "Passwords do not match",
+	"continue": "Continue",
+	"passwordMustBeAtLeast10CharactersLong": "Password must be at least 10 characters long",
+	"passwordMustContainAnUppercaseLetter": "Password must contain an uppercase letter",
+	"passwordMustContainALowercaseLetter": "Password must contain a lowercase letter",
+	"passwordMustContainANumber": "Password must contain a number",
+	"passwordMustContainASpecialCharacter": "Password must contain a special character"
 }
