@@ -20,7 +20,7 @@
 				</p>
 			</div>
 			<div>
-				© 
+				©
 				<a href="mailto:martin.bykov.s@gyarab.cz">Martin Bykov</a>,
 				<a href="mailto:kira.stepanova.s@gyarab.cz">Kira Stepanova</a>,
 				2025-{new Date().getFullYear()}

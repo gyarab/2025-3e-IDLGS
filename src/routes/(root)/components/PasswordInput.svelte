@@ -8,7 +8,7 @@
 		label = '',
 		placeholder = '',
 		cssClass = '',
-		value = $bindable(''), 
+		value = $bindable(''),
 		children = undefined,
 	} = $props();
 </script>

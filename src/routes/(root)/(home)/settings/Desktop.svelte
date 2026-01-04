@@ -37,21 +37,25 @@
 						{m.personalInfo()}
 					</h3>
 
-					<input type="hidden" name="degree" bind:value={degreeValue} />
-					<SelectionInput 
+					<input
+						type="hidden"
+						name="degree"
+						bind:value={degreeValue}
+					/>
+					<SelectionInput
 						names={[]}
 						values={[]}
 						bind:value={degreeValue}
 					/>
 
-					<TextInput 
+					<TextInput
 						label={m.firstName()}
 						name="name"
 						placeholder={m.enterName()}
 					/>
 				</div>
 
-				<div class="flex flex-row w-full gap-2">
+				<div class="flex w-full flex-row gap-2">
 					<div class="grow"></div>
 					<Button
 						emoji="save-3"

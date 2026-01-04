@@ -10,23 +10,26 @@ export const sendMail = async (
 	target: string,
 ): Promise<boolean> => {
 	try {
-		const response = await event.fetch('https://notifications.martinbykov.eu/email', {
-			body: JSON.stringify({
-				sendkey: env.API_KEY_MAIL,
-				subject: subject,
-				message: message,
-				target: target,
-			}),
-			headers: {
-				'Content-Type': 'application/json'
+		const response = await event.fetch(
+			'https://notifications.martinbykov.eu/email',
+			{
+				body: JSON.stringify({
+					sendkey: env.API_KEY_MAIL,
+					subject: subject,
+					message: message,
+					target: target,
+				}),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				method: 'POST',
 			},
-			method: 'POST'
-		});
+		);
 
 		if (response.status < 300) return true;
 		else return false;
 	} catch (e) {
-		console.log("SendMail failed: ", JSON.stringify(e));
+		console.log('SendMail failed: ', JSON.stringify(e));
 		return false;
 	}
 };

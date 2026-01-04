@@ -1,7 +1,7 @@
 <script lang="ts">
 	let {
 		text,
-		completed
+		completed,
 	}: {
 		text: string;
 		completed: boolean;

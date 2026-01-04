@@ -6,7 +6,7 @@ export const load = async (event) => {
 	if (!user) {
 		redirect(303, '/login');
 	}
-	if(!user.setPassword) {
+	if (!user.setPassword) {
 		redirect(303, '/set');
 	}
 };

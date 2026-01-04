@@ -1,16 +1,16 @@
 <script lang="ts">
-	import type { UserType } from "$lib/types";
-	import type { Snippet } from "svelte";
-	import WordBackground from "../components/WordBackground.svelte";
+	import type { UserType } from '$lib/types';
+	import type { Snippet } from 'svelte';
+	import WordBackground from '../components/WordBackground.svelte';
 
 	let {
 		data,
-		children
+		children,
 	}: {
 		data: {
-			user: UserType
-		},
-		children: Snippet
+			user: UserType;
+		};
+		children: Snippet;
 	} = $props();
 </script>
 

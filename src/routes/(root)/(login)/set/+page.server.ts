@@ -9,5 +9,5 @@ export const actions = {
 		if (!user) return fail(401);
 
 		//TODO add form runner with lambda
-	}
+	},
 };
