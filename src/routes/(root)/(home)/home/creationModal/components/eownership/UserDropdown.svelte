@@ -1,26 +1,30 @@
 <script lang="ts">
-	import { m } from "$lib/paraglide/messages";
-	import type { UserType } from "$lib/types";
-	import LoadingAnimationHandler from "$src/routes/(root)/components/LoadingAnimationHandler.svelte";
-	import UserSelector from "./UserSelector.svelte";
+	import { m } from '$lib/paraglide/messages';
+	import type { UserType } from '$lib/types';
+	import LoadingAnimationHandler from '$src/routes/(root)/components/LoadingAnimationHandler.svelte';
+	import UserSelector from './UserSelector.svelte';
 
 	let {
-		usersList
+		usersList,
 	}: {
-		usersList: Promise<{ users: UserType[] }>
+		usersList: Promise<{ users: UserType[] }>;
 	} = $props();
 
 	$inspect(usersList);
 </script>
 
-<div class=" bottom-0 left-0 absolute translate-y-full not-group-focus-within:hidden bg-white rounded-lg p-2 w-full flex flex-col gap-2">
+<div
+	class=" absolute bottom-0 left-0 flex w-full translate-y-full flex-col gap-2 rounded-lg bg-white p-2 not-group-focus-within:hidden"
+>
 	{#await usersList}
 		<LoadingAnimationHandler />
 	{:then users}
 		{#each users.users as user (user.uuid)}
 			<UserSelector {user} />
 		{:else}
-			<div class="flex flex-col justify-center items-center w-full grow text-neutral-700 opacity-50">
+			<div
+				class="flex flex-col justify-center items-center w-full grow text-neutral-700 opacity-50"
+			>
 				{m.noUsersFound()}
 			</div>
 		{/each}

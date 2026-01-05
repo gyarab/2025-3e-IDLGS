@@ -1,14 +1,14 @@
 <script lang="ts">
-	import type { UserType } from "$lib/types";
+	import type { UserType } from '$lib/types';
 
 	let {
-		user
+		user,
 	}: {
-		user: UserType
+		user: UserType;
 	} = $props();
 </script>
 
-<div class="flex flex-row w-full gap-2 text-black!">
+<div class="flex w-full flex-row gap-2 text-black!">
 	<!-- TODO -->
 	{JSON.stringify(user)}
 </div>

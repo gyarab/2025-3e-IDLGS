@@ -17,7 +17,7 @@ export const formRunner = async (
 		event: RequestEvent,
 		formData: FormData,
 		cookies: Cookies,
-		user: UserType
+		user: UserType,
 	) => Promise<ActionFailure | unknown>,
 ) => {
 	const user = await getUser(event);
@@ -37,7 +37,7 @@ export const apiRunner = async (
 	runner: (
 		event: RequestEvent,
 		user: UserType,
-		requestData: unknown
+		requestData: unknown,
 	) => Promise<Response>,
 ) => {
 	const user = await getUser(event);

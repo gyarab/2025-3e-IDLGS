@@ -20,7 +20,7 @@
 
 	let secondsTimer: number = $state(0);
 	let secondsTimerInterval: NodeJS.Timeout | undefined = $state(undefined);
-	
+
 	let query: string = $state('');
 	let hasFetched = $derived(query.length == 0);
 	let lastKeystroke: number = $derived.by(() => {
@@ -46,7 +46,7 @@
 				const response = await fetch('/home/creationModal/userList/', {
 					method: 'POST',
 					body: JSON.stringify({
-						query: query
+						query: query,
 					}),
 					headers: {
 						'Content-Type': 'application/json',
@@ -54,7 +54,7 @@
 				});
 
 				usersList = response.json() as Promise<{ users: UserType[] }>;
-				hasFetched = true; 
+				hasFetched = true;
 			}
 
 			secondsTimer++;
