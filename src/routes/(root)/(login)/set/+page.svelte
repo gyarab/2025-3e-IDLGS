@@ -45,6 +45,7 @@
 
 		<PasswordInputValid
 			password={passwordValue}
+			rpassword={passwordRepeat}
 			bind:valid={passwordValid}
 		/>
 

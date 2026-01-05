@@ -217,5 +217,6 @@
 	"passwordMustContainAnUppercaseLetter": "Password must contain an uppercase letter",
 	"passwordMustContainALowercaseLetter": "Password must contain a lowercase letter",
 	"passwordMustContainANumber": "Password must contain a number",
-	"passwordMustContainASpecialCharacter": "Password must contain a special character"
+	"passwordMustContainASpecialCharacter": "Password must contain a special character",
+	"passwordsMustBeEqual": "Passwords must be equal"
 }

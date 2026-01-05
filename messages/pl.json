@@ -217,5 +217,6 @@
 	"passwordMustContainAnUppercaseLetter": "Hasło musi zawierać wielką literę",
 	"passwordMustContainALowercaseLetter": "Hasło musi zawierać małą literę",
 	"passwordMustContainANumber": "Hasło musi zawierać cyfrę",
-	"passwordMustContainASpecialCharacter": "Hasło musi zawierać znak specjalny"
+	"passwordMustContainASpecialCharacter": "Hasło musi zawierać znak specjalny",
+	"passwordsMustBeEqual": "Hasła muszą być takie same"
 }

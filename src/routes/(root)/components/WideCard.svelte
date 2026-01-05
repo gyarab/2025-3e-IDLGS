@@ -2,9 +2,9 @@
 	import { fly } from 'svelte/transition';
 
 	let {
-		r = 115,
-		g = 115,
-		b = 115,
+		r = 100,
+		g = 100,
+		b = 100,
 		delay = 0,
 		children,
 		cssOverride = '',

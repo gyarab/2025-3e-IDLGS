@@ -1,13 +1,18 @@
-import { getUser } from '$lib/server/user/index.js';
-import { fail } from '@sveltejs/kit';
+import { formRunner } from '$lib/server/form/runner.js';
+
 
 export const load = async () => {};
 
 export const actions = {
 	setPassword: async (event) => {
-		const user = await getUser(event);
-		if (!user) return fail(401);
+		await formRunner(
+			event, 
+			[], 
+			async () => {
 
-		//TODO add form runner with lambda
+			}
+		)
+
+		//TODO
 	},
 };

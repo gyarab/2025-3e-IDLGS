@@ -217,5 +217,6 @@
 	"passwordMustContainAnUppercaseLetter": "Пароль должен содержать заглавную букву",
 	"passwordMustContainALowercaseLetter": "Пароль должен содержать строчную букву",
 	"passwordMustContainANumber": "Пароль должен содержать цифру",
-	"passwordMustContainASpecialCharacter": "Пароль должен содержать специальный символ"
+	"passwordMustContainASpecialCharacter": "Пароль должен содержать специальный символ",
+	"passwordsMustBeEqual": "Пароли должны быть одинаковыми"
 }

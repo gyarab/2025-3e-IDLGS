@@ -5,9 +5,11 @@
 
 	let {
 		password,
+		rpassword,
 		valid = $bindable(false),
 	}: {
 		password: string;
+		rpassword: string;
 		valid: boolean;
 	} = $props();
 
@@ -16,6 +18,8 @@
 	$effect(() => {
 		valid = object.all;
 	});
+
+	let equal = $derived(password == rpassword);
 </script>
 
 <div
@@ -43,5 +47,9 @@
 	<PasswordInputValidItem
 		success={object.special}
 		text={m.passwordMustContainASpecialCharacter()}
+	/>
+	<PasswordInputValidItem
+		success={equal}
+		text={m.passwordsMustBeEqual()}
 	/>
 </div>

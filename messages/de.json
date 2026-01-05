@@ -217,5 +217,6 @@
 	"passwordMustContainAnUppercaseLetter": "Das Passwort muss einen Großbuchstaben enthalten",
 	"passwordMustContainALowercaseLetter": "Das Passwort muss einen Kleinbuchstaben enthalten",
 	"passwordMustContainANumber": "Das Passwort muss eine Zahl enthalten",
-	"passwordMustContainASpecialCharacter": "Das Passwort muss ein Sonderzeichen enthalten"
+	"passwordMustContainASpecialCharacter": "Das Passwort muss ein Sonderzeichen enthalten",
+	"passwordsMustBeEqual": "Passwörter müssen übereinstimmen"
 }
