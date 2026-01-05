@@ -18,7 +18,7 @@
 	let degreeValue = $derived(data.user.degree);
 </script>
 
-<div class="flex w-full grow flex-col items-center max-xl:hidden">
+<div class="flex w-full grow flex-col items-center max-xl:hidden gap-2">
 	{#await data.user}
 		<LoadingAnimationHandler />
 	{:then}
@@ -43,8 +43,8 @@
 						bind:value={degreeValue}
 					/>
 					<SelectionInput
-						names={[]}
-						values={[]}
+						names={[m.noDegree(), m.bachelorsDegree(), m.mastersDegree(), m.phdDegree()]}
+						values={["none", "bc", "mgr", "dr"]}
 						bind:value={degreeValue}
 					/>
 

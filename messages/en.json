@@ -218,5 +218,8 @@
 	"passwordMustContainALowercaseLetter": "Password must contain a lowercase letter",
 	"passwordMustContainANumber": "Password must contain a number",
 	"passwordMustContainASpecialCharacter": "Password must contain a special character",
-	"passwordsMustBeEqual": "Passwords must be equal"
+	"passwordsMustBeEqual": "Passwords must be equal",
+	"enterEmailNameOrSurnameOfUser": "Enter email, name, or surname of user",
+	"noUsersAddedYet": "No users added yet",
+	"noUsersFound": "No users found"
 }

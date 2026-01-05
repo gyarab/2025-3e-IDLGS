@@ -80,7 +80,7 @@
 >
 	<button
 		class="
-		flex w-full grow flex-col rounded-lg {padding} backdrop-blur hover:brightness-100!
+		gap-2 flex w-full grow flex-col rounded-lg {padding} backdrop-blur hover:brightness-100!
 		{hover ? 'hover:backdrop-brightness-120' : ''}
 		"
 		onclick={() => {

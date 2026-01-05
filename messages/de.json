@@ -218,5 +218,8 @@
 	"passwordMustContainALowercaseLetter": "Das Passwort muss einen Kleinbuchstaben enthalten",
 	"passwordMustContainANumber": "Das Passwort muss eine Zahl enthalten",
 	"passwordMustContainASpecialCharacter": "Das Passwort muss ein Sonderzeichen enthalten",
-	"passwordsMustBeEqual": "Passwörter müssen übereinstimmen"
+	"passwordsMustBeEqual": "Passwörter müssen übereinstimmen",
+	"enterEmailNameOrSurnameOfUser": "Geben Sie die E-Mail, den Namen oder den Nachnamen des Benutzers ein",
+	"noUsersAddedYet": "Noch keine Benutzer hinzugefügt",
+	"noUsersFound": "Keine Benutzer gefunden"
 }

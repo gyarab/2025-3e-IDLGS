@@ -218,5 +218,8 @@
 	"passwordMustContainALowercaseLetter": "Hasło musi zawierać małą literę",
 	"passwordMustContainANumber": "Hasło musi zawierać cyfrę",
 	"passwordMustContainASpecialCharacter": "Hasło musi zawierać znak specjalny",
-	"passwordsMustBeEqual": "Hasła muszą być takie same"
+	"passwordsMustBeEqual": "Hasła muszą być takie same",
+	"enterEmailNameOrSurnameOfUser": "Wprowadź e-mail, imię lub nazwisko użytkownika",
+	"noUsersAddedYet": "Jeszcze nie dodano użytkowników",
+	"noUsersFound": "Nie znaleziono użytkowników"
 }

@@ -36,4 +36,10 @@
 		/>
 	{/if}
 	{@render children?.()}
+	{#if flip && emoji.length > 0}
+		<HoverEmoji
+			{emoji}
+			{disabled}
+		/>
+	{/if}
 </button>

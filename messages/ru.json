@@ -218,5 +218,8 @@
 	"passwordMustContainALowercaseLetter": "Пароль должен содержать строчную букву",
 	"passwordMustContainANumber": "Пароль должен содержать цифру",
 	"passwordMustContainASpecialCharacter": "Пароль должен содержать специальный символ",
-	"passwordsMustBeEqual": "Пароли должны быть одинаковыми"
+	"passwordsMustBeEqual": "Пароли должны быть одинаковыми",
+	"enterEmailNameOrSurnameOfUser": "Введите электронную почту, имя или фамилию пользователя",
+	"noUsersAddedYet": "Пока нет добавленных пользователей",
+	"noUsersFound": "Пользователи не найдены"
 }

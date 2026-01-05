@@ -28,6 +28,8 @@
 	let green: number = $state(7);
 	let blue: number = $state(207);
 
+	let selectedUsers: string[] = $state([]);
+
 	//course only
 	let selectedTextbookUuid: string = $state('');
 
@@ -99,6 +101,7 @@
 			<Ownership
 				bind:step={stage}
 				{selected}
+				bind:selectedUsers
 			/>
 		{:else if stage == 5}
 			<Review

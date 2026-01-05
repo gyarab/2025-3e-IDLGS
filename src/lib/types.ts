@@ -22,6 +22,15 @@ export type UserType = {
 	dailyChallenges: boolean;
 };
 
+//for selection
+export type UserTypeLimited = {
+	uuid: string;
+	email: string;
+	name: string;
+	surname: string;
+	degree: string;
+};
+
 export type TextbookType = {
 	uuid: string;
 	description: string;

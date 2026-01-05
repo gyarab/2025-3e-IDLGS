@@ -23,7 +23,7 @@
 	in:fly|global={{ x: 0, y: 100, opacity: 0, duration: 500, delay: delay }}
 >
 	<div
-		class="flex w-full grow flex-col rounded-lg {cssOverride.length > 0
+		class="gap-2 flex w-full grow flex-col rounded-lg {cssOverride.length > 0
 			? cssOverride
 			: 'p-5'} backdrop-blur"
 	>

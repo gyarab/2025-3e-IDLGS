@@ -2,6 +2,8 @@
 	import { m } from '$lib/paraglide/messages';
 	import Form from '$component/Form.svelte';
 	import NextPrevious from '../components/NextPrevious.svelte';
+	import CourseCard from '../../components/CourseCard.svelte';
+	import TextbookCard from '../../components/TextbookCard.svelte';
 
 	let {
 		step = $bindable(0),

@@ -18,7 +18,7 @@
 			onclick={() => {
 				value = v;
 			}}
-			class=""
+			class="{value == v ? 'button-green' : 'button-violet'}"
 		>
 			{names[i]}
 		</button>

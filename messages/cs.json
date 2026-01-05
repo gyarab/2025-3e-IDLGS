@@ -218,5 +218,8 @@
 	"passwordMustContainALowercaseLetter": "Heslo musí obsahovat malé písmeno",
 	"passwordMustContainANumber": "Heslo musí obsahovat číslici",
 	"passwordMustContainASpecialCharacter": "Heslo musí obsahovat speciální znak",
-	"passwordsMustBeEqual": "Hesla musí být stejná"
+	"passwordsMustBeEqual": "Hesla musí být stejná",
+	"enterEmailNameOrSurnameOfUser": "Zadejte e-mail, jméno nebo příjmení uživatele",
+	"noUsersAddedYet": "Ještě nebyli přidáni žádní uživatelé",
+	"noUsersFound": "Nebyli nalezeni žádní uživatelé"
 }
