@@ -22,7 +22,7 @@
 	{delay}
 	{perspective}
 	{onclick}
-	css='w-[35svh] h-[35svh]'
+	css="w-[35svh] h-[35svh]"
 >
 	<div class="flex w-full grow flex-col">
 		<h2 class="w-full text-xl">{textbook.name}</h2>

@@ -7,10 +7,12 @@
 	let {
 		user = $bindable(),
 		removeHandler,
-		red, green, blue
+		red,
+		green,
+		blue,
 	}: {
 		user: UserTypeLimited;
-		removeHandler: () => void,
+		removeHandler: () => void;
 		red: number;
 		green: number;
 		blue: number;
@@ -20,27 +22,30 @@
 
 	const onRewriteSelectedValue = (newValue: string): void => {
 		valueInput = newValue;
-		switch(newValue) {
-			case 'editor': 
+		switch (newValue) {
+			case 'editor':
 				user.isEditor = true;
 				user.isOwner = false;
 				break;
-			case 'owner': 
+			case 'owner':
 				user.isEditor = true;
 				user.isOwner = true;
-				break;	
+				break;
 		}
 	};
 </script>
 
-<div class="flex w-full flex-row gap-1 text-white! rounded-2xl p-2 items-center" style="background-color: rgba({red}, {green}, {blue}, 0.7);">
+<div
+	class="flex w-full flex-row items-center gap-1 rounded-2xl p-2 text-white!"
+	style="background-color: rgba({red}, {green}, {blue}, 0.7);"
+>
 	{#if user.degree}
 		<span>{user.degree}</span>
 	{/if}
-	<span class="font-light text-xl">{user.name}</span>
-	<span class="font-medium text-xl">{user.surname}</span>
+	<span class="text-xl font-light">{user.name}</span>
+	<span class="text-xl font-medium">{user.surname}</span>
 	<div class="grow"></div>
-	<SelectionInput 
+	<SelectionInput
 		bind:value={() => valueInput, onRewriteSelectedValue}
 		values={['editor', 'owner']}
 		names={[m.editor(), m.owner()]}

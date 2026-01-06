@@ -4,7 +4,7 @@ import { getRequestEvent } from '$app/server';
 
 export const getSetting = async (key: string): Promise<string> => {
 	const db = getRequestEvent().locals.db;
-	
+
 	const value = await db
 		.select()
 		.from(schema.setting)
@@ -14,10 +14,7 @@ export const getSetting = async (key: string): Promise<string> => {
 	return value.length === 0 ? '' : value[0].value;
 };
 
-export const setSetting = async (
-	key: string,
-	value: string,
-): Promise<void> => {
+export const setSetting = async (key: string, value: string): Promise<void> => {
 	const db = getRequestEvent().locals.db;
 
 	//get count first

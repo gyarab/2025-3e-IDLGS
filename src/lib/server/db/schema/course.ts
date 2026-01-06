@@ -37,7 +37,7 @@ export const percentageGradeValue = pgTable(
 			.notNull(),
 		min: integer('min').notNull().default(0),
 		max: integer('max').notNull().default(0),
-		name: text('name').notNull()
+		name: text('name').notNull(),
 	},
 	(table) => [
 		check('percentageMin', sql`${table.min} >= 0`),

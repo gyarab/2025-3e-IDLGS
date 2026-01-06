@@ -3,9 +3,7 @@ import { schema } from '$lib/server/db/mainSchema';
 import { eq } from 'drizzle-orm';
 import { getRequestEvent } from '$app/server';
 
-export const loadCourses = async (
-	user: UserType,
-): Promise<CourseType[]> => {
+export const loadCourses = async (user: UserType): Promise<CourseType[]> => {
 	const db = getRequestEvent().locals.db;
 
 	return db

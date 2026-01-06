@@ -27,7 +27,7 @@
 	{delay}
 	{perspective}
 	{onclick}
-	css='w-[35svh] h-[35svh]'
+	css="w-[35svh] h-[35svh]"
 >
 	<div class="flex w-full grow flex-col gap-2 p-2 text-left">
 		<h2 class="w-full text-xl">{course.name}</h2>

@@ -21,19 +21,19 @@
 		courseGrades,
 		inviteCode,
 	}: {
-		step: number,
-		type: string,
-		name: string,
-		subject: string,
-		description: string,
-		red: number,
-		green: number,
-		blue: number,
-		selectedUsers: string[],
-		articleNames: string[],
-		chapterNames: string[],
-		courseGrades: CourseGradeType[],
-		inviteCode: string,
+		step: number;
+		type: string;
+		name: string;
+		subject: string;
+		description: string;
+		red: number;
+		green: number;
+		blue: number;
+		selectedUsers: string[];
+		articleNames: string[];
+		chapterNames: string[];
+		courseGrades: CourseGradeType[];
+		inviteCode: string;
 	} = $props();
 </script>
 
@@ -44,17 +44,16 @@
 >
 	<!-- inputs -->
 
-
 	<h2>{m.summary()}</h2>
-	<div class="grow flex flex-row">
+	<div class="flex grow flex-row">
 		<div></div>
-		<div class="flex flex-col justify-center items-center grow">
+		<div class="flex grow flex-col items-center justify-center">
 			{#if type == 'course'}
-				<CourseCard 
+				<CourseCard
 					perspective={true}
 					delay={100}
 					course={{
-						uuid: "none",
+						uuid: 'none',
 						name: name,
 						createdAt: new Date(),
 						modifiedAt: new Date(),
@@ -66,11 +65,11 @@
 					}}
 				/>
 			{:else}
-				<TextbookCard 
+				<TextbookCard
 					perspective={true}
 					delay={100}
 					textbook={{
-						uuid: "none",
+						uuid: 'none',
 						name: name,
 						createdAt: new Date(),
 						modifiedAt: new Date(),
@@ -79,7 +78,7 @@
 						blue: blue,
 						subject: subject,
 						description: description,
-						summary: "",
+						summary: '',
 					}}
 				/>
 			{/if}

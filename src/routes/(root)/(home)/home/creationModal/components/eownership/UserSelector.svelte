@@ -13,7 +13,7 @@
 <button
 	class="
 	flex w-full flex-row items-center gap-1
-	text-black! bg-white hover:brightness-80! active:brightness-60!
+	bg-white text-black! hover:brightness-80! active:brightness-60!
 "
 	onclick={() => {
 		output = user.uuid;

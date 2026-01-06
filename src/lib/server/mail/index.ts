@@ -40,7 +40,7 @@ export const sendMailToAllUsers = async (
 	subject: string,
 	message: string,
 	target: string,
-): Promise<boolean>  => {
+): Promise<boolean> => {
 	const event = getRequestEvent();
 
 	//TODO send mails to everyone in a for loop

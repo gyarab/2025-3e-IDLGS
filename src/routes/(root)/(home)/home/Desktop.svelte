@@ -45,7 +45,7 @@
 
 				<div class="h-[5vh] min-h-[5vh]"></div>
 
-				<div class="flex h-fit w-full flex-row gap-2 items-center">
+				<div class="flex h-fit w-full flex-row items-center gap-2">
 					<i class="ri-layout-grid-line"></i>
 					<h2 class="text-left">{m.coursesAndTextbooks()}</h2>
 					<div class="grow"></div>
@@ -106,7 +106,7 @@
 										blue: Math.random() * 100 + 125,
 										name: 'namam',
 										summary: '',
-										subject: 'ajnbl'
+										subject: 'ajnbl',
 									}}
 								/>
 							{/if}
