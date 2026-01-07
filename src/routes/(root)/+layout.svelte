@@ -16,7 +16,7 @@
 </svelte:head>
 
 <div
-	class="flex min-h-screen w-screen max-w-screen min-w-screen grow flex-col overflow-x-hidden overflow-y-scroll"
+	class="flex min-h-screen! min-w-screen! w-screen! max-w-screen! grow flex-col overflow-x-hidden overflow-y-scroll"
 >
 	{#if data.user}
 		<NavbarLoggedIn user={data.user} />

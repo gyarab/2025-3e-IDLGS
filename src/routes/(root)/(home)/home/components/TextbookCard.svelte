@@ -7,15 +7,18 @@
 		delay = 0,
 		perspective,
 		onclick = () => {},
+		disable = false,
 	}: {
 		textbook: TextbookType;
 		delay: number;
 		perspective: boolean;
 		onclick?: () => void;
+		disable?: boolean;
 	} = $props();
 </script>
 
 <Card
+	{disable}
 	r={textbook.red}
 	g={textbook.green}
 	b={textbook.blue}

@@ -228,5 +228,13 @@
 	"remove": "Remove",
 	"create": "Create",
 	"textbookSubject": "Textbook Subject",
-	"enterTextbookSubject": "Enter Textbook Subject"
+	"enterTextbookSubject": "Enter Textbook Subject",
+	"courseName": "Course Name",
+	"courseSubject": "Course Subject",
+	"courseDescription": "Course Description",
+	"courseInviteCode": "Course Invite Code",
+	"teacher": "Teacher",
+	"student": "Student",
+	"areYouSure": "Are you sure?",
+	"cancel": "Cancel"
 }

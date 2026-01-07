@@ -228,5 +228,13 @@
 	"remove": "Entfernen",
 	"create": "Erstellen",
 	"textbookSubject": "Lehrbuchfach",
-	"enterTextbookSubject": "Geben Sie das Lehrbuchfach ein"
+	"enterTextbookSubject": "Geben Sie das Lehrbuchfach ein",
+	"courseName": "Kursname",
+	"courseSubject": "Kurfach",
+	"courseDescription": "Kursbeschreibung",
+	"courseInviteCode": "Kurseinladungscode",
+	"teacher": "Lehrer",
+	"student": "Schüler",
+	"areYouSure": "Sind Sie sicher?",
+	"cancel": "Stornieren"
 }

@@ -228,5 +228,13 @@
 	"remove": "Удалить",
 	"create": "Создать",
 	"textbookSubject": "Предмет учебника",
-	"enterTextbookSubject": "Введите предмет учебника"
+	"enterTextbookSubject": "Введите предмет учебника",
+	"courseName": "Название курса",
+	"courseSubject": "Предмет курса",
+	"courseDescription": "Описание курса",
+	"courseInviteCode": "Код приглашения на курс",
+	"areYouSure": "Вы уверены?",
+	"teacher": "Учитель",
+	"student": "Студент",
+	"cancel": "Отмена"
 }

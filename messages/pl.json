@@ -228,5 +228,13 @@
 	"remove": "Usuń",
 	"create": "Utwórz",
 	"textbookSubject": "Przedmiot podręcznika",
-	"enterTextbookSubject": "Wprowadź przedmiot podręcznika"
+	"enterTextbookSubject": "Wprowadź przedmiot podręcznika",
+	"courseName": "Nazwa kursu",
+	"courseSubject": "Przedmiot kursu",
+	"courseDescription": "Opis kursu",
+	"courseInviteCode": "Kod zaproszenia na kurs",
+	"teacher": "Nauczyciel",
+	"student": "Uczeń",
+	"areYouSure": "Czy jesteś pewien?",
+	"cancel": "Anuluj"
 }

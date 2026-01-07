@@ -5,7 +5,7 @@
 	import TextInput from '$src/routes/(root)/components/TextInput.svelte';
 	import { onDestroy, onMount } from 'svelte';
 	import NextPrevious from '../components/NextPrevious.svelte';
-	import type { UserTypeLimited } from '$lib/types';
+	import type { UserRoleType, UserTypeLimited } from '$lib/types';
 	import User from '../components/eownership/User.svelte';
 	import UserDropdown from '../components/eownership/UserDropdown.svelte';
 	import { untrack } from 'svelte';
@@ -15,16 +15,20 @@
 		selected,
 		//uuids of users
 		selectedUsers = $bindable([]),
+		selectedUserRoles = $bindable([]),
 		red,
 		green,
 		blue,
+		type,
 	}: {
 		step: number;
 		selected: string;
 		selectedUsers: string[];
+		selectedUserRoles: UserRoleType[];
 		red: number;
 		green: number;
 		blue: number;
+		type: string;
 	} = $props();
 
 	let ticksCounter: number = $state(0);
@@ -87,6 +91,11 @@
 
 	const onRewriteSelectedUser = (newValue: string) => {
 		selectedUsers.push(newValue);
+		selectedUserRoles.push({
+			isEditor: false,
+			isTeacher: false,
+			isOwner: false,
+		});
 	};
 </script>
 
@@ -117,12 +126,16 @@
 						{red}
 						{green}
 						{blue}
-						removeHandler={() => {
-							selectedUsers.splice(
-								selectedUsers.indexOf(user.uuid),
-								1,
-							);
+						roleHandler={(roles: UserRoleType, uuid: string) => {
+							const id = selectedUsers.indexOf(uuid);
+							selectedUserRoles[id] = { ...roles };
 						}}
+						removeHandler={(uuid: string) => {
+							const id = selectedUsers.indexOf(uuid);
+							selectedUsers.splice(id, 1);
+							selectedUserRoles.splice(id, 1);
+						}}
+						{type}
 					/>
 				{:else}
 					<div

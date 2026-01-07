@@ -38,10 +38,10 @@
 	}
 	/* .button == button */
 	button {
-		@apply flex flex-row items-center justify-center gap-1 rounded-lg p-3 font-medium hover:brightness-80 active:brightness-60 disabled:brightness-60;
+		@apply flex flex-row items-center justify-center gap-1 rounded-lg lg:p-3 max-lg:p-2 font-medium hover:brightness-80 active:brightness-60 disabled:brightness-60;
 	}
 	.button {
-		@apply flex flex-row items-center justify-center gap-1 rounded-lg p-3 font-medium hover:brightness-80 active:brightness-60 disabled:brightness-60;
+		@apply flex flex-row items-center justify-center gap-1 rounded-lg lg:p-3 max-lg:p-2 font-medium hover:brightness-80 active:brightness-60 disabled:brightness-60;
 	}
 	.button-none {
 		@apply gap-1 p-0!;

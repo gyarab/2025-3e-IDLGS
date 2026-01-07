@@ -228,5 +228,13 @@
 	"remove": "Odebrat",
 	"create": "Vytvořit",
 	"textbookSubject": "Předmět učebnice",
-	"enterTextbookSubject": "Zadejte předmět učebnice"
+	"enterTextbookSubject": "Zadejte předmět učebnice",
+	"courseName": "Název kurzu",
+	"courseSubject": "Předmět kurzu",
+	"courseDescription": "Popis kurzu",
+	"courseInviteCode": "Kód pozvánky do kurzu",
+	"teacher": "Učitel",
+	"student": "Student",
+	"areYouSure": "Jste si jisti?",
+	"cancel": "Zrušit"
 }

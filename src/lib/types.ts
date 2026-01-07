@@ -24,15 +24,22 @@ export type UserType = {
 	dailyChallenges: boolean;
 };
 
+export type UserRoleType = {
+	//textbook
+	isEditor?: boolean;
+	//course
+	isTeacher?: boolean;
+	//both
+	isOwner?: boolean;
+};
+
 //for selection
-export type UserTypeLimited = {
+export type UserTypeLimited = UserRoleType & {
 	uuid: string;
 	email: string;
 	name: string;
 	surname: string;
 	degree: string;
-	isEditor?: boolean;
-	isOwner?: boolean;
 };
 
 //Textbooks

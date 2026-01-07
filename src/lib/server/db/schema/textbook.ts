@@ -1,4 +1,5 @@
-import { pgTable, text, integer, timestamp } from 'drizzle-orm/pg-core';
+import { pgTable, text, integer, timestamp, check } from 'drizzle-orm/pg-core';
+import { sql } from 'drizzle-orm';
 
 export const textbook = pgTable('textbook', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
@@ -18,7 +19,14 @@ export const textbook = pgTable('textbook', {
 		.notNull()
 		.$defaultFn(() => new Date()),
 	subject: text('subject').notNull(),
-});
+}, (table) => [
+	check('redMinCheck', sql`${table.red} >= 0`),
+	check('redMaxCheck', sql`${table.red} <= 255`),
+	check('greenMinCheck', sql`${table.green} >= 0`),
+	check('greenMaxCheck', sql`${table.green} <= 255`),
+	check('blueMinCheck', sql`${table.blue} >= 0`),
+	check('blueMaxCheck', sql`${table.blue} <= 255`),
+]);
 
 export const chapter = pgTable('chapter', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),

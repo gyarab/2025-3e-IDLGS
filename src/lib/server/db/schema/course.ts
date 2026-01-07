@@ -65,7 +65,14 @@ export const course = pgTable('course', {
 	uuid: text('uuid')
 		.notNull()
 		.$defaultFn(() => crypto.randomUUID()),
-});
+}, (table) => [
+		check('redMinCheck', sql`${table.red} >= 0`),
+		check('redMaxCheck', sql`${table.red} <= 255`),
+		check('greenMinCheck', sql`${table.green} >= 0`),
+		check('greenMaxCheck', sql`${table.green} <= 255`),
+		check('blueMinCheck', sql`${table.blue} >= 0`),
+		check('blueMaxCheck', sql`${table.blue} <= 255`),
+	]);
 
 export const assignment = pgTable('assignment', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),

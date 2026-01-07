@@ -1,37 +1,55 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
-	import type { UserTypeLimited } from '$lib/types';
+	import type { UserTypeLimited, UserRoleType } from '$lib/types';
 	import Button from '$src/routes/(root)/components/Button.svelte';
 	import SelectionInput from '$src/routes/(root)/components/SelectionInput.svelte';
 
 	let {
-		user = $bindable(),
+		user,
 		removeHandler,
+		roleHandler,
 		red,
 		green,
 		blue,
+		type,
 	}: {
 		user: UserTypeLimited;
-		removeHandler: () => void;
+		removeHandler: (uuid: string) => void;
+		roleHandler: (roles: UserRoleType, uuid: string) => void;
 		red: number;
 		green: number;
 		blue: number;
+		type: string;
 	} = $props();
 
 	let valueInput: string = $state('editor');
 
 	const onRewriteSelectedValue = (newValue: string): void => {
 		valueInput = newValue;
+		let object: UserRoleType = {
+			isEditor: false,
+			isTeacher: false,
+			isOwner: false,
+		};
 		switch (newValue) {
+			case 'teacher':
+				object.isEditor = false;
+				object.isTeacher = true;
+				object.isOwner = false;
+				break;
 			case 'editor':
-				user.isEditor = true;
-				user.isOwner = false;
+				object.isEditor = true;
+				object.isTeacher = false;
+				object.isOwner = false;
 				break;
 			case 'owner':
-				user.isEditor = true;
-				user.isOwner = true;
+				object.isEditor = true;
+				object.isTeacher = true;
+				object.isOwner = true;
 				break;
 		}
+
+		roleHandler(object, user.uuid);
 	};
 </script>
 
@@ -47,15 +65,15 @@
 	<div class="grow"></div>
 	<SelectionInput
 		bind:value={() => valueInput, onRewriteSelectedValue}
-		values={['editor', 'owner']}
-		names={[m.editor(), m.owner()]}
+		values={(type == 'course') ? ['none', 'teacher', 'owner'] : ['none', 'editor', 'owner']}
+		names={(type == 'course') ? [m.student(), m.teacher(), m.owner()] : [m.user(), m.editor(), m.owner()]}
 	/>
 	<div></div>
 	<Button
 		btn="button-white"
 		emoji="delete-bin"
 		onclick={() => {
-			removeHandler();
+			removeHandler(user.uuid);
 		}}
 	>
 		{m.remove()}
