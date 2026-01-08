@@ -236,5 +236,7 @@
 	"areYouSure": "Вы уверены?",
 	"teacher": "Учитель",
 	"student": "Студент",
-	"cancel": "Отмена"
+	"cancel": "Отмена",
+	"userManagement": "Управление пользователями",
+	"websiteSettings": "Настройки сайта"
 }

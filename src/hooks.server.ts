@@ -43,7 +43,7 @@ const handleDatabase: Handle = async ({ event, resolve }) => {
 		postgres(event.platform?.env.HYPERDRIVE.connectionString as string, {
 			prepare: false,
 			max: 1,
-			max_lifetime: 60,
+			max_lifetime: 1,
 		}),
 		{ schema: schema },
 	);

@@ -236,5 +236,7 @@
 	"teacher": "Teacher",
 	"student": "Student",
 	"areYouSure": "Are you sure?",
-	"cancel": "Cancel"
+	"cancel": "Cancel",
+	"userManagement": "User Management",
+	"websiteSettings": "Website Settings"
 }

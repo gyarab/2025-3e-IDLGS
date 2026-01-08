@@ -236,5 +236,7 @@
 	"teacher": "Lehrer",
 	"student": "Schüler",
 	"areYouSure": "Sind Sie sicher?",
-	"cancel": "Stornieren"
+	"cancel": "Stornieren",
+	"userManagement": "Benutzerverwaltung",
+	"websiteSettings": "Website-Einstellungen"
 }

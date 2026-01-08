@@ -236,5 +236,7 @@
 	"teacher": "Učitel",
 	"student": "Student",
 	"areYouSure": "Jste si jisti?",
-	"cancel": "Zrušit"
+	"cancel": "Zrušit",
+	"userManagement": "Správa uživatelů",
+	"websiteSettings": "Nastavení webu"
 }
