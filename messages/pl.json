@@ -238,5 +238,6 @@
 	"areYouSure": "Czy jesteś pewien?",
 	"cancel": "Anuluj",
 	"userManagement": "Zarządzanie użytkownikami",
-	"websiteSettings": "Ustawienia strony internetowej"
+	"websiteSettings": "Ustawienia strony internetowej",
+	"incorrectCredentials": "Nieprawidłowe dane uwierzytelniające"
 }

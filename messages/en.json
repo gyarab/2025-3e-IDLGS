@@ -238,5 +238,6 @@
 	"areYouSure": "Are you sure?",
 	"cancel": "Cancel",
 	"userManagement": "User Management",
-	"websiteSettings": "Website Settings"
+	"websiteSettings": "Website Settings",
+	"incorrectCredentials": "Incorrect Credentials"
 }

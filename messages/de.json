@@ -238,5 +238,6 @@
 	"areYouSure": "Sind Sie sicher?",
 	"cancel": "Stornieren",
 	"userManagement": "Benutzerverwaltung",
-	"websiteSettings": "Website-Einstellungen"
+	"websiteSettings": "Website-Einstellungen",
+	"incorrectCredentials": "Falsche Anmeldedaten"
 }

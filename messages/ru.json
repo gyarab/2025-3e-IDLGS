@@ -238,5 +238,6 @@
 	"student": "Студент",
 	"cancel": "Отмена",
 	"userManagement": "Управление пользователями",
-	"websiteSettings": "Настройки сайта"
+	"websiteSettings": "Настройки сайта",
+	"incorrectCredentials": "Неверные учетные данные"
 }

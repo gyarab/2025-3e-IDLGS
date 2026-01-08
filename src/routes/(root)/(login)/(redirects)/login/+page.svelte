@@ -8,8 +8,10 @@
 	import { getLocale } from '$lib/paraglide/runtime';
 	import Card from '../../../components/Card.svelte';
 	import Form from '../../../components/Form.svelte';
+	import AlertBox from '$src/routes/(root)/components/AlertBox.svelte';
 
 	let ready = $state(false);
+	let formMessage = $state("");
 
 	onMount(() => {
 		ready = true;
@@ -43,6 +45,10 @@
 	</title>
 </svelte:head>
 
+<AlertBox 
+	bind:message={formMessage}
+/>
+
 {#if ready}
 	<div
 		class="relative flex w-full grow flex-col items-center justify-center gap-2 p-10"
@@ -53,7 +59,12 @@
 			forceSquare={false}
 			padding="p-3"
 		>
-			<Form action="?/login">
+			<Form 
+				action="?/login"
+				failure={async () => {
+					formMessage = m.incorrectCredentials();
+				}}
+			>
 				<h2 class="w-full text-left text-white">{m.login()}</h2>
 
 				<input

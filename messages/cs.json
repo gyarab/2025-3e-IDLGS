@@ -238,5 +238,6 @@
 	"areYouSure": "Jste si jisti?",
 	"cancel": "Zrušit",
 	"userManagement": "Správa uživatelů",
-	"websiteSettings": "Nastavení webu"
+	"websiteSettings": "Nastavení webu",
+	"incorrectCredentials": "Nesprávné přihlašovací údaje"
 }
