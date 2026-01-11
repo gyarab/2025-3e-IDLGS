@@ -57,6 +57,9 @@ export const createUser = async (
 	textbooks: boolean,
 	courses: boolean,
 	resin: boolean,
+	settings: boolean,
+	editgamification: boolean,
+	gamification: boolean,
 ): Promise<UserType> => {
 	const db = getRequestEvent().locals.db;
 
@@ -79,6 +82,9 @@ export const createUser = async (
 				canCreateCourses: courses,
 				canCreateTextbooks: textbooks,
 				canCreateResin: resin,
+				canChangeSettings: settings,
+				canEditGamification: editgamification,
+				gamification: gamification,
 			})
 			.returning()
 	)[0];

@@ -21,7 +21,8 @@ export type UserType = {
 	canCreateTextbooks: boolean;
 	canCreateResin: boolean;
 	setPassword: boolean;
-	dailyChallenges: boolean;
+	gamification: boolean;
+	canChangeSettings: boolean;
 };
 
 export type UserRoleType = {

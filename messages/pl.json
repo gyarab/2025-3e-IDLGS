@@ -239,5 +239,16 @@
 	"cancel": "Anuluj",
 	"userManagement": "Zarządzanie użytkownikami",
 	"websiteSettings": "Ustawienia strony internetowej",
-	"incorrectCredentials": "Nieprawidłowe dane uwierzytelniające"
+	"incorrectCredentials": "Nieprawidłowe dane uwierzytelniające",
+	"youCannotChangeYourPersonalInformation": "Nie możesz zmienić swoich danych osobowych",
+	"askTheAdministatorForSupport": "Poproś administratora o pomoc",
+	"backgroundNameaFreshMorning": "\"Świeży poranek\"",
+	"backgroundNameinspiration": "\"Inspiracja\"",
+	"systemLanguage": "Język systemu",
+	"gamification": "Grywalizacja",
+	"accountManagement": "Zarządzanie kontem",
+	"deleteAccount": "Usuń konto",
+	"deletingYourAccountIsAnIrreversibleAction": "Usunięcie konta jest nieodwracalną czynnością.",
+	"resetStreak": "Zresetuj serię",
+	"resettingYourStreakIsAnIrreversibleAction": "Zresetowanie serii jest nieodwracalną czynnością."
 }

@@ -29,13 +29,6 @@
 	>
 		<Logo whiteBackground={false} />
 
-		<LangDropdown
-			css="button-transparent"
-			cssLocal={''}
-			cssSelector={'text-violet-800 hover:text-emerald-600 bg-white hover:bg-emerald-600 hover:text-white'}
-			bind:langValue={value}
-		/>
-
 		<a href="/home/">
 			<HoverEmoji emoji="home-5" />
 			{m.home()}
@@ -72,7 +65,7 @@
 
 		<a href="/settings/">
 			<HoverEmoji emoji="user-3" />
-			{#if user.degree.length > 0}
+			{#if user.degree != 'none'}
 				<span>{user.degree}</span>
 			{/if}
 			<span>{user.name}</span>

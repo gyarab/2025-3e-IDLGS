@@ -10,9 +10,10 @@
 
 <Modal
 	bind:showModal
-	{cssClass}
+	cssClass="{cssClass} h-fit bg-neutral-500/70 backdrop-blur-2xl border-neutral-500 border-2"
+	maxHeight={false}
 >
-	<div class="flex w-full grow flex-col">
+	<div class="flex w-full grow flex-col gap-2">
 		<h2>{m.areYouSure()}</h2>
 		<p class="w-full">{text}</p>
 		<div class="grid w-full grid-cols-2 gap-4">
@@ -24,7 +25,7 @@
 				{m.delete()}
 			</Button>
 			<Button
-				emoji="check"
+				emoji="close"
 				btn="button-violet"
 				type="button"
 			>

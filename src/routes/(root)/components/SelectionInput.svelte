@@ -5,8 +5,8 @@
 		value = $bindable(''),
 	}: {
 		names: string[];
-		values: string[];
-		value: string;
+		values: unknown[];
+		value: unknown;
 	} = $props();
 </script>
 

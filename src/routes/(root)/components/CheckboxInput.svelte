@@ -1,10 +1,9 @@
 <script lang="ts">
 	let {
 		cssClass = 'w-full',
-		value = $bindable(''),
+		checked = $bindable(false),
 		label = '',
 		name = '',
-		placeholder = '',
 	} = $props();
 </script>
 
@@ -13,10 +12,9 @@
 		<span class="text-nowrap">{label}:</span>
 	{/if}
 	<input
-		type="text"
-		bind:value
+		type="checkbox"
+		bind:checked
 		{name}
-		class="input-text grow"
-		{placeholder}
+		class="input-checkbox grow"
 	/>
 </div>

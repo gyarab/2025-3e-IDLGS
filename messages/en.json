@@ -239,5 +239,16 @@
 	"cancel": "Cancel",
 	"userManagement": "User Management",
 	"websiteSettings": "Website Settings",
-	"incorrectCredentials": "Incorrect Credentials"
+	"incorrectCredentials": "Incorrect Credentials",
+	"youCannotChangeYourPersonalInformation": "You cannot change your personal information",
+	"askTheAdministatorForSupport": "Ask the Administator for Support",
+	"backgroundNameaFreshMorning": "\"A Fresh Morning\"",
+	"backgroundNameinspiration": "\"Inspiration\"",
+	"systemLanguage": "System Language",
+	"gamification": "Gamification",
+	"accountManagement": "Account Management",
+	"deleteAccount": "Delete Account",
+	"deletingYourAccountIsAnIrreversibleAction": "Deleting your account is an irreversible action.",
+	"resetStreak": "Reset Streak",
+	"resettingYourStreakIsAnIrreversibleAction": "Resetting your streak is an irreversible action."
 }

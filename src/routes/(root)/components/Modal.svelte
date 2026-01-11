@@ -7,6 +7,7 @@
 		showModal = $bindable(),
 		cssClass = '',
 		cssStyle = '',
+		maxHeight = true,
 	} = $props();
 	let dialog: HTMLDialogElement | undefined = $state();
 	let clickable: HTMLDivElement | undefined = $state();
@@ -34,8 +35,8 @@
 					showModal = false;
 				}
 			}}
-			class="backdrop:black/70 min-h-screen w-screen max-w-screen
-		min-w-screen"
+			class="min-h-screen w-screen max-w-screen
+		min-w-screen backdrop-brightness-50"
 		>
 			<div
 				class="flex min-h-screen w-full grow flex-col items-center justify-center"
@@ -43,9 +44,9 @@
 				<div
 					bind:this={clickable}
 					class="
-				{cssClass
-						? cssClass
-						: 'bg-white!'} mt-5 mb-5 flex max-w-4/5 grow flex-col rounded-2xl text-left text-white max-xl:h-screen max-xl:w-screen max-xl:min-w-9/10 xl:max-h-[66svh] xl:min-w-2/3 xl:p-5
+						{cssClass ? cssClass : 'bg-white!'} 
+						{maxHeight ? 'max-xl:h-screen grow' : ''}
+						mt-5 mb-5 flex max-w-4/5 flex-col rounded-2xl text-left text-white max-xl:w-screen max-xl:min-w-9/10 xl:max-h-[66svh] xl:min-w-2/3 xl:p-5
 			"
 					style={cssStyle}
 				>

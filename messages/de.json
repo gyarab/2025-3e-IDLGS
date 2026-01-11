@@ -239,5 +239,16 @@
 	"cancel": "Stornieren",
 	"userManagement": "Benutzerverwaltung",
 	"websiteSettings": "Website-Einstellungen",
-	"incorrectCredentials": "Falsche Anmeldedaten"
+	"incorrectCredentials": "Falsche Anmeldedaten",
+	"youCannotChangeYourPersonalInformation": "Sie können Ihre persönlichen Informationen nicht ändern",
+	"askTheAdministatorForSupport": "Bitten Sie den Administrator um Unterstützung",
+	"backgroundNameaFreshMorning": "\"Ein frischer Morgen\"",
+	"backgroundNameinspiration": "\"Inspiration\"",
+	"systemLanguage": "Systemsprache",
+	"gamification": "Gamification",
+	"accountManagement": "Kontoverwaltung",
+	"deleteAccount": "Konto löschen",
+	"deletingYourAccountIsAnIrreversibleAction": "Das Löschen Ihres Kontos ist eine unwiderrufliche Aktion.",
+	"resetStreak": "Serie zurücksetzen",
+	"resettingYourStreakIsAnIrreversibleAction": "Das Zurücksetzen Ihrer Serie ist eine unwiderrufliche Aktion."
 }

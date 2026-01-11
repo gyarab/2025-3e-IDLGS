@@ -239,5 +239,15 @@
 	"cancel": "Отмена",
 	"userManagement": "Управление пользователями",
 	"websiteSettings": "Настройки сайта",
-	"incorrectCredentials": "Неверные учетные данные"
+	"incorrectCredentials": "Неверные учетные данные",
+	"youCannotChangeYourPersonalInformation": "Вы не можете изменить свою личную информацию",
+	"askTheAdministatorForSupport": "Обратитесь за поддержкой к администратору",
+	"backgroundNameaFreshMorning": "\"Свежее утро\"",
+	"backgroundNameinspiration": "\"Вдохновение\"",
+	"systemLanguage": "Язык системы",
+	"gamification": "Геймификация",
+	"accountManagement": "Управление аккаунтом",
+	"deleteAccount": "Удалить аккаунт",
+	"deletingYourAccountIsAnIrreversibleAction": "Удаление вашего аккаунта является необратимым действием.",
+	"resettingYourStreakIsAnIrreversibleAction": "Сброс вашей серии является необратимым действием."
 }

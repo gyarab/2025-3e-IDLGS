@@ -73,3 +73,13 @@ export const checkPassword = (
 };
 
 export const MAX_TEXTBOOK_LETTERS = 50;
+
+//TODO enable for modals
+export const enableScroll = () => {
+
+}
+
+export const disableScroll = () => {
+
+}
+

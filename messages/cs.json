@@ -239,5 +239,16 @@
 	"cancel": "Zrušit",
 	"userManagement": "Správa uživatelů",
 	"websiteSettings": "Nastavení webu",
-	"incorrectCredentials": "Nesprávné přihlašovací údaje"
+	"incorrectCredentials": "Nesprávné přihlašovací údaje",
+	"youCannotChangeYourPersonalInformation": "Nemůžete změnit své osobní informace",
+	"askTheAdministatorForSupport": "Požádejte o podporu administrátora",
+	"backgroundNameaFreshMorning": "\"Čerstvé ráno\"",
+	"backgroundNameinspiration": "\"Inspirace\"",
+	"systemLanguage": "Jazyk systému",
+	"gamification": "Gamifikace",
+	"accountManagement": "Správa účtu",
+	"deleteAccount": "Smazat účet",
+	"deletingYourAccountIsAnIrreversibleAction": "Smazání vašeho účtu je nevratná akce.",
+	"resetStreak": "Resetovat streak",
+	"resettingYourStreakIsAnIrreversibleAction": "Resetování vašeho streaku je nevratná akce."
 }

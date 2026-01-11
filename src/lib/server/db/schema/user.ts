@@ -25,7 +25,7 @@ export const user = pgTable('user', {
 			() =>
 				`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
 		),
-	lang: text('lang').notNull().default('en'),
+	lang: text('lang').notNull().default('any'),
 	streak: integer('streak').notNull().default(0),
 	verified: boolean('verified').notNull().default(false),
 	extended: boolean('extended').notNull().default(false),
@@ -47,7 +47,9 @@ export const user = pgTable('user', {
 	//force good passwords
 	setPassword: boolean('setPassword').notNull().default(false),
 	//disable for teachers
-	dailyChallenges: boolean('dailyChallenges').notNull().default(true),
+	gamification: boolean('gamification').notNull().default(true),
+	canEditGamification: boolean('canEditGamification').notNull().default(true),
+	canChangeSettings: boolean('canChangeSettings').notNull().default(true),
 });
 
 export const userVerification = pgTable('userVerification', {
