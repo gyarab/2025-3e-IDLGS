@@ -4,18 +4,15 @@
 	import LoadingAnimationHandler from '../../components/LoadingAnimationHandler.svelte';
 	import WideCard from '../../components/WideCard.svelte';
 	import TextInput from '../../components/TextInput.svelte';
-	import SelectionInput from '../../components/SelectionInput.svelte';
-	import DateInput from '../../components/DateInput.svelte';
 	import ButtonRow from './components/ButtonRow.svelte';
 	import SelectionRow from './components/SelectionRow.svelte';
 	import { locales } from '$lib/paraglide/runtime';
-	import CheckboxInput from '../../components/CheckboxInput.svelte';
 	import CheckboxRow from './components/CheckboxRow.svelte';
 	import Form from '../../components/Form.svelte';
-	import Button from '../../components/Button.svelte';
 	import DeleteRow from './components/DeleteRow.svelte';
 	import DisallowedMessage from './components/DisallowedMessage.svelte';
 	import StreakResetRow from './components/StreakResetRow.svelte';
+	import DateRow from './components/DateRow.svelte';
 
 	let {
 		data,
@@ -74,10 +71,13 @@
 								value={data.user.surname}
 								cssClass="text-lg"
 							/>
-							<DateInput 
+							<DateRow 
+								label={m.birthDate()}
+								nameDay="day"
+								nameMonth="month"
+								nameYear="year"
+								value={data.user.birthday}
 								cssClass="text-lg"
-
-
 							/>
 						</div>
 
@@ -93,9 +93,10 @@
 			<div class="h-[5vh] min-h-[5vh]"></div>
 			<WideCard>
 				<Form
-					action={data.user.gamification
-						? '?/editPersonalizationGame'
-						: '?/editPersonalization'}
+					action='?/editPersonalization'
+					success={async () => {
+						window.location.href = window.location.href;
+					}}
 				>
 					<h3 class="w-full text-left">
 						<i class="ri-eye-2-line"></i>
@@ -126,7 +127,7 @@
 						name="lang"
 					/>
 
-					{#if data.user.gamification}
+					{#if data.user.canEditGamification}
 						<CheckboxRow
 							initialValue={data.user.gamification}
 							name="daily"

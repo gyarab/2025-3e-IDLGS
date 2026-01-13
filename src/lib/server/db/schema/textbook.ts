@@ -55,3 +55,9 @@ export const article = pgTable('article', {
 	name: text('name').notNull(),
 	text: text('text').notNull(),
 });
+
+export const textbookWordDefinition = pgTable('textbookWordDefinition', {
+	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
+	word: text('word').notNull(),
+	description: text('description').notNull(),
+})

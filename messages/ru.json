@@ -249,5 +249,19 @@
 	"accountManagement": "Управление аккаунтом",
 	"deleteAccount": "Удалить аккаунт",
 	"deletingYourAccountIsAnIrreversibleAction": "Удаление вашего аккаунта является необратимым действием.",
-	"resettingYourStreakIsAnIrreversibleAction": "Сброс вашей серии является необратимым действием."
+	"resettingYourStreakIsAnIrreversibleAction": "Сброс вашей серии является необратимым действием.",
+	"january": "Январь",
+	"february": "Февраль",
+	"march": "Март",
+	"april": "Апрель",
+	"may": "Май",
+	"june": "Июнь",	
+	"july": "Июль",
+	"august": "Август",
+	"september": "Сентябрь",
+	"october": "Октябрь",
+	"november": "Ноябрь",
+	"december": "Декабрь",
+	"youHaveUnsavedChanges": "У вас есть несохраненные изменения!",
+	"resetStreak": "Сбросить серию"
 }

@@ -250,5 +250,18 @@
 	"deleteAccount": "Konto löschen",
 	"deletingYourAccountIsAnIrreversibleAction": "Das Löschen Ihres Kontos ist eine unwiderrufliche Aktion.",
 	"resetStreak": "Serie zurücksetzen",
-	"resettingYourStreakIsAnIrreversibleAction": "Das Zurücksetzen Ihrer Serie ist eine unwiderrufliche Aktion."
+	"resettingYourStreakIsAnIrreversibleAction": "Das Zurücksetzen Ihrer Serie ist eine unwiderrufliche Aktion.",
+	"january": "Januar",
+	"february": "Februar",
+	"march": "März",
+	"april": "April",
+	"may": "Mai",
+	"june": "Juni",
+	"july": "Juli",
+	"august": "August",
+	"september": "September",
+	"october": "Oktober",
+	"november": "November",
+	"december": "Dezember",
+	"youHaveUnsavedChanges": "Sie haben ungespeicherte Änderungen!"
 }

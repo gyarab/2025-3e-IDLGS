@@ -72,7 +72,7 @@
 	<div
 		class="
 	flex {forceSquare ? 'aspect-square' : ''} w-full grow
-	flex-col gap-2 overflow-hidden rounded-lg
+	flex-col gap-2 rounded-lg
 	border-2 shadow-xl perspective-[1600px] hover:shadow-2xl
 	{hover ? 'hover:border-neutral-300!' : ''}
 	{css}

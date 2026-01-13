@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { disableScroll, enableScroll } from '$lib';
 	import { fade } from 'svelte/transition';
 
 	let {
@@ -12,14 +12,14 @@
 	let dialog: HTMLDialogElement | undefined = $state();
 	let clickable: HTMLDivElement | undefined = $state();
 
-	onMount(() => {
-		if (showModal) dialog?.showModal();
-		else dialog?.close();
-	});
-
 	$effect(() => {
-		if (showModal) dialog?.showModal();
-		else dialog?.close();
+		if (showModal) {
+			dialog?.showModal();
+			disableScroll();
+		} else {
+			dialog?.close();
+			enableScroll();
+		}
 	});
 </script>
 
@@ -31,8 +31,7 @@
 			onclose={() => (showModal = false)}
 			onclick={(e) => {
 				if (!clickable?.contains(e.target as Node)) {
-					dialog?.close();
-					showModal = false;
+					showModal = false; //effect takes care of stuff
 				}
 			}}
 			class="min-h-screen w-screen max-w-screen
@@ -45,7 +44,7 @@
 					bind:this={clickable}
 					class="
 						{cssClass ? cssClass : 'bg-white!'} 
-						{maxHeight ? 'max-xl:h-screen grow' : ''}
+						{maxHeight ? 'grow max-xl:h-screen' : ''}
 						mt-5 mb-5 flex max-w-4/5 flex-col rounded-2xl text-left text-white max-xl:w-screen max-xl:min-w-9/10 xl:max-h-[66svh] xl:min-w-2/3 xl:p-5
 			"
 					style={cssStyle}

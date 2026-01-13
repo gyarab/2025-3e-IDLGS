@@ -1,5 +1,6 @@
 <script lang="ts">
 	import SelectionInput from '$component/SelectionInput.svelte';
+	import HiddenInput from '$src/routes/(root)/components/HiddenInput.svelte';
 
 	let {
 		name,
@@ -19,11 +20,7 @@
 </script>
 
 <div class="flex w-full flex-row items-center gap-2">
-	<input
-		type="hidden"
-		{name}
-		bind:value
-	/>
+	<HiddenInput {name} value={value} />
 	<div class="text-lg">
 		{label}:
 	</div>

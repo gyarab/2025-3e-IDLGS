@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
-	import { fly } from 'svelte/transition';
+	import InfoBox from './InfoBox.svelte';
 
 	let { message = $bindable('') } = $props();
 
@@ -22,31 +22,18 @@
 </script>
 
 {#key message}
-	<div
-		class="
-	fixed top-[6svh] z-0 flex h-[6svh] w-full flex-row items-center justify-center
-"
-		transition:fly={{
-			duration: 500,
-			delay: 100,
-			opacity: 0,
-			x: 0,
-			y: -100,
-		}}
-	>
-		{#if message.length > 0}
-			<div
-				class="
-		rounded-lgtext-lg z-50 flex w-2/6 flex-col overflow-hidden
-		rounded-lg bg-linear-to-tr from-red-900 to-amber-600 text-white shadow-2xl
-	"
-			>
-				<div class="p-2 pb-0 font-medium">{message}</div>
+	{#if message.length > 0}
+		<InfoBox
+			cssClass="bg-linear-to-tr from-red-900 to-amber-600 text-white"
+		>
+				<div class="p-2 pb-0 font-medium">
+					<i class="ri-pass-expired-line"></i>
+					{message}
+				</div>
 				<div
 					class="h-1 bg-white"
 					style="width: {timer / 50}%"
 				></div>
-			</div>
-		{/if}
-	</div>
+		</InfoBox>
+	{/if}
 {/key}

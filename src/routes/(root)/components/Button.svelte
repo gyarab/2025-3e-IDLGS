@@ -13,7 +13,7 @@
 		cssClass = '',
 	}: {
 		emoji?: string;
-		children: Snippet;
+		children?: Snippet;
 		type?: 'button' | 'submit' | 'reset';
 		btn: string;
 		onclick?: (e: MouseEvent) => void;

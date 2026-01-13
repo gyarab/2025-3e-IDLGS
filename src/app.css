@@ -44,7 +44,7 @@
 		@apply flex flex-row items-center justify-center gap-1 rounded-lg font-medium hover:brightness-80 active:brightness-60 disabled:brightness-60 max-lg:p-2 lg:p-3;
 	}
 	.button-none {
-		@apply gap-1 p-0!;
+		@apply gap-1 p-0! active:brightness-100! hover:brightness-100! font-light!;
 	}
 	.button-primary {
 		@apply bg-linear-to-tr from-violet-800 to-emerald-600 text-white!;

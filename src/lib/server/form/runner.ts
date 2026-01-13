@@ -15,9 +15,10 @@ export const formRunner = async (
 	requiredFields: string[],
 	runner: (
 		event: RequestEvent,
-		formData: FormData,
+		formData: { [key: string]: any },
 		cookies: Cookies,
 		user: UserType,
+		formDataRaw: FormData,
 	) => Promise<ActionFailure | unknown>,
 ) => {
 	const event = getRequestEvent();
@@ -26,11 +27,17 @@ export const formRunner = async (
 	if (!user) return fail(401);
 
 	const formData = await event.request.formData();
+
 	if (!checkFormData(formData, requiredFields)) {
 		return fail(400);
 	}
 
-	const value = await runner(event, formData, event.cookies, user);
+	let object: { [key: string]: any } = {};
+	for(let i = 0; i < requiredFields.length; i++) {
+		object[requiredFields[i]] = formData.get(requiredFields[i])?.toString();
+	}
+
+	const value = await runner(event, object, event.cookies, user, formData);
 	return value;
 };
 

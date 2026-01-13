@@ -65,8 +65,12 @@
 
 		<a href="/settings/">
 			<HoverEmoji emoji="user-3" />
-			{#if user.degree != 'none'}
-				<span>{user.degree}</span>
+			{#if user.degree == 'bc'}
+				Bc.
+			{:else if user.degree == 'mgr'}
+				Mgr.
+			{:else if user.degree == 'dr'}
+				Dr.
 			{/if}
 			<span>{user.name}</span>
 			<span>{user.surname}</span>

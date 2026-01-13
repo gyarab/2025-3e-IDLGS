@@ -23,6 +23,7 @@ export type UserType = {
 	setPassword: boolean;
 	gamification: boolean;
 	canChangeSettings: boolean;
+	canEditGamification: boolean;
 };
 
 export type UserRoleType = {

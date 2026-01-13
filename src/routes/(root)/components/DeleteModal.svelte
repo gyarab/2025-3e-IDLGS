@@ -21,6 +21,9 @@
 				emoji="check"
 				btn="button-primary"
 				type="submit"
+				onclick={() => {
+					showModal = false;
+				}}
 			>
 				{m.delete()}
 			</Button>
@@ -28,6 +31,9 @@
 				emoji="close"
 				btn="button-violet"
 				type="button"
+				onclick={() => {
+					showModal = false;
+				}}
 			>
 				{m.cancel()}
 			</Button>

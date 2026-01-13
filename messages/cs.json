@@ -250,5 +250,18 @@
 	"deleteAccount": "Smazat účet",
 	"deletingYourAccountIsAnIrreversibleAction": "Smazání vašeho účtu je nevratná akce.",
 	"resetStreak": "Resetovat streak",
-	"resettingYourStreakIsAnIrreversibleAction": "Resetování vašeho streaku je nevratná akce."
+	"resettingYourStreakIsAnIrreversibleAction": "Resetování vašeho streaku je nevratná akce.",
+	"january": "Leden",
+	"february": "Únor",
+	"march": "Březen",
+	"april": "Duben",
+	"may": "Květen",
+	"june": "Červen",
+	"july": "Červenec",
+	"august": "Srpen",
+	"september": "Září",
+	"october": "Říjen",
+	"november": "Listopad",
+	"december": "Prosinec",
+	"youHaveUnsavedChanges": "Máte neuložené změny!"
 }

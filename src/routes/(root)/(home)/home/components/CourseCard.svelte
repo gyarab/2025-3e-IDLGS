@@ -32,7 +32,27 @@
 	{onclick}
 	css="w-[35svh] h-[35svh]"
 >
-	<div class="flex w-full grow flex-col gap-2 p-2 text-left">
+	<div class="flex w-full grow flex-col gap-2 p-2 text-left relative">
+		<!-- corner -->
+		<div class="
+			absolute -top-2.5 -right-2.5 rounded-tr-lg rounded-bl-2xl w-1/3 h-1/3 flex flex-col 
+			gap-0 justify-center items-center text-white backdrop-blur-2xl border-l border-b
+		" style="
+			background-color: rgba(
+			{Math.min(255, course.red+50)},
+			{Math.min(255, course.green+50)},
+			{Math.min(255, course.blue+50)},
+			0.5);
+			border-color: rgba(
+			{Math.min(255, course.red+70)},
+			{Math.min(255, course.green+70)},
+			{Math.min(255, course.blue+70)},
+			1);
+		">
+			<i class="ri-book-line text-6xl"></i>
+			<span>{m.course()}</span>
+		</div>
+
 		<h2 class="w-full text-xl">{course.name}</h2>
 		<p class="w-full text-sm opacity-70">{course.description}</p>
 

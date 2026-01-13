@@ -250,5 +250,18 @@
 	"deleteAccount": "Delete Account",
 	"deletingYourAccountIsAnIrreversibleAction": "Deleting your account is an irreversible action.",
 	"resetStreak": "Reset Streak",
-	"resettingYourStreakIsAnIrreversibleAction": "Resetting your streak is an irreversible action."
+	"resettingYourStreakIsAnIrreversibleAction": "Resetting your streak is an irreversible action.",
+	"january": "January",
+	"february": "February",
+	"march": "March",
+	"april": "April",
+	"may": "May",
+	"june": "June",
+	"july": "July",
+	"august": "August",
+	"september": "September",
+	"october": "October",
+	"november": "November",
+	"december": "December",
+	"youHaveUnsavedChanges": "You have unsaved changes!"
 }

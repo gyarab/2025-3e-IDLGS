@@ -19,6 +19,7 @@
 				value = v;
 			}}
 			class={value == v ? 'button-green' : 'button-violet'}
+			type="button"
 		>
 			{names[i]}
 		</button>

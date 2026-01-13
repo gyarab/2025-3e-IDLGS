@@ -12,6 +12,7 @@
 	<Button
 		{emoji}
 		btn="button-primary"
+		type="submit"
 	>
 		{text}
 	</Button>

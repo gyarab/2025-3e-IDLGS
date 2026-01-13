@@ -1,3 +1,4 @@
+import { browser } from '$app/environment';
 import type { UserType } from './types';
 
 export const getImageBackgroundClassRaw = (id: number) => {
@@ -74,12 +75,38 @@ export const checkPassword = (
 
 export const MAX_TEXTBOOK_LETTERS = 50;
 
-//TODO enable for modals
 export const enableScroll = () => {
+	if(!browser) return;
 
+	document.body.style.overflow = 'auto';
+	document.body.style.maxHeight = 'none';
 }
 
 export const disableScroll = () => {
+	if(!browser) return;
 
+	document.body.style.overflow = 'hidden';
+	document.body.style.maxHeight = '100vh';
 }
 
+export const validateDate = (day: number, month: number, year: number): boolean => {
+	if(!Number.isInteger(day) || !Number.isInteger(month) || !Number.isInteger(year)) {
+		return false;
+	}
+
+	return (
+		year >= 1900 &&
+		year <= new Date().getFullYear() &&
+		month >= 1 &&
+		month <= 12 &&
+		day >= 1 &&
+		day <= (month == 2
+			? (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+				? 29
+				: 28
+			: [4, 6, 9, 11].includes(month)
+			? 30
+			: 31
+		)
+	);
+}

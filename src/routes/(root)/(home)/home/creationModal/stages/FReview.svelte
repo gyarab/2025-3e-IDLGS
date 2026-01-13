@@ -6,6 +6,7 @@
 	import TextbookCard from '../../components/TextbookCard.svelte';
 	import type { CourseGradeType, UserRoleType } from '$lib/types';
 	import Attribute from '../components/freview/Attribute.svelte';
+	import HiddenInput from '$src/routes/(root)/components/HiddenInput.svelte';
 
 	let {
 		step = $bindable(0),
@@ -51,69 +52,21 @@
 	}}
 >
 	<!-- inputs -->
-	<input
-		type="hidden"
-		name="name"
-		value={name}
-	/>
-	<input
-		type="hidden"
-		name="description"
-		value={description}
-	/>
-	<input
-		type="hidden"
-		name="subject"
-		value={subject}
-	/>
-	<input
-		type="hidden"
-		name="red"
-		value={red}
-	/>
-	<input
-		type="hidden"
-		name="green"
-		value={green}
-	/>
-	<input
-		type="hidden"
-		name="blue"
-		value={blue}
-	/>
-	<input
-		type="hidden"
-		name="users"
-		value={JSON.stringify(selectedUsers)}
-	/>
-	<input
-		type="hidden"
-		name="roles"
-		value={JSON.stringify(selectedUserRoles)}
-	/>
+	<HiddenInput name="name" value={name} />
+	<HiddenInput name="description" value={description} />
+	<HiddenInput name="subject" value={subject} />
+	<HiddenInput name="red" value={red} />
+	<HiddenInput name="green" value={green} />
+	<HiddenInput name="blue" value={blue} />
+	<HiddenInput name="users" value={JSON.stringify(selectedUsers)} />
+	<HiddenInput name="roles" value={JSON.stringify(selectedUserRoles)} />
 
 	{#if type == 'course'}
-		<input
-			type="hidden"
-			name="grades"
-			value={JSON.stringify(courseGrades)}
-		/>
-		<input
-			type="hidden"
-			name="code"
-			value={inviteCode}
-		/>
+		<HiddenInput name="grades" value={JSON.stringify(courseGrades)} />
+		<HiddenInput name="inviteCode" value={inviteCode} />
 	{:else}
-		<input
-			type="hidden"
-			name="articles"
-			value={JSON.stringify(articleNames)}
-		/>
-		<input
-			type="hidden"
-			name="chapters"
-			value={JSON.stringify(chapterNames)}
-		/>
+		<HiddenInput name="chapters" value={JSON.stringify(chapterNames)} />
+		<HiddenInput name="articles" value={JSON.stringify(articleNames)} />
 	{/if}
 
 	<h2 class="">{m.summary()}</h2>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import CheckboxInput from '$component/CheckboxInput.svelte';
+	import HiddenInput from '$src/routes/(root)/components/HiddenInput.svelte';
 
 	let {
 		name,
@@ -11,15 +12,13 @@
 		initialValue: boolean;
 	} = $props();
 
-	let value = $derived(initialValue);
+	let value = $derived(Boolean(initialValue));
 </script>
 
 <div class="flex w-full flex-row items-center gap-2">
-	<input
-		type="hidden"
-		{name}
-		bind:value
-	/>
+	<!-- theoretically this is useless but it's more comfortable to use in the form actions this way -->
+	<!-- (no comparing to 'on' but 'true'/'false') -->
+	<HiddenInput {name} value={value} />
 	<div class="text-lg">
 		{label}:
 	</div>
