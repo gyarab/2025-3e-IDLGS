@@ -6,9 +6,12 @@
 
 	let {
 		grades = $bindable([]),
-		red, green, blue, index,
+		red,
+		green,
+		blue,
+		index,
 		parentWidth,
-		removeDrag
+		removeDrag,
 	}: {
 		grades: CourseGradeType[];
 		red: number;
@@ -18,7 +21,7 @@
 		parentWidth: number;
 		removeDrag: boolean;
 	} = $props();
-	
+
 	let dragBeginX: number = $state(0);
 	let isDragging: boolean = $state(false);
 
@@ -40,11 +43,23 @@
 
 		let percentage = ((dragBeginX - e.pageX) / parentWidth) * 100;
 
-		if(grades[index-1]) {
-			grades[index - 1]!.min = Math.max((grades.length-index)*3, Math.min(100-(index+1)*3, grades[index-1]!.min + percentage));
+		if (grades[index - 1]) {
+			grades[index - 1]!.min = Math.max(
+				(grades.length - index) * 3,
+				Math.min(
+					100 - (index + 1) * 3,
+					grades[index - 1]!.min + percentage,
+				),
+			);
 		}
-		if(grades[index]) {
-			grades[index]!.max = Math.max((grades.length-index)*3, Math.min(100-(index+1)*3, grades[index]!.max + percentage));
+		if (grades[index]) {
+			grades[index]!.max = Math.max(
+				(grades.length - index) * 3,
+				Math.min(
+					100 - (index + 1) * 3,
+					grades[index]!.max + percentage,
+				),
+			);
 		}
 
 		grades[0].max = 100;
@@ -69,16 +84,17 @@
 <div
 	id="{index}timelinehandle"
 	class="absolute top-4 z-10 flex flex-col rounded-lg bg-white p-1"
-	style="right: {grades[index]?.max ?? 0}%; color: rgb({red}, {green}, {blue});"
+	style="right: {grades[index]?.max ??
+		0}%; color: rgb({red}, {green}, {blue});"
 	draggable="true"
 >
 	{#if !removeDrag}
-	<Button
-		btn="button-none"
-		emoji="expand-horizontal"
-		id="{index}timelinedrag"
-		onmousedown={dragStartHandler}
-	/>
+		<Button
+			btn="button-none"
+			emoji="expand-horizontal"
+			id="{index}timelinedrag"
+			onmousedown={dragStartHandler}
+		/>
 	{/if}
 	<Button
 		btn="button-none"
@@ -88,18 +104,32 @@
 			const localIndex = index;
 
 			grades.splice(localIndex, 0, {
-				name: (grades[localIndex-1]?.name ?? '+') + '/' + (grades[localIndex]?.name ?? '-'),
-				min: Math.max(Math.min((grades[localIndex]?.max ?? 5) - 5, 100), 0),
-				max: Math.max(Math.min((grades[localIndex-1]?.min ?? 105) + 5, 100), 0),
+				name:
+					(grades[localIndex - 1]?.name ?? '+') +
+					'/' +
+					(grades[localIndex]?.name ?? '-'),
+				min: Math.max(
+					Math.min((grades[localIndex]?.max ?? 5) - 5, 100),
+					0,
+				),
+				max: Math.max(
+					Math.min((grades[localIndex - 1]?.min ?? 105) + 5, 100),
+					0,
+				),
 			});
 
-
 			//adjust neighboring grades
-			if (grades[localIndex-1] != undefined) {
-				grades[localIndex-1].min = Math.max(0, Math.min(grades[localIndex].max+1, 100));
+			if (grades[localIndex - 1] != undefined) {
+				grades[localIndex - 1].min = Math.max(
+					0,
+					Math.min(grades[localIndex].max + 1, 100),
+				);
 			}
-			if (grades[localIndex+1] != undefined) {
-				grades[localIndex+1].max = Math.max(0, Math.min(grades[localIndex].min-1, 100));
+			if (grades[localIndex + 1] != undefined) {
+				grades[localIndex + 1].max = Math.max(
+					0,
+					Math.min(grades[localIndex].min - 1, 100),
+				);
 			}
 		}}
 	/>

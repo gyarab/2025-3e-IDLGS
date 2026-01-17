@@ -76,7 +76,7 @@ export const RUSSIAN_GRADES: CourseGradeType[] = [
 	{ min: 90, max: 100, name: '5' }, //отлично
 	{ min: 75, max: 89, name: '4' }, //хорошо
 	{ min: 50, max: 74, name: '3' }, //удовлетворительно
-	{ min: 0, max: 49, name: '2' }, //неудовлетворительно	
+	{ min: 0, max: 49, name: '2' }, //неудовлетворительно
 ];
 
 export const getImageBackgroundClassRaw = (id: number) => {

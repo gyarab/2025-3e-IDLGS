@@ -3,7 +3,7 @@
 		names,
 		values,
 		value = $bindable(''),
-		onchange = () => {}
+		onchange = () => {},
 	}: {
 		names: string[];
 		values: unknown[];

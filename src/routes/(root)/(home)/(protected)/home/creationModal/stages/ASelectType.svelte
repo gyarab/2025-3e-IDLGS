@@ -4,7 +4,11 @@
 	import HoverEmoji from '$component/../components/HoverEmoji.svelte';
 	import type { UserType } from '$lib/types';
 
-	let { value = $bindable(''), stage = $bindable(0), user }: {
+	let {
+		value = $bindable(''),
+		stage = $bindable(0),
+		user,
+	}: {
 		value: string;
 		stage: number;
 		user: UserType;

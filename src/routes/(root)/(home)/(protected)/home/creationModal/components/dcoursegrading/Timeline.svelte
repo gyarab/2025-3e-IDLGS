@@ -32,14 +32,14 @@
 				if (grades[i].max - grades[i].min < 3) {
 					grades[i].min = grades[i].max - 3;
 					grades[i + 1].max = grades[i].min - 1;
-				}				
+				}
 			}
 			grades[grades.length - 1].min = 0;
 		});
 	});
 </script>
 
-<div 
+<div
 	class="relative mt-4 flex min-h-15 w-full flex-row"
 	bind:this={parentElement}
 >
@@ -58,7 +58,7 @@
 			"
 			>
 				<span
-					class="bg-clip-text font-bold text-transparent brightness-150 invert overflow-hidden text-ellipsis"
+					class="overflow-hidden bg-clip-text font-bold text-ellipsis text-transparent brightness-150 invert"
 					style="background-color: rgb({((100 - grade.min) / 100) *
 						255}, {(grade.max / 100) * 255}, 0);"
 				>

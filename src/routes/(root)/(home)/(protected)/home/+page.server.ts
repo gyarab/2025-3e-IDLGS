@@ -140,7 +140,7 @@ export const actions = {
 				'code',
 			],
 			async (event, formData, cookies, user) => {
-				if(
+				if (
 					formData['name'].length === 0 ||
 					formData['description'].length === 0 ||
 					formData['name'].length > MAX_NAME_LENGTH
@@ -151,11 +151,8 @@ export const actions = {
 				//TODO
 
 				try {
-					await event.locals.db.transaction(async (tx) => {
-						
-					});
-				}
-				catch (e) {
+					await event.locals.db.transaction(async (tx) => {});
+				} catch (e) {
 					writeLog(event, 'ERROR', 'DB failure.', user);
 					return fail(500);
 				}

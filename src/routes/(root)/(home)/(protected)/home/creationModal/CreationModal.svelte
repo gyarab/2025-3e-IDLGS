@@ -16,7 +16,7 @@
 		showModal = $bindable(),
 		message = $bindable(''),
 		isError = $bindable(false),
-		user
+		user,
 	}: {
 		showModal: boolean;
 		message: string;
