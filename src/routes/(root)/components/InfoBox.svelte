@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import { fly } from 'svelte/transition';
+	import { onDestroy, onMount } from 'svelte';
 
 	let {
 		children,
@@ -9,9 +10,25 @@
 		children?: Snippet | undefined;
 		cssClass?: string;
 	} = $props();
+
+	let interval: NodeJS.Timeout | undefined = $state(undefined);
+	let timer: number = $derived(children ? 0 : 5000);
+
+	onMount(() => {
+		interval = setInterval(() => {
+			timer -= 10;
+			if (timer < 0) {
+				timer = 0;
+			}
+		}, 10);
+	});
+	onDestroy(() => {
+		clearInterval(interval);
+	});
 </script>
 
 {#key children}
+	{#if timer > 0}
 	<div
 		class="
 	fixed top-[6svh] z-0 flex h-[6svh] w-full flex-row items-center justify-center
@@ -30,6 +47,11 @@
 			>
 				{@render children?.()}
 			</div>
+			<div
+				class="h-1 bg-white"
+				style="width: {timer / 50}%"
+			></div>
 		{/if}
 	</div>
+	{/if}
 {/key}

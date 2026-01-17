@@ -1,9 +1,16 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
+	import type { UserType } from '$lib/types';
 	import Button from '../Button.svelte';
-	import FeedbackModal from './sub/FeedbackModal.svelte';
+	import FeedbackModal from '../FeedbackModal.svelte';
 
 	let showFeedbackModal = $state(false);
+
+	let {
+		user
+	}: {
+		user: UserType | undefined
+	} = $props();
 </script>
 
 <div
@@ -39,15 +46,17 @@
 				{m.termsOfService()}
 			</a>
 
-			<Button
-				btn="button-transparent justify-start! p-0!"
-				emoji="feedback"
-				onclick={() => {
-					showFeedbackModal = true;
-				}}
-			>
-				{m.sendFeedback()}
-			</Button>
+			{#if user}
+				<Button
+					btn="button-transparent justify-start! p-0!"
+					emoji="feedback"
+					onclick={() => {
+						showFeedbackModal = true;
+					}}
+				>
+					{m.sendFeedback()}
+				</Button>
+			{/if}
 		</div>
 	</div>
 </div>

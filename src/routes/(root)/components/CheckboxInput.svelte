@@ -1,6 +1,6 @@
 <script lang="ts">
 	let {
-		cssClass = 'w-full',
+		cssClass = 'max-w-full',
 		checked = $bindable(false),
 		label = '',
 		name = '',
@@ -15,6 +15,6 @@
 		type="checkbox"
 		bind:checked
 		{name}
-		class="input-checkbox grow"
+		class="input-checkbox"
 	/>
 </div>

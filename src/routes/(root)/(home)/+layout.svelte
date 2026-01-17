@@ -1,7 +1,9 @@
 <script lang="ts">
+	/* HOME PAGE LAYOUT (BG) - source of truth */
+
 	import { getImageBackgroundClass } from '$lib';
 	import type { UserType } from '$lib/types';
-	import WordBackground from '../components/WordBackground.svelte';
+	import WordBackground from '$component/WordBackground.svelte';
 
 	let { children, data } = $props();
 </script>
@@ -11,7 +13,7 @@
 		data.user as UserType,
 	)} max-xl:hidden"
 >
-	{#if data.user?.background === 0}
+	{#if (data.user?.background ?? 0) === 0}
 		<WordBackground />
 	{:else}
 		<!-- cover -->

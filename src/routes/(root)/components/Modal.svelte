@@ -35,7 +35,7 @@
 				}
 			}}
 			class="min-h-screen w-screen max-w-screen
-		min-w-screen backdrop-brightness-50"
+		min-w-screen backdrop-brightness-90 backdrop-blur-sm"
 		>
 			<div
 				class="flex min-h-screen w-full grow flex-col items-center justify-center"

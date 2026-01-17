@@ -6,7 +6,7 @@ import { getRequestEvent } from '$app/server';
 export const loadCourses = async (user: UserType): Promise<CourseType[]> => {
 	const db = getRequestEvent().locals.db;
 
-	return db
+	const course = db
 		.select({
 			uuid: schema.course.uuid,
 			description: schema.course.description,
@@ -24,4 +24,8 @@ export const loadCourses = async (user: UserType): Promise<CourseType[]> => {
 			eq(schema.course.id, schema.userCourseLinker.course), //join condition
 		)
 		.where(eq(schema.userCourseLinker.user, user.id));
+
+	
+
+	return course;
 };

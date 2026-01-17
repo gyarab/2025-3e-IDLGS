@@ -1,24 +1,7 @@
 <script lang="ts">
-	import { onDestroy, onMount } from 'svelte';
 	import InfoBox from './InfoBox.svelte';
 
 	let { message = $bindable('') } = $props();
-
-	let interval: NodeJS.Timeout | undefined = $state(undefined);
-	let timer: number = $derived(message.length == 0 ? 0 : 5000);
-
-	onMount(() => {
-		interval = setInterval(() => {
-			timer -= 10;
-			if (timer < 0) {
-				timer = 0;
-				message = '';
-			}
-		}, 10);
-	});
-	onDestroy(() => {
-		clearInterval(interval);
-	});
 </script>
 
 {#key message}
@@ -30,10 +13,6 @@
 				<i class="ri-pass-expired-line"></i>
 				{message}
 			</div>
-			<div
-				class="h-1 bg-white"
-				style="width: {timer / 50}%"
-			></div>
 		</InfoBox>
 	{/if}
 {/key}

@@ -1,4 +1,4 @@
-import { pgTable, text, integer, timestamp, check } from 'drizzle-orm/pg-core';
+import { pgTable, text, integer, timestamp, check, boolean } from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm';
 
 export const textbook = pgTable(
@@ -21,6 +21,7 @@ export const textbook = pgTable(
 			.notNull()
 			.$defaultFn(() => new Date()),
 		subject: text('subject').notNull(),
+		public: boolean('public').notNull().default(false),
 	},
 	(table) => [
 		check('redMinCheck', sql`${table.red} >= 0`),

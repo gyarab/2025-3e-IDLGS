@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
 	import WideCard from '../components/WideCard.svelte';
+	import CardSeparator from '../components/CardSeparator.svelte';
 
 	//Administration page, accessible only to users with ADMIN permissions
 </script>
@@ -13,31 +14,56 @@
 
 <div class="flex w-full grow flex-col items-center gap-2">
 	<div class="flex grow flex-col gap-2 p-5 max-xl:w-9/10 xl:w-4/6">
-		<h1 class="text-emerald-600">
+		<h2 class="">
 			{m.administration()}
-		</h1>
+		</h2>
 
 		<WideCard>
-			<h1 class="w-full text-left">
+			<h2 class="w-full text-left">
 				<i class="ri-settings-line"></i>
 				{m.websiteSettings()}
-			</h1>
+			</h2>
 			<div class="flex w-full grow flex-col">
 				<!-- TODO -->
 			</div>
 		</WideCard>
 
-		<!-- TODO abstract this -->
-		<div class="h-[5vh] min-h-[5vh]"></div>
+		<CardSeparator />
 
 		<WideCard>
-			<h1 class="w-full text-left">
-				<i class="ri-group-line"></i>
-				{m.userManagement()}
-			</h1>
+			<h2 class="w-full text-left">
+				<i class="ri-window-2-line"></i>
+				{m.infoPopupManagement()}
+			</h2>
 			<div class="flex w-full grow flex-col">
 				<!-- TODO -->
 			</div>
 		</WideCard>
+
+		<CardSeparator />
+
+		<WideCard>
+			<h2 class="w-full text-left">
+				<i class="ri-group-line"></i>
+				{m.userManagement()}
+			</h2>
+			<div class="flex w-full grow flex-col">
+				<!-- TODO -->
+			</div>
+		</WideCard>
+
+		<CardSeparator />
+
+		<WideCard>
+			<h2 class="w-full text-left">
+				<i class="ri-speak-ai-line"></i>
+				{m.aiManagement()}
+			</h2>
+			<div class="flex w-full grow flex-col">
+				<!-- TODO -->
+			</div>
+		</WideCard>
+
+
 	</div>
 </div>

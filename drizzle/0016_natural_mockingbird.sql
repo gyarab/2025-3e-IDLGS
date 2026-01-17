@@ -1,0 +1,1 @@
+ALTER TABLE "textbook" ADD COLUMN "public" boolean DEFAULT false NOT NULL;

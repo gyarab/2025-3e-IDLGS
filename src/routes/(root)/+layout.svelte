@@ -28,5 +28,5 @@
 	<div class="relative flex w-full grow flex-col">
 		{@render children?.()}
 	</div>
-	<Footer />
+	<Footer user={data.user} />
 </div>

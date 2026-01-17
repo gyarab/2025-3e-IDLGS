@@ -4,13 +4,6 @@ import { error, fail } from '@sveltejs/kit';
 import type { UserType } from '$lib/types';
 import { getRequestEvent } from '$app/server';
 
-export const checkFormData = (formData: FormData, array: string[]): boolean => {
-	for (let i = 0; i < array.length; i++) {
-		if (!formData.has(array[i])) return false;
-	}
-	return true;
-};
-
 export const formRunner = async (
 	requiredFields: string[],
 	runner: (
@@ -28,8 +21,8 @@ export const formRunner = async (
 
 	const formData = await event.request.formData();
 
-	if (!checkFormData(formData, requiredFields)) {
-		return fail(400);
+	for (let i = 0; i < requiredFields.length; i++) {
+		if (!formData.has(requiredFields[i])) return fail(400);
 	}
 
 	let object: { [key: string]: any } = {};
@@ -42,10 +35,11 @@ export const formRunner = async (
 };
 
 export const apiRunner = async (
+	requiredFields: string[],
 	runner: (
 		event: RequestEvent,
+		data: { [key: string]: any },
 		user: UserType,
-		requestData: unknown,
 	) => Promise<Response>,
 ) => {
 	const event = getRequestEvent();
@@ -55,6 +49,11 @@ export const apiRunner = async (
 
 	const data = await event.request.json();
 
-	const value = await runner(event, user, data);
+	for(const field of requiredFields) {
+		//empty string allowed
+		if(!(field in data) || data[field] === null || data[field] === undefined) return error(400);
+	}
+
+	const value = await runner(event, data, user);
 	return value;
 };

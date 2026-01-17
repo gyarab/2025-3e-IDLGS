@@ -25,3 +25,14 @@ export const userTextbookLinker = pgTable('userTextbookLinker', {
 		.references(() => user.id)
 		.notNull(),
 });
+
+export const userAssignmentLinker = pgTable('userAssignmentLinker', {
+	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
+	completed: boolean('completed').notNull().default(false),
+	courseAssignment: integer('courseAssignment')
+		.references(() => course.id)
+		.notNull(),
+	user: integer('user')
+		.references(() => user.id)
+		.notNull(),
+});

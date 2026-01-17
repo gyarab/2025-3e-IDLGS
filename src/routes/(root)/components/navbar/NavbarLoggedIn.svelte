@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
 	import { getLocale, setLocale, type Locale } from '$lib/paraglide/runtime';
-	import LangDropdown from '../LangDropdown.svelte';
 	import Logo from '../Logo.svelte';
 	import HoverEmoji from '../HoverEmoji.svelte';
 	import type { UserType } from '$lib/types';
+	import { writeDegree } from '$lib';
 
 	let value: Locale = $state(getLocale());
 
@@ -65,13 +65,7 @@
 
 		<a href="/settings/">
 			<HoverEmoji emoji="user-3" />
-			{#if user.degree == 'bc'}
-				Bc.
-			{:else if user.degree == 'mgr'}
-				Mgr.
-			{:else if user.degree == 'dr'}
-				Dr.
-			{/if}
+			<span>{writeDegree(user.degree)}</span>
 			<span>{user.name}</span>
 			<span>{user.surname}</span>
 		</a>

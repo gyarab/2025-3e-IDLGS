@@ -57,20 +57,21 @@ export type TextbookType = {
 	blue: number;
 	name: string;
 	subject: string;
+	chapters?: ChapterType[];
+	public: boolean;
 };
 
 export type ChapterType = {
 	uuid: string;
 	name: string;
 	summary: string;
-	textbookId: number;
+	articles?: ArticleType[];
 };
 
 export type ArticleType = {
 	uuid: string;
 	name: string;
 	text: string;
-	chapterId: number;
 };
 
 //Courses
@@ -85,12 +86,41 @@ export type CourseType = {
 	blue: number;
 	name: string;
 	subject: string;
+	grades?: CourseGradeType[];
+	assignments?: CourseAssignmentType[];
+};
+
+export type CourseAssignmentType = {
+	uuid: string;
+	title: string;
+	description: string;
+	deadline: Date;
+	createdAt: Date;
+	comments?: CourseAssignmentCommentType[];
+};
+
+export type CourseAssignmentCommentType = {
+	uuid: string;
+	comment: string;
+	createdAt: Date;
+	author?: UserType;
 };
 
 export type CourseGradeType = {
 	min: number;
 	max: number;
 	name: string;
+};
+
+// Tests
+
+export type TestCheatingType = {
+	copyPaste: boolean;
+	tabSwitch: boolean;
+	focusLoss: boolean;
+	consoleOpen: boolean;
+	mouseOut: boolean;
+	rightClick: boolean;
 };
 
 //Cloudflare AI workers

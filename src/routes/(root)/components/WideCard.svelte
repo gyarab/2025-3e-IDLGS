@@ -9,6 +9,7 @@
 		children,
 		cssOverride = '',
 		cssParentOverride = '',
+		cssAddition = '',
 	} = $props();
 </script>
 
@@ -17,7 +18,7 @@
 	flex h-fit w-full
 	flex-col gap-2
 	rounded-lg border-2 shadow-xl hover:shadow-2xl
-	{cssParentOverride}
+	{cssParentOverride} {cssAddition}
 	"
 	style="background-color: rgb({r} {g} {b} / 30%); border-color: rgb({r} {g} {b} / 30%);"
 	in:fly|global={{ x: 0, y: 100, opacity: 0, duration: 500, delay: delay }}

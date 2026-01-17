@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
 	import { onMount } from 'svelte';
-	import Button from '../../../components/Button.svelte';
-	import HorizontalLine from '../../../components/HorizontalLine.svelte';
-	import PasswordInput from '../../../components/PasswordInput.svelte';
+	import Button from '$component/Button.svelte';
+	import HorizontalLine from '$component/HorizontalLine.svelte';
+	import PasswordInput from '$component/PasswordInput.svelte';
 	import { browser } from '$app/environment';
 	import { getLocale } from '$lib/paraglide/runtime';
-	import Card from '../../../components/Card.svelte';
-	import Form from '../../../components/Form.svelte';
-	import AlertBox from '$src/routes/(root)/components/AlertBox.svelte';
+	import Card from '$component/Card.svelte';
+	import Form from '$component/Form.svelte';
+	import AlertBox from '$component/AlertBox.svelte';
 
 	let ready = $state(false);
 	let formMessage = $state('');

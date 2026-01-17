@@ -10,7 +10,7 @@
 
 <Modal
 	bind:showModal
-	cssClass="{cssClass} h-fit bg-neutral-500/70 backdrop-blur-2xl border-neutral-500 border-2"
+	cssClass="{cssClass} h-fit bg-neutral-500/70 backdrop-blur border-neutral-500 border-2"
 	maxHeight={false}
 >
 	<div class="flex w-full grow flex-col gap-2">

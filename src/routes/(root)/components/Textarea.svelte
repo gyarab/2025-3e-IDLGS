@@ -1,29 +1,24 @@
 <script lang="ts">
 	import TextareaFormatting from './sub/TextareaFormatting.svelte';
 	import markdownit from 'markdown-it';
-	import hljs from 'highlight.js';
 	import { m } from '$lib/paraglide/messages';
+	import { MARKDOWN_CONFIG_OPTIONS } from '$lib';
 
 	let {
 		value = $bindable(''),
 		placeholder,
 		formatting = true,
+		maxLength = undefined,
+		name = '',
 	}: {
-		value: string;
+		value?: string;
 		placeholder: string;
 		formatting?: boolean;
+		maxLength?: number | undefined;
+		name?: string;
 	} = $props();
 
-	const md = markdownit({
-		html: true,
-		linkify: true,
-		typographer: true,
-		xhtmlOut: true,
-		langPrefix: 'language-',
-		highlight: (str: string, lang: string) => {
-			return hljs.highlightAuto(str, [lang]).value;
-		},
-	});
+	const md = markdownit(MARKDOWN_CONFIG_OPTIONS);
 
 	let element: HTMLTextAreaElement | undefined = $state(undefined);
 	let preview: boolean = $state(false);
@@ -50,9 +45,20 @@
 	{/if}
 
 	<textarea
-		class="input-text w-full grow {preview ? 'hidden' : ''}"
+		class="input-text w-full grow {preview ? 'hidden' : ''} resize-none"
 		bind:value
 		{placeholder}
 		bind:this={element}
+		maxlength={maxLength}
+		name={name}
 	></textarea>
+
+	{#if maxLength && !preview}
+		<div class="
+			absolute right-2 bottom-2 z-10 text-base opacity-50
+			{value.length >= maxLength ? 'text-red-700 font-medium' : ''}
+		">
+			{value.length}/{maxLength}
+		</div>
+	{/if}
 </div>
