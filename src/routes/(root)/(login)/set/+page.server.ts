@@ -20,10 +20,7 @@ export const actions = {
 			['password', 'rpassword'],
 			async (event, formData, cookies, user) => {
 				const password = formData['password']?.toString();
-				if (
-					password?.toString() !=
-					formData['rpassword']?.toString()
-				) {
+				if (password?.toString() != formData['rpassword']?.toString()) {
 					return fail(400);
 				}
 
