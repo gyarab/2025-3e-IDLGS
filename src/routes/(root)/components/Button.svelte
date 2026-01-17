@@ -11,6 +11,9 @@
 		flip = false,
 		disabled = false,
 		cssClass = '',
+		id = '',
+		draggable = false,
+		onmousedown = () => {},
 	}: {
 		emoji?: string;
 		children?: Snippet;
@@ -20,6 +23,9 @@
 		flip?: boolean;
 		disabled?: boolean;
 		cssClass?: string;
+		id?: string;
+		draggable?: boolean;
+		onmousedown?: (e: MouseEvent) => void;
 	} = $props();
 </script>
 
@@ -28,6 +34,9 @@
 	{disabled}
 	{type}
 	{onclick}
+	{onmousedown}
+	{id}
+	{draggable}
 >
 	{#if !flip && emoji.length > 0}
 		<HoverEmoji

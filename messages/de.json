@@ -291,5 +291,17 @@
 	"youWillAlsoBeAddedAsTheOwnerOfTheCourse": "Sie werden auch als Eigentümer des Kurses hinzugefügt",
 	"publishTextbookOnTheInternet": "Lehrbuch im Internet veröffentlichen",
 	"itWillBeVisibleToEveryoneAndWillShowUpInSearchEngines": "Es wird für alle sichtbar sein und in Suchmaschinen angezeigt werden",
-	"selectUsersWhichWillHaveAccessToTheCourseExceptForYou": "Wählen Sie Benutzer aus, die Zugriff auf den Kurs haben, außer Ihnen"
+	"selectUsersWhichWillHaveAccessToTheCourseExceptForYou": "Wählen Sie Benutzer aus, die Zugriff auf den Kurs haben, außer Ihnen",
+	"enterCourseDescription": "Geben Sie die Kursbeschreibung ein",
+	"courseColor": "Kursfarbe",
+	"enterCourseName": "Geben Sie den Kursnamen ein",
+	"enterCourseSubject": "Geben Sie das Kursfach ein",
+	"gradesInCourse": "Noten im Kurs",
+	"englishGrades": "Englische Noten",
+	"germanGrades": "Deutsche Noten",
+	"polishGrades": "Polnische Noten",
+	"czechGrades": "Tschechische Noten",
+	"czechGradesForLanguage": "Tschechische Noten für Sprache",
+	"russianGrades": "Russische Noten",
+	"customGrades": "Benutzerdefinierte Noten"
 }

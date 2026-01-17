@@ -35,9 +35,6 @@ Author: Martin Bykov
 
 	let selectedElementUuid: string = $state('');
 
-	let dragBeginX: number = $state(0);
-	let dragBeginY: number = $state(0);
-
 	let shiftPressed: boolean = $state(false);
 
 	let widthMax: number = $state(0);

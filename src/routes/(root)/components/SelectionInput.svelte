@@ -3,10 +3,12 @@
 		names,
 		values,
 		value = $bindable(''),
+		onchange = () => {}
 	}: {
 		names: string[];
 		values: unknown[];
 		value: unknown;
+		onchange?: (v: unknown) => void;
 	} = $props();
 </script>
 
@@ -17,6 +19,7 @@
 		<button
 			onclick={() => {
 				value = v;
+				onchange(v);
 			}}
 			class={value == v ? 'button-green' : 'button-violet'}
 			type="button"

@@ -291,5 +291,17 @@
 	"selectUsersWhichWillHaveAccessToTheBookExceptForYou": "Select users which will have access to the book except for you",
 	"selectUsersWhichWillHaveAccessToTheCourseExceptForYou": "Select users which will have access to the course except for you",
 	"publishTextbookOnTheInternet": "Publish textbook on the internet",
-	"itWillBeVisibleToEveryoneAndWillShowUpInSearchEngines": "It will be visible to everyone and will show up in search engines"
+	"itWillBeVisibleToEveryoneAndWillShowUpInSearchEngines": "It will be visible to everyone and will show up in search engines",
+	"enterCourseDescription": "Enter course description",
+	"courseColor": "Course color",
+	"enterCourseName": "Enter course name",
+	"enterCourseSubject": "Enter course subject",
+	"gradesInCourse": "Grades in course",
+	"czechGrades": "Czech Grades",
+	"englishGrades": "English Grades",
+	"germanGrades": "German Grades",
+	"polishGrades": "Polish Grades",
+	"czechGradesForLanguage": "Czech Grades for Language",
+	"russianGrades": "Russian Grades",
+	"customGrades": "Custom Grades"
 }

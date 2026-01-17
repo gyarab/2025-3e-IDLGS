@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import type { UserType } from './types';
+import type { CourseGradeType, UserType } from './types';
 import hljs from 'highlight.js';
 
 //config values
@@ -15,7 +15,7 @@ export const MARKDOWN_CONFIG_OPTIONS = {
 	},
 };
 
-export const MAX_TEXTBOOK_LETTERS = 50;
+export const MAX_NAME_LENGTH = 50;
 
 export const ABOUT_ANIMATION_FIRST = {
 	duration: 300,
@@ -35,6 +35,49 @@ export const ABOUT_ANIMATION_SECOND = {
 export const MAX_MESSAGE_LENGTH = 1000; //feedback message max length
 
 export const FEEDBACK_TARGET_MAIL = 'martin.bykov.s@gyarab.cz';
+
+export const CZECH_GRADES: CourseGradeType[] = [
+	{ min: 85, max: 100, name: '1' },
+	{ min: 69, max: 84, name: '2' },
+	{ min: 54, max: 68, name: '3' },
+	{ min: 39, max: 53, name: '4' },
+	{ min: 0, max: 38, name: '5' },
+];
+export const CZECH_LANGUAGE_GRADES: CourseGradeType[] = [
+	{ min: 90, max: 100, name: '1' },
+	{ min: 77, max: 89, name: '2' },
+	{ min: 64, max: 76, name: '3' },
+	{ min: 50, max: 63, name: '4' },
+	{ min: 0, max: 49, name: '5' },
+];
+export const GERMAN_GRADES: CourseGradeType[] = [
+	{ min: 96, max: 100, name: '1' }, //sehr gut
+	{ min: 80, max: 95, name: '2' }, //gut
+	{ min: 60, max: 79, name: '3' }, //befriedigend
+	{ min: 45, max: 59, name: '4' }, //ausreichend
+	{ min: 16, max: 44, name: '5' }, //mangelhaft
+	{ min: 0, max: 15, name: '6' }, //ungenügend
+];
+export const POLISH_GRADES: CourseGradeType[] = [
+	{ min: 91, max: 100, name: '5' }, //bardzo dobry - bdb
+	{ min: 71, max: 90, name: '4' }, //dobry - db
+	{ min: 51, max: 70, name: '3' }, //dostateczny - dst
+	{ min: 31, max: 50, name: '2' }, //mierny - mier
+	{ min: 0, max: 30, name: '1' }, //niedostateczny - ndst
+];
+export const ENGLISH_GRADES: CourseGradeType[] = [
+	{ min: 80, max: 100, name: 'A' },
+	{ min: 70, max: 79, name: 'B' },
+	{ min: 60, max: 69, name: 'C' },
+	{ min: 50, max: 59, name: 'D' },
+	{ min: 0, max: 49, name: 'F' },
+];
+export const RUSSIAN_GRADES: CourseGradeType[] = [
+	{ min: 90, max: 100, name: '5' }, //отлично
+	{ min: 75, max: 89, name: '4' }, //хорошо
+	{ min: 50, max: 74, name: '3' }, //удовлетворительно
+	{ min: 0, max: 49, name: '2' }, //неудовлетворительно	
+];
 
 export const getImageBackgroundClassRaw = (id: number) => {
 	switch (id) {

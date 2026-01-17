@@ -1,7 +1,7 @@
 import { loadCourses } from '$lib/server/loaders/course.js';
 import { loadTextbooks } from '$lib/server/loaders/textbook.js';
 import type { UserType } from '$lib/types.js';
-import { MAX_TEXTBOOK_LETTERS } from '$lib';
+import { MAX_NAME_LENGTH } from '$lib';
 import { formRunner } from '$lib/server/form/runner.js';
 import { schema } from '$lib/server/db/mainSchema.js';
 import { eq, inArray } from 'drizzle-orm';
@@ -39,7 +39,7 @@ export const actions = {
 				if (
 					formData['name'].length === 0 ||
 					formData['description'].length === 0 ||
-					formData['name'].length > MAX_TEXTBOOK_LETTERS
+					formData['name'].length > MAX_NAME_LENGTH
 				) {
 					return fail(400);
 				}
@@ -140,7 +140,25 @@ export const actions = {
 				'code',
 			],
 			async (event, formData, cookies, user) => {
-				//await event.locals.db.insert(schema.course);
+				if(
+					formData['name'].length === 0 ||
+					formData['description'].length === 0 ||
+					formData['name'].length > MAX_NAME_LENGTH
+				) {
+					return fail(400);
+				}
+
+				//TODO
+
+				try {
+					await event.locals.db.transaction(async (tx) => {
+						
+					});
+				}
+				catch (e) {
+					writeLog(event, 'ERROR', 'DB failure.', user);
+					return fail(500);
+				}
 			},
 		);
 	},

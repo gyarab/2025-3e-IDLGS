@@ -14,7 +14,7 @@ export const grade = pgTable(
 	'grade',
 	{
 		id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
-		percenage: integer('percenage').notNull().default(0),
+		percentage: integer('percentage').notNull().default(0),
 		course: integer('course')
 			.references(() => course.id)
 			.notNull(),
@@ -25,8 +25,8 @@ export const grade = pgTable(
 		// can be null
 	},
 	(table) => [
-		check('percentageMin', sql`${table.percenage} > 0`),
-		check('percentageMax', sql`${table.percenage} <= 100`),
+		check('percentageMin', sql`${table.percentage} > 0`),
+		check('percentageMax', sql`${table.percentage} <= 100`),
 	],
 );
 

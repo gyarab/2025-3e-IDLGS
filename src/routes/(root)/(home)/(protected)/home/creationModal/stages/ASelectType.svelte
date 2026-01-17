@@ -2,8 +2,13 @@
 	import { m } from '$lib/paraglide/messages';
 	import Card from '$component/../components/Card.svelte';
 	import HoverEmoji from '$component/../components/HoverEmoji.svelte';
+	import type { UserType } from '$lib/types';
 
-	let { value = $bindable(''), stage = $bindable(0) } = $props();
+	let { value = $bindable(''), stage = $bindable(0), user }: {
+		value: string;
+		stage: number;
+		user: UserType;
+	} = $props();
 </script>
 
 <div class="z-10 flex w-full grow flex-col gap-2">
@@ -22,6 +27,7 @@
 				value = 'course';
 				stage = 1;
 			}}
+			disable={!user.canCreateCourses}
 		>
 			<HoverEmoji emoji={'file-list-3'} />
 			<br />
@@ -35,6 +41,7 @@
 				value = 'textbook';
 				stage = 2;
 			}}
+			disable={!user.canCreateTextbooks}
 		>
 			<HoverEmoji emoji={'book-ai'} />
 			<br />

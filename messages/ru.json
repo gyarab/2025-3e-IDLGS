@@ -291,5 +291,17 @@
 	"selectUsersWhichWillHaveAccessToTheCourseExceptForYou": "Выберите пользователей, которые будут иметь доступ к курсу, кроме вас",
 	"selectUsersWhichWillHaveAccessToTheBookExceptForYou": "Выберите пользователей, которые будут иметь доступ к учебнику, кроме вас",
 	"publishTextbookOnTheInternet": "Опубликовать учебник в Интернете",
-	"youDoNotHaveToAddAnyoneElse": "Вам не обязательно добавлять никого еще"
+	"youDoNotHaveToAddAnyoneElse": "Вам не обязательно добавлять никого еще",
+	"enterCourseDescription": "Введите описание курса",
+	"courseColor": "Цвет курса",
+	"enterCourseName": "Введите название курса",
+	"enterCourseSubject": "Введите предмет курса",
+	"gradesInCourse": "Оценки в курсе",
+	"englishGrades": "Английские оценки",
+	"czechGrades": "Чешские оценки",
+	"germanGrades": "Немецкие оценки",
+	"polishGrades": "Польские оценки",
+	"czechGradesForLanguage": "Чешские оценки для языка",
+	"russianGrades": "Русские оценки",
+	"customGrades": "Пользовательские оценки"
 }

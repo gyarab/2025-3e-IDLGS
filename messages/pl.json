@@ -291,5 +291,17 @@
 	"selectUsersWhichWillHaveAccessToTheBookExceptForYou": "Wybierz użytkowników, którzy będą mieli dostęp do podręcznika oprócz Ciebie",
 	"selectUsersWhichWillHaveAccessToTheCourseExceptForYou": "Wybierz użytkowników, którzy będą mieli dostęp do kursu oprócz Ciebie",
 	"publishTextbookOnTheInternet": "Opublikuj podręcznik w Internecie",
-	"itWillBeVisibleToEveryoneAndWillShowUpInSearchEngines": "Będzie widoczny dla wszystkich i pojawi się w wyszukiwarkach"
+	"itWillBeVisibleToEveryoneAndWillShowUpInSearchEngines": "Będzie widoczny dla wszystkich i pojawi się w wyszukiwarkach",
+	"enterCourseDescription": "Wprowadź opis kursu",
+	"courseColor": "Kolor kursu",
+	"enterCourseName": "Wprowadź nazwę kursu",
+	"enterCourseSubject": "Wprowadź przedmiot kursu",
+	"gradesInCourse": "Oceny w kursie",
+	"englishGrades": "Oceny angielskie",
+	"czechGrades": "Oceny czeskie",
+	"germanGrades": "Oceny niemieckie",
+	"polishGrades": "Oceny polskie",
+	"czechGradesForLanguage": "Oceny czeskie dla języka",
+	"russianGrades": "Oceny rosyjskie",
+	"customGrades": "Oceny własne"
 }

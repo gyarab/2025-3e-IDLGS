@@ -106,10 +106,16 @@ export type CourseAssignmentCommentType = {
 	author?: UserType;
 };
 
+//definition of grade scale in course
 export type CourseGradeType = {
 	min: number;
 	max: number;
 	name: string;
+};
+
+//type of grade recieved by students
+export type CourseGradeValueType = {
+	percentage: number;
 };
 
 // Tests

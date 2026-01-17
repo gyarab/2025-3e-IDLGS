@@ -291,5 +291,17 @@
 	"selectUsersWhichWillHaveAccessToTheBookExceptForYou": "Vyberte uživatele, kteří budou mít přístup k učebnici kromě vás",
 	"selectUsersWhichWillHaveAccessToTheCourseExceptForYou": "Vyberte uživatele, kteří budou mít přístup ke kurzu kromě vás",
 	"publishTextbookOnTheInternet": "Publikovat učebnici na internetu",
-	"itWillBeVisibleToEveryoneAndWillShowUpInSearchEngines": "Bude viditelná pro všechny a zobrazí se ve vyhledávačích"
+	"itWillBeVisibleToEveryoneAndWillShowUpInSearchEngines": "Bude viditelná pro všechny a zobrazí se ve vyhledávačích",
+	"enterCourseDescription": "Zadejte popis kurzu",
+	"courseColor": "Barva kurzu",
+	"enterCourseName": "Zadejte název kurzu",
+	"enterCourseSubject": "Zadejte předmět kurzu",
+	"gradesInCourse": "Známky v kurzu",
+	"englishGrades": "Anglické známky",
+	"czechGrades": "České známky",
+	"germanGrades": "Německé známky",
+	"polishGrades": "Polské známky",
+	"czechGradesForLanguage": "České známky pro jazyk",
+	"russianGrades": "Ruské známky",
+	"customGrades": "Vlastní známky"
 }

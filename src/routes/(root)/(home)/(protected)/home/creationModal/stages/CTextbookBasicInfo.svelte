@@ -2,7 +2,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import NextPrevious from '../components/NextPrevious.svelte';
 	import Textarea from '$component/Textarea.svelte';
-	import { MAX_TEXTBOOK_LETTERS } from '$lib';
+	import { MAX_NAME_LENGTH } from '$lib';
 
 	let {
 		step = $bindable(0),
@@ -28,8 +28,8 @@
 		<h2 class="text-xl">{m.textbookName()}:</h2>
 		<input
 			type="text"
-			class="input-text"
-			maxlength={MAX_TEXTBOOK_LETTERS}
+			class="input-text grow"
+			maxlength={MAX_NAME_LENGTH}
 			bind:value={name}
 			placeholder={m.enterTextbookName()}
 		/>
@@ -38,8 +38,8 @@
 		<h2 class="text-xl">{m.textbookSubject()}:</h2>
 		<input
 			type="text"
-			class="input-text"
-			maxlength={MAX_TEXTBOOK_LETTERS}
+			class="input-text grow"
+			maxlength={MAX_NAME_LENGTH}
 			bind:value={subject}
 			placeholder={m.enterTextbookSubject()}
 		/>

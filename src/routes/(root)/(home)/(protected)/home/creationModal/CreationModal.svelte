@@ -8,7 +8,7 @@
 	import Review from './stages/FReview.svelte';
 	import TextbookArticles from './stages/DTextbookArticles.svelte';
 	import CourseTextbookSelect from './stages/BCourseTextbookSelect.svelte';
-	import type { CourseGradeType, UserRoleType } from '$lib/types';
+	import type { CourseGradeType, UserRoleType, UserType } from '$lib/types';
 
 	//this component stores the values which it then review submits to form action
 
@@ -16,10 +16,12 @@
 		showModal = $bindable(),
 		message = $bindable(''),
 		isError = $bindable(false),
+		user
 	}: {
 		showModal: boolean;
 		message: string;
 		isError: boolean;
+		user: UserType;
 	} = $props();
 
 	let stage = $state(0);
@@ -59,6 +61,7 @@
 			<SelectType
 				bind:value={selected}
 				bind:stage
+				{user}
 			/>
 		{/if}
 
@@ -80,7 +83,13 @@
 					bind:subject
 				/>
 			{:else if stage == 3}
-				<CourseGrading bind:step={stage} />
+				<CourseGrading
+					bind:step={stage}
+					bind:grades={courseGrades}
+					{red}
+					{green}
+					{blue}
+				/>
 			{/if}
 			<!-- textbook only -->
 		{:else if selected == 'textbook'}

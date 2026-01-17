@@ -134,6 +134,7 @@
 	bind:showModal={creationModal}
 	bind:message={successMessage}
 	bind:isError={isErrorMessage}
+	user={data.user}
 />
 
 {#if isErrorMessage}
