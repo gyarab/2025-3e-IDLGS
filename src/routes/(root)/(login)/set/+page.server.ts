@@ -19,10 +19,10 @@ export const actions = {
 		return await formRunner(
 			['password', 'rpassword'],
 			async (event, formData, cookies, user) => {
-				const password = formData.get('password')?.toString();
+				const password = formData['password']?.toString();
 				if (
 					password?.toString() !=
-					formData.get('rpassword')?.toString()
+					formData['rpassword']?.toString()
 				) {
 					return fail(400);
 				}

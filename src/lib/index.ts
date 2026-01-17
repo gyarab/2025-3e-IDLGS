@@ -43,9 +43,9 @@ export const getImageBackgroundClassRaw = (id: number) => {
 	}
 };
 
-export const getImageBackgroundClass = (user: UserType) => {
-	if (!user) return '';
-	return getImageBackgroundClassRaw(user.id);
+export const getImageBackgroundClass = (user: UserType | undefined) => {
+	if (user === undefined) return '';
+	return getImageBackgroundClassRaw(user.background);
 };
 
 export const isInViewport = (element: HTMLElement): Promise<boolean> => {

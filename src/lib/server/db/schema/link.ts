@@ -7,10 +7,14 @@ export const userCourseLinker = pgTable('userCourseLinker', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
 	teacher: boolean('teacher').notNull().default(false),
 	course: integer('course')
-		.references(() => course.id)
+		.references(() => course.id, {
+			onDelete: 'cascade',
+		})
 		.notNull(),
 	user: integer('user')
-		.references(() => user.id)
+		.references(() => user.id, {
+			onDelete: 'cascade',
+		})
 		.notNull(),
 });
 
@@ -19,10 +23,14 @@ export const userTextbookLinker = pgTable('userTextbookLinker', {
 	editor: boolean('editor').notNull().default(false),
 	owner: boolean('owner').notNull().default(false),
 	textbook: integer('textbook')
-		.references(() => textbook.id)
+		.references(() => textbook.id, {
+			onDelete: 'cascade',
+		})
 		.notNull(),
 	user: integer('user')
-		.references(() => user.id)
+		.references(() => user.id, {
+			onDelete: 'cascade',
+		})
 		.notNull(),
 });
 
@@ -30,9 +38,13 @@ export const userAssignmentLinker = pgTable('userAssignmentLinker', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
 	completed: boolean('completed').notNull().default(false),
 	courseAssignment: integer('courseAssignment')
-		.references(() => course.id)
+		.references(() => course.id, {
+			onDelete: 'cascade',
+		})
 		.notNull(),
 	user: integer('user')
-		.references(() => user.id)
+		.references(() => user.id, {
+			onDelete: 'cascade',
+		})
 		.notNull(),
 });

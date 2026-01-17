@@ -26,6 +26,7 @@
 	class="
 	m-2 flex w-full grow flex-col gap-1 rounded-2xl p-2 shadow
 	{object.all ? 'bg-emerald-700' : 'bg-red-800'}
+	{equal ? '' : 'bg-amber-700!'}
 "
 >
 	<PasswordInputValidItem
