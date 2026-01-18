@@ -31,8 +31,7 @@
 	$effect(() => {
 		if (expiryCheck) {
 			inviteCodeExpiry = new Date(3000, 1, 1);
-		}
-		else {
+		} else {
 			inviteCodeExpiry = new Date(expiryYear, expiryMonth - 1, expiryDay);
 		}
 	});
@@ -86,7 +85,7 @@
 			<h2 class="text-xl">
 				{m.inviteCodeExpiryDate()}:
 			</h2>
-			<span class={expiryCheck ? 'opacity-50 pointer-events-none' : ''}>
+			<span class={expiryCheck ? 'pointer-events-none opacity-50' : ''}>
 				<DateInput
 					bind:day={expiryDay}
 					bind:month={expiryMonth}

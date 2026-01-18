@@ -16,10 +16,10 @@
 	} = $props();
 
 	let color = $state(
-		'#'+
-		red.toString(16).padStart(2,'0')+
-		green.toString(16).padStart(2,'0')+
-		blue.toString(16).padStart(2,'0')
+		'#' +
+			red.toString(16).padStart(2, '0') +
+			green.toString(16).padStart(2, '0') +
+			blue.toString(16).padStart(2, '0'),
 	); //bg-violet-700
 	$effect(() => {
 		red = parseInt(color.slice(1, 3), 16);

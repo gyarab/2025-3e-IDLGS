@@ -19,7 +19,7 @@ export const formRunner = async (
 	const event = getRequestEvent();
 
 	let user = undefined;
-	if(!ignoreUser) {
+	if (!ignoreUser) {
 		user = await getUser();
 		if (!user) return fail(401);
 	}
@@ -35,7 +35,13 @@ export const formRunner = async (
 		object[requiredFields[i]] = formData.get(requiredFields[i])?.toString();
 	}
 
-	const value = await runner(event, object, event.cookies, user as UserType, formData);
+	const value = await runner(
+		event,
+		object,
+		event.cookies,
+		user as UserType,
+		formData,
+	);
 	return value;
 };
 

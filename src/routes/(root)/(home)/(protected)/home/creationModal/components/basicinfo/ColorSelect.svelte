@@ -26,35 +26,37 @@
 </script>
 
 <div class="flex flex-row items-center gap-2">
-		
+	<div class="flex flex-row items-center gap-2">
+		<h2 class="text-xl">{m.courseColor()}:</h2>
 
-<div class="flex flex-row items-center gap-2">
-	<h2 class="text-xl">{m.courseColor()}:</h2>
-
-	<div class="flex flex-row items-center gap-0 *:first:rounded-s-lg *:last:rounded-e-lg *:rounded-none *:p-2 *:border-2 *:border-transparent">
-		{#each colorList as colorData (colorData)}
-			<button 
-				onclick={() => {
-					color = colorData;
-				}}
-				class='button-none hover:border-white {colorData === color ? "border-white!" : ""}'
-				style="background-color: {colorData};"
-				type="button"
-				aria-label="{m.colorSelectionButton()}"
-			>
-				<i 
-					class="ri-circle-fill bg-clip text-neutral-800/40 m-2!"
+		<div
+			class="flex flex-row items-center gap-0 *:rounded-none *:border-2 *:border-transparent *:p-2 *:first:rounded-s-lg *:last:rounded-e-lg"
+		>
+			{#each colorList as colorData (colorData)}
+				<button
+					onclick={() => {
+						color = colorData;
+					}}
+					class="button-none hover:border-white {colorData === color
+						? 'border-white!'
+						: ''}"
 					style="background-color: {colorData};"
-				></i>
-			</button>
-		{/each}
-	</div>
+					type="button"
+					aria-label={m.colorSelectionButton()}
+				>
+					<i
+						class="ri-circle-fill bg-clip m-2! text-neutral-800/40"
+						style="background-color: {colorData};"
+					></i>
+				</button>
+			{/each}
+		</div>
 
-	<span class="opacity-50 italic">
-		{m.orSelectACustomColor()}:
-	</span>
+		<span class="italic opacity-50">
+			{m.orSelectACustomColor()}:
+		</span>
 
-	<input
+		<input
 			type="color"
 			bind:value={color}
 			class="input-color"

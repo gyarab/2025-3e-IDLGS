@@ -4,7 +4,7 @@
 
 <div
 	class="flex gap-2 text-xl {valueLong
-		? 'flex-col grow'
+		? 'grow flex-col'
 		: 'flex-row items-center'}"
 >
 	<div>

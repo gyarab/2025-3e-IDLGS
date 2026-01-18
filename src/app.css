@@ -37,7 +37,8 @@
 		@apply text-lg font-medium;
 	}
 	/* .button == button */
-	button, .button {
+	button,
+	.button {
 		@apply flex flex-row items-center justify-center gap-1 rounded-lg font-medium hover:brightness-80 active:brightness-60 disabled:brightness-60 max-lg:p-2 lg:p-3;
 	}
 	.button-none {

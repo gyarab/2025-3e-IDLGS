@@ -81,22 +81,24 @@
 		/>
 	</div>
 	{#if grades.length > 0}
-	<div class="flex w-full grow flex-col items-center gap-4">
-		<Timeline
-			bind:grades
-			{red}
-			{green}
-			{blue}
-		/>
-		<GradeInformation 
-			bind:grades
-			{red}
-			{green}
-			{blue}
-		/>
-	</div>
+		<div class="flex w-full grow flex-col items-center gap-4">
+			<Timeline
+				bind:grades
+				{red}
+				{green}
+				{blue}
+			/>
+			<GradeInformation
+				bind:grades
+				{red}
+				{green}
+				{blue}
+			/>
+		</div>
 	{:else}
-		<div class="flex flex-col grow items-center justify-center text-white opacity-50">
+		<div
+			class="flex grow flex-col items-center justify-center text-white opacity-50"
+		>
 			{m.selectAGradingPreset()}
 		</div>
 	{/if}

@@ -19,10 +19,10 @@
 	} = $props();
 
 	let color = $state(
-		'#'+
-		red.toString(16).padStart(2,'0')+
-		green.toString(16).padStart(2,'0')+
-		blue.toString(16).padStart(2,'0')
+		'#' +
+			red.toString(16).padStart(2, '0') +
+			green.toString(16).padStart(2, '0') +
+			blue.toString(16).padStart(2, '0'),
 	); //bg-violet-700
 	$effect(() => {
 		red = parseInt(color.slice(1, 3), 16);
@@ -70,6 +70,8 @@
 		onclickNext={() => {
 			step = 3;
 		}}
-		disableConditionNext={description.length == 0 || name.length == 0 || subject.length == 0}
+		disableConditionNext={description.length == 0 ||
+			name.length == 0 ||
+			subject.length == 0}
 	/>
 </div>

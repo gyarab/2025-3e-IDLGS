@@ -25,7 +25,7 @@
 				class="flex grow flex-col items-center justify-center gap-2 rounded-lg bg-white p-2 text-xl"
 				style="color: rgb({red}, {green}, {blue});"
 			>
-				<span class="text-3xl font-medium flex flex-row gap-1">
+				<span class="flex flex-row gap-1 text-3xl font-medium">
 					{#if editMode[index]}
 						<input
 							type="text"
@@ -37,18 +37,20 @@
 						{grade.name}
 					{/if}
 					{#if grade.name.length >= 1}
-					<Button
-						btn="button-none text-base!"
-						emoji="pencil"
-						onclick={() => {
-							editMode[index] = !editMode[index];
-						}}
-					/>
+						<Button
+							btn="button-none text-base!"
+							emoji="pencil"
+							onclick={() => {
+								editMode[index] = !editMode[index];
+							}}
+						/>
 					{/if}
 				</span>
 				{grade.min}% - {grade.max}%
 			</div>
-			<div class="flex flex-row justify-center gap-2 text-center text-base">
+			<div
+				class="flex flex-row justify-center gap-2 text-center text-base"
+			>
 				<Button
 					btn="button-white"
 					emoji="delete-bin"

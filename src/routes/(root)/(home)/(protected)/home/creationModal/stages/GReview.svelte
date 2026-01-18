@@ -29,7 +29,7 @@
 		message = $bindable(''),
 		isError = $bindable(false),
 		inviteCodeUses,
-		inviteCodeExpiry
+		inviteCodeExpiry,
 	}: {
 		step: number;
 		type: string;
@@ -169,9 +169,7 @@
 			{#if type == 'course'}
 				<Attribute
 					{type}
-					value={courseGrades
-						.map((grade) => grade.name)
-						.join(', ')}
+					value={courseGrades.map((grade) => grade.name).join(', ')}
 					course={m.gradesInCourse()}
 					textbook=""
 				/>

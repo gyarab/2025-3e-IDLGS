@@ -163,15 +163,15 @@
 		{/if}
 	</div>
 	{#if selected != 'course'}
-	<div class="flex w-full flex-row items-center gap-2">
-		<CheckboxInput
-			bind:checked={internet}
-			label={m.publishTextbookOnTheInternet()}
-		/>
-		<p class="grow opacity-50">
-			{m.itWillBeVisibleToEveryoneAndWillShowUpInSearchEngines()}.
-		</p>
-	</div>
+		<div class="flex w-full flex-row items-center gap-2">
+			<CheckboxInput
+				bind:checked={internet}
+				label={m.publishTextbookOnTheInternet()}
+			/>
+			<p class="grow opacity-50">
+				{m.itWillBeVisibleToEveryoneAndWillShowUpInSearchEngines()}.
+			</p>
+		</div>
 	{/if}
 	<NextPrevious
 		currentStep={selected == 'course' ? 4 : 3}
