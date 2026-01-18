@@ -4,8 +4,9 @@
 	import CourseBasicInfo from './stages/CCourseBasicInfo.svelte';
 	import TextbookBasicInfo from './stages/CTextbookBasicInfo.svelte';
 	import CourseGrading from './stages/DCourseGrading.svelte';
-	import Ownership from './stages/EOwnership.svelte';
-	import Review from './stages/FReview.svelte';
+	import Ownership from './stages/FOwnership.svelte';
+	import Review from './stages/GReview.svelte';
+	import CourseInviteCode from './stages/ECourseInviteCode.svelte';
 	import TextbookArticles from './stages/DTextbookArticles.svelte';
 	import CourseTextbookSelect from './stages/BCourseTextbookSelect.svelte';
 	import type { CourseGradeType, UserRoleType, UserType } from '$lib/types';
@@ -31,7 +32,7 @@
 	let subject: string = $state('');
 	let description: string = $state('');
 
-	//default values = tailwind's bg-violet-900
+	//default values = tailwind's bg-violet-700
 	let red: number = $state(101);
 	let green: number = $state(7);
 	let blue: number = $state(207);
@@ -43,6 +44,8 @@
 	let selectedTextbookUuid: string = $state('');
 	let courseGrades: CourseGradeType[] = $state([]);
 	let inviteCode: string = $state('');
+	let inviteCodeUses: number = $state(0); //0 = unlimited
+	let inviteCodeExpiry: Date = $state(new Date(3000, 1, 1)); //default: far future (no expiry)
 
 	//textbook only
 	let articleNames: string[][] = $state([]); //per chapter
@@ -90,6 +93,13 @@
 					{green}
 					{blue}
 				/>
+			{:else if stage == 4}
+				<CourseInviteCode
+					bind:inviteCode
+					bind:step={stage}
+					bind:inviteCodeUses
+					bind:inviteCodeExpiry
+				/>
 			{/if}
 			<!-- textbook only -->
 		{:else if selected == 'textbook'}
@@ -116,7 +126,7 @@
 		{/if}
 
 		<!-- both -->
-		{#if stage == 4}
+		{#if stage == 5}
 			<Ownership
 				bind:step={stage}
 				{selected}
@@ -128,7 +138,7 @@
 				type={selected}
 				bind:internet
 			/>
-		{:else if stage == 5}
+		{:else if stage == 6}
 			<Review
 				bind:step={stage}
 				{name}
@@ -148,6 +158,9 @@
 				bind:message
 				bind:isError
 				{internet}
+				textbookSelected={selectedTextbookUuid}
+				{inviteCodeUses}
+				{inviteCodeExpiry}
 			/>
 		{/if}
 	</Modal>

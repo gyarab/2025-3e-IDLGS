@@ -4,6 +4,7 @@ import { error, fail } from '@sveltejs/kit';
 import type { UserType } from '$lib/types';
 import { getRequestEvent } from '$app/server';
 
+//using user param when ignoreUser is UNDEFINED!
 export const formRunner = async (
 	requiredFields: string[],
 	runner: (
@@ -13,11 +14,15 @@ export const formRunner = async (
 		user: UserType,
 		formDataRaw: FormData,
 	) => Promise<ActionFailure | unknown>,
+	ignoreUser: boolean = false,
 ) => {
 	const event = getRequestEvent();
 
-	const user = await getUser();
-	if (!user) return fail(401);
+	let user = undefined;
+	if(!ignoreUser) {
+		user = await getUser();
+		if (!user) return fail(401);
+	}
 
 	const formData = await event.request.formData();
 
@@ -30,7 +35,7 @@ export const formRunner = async (
 		object[requiredFields[i]] = formData.get(requiredFields[i])?.toString();
 	}
 
-	const value = await runner(event, object, event.cookies, user, formData);
+	const value = await runner(event, object, event.cookies, user as UserType, formData);
 	return value;
 };
 

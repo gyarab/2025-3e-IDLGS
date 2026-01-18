@@ -9,77 +9,81 @@ import { schema } from '$lib/server/db/mainSchema';
 import { eq } from 'drizzle-orm';
 import { EMAIL_REGEX } from '$lib/server/user/index.js';
 import * as crypto from 'node:crypto';
+import { formRunner } from '$lib/server/form/runner.js';
 
-export const load = async () => {};
+export const load = async () => { };
 
 export const actions = {
 	login: async (event) => {
-		const formData = await event.request.formData();
-		const email = formData.get('email')?.toString().trim();
-		const password = formData.get('password')?.toString().trim();
-		const remember = formData.get('remember')?.toString().trim() == 'on';
+		return await formRunner(['email', 'password', 'cf-turnstile-response'], async (event, formData, _cookies, _user, formDataRaw) => {
+			const email = formData['email'].toLowerCase().trim();
+			const password = formData['password'];
+			const remember = formDataRaw.get('remember')?.toString().trim() == 'on';
 
-		if (!email || !password) {
-			return fail(400, {});
-		}
-		if (!EMAIL_REGEX.test(email)) {
-			return fail(400, {});
-		}
+			console.log(formData);
 
-		if (
-			!(await validateTurnstile(
-				(event.request.headers.get('CF-Connecting-IP') as string) ||
+			if (!email || !password) {
+				return fail(400, {});
+			}
+			if (!EMAIL_REGEX.test(email)) {
+				return fail(400, {});
+			}
+
+			if (
+				!(await validateTurnstile(
+					(event.request.headers.get('CF-Connecting-IP') as string) ||
 					event.request.headers.get('X-Forwarded-For') ||
 					'unknown',
-				formData.get('cf-turnstile-response')?.toString() as string,
-				env.CLOUDFLARE_SECRET,
-			))
-		) {
-			return fail(401, {});
-		}
+					formData['cf-turnstile-response'],
+					env.CLOUDFLARE_SECRET,
+				))
+			) {
+				return fail(401, {});
+			}
 
-		const user = (
-			await event.locals.db
-				.select()
-				.from(schema.user)
-				.where(eq(schema.user.email, email))
-				.limit(1)
-		)[0];
+			const user = (
+				await event.locals.db
+					.select()
+					.from(schema.user)
+					.where(eq(schema.user.email, email))
+					.limit(1)
+			)[0];
 
-		const hashedPassword = crypto
-			.pbkdf2Sync(
-				Buffer.from(password),
-				user.salt,
-				user.iterations,
-				64,
-				'sha512',
-			)
-			.toString('hex');
+			const hashedPassword = crypto
+				.pbkdf2Sync(
+					Buffer.from(password),
+					user.salt,
+					user.iterations,
+					64,
+					'sha512',
+				)
+				.toString('hex');
 
-		if (
-			!crypto.timingSafeEqual(
-				Buffer.from(hashedPassword),
-				Buffer.from(user.password),
-			)
-		) {
-			return fail(401, {});
-		}
+			if (
+				!crypto.timingSafeEqual(
+					Buffer.from(hashedPassword),
+					Buffer.from(user.password),
+				)
+			) {
+				return fail(401, {});
+			}
 
-		const session = (
-			await event.locals.db
-				.insert(schema.userSession)
-				.values({
-					user: user.id,
-					expiresAt: new Date(
-						Date.now() +
+			const session = (
+				await event.locals.db
+					.insert(schema.userSession)
+					.values({
+						user: user.id,
+						expiresAt: new Date(
+							Date.now() +
 							(remember
 								? USER_SESSION_LENGTH_REMEMBER
 								: USER_SESSION_LENGTH),
-					),
-				})
-				.returning()
-		)[0];
+						),
+					})
+					.returning()
+			)[0];
 
-		event.cookies.set('session', session.token, { path: '/' });
+			event.cookies.set('session', session.token, { path: '/' });
+		}, true);
 	},
 };

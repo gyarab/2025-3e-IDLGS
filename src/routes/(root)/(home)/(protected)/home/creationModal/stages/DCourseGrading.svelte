@@ -4,6 +4,7 @@
 	import NextPrevious from '../components/NextPrevious.svelte';
 	import type { CourseGradeType } from '$lib/types';
 	import Timeline from '../components/dcoursegrading/Timeline.svelte';
+	import GradeInformation from '../components/dcoursegrading/GradeInformation.svelte';
 	import {
 		CZECH_GRADES,
 		CZECH_LANGUAGE_GRADES,
@@ -46,7 +47,6 @@
 				m.germanGrades(),
 				m.russianGrades(),
 				m.czechGradesForLanguage(),
-				m.customGrades(),
 			]}
 			values={[
 				'czech',
@@ -55,7 +55,6 @@
 				'german',
 				'russian',
 				'language',
-				'custom',
 			]}
 			onchange={(v) => {
 				switch (v) {
@@ -77,13 +76,11 @@
 					case 'language':
 						grades = CZECH_LANGUAGE_GRADES;
 						break;
-					case 'custom':
-						grades = [];
-						break;
 				}
 			}}
 		/>
 	</div>
+	{#if grades.length > 0}
 	<div class="flex w-full grow flex-col items-center gap-4">
 		<Timeline
 			bind:grades
@@ -91,16 +88,27 @@
 			{green}
 			{blue}
 		/>
+		<GradeInformation 
+			bind:grades
+			{red}
+			{green}
+			{blue}
+		/>
 	</div>
+	{:else}
+		<div class="flex flex-col grow items-center justify-center text-white opacity-50">
+			{m.selectAGradingPreset()}
+		</div>
+	{/if}
 	<NextPrevious
 		currentStep={3}
-		maxStep={5}
+		maxStep={6}
 		onclickLast={() => {
 			step = 2;
 		}}
 		onclickNext={() => {
 			step = 4;
 		}}
-		disableConditionNext={false}
+		disableConditionNext={grades.length == 0}
 	/>
 </div>

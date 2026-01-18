@@ -32,7 +32,7 @@
 	{#if timer > 0}
 		<div
 			class="
-	fixed top-[6svh] z-0 flex h-[6svh] w-full flex-row items-center justify-center
+	fixed top-[6svh] z-50 flex h-[6svh] w-full flex-row items-center justify-center
 "
 			transition:fly|global={{
 				duration: 500,

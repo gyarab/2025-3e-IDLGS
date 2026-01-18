@@ -303,5 +303,16 @@
 	"polishGrades": "Polské známky",
 	"czechGradesForLanguage": "České známky pro jazyk",
 	"russianGrades": "Ruské známky",
-	"customGrades": "Vlastní známky"
+	"customGrades": "Vlastní známky",
+	"regenerateCourseInviteCode": "Znovu vygenerovat kód pozvánky do kurzu",
+	"thisCodeIsLikeAPasswordForTheCourse": "Tento kód je jako heslo pro kurz",
+	"anyoneWithItCanJoinTheCourse": "Kdokoli s ním se může připojit ke kurzu",
+	"makeSureYouShareItOnlyWithPeopleWhomYouWantToJoinTheCourse": "Ujistěte se, že jej sdílíte pouze s lidmi, které chcete, aby se připojili ke kurzu",
+	"maximumInviteCodeUses": "Maximální počet použití kódu pozvánky",
+	"unlimited": "Neomezeno",
+	"inviteCodeExpiryDate": "Datum vypršení platnosti kódu pozvánky",
+	"noInviteCodeExpiryDate": "Žádné datum vypršení platnosti kódu pozvánky",
+	"orSelectACustomColor": "nebo vyberte vlastní barvu",
+	"colorSelectionButton": "Tlačítko pro výběr barvy",
+	"deleteGrade": "Smazat známku"
 }

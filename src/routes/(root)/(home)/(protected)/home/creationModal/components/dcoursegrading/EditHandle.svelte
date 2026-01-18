@@ -62,6 +62,10 @@
 			);
 		}
 
+		//round to 1 decimal place
+		grades[index - 1].min = Math.round(grades[index - 1].min * 10) / 10;
+		grades[index].max = Math.round(grades[index].max * 10) / 10;
+
 		grades[0].max = 100;
 		grades[grades.length - 1]!.min = 0;
 
@@ -84,8 +88,10 @@
 <div
 	id="{index}timelinehandle"
 	class="absolute top-4 z-10 flex flex-col rounded-lg bg-white p-1"
-	style="right: {grades[index]?.max ??
-		0}%; color: rgb({red}, {green}, {blue});"
+	style="right: {Math.min(
+		98,
+		grades[index]?.max ?? 0,
+	)}%; color: rgb({red}, {green}, {blue});"
 	draggable="true"
 >
 	{#if !removeDrag}

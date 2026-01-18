@@ -1,6 +1,6 @@
 import { loadCourses } from '$lib/server/loaders/course.js';
 import { loadTextbooks } from '$lib/server/loaders/textbook.js';
-import type { UserType } from '$lib/types.js';
+import type { CourseGradeType, UserType } from '$lib/types.js';
 import { MAX_NAME_LENGTH } from '$lib';
 import { formRunner } from '$lib/server/form/runner.js';
 import { schema } from '$lib/server/db/mainSchema.js';
@@ -39,7 +39,10 @@ export const actions = {
 				if (
 					formData['name'].length === 0 ||
 					formData['description'].length === 0 ||
-					formData['name'].length > MAX_NAME_LENGTH
+					formData['name'].length > MAX_NAME_LENGTH ||
+					isNaN(parseInt(formData['red'])) ||
+					isNaN(parseInt(formData['green'])) ||
+					isNaN(parseInt(formData['blue']))
 				) {
 					return fail(400);
 				}
@@ -109,7 +112,8 @@ export const actions = {
 						).map((u) => {
 							return {
 								user: u.id,
-								role: roles[users.indexOf(u.uuid)],
+								owner: roles[users.indexOf(u.uuid)] === 'owner',
+								editor: roles[users.indexOf(u.uuid)] === 'editor',
 								textbook: textbook,
 							};
 						});
@@ -137,25 +141,125 @@ export const actions = {
 				'users',
 				'roles',
 				'grades',
-				'code',
+				'inviteCode',
+				'grades',
+				'textbookSelected',
+				'inviteCodeUses',
+				'inviteCodeExpiry'
 			],
 			async (event, formData, cookies, user) => {
 				if (
 					formData['name'].length === 0 ||
 					formData['description'].length === 0 ||
-					formData['name'].length > MAX_NAME_LENGTH
+					formData['name'].length > MAX_NAME_LENGTH ||
+					formData['inviteCode'].length === 0 ||
+					isNaN(parseInt(formData['inviteCodeUses'])) ||
+					isNaN(parseInt(formData['red'])) ||
+					isNaN(parseInt(formData['green'])) ||
+					isNaN(parseInt(formData['blue'])) ||
+					parseInt(formData['inviteCodeUses']) < 0 ||
+					parseInt(formData['inviteCodeUses']) > 1000 ||
+					!formData['textbookSelected']
 				) {
 					return fail(400);
 				}
 
-				//TODO
+				const users = JSON.parse(formData['users']) as string[];
+				const roles = JSON.parse(formData['roles']) as string[];
+				const grades = JSON.parse(formData['grades']) as CourseGradeType[];
 
-				try {
-					await event.locals.db.transaction(async (tx) => {});
-				} catch (e) {
-					writeLog(event, 'ERROR', 'DB failure.', user);
-					return fail(500);
+				if (users.length !== roles.length) {
+					return fail(400);
 				}
+				if (users.indexOf(user.uuid) === -1) {
+					users.push(user.uuid);
+					roles.push('teacher');
+				}
+
+				//try {
+					await event.locals.db.transaction(async (tx) => {
+						const courseTextbook = (await tx
+							.select()
+							.from(schema.textbook)
+							.where(
+								eq(
+									schema.textbook.uuid,
+									formData['textbookSelected'],
+								),
+							)
+							.limit(1))[0];
+
+						if (!courseTextbook) {
+							writeLog(
+								event,
+								'ERROR',
+								'Textbook not found for course creation.',
+								user,
+							);
+							throw new Error();
+						}
+
+						const course = await tx
+							.insert(schema.course)
+							.values({
+								name: formData['name'],
+								description: formData['description'],
+								subject: formData['subject'],
+								red: parseInt(formData['red']),
+								green: parseInt(formData['green']),
+								blue: parseInt(formData['blue']),
+								textbook: courseTextbook.id,
+							})
+							.returning({ id: schema.course.id });
+
+						console.log(course);
+
+						//course grading
+						await tx.insert(schema.percentageGradeValue).values(
+							grades.map((g) => {
+								return {
+									course: course[0].id,
+									min: g.min,
+									max: g.max,
+									name: g.name,
+								};
+							}),
+						);
+
+						//course invite code
+						await tx.insert(schema.courseCodes).values({
+							course: course[0].id,
+							code: formData['inviteCode'],
+							usesRemaining: parseInt(formData['inviteCodeUses']),
+							infinite: parseInt(formData['inviteCodeUses']) === 0,
+							expiresAt: new Date(formData['inviteCodeExpiry']),
+						});
+
+						//users
+						const userIds = (
+							await tx
+								.select({
+									id: schema.user.id,
+									uuid: schema.user.uuid,
+								})
+								.from(schema.user)
+								.where(inArray(schema.user.uuid, users))
+						).map((u) => {
+							return {
+								user: u.id,
+								teacher: roles[users.indexOf(u.uuid)] === 'teacher',
+								course: course[0].id,
+							};
+						});
+
+						await tx
+							.insert(schema.userCourseLinker)
+							.values(userIds);
+					});
+				//} catch (e) {
+				//	writeLog(event, 'ERROR', 'DB failure.', user);
+				//	return fail(500);
+				//}
 			},
 		);
 	},

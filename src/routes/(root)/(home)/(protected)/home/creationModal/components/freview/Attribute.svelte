@@ -3,9 +3,9 @@
 </script>
 
 <div
-	class="flex items-center gap-2 text-xl {valueLong
-		? 'flex-col'
-		: 'flex-row'}"
+	class="flex gap-2 text-xl {valueLong
+		? 'flex-col grow'
+		: 'flex-row items-center'}"
 >
 	<div>
 		{#if type == 'course'}

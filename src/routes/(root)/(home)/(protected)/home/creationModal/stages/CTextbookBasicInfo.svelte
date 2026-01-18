@@ -3,6 +3,7 @@
 	import NextPrevious from '../components/NextPrevious.svelte';
 	import Textarea from '$component/Textarea.svelte';
 	import { MAX_NAME_LENGTH } from '$lib';
+	import ColorSelect from '../components/basicinfo/ColorSelect.svelte';
 
 	let {
 		step = $bindable(0),
@@ -14,7 +15,12 @@
 		subject = $bindable(''),
 	} = $props();
 
-	let color = $state('#6507cf'); //bg-violet-900
+	let color = $state(
+		'#'+
+		red.toString(16).padStart(2,'0')+
+		green.toString(16).padStart(2,'0')+
+		blue.toString(16).padStart(2,'0')
+	); //bg-violet-700
 	$effect(() => {
 		red = parseInt(color.slice(1, 3), 16);
 		green = parseInt(color.slice(3, 5), 16);
@@ -44,17 +50,7 @@
 			placeholder={m.enterTextbookSubject()}
 		/>
 	</div>
-	<div class="flex flex-row items-center gap-2">
-		<h2 class="text-xl">{m.textbookColor()}:</h2>
-		<input
-			type="color"
-			bind:value={color}
-			class="input-color"
-		/>
-		<span class="opacity-50">
-			{color}
-		</span>
-	</div>
+	<ColorSelect bind:color />
 	<div class="flex grow flex-col gap-2">
 		<h2 class="text-xl">{m.textbookDescription()}:</h2>
 		<Textarea

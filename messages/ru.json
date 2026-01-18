@@ -303,5 +303,16 @@
 	"polishGrades": "Польские оценки",
 	"czechGradesForLanguage": "Чешские оценки для языка",
 	"russianGrades": "Русские оценки",
-	"customGrades": "Пользовательские оценки"
+	"customGrades": "Пользовательские оценки",
+	"regenerateCourseInviteCode": "Сгенерировать код приглашения на курс заново",
+	"thisCodeIsLikeAPasswordForTheCourse": "Этот код похож на пароль для курса",
+	"anyoneWithItCanJoinTheCourse": "Любой, у кого он есть, может присоединиться к курсу",
+	"makeSureYouShareItOnlyWithPeopleWhomYouWantToJoinTheCourse": "Убедитесь, что вы делитесь им только с людьми, которых хотите видеть в курсе",
+	"maximumInviteCodeUses": "Максимальное количество использований кода приглашения",
+	"unlimited": "Неограниченно",
+	"inviteCodeExpiryDate": "Дата истечения срока действия кода приглашения",
+	"noInviteCodeExpiryDate": "Нет даты истечения срока действия кода приглашения",
+	"orSelectACustomColor": "или выберите другой цвет",
+	"colorSelectionButton": "Кнопка выбора цвета",
+	"deleteGrade": "Удалить оценку"
 }

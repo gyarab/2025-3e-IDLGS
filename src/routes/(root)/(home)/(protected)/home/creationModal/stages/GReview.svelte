@@ -24,9 +24,12 @@
 		courseGrades,
 		inviteCode,
 		internet,
+		textbookSelected,
 		showModal = $bindable(true),
 		message = $bindable(''),
 		isError = $bindable(false),
+		inviteCodeUses,
+		inviteCodeExpiry
 	}: {
 		step: number;
 		type: string;
@@ -46,6 +49,9 @@
 		message: string;
 		isError: boolean;
 		internet: boolean;
+		textbookSelected: string;
+		inviteCodeUses: number;
+		inviteCodeExpiry: Date;
 	} = $props();
 </script>
 
@@ -68,6 +74,11 @@
 			type == 'course'
 				? m.couldNotCreateCourse()
 				: m.couldNotCreateTextbook();
+	}}
+	final={async () => {
+		//reset values before form submission and next addition
+		step = 0;
+		type = '';
 	}}
 >
 	<!-- inputs -->
@@ -113,6 +124,18 @@
 			name="inviteCode"
 			value={inviteCode}
 		/>
+		<HiddenInput
+			name="inviteCodeUses"
+			value={inviteCodeUses}
+		/>
+		<HiddenInput
+			name="textbookSelected"
+			value={textbookSelected}
+		/>
+		<HiddenInput
+			name="inviteCodeExpiry"
+			value={inviteCodeExpiry.toISOString()}
+		/>
 	{:else}
 		<HiddenInput
 			name="chapters"
@@ -144,7 +167,20 @@
 				textbook={m.textbookSubject()}
 			/>
 			{#if type == 'course'}
-				<!-- TODO other attribs-->
+				<Attribute
+					{type}
+					value={courseGrades
+						.map((grade) => grade.name)
+						.join(', ')}
+					course={m.gradesInCourse()}
+					textbook=""
+				/>
+				<Attribute
+					{type}
+					value={inviteCode}
+					course={m.courseInviteCode()}
+					textbook=""
+				/>
 			{/if}
 			<Attribute
 				{type}
@@ -194,16 +230,12 @@
 		</div>
 	</div>
 	<NextPrevious
-		currentStep={type == 'course' ? 5 : 4}
-		maxStep={type == 'course' ? 5 : 4}
+		currentStep={type == 'course' ? 6 : 4}
+		maxStep={type == 'course' ? 6 : 4}
 		onclickLast={() => {
-			step = 4;
+			step = 5;
 		}}
-		onclickNext={() => {
-			//reset values before form submission and next addition
-			step = 0;
-			type = '';
-		}}
+		onclickNext={() => {}}
 		isLast={true}
 	/>
 </Form>

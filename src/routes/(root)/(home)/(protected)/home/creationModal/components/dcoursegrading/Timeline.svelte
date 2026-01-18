@@ -75,14 +75,16 @@
 				removeDrag={index === 0}
 			/>
 		{/each}
-		<EditHandle
-			bind:grades
-			{red}
-			{green}
-			{blue}
-			index={grades.length}
-			parentWidth={parentElement?.clientWidth ?? 0}
-			removeDrag={true}
-		/>
+		{#if grades.length > 0}
+			<EditHandle
+				bind:grades
+				{red}
+				{green}
+				{blue}
+				index={grades.length}
+				parentWidth={parentElement?.clientWidth ?? 0}
+				removeDrag={true}
+			/>
+		{/if}
 	{/key}
 </div>

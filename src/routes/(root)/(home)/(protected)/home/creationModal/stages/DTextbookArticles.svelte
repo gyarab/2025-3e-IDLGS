@@ -95,7 +95,7 @@
 			step = 2;
 		}}
 		onclickNext={() => {
-			step = 4;
+			step = 5;
 		}}
 		disableConditionNext={false}
 	/>

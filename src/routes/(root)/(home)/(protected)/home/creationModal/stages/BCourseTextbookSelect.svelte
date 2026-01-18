@@ -107,7 +107,7 @@
 	{/await}
 	<NextPrevious
 		currentStep={1}
-		maxStep={5}
+		maxStep={6}
 		onclickLast={() => {
 			step = 0;
 		}}

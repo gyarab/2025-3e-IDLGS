@@ -303,5 +303,16 @@
 	"polishGrades": "Polish Grades",
 	"czechGradesForLanguage": "Czech Grades for Language",
 	"russianGrades": "Russian Grades",
-	"customGrades": "Custom Grades"
+	"customGrades": "Custom Grades",
+	"regenerateCourseInviteCode": "Regenerate Course Invite Code",
+	"thisCodeIsLikeAPasswordForTheCourse": "This code is like a password for the course",
+	"anyoneWithItCanJoinTheCourse": "Anyone with it can join the course",
+	"makeSureYouShareItOnlyWithPeopleWhomYouWantToJoinTheCourse": "Make sure you share it only with people whom you want to join the course",
+	"maximumInviteCodeUses": "Maximum Invite Code Uses",
+	"unlimited": "Unlimited",
+	"inviteCodeExpiryDate": "Invite Code Expiry Date",
+	"noInviteCodeExpiryDate": "No Invite Code Expiry Date",
+	"orSelectACustomColor": "or select a custom color",
+	"colorSelectionButton": "Color selection button",
+	"deleteGrade": "Delete Grade"
 }

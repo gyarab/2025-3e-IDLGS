@@ -162,6 +162,7 @@
 			{m.youWillAlsoBeAddedAsTheOwnerOfTheBook()}.
 		{/if}
 	</div>
+	{#if selected != 'course'}
 	<div class="flex w-full flex-row items-center gap-2">
 		<CheckboxInput
 			bind:checked={internet}
@@ -171,6 +172,7 @@
 			{m.itWillBeVisibleToEveryoneAndWillShowUpInSearchEngines()}.
 		</p>
 	</div>
+	{/if}
 	<NextPrevious
 		currentStep={selected == 'course' ? 4 : 3}
 		maxStep={selected == 'course' ? 5 : 4}
@@ -178,7 +180,7 @@
 			step = 3;
 		}}
 		onclickNext={() => {
-			step = 5;
+			step = 6;
 		}}
 	/>
 </div>

@@ -303,5 +303,16 @@
 	"polishGrades": "Oceny polskie",
 	"czechGradesForLanguage": "Oceny czeskie dla języka",
 	"russianGrades": "Oceny rosyjskie",
-	"customGrades": "Oceny własne"
+	"customGrades": "Oceny własne",
+	"regenerateCourseInviteCode": "Wygeneruj ponownie kod zaproszenia na kurs",
+	"thisCodeIsLikeAPasswordForTheCourse": "Ten kod jest jak hasło do kursu",
+	"anyoneWithItCanJoinTheCourse": "Każdy z nim może dołączyć się do kursu",
+	"makeSureYouShareItOnlyWithPeopleWhomYouWantToJoinTheCourse": "Upewnij się, że udostępniasz go tylko osobom, które chcesz, aby dołączyły do kursu",
+	"maximumInviteCodeUses": "Maksymalna liczba użyć kodu zaproszenia",
+	"unlimited": "Nieograniczono",
+	"inviteCodeExpiryDate": "Data wygaśnięcia kodu zaproszenia",
+	"noInviteCodeExpiryDate": "Brak daty wygaśnięcia kodu zaproszenia",
+	"orSelectACustomColor": "lub wybierz inny kolor",
+	"colorSelectionButton": "Przycisk wyboru koloru",
+	"deleteGrade": "Usuń ocenę"
 }

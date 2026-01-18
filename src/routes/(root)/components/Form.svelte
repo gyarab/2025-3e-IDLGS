@@ -12,6 +12,7 @@
 		invalidateAll = true,
 		success = async () => {},
 		failure = async () => {},
+		final = async () => {},
 		action,
 	}: {
 		children: Snippet;
@@ -21,6 +22,7 @@
 		invalidateAll?: boolean;
 		success?: (data: unknown) => Promise<void>;
 		failure?: (data: unknown) => Promise<void>;
+		final?: () => Promise<void>;
 		action: string;
 	} = $props();
 </script>
@@ -37,6 +39,8 @@
 			} else if (result.type == 'failure') {
 				await failure(result.data);
 			}
+
+			await final();
 
 			loading = false;
 		};

@@ -139,6 +139,9 @@ export const courseCodes = pgTable('courseCode', {
 	usesRemaining: integer('usesRemaining').notNull().default(0),
 	infinite: boolean('infinite').notNull().default(false),
 	course: integer('course')
-		.references(() => course.id)
+		.references(() => course.id, {
+			onDelete: 'no action',
+		})
 		.notNull(),
+	code: text('code').notNull(),
 });

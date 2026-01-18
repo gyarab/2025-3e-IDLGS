@@ -303,5 +303,16 @@
 	"czechGrades": "Tschechische Noten",
 	"czechGradesForLanguage": "Tschechische Noten für Sprache",
 	"russianGrades": "Russische Noten",
-	"customGrades": "Benutzerdefinierte Noten"
+	"customGrades": "Benutzerdefinierte Noten",
+	"regenerateCourseInviteCode": "Kurseinladungscode neu generieren",
+	"thisCodeIsLikeAPasswordForTheCourse": "Dieser Code ist wie ein Passwort für den Kurs",
+	"anyoneWithItCanJoinTheCourse": "Jeder mit diesem Code kann dem Kurs beitreten",
+	"makeSureYouShareItOnlyWithPeopleWhomYouWantToJoinTheCourse": "Stellen Sie sicher, dass Sie ihn nur mit Personen teilen, die dem Kurs beitreten sollen",
+	"maximumInviteCodeUses": "Maximale Anzahl der Einladungs-Code-Verwendungen",
+	"unlimited": "Unbegrenzt",
+	"inviteCodeExpiryDate": "Ablaufdatum des Einladungscodes",
+	"noInviteCodeExpiryDate": "Kein Ablaufdatum für den Einladungscode",
+	"orSelectACustomColor": "oder wählen Sie eine andere Farbe aus",
+	"colorSelectionButton": "Farb-Auswahlknopf",
+	"deleteGrade": "Note löschen"
 }
