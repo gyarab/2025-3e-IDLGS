@@ -31,9 +31,7 @@
 	{delay}
 	{perspective}
 	{onclick}
-	css={selected
-		? 'border-neutral-500! brightness-110'
-		: ''}
+	css={selected ? 'border-neutral-500! brightness-110' : ''}
 	forceSquare={true}
 >
 	<div class="relative flex w-full grow flex-col p-2">

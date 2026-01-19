@@ -41,7 +41,7 @@
 
 			<WideCard>
 				{#if data.user.canChangeSettings}
-					<Form 
+					<Form
 						action="?/updatePersonalInfo"
 						success={async () => {
 							formMessage = m.settingsUpdated();
@@ -70,7 +70,7 @@
 									'mgr',
 									'ing',
 									'rndr',
-									'dr'
+									'dr',
 								]}
 								initialValue={data.user.degree}
 							/>

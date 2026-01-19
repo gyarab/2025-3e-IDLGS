@@ -14,10 +14,10 @@
 	let passwordValid = $state(false);
 
 	onMount(() => {
-		if(!browser) return;
+		if (!browser) return;
 
 		//hide navbar (nav element)
-		
+
 		document.getElementById('loggedInNavbar')!.style.display = 'none';
 		document.getElementById('loggedInNavbarFill')!.style.display = 'none';
 	});

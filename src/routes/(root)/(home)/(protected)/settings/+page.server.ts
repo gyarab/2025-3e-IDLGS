@@ -74,7 +74,7 @@ export const actions = {
 		return await formRunner(
 			['background', 'lang', 'daily'],
 			async (event, formData, cookies, user, formDataRaw) => {
-				if(
+				if (
 					!Number.isInteger(parseInt(formData['background'])) ||
 					parseInt(formData['background']) < 0
 				) {

@@ -8,7 +8,7 @@ export const blog = pgTable('blog', {
 	text: text('text').notNull().default(''),
 	author: integer('user')
 		.references(() => user.id, {
-			onDelete: 'set null'
+			onDelete: 'set null',
 		})
 		.notNull(),
 });

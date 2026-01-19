@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { Snippet } from "svelte";
+	import type { Snippet } from 'svelte';
 
 	let {
-		children
+		children,
 	}: {
-		children: Snippet
+		children: Snippet;
 	} = $props();
 </script>
 
