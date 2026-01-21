@@ -222,8 +222,6 @@ export const actions = {
 						})
 						.returning({ id: schema.course.id });
 
-					console.log(course);
-
 					//course grading
 					await tx.insert(schema.percentageGradeValue).values(
 						grades.map((g) => {

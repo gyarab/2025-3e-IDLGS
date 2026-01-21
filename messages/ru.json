@@ -330,5 +330,6 @@
 	"todayOrTomorrow": "Сегодня или завтра",
 	"later": "Позже",
 	"settingsUpdated": "Настройки обновлены",
-	"streakHasBeenReset": "Серия была сброшена"
+	"streakHasBeenReset": "Серия была сброшена",
+	"editTextbook": "Редактировать учебник"
 }

@@ -326,5 +326,6 @@
 	"todayOrTomorrow": "Today or tomorrow",
 	"later": "Later",
 	"settingsUpdated": "Settings updated",
-	"streakHasBeenReset": "Streak has been reset"
+	"streakHasBeenReset": "Streak has been reset",
+	"editTextbook": "Edit Textbook"
 }

@@ -62,5 +62,16 @@
 		>
 			{m.openWordDefinitions()}
 		</Button>
+		{#if data.isEditor || data.isOwner}
+			<Button
+				btn="button-primary"
+				emoji="pencil"
+				onclick={() => {
+					window.location.href = `/textbook/${data.textbook.uuid}/edit`;
+				}}
+			>
+				{m.editTextbook()}
+			</Button>
+		{/if}
 	</div>
 </WideCard>

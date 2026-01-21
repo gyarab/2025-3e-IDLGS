@@ -51,7 +51,6 @@
 				.then(async (res) => {
 					const rd = await res.json();
 					const data = rd.textbooks as TextbookType[];
-					console.log(rd, data);
 					return data;
 				})
 				.finally(() => []);

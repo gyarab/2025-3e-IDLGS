@@ -14,7 +14,7 @@ import { formRunner } from '$lib/server/form/runner.js';
 export const load = async () => {};
 
 export const actions = {
-	login: async (event) => {
+	login: async () => {
 		return await formRunner(
 			['email', 'password', 'cf-turnstile-response'],
 			async (event, formData, _cookies, _user, formDataRaw) => {
@@ -22,8 +22,6 @@ export const actions = {
 				const password = formData['password'];
 				const remember =
 					formDataRaw.get('remember')?.toString().trim() == 'on';
-
-				console.log(formData);
 
 				if (!email || !password) {
 					return fail(400, {});

@@ -9,6 +9,7 @@
 	import Card from '$component/Card.svelte';
 	import Form from '$component/Form.svelte';
 	import AlertBox from '$component/AlertBox.svelte';
+	import { invalidateAll } from '$app/navigation';
 
 	let ready = $state(false);
 	let formMessage = $state('');
@@ -98,18 +99,6 @@
 					type="submit"
 				>
 					{m.login()}
-				</Button>
-
-				<HorizontalLine
-					text={m.orIfYouDontHaveAnAccount()}
-					color="rgb(255, 255, 255)"
-				/>
-
-				<Button
-					emoji="user-add"
-					btn="button-violet"
-				>
-					{m.signUp()}
 				</Button>
 
 				<HorizontalLine color="rgb(255, 255, 255)" />
