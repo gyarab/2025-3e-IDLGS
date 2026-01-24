@@ -113,14 +113,14 @@
 		@apply h-fit border-2 border-neutral-500 bg-neutral-500/70 shadow-2xl backdrop-blur;
 	}
 
-	ul {
-		@apply list-inside list-disc;
-	}
-	ol {
-		@apply list-inside list-decimal;
-	}
-
 	.markdownText {
 		@apply flex w-full grow flex-col gap-2;
+	}
+
+	.markdownText ul {
+		@apply list-inside list-disc;
+	}
+	.markdownText ol {
+		@apply list-inside list-decimal;
 	}
 }
