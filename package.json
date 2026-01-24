@@ -57,7 +57,7 @@
 	},
 	"dependencies": {
 		"@cloudflare/workers-types": "^4.20260117.0",
-		"@sveltejs/adapter-cloudflare": "^7.2.4",
+		"@sveltejs/adapter-cloudflare": "^7.2.6",
 		"cloudinary": "^2.8.0",
 		"highlight.js": "^11.11.1",
 		"markdown-it": "^14.1.0",
