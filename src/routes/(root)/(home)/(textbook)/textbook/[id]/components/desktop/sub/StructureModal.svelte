@@ -35,7 +35,9 @@
 		}) ?? [],
 	);
 
-	let jsonArticles = $derived(JSON.stringify(chapters.map((v) => v.articlesLimited)));
+	let jsonArticles = $derived(
+		JSON.stringify(chapters.map((v) => v.articlesLimited)),
+	);
 </script>
 
 <Modal
@@ -84,7 +86,9 @@
 							name: name,
 						});
 						articles = chapters[selectedChapterId].articlesLimited!;
-						jsonArticles = JSON.stringify(chapters.map((v) => v.articlesLimited));
+						jsonArticles = JSON.stringify(
+							chapters.map((v) => v.articlesLimited),
+						);
 					}}
 					onDelete={(index: number) => {
 						chapters[selectedChapterId].articlesLimited!.splice(
@@ -92,7 +96,9 @@
 							1,
 						);
 						articles = chapters[selectedChapterId].articlesLimited!;
-						jsonArticles = JSON.stringify(chapters.map((v) => v.articlesLimited));
+						jsonArticles = JSON.stringify(
+							chapters.map((v) => v.articlesLimited),
+						);
 					}}
 				/>
 			{:else}
@@ -119,12 +125,12 @@
 				name="chapters"
 				value={JSON.stringify(chapters)}
 			/>
-		
+
 			{#key jsonArticles}
-			<HiddenInput
-				name="articles"
-				value={jsonArticles}
-			/>
+				<HiddenInput
+					name="articles"
+					value={jsonArticles}
+				/>
 			{/key}
 
 			<Button

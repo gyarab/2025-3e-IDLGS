@@ -91,8 +91,8 @@
 		<button
 			disabled={disable}
 			class="
-		disable:brightness-100! static w-full h-full min-w-full min-h-full max-h-full max-w-full
-		flex grow flex-col gap-2 rounded-lg {padding} backdrop-blur hover:brightness-100!
+		disable:brightness-100! static flex h-full max-h-full min-h-full w-full max-w-full
+		min-w-full grow flex-col gap-2 rounded-lg {padding} backdrop-blur hover:brightness-100!
 		{hover ? 'hover:backdrop-brightness-120' : ''}
 		"
 			onclick={() => {

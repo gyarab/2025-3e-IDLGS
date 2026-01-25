@@ -34,7 +34,9 @@
 	css={selected ? 'border-neutral-500! brightness-110' : ''}
 	forceSquare={true}
 >
-	<div class="relative flex w-full grow flex-col gap-0 p-2 text-left overflow-hidden">
+	<div
+		class="relative flex w-full grow flex-col gap-0 overflow-hidden p-2 text-left"
+	>
 		<h2 class="flex w-full flex-row items-center gap-1 text-left">
 			<div class="flex flex-row items-center gap-1 text-xl">
 				<i class="ri-book-ai-line text-3xl"></i>
@@ -57,7 +59,7 @@
 			{/each}
 		</div>
 		<p
-			class="overflow-scroll! w-full text-left text-sm font-light text-ellipsis opacity-70"
+			class="w-full overflow-scroll! text-left text-sm font-light text-ellipsis opacity-70"
 		>
 			{@html textbook.description.split('\n')[0]}
 		</p>

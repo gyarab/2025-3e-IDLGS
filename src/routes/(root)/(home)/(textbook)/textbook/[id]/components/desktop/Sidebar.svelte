@@ -59,7 +59,10 @@
 			</Button>
 
 			{#each textbook.chapters as chapter, i (chapter.uuid)}
-				<Chapter {chapter} textbookUuid={id} />
+				<Chapter
+					{chapter}
+					textbookUuid={id}
+				/>
 			{:else}
 				<div
 					class="flex flex-col grow w-full items-center justify-center gap-0"

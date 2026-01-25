@@ -27,11 +27,14 @@
 	} = $props();
 </script>
 
-<div 
+<div
 	class="
-	flex w-full flex-row items-center gap-2 rounded-lg  text-base
-	{selectedItem == i ? 'bg-white text-violet-800' : '*:text-violet-800 *:not-hover:text-white *:hover:bg-white'}
-	">
+	flex w-full flex-row items-center gap-2 rounded-lg text-base
+	{selectedItem == i
+		? 'bg-white text-violet-800'
+		: '*:text-violet-800 *:not-hover:text-white *:hover:bg-white'}
+	"
+>
 	<Button
 		cssClass="text-lg grow justify-start"
 		btn="button-transparent"

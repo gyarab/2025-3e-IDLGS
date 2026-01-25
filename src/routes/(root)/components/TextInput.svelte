@@ -23,7 +23,9 @@
 	});
 </script>
 
-<div class="{cssClass} flex flex-row flex-nowrap items-center gap-2 bg-transparent">
+<div
+	class="{cssClass} flex flex-row flex-nowrap items-center gap-2 bg-transparent"
+>
 	{#if label}
 		<span class="text-nowrap">{label}:</span>
 	{/if}

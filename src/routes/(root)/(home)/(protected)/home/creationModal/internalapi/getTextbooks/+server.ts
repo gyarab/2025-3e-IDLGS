@@ -18,17 +18,21 @@ export const POST = async () => {
 				summary: schema.textbook.summary,
 			})
 			.from(schema.textbook)
-			.innerJoin(schema.userTextbookLinker, eq(schema.userTextbookLinker.textbook, schema.textbook.id))
+			.innerJoin(
+				schema.userTextbookLinker,
+				eq(schema.userTextbookLinker.textbook, schema.textbook.id),
+			)
 			.where(
-				and(or(
-					sql`LOWER(${schema.textbook.name}) LIKE LOWER(${searchPattern})`,
-					sql`LOWER(${schema.textbook.description}) LIKE LOWER(${searchPattern})`,
-					sql`LOWER(${schema.textbook.subject}) LIKE LOWER(${searchPattern})`,
-					sql`LOWER(${schema.textbook.summary}) LIKE LOWER(${searchPattern})`,
-					sql`LOWER(${schema.textbook.uuid}) LIKE LOWER(${searchPattern})`,
+				and(
+					or(
+						sql`LOWER(${schema.textbook.name}) LIKE LOWER(${searchPattern})`,
+						sql`LOWER(${schema.textbook.description}) LIKE LOWER(${searchPattern})`,
+						sql`LOWER(${schema.textbook.subject}) LIKE LOWER(${searchPattern})`,
+						sql`LOWER(${schema.textbook.summary}) LIKE LOWER(${searchPattern})`,
+						sql`LOWER(${schema.textbook.uuid}) LIKE LOWER(${searchPattern})`,
+					),
+					eq(schema.userTextbookLinker.user, user.id),
 				),
-					eq(schema.userTextbookLinker.user, user.id)
-				)
 			)
 			.limit(100);
 
@@ -37,10 +41,12 @@ export const POST = async () => {
 		}
 
 		return json({
-			textbooks: result.map((tb) => { return {
-				...tb,
-				id: undefined,
-			}; }),
+			textbooks: result.map((tb) => {
+				return {
+					...tb,
+					id: undefined,
+				};
+			}),
 		});
 	});
 };

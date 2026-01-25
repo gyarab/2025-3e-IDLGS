@@ -61,7 +61,7 @@
 		>
 			{m.selfStudying()}
 		</NavbarLink>
-		
+
 		<div class="grow"></div>
 
 		<!-- if admin: show admin page -->

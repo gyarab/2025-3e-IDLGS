@@ -29,7 +29,7 @@
 
 	{#if isOpen}
 		{#each chapter.articlesLimited as article (article.uuid)}
-			<a 
+			<a
 				class="ml-4 flex w-full flex-col gap-0"
 				href="/textbook/{textbookUuid}/{chapter.uuid}/{article.uuid}"
 			>
