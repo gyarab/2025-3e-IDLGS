@@ -40,6 +40,9 @@
 	);
 </script>
 
+<!-- TODO add moving articles between chapters -->
+<!-- TODO change order of chapters -->
+
 <Modal
 	bind:showModal={showStructureModal}
 	cssClass="standardModal"

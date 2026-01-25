@@ -32,7 +32,7 @@
 <div class="flex w-5/11 min-w-5/11 grow flex-col gap-2">
 	<h3>{name}</h3>
 	<div
-		class="flex w-full grow flex-col gap-2 overflow-scroll rounded-lg bg-neutral-700/40 p-2 shadow-xl"
+		class="flex w-full grow flex-col gap-2 rounded-lg bg-neutral-700/40 p-2 shadow-xl"
 	>
 		{#key items}
 			{#each items as item, i (i)}

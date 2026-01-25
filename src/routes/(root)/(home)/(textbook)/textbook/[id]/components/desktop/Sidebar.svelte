@@ -76,7 +76,9 @@
 				</div>
 			{/each}
 
-			<div class="grow"></div>
+			{#if textbook.chapters?.length !== 0}
+				<div class="grow"></div>
+			{/if}
 
 			{#if canEdit}
 				<Button

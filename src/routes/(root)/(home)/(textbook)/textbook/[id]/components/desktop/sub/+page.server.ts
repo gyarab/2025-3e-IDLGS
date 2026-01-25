@@ -6,7 +6,6 @@ import { desc, eq } from 'drizzle-orm';
 import { isUserAuthorizedTextbook } from '$lib/server/permission';
 import type {
 	ArticleLimitedType,
-	ArticleType,
 	ChapterType,
 } from '$lib/types.js';
 
@@ -14,17 +13,19 @@ export const load = async () => {
 	return error(404, 'Not Found');
 };
 
+//TODO fix this terrible spaghetti code
+
 export const actions = {
-	updateTextStructure: async (event) => {
+	updateTextStructure: async () => {
 		return await formRunner(
 			['chapters', 'articles', 'uuid'],
-			async (event, formData, cookies, user) => {
+			async (event, formData, _cookies, user) => {
 				//try {
 				if (!(await isUserAuthorizedTextbook(user.uuid))) {
 					return fail(403);
 				}
 
-				//TODO textbook archived check
+				//TODO textbook archived check!
 
 				const chapters: ChapterType[] = JSON.parse(
 					formData['chapters'],
@@ -45,66 +46,103 @@ export const actions = {
 							.limit(1)
 					)[0];
 
+					const chaptersTextbook = await tx
+						.select()
+						.from(schema.chapter)
+						.where(eq(schema.chapter.textbook, textbook.id))
+						.orderBy(desc(schema.chapter.id));
+
+					//TODO optimize using sets and maps!
+
 					let chapterIndex = 0;
-					for (const chapter of chapters) {
+					for (const chapter of chaptersTextbook) {
 						let chapterDb = null;
 
-						if (!chapter.uuid || chapter.uuid.length === 0) {
-							//add new
-							chapterDb = (
-								await tx
-									.insert(schema.chapter)
-									.values({
-										textbook: textbook.id,
-										name: chapter.name,
-										summary: '', //generated later
-									})
-									.returning()
-							)[0];
-						} else {
-							//edit
-							chapterDb = (
-								await tx
-									.update(schema.chapter)
-									.set({
-										name: chapter.name,
-										summary: '',
-									})
-									.where(
-										eq(schema.chapter.uuid, chapter.uuid),
-									)
-									.returning()
-							)[0];
+						//is in both lists - update
+						if (
+							chapters.findIndex((c) => c.uuid === chapter.uuid) !== -1
+						) {
+							chapterDb = (await tx
+								.update(schema.chapter)
+								.set({ name: chapter.name })
+								.where(eq(schema.chapter.uuid, chapter.uuid))
+								.returning())[0];
+						}
+						//not in formData - delete
+						else {
+							chapterDb = (await tx
+								.delete(schema.chapter)
+								.where(eq(schema.chapter.uuid, chapter.uuid))
+								.returning())[0];
 
-							if (!chapterDb) {
-								//chapter not found (throw catched below)
-								throw new Error('Chapter not found!');
+							await tx
+								.delete(schema.article)
+								.where(eq(schema.article.chapter, chapterDb.id));
+
+							chapterIndex++;
+							continue;
+						}
+
+						const articlesTextbook = await tx
+							.select()
+							.from(schema.article)
+							.where(eq(schema.article.chapter, chapterDb.id))
+							.orderBy(desc(schema.article.id));
+
+						//same logic as chapters
+						for (const article of articlesTextbook) {
+							//is in both lists - update
+							if (
+								articles[chapterIndex].findIndex((a) => a.uuid === article.uuid) !== -1
+							) {
+								await tx
+									.update(schema.article)
+									.set({ name: article.name })
+									.where(eq(schema.article.uuid, article.uuid));
+							}
+							//not in formData - delete
+							else {
+								await tx
+									.delete(schema.article)
+									.where(eq(schema.article.uuid, article.uuid));
 							}
 						}
 
-						for (const article of articles[chapterIndex]) {
-							if (!article.uuid || article.uuid.length === 0) {
-								//add new
-								await tx.insert(schema.article).values({
-									chapter: chapterDb.id,
+						for (const article of articles[chapterIndex].filter(a => a.uuid.length === 0)) {
+							//new article
+							await tx
+								.insert(schema.article)
+								.values({
 									name: article.name,
-									text: `# ${article.name} \n\n`,
+									chapter: chapterDb.id,
+									text: '',
 								});
-							} else {
-								//edit (just the name)
-								await tx
-									.update(schema.article)
-									.set({
-										name: article.name,
-									})
-									.where(
-										eq(schema.article.uuid, article.uuid),
-									);
-							}
 						}
 
 						chapterIndex++;
 					}
+
+					for (const chapter of chapters.filter(c => c.uuid.length === 0)) {
+						let chapterDb = (await tx
+							.insert(schema.chapter)
+							.values({
+								name: chapter.name,
+								textbook: textbook.id,
+								summary: '',
+							})
+							.returning())[0];
+
+						for (const article of articles[chapterIndex].filter(a => a.uuid.length === 0)) {
+							//new article
+							await tx
+								.insert(schema.article)
+								.values({
+									name: article.name,
+									chapter: chapterDb.id,
+									text: '',
+								});
+						}
+					};
 				});
 
 				//} catch (e) {
