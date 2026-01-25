@@ -27,6 +27,9 @@
 			emoji="arrow-left-s"
 			btn="button-primary"
 			disabled={selectedMessageIndex == 0}
+			onclick={() => {
+				selectedMessageIndex -= 1;
+			}}
 		>
 			{m.previousMessage()}
 		</Button>
@@ -40,6 +43,9 @@
 			<Button
 				emoji="arrow-right-s"
 				btn="button-primary"
+				onclick={() => {
+					selectedMessageIndex += 1;
+				}}
 			>
 				{m.nextMessage()}
 			</Button>
