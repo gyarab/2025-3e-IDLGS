@@ -55,10 +55,8 @@
 		onselectionchange={(e) => {
 			//add amount of newlines since cursor does wierd shit
 			const elem = e.target as HTMLTextAreaElement;
-			cursorBeginning =
-				elem.selectionStart;
-			cursorEnd =
-				elem.selectionEnd;
+			cursorBeginning = elem.selectionStart;
+			cursorEnd = elem.selectionEnd;
 		}}
 		maxlength={maxLength}
 		{name}

@@ -100,7 +100,7 @@ export const actions = {
 									? Boolean(formData['daily'])
 									: user.gamification,
 								lastMessage: lastMessage[0]?.id || 0,
-						})
+							})
 							.where(eq(schema.user.uuid, user.uuid));
 					});
 				} catch (e) {

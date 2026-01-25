@@ -24,9 +24,9 @@
 	<div
 		class="flex w-full grow flex-col gap-2 overflow-scroll rounded-lg bg-neutral-700/40 p-2"
 	>
-		<div class="flex w-full grow flex-col overflow-scroll gap-2">
+		<div class="flex w-full grow flex-col gap-2 overflow-scroll">
 			{#each items as item (item.uuid)}
-				<div class="flex flex-row w-full gap-2 items-center ">
+				<div class="flex w-full flex-row items-center gap-2">
 					{item.name}
 				</div>
 			{:else}

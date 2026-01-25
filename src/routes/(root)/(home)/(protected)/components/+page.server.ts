@@ -13,12 +13,14 @@ export const actions = {
 		return await formRunner([], async (event, formData, cookies, user) => {
 			try {
 				await event.locals.db.transaction(async (tx) => {
-					const lastMessage = (await tx
-						.select()
-						.from(schema.message)
-						.where(eq(schema.message.lang, user.lang))
-						.orderBy(desc(schema.message.id))
-						.limit(1))[0].id;
+					const lastMessage = (
+						await tx
+							.select()
+							.from(schema.message)
+							.where(eq(schema.message.lang, user.lang))
+							.orderBy(desc(schema.message.id))
+							.limit(1)
+					)[0].id;
 
 					await tx
 						.update(schema.user)
@@ -28,7 +30,7 @@ export const actions = {
 			} catch (e) {
 				writeLog(event, 'ERROR', 'DB failure.', user);
 				return fail(500);
-			};
+			}
 		});
-	}
+	},
 };

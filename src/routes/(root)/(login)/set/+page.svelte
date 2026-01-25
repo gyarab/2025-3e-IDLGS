@@ -42,7 +42,8 @@
 			action="?/setPassword"
 			success={async () => {
 				document.getElementById('loggedInNavbar')!.style.display = '';
-				document.getElementById('loggedInNavbarFill')!.style.display = '';
+				document.getElementById('loggedInNavbarFill')!.style.display =
+					'';
 				goto('/home');
 			}}
 		>

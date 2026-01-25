@@ -15,16 +15,19 @@
 
 	const TWO_DAYS = 2 * 24 * 60 * 60 * 1000;
 
-	const past = $derived(data.assignments.filter((v) => v.deadline < new Date()));
+	const past = $derived(
+		data.assignments.filter((v) => v.deadline < new Date()),
+	);
 	const todayOrTomorrow = $derived(
 		data.assignments.filter((v) => {
-			(Date.now() - v.deadline.getTime()) < TWO_DAYS && (Date.now() - v.deadline.getTime()) >= 0
-		})
+			Date.now() - v.deadline.getTime() < TWO_DAYS &&
+				Date.now() - v.deadline.getTime() >= 0;
+		}),
 	);
 	const later = $derived(
 		data.assignments.filter((v) => {
-			(Date.now() - v.deadline.getTime()) >= TWO_DAYS
-		})
+			Date.now() - v.deadline.getTime() >= TWO_DAYS;
+		}),
 	);
 </script>
 
@@ -49,9 +52,11 @@
 				</div>
 
 				{#each past as assignment (assignment.uuid)}
-					<Assignment assignment={assignment} />
+					<Assignment {assignment} />
 				{:else}
-					<div class="flex flex-col justify-center items-center w-full grow opacity-70">
+					<div
+						class="flex flex-col justify-center items-center w-full grow opacity-70"
+					>
 						{m.noAssignmentsPastDeadline()}.
 						{m.goodJob()}
 					</div>
@@ -73,9 +78,11 @@
 				</div>
 
 				{#each todayOrTomorrow as assignment (assignment.uuid)}
-					<Assignment assignment={assignment} />
+					<Assignment {assignment} />
 				{:else}
-					<div class="flex flex-col justify-center items-center w-full grow opacity-70">
+					<div
+						class="flex flex-col justify-center items-center w-full grow opacity-70"
+					>
 						{m.noAssignmentsDueTodayOrTomorrow()}.
 					</div>
 				{/each}
@@ -96,9 +103,11 @@
 				</div>
 
 				{#each later as assignment (assignment.uuid)}
-					<Assignment assignment={assignment} />
+					<Assignment {assignment} />
 				{:else}
-					<div class="flex flex-col justify-center items-center w-full grow opacity-70">
+					<div
+						class="flex flex-col justify-center items-center w-full grow opacity-70"
+					>
 						{m.noOtherAssignmentsDue()}.
 					</div>
 				{/each}

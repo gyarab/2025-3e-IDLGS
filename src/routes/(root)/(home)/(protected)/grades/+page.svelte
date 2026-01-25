@@ -2,7 +2,11 @@
 	import { m } from '$lib/paraglide/messages';
 	import Desktop from './Desktop.svelte';
 	import Mobile from './Mobile.svelte';
-	import type { UserType, CourseType, CourseGradeValueType } from '$lib/types';
+	import type {
+		UserType,
+		CourseType,
+		CourseGradeValueType,
+	} from '$lib/types';
 
 	let {
 		data,
@@ -21,5 +25,5 @@
 	</title>
 </svelte:head>
 
-<Desktop {data}/>
+<Desktop {data} />
 <Mobile {data} />

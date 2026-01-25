@@ -30,8 +30,6 @@
 
 		{#each data.courses as course, index}
 			<CardSeparator />
-
-			
 		{/each}
 
 		<CardSeparator />

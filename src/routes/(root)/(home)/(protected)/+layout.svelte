@@ -13,13 +13,10 @@
 			messages: MessageType[];
 		};
 	} = $props();
-
 </script>
 
 {@render children()}
 
 {#if data.messages.length > 0}
-	<MessageModal
-		messages={data.messages}
-	/>
+	<MessageModal messages={data.messages} />
 {/if}

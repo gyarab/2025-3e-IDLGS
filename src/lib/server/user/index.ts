@@ -66,7 +66,9 @@ export const createUser = async (
 	const pass = hashPassword(password);
 
 	return await db.transaction(async (tx) => {
-		const messageAmount = await tx.select({ count: count() }).from(schema.message);
+		const messageAmount = await tx
+			.select({ count: count() })
+			.from(schema.message);
 
 		return (
 			await tx

@@ -22,43 +22,46 @@
 	cannotClickOutside={true}
 >
 	<Message message={messages[selectedMessageIndex]} />
-	<div class="flex flex-row w-full items-center gap-2">
+	<div class="flex w-full flex-row items-center gap-2">
 		<Button
-			emoji="arrow-left-s"	
+			emoji="arrow-left-s"
 			btn="button-primary"
 			disabled={selectedMessageIndex == 0}
 		>
 			{m.previousMessage()}
 		</Button>
-		<div class="grow flex flex-col justify-center items-center">
-			{m.message()} {selectedMessageIndex + 1} {m.outOf()} {messages.length}
+		<div class="flex grow flex-col items-center justify-center">
+			{m.message()}
+			{selectedMessageIndex + 1}
+			{m.outOf()}
+			{messages.length}
 		</div>
 		{#if selectedMessageIndex < messages.length - 1}
-		<Button
-			emoji="arrow-right-s"
-			btn="button-primary"
-		>
-			{m.nextMessage()}
-		</Button>
-		{:else}
-		<Form
-			action="/components/?/markMessagesAsRead"
-			cssClass="flex flex-col justify-center items-center"
-			success={async () => {
-				showMessage = false;
-			}}
-			failure={async () => {
-				alert("ERROR");
-			}}
-		>
 			<Button
-				type="submit"
-				emoji="check"
+				emoji="arrow-right-s"
 				btn="button-primary"
 			>
-				{m.markAsRead()}
+				{m.nextMessage()}
 			</Button>
-		</Form>
+		{:else}
+			<Form
+				action="/components/?/markMessagesAsRead"
+				cssClass="flex flex-col justify-center items-center"
+				success={async () => {
+					showMessage = false;
+				}}
+				failure={async () => {
+					alert('ERROR');
+				}}
+			>
+				<Button
+					type="submit"
+					emoji="check"
+					btn="button-primary"
+				>
+					{m.markAsRead()}
+				</Button>
+			</Form>
 		{/if}
 	</div>
 </Modal>

@@ -2,7 +2,7 @@
 	import { disableScroll, enableScroll } from '$lib';
 	import { fade } from 'svelte/transition';
 	import type { Snippet } from 'svelte';
-	
+
 	let {
 		children,
 		showModal = $bindable(),

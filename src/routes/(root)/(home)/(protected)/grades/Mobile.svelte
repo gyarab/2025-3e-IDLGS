@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
-	import type { UserType, CourseType, CourseGradeValueType } from '$lib/types';
+	import type {
+		UserType,
+		CourseType,
+		CourseGradeValueType,
+	} from '$lib/types';
 
 	let {
 		data,

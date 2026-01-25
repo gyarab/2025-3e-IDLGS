@@ -25,7 +25,7 @@
 	<div
 		class="flex w-full grow flex-col gap-2 rounded-lg bg-neutral-700/40 p-2"
 	>
-		<div class="flex w-full grow flex-col overflow-scroll gap-2">
+		<div class="flex w-full grow flex-col gap-2 overflow-scroll">
 			{#key items}
 				{#if items.length > 0}
 					{#each items as item, i (item)}
