@@ -3,6 +3,11 @@ import * as crypto from 'node:crypto';
 import { schema } from '$lib/server/db/mainSchema';
 import { eq, count } from 'drizzle-orm';
 import { getRequestEvent } from '$app/server';
+import { sendMail } from '../mail';
+import { writeLog } from '$lib/log';
+import { m } from '$lib/paraglide/messages';
+import { renderMarkdown } from '$lib/markdown';
+import type { Locale } from '$lib/paraglide/runtime';
 
 export const validateTurnstile = async (
 	ip: string,
@@ -64,37 +69,63 @@ export const createUser = async (
 	const db = getRequestEvent().locals.db;
 
 	const pass = hashPassword(password);
+	let result: UserType;
 
-	return await db.transaction(async (tx) => {
-		const messageAmount = await tx
-			.select({ count: count() })
-			.from(schema.message);
+	try {
+		result = await db.transaction(async (tx) => {
+			const messageAmount = await tx
+				.select({ count: count() })
+				.from(schema.message);
 
-		return (
-			await tx
-				.insert(schema.user)
-				.values({
-					name,
-					surname,
-					degree,
-					email,
-					password: pass.password,
-					salt: pass.salt,
-					iterations: pass.amount,
-					admin: admin,
-					lang: lang,
-					birthday: `${birthday.getFullYear()}-${birthday.getMonth() + 1}-${birthday.getDate()}`,
-					canCreateCourses: courses,
-					canCreateTextbooks: textbooks,
-					canCreateResin: resin,
-					canChangeSettings: settings,
-					canEditGamification: editgamification,
-					gamification: gamification,
-					lastMessage: messageAmount[0].count,
-				})
-				.returning()
-		)[0];
-	});
+			return (
+				await tx
+					.insert(schema.user)
+					.values({
+						name,
+						surname,
+						degree,
+						email,
+						password: pass.password,
+						salt: pass.salt,
+						iterations: pass.amount,
+						admin: admin,
+						lang: lang,
+						birthday: `${birthday.getFullYear()}-${birthday.getMonth() + 1}-${birthday.getDate()}`,
+						canCreateCourses: courses,
+						canCreateTextbooks: textbooks,
+						canCreateResin: resin,
+						canChangeSettings: settings,
+						canEditGamification: editgamification,
+						gamification: gamification,
+						lastMessage: messageAmount[0].count,
+					})
+					.returning()
+			)[0];
+		});
+	} catch (e) {
+		writeLog(getRequestEvent(), 'ERROR', 'DB error when creating user');
+		throw e;
+	}
+
+	if (!(await sendMail(
+		m.welcomeToIDLGS({}, { locale: lang as Locale }),
+		renderMarkdown(`
+# ${m.welcomeToIDLGS({}, { locale: lang as Locale })}
+${m.anAccountWasCreatedForThisEmailAddress({}, { locale: lang as Locale })}
+${m.yourLoginInformation({}, { locale: lang as Locale })}
+${m.password({}, { locale: lang as Locale })}: ${password}
+
+${m.youCanLoginHere({}, { locale: lang as Locale })}: [IDLGS](https://ucebnice.martinbykov.eu/login)
+
+${m.youWIllBeAskedToChangeYourPasswordAfterYourFirstLogin({}, { locale: lang as Locale })}
+		`),
+		email,
+	))) {
+		writeLog(getRequestEvent(), 'ERROR', 'Failed to send welcome email', result);
+		throw new Error('Failed to send welcome email');
+	}
+
+	return result;
 };
 
 export const getUser = async (): Promise<UserType | undefined> => {
@@ -105,26 +136,43 @@ export const getUser = async (): Promise<UserType | undefined> => {
 		return undefined;
 	}
 
-	const token = await event.locals.db
-		.select()
-		.from(schema.userSession)
-		.where(eq(schema.userSession.token, cookie))
-		.limit(1);
-	if (token.length == 0) return undefined;
+	//all time comparisons in UTC!!!
 
-	if (token[0].expiresAt <= new Date()) {
-		await event.locals.db
-			.delete(schema.userSession)
-			.where(eq(schema.userSession.token, cookie));
-		return undefined;
-	}
-
-	return (
-		await event.locals.db
+	return await event.locals.db.transaction(async (tx) => {
+		const token = await tx
 			.select()
-			.from(schema.user)
-			.where(eq(schema.user.id, token[0].user))
-	)[0];
+			.from(schema.userSession)
+			.where(eq(schema.userSession.token, cookie))
+			.limit(1);
+		if (token.length == 0) return undefined;
+
+		if (token[0].expiresAt.getTime() <= Date.now()) {
+
+			await tx
+				.delete(schema.userSession)
+				.where(eq(schema.userSession.token, cookie));
+			return undefined;
+		}
+
+		//only extend if less than normal session length remains (not remember me)
+		if (token[0].expiresAt.getTime() - Date.now() < USER_SESSION_LENGTH) {
+			await tx
+				.update(schema.userSession)
+				.set({
+					expiresAt: new Date(
+						Date.now() + USER_SESSION_LENGTH,
+					),
+				})
+				.where(eq(schema.userSession.token, cookie));
+		}
+
+		return (
+			await tx
+				.select()
+				.from(schema.user)
+				.where(eq(schema.user.id, token[0].user))
+		)[0];
+	});
 };
 
 export const USER_SESSION_LENGTH = 1000 * 60 * 15; //15 minutes if not remember me

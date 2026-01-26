@@ -82,17 +82,20 @@ export type ChapterType = {
 	summary: string;
 	articles?: ArticleType[];
 	articlesLimited?: ArticleLimitedType[];
+	order: number
 };
 
 export type ArticleLimitedType = {
 	uuid: string;
 	name: string;
+	order: number;
 };
 
 export type ArticleType = {
 	uuid: string;
 	name: string;
 	text: string;
+	order: number;
 };
 
 //Courses

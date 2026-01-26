@@ -13,7 +13,7 @@ export const load = async (event) => {
 	const textbookUuid = event.params.id;
 	const textbook = await loadSingleTextbook(user, textbookUuid, true, true);
 
-	if (!user) {
+	if (!user && !textbook?.public) {
 		redirect(303, '/login');
 	}
 	if (!textbook) {
@@ -28,5 +28,6 @@ export const load = async (event) => {
 		isOwner: textbook.authors!.some(
 			(author) => author.uuid === user?.uuid && author.isOwner,
 		),
+		showEditButtons: event.cookies.get('showEditButtons') === 'true',
 	};
 };

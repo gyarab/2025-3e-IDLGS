@@ -53,6 +53,7 @@ export const chapter = pgTable('chapter', {
 			onDelete: 'cascade',
 		})
 		.notNull(),
+	order: integer('order').notNull().default(0),
 });
 
 export const article = pgTable('article', {
@@ -67,6 +68,7 @@ export const article = pgTable('article', {
 		.notNull(),
 	name: text('name').notNull(),
 	text: text('text').notNull(),
+	order: integer('order').notNull().default(0),
 });
 
 export const textbookWordDefinition = pgTable('textbookWordDefinition', {

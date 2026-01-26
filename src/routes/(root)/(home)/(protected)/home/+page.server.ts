@@ -121,9 +121,8 @@ export const actions = {
 										.isEditor,
 									textbook: textbook,
 								};
-							})
-							.filter((link) => link.owner || link.editor);
-
+							});
+						
 						await tx
 							.insert(schema.userTextbookLinker)
 							.values(userIds);
@@ -261,9 +260,8 @@ export const actions = {
 								owner: roles[users.indexOf(u.uuid)] === 'owner',
 								course: course[0].id,
 							};
-						})
-						.filter((link) => link.teacher || link.owner);
-
+						});
+					
 					await tx.insert(schema.userCourseLinker).values(userIds);
 				});
 				//} catch (e) {

@@ -1,4 +1,5 @@
 import { writeLog } from '$lib/log';
+import { add, removeChapter } from '$lib/paraglide/messages.js';
 import { schema } from '$lib/server/db/mainSchema';
 import { formRunner } from '$lib/server/form/runner';
 import { isUserAuthorizedTextbook } from '$lib/server/permission';
@@ -57,5 +58,17 @@ export const actions = {
 				}
 			},
 		);
+	},
+	addChapter: async (event) => {
+
+	},
+	addArticle: async (event) => {
+
+	},
+	removeChapter: async (event) => {
+
+	},
+	removeArticle: async (event) => {
+
 	},
 };

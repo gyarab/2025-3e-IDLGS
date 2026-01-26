@@ -5,7 +5,7 @@ import { getRequestEvent } from '$app/server';
 import { renderMarkdown } from '$lib/markdown';
 
 export const loadTextbooks = async (
-	user: UserType,
+	user?: UserType,
 ): Promise<TextbookType[]> => {
 	const db = getRequestEvent().locals.db;
 
@@ -30,7 +30,10 @@ export const loadTextbooks = async (
 			schema.userTextbookLinker,
 			eq(schema.textbook.id, schema.userTextbookLinker.textbook), //join condition
 		)
-		.where(eq(schema.userTextbookLinker.user, user.id));
+		.where(or(
+			eq(schema.userTextbookLinker.user, user?.id ?? -1),
+			eq(schema.textbook.public, true),
+		));
 
 	for (let i = 0; i < textbooks.length; i++) {
 		textbooks[i].description = renderMarkdown(textbooks[i].description);
@@ -159,6 +162,7 @@ export const loadSingleTextbook = async (
 				uuid: schema.chapter.uuid,
 				name: schema.chapter.name,
 				summary: schema.chapter.summary,
+				order: schema.chapter.order,
 			})
 			.from(schema.chapter)
 			.where(eq(schema.chapter.textbook, textbook[0].id));
@@ -175,6 +179,7 @@ export const loadSingleTextbook = async (
 				.select({
 					uuid: schema.article.uuid,
 					name: schema.article.name,
+					order: schema.article.order,
 				})
 				.from(schema.article)
 				.where(eq(schema.article.chapter, chaptersIds[i]));

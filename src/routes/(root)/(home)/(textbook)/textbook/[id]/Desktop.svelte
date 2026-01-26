@@ -19,6 +19,7 @@
 			textbook: TextbookType;
 			isEditor: boolean;
 			isOwner: boolean;
+			showEditButtons: boolean;
 		};
 		children: Snippet;
 	} = $props();
@@ -34,6 +35,7 @@
 		textbook={data.textbook}
 		id={data.textbook.uuid}
 		canEdit={data.isEditor || data.isOwner}
+		showEditButtons={data.showEditButtons}
 	/>
 	<ContentPositioning>
 		{#if data.textbook.archived}

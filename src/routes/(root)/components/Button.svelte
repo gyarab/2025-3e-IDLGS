@@ -13,6 +13,8 @@
 		cssClass = '',
 		id = '',
 		draggable = false,
+		label = '',
+		action = '',
 		onmousedown = () => {},
 	}: {
 		emoji?: string;
@@ -25,6 +27,8 @@
 		cssClass?: string;
 		id?: string;
 		draggable?: boolean;
+		label?: string;
+		action?: string;
 		onmousedown?: (e: MouseEvent) => void;
 	} = $props();
 </script>
@@ -37,6 +41,8 @@
 	{onmousedown}
 	{id}
 	{draggable}
+	aria-label={label}
+	formaction={action}
 >
 	{#if !flip && emoji.length > 0}
 		<HoverEmoji

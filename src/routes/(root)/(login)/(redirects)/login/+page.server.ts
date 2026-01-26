@@ -20,8 +20,7 @@ export const actions = {
 			async (event, formData, _cookies, _user, formDataRaw) => {
 				const email = formData['email'].toLowerCase().trim();
 				const password = formData['password'];
-				const remember =
-					formDataRaw.get('remember')?.toString().trim() == 'on';
+				const remember = formDataRaw.get('remember')?.toString().trim() == 'on';
 
 				if (!email || !password) {
 					return fail(400, {});
@@ -71,6 +70,7 @@ export const actions = {
 					return fail(401, {});
 				}
 
+				//UTC!!!
 				const session = (
 					await event.locals.db
 						.insert(schema.userSession)

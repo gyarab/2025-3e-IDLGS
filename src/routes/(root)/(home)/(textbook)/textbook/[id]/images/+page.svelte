@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { m } from '$lib/paraglide/messages';
-	import WideCard from '$src/routes/(root)/components/WideCard.svelte';
-	import type { TextbookType } from '$lib/types';
+	import WideCard from "$src/routes/(root)/components/WideCard.svelte";
+	import type { TextbookType } from "$lib/types";
+	import { m } from "$lib/paraglide/messages";
 
 	let {
 		data,
@@ -10,13 +10,13 @@
 			textbook: TextbookType;
 			isEditor: boolean;
 			isOwner: boolean;
-		};	
+		};
 	} = $props();
 </script>
 
 <svelte:head>
 	<title>
-		{m.statistics()} - {m.textbookNameShort()}
+		{m.imageLibrary()} - {data.textbook.name} - {m.textbookNameShort()}
 	</title>
 </svelte:head>
 
@@ -28,6 +28,6 @@
 >
 	<div class="flex flex-row items-end gap-2">
 		<h1>{data.textbook.name}</h1>
-		<h2>{m.statistics()}</h2>
+		<h2>{m.imageLibrary()}</h2>
 	</div>
 </WideCard>

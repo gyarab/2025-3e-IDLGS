@@ -167,9 +167,7 @@
 		</div>
 
 		<div
-			class="grid {data.isEditor || data.isOwner
-				? 'grid-cols-3'
-				: 'grid-cols-2'} gap-2"
+			class="grid grid-cols-3 gap-2"
 		>
 			<Button
 				btn="button-primary"

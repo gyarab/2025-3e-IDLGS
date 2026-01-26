@@ -39,6 +39,14 @@
 			{m.home()}
 		</a>
 
+		<a
+			href="/library"
+			class="group"
+		>
+			<HoverEmoji emoji="book-shelf" />
+			{m.library()}
+		</a>
+
 		<a href="/#about">
 			<i class="ri-info-i"></i>
 			{m.aboutUs()}

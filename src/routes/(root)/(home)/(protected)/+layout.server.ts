@@ -4,7 +4,7 @@ import { redirect } from '@sveltejs/kit';
 
 export const load = async (event) => {
 	const user = (await event.parent()).user as UserType;
-
+	
 	if (!user) {
 		redirect(303, '/login');
 	}
