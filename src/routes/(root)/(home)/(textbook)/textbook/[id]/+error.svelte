@@ -2,8 +2,8 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import { m } from '$lib/paraglide/messages';
-	import Button from '$src/routes/(root)/components/Button.svelte';
-	import Card from '$src/routes/(root)/components/Card.svelte';
+	import Button from '$component/Button.svelte';
+	import Card from '$component/Card.svelte';
 </script>
 
 <div class="flex w-full grow flex-col items-center justify-center">

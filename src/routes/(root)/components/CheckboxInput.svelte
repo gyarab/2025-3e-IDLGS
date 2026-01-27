@@ -5,6 +5,7 @@
 		label = '',
 		name = '',
 		flip = false,
+		noChangeEvents = false,
 	} = $props();
 </script>
 
@@ -20,6 +21,6 @@
 		type="checkbox"
 		bind:checked
 		{name}
-		class="input-checkbox"
+		class="input-checkbox {noChangeEvents ? 'ignoreChangeEvents' : ''}"
 	/>
 </div>

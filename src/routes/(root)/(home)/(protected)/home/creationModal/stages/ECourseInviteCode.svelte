@@ -3,8 +3,8 @@
 	import NextPrevious from '../components/NextPrevious.svelte';
 	import TextInput from '$component/TextInput.svelte';
 	import Button from '$component/Button.svelte';
-	import DateInput from '$src/routes/(root)/components/DateInput.svelte';
-	import CheckboxInput from '$src/routes/(root)/components/CheckboxInput.svelte';
+	import DateInput from '$component/DateInput.svelte';
+	import CheckboxInput from '$component/CheckboxInput.svelte';
 
 	let {
 		step = $bindable(0),

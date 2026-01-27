@@ -2,7 +2,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import type { TextbookType } from '$lib/types';
 	import Card from '$component/Card.svelte';
-	import Button from '$src/routes/(root)/components/Button.svelte';
+	import Button from '$component/Button.svelte';
 
 	let {
 		textbook,

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { writeDegree } from '$lib';
 	import type { UserTypeLimited } from '$lib/types';
-	import HorizontalLine from '$src/routes/(root)/components/HorizontalLine.svelte';
+	import HorizontalLine from '$component/HorizontalLine.svelte';
 
 	let {
 		authors,

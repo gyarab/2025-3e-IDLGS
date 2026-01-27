@@ -418,5 +418,10 @@
 	"errorMessage": "Error Message",
 	"goBackToTextbookHomepage": "Go Back to Textbook Homepage",
 	"textbookStatistics": "Textbook Statistics",
-	"noArticlesInChapter": "No articles in chapter"
+	"noArticlesInChapter": "No articles in chapter",
+	"enterArticleName": "Enter article name",
+	"enterChapterName": "Enter chapter name",
+	"chapterName": "Chapter Name",
+	"educationIsTheMostPowerfulToolWhichYouCanUseToChangeTheWorld": "Education is the most powerful tool which you can use to change the world.",
+	"nelsonMandela": "Nelson Mandela"
 }

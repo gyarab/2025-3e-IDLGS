@@ -34,3 +34,9 @@ drizzle/meta
 *.db
 
 .cloudflare/
+
+*.*~
+*.swp
+*.tmp
+*.log
+*.~*

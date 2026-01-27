@@ -418,5 +418,10 @@
 	"errorMessage": "Chybová zpráva",
 	"goBackToTextbookHomepage": "Zpět na domovskou stránku učebnice",
 	"textbookStatistics": "Statistiky učebnice",
-	"noArticlesInChapter": "Žádné články v kapitole"
+	"noArticlesInChapter": "Žádné články v kapitole",
+	"enterChapterName": "Zadejte název kapitoly",
+	"enterArticleName": "Zadejte název článku",
+	"chapterName": "Název kapitoly",
+	"educationIsTheMostPowerfulToolWhichYouCanUseToChangeTheWorld": "Vzdělání je nejsilnější nástroj, který můžete použít ke změně světa.",
+	"nelsonMandela": "Nelson Mandela"
 }

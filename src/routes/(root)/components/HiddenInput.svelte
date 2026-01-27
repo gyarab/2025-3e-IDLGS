@@ -2,9 +2,11 @@
 	let {
 		name,
 		value,
+		ignoreChangeEvents = false,
 	}: {
 		name: string;
 		value: unknown;
+		ignoreChangeEvents?: boolean;
 	} = $props();
 
 	let element: HTMLInputElement;
@@ -20,4 +22,5 @@
 	type="hidden"
 	{name}
 	{value}
+	class={ignoreChangeEvents ? 'ignoreChangeEvents' : ''}
 />

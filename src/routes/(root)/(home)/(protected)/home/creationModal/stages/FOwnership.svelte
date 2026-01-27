@@ -6,7 +6,7 @@
 	import type { UserRoleType, UserTypeLimited } from '$lib/types';
 	import User from '../components/ownership/User.svelte';
 	import UserDropdown from '../components/ownership/UserDropdown.svelte';
-	import CheckboxInput from '$src/routes/(root)/components/CheckboxInput.svelte';
+	import CheckboxInput from '$component/CheckboxInput.svelte';
 
 	let {
 		step = $bindable(0),

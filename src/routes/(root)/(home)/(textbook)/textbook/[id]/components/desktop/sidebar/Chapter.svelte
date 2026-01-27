@@ -1,8 +1,11 @@
 <script lang="ts">
 	import type { ChapterType } from '$lib/types';
-	import Button from '$src/routes/(root)/components/Button.svelte';
-	import { m } from '$lib/paraglide/messages';
+	import Button from '$component/Button.svelte';
+	import { addAnArticle, m } from '$lib/paraglide/messages';
 	import Article from './Article.svelte';
+	import Modal from '$component/Modal.svelte';
+	import Form from '$component/Form.svelte';
+	import TextInput from '$component/TextInput.svelte';
 
 	let {
 		chapter,
@@ -17,6 +20,8 @@
 	} = $props();
 
 	let isOpen = $state(false);
+
+	let addArticleModal = $state(false);
 </script>
 
 <div class="flex w-full flex-col gap-0 pr-0 pl-0">
@@ -75,6 +80,7 @@
 			<Button
 				btn="button-none w-full *:font-medium ml-4"
 				emoji="add-circle"
+				onclick={() => addArticleModal = true}
 			>
 				<div class="flex w-full flex-row gap-1">
 					{m.addAnArticle()}
@@ -83,3 +89,38 @@
 		{/if}
 	{/if}
 </div>
+
+<Modal
+	bind:showModal={addArticleModal}
+	cssClass="standardModal"
+	maxHeight={false}
+	maxWidth={false}
+>
+	<h2>{m.addAnArticle()}</h2>
+	<div class="grow flex flex-col justify-center items-center w-full">
+		<TextInput
+			name="name"
+			label={m.articleName()}
+			placeholder={m.enterArticleName()}
+		/>
+	</div>
+	<Form
+		cssClass="grid grid-cols-2 gap-2 w-full"
+		action="//textbook/{textbookUuid}/?/addArticle"
+	>
+		<Button
+			type="submit"
+			btn="button-primary"
+			emoji="add-circle"
+		>
+			{m.addAnArticle()}
+		</Button>
+		<Button
+			btn="button-red"
+			emoji="close-circle"
+			type="button"
+		>
+			{m.cancel()}
+		</Button>
+	</Form>
+</Modal>

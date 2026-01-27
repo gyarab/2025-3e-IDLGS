@@ -2,7 +2,7 @@
 	import { onMount, type Snippet } from 'svelte';
 	import Sidebar from './components/desktop/Sidebar.svelte';
 	import ContentPositioning from './components/desktop/ContentPositioning.svelte';
-	import type { TextbookType } from '$lib/types';
+	import type { TextbookType, UserType } from '$lib/types';
 	import ArchivedWarningTextbook from './components/desktop/ArchivedWarningTextbook.svelte';
 
 	let ready = $state(false);
@@ -20,6 +20,7 @@
 			isEditor: boolean;
 			isOwner: boolean;
 			showEditButtons: boolean;
+			user: UserType | undefined;
 		};
 		children: Snippet;
 	} = $props();
@@ -36,6 +37,7 @@
 		id={data.textbook.uuid}
 		canEdit={data.isEditor || data.isOwner}
 		showEditButtons={data.showEditButtons}
+		user={data.user}
 	/>
 	<ContentPositioning>
 		{#if data.textbook.archived}

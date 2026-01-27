@@ -14,7 +14,7 @@
 	import StreakResetRow from './components/StreakResetRow.svelte';
 	import DateRow from './components/DateRow.svelte';
 	import CardSeparator from '$component/CardSeparator.svelte';
-	import SuccessBox from '$src/routes/(root)/components/SuccessBox.svelte';
+	import SuccessBox from '$component/SuccessBox.svelte';
 
 	let {
 		data,

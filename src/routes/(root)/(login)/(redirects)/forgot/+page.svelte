@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
 	import Form from '$component/Form.svelte';
-	import Button from '$src/routes/(root)/components/Button.svelte';
-	import TextInput from '$src/routes/(root)/components/TextInput.svelte';
+	import Button from '$component/Button.svelte';
+	import TextInput from '$component/TextInput.svelte';
 	import { cloudflareTurnstileBox } from '$lib';
 	import { renderMarkdown } from '$lib/markdown';
 	import { goto } from '$app/navigation';

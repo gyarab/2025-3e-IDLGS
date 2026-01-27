@@ -418,5 +418,10 @@
 	"errorMessage": "Сообщение об ошибке",
 	"goBackToTextbookHomepage": "Вернуться на главную страницу учебника",
 	"textbookStatistics": "Статистика учебника",
-	"noArticlesInChapter": "Нет статей в главе"
+	"noArticlesInChapter": "Нет статей в главе",
+	"chapterName": "Название главы",
+	"enterChapterName": "Введите название главы",
+	"enterArticleName": "Введите название статьи",
+	"educationIsTheMostPowerfulToolWhichYouCanUseToChangeTheWorld": "Образование — это самое мощное оружие, которое вы можете использовать, чтобы изменить мир.",
+	"nelsonMandela": "Нельсон Мандела"
 }

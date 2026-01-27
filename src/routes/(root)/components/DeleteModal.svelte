@@ -12,6 +12,7 @@
 	bind:showModal
 	cssClass="{cssClass} standardModal"
 	maxHeight={false}
+	maxWidth={false}
 >
 	<div class="flex w-full grow flex-col gap-2">
 		<h2>{m.areYouSure()}</h2>
@@ -28,7 +29,7 @@
 				{m.delete()}
 			</Button>
 			<Button
-				emoji="close"
+				emoji="close-circle"
 				btn="button-violet"
 				type="button"
 				onclick={() => {

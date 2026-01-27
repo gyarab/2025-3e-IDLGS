@@ -4,7 +4,7 @@
 
 	import { m } from '$lib/paraglide/messages';
 	import NextPrevious from '../components/NextPrevious.svelte';
-	import Textarea from '$src/routes/(root)/components/Textarea.svelte';
+	import Textarea from '$component/Textarea.svelte';
 	import { MAX_NAME_LENGTH } from '$lib';
 	import ColorSelect from '../components/basicinfo/ColorSelect.svelte';
 

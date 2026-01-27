@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
-	import Button from '$src/routes/(root)/components/Button.svelte';
-	import Form from '$src/routes/(root)/components/Form.svelte';
+	import Button from '$component/Button.svelte';
+	import Form from '$component/Form.svelte';
 
 	let {
 		article,

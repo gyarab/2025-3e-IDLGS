@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { CourseGradeType } from '$lib/types';
 	import { m } from '$lib/paraglide/messages';
-	import Button from '$src/routes/(root)/components/Button.svelte';
+	import Button from '$component/Button.svelte';
 
 	let {
 		grades = $bindable([]),

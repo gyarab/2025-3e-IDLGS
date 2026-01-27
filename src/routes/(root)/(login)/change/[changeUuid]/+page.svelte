@@ -6,7 +6,7 @@
 	import Form from '$component/Form.svelte';
 	import PasswordInput from '$component/PasswordInput.svelte';
 	import PasswordInputValid from '$component/PasswordInputValid.svelte';
-	import HiddenInput from '$src/routes/(root)/components/HiddenInput.svelte';
+	import HiddenInput from '$component/HiddenInput.svelte';
 	import { page } from '$app/state';
 
 	let passwordValue = $state('');

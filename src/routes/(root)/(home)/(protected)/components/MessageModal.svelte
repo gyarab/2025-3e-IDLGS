@@ -2,8 +2,8 @@
 	import Modal from '$component/Modal.svelte';
 	import { m } from '$lib/paraglide/messages';
 	import type { MessageType } from '$lib/types';
-	import Button from '$src/routes/(root)/components/Button.svelte';
-	import Form from '$src/routes/(root)/components/Form.svelte';
+	import Button from '$component/Button.svelte';
+	import Form from '$component/Form.svelte';
 	import Message from './Message.svelte';
 
 	let {

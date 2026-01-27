@@ -2,7 +2,7 @@
 	//TODO kira wanted this, finish!
 
 	import Button from '$component/Button.svelte';
-	import Tooltip from '$src/routes/(root)/components/Tooltip.svelte';
+	import Tooltip from '$component/Tooltip.svelte';
 
 	let {
 		description,

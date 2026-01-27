@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { assignments, m } from '$lib/paraglide/messages';
 	import CardSeparator from '$component/CardSeparator.svelte';
-	import WideCard from '$src/routes/(root)/components/WideCard.svelte';
+	import WideCard from '$component/WideCard.svelte';
 	import type { CourseAssignmentType } from '$lib/types';
 	import Assignment from './components/Assignment.svelte';
 

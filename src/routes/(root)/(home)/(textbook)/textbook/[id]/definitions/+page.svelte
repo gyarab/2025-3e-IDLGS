@@ -1,9 +1,9 @@
 <script lang="ts">
 	import WideCard from '$component/WideCard.svelte';
 	import { m } from '$lib/paraglide/messages';
-	import Button from '$src/routes/(root)/components/Button.svelte';
-	import Form from '$src/routes/(root)/components/Form.svelte';
-	import Modal from '$src/routes/(root)/components/Modal.svelte';
+	import Button from '$component/Button.svelte';
+	import Form from '$component/Form.svelte';
+	import Modal from '$component/Modal.svelte';
 
 	let { data } = $props();
 

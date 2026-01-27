@@ -6,14 +6,14 @@
 	import Author from './components/Author.svelte';
 	import Summary from './components/Summary.svelte';
 	import Button from '$component/Button.svelte';
-	import Textarea from '$src/routes/(root)/components/Textarea.svelte';
-	import Form from '$src/routes/(root)/components/Form.svelte';
-	import HiddenInput from '$src/routes/(root)/components/HiddenInput.svelte';
+	import Textarea from '$component/Textarea.svelte';
+	import Form from '$component/Form.svelte';
+	import HiddenInput from '$component/HiddenInput.svelte';
 	import { goto } from '$app/navigation';
 	import { renderMarkdown } from '$lib/markdown';
-	import TextInput from '$src/routes/(root)/components/TextInput.svelte';
-	import SuccessBox from '$src/routes/(root)/components/SuccessBox.svelte';
-	import UnsavedChangesBox from '$src/routes/(root)/components/UnsavedChangesBox.svelte';
+	import TextInput from '$component/TextInput.svelte';
+	import SuccessBox from '$component/SuccessBox.svelte';
+	import UnsavedChangesBox from '$component/UnsavedChangesBox.svelte';
 	import { rerunInputCallbacks, setInputCallbacks } from '$lib';
 
 	let {

@@ -28,6 +28,7 @@ export const load = async (event) => {
 		isOwner: textbook.authors!.some(
 			(author) => author.uuid === user?.uuid && author.isOwner,
 		),
-		showEditButtons: event.cookies.get('showEditButtons') === 'true',
+		showEditButtons: event.cookies.get('editButtons') === 'true',
+		user: user,
 	};
 };

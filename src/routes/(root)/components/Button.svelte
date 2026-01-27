@@ -14,7 +14,7 @@
 		id = '',
 		draggable = false,
 		label = '',
-		action = '',
+		action = undefined,
 		onmousedown = () => {},
 	}: {
 		emoji?: string;

@@ -418,5 +418,10 @@
 	"errorMessage": "Fehlermeldung",
 	"goBackToTextbookHomepage": "Zurück zur Lehrbuch-Startseite",
 	"textbookStatistics": "Lehrbuch-Statistiken",
-	"noArticlesInChapter": "Keine Artikel im Kapitel"
+	"noArticlesInChapter": "Keine Artikel im Kapitel",
+	"chapterName": "Kapitelname",
+	"enterChapterName": "Kapitelname eingeben",
+	"enterArticleName": "Artikelname eingeben",
+	"educationIsTheMostPowerfulToolWhichYouCanUseToChangeTheWorld": "Bildung ist das mächtigste Werkzeug, mit dem Sie die Welt verändern können.",
+	"nelsonMandela": "Nelson Mandela"
 }

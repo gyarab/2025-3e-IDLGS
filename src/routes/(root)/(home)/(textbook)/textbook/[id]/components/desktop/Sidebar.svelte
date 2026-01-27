@@ -1,34 +1,52 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { m } from '$lib/paraglide/messages';
-	import type { TextbookType } from '$lib/types';
-	import Button from '$src/routes/(root)/components/Button.svelte';
-	import CheckboxInput from '$src/routes/(root)/components/CheckboxInput.svelte';
-	import WideCard from '$src/routes/(root)/components/WideCard.svelte';
+	import type { TextbookType, UserType } from '$lib/types';
+	import Button from '$component/Button.svelte';
+	import CheckboxInput from '$component/CheckboxInput.svelte';
+	import Form from '$component/Form.svelte';
+	import Modal from '$component/Modal.svelte';
+	import WideCard from '$component/WideCard.svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import Chapter from './sidebar/Chapter.svelte';
+	import { browser } from '$app/environment';
+	import TextInput from '$component/TextInput.svelte';
 
 	let {
 		id,
 		textbook,
 		canEdit,
 		showEditButtons,
+		user,
 	}: {
 		id: string;
 		textbook: TextbookType;
 		canEdit: boolean;
 		showEditButtons: boolean;
+		user: UserType | undefined;
 	} = $props();
 
 	let showEditButtonsLocal: boolean = $derived(showEditButtons);
+	let addChapterModal: boolean = $state(false);
 
-	$effect(() => {
-		cookieStore.set({
-			name: 'showEditButtons',
-			value: showEditButtons.toString(),
-			path: '/',
-			sameSite: 'lax',
-			domain: window.location.hostname,
-		});
+	//effect doesnt support async functions so....
+	let oldShowEditButtons: boolean = $derived(showEditButtons);
+	let showEditButtonsInterval: NodeJS.Timeout | undefined = $state(undefined);
+
+	onMount(async () => {
+		if(!browser) return;
+
+		showEditButtonsInterval = setInterval(async () => {
+			if (oldShowEditButtons !== showEditButtonsLocal) {
+				oldShowEditButtons = showEditButtonsLocal;
+				await cookieStore.set('editButtons', String(showEditButtonsLocal));
+			}
+		}, 500);
+	});
+	onDestroy(async () => {
+		if(!browser) return;
+
+		clearInterval(showEditButtonsInterval);
 	});
 </script>
 
@@ -119,6 +137,7 @@
 				<Button
 					btn="button-none w-full *:font-medium"
 					emoji="add-circle"
+					onclick={() => (addChapterModal = true)}
 				>
 					<div class="flex w-full flex-row gap-1">
 						{m.addAChapter()}
@@ -131,12 +150,13 @@
 			{/if}
 		</div>
 
-		{#if canEdit}
+		{#if canEdit || user}
 			<div class="flex w-full flex-row items-center gap-2">
 				<CheckboxInput
 					bind:checked={showEditButtonsLocal}
 					label={m.showEditOptions()}
 					flip={true}
+					noChangeEvents={true}
 				/>
 			</div>
 		{/if}
@@ -164,3 +184,38 @@
 		{/if}
 	</WideCard>
 </div>
+
+<Modal
+	bind:showModal={addChapterModal}
+	cssClass="standardModal"
+	maxHeight={false}
+	maxWidth={false}
+>
+	<h2>{m.addAChapter()}</h2>
+	<div class="grow flex flex-col justify-center items-center w-full">
+		<TextInput
+			name="name"
+			label={m.chapterName()}
+			placeholder={m.enterChapterName()}
+		/>
+	</div>
+	<Form
+		cssClass="grid grid-cols-2 gap-2 w-full"
+		action="//textbook/{id}/?/addChapter"
+	>
+		<Button
+			type="submit"
+			btn="button-primary"
+			emoji="add-circle"
+		>
+			{m.addAChapter()}
+		</Button>
+		<Button
+			btn="button-red"
+			emoji="close-circle"
+			type="button"
+		>
+			{m.cancel()}
+		</Button>
+	</Form>
+</Modal>

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
-	import Form from '$src/routes/(root)/components/Form.svelte';
-	import SuccessBox from '$src/routes/(root)/components/SuccessBox.svelte';
-	import UnsavedChangesBox from '$src/routes/(root)/components/UnsavedChangesBox.svelte';
-	import WideCard from '$src/routes/(root)/components/WideCard.svelte';
+	import Form from '$component/Form.svelte';
+	import SuccessBox from '$component/SuccessBox.svelte';
+	import UnsavedChangesBox from '$component/UnsavedChangesBox.svelte';
+	import WideCard from '$component/WideCard.svelte';
 	import { setInputCallbacks } from '$lib';
 
 	let { data } = $props();

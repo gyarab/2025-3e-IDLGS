@@ -13,6 +13,7 @@
 	import TextbookCard from '../(home)/(protected)/home/components/TextbookCard.svelte';
 	import { goto } from '$app/navigation';
 	import WordBackground from '../components/WordBackground.svelte';
+	import { getLocale } from '$lib/paraglide/runtime';
 
 	let element: HTMLDivElement | undefined = $state(undefined);
 	let loaded = $state(false);
@@ -28,6 +29,8 @@
 			textbooks: Promise<TextbookType[]>;
 		};
 	} = $props();
+
+	let differentMandela = $derived(getLocale() === 'ru' || getLocale() === 'de' || getLocale() === 'pl');
 </script>
 
 <svelte:head>
@@ -44,33 +47,57 @@
 		class="mt-2 flex min-h-[30svh] w-full grow flex-col gap-2 max-xl:w-9/10 xl:w-4/6"
 	>
 		{#key loaded}
-			<div class="flex flex-row gap-2">
-				<h2
-					in:fly|global={ABOUT_ANIMATION_FIRST}
-					class="flex-nowrap text-6xl font-medium text-nowrap text-violet-800"
-				>
-					{m.publicTextbooks()}.
-				</h2>
-				<h2
-					in:fly|global={ABOUT_ANIMATION_SECOND}
-					class="flex-nowrap text-6xl font-bold text-nowrap text-emerald-600"
-				>
-					{m.library()}.
-				</h2>
-			</div>
 			<div
-				class="flex w-full flex-col text-lg text-neutral-700"
-				in:fade|global={{
-					duration: 500,
-					delay: ABOUT_ANIMATION_SECOND.delay + 200,
-				}}
+				class="flex w-full {differentMandela
+					? 'flex-col'
+					: 'flex-row'} gap-2"
 			>
-				{m.thisIsAListOfPublicTextbooksThatAnyoneCanAccess()}
-				{m.selectATextbookToStartReading()}
-				<br />
-				<span class="font-medium">
-					{m.pleaseNoteThatYouMustRespectTheCopyrightsAndLicensesOfEachTextbookAsWellAsOfIDLGS()}
-				</span>
+				<div class="flex flex-col gap-2">
+					<div class="flex flex-row gap-2">
+						<h2
+							in:fly|global={ABOUT_ANIMATION_FIRST}
+							class="flex-nowrap text-6xl font-medium text-nowrap text-violet-800"
+						>
+							{m.publicTextbooks()}.
+						</h2>
+						<h2
+							in:fly|global={ABOUT_ANIMATION_SECOND}
+							class="flex-nowrap text-6xl font-bold text-nowrap text-emerald-600"
+						>
+							{m.library()}.
+						</h2>
+					</div>
+					<div
+						class="flex w-full flex-col text-lg text-wrap text-neutral-700"
+						in:fade|global={{
+							duration: 500,
+							delay: ABOUT_ANIMATION_SECOND.delay + 200,
+						}}
+					>
+						{m.thisIsAListOfPublicTextbooksThatAnyoneCanAccess()}
+						{m.selectATextbookToStartReading()}
+						{m.pleaseNoteThatYouMustRespectTheCopyrightsAndLicensesOfEachTextbookAsWellAsOfIDLGS()}
+					</div>
+				</div>
+				<div class="grow {differentMandela ? 'hidden' : ''}"></div>
+				<div class="flex grow flex-row gap-2 w-full">
+					<div class="flex flex-col gap-2 p-2! text-neutral-500 grow items-end">
+						<span class="italic">
+							"{m.educationIsTheMostPowerfulToolWhichYouCanUseToChangeTheWorld()}"
+						</span>
+						<div class="flex w-full flex-row justify-end italic">
+							- {m.nelsonMandela()}
+						</div>
+					</div>
+					<div class="relative object-contain! {differentMandela ? 'max-h-40 w-15' : 'w-full max-w-30'} overflow-hidden rounded-2xl">
+						<img
+							width="0" height="0"
+							class="z-11 h-full w-full overflow-hidden rounded-2xl bg-transparent! object-contain! absolute right-0 top-0"
+							src="/people/mandelaFilter.png"
+							alt={m.nelsonMandela()}
+						/>
+					</div>
+				</div>
 			</div>
 
 			<!-- list -->

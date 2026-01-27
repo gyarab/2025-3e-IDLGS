@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import type { CourseGradeType } from '$lib/types';
-	import Button from '$src/routes/(root)/components/Button.svelte';
+	import Button from '$component/Button.svelte';
 	import { onDestroy, onMount } from 'svelte';
 
 	let {

@@ -418,5 +418,10 @@
 	"errorMessage": "Wiadomość o błędzie",
 	"goBackToTextbookHomepage": "Wróć do strony głównej podręcznika",
 	"textbookStatistics": "Statystyki podręcznika",
-	"noArticlesInChapter": "Brak artykułów w rozdziale"
+	"noArticlesInChapter": "Brak artykułów w rozdziale",
+	"enterChapterName": "Wprowadź nazwę rozdziału",
+	"enterArticleName": "Wprowadź nazwę artykułu",
+	"chapterName": "Nazwa rozdziału",
+	"educationIsTheMostPowerfulToolWhichYouCanUseToChangeTheWorld": "Edukacja jest najpotężniejszym narzędziem, które możesz wykorzystać do zmiany świata.",
+	"nelsonMandela": "Nelson Mandela"
 }

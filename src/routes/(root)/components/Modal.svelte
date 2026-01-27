@@ -9,12 +9,14 @@
 		cssClass = '',
 		cssStyle = '',
 		maxHeight = true,
+		maxWidth = true,
 		cannotClickOutside = false,
 	}: {
 		children: Snippet;
 		showModal: boolean;
 		cssClass?: string;
 		cssStyle?: string;
+		maxWidth?: boolean;
 		maxHeight?: boolean;
 		cannotClickOutside?: boolean;
 	} = $props();
@@ -57,7 +59,8 @@
 					class="
 						{cssClass ? cssClass : 'bg-white!'} 
 						{maxHeight ? 'grow max-xl:h-screen' : ''}
-						mt-5 mb-5 flex max-w-4/5 flex-col gap-2 rounded-2xl text-left text-white max-xl:w-screen max-xl:min-w-9/10 xl:max-h-[66svh] xl:min-w-2/3 xl:p-5
+						{maxWidth ? 'max-xl:w-screen max-xl:min-w-9/10 xl:max-w-4/5 ' : ''}
+						mt-5 mb-5 flex flex-col gap-2 rounded-2xl text-left text-white xl:max-h-[66svh] xl:p-5
 			"
 					style={cssStyle}
 				>

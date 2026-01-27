@@ -9,6 +9,7 @@
 		name = '',
 		placeholder = '',
 		onchange = undefined,
+		noChangeEvents = false,
 	} = $props();
 
 	let element: HTMLInputElement | undefined = $state(undefined);
@@ -34,7 +35,8 @@
 		type="text"
 		bind:value
 		{name}
-		class="input-text grow"
+		class="input-text grow {noChangeEvents ? 'ignoreChangeEvents' : ''}"
 		{placeholder}
+		required={true}
 	/>
 </div>
