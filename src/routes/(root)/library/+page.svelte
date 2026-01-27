@@ -30,7 +30,9 @@
 		};
 	} = $props();
 
-	let differentMandela = $derived(getLocale() === 'ru' || getLocale() === 'de' || getLocale() === 'pl');
+	let differentMandela = $derived(
+		getLocale() === 'ru' || getLocale() === 'de' || getLocale() === 'pl',
+	);
 </script>
 
 <svelte:head>
@@ -80,8 +82,10 @@
 					</div>
 				</div>
 				<div class="grow {differentMandela ? 'hidden' : ''}"></div>
-				<div class="flex grow flex-row gap-2 w-full">
-					<div class="flex flex-col gap-2 p-2! text-neutral-500 grow items-end">
+				<div class="flex w-full grow flex-row gap-2">
+					<div
+						class="flex grow flex-col items-end gap-2 p-2! text-neutral-500"
+					>
 						<span class="italic">
 							"{m.educationIsTheMostPowerfulToolWhichYouCanUseToChangeTheWorld()}"
 						</span>
@@ -89,10 +93,15 @@
 							- {m.nelsonMandela()}
 						</div>
 					</div>
-					<div class="relative object-contain! {differentMandela ? 'max-h-40 w-15' : 'w-full max-w-30'} overflow-hidden rounded-2xl">
+					<div
+						class="relative object-contain! {differentMandela
+							? 'max-h-40 w-15'
+							: 'w-full max-w-30'} overflow-hidden rounded-2xl"
+					>
 						<img
-							width="0" height="0"
-							class="z-11 h-full w-full overflow-hidden rounded-2xl bg-transparent! object-contain! absolute right-0 top-0"
+							width="0"
+							height="0"
+							class="absolute top-0 right-0 z-11 h-full w-full overflow-hidden rounded-2xl bg-transparent! object-contain!"
 							src="/people/mandelaFilter.png"
 							alt={m.nelsonMandela()}
 						/>

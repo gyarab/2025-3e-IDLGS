@@ -206,21 +206,21 @@ export const setInputCallbacks = (
 	if (!browser) return;
 	onMount(() => {
 		document.querySelectorAll('input, select, textarea').forEach((el) => {
-			if(el.classList.contains('ignoreChangeEvents')) return;
+			if (el.classList.contains('ignoreChangeEvents')) return;
 			el.addEventListener('change', inputElementChangeCallback);
 		});
 		document.querySelectorAll('form').forEach((el) => {
-			if(el.classList.contains('ignoreChangeEvents')) return;
+			if (el.classList.contains('ignoreChangeEvents')) return;
 			el.addEventListener('submit', formSubmitChangeCallback);
 		});
 	});
 	onDestroy(() => {
 		document.querySelectorAll('input, select, textarea').forEach((el) => {
-			if(el.classList.contains('ignoreChangeEvents')) return;
+			if (el.classList.contains('ignoreChangeEvents')) return;
 			el.removeEventListener('change', inputElementChangeCallback);
 		});
 		document.querySelectorAll('form').forEach((el) => {
-			if(el.classList.contains('ignoreChangeEvents')) return;
+			if (el.classList.contains('ignoreChangeEvents')) return;
 			el.removeEventListener('submit', formSubmitChangeCallback);
 		});
 	});
@@ -232,12 +232,12 @@ export const rerunInputCallbacks = (
 ) => {
 	if (!browser) return;
 	document.querySelectorAll('input, select, textarea').forEach((el) => {
-		if(el.classList.contains('ignoreChangeEvents')) return;
+		if (el.classList.contains('ignoreChangeEvents')) return;
 		el.removeEventListener('change', inputElementChangeCallback);
 		el.addEventListener('change', inputElementChangeCallback);
 	});
 	document.querySelectorAll('form').forEach((el) => {
-		if(el.classList.contains('ignoreChangeEvents')) return;
+		if (el.classList.contains('ignoreChangeEvents')) return;
 		el.removeEventListener('submit', formSubmitChangeCallback);
 		el.addEventListener('submit', formSubmitChangeCallback);
 	});

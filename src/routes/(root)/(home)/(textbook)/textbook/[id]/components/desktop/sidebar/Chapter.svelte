@@ -80,7 +80,7 @@
 			<Button
 				btn="button-none w-full *:font-medium ml-4"
 				emoji="add-circle"
-				onclick={() => addArticleModal = true}
+				onclick={() => (addArticleModal = true)}
 			>
 				<div class="flex w-full flex-row gap-1">
 					{m.addAnArticle()}
@@ -97,7 +97,7 @@
 	maxWidth={false}
 >
 	<h2>{m.addAnArticle()}</h2>
-	<div class="grow flex flex-col justify-center items-center w-full">
+	<div class="flex w-full grow flex-col items-center justify-center">
 		<TextInput
 			name="name"
 			label={m.articleName()}

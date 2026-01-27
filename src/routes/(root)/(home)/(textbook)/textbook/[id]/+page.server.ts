@@ -60,108 +60,116 @@ export const actions = {
 		);
 	},
 	addChapter: async () => {
-		return await formRunner(['name'], async (
-			event, formData, cookies, user, formDataRaw
-		) => {
-			try {
-				await event.locals.db.transaction(async (tx) => {
-					//TODO
-				});
-			} catch (e) {
-				writeLog(event, 'ERROR', 'DB error', user);
-				return fail(500);
-			}
-		});
+		return await formRunner(
+			['name'],
+			async (event, formData, cookies, user, formDataRaw) => {
+				try {
+					await event.locals.db.transaction(async (tx) => {
+						//TODO
+					});
+				} catch (e) {
+					writeLog(event, 'ERROR', 'DB error', user);
+					return fail(500);
+				}
+			},
+		);
 	},
 	addArticle: async () => {
-		return await formRunner(['name', 'chapterUuid'], async (
-			event, formData, cookies, user, formDataRaw
-		) => {
-			try {
-				await event.locals.db.transaction(async (tx) => {
-					//TODO
-				});
-			} catch (e) {
-				writeLog(event, 'ERROR', 'DB error', user);
-				return fail(500);
-			}
-		});
+		return await formRunner(
+			['name', 'chapterUuid'],
+			async (event, formData, cookies, user, formDataRaw) => {
+				try {
+					await event.locals.db.transaction(async (tx) => {
+						//TODO
+					});
+				} catch (e) {
+					writeLog(event, 'ERROR', 'DB error', user);
+					return fail(500);
+				}
+			},
+		);
 	},
 	removeChapter: async () => {
-		return await formRunner(['uuid'], async (
-			event, formData, cookies, user, formDataRaw
-		) => {
-			try {
-				await event.locals.db
-					.delete(schema.chapter)
-					.where(eq(schema.chapter.uuid, formData['uuid']));
-			} catch (e) {
-				writeLog(event, 'ERROR', 'DB error', user);
-				return fail(500);
-			}
-		});
+		return await formRunner(
+			['uuid'],
+			async (event, formData, cookies, user, formDataRaw) => {
+				try {
+					await event.locals.db
+						.delete(schema.chapter)
+						.where(eq(schema.chapter.uuid, formData['uuid']));
+				} catch (e) {
+					writeLog(event, 'ERROR', 'DB error', user);
+					return fail(500);
+				}
+			},
+		);
 	},
 	removeArticle: async () => {
-		return await formRunner(['uuid'], async (
-			event, formData, cookies, user, formDataRaw
-		) => {
-			try {
-				await event.locals.db
-					.delete(schema.article)
-					.where(eq(schema.article.uuid, formData['uuid']));
-			} catch (e) {
-				writeLog(event, 'ERROR', 'DB error', user);
-				return fail(500);
-			}
-		});
+		return await formRunner(
+			['uuid'],
+			async (event, formData, cookies, user, formDataRaw) => {
+				try {
+					await event.locals.db
+						.delete(schema.article)
+						.where(eq(schema.article.uuid, formData['uuid']));
+				} catch (e) {
+					writeLog(event, 'ERROR', 'DB error', user);
+					return fail(500);
+				}
+			},
+		);
 	},
 	moveChapterUp: async () => {
-		return await formRunner(['uuid'], async (
-			event, formData, cookies, user, formDataRaw
-		) => {
-			try {
-				//TODO
-			} catch (e) {
-				writeLog(event, 'ERROR', 'DB error', user);
-				return fail(500);
-			}
-		});
+		return await formRunner(
+			['uuid'],
+			async (event, formData, cookies, user, formDataRaw) => {
+				try {
+					//TODO
+				} catch (e) {
+					writeLog(event, 'ERROR', 'DB error', user);
+					return fail(500);
+				}
+			},
+		);
 	},
 	moveChapterDown: async () => {
-		return await formRunner(['uuid'], async (
-			event, formData, cookies, user, formDataRaw
-		) => {
-			try {
-				//TODO
-			} catch (e) {
-				writeLog(event, 'ERROR', 'DB error', user);
-				return fail(500);
-			}
-		});
+		return await formRunner(
+			['uuid'],
+			async (event, formData, cookies, user, formDataRaw) => {
+				try {
+					//TODO
+				} catch (e) {
+					writeLog(event, 'ERROR', 'DB error', user);
+					return fail(500);
+				}
+			},
+		);
 	},
 	//if article first/last in chapter, move to previous/next chapter
 	moveArticleUp: async () => {
-		return await formRunner(['uuid'], async (
-			event, formData, cookies, user, formDataRaw
-		) => {
-			try {
-				//TODO
-			} catch (e) {
-				writeLog(event, 'ERROR', 'DB error', user);
-				return fail(500);
-			}
-		});
+		return await formRunner(
+			['uuid'],
+			async (event, formData, cookies, user, formDataRaw) => {
+				try {
+					//TODO
+				} catch (e) {
+					writeLog(event, 'ERROR', 'DB error', user);
+					return fail(500);
+				}
+			},
+		);
 	},
 	moveArticleDown: async () => {
-		return await formRunner(['uuid'], async (
-			event, formData, cookies, user, formDataRaw
-		) => {
-			try {
-				//TODO
-			} catch (e) {
-				writeLog(event, 'ERROR', 'DB error', user);
-				return fail(500);
-			}
-		});
+		return await formRunner(
+			['uuid'],
+			async (event, formData, cookies, user, formDataRaw) => {
+				try {
+					//TODO
+				} catch (e) {
+					writeLog(event, 'ERROR', 'DB error', user);
+					return fail(500);
+				}
+			},
+		);
 	},
 };

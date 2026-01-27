@@ -34,17 +34,20 @@
 	let showEditButtonsInterval: NodeJS.Timeout | undefined = $state(undefined);
 
 	onMount(async () => {
-		if(!browser) return;
+		if (!browser) return;
 
 		showEditButtonsInterval = setInterval(async () => {
 			if (oldShowEditButtons !== showEditButtonsLocal) {
 				oldShowEditButtons = showEditButtonsLocal;
-				await cookieStore.set('editButtons', String(showEditButtonsLocal));
+				await cookieStore.set(
+					'editButtons',
+					String(showEditButtonsLocal),
+				);
 			}
 		}, 500);
 	});
 	onDestroy(async () => {
-		if(!browser) return;
+		if (!browser) return;
 
 		clearInterval(showEditButtonsInterval);
 	});
@@ -192,7 +195,7 @@
 	maxWidth={false}
 >
 	<h2>{m.addAChapter()}</h2>
-	<div class="grow flex flex-col justify-center items-center w-full">
+	<div class="flex w-full grow flex-col items-center justify-center">
 		<TextInput
 			name="name"
 			label={m.chapterName()}
