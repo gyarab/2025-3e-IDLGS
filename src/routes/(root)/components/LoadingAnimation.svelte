@@ -40,8 +40,8 @@
 		<i class="ri-circle-fill animate-bounce [animation-delay:-0.33s]"></i>
 		<i class="ri-circle-fill animate-bounce"></i>
 	</div>
-	<div class="flex flex-row gap-0">
-		{#if text}
+	{#if text}
+		<div class="flex flex-row gap-0">
 			<span>
 				{#if newMessage}
 					{m.itsTakingLongerThanExpected()}
@@ -49,13 +49,13 @@
 					{m.loading()}
 				{/if}
 			</span>
-		{/if}
-		<span>
-			{#key dots}
-				{#each new Array(dots).fill('.') as dot, i (i)}
-					{dot}
-				{/each}
-			{/key}
-		</span>
-	</div>
+			<span>
+				{#key dots}
+					{#each new Array(dots).fill('.') as dot, i (i)}
+						{dot}
+					{/each}
+				{/key}
+			</span>
+		</div>
+	{/if}
 </div>

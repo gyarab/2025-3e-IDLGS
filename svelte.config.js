@@ -15,7 +15,7 @@ const config = {
 		csp: {
 			directives: {
 				'default-src': ['none'],
-				'font-src': ['self', 'fonts.gstatic.com'],
+				'font-src': ['self', 'fonts.gstatic.com', 'data:'],
 				'script-src': ['self', '*.cloudflare.com'],
 				'object-src': ['self'],
 				'img-src': ['self', 'res.cloudinary.com', 'data:'],

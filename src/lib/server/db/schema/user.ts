@@ -12,7 +12,7 @@ export const user = pgTable('user', {
 	uuid: text('uuid')
 		.notNull()
 		.$defaultFn(() => crypto.randomUUID()),
-	email: text('email').notNull().default(''),
+	email: text('email').notNull().default('').unique(),
 	password: text('password').notNull().default(''),
 	iterations: integer('iterations').notNull().default(0),
 	salt: text('salt').notNull().default(''),
