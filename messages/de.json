@@ -435,5 +435,20 @@
 	"couldNotDeleteChapter": "Kapitel konnte nicht gelöscht werden",
 	"couldNotDeleteArticle": "Artikel konnte nicht gelöscht werden",
 	"couldNotRenameChapter": "Kapitel konnte nicht umbenannt werden",
-	"couldNotRenameArticle": "Artikel konnte nicht umbenannt werden"
+	"couldNotRenameArticle": "Artikel konnte nicht umbenannt werden",
+	"passwordUpdated": "Passwort aktualisiert",
+	"enterNewPassword": "Neues Passwort eingeben",
+	"repeatNewPassword": "Neues Passwort wiederholen",
+	"newPasswordRepeat": "Neues Passwort (Wiederholung)",
+	"currentPassword": "Aktuelles Passwort",
+	"enterCurrentPassword": "Aktuelles Passwort eingeben",
+	"couldNotUpdatePassword": "Passwort konnte nicht aktualisiert werden",
+	"couldNotUpdateSettings": "Einstellungen konnten nicht aktualisiert werden",
+	"couldNotUpdatePersonalizationSettings": "Personalisierungseinstellungen konnten nicht aktualisiert werden",
+	"article": "Artikel",
+	"term": "Begriff",
+	"definition": "Definition",
+	"enterTerm": "Begriff eingeben",
+	"enterDefinition": "Definition eingeben",
+	"backToTop": "Zurück nach oben"
 }

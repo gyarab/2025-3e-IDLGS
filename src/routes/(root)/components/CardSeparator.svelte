@@ -1,1 +1,1 @@
-<div class="h-[5vh] min-h-[5vh]"></div>
+<div class="xl:h-[5vh] xl:min-h-[5vh] max-xl:hidden"></div>

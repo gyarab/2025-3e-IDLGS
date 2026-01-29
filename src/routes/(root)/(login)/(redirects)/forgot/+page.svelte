@@ -35,11 +35,11 @@
 			}}
 		>
 			{#if !sent && !error}
-				<h2 class="w-full text-left text-white">
+				<h2 class="w-full max-xl:text-center xl:text-left text-white">
 					{m.passwordRecovery()}
 				</h2>
 
-				<p class="w-full font-light opacity-70">
+				<p class="w-full font-light opacity-70 max-xl:text-sm">
 					{m.enterYourAccountsEmailAddressIfItExistsYouWillRecieveAResetLink()}
 					<br />
 					{@html renderMarkdown(
@@ -74,7 +74,7 @@
 					{m.back()}
 				</Button>
 			{:else if sent}
-				<h2 class="w-full text-left text-white">
+				<h2 class="w-full max-xl:text-center xl:text-left text-white">
 					{m.emailSent()}
 				</h2>
 				<p class="font-light opacity-70">
@@ -93,7 +93,7 @@
 					{m.goToHomePage()}
 				</Button>
 			{:else if error}
-				<h2 class="w-full text-left text-white">
+				<h2 class="w-full max-xl:text-center xl:text-left text-white">
 					{m.anErrorOccurred()}
 				</h2>
 				<p class="font-light opacity-70">

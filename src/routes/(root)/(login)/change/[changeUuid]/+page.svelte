@@ -37,7 +37,7 @@
 			invalidateAll={false}
 		>
 			{#if !set}
-				<h2 class="w-full text-left">{m.setAPassword()}</h2>
+				<h2 class="w-full max-xl:text-center xl:text-left">{m.setAPassword()}</h2>
 
 				<HiddenInput
 					name="uuid"
@@ -73,7 +73,7 @@
 					{m.setNewPassword()}
 				</Button>
 			{:else}
-				<h2 class="w-full text-left">
+				<h2 class="w-full max-xl:text-center xl:text-left">
 					{m.passwordResetSuccessfully()}
 				</h2>
 				<p class="font-light opacity-70">

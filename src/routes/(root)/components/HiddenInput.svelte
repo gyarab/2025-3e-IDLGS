@@ -9,10 +9,10 @@
 		ignoreChangeEvents?: boolean;
 	} = $props();
 
-	let element: HTMLInputElement;
+	let element: HTMLInputElement | undefined = $state(undefined);
 	$effect(() => {
 		if (value) {
-			element.dispatchEvent(new Event('change'));
+			element?.dispatchEvent(new Event('change'));
 		}
 	});
 </script>

@@ -8,6 +8,7 @@ import { writeLog } from '$lib/log';
 import { m } from '$lib/paraglide/messages';
 import { renderMarkdown } from '$lib/markdown';
 import type { Locale } from '$lib/paraglide/runtime';
+import { checkPassword } from '$lib';
 
 export const validateTurnstile = async (
 	ip: string,
@@ -48,6 +49,28 @@ export const hashPassword = (
 		salt: lsalt,
 		amount: lamount,
 	};
+};
+
+export const comparePassword = (
+	password: string,
+	hashedPassword: string,
+	salt: string,
+	amount: number,
+): boolean => {
+	const hashed = crypto
+		.pbkdf2Sync(
+			Buffer.from(password),
+			salt,
+			amount,
+			64,
+			'sha512',
+		)
+		.toString('hex');
+
+	return crypto.timingSafeEqual(
+		Buffer.from(hashedPassword),
+		Buffer.from(hashed),
+	);
 };
 
 export const createUser = async (

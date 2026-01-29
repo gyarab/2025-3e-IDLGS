@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { onDestroy, onMount } from 'svelte';
+	import { onDestroy, onMount, type Snippet } from 'svelte';
 	import { fly } from 'svelte/transition';
 
 	let {
@@ -16,6 +16,19 @@
 		css = '',
 		padding = 'p-2',
 		disable = false,
+	}: {
+		children: Snippet;
+		r?: number;
+		g?: number;
+		b?: number;
+		delay?: number;
+		perspective?: boolean;
+		onclick?: () => void;
+		forceSquare?: boolean;
+		hover?: boolean;
+		css?: string;
+		padding?: string;
+		disable?: boolean;
 	} = $props();
 
 	let rect: DOMRect | undefined = $state(undefined);
@@ -72,10 +85,11 @@
 	<div
 		class="
 	flex {forceSquare ? 'aspect-square!' : 'grow'} static
-	w-full flex-col gap-2 rounded-lg
+	w-full flex-col gap-2
 	border-2 shadow-xl perspective-[1600px] hover:shadow-2xl
 	{hover ? 'hover:border-neutral-300!' : ''}
 	{css}
+	max-xl:p-0! xl:rounded-lg max-xl:border-s-0! max-xl:border-e-0!
 	"
 		style="background-color: rgb({r} {g} {b} / 30%); border-color: rgb({r} {g} {b} / 30%); {perspective
 			? `transform: rotateX(${yRotation}deg) rotateY(${xRotation}deg) translateZ(0);`

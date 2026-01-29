@@ -4,8 +4,16 @@
 	import NavbarMobile from './components/navbar/NavbarMobile.svelte';
 	import NavbarLoggedIn from './components/navbar/NavbarLoggedIn.svelte';
 	import NavbarLoggedInMobile from './components/navbar/NavbarLoggedInMobile.svelte';
+	import FooterMobile from './components/navbar/FooterMobile.svelte';
+	import type { Snippet } from 'svelte';
+	import type { UserType } from '$lib/types';
 
-	let { children, data } = $props();
+	let { children, data }: {
+		children: Snippet,
+		data: {
+			user: UserType
+		};
+	} = $props();
 </script>
 
 <svelte:head>
@@ -26,7 +34,8 @@
 		<NavbarMobile />
 	{/if}
 	<div class="relative flex w-full grow flex-col">
-		{@render children?.()}
+		{@render children()}
 	</div>
 	<Footer user={data.user} />
+	<FooterMobile user={data.user} />
 </div>

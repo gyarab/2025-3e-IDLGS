@@ -21,7 +21,7 @@
 		</h2>
 
 		<WideCard>
-			<h2 class="w-full text-left">
+			<h2 class="w-full max-xl:text-center xl:text-left">
 				<i class="ri-settings-line"></i>
 				{m.websiteSettings()}
 			</h2>
@@ -33,7 +33,7 @@
 		<CardSeparator />
 
 		<WideCard>
-			<h2 class="w-full text-left">
+			<h2 class="w-full max-xl:text-center xl:text-left">
 				<i class="ri-window-2-line"></i>
 				{m.infoPopupManagement()}
 			</h2>
@@ -45,7 +45,7 @@
 		<CardSeparator />
 
 		<WideCard>
-			<h2 class="w-full text-left">
+			<h2 class="w-full max-xl:text-center xl:text-left">
 				<i class="ri-group-line"></i>
 				{m.userManagement()}
 			</h2>
@@ -57,7 +57,7 @@
 		<CardSeparator />
 
 		<WideCard>
-			<h2 class="w-full text-left">
+			<h2 class="w-full max-xl:text-center xl:text-left">
 				<i class="ri-speak-ai-line"></i>
 				{m.aiManagement()}
 			</h2>
@@ -69,7 +69,7 @@
 		<CardSeparator />
 
 		<WideCard>
-			<h2 class="w-full text-left">
+			<h2 class="w-full max-xl:text-center xl:text-left">
 				<i class="ri-government-line"></i>
 				{m.legalDocuments()}
 			</h2>
@@ -81,7 +81,7 @@
 		<CardSeparator />
 
 		<WideCard>
-			<h2 class="w-full text-left">
+			<h2 class="w-full max-xl:text-center xl:text-left">
 				<i class="ri-user-follow-line"></i>
 				{m.dailyChallenges()}
 			</h2>

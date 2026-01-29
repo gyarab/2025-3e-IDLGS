@@ -435,5 +435,20 @@
 	"chapterRenamedSuccessfully": "Kapitola byla úspěšně přejmenována",
 	"articleRenamedSuccessfully": "Článek byl úspěšně přejmenován",
 	"chapterCouldNotBeRenamed": "Nepodařilo se přejmenovat kapitolu",
-	"articleCouldNotBeRenamed": "Nepodařilo se přejmenovat článek"
+	"articleCouldNotBeRenamed": "Nepodařilo se přejmenovat článek",
+	"passwordUpdated": "Heslo bylo aktualizováno",
+	"enterNewPassword": "Zadejte nové heslo",
+	"repeatNewPassword": "Zopakujte nové heslo",
+	"newPasswordRepeat": "Nové heslo (opakování)",
+	"currentPassword": "Aktuální heslo",
+	"enterCurrentPassword": "Zadejte aktuální heslo",
+	"couldNotUpdatePassword": "Nepodařilo se aktualizovat heslo",
+	"couldNotUpdateSettings": "Nepodařilo se aktualizovat nastavení",
+	"couldNotUpdatePersonalizationSettings": "Nepodařilo se aktualizovat nastavení personalizace",
+	"article": "Článek",
+	"term": "Termín",
+	"definition": "Definice",
+	"enterTerm": "Zadejte termín",
+	"enterDefinition": "Zadejte definici",
+	"backToTop": "Zpět nahoru"
 }

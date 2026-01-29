@@ -21,7 +21,7 @@
 	class="flex min-h-[30svh] w-full flex-col gap-2 max-xl:w-9/10 xl:w-4/6"
 >
 	{#key loaded}
-		<div class="flex flex-row gap-2">
+		<div class="flex max-xl:flex-col xl:flex-row  gap-2">
 			<h2
 				in:fly|global={ABOUT_ANIMATION_FIRST}
 				class="flex-nowrap text-6xl font-medium text-nowrap text-violet-800"

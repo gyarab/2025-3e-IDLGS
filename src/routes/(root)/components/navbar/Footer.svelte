@@ -21,7 +21,7 @@
 	class="flex min-h-[20vh] flex-col items-center bg-black p-5 max-xl:hidden print:hidden"
 >
 	<div
-		class="grid w-8/10 grid-cols-2 gap-10 *:flex *:h-full *:grow *:flex-col *:gap-2"
+		class="grid w-8/10 grid-cols-2 gap-10 *:flex *:h-full *:grow *:flex-col *:gap-0"
 	>
 		<div>
 			<div class="flex w-full flex-row items-end gap-2">
@@ -33,7 +33,6 @@
 			<div>
 				©
 				<a href="mailto:martin.bykov.s@gyarab.cz">Martin Bykov</a>,
-				<a href="mailto:kira.stepanova.s@gyarab.cz">Kira Stepanova</a>,
 				2025-{new Date().getFullYear()}
 			</div>
 			<div>

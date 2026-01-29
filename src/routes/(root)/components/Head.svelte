@@ -14,11 +14,11 @@
 	});
 </script>
 
-<!-- 94svh because header is 6svh -->
+<!-- 94svh because header is 6svh (mobile is 8) -->
 {#if ready}
 	{#key ready}
 		<div
-			class="relative flex h-[94svh] w-full flex-col items-center justify-center gap-6 overflow-hidden bg-violet-900 text-neutral-100 *:z-3"
+			class="relative flex max-xl:min-h-[92svh] xl:min-h-[94svh] w-full flex-col items-center justify-center gap-6 overflow-hidden bg-violet-900 text-neutral-100 *:z-3"
 		>
 			<!-- bg image -->
 			<div
@@ -40,7 +40,7 @@
 					{m.fullyDigitalIntegratedAiPowered()}
 				</span>
 				<span
-					class="flex flex-row gap-4 text-7xl font-bold text-white **:decoration-5"
+					class="flex flex-row gap-4 max-xl:text-xl xl:text-7xl font-bold text-white **:decoration-5"
 					in:fade|global={{ duration: 500, delay: 500 }}
 				>
 					<!-- always textbook 1 word, connector 1 word -->
@@ -59,7 +59,7 @@
 					</span>
 				</span>
 			</h5>
-			<p class="flex flex-row gap-2 text-center text-2xl">
+			<p class="flex flex-row gap-2 text-center max-xl:text-sm xl:text-2xl">
 				<span in:slide|global={{ duration: 500, delay: 600 }}>
 					{m.easyToUse()}.
 				</span>
@@ -114,7 +114,7 @@
 
 			<div
 				class="
-		grid w-2/3 grid-cols-3 gap-8
+		grid w-2/3 xl:grid-cols-3 max-xl:grid-cols-1 xl:gap-8 max-xl:gap-4
 	"
 			>
 				<LearnMoreHeadCard

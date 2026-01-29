@@ -1,9 +1,14 @@
 import { browser } from '$app/environment';
-import { getLocale, setLocale, type Locale } from '$lib/paraglide/runtime';
+import { extractLocaleFromNavigator, setLocale, type Locale } from '$lib/paraglide/runtime';
 
 export const load = async (event) => {
 	if (browser && event.data.user) {
-		setLocale(event.data.user?.lang as Locale, { reload: false });
+		if(event.data.user?.lang !== 'any') {
+			setLocale(event.data.user?.lang as Locale, { reload: false });
+		}
+		else {
+			setLocale(extractLocaleFromNavigator() as Locale, { reload: false });
+		}
 	}
 
 	return {

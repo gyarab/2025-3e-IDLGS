@@ -16,17 +16,17 @@ export const actions = {
 	updateName: async (event) => {
 		return await formRunner(
 			['uuid', 'name'],
-			async (event, formData, cookies, user, formDataRaw) => {
-				try {
-					if (
-						(await isUserAuthorizedTextbook(
-							event.params.id!,
-							user.uuid,
-						)) === false
-					) {
-						return fail(403);
-					}
+			async (event, formData, cookies, user) => {
+				if (
+					(await isUserAuthorizedTextbook(
+						event.params.id!,
+						user.uuid,
+					)) === false
+				) {
+					return fail(403);
+				}
 
+				try {
 					await event.locals.db
 						.update(schema.textbook)
 						.set({
@@ -44,17 +44,17 @@ export const actions = {
 	updateDescription: async (event) => {
 		return await formRunner(
 			['uuid', 'description'],
-			async (event, formData, cookies, user, formDataRaw) => {
-				try {
-					if (
-						(await isUserAuthorizedTextbook(
-							event.params.id!,
-							user.uuid,
-						)) === false
-					) {
-						return fail(403);
-					}
+			async (event, formData, cookies, user) => {
+				if (
+					(await isUserAuthorizedTextbook(
+						event.params.id!,
+						user.uuid,
+					)) === false
+				) {
+					return fail(403);
+				}
 
+				try {
 					await event.locals.db
 						.update(schema.textbook)
 						.set({
@@ -72,7 +72,7 @@ export const actions = {
 	addChapter: async () => {
 		return await formRunner(
 			['name'],
-			async (event, formData, cookies, user, formDataRaw) => {
+			async (event, formData, cookies, user) => {
 				if (
 					!(await isUserAuthorizedTextbook(
 						event.params.id!,
@@ -114,7 +114,7 @@ export const actions = {
 	removeChapter: async () => {
 		return await formRunner(
 			['uuid'],
-			async (event, formData, cookies, user, formDataRaw) => {
+			async (event, formData, cookies, user) => {
 				if (
 					!(await isUserAuthorizedTextbook(
 						event.params.id!,
@@ -138,7 +138,7 @@ export const actions = {
 	moveChapterUp: async () => {
 		return await formRunner(
 			['uuid'],
-			async (event, formData, cookies, user, formDataRaw) => {
+			async (event, formData, cookies, user) => {
 				if (
 					!(await isUserAuthorizedTextbook(
 						event.params.id!,
@@ -160,7 +160,7 @@ export const actions = {
 	moveChapterDown: async () => {
 		return await formRunner(
 			['uuid'],
-			async (event, formData, cookies, user, formDataRaw) => {
+			async (event, formData, cookies, user) => {
 				if (
 					!(await isUserAuthorizedTextbook(
 						event.params.id!,
@@ -182,7 +182,7 @@ export const actions = {
 	editChapterName: async () => {
 		return await formRunner(
 			['uuid', 'name'],
-			async (event, formData, cookies, user, formDataRaw) => {
+			async (event, formData, cookies, user) => {
 				if (
 					!(await isUserAuthorizedTextbook(
 						event.params.id!,
@@ -193,7 +193,12 @@ export const actions = {
 				}
 
 				try {
-					//TODO
+					await event.locals.db
+						.update(schema.chapter)
+						.set({
+							name: formData['name'],
+						})
+						.where(eq(schema.chapter.uuid, formData['uuid']));
 				} catch (e) {
 					writeLog(event, 'ERROR', 'DB error', user);
 					return fail(500);

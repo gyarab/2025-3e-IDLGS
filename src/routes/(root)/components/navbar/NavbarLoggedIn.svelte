@@ -22,7 +22,7 @@
 </script>
 
 <div
-	class="flex h-[6svh] w-full print:hidden"
+	class="flex h-[6svh] w-full print:hidden max-xl:hidden"
 	id="loggedInNavbarFill"
 ></div>
 <nav

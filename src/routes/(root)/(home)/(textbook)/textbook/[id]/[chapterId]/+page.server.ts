@@ -26,7 +26,7 @@ export const actions = {
 	addArticle: async () => {
 		return await formRunner(
 			['name'],
-			async (event, formData, cookies, user, formDataRaw) => {
+			async (event, formData, cookies, user) => {
 				if (
 					!(await isUserAuthorizedTextbook(
 						event.params.id!,
@@ -72,7 +72,7 @@ export const actions = {
 	removeArticle: async () => {
 		return await formRunner(
 			['uuid'],
-			async (event, formData, cookies, user, formDataRaw) => {
+			async (event, formData, cookies, user) => {
 				if (
 					!(await isUserAuthorizedTextbook(
 						event.params.id!,
@@ -97,7 +97,7 @@ export const actions = {
 	moveArticleUp: async () => {
 		return await formRunner(
 			['uuid'],
-			async (event, formData, cookies, user, formDataRaw) => {
+			async (event, formData, cookies, user) => {
 				if (
 					!(await isUserAuthorizedTextbook(
 						event.params.id!,
@@ -119,7 +119,7 @@ export const actions = {
 	moveArticleDown: async () => {
 		return await formRunner(
 			['uuid'],
-			async (event, formData, cookies, user, formDataRaw) => {
+			async (event, formData, cookies, user) => {
 				if (
 					!(await isUserAuthorizedTextbook(
 						event.params.id!,
@@ -141,7 +141,7 @@ export const actions = {
 	editArticleName: async () => {
 		return await formRunner(
 			['uuid', 'name'],
-			async (event, formData, cookies, user, formDataRaw) => {
+			async (event, formData, cookies, user) => {
 				if (
 					!(await isUserAuthorizedTextbook(
 						event.params.id!,
@@ -152,7 +152,12 @@ export const actions = {
 				}
 
 				try {
-					//TODO
+					await event.locals.db
+						.update(schema.article)
+						.set({
+							name: formData['name'],
+						})
+						.where(eq(schema.article.uuid, formData['uuid']));
 				} catch (e) {
 					writeLog(event, 'ERROR', 'DB error', user);
 					return fail(500);

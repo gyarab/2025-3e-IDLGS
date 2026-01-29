@@ -100,9 +100,25 @@ export type ArticleType = {
 
 //Bookmarks and highlights
 
-//TODO
-export type BookmarkType = {};
-export type HighlightType = {};
+export type BookmarkType = {
+	uuid: string;
+	textIndex: number;
+	article?: number;
+	user?: number;
+	red: number;
+	green: number;
+	blue: number;
+};
+export type HighlightType = {
+	article?: number;
+	user?: number;
+	startIndex: number;
+	endIndex: number;
+	red: number;
+	green: number;
+	blue: number;
+	uuid: string;
+};
 
 //Courses
 
@@ -148,6 +164,17 @@ export type CourseGradeType = {
 //type of grade recieved by students
 export type CourseGradeValueType = {
 	percentage: number;
+};
+
+export type CourseQuestionType = {
+	uuid: string;
+	question: string;
+	answer: string;
+	type: AIGenerationQuestionType;
+	reportCount: number;
+	ai: boolean;
+	aitr: string; //aiTextRepresentation - source text where AI took info from
+	course?: number;
 };
 
 // Tests

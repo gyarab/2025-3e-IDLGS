@@ -4,6 +4,7 @@
 	import Button from '$component/Button.svelte';
 	import Form from '$component/Form.svelte';
 	import Modal from '$component/Modal.svelte';
+	import TextInput from '$component/TextInput.svelte';
 
 	let { data } = $props();
 
@@ -80,6 +81,43 @@
 <Modal
 	bind:showModal={showAddModal}
 	cssClass="standardModal"
+	maxHeight={false}
+	maxWidth={true}
 >
-	<h2>{m.addDefinition()}</h2>
+	<Form
+		cssClass="flex w-full flex-col gap-2"
+		action={`/textbook/${data.textbook.uuid}/definitions?/addDefinition`}
+	>
+		<h2>{m.addDefinition()}</h2>
+
+		<div class="flex w-full grow flex-col items-center justify-center gap-2">
+			<TextInput
+				name="term"
+				label={m.term()}
+				placeholder={m.enterTerm()}
+			/>
+			<TextInput
+				name="definition"
+				label={m.definition()}
+				placeholder={m.enterDefinition()}
+			/>
+		</div>
+
+		<div class="grid w-full grid-cols-2 gap-2">
+			<Button
+				type="submit"
+				btn="button-primary"
+				emoji="add-circle"
+			>
+				{m.addDefinition()}
+			</Button>
+			<Button
+				btn="button-red"
+				emoji="close-circle"
+				type="button"
+			>
+				{m.cancel()}
+			</Button>
+		</div>
+	</Form>
 </Modal>

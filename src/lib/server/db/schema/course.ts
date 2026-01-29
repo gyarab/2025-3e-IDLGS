@@ -141,7 +141,6 @@ export const question = pgTable('question', {
 	type: text('type').notNull().default(''),
 	question: text('answer').notNull().default(''),
 	answer: text('answer').notNull().default(''),
-	name: text('name').notNull().default(''),
 	course: integer('course')
 		.references(() => course.id, {
 			onDelete: 'cascade',
@@ -149,8 +148,9 @@ export const question = pgTable('question', {
 		.notNull(),
 	reportCount: integer('reportCount').notNull().default(0),
 	ai: boolean('ai').notNull().default(false),
-	//aiTextRepresentation
+	//aiTextRepresentation - source text where AI took info from
 	aitr: text('aitr').notNull().default(''),
+	uuid: text('uuid').notNull().$defaultFn(() => crypto.randomUUID()),
 });
 
 export const courseCodes = pgTable('courseCode', {

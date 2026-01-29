@@ -6,7 +6,7 @@
 	import Modal from '$component/Modal.svelte';
 	import Form from '$component/Form.svelte';
 	import TextInput from '$component/TextInput.svelte';
-	import HiddenInput from '$src/routes/(root)/components/HiddenInput.svelte';
+	import HiddenInput from '$component/HiddenInput.svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 
@@ -31,12 +31,18 @@
 	let addArticleModal = $state(false);
 	let chapterDeletionRequested = $state(false);
 	let chapterRenameRequested = $state(false);
+
+	let chapterLocalName = $derived(chapter.name);
+	let chapterRename = $state(false);
 </script>
 
 <Form
 	cssClass="flex w-full flex-col gap-0 pr-0 pl-0"
 	action=""
 	smallLoadAnimation={true}
+	start={async () => {
+		chapterRename = false;
+	}}
 	success={async () => {
 		if (chapterDeletionRequested) {
 			formMessage = m.chapterDeletedSuccessfully();
@@ -68,57 +74,83 @@
 		ignoreChangeEvents={true}
 	/>
 	<div class="flex w-full flex-row items-center justify-start gap-1">
-		<a href="/textbook/{textbookUuid}/{chapter.uuid}">
-			{chapter.name}
-		</a>
-		<Button
-			emoji={isOpen ? 'arrow-up-s' : 'arrow-down-s'}
-			btn="button-none"
-			onclick={() => {
-				isOpen = !isOpen;
-			}}
-		/>
-		{#if canEdit && showEditButtons}
-			<div class="grow"></div>
-			<!-- edit name -->
+		{#if chapterRename}
+			<TextInput
+				name="name"
+				bind:value={chapterLocalName}
+				cssClass="grow"
+			/>
 			<Button
-				btn="button-none *:font-medium"
-				emoji="pencil"
+				btn="button-none"
+				emoji="check"
 				type="submit"
 				action={`/textbook/${textbookUuid}/?/editChapterName`}
-				label={m.editChapterName()}
 				onclick={() => {
 					chapterRenameRequested = true;
 				}}
-			/>
-
-			<!-- move up and down -->
-			<Button
-				btn="button-none *:font-medium"
-				emoji="arrow-up-s"
-				type="submit"
-				action={`/textbook/${textbookUuid}/?/moveChapterUp`}
-				label={m.moveChapterUp()}
+				label={m.save()}
 			/>
 			<Button
-				btn="button-none *:font-medium"
-				emoji="arrow-down-s"
-				type="submit"
-				action={`/textbook/${textbookUuid}/?/moveChapterDown`}
-				label={m.moveChapterDown()}
-			/>
-
-			<!-- delete -->
-			<Button
-				btn="button-none *:font-medium"
-				emoji="delete-bin"
-				type="submit"
-				action={`/textbook/${textbookUuid}/?/removeChapter`}
-				label={m.removeChapter()}
+				btn="button-none"
+				emoji="close"
+				type="button"
 				onclick={() => {
-					chapterDeletionRequested = true;
+					chapterRename = false;
+				}}
+				label={m.cancel()}
+			/>
+		{:else}
+			<a href="/textbook/{textbookUuid}/{chapter.uuid}">
+				{chapter.name}
+			</a>
+			<Button
+				emoji={isOpen ? 'arrow-up-s' : 'arrow-down-s'}
+				btn="button-none"
+				onclick={() => {
+					isOpen = !isOpen;
 				}}
 			/>
+			{#if canEdit && showEditButtons}
+				<div class="grow"></div>
+				<!-- edit name -->
+				<Button
+					btn="button-none *:font-medium"
+					emoji="pencil"
+					type="button"
+					label={m.editChapterName()}
+					onclick={() => {
+						chapterRename = true;
+					}}
+				/>
+
+				<!-- move up and down -->
+				<Button
+					btn="button-none *:font-medium"
+					emoji="arrow-up-s"
+					type="submit"
+					action={`/textbook/${textbookUuid}/?/moveChapterUp`}
+					label={m.moveChapterUp()}
+				/>
+				<Button
+					btn="button-none *:font-medium"
+					emoji="arrow-down-s"
+					type="submit"
+					action={`/textbook/${textbookUuid}/?/moveChapterDown`}
+					label={m.moveChapterDown()}
+				/>
+
+				<!-- delete -->
+				<Button
+					btn="button-none *:font-medium"
+					emoji="delete-bin"
+					type="submit"
+					action={`/textbook/${textbookUuid}/?/removeChapter`}
+					label={m.removeChapter()}
+					onclick={() => {
+						chapterDeletionRequested = true;
+					}}
+				/>
+			{/if}
 		{/if}
 	</div>
 

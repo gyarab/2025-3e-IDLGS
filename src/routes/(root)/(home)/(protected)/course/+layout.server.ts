@@ -10,7 +10,7 @@ export const load = async (event) => {
 		redirect(303, '/set');
 	}
 
-	const courseUuid = event.params.id;
+	const courseUuid = event.params.id as string;
 	const course = await loadSingleCourse(user, courseUuid, true, true);
 
 	if (!user) {

@@ -20,7 +20,7 @@
 <div
 	class="relative z-10 flex w-full min-w-screen grow flex-col items-center justify-center {getImageBackgroundClass(
 		data.user,
-	)} max-xl:hidden"
+	)}"
 >
 	{#if (data.user?.background ?? 0) === 0}
 		<WordBackground />

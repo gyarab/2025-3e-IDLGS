@@ -13,8 +13,13 @@
 	} = $props();
 </script>
 
-<div class="w-1/5 min-w-1/5 p-2">
-	<WideCard cssAddition="grow w-full">
+<div class="sticky xl:top-[6vh] left-0 h-[94svh] min-w-1/5 overflow-clip p-2">
+	<WideCard 
+		cssAddition="grow"
+		r={data.course.red}
+		g={data.course.green}
+		b={data.course.blue}
+	>
 		<h2>{data.course.name}</h2>
 	</WideCard>
 </div>

@@ -12,11 +12,11 @@
 	padding="p-5"
 >
 	<div class="flex w-full grow flex-col gap-2">
-		<h2 class="w-full text-left text-2xl">
+		<h2 class="w-full max-xl:text-center xl:text-left max-xl:text-lg xl:text-2xl">
 			<i class="ri-{emoji}-fill"></i>
 			{title}.
 		</h2>
-		<p class="text-left text-lg font-light">
+		<p class="text-left max-xl:text-sm xl:text-lg font-light">
 			{text}
 		</p>
 		<div class="grow"></div>

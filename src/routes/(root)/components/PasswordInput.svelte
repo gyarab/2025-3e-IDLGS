@@ -8,17 +8,23 @@
 		label = '',
 		placeholder = '',
 		cssClass = '',
+		cssLabelClass = '',
 		value = $bindable(''),
-		children = undefined,
+	}: {
+		formName: string;
+		label?: string;
+		placeholder?: string;
+		cssClass?: string;
+		cssLabelClass?: string;
+		value?: string;
 	} = $props();
 </script>
 
 <div class="relative flex w-full flex-col items-center justify-center gap-2">
 	<div class="flex w-full grow flex-row items-center justify-center gap-2">
 		{#if label.length != 0}
-			<h3 class="whitespace-nowrap">{label}:</h3>
+			<h3 class="whitespace-nowrap {cssLabelClass}">{label}:</h3>
 		{/if}
-		<br class="xl:hidden" />
 		<div
 			class="flex w-full flex-row items-center justify-center overflow-hidden"
 		>

@@ -12,8 +12,8 @@
 	import { browser } from '$app/environment';
 	import TextInput from '$component/TextInput.svelte';
 	import { page } from '$app/state';
-	import SuccessBox from '$src/routes/(root)/components/SuccessBox.svelte';
-	import AlertBox from '$src/routes/(root)/components/AlertBox.svelte';
+	import SuccessBox from '$component/SuccessBox.svelte';
+	import AlertBox from '$component/AlertBox.svelte';
 
 	let {
 		id,
@@ -59,7 +59,7 @@
 	let formAlert: string = $state('');
 </script>
 
-<div class="sticky top-[6vh] left-0 h-[94svh] min-w-1/5 overflow-clip p-2">
+<div class="sticky xl:top-[6vh] left-0 h-[94svh] min-w-1/5 overflow-clip p-2">
 	<WideCard
 		cssAddition="grow"
 		r={textbook.red}

@@ -47,7 +47,7 @@
 				goto('/home');
 			}}
 		>
-			<h2 class="w-full text-left">{m.setAPassword()}</h2>
+			<h2 class="w-full max-xl:text-center xl:text-left">{m.setAPassword()}</h2>
 
 			<PasswordInput
 				cssClass="w-full"

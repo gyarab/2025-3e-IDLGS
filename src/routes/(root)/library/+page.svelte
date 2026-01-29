@@ -113,7 +113,7 @@
 			<div
 				class="
 				relative grid grow grid-cols-4 gap-2 rounded-2xl
-				p-5 shadow-2xl
+				p-5 shadow-2xl w-full
 			"
 			>
 				{#await data.textbooks}
@@ -140,9 +140,9 @@
 						</span>
 					{:else}
 						<div
-							class="flex flex-col w-full justify-center items-center"
+							class="flex flex-col w-full justify-center items-center z-11! col-span-4 text-xl"
 						>
-							{m.noPublicTextbooksAvailable()}
+							{m.noPublicTextbooksAvailable()}.
 						</div>
 					{/each}
 				{/await}

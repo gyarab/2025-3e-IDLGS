@@ -435,5 +435,20 @@
 	"couldNotDeleteArticle": "Не удалось удалить статью",
 	"couldNotDeleteChapter": "Не удалось удалить главу",
 	"couldNotRenameChapter": "Не удалось переименовать главу",
-	"couldNotRenameArticle": "Не удалось переименовать статью"
+	"couldNotRenameArticle": "Не удалось переименовать статью",
+	"passwordUpdated": "Пароль обновлен",
+	"enterNewPassword": "Введите новый пароль",
+	"repeatNewPassword": "Повторите новый пароль",
+	"newPasswordRepeat": "Новый пароль (повтор)",
+	"currentPassword": "Текущий пароль",
+	"enterCurrentPassword": "Введите текущий пароль",
+	"couldNotUpdatePassword": "Не удалось обновить пароль",
+	"couldNotUpdateSettings": "Не удалось обновить настройки",
+	"couldNotUpdatePersonalizationSettings": "Не удалось обновить настройки персонализации",
+	"article": "Статья",
+	"term": "Термин",
+	"definition": "Определение",
+	"enterTerm": "Введите термин",
+	"enterDefinition": "Введите определение",
+	"backToTop": "Наверх"
 }

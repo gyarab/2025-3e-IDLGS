@@ -8,6 +8,7 @@
 	import AlertBox from '$component/AlertBox.svelte';
 	import { cloudflareTurnstileBox } from '$lib';
 	import Card from '$component/Card.svelte';
+	import TextInput from '$component/TextInput.svelte';
 
 	let ready = $state(false);
 	let formMessage = $state('');
@@ -41,12 +42,10 @@
 					formMessage = m.incorrectCredentials();
 				}}
 			>
-				<h2 class="w-full text-left text-white">{m.login()}</h2>
+				<h2 class="w-full max-xl:text-center xl:text-left text-white">{m.login()}</h2>
 
-				<input
+				<TextInput
 					name="email"
-					type="text"
-					class="input-text w-full"
 					placeholder={m.enterYourEmail()}
 				/>
 

@@ -1,4 +1,5 @@
 import {
+	comparePassword,
 	USER_SESSION_LENGTH,
 	USER_SESSION_LENGTH_REMEMBER,
 	validateTurnstile,
@@ -52,22 +53,17 @@ export const actions = {
 						.limit(1)
 				)[0];
 
-				const hashedPassword = crypto
-					.pbkdf2Sync(
-						Buffer.from(password),
-						user.salt,
-						user.iterations,
-						64,
-						'sha512',
-					)
-					.toString('hex');
+				if(!user) {
+					//no such user
+					return fail(401, {});
+				}
 
-				if (
-					!crypto.timingSafeEqual(
-						Buffer.from(hashedPassword),
-						Buffer.from(user.password),
-					)
-				) {
+				if(!comparePassword(
+					password,
+					user.password,
+					user.salt,
+					user.iterations,
+				)) {
 					return fail(401, {});
 				}
 

@@ -13,7 +13,7 @@
 
 <WideCard>
 	<div
-		class="grid h-[30vh] w-full grid-cols-2 gap-10 *:flex *:flex-col *:gap-2"
+		class="grid h-[30vh] w-full max-xl:grid-cols-1 xl:grid-cols-2 gap-10 *:flex *:flex-col *:gap-2"
 	>
 		<div>
 			<div class="flex w-full flex-row items-center gap-2">

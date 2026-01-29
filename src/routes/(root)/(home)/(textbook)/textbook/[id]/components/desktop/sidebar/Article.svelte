@@ -2,9 +2,10 @@
 	import { m } from '$lib/paraglide/messages';
 	import Button from '$component/Button.svelte';
 	import Form from '$component/Form.svelte';
-	import HiddenInput from '$src/routes/(root)/components/HiddenInput.svelte';
+	import HiddenInput from '$component/HiddenInput.svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
+	import TextInput from '$component/TextInput.svelte';
 
 	let {
 		article,
@@ -26,6 +27,9 @@
 
 	let articleDeletionRequested = $state(false);
 	let articleRenameRequested = $state(false);
+
+	let articleLocalName = $derived(article.name);
+	let articleRename = $state(false);
 </script>
 
 <!-- TODO make draggable -->
@@ -34,6 +38,9 @@
 	cssClass="pl-4 pr-4 flex w-full flex-row gap-1"
 	action=""
 	smallLoadAnimation={true}
+	start={async () => {
+		articleRename = false;
+	}}
 	success={async () => {
 		if (articleDeletionRequested) {
 			formMessage = m.articleDeletedSuccessfully();
@@ -65,52 +72,76 @@
 		ignoreChangeEvents={true}
 	/>
 
-	<a
-		class=""
-		href="/textbook/{textbookUuid}/{chapterUuid}/{article.uuid}"
-	>
-		{article.name}
-	</a>
-	{#if canEdit && showEditButtons}
-		<div class="grow"></div>
-		<!-- edit name -->
+	{#if articleRename}
+		<TextInput
+			name="name"
+			bind:value={articleLocalName}
+			cssClass="grow"
+		/>
 		<Button
-			btn="button-none *:font-medium"
-			emoji="pencil"
+			btn="button-none"
 			type="submit"
 			action={`/textbook/${textbookUuid}/${chapterUuid}/?/editArticleName`}
-			label={m.editArticleName()}
+			label={m.save()}
 			onclick={() => {
 				articleRenameRequested = true;
 			}}
 		/>
-
-		<!-- move up and down -->
 		<Button
-			btn="button-none *:font-medium"
-			emoji="arrow-up-s"
-			type="submit"
-			action={`/textbook/${textbookUuid}/${chapterUuid}/?/moveArticleUp`}
-			label={m.moveArticleUp()}
-		/>
-		<Button
-			btn="button-none *:font-medium"
-			emoji="arrow-down-s"
-			type="submit"
-			action={`/textbook/${textbookUuid}/${chapterUuid}/?/moveArticleDown`}
-			label={m.moveArticleDown()}
-		/>
-
-		<!-- delete -->
-		<Button
-			btn="button-none *:font-medium"
-			emoji="delete-bin"
-			type="submit"
-			action={`/textbook/${textbookUuid}/${chapterUuid}/?/removeArticle`}
-			label={m.removeArticle()}
+			btn="button-none"
+			emoji="close"
+			type="button"
+			label={m.cancel()}
 			onclick={() => {
-				articleDeletionRequested = true;
+				articleRename = false;
 			}}
 		/>
+	{:else}
+		<a
+			class=""
+			href="/textbook/{textbookUuid}/{chapterUuid}/{article.uuid}"
+		>
+			{article.name}
+		</a>
+		{#if canEdit && showEditButtons}
+			<div class="grow"></div>
+			<!-- edit name -->
+			<Button
+				btn="button-none *:font-medium"
+				emoji="pencil"
+				label={m.editArticleName()}
+				onclick={() => {
+					articleRename = true;
+				}}
+			/>
+
+			<!-- move up and down -->
+			<Button
+				btn="button-none *:font-medium"
+				emoji="arrow-up-s"
+				type="submit"
+				action={`/textbook/${textbookUuid}/${chapterUuid}/?/moveArticleUp`}
+				label={m.moveArticleUp()}
+			/>
+			<Button
+				btn="button-none *:font-medium"
+				emoji="arrow-down-s"
+				type="submit"
+				action={`/textbook/${textbookUuid}/${chapterUuid}/?/moveArticleDown`}
+				label={m.moveArticleDown()}
+			/>
+
+			<!-- delete -->
+			<Button
+				btn="button-none *:font-medium"
+				emoji="delete-bin"
+				type="submit"
+				action={`/textbook/${textbookUuid}/${chapterUuid}/?/removeArticle`}
+				label={m.removeArticle()}
+				onclick={() => {
+					articleDeletionRequested = true;
+				}}
+			/>
+		{/if}
 	{/if}
 </Form>

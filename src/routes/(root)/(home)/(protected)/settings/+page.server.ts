@@ -1,9 +1,11 @@
-import { validateDate } from '$lib';
+import { checkPassword, validateDate } from '$lib';
 import { writeLog, writeLogDeleteAccount } from '$lib/log';
 import { schema } from '$lib/server/db/mainSchema';
 import { formRunner } from '$lib/server/form/runner';
+import { comparePassword, hashPassword } from '$lib/server/user/index.js';
 import { fail } from '@sveltejs/kit';
 import { desc, eq } from 'drizzle-orm';
+import * as crypto from 'node:crypto';
 
 export const actions = {
 	updatePersonalInfo: async () => {
@@ -38,7 +40,7 @@ export const actions = {
 			},
 		);
 	},
-	resetStreak: async (event) => {
+	resetStreak: async () => {
 		return await formRunner([], async (event, formData, cookies, user) => {
 			if (!user.canEditGamification) return fail(403);
 
@@ -55,7 +57,7 @@ export const actions = {
 			}
 		});
 	},
-	deleteAccount: async (event) => {
+	deleteAccount: async () => {
 		return await formRunner([], async (event, formData, cookies, user) => {
 			if (!user.canChangeSettings) return fail(403);
 
@@ -70,7 +72,7 @@ export const actions = {
 			}
 		});
 	},
-	editPersonalization: async (event) => {
+	editPersonalization: async () => {
 		return await formRunner(
 			['background', 'lang', 'daily'],
 			async (event, formData, cookies, user, formDataRaw) => {
@@ -109,5 +111,51 @@ export const actions = {
 				}
 			},
 		);
+	},
+	updatePassword: async () => {
+		return await formRunner(
+			['password', 'new', 'newrepeat'],
+			async (event, formData, cookies, user) => {
+				//if user exists checked by formRunner
+				let userDetail = undefined;
+				try {
+					userDetail = (await event.locals.db.select()
+						.from(schema.user)
+						.where(eq(schema.user.id, user.id))
+						.limit(1))[0];
+				} catch (e) {
+					writeLog(event, 'ERROR', 'DB failure.', user);
+					return fail(500);
+				}
+
+				if (!comparePassword(
+					formData['password'],
+					userDetail.password,
+					userDetail.salt,
+					userDetail.iterations,
+				)) return fail(400);
+
+				if (formData['new'] != formData['newrepeat']) return fail(400);
+
+				const object = checkPassword(formData['new'] as string);
+				if (!object.all) return fail(400);
+
+				const hashed = hashPassword(formData['new'] as string);
+
+				try {
+					await event.locals.db
+						.update(schema.user)
+						.set({
+							password: hashed.password,
+							salt: hashed.salt,
+							iterations: hashed.amount,
+						})
+						.where(eq(schema.user.id, user.id));
+				} catch (e) {
+					writeLog(event, 'ERROR', 'DB failure.', user);
+					return fail(500);
+				}
+			}
+		)
 	},
 };

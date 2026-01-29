@@ -9,6 +9,7 @@
 		loading = $bindable(false),
 		reset = false,
 		invalidateAll = true,
+		start = async () => {},
 		success = async () => {},
 		failure = async () => {},
 		final = async () => {},
@@ -20,6 +21,7 @@
 		loading?: boolean;
 		reset?: boolean;
 		invalidateAll?: boolean;
+		start?: () => Promise<void>;
 		success?: (data: unknown) => Promise<void>;
 		failure?: (data: unknown) => Promise<void>;
 		final?: () => Promise<void>;
@@ -30,8 +32,9 @@
 
 <form
 	method="POST"
-	use:enhance={() => {
+	use:enhance={async () => {
 		loading = true;
+		await start();
 		return async ({ update, result }) => {
 			await update({ reset: reset, invalidateAll: invalidateAll });
 
