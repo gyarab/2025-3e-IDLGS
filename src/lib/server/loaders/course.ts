@@ -1,4 +1,9 @@
-import type { CourseAssignmentType, CourseMessageType, CourseType, UserType } from '$lib/types';
+import type {
+	CourseAssignmentType,
+	CourseMessageType,
+	CourseType,
+	UserType,
+} from '$lib/types';
 import { schema } from '$lib/server/db/mainSchema';
 import { and, eq } from 'drizzle-orm';
 import { getRequestEvent } from '$app/server';
@@ -87,10 +92,12 @@ export const loadSingleCourse = async (
 				schema.userCourseLinker,
 				eq(schema.course.id, schema.userCourseLinker.course), //join condition
 			)
-			.where(and(
-				eq(schema.course.uuid, courseUuid),
-				eq(schema.userCourseLinker.user, user ? user.id : -1),
-			));
+			.where(
+				and(
+					eq(schema.course.uuid, courseUuid),
+					eq(schema.userCourseLinker.user, user ? user.id : -1),
+				),
+			);
 
 		if (course.length === 0) {
 			return null;
@@ -142,7 +149,9 @@ export const loadSingleCourse = async (
 				.where(eq(schema.assignment.course, course[0].id));
 
 			for (let i = 0; i < assignmentsData.length; i++) {
-				assignmentsData[i].description = renderMarkdown(assignmentsData[i].description);
+				assignmentsData[i].description = renderMarkdown(
+					assignmentsData[i].description,
+				);
 
 				const commentsData = await tx
 					.select({
@@ -166,20 +175,21 @@ export const loadSingleCourse = async (
 							assignmentsData[i].id,
 						),
 					);
-				(assignmentsData[i] as CourseAssignmentType).comments = commentsData.map((c) => {
-					return {
-						uuid: c.uuid,
-						comment: c.comment,
-						createdAt: c.createdAt,
-						author: {
-							uuid: c.authorUuid,
-							name: c.name,
-							surname: c.surname,
-							email: c.email,
-							degree: c.degree,
-						}
-					};
-				});
+				(assignmentsData[i] as CourseAssignmentType).comments =
+					commentsData.map((c) => {
+						return {
+							uuid: c.uuid,
+							comment: c.comment,
+							createdAt: c.createdAt,
+							author: {
+								uuid: c.authorUuid,
+								name: c.name,
+								surname: c.surname,
+								email: c.email,
+								degree: c.degree,
+							},
+						};
+					});
 			}
 
 			(course[0] as CourseType).assignments = assignmentsData.map((a) => {
@@ -244,20 +254,21 @@ export const loadSingleCourse = async (
 							messagesData[i].id,
 						),
 					);
-				(messagesData[i] as CourseMessageType).comments = commentsData.map((c) => {
-					return {
-						uuid: c.uuid,
-						comment: c.comment,
-						createdAt: c.createdAt,
-						author: {
-							uuid: c.authorUuid,
-							name: c.name,
-							surname: c.surname,
-							email: c.email,
-							degree: c.degree,
-						}
-					};
-				});
+				(messagesData[i] as CourseMessageType).comments =
+					commentsData.map((c) => {
+						return {
+							uuid: c.uuid,
+							comment: c.comment,
+							createdAt: c.createdAt,
+							author: {
+								uuid: c.authorUuid,
+								name: c.name,
+								surname: c.surname,
+								email: c.email,
+								degree: c.degree,
+							},
+						};
+					});
 			}
 
 			(course[0] as CourseType).messages = messagesData.map((m) => {

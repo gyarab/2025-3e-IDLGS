@@ -23,12 +23,12 @@ export const actions = {
 
 				try {
 					//TODO
-				}
-				catch (e) {
+				} catch (e) {
 					writeLog(event, 'ERROR', 'DB error', user);
 					return fail(500);
 				}
-			});
+			},
+		);
 	},
 	addMessage: async () => {
 		return await formRunner(
@@ -45,33 +45,28 @@ export const actions = {
 
 				try {
 					//TODO
-				}
-				catch (e) {
+				} catch (e) {
 					writeLog(event, 'ERROR', 'DB error', user);
 					return fail(500);
 				}
-			});
+			},
+		);
 	},
 	editMessage: async () => {
-		return await formRunner(
-			[],
-			async (event, formData, cookies, user) => {
-				if (
-					(await isUserAuthorizedCourse(
-						event.params.id!,
-						user.uuid,
-					)) === false
-				) {
-					return fail(403);
-				}
-				try {
-					//TODO
-				}
-				catch (e) {
-					writeLog(event, 'ERROR', 'DB error', user);
-					return fail(500);
-				}
-			});
+		return await formRunner([], async (event, formData, cookies, user) => {
+			if (
+				(await isUserAuthorizedCourse(event.params.id!, user.uuid)) ===
+				false
+			) {
+				return fail(403);
+			}
+			try {
+				//TODO
+			} catch (e) {
+				writeLog(event, 'ERROR', 'DB error', user);
+				return fail(500);
+			}
+		});
 	},
 	deleteMessage: async () => {
 		return await formRunner(
@@ -87,54 +82,44 @@ export const actions = {
 				}
 				try {
 					//TODO
-				}
-				catch (e) {
+				} catch (e) {
 					writeLog(event, 'ERROR', 'DB error', user);
 					return fail(500);
 				}
-			});
+			},
+		);
 	},
 	addAssignment: async () => {
-		return await formRunner(
-			[],
-			async (event, formData, cookies, user) => {
-				if (
-					(await isUserAuthorizedCourse(
-						event.params.id!,
-						user.uuid,
-					)) === false
-				) {
-					return fail(403);
-				}
-				try {
-					//TODO
-				}
-				catch (e) {
-					writeLog(event, 'ERROR', 'DB error', user);
-					return fail(500);
-				}
-			});
+		return await formRunner([], async (event, formData, cookies, user) => {
+			if (
+				(await isUserAuthorizedCourse(event.params.id!, user.uuid)) ===
+				false
+			) {
+				return fail(403);
+			}
+			try {
+				//TODO
+			} catch (e) {
+				writeLog(event, 'ERROR', 'DB error', user);
+				return fail(500);
+			}
+		});
 	},
 	editAssigment: async () => {
-		return await formRunner(
-			[],
-			async (event, formData, cookies, user) => {
-				if (
-					(await isUserAuthorizedCourse(
-						event.params.id!,
-						user.uuid,
-					)) === false
-				) {
-					return fail(403);
-				}
-				try {
-					//TODO
-				}
-				catch (e) {
-					writeLog(event, 'ERROR', 'DB error', user);
-					return fail(500);
-				}
-			});
+		return await formRunner([], async (event, formData, cookies, user) => {
+			if (
+				(await isUserAuthorizedCourse(event.params.id!, user.uuid)) ===
+				false
+			) {
+				return fail(403);
+			}
+			try {
+				//TODO
+			} catch (e) {
+				writeLog(event, 'ERROR', 'DB error', user);
+				return fail(500);
+			}
+		});
 	},
 	deleteAssignment: async () => {
 		return await formRunner(
@@ -150,11 +135,11 @@ export const actions = {
 				}
 				try {
 					//TODO
-				}
-				catch (e) {
+				} catch (e) {
 					writeLog(event, 'ERROR', 'DB error', user);
 					return fail(500);
 				}
-			});
+			},
+		);
 	},
 };

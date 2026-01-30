@@ -165,28 +165,26 @@ export const actions = {
 										schema.chapter.textbook,
 										chapter[0].textbook,
 									),
-									lt(
-										schema.chapter.order,
-										chapter[0].order,
-									),
-								)
+									lt(schema.chapter.order, chapter[0].order),
+								),
 							)
 							.orderBy(desc(schema.chapter.order))
 							.limit(1);
-						
-						if(prevChapter.length === 0) {
+
+						if (prevChapter.length === 0) {
 							return fail(400);
 						}
 
 						//swap
-						await tx.update(schema.chapter)
+						await tx
+							.update(schema.chapter)
 							.set({ order: chapter[0].order })
 							.where(eq(schema.chapter.id, prevChapter[0].id));
 
-						await tx.update(schema.chapter)
+						await tx
+							.update(schema.chapter)
 							.set({ order: prevChapter[0].order })
 							.where(eq(schema.chapter.id, chapter[0].id));
-
 					});
 				} catch (e) {
 					writeLog(event, 'ERROR', 'DB error', user);
@@ -225,65 +223,63 @@ export const actions = {
 										schema.chapter.textbook,
 										chapter[0].textbook,
 									),
-									gt(
-										schema.chapter.order,
-										chapter[0].order,
-									),
-								)
+									gt(schema.chapter.order, chapter[0].order),
+								),
 							)
 							.orderBy(schema.chapter.order)
 							.limit(1);
 
-						if(nextChapter.length === 0) {
+						if (nextChapter.length === 0) {
 							return fail(400);
 						}
 
 						//swap
-						await tx.update(schema.chapter)
+						await tx
+							.update(schema.chapter)
 							.set({
 								order: chapter[0].order,
 							})
 							.where(eq(schema.chapter.id, nextChapter[0].id));
 
-						await tx.update(schema.chapter)
+						await tx
+							.update(schema.chapter)
 							.set({
 								order: nextChapter[0].order,
 							})
 							.where(eq(schema.chapter.id, chapter[0].id));
-
 					});
-	} catch(e) {
-		writeLog(event, 'ERROR', 'DB error', user);
-		return fail(500);
-	}
-},
+				} catch (e) {
+					writeLog(event, 'ERROR', 'DB error', user);
+					return fail(500);
+				}
+			},
 		);
 	},
-editChapterName: async () => {
-	return await formRunner(
-		['uuid', 'name'],
-		async (event, formData, cookies, user) => {
-			if (
-				!(await isUserAuthorizedTextbook(
-					event.params.id!,
-					user.uuid,
-				))
-			) {
-				return fail(403);
-			}
+	editChapterName: async () => {
+		return await formRunner(
+			['uuid', 'name'],
+			async (event, formData, cookies, user) => {
+				if (
+					!(await isUserAuthorizedTextbook(
+						event.params.id!,
+						user.uuid,
+					))
+				) {
+					return fail(403);
+				}
 
-			try {
-				await event.locals.db
-					.update(schema.chapter)
-					.set({
-						name: formData['name'],
-					})
-					.where(eq(schema.chapter.uuid, formData['uuid']));
-			} catch (e) {
-				writeLog(event, 'ERROR', 'DB error', user);
-				return fail(500);
-			}
-		},
-	);
-},
+				try {
+					await event.locals.db
+						.update(schema.chapter)
+						.set({
+							name: formData['name'],
+						})
+						.where(eq(schema.chapter.uuid, formData['uuid']));
+				} catch (e) {
+					writeLog(event, 'ERROR', 'DB error', user);
+					return fail(500);
+				}
+			},
+		);
+	},
 };

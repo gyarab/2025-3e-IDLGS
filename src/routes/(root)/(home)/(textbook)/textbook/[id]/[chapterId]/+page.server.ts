@@ -125,7 +125,7 @@ export const actions = {
 										article[0].chapter,
 									),
 									lt(schema.article.order, article[0].order),
-								)
+								),
 							)
 							.orderBy(desc(schema.article.order))
 							.limit(1);
@@ -135,7 +135,9 @@ export const actions = {
 							const currentChapter = await tx
 								.select()
 								.from(schema.chapter)
-								.where(eq(schema.chapter.id, article[0].chapter))
+								.where(
+									eq(schema.chapter.id, article[0].chapter),
+								)
 								.limit(1);
 
 							const prevChapter = await tx
@@ -151,7 +153,7 @@ export const actions = {
 											schema.chapter.order,
 											currentChapter[0].order,
 										),
-									)
+									),
 								)
 								.orderBy(desc(schema.chapter.order))
 								.limit(1);
@@ -161,40 +163,50 @@ export const actions = {
 								return fail(400);
 							}
 
-							const articlesInPrevChapter = (await tx
-								.select({ count: count() })
-								.from(schema.article)
-								.where(
-									eq(
-										schema.article.chapter,
-										prevChapter[0].id,
-									),
-								))[0].count;
+							const articlesInPrevChapter = (
+								await tx
+									.select({ count: count() })
+									.from(schema.article)
+									.where(
+										eq(
+											schema.article.chapter,
+											prevChapter[0].id,
+										),
+									)
+							)[0].count;
 
 							//article to prev chapter
-							await tx.update(schema.article)
+							await tx
+								.update(schema.article)
 								.set({
 									chapter: prevChapter[0].id,
-									order: articlesInPrevChapter+1,
+									order: articlesInPrevChapter + 1,
 								})
 								.where(eq(schema.article.id, article[0].id));
 
 							//decrement order of all articles in current chapter
-							await tx.update(schema.article)
+							await tx
+								.update(schema.article)
 								.set({
 									order: sql`${schema.article.order} - 1`,
 								})
 								.where(
-									eq(schema.article.chapter, currentChapter[0].id)
+									eq(
+										schema.article.chapter,
+										currentChapter[0].id,
+									),
 								);
-						}
-						else {
+						} else {
 							//swap
-							await tx.update(schema.article)
+							await tx
+								.update(schema.article)
 								.set({ order: article[0].order })
-								.where(eq(schema.article.id, prevArticle[0].id));
+								.where(
+									eq(schema.article.id, prevArticle[0].id),
+								);
 
-							await tx.update(schema.article)
+							await tx
+								.update(schema.article)
 								.set({ order: prevArticle[0].order })
 								.where(eq(schema.article.id, article[0].id));
 						}
@@ -237,7 +249,7 @@ export const actions = {
 										article[0].chapter,
 									),
 									gt(schema.article.order, article[0].order),
-								)
+								),
 							)
 							.orderBy(schema.article.order)
 							.limit(1);
@@ -247,7 +259,9 @@ export const actions = {
 							const currentChapter = await tx
 								.select()
 								.from(schema.chapter)
-								.where(eq(schema.chapter.id, article[0].chapter))
+								.where(
+									eq(schema.chapter.id, article[0].chapter),
+								)
 								.limit(1);
 
 							const nextChapter = await tx
@@ -263,7 +277,7 @@ export const actions = {
 											schema.chapter.order,
 											currentChapter[0].order,
 										),
-									)
+									),
 								)
 								.orderBy(schema.chapter.order)
 								.limit(1);
@@ -274,7 +288,8 @@ export const actions = {
 							}
 
 							//article to next chapter
-							await tx.update(schema.article)
+							await tx
+								.update(schema.article)
 								.set({
 									chapter: nextChapter[0].id,
 									order: 0,
@@ -282,21 +297,28 @@ export const actions = {
 								.where(eq(schema.article.id, article[0].id));
 
 							//increment order of all articles in next chapter
-							await tx.update(schema.article)
+							await tx
+								.update(schema.article)
 								.set({
 									order: sql`${schema.article.order} + 1`,
 								})
 								.where(
-									eq(schema.article.chapter, nextChapter[0].id)
+									eq(
+										schema.article.chapter,
+										nextChapter[0].id,
+									),
 								);
-						}
-						else {
+						} else {
 							//swap
-							await tx.update(schema.article)
+							await tx
+								.update(schema.article)
 								.set({ order: article[0].order })
-								.where(eq(schema.article.id, nextArticle[0].id));
+								.where(
+									eq(schema.article.id, nextArticle[0].id),
+								);
 
-							await tx.update(schema.article)
+							await tx
+								.update(schema.article)
 								.set({ order: nextArticle[0].order })
 								.where(eq(schema.article.id, article[0].id));
 						}

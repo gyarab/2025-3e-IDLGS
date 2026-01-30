@@ -25,12 +25,6 @@
 			{data.course.name}
 		</h2>
 
-		{#if data.isOwner || data.isTeacher}
-			
-		{:else}
-			
-		{/if}
-
-
+		{#if data.isOwner || data.isTeacher}{:else}{/if}
 	</WideCard>
 </div>

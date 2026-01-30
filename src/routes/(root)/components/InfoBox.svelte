@@ -39,7 +39,7 @@
 	{#if timer > 0}
 		<div
 			class="
-	fixed! top-[6svh] left-0 h-[6svh] flex flex-col items-center justify-center w-screen z-10 pointer-events-none
+	pointer-events-none fixed! top-[6svh] left-0 z-10 flex h-[6svh] w-screen flex-col items-center justify-center
 "
 			transition:fly|global={{
 				duration: 500,
@@ -51,7 +51,7 @@
 		>
 			{#if children}
 				<div
-					class="{cssClass} absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50! flex w-2/6 flex-col overflow-hidden rounded-lg text-lg text-white shadow-2xl **:z-50!"
+					class="{cssClass} absolute top-1/2 left-1/2 z-50! flex w-2/6 -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-lg text-lg text-white shadow-2xl **:z-50!"
 				>
 					{@render children?.()}
 					<div

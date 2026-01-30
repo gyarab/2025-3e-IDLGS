@@ -115,7 +115,7 @@ export const assignment = pgTable('assignment', {
 	author: integer('author')
 		.notNull()
 		.references(() => user.id, {
-			onDelete: "no action",
+			onDelete: 'no action',
 		}),
 });
 
@@ -133,7 +133,7 @@ export const assignmentComment = pgTable('assignmentComment', {
 	author: integer('author')
 		.notNull()
 		.references(() => user.id, {
-			onDelete: "no action",
+			onDelete: 'no action',
 		}),
 	uuid: text('uuid')
 		.notNull()
