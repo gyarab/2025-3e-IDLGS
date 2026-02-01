@@ -1,0 +1,1 @@
+ALTER TABLE "textbookWordDefinition" ADD COLUMN "uuid" text NOT NULL;
