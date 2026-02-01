@@ -25,11 +25,12 @@
 	//TODO finish, remove from definitions and statistics etc.
 	let clickedEdit: boolean = $state(false);
 
-	let isEditablePage: boolean = $derived((
-		page.route.id?.endsWith('[id]') ||
-		page.route.id?.endsWith('[chapterId]') ||
-		page.route.id?.endsWith('[articleId]')
-	) ?? false);
+	let isEditablePage: boolean = $derived(
+		(page.route.id?.endsWith('[id]') ||
+			page.route.id?.endsWith('[chapterId]') ||
+			page.route.id?.endsWith('[articleId]')) ??
+			false,
+	);
 </script>
 
 <div

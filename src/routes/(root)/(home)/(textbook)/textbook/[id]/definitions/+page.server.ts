@@ -46,8 +46,7 @@ export const actions = {
 							word: formData['term'],
 							description: formData['definition'],
 						});
-				}
-				catch (e) {
+				} catch (e) {
 					writeLog(event, 'ERROR', 'DB error', user);
 					return fail(500);
 				}
@@ -75,8 +74,7 @@ export const actions = {
 								formData['uuid'],
 							),
 						);
-				}
-				catch (e) {
+				} catch (e) {
 					writeLog(event, 'ERROR', 'DB error', user);
 					return fail(500);
 				}
@@ -100,8 +98,7 @@ export const actions = {
 								formData['uuid'],
 							),
 						);
-				}
-				catch (e) {
+				} catch (e) {
 					writeLog(event, 'ERROR', 'DB error', user);
 					return fail(500);
 				}
@@ -109,34 +106,30 @@ export const actions = {
 		);
 	},
 	clearDefinitions: async (event) => {
-		return await formRunner(
-			[],
-			async (event, formData, cookies, user) => {
-				if (!isUserAuthorizedTextbook(event.params.id!, user.uuid)) {
-					return fail(403);
-				}
+		return await formRunner([], async (event, formData, cookies, user) => {
+			if (!isUserAuthorizedTextbook(event.params.id!, user.uuid)) {
+				return fail(403);
+			}
 
-				try {
-					const textbook = await event.locals.db
-						.select()
-						.from(schema.textbook)
-						.where(eq(schema.textbook.uuid, event.params.id!))
-						.limit(1);
+			try {
+				const textbook = await event.locals.db
+					.select()
+					.from(schema.textbook)
+					.where(eq(schema.textbook.uuid, event.params.id!))
+					.limit(1);
 
-					await event.locals.db
-						.delete(schema.textbookWordDefinition)
-						.where(
-							eq(
-								schema.textbookWordDefinition.textbook,
-								textbook[0].id,
-							),
-						);
-				}
-				catch (e) {
-					writeLog(event, 'ERROR', 'DB error', user);
-					return fail(500);
-				}
-			},
-		);
+				await event.locals.db
+					.delete(schema.textbookWordDefinition)
+					.where(
+						eq(
+							schema.textbookWordDefinition.textbook,
+							textbook[0].id,
+						),
+					);
+			} catch (e) {
+				writeLog(event, 'ERROR', 'DB error', user);
+				return fail(500);
+			}
+		});
 	},
 };

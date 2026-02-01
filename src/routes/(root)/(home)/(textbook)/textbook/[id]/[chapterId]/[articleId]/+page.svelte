@@ -82,8 +82,6 @@
 			{@html data.article.text}
 		</div>
 	{:else}
-		<Textarea
-			placeholder={m.enterArticleContent()}
-		/>
+		<Textarea placeholder={m.enterArticleContent()} />
 	{/if}
 </WideCard>

@@ -49,5 +49,4 @@
 			<Message message={item} />
 		{/if}
 	{/each}
-
 </WideCard>

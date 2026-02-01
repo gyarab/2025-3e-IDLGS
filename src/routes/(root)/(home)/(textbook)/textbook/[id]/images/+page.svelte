@@ -31,7 +31,5 @@
 		<h2>{m.imageLibrary()}</h2>
 	</div>
 
-	<div>
-		
-	</div>
+	<div></div>
 </WideCard>

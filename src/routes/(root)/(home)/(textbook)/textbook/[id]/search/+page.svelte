@@ -10,7 +10,10 @@
 	let query = $state('');
 	let searching = $state(false);
 
-	console.log('word similarity:', wordSimilarity('oxid uhlicity', 'oxidu uhelnateho'));
+	console.log(
+		'word similarity:',
+		wordSimilarity('oxid uhlicity', 'oxidu uhelnateho'),
+	);
 </script>
 
 <svelte:head>
