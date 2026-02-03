@@ -155,3 +155,61 @@ export const highlight = pgTable(
 		check('blueMaxCheck', sql`${table.blue} <= 255`),
 	],
 );
+
+//Burkhard-Keller (BK) tree node for articles
+//regenerated on every edit
+
+export const articleBkTreeNode = pgTable('articleBkTreeNode', {
+	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
+	article: integer('article')
+		.references(() => article.id, {
+			onDelete: 'cascade',
+		})
+		.notNull(),
+	word: text('word').notNull(),
+	wordIndex: integer('wordIndex').notNull().default(0),
+});
+
+export const articleBkTreeEdge = pgTable('articleBkTreeEdge', {
+	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
+	parentNode: integer('parentNode')
+		.references(() => articleBkTreeNode.id, {
+			onDelete: 'cascade',
+		})
+		.notNull(),
+	childNode: integer('childNode')
+		.references(() => articleBkTreeNode.id, {
+			onDelete: 'cascade',
+		})
+		.notNull(),
+	distance: integer('distance').notNull().default(0),
+});
+
+//article history
+//rollback painful but not needed often
+export const articleHistoryVersion = pgTable('articleHistoryVersion', {
+	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
+	article: integer('article')
+		.references(() => article.id, {
+			onDelete: 'cascade',
+		})
+		.notNull(),
+	user: integer('user')
+		.references(() => user.id, {
+			onDelete: 'set null',
+		}),
+	editedAt: timestamp('editedAt')
+		.notNull()
+		.$defaultFn(() => new Date()),
+	uuid: text('uuid')
+		.notNull()
+		.$defaultFn(() => crypto.randomUUID()),
+	note: text('note').notNull().default(''),
+});
+
+export const articleHistoryVersionEntry = pgTable('articleHistoryVersionEntry', {
+	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
+	startIndex: integer('startIndex').notNull().default(0),
+	oldText: text('oldText').notNull().default(''),
+	newText: text('newText').notNull().default(''),
+});

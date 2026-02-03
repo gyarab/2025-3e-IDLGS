@@ -1,7 +1,7 @@
 import { pgTable, integer, boolean, numeric } from 'drizzle-orm/pg-core';
 import { user } from './user';
 import { course } from './course';
-import { textbook } from './textbook';
+import { articleHistoryVersion, articleHistoryVersionEntry, textbook } from './textbook';
 import { dailyChallenges } from './misc';
 
 export const userCourseLinker = pgTable('userCourseLinker', {
@@ -65,4 +65,18 @@ export const userDailyChallengeLinker = pgTable('userDailyChallengeLinker', {
 		})
 		.notNull(),
 	completed: boolean('completed').notNull().default(false),
+});
+
+export const articleHistoryVersionEntryLinker = pgTable('articleHistoryVersionEntryLinker', {
+	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
+	articleHistoryVersionEntry: integer('articleHistoryVersionEntry')
+		.references(() => articleHistoryVersionEntry.id, {
+			onDelete: 'cascade',
+		})
+		.notNull(),
+	articleHistoryVersion: integer('articleHistoryVersion')
+		.references(() => articleHistoryVersion.id, {
+			onDelete: 'cascade',
+		})
+		.notNull(),
 });

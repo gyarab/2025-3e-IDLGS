@@ -113,9 +113,8 @@ export const assignment = pgTable('assignment', {
 		.notNull()
 		.$defaultFn(() => crypto.randomUUID()),
 	author: integer('author')
-		.notNull()
 		.references(() => user.id, {
-			onDelete: 'no action',
+			onDelete: 'set null',
 		}),
 });
 
@@ -131,9 +130,8 @@ export const assignmentComment = pgTable('assignmentComment', {
 		.$defaultFn(() => new Date()),
 	comment: text('comment').notNull().default(''),
 	author: integer('author')
-		.notNull()
 		.references(() => user.id, {
-			onDelete: 'no action',
+			onDelete: 'set null',
 		}),
 	uuid: text('uuid')
 		.notNull()
@@ -152,9 +150,8 @@ export const courseMessage = pgTable('courseMessage', {
 		.$defaultFn(() => new Date()),
 	content: text('content').notNull().default(''),
 	author: integer('author')
-		.notNull()
 		.references(() => user.id, {
-			onDelete: 'no action',
+			onDelete: 'set null',
 		}),
 	uuid: text('uuid')
 		.notNull()
@@ -173,9 +170,8 @@ export const courseMessageComment = pgTable('courseMessageComment', {
 		.$defaultFn(() => new Date()),
 	comment: text('comment').notNull().default(''),
 	author: integer('author')
-		.notNull()
 		.references(() => user.id, {
-			onDelete: 'no action',
+			onDelete: 'set null',
 		}),
 	uuid: text('uuid')
 		.notNull()
@@ -193,6 +189,7 @@ export const question = pgTable('question', {
 			onDelete: 'cascade',
 		})
 		.notNull(),
+	//allowed only if AI generated
 	reportCount: integer('reportCount').notNull().default(0),
 	ai: boolean('ai').notNull().default(false),
 	//aiTextRepresentation - source text where AI took info from

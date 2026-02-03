@@ -4,10 +4,12 @@
 
 import type { TextbookDefinitionType } from '$lib/types';
 
-export const wordSimilarity = (a: string, b: string): number => {
+//Wagner-Fischer algorithm for Damerau-Levenshtein distance
+export const wordDistance = (a: string, b: string): number => {
 	//a, b are one-indexed
 	let d = new Array(a.length + 1);
 
+	//build matrix
 	for (let i = 0; i <= a.length; i++) {
 		d[i] = new Array(b.length + 1);
 		d[i][0] = i;
@@ -18,15 +20,11 @@ export const wordSimilarity = (a: string, b: string): number => {
 
 	for (let i = 1; i <= a.length; i++) {
 		for (let j = 1; j <= b.length; j++) {
-			let cost = 0;
-			if (a[i - 1] !== b[j - 1]) {
-				cost = 1;
-			}
-
+			//minimum of deletion, insertion, substitution
 			d[i][j] = Math.min(
 				d[i - 1][j] + 1, //deletion
 				d[i][j - 1] + 1, //insertion
-				d[i - 1][j - 1] + cost, //substitution
+				d[i - 1][j - 1] + Number(a[i - 1] !== b[j - 1]), //substitution
 			);
 
 			//difference from std. Levenshtein
@@ -45,15 +43,36 @@ export const wordSimilarity = (a: string, b: string): number => {
 		}
 	}
 
-	//similarity score: (length - changes) / maximum distance
-	const maxLen = Math.max(a.length, b.length);
-	return (maxLen - d[a.length][b.length]) / maxLen;
+	return d[a.length][b.length];
 };
 
-//compute BK tree
+//similarity score: (length - changes) / maximum distance
+export const wordSimilarity = (a: string, b: string): number => {
+	const distance = wordDistance(a, b);
+	const maxLen = Math.max(a.length, b.length);
+	if (maxLen === 0) return 1; //both strings are empty
+	return (maxLen - distance) / maxLen;
+};
+
+//compute Burkhard-Keller (BK) tree
 //https://en.wikipedia.org/wiki/BK-tree
 //O(n2) build, O(log n) search
 //TODO
+
+export class BKNode {
+	word: string = "";
+	//distance, child nodes (multiple children can have same distance)
+	children: Array<{distance: number, node: BKNode}> = [];
+	wordIndex: number = 0;
+};
+
+export class BKTree {
+	//TODO
+};
+
+export const addWordToBKTree = (root: BKNode, word: string): void => {
+	//TODO
+};
 
 //https://en.wikipedia.org/wiki/Finite-state_machine
 //https://en.wikipedia.org/wiki/Levenshtein_automaton

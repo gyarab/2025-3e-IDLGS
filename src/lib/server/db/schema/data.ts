@@ -1,4 +1,4 @@
-import { pgTable, text, integer } from 'drizzle-orm/pg-core';
+import { pgTable, text, integer, customType } from 'drizzle-orm/pg-core';
 import { article } from './textbook';
 
 export const image = pgTable('image', {
@@ -41,4 +41,23 @@ export const school = pgTable('school', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
 	name: text('name').notNull().default(''),
 	productkey: text('productkey').notNull().default(''),
+});
+
+//until drizzle 1.0.0 there is no support for bytea
+const bytea = customType<{ data: Buffer, notNull: false, default: false }>({
+	dataType() {
+		return 'bytea';
+	},
+});
+
+//3D model
+export const model = pgTable('model', {
+	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
+	name: text('name').notNull().default(''),
+	data: bytea('data').notNull(),
+	article: integer('article')
+		.references(() => article.id, {
+			onDelete: 'cascade',
+		})
+		.notNull(),
 });

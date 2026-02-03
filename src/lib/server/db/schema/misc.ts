@@ -10,7 +10,6 @@ export const blog = pgTable('blog', {
 		.references(() => user.id, {
 			onDelete: 'set null',
 		})
-		.notNull(),
 });
 
 export const subject = pgTable('subject', {
