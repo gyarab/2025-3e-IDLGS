@@ -1,0 +1,256 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{csquotes}
+\usepackage[czech]{babel}
+\usepackage{titling}
+\usepackage[
+backend=biber,
+bibstyle=iso-numeric,
+citestyle=numeric,
+hyperref,
+sortlocale=cs_CZ,
+sortcites,
+sorting=nyt,
+]{biblatex}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{hyphsubst}
+\usepackage{titlesec}
+
+\addbibresource{citace.bib}  
+
+\titlelabel{\thetitle.\quad}
+
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+\newfloat{graph}{tbp}{grp}
+\floatname{graph}{Graf}
+\pagenumbering{arabic}
+\geometry{top=2.5cm, bottom=2.5cm, left=3cm, right=2.5cm}
+
+\pretitle{
+	\vspace*{\fill}
+	\Huge \bfseries
+	\begin{center}
+}
+\title{
+	Integrovaná vzdělávací a známkovací platforma s AI
+}
+\posttitle{
+	\end{center}
+	\begin{center}
+		\Large Ročníková práce
+	\end{center}
+}
+\preauthor{
+		\begin{center}
+}
+\author{Martin Bykov, Kira Stěpanova, Ali Yunussov}
+\postauthor{
+	\end{center}
+}
+\predate{
+	\begin{center}
+}
+\date{31. dubna 2026}
+\postdate{
+	\end{center}
+	\vspace*{\fill}	
+}
+
+\begin{document}			
+	\maketitle
+	\newpage
+	
+	% popisna strana
+	\noindent
+	\textbf{\Large Gymnázium Arabská, Praha 6, Arabská 14} 	\newline
+	Arabská 14, Praha 6, 160 00
+
+	\vspace*{\fill}
+	
+	\noindent
+	\textbf{Předmět:} Programování 	\newline
+	\textbf{Téma:} \thetitle
+	
+	\vspace*{\fill}
+	
+	\noindent
+	\textbf{Autoři:} {\theauthor} \newline
+	\textbf{Třída:} {3.E} \newline
+	\textbf{Školní rok:} {2025/2026} \newline
+	\textbf{Vedoucí práce:} {Mgr. Šimon Hrozinka} \newline
+	\textbf{Konzultanti:} {Mgr. Irena Skolilová, Mgr. Michal Štorek} \newline
+ 
+ 	 \newpage
+ 	\section*{Prohlášení}
+ 	Prohlašuji, že jsme jedinými autory tohoto projektu, že všechny citace jsou řádně označené a že všechna použitá literature či další zdroje jsou v práci uvedené.
+ 	Tímto dle zákona 121/2000 Sb. (tzv. Autorský zákon) ve znění pozdějších předpisů uděluji bezúplatně škole Gymnázium, Praha 6, Arabská 14 oprávnění výkonu práva na rozmnožování díla (§ 13), práva na sdělování díla veřejnosti (§ 18) na dobu časově neomezenou bez omezení územního rozsahu.
+ 	
+ 	\vspace*{2cm}
+ 	
+ 	\noindent
+ 	Martin Bykov
+ 	\hrulefill
+
+ 	\vspace*{2cm}
+	
+	\noindent
+ 	 Kira Stěpanova
+ 	\hrulefill
+ 
+  	\vspace*{2cm}
+ 
+ 	\noindent
+  	Ali Yunussov
+ 	\hrulefill
+ 	
+ 	% anotace
+ 	 \newpage
+ 	 \section*{Anotace}
+ 	 Tento projekt má za účel implementaci jednotné integrované digitální vzdělávací a známkovací platformy, která mimo jiné i za pomoci umělé inteligence a tzv. gamifikace usnadní práci pedagogům a zlepší výsledky školní výuky. Aplikace je stavěna pro jakýkoliv předmět a obsahuje online učebnice s interaktivními prvky, kurzy s úkoly, volné procvičování dle učebnice, administraci docházky ale také možnost zkoušení a známkování s vestavěnými opatřeními proti akademické nečestnosti a podvodům během testů.
+ 	 
+ 	  \section*{Klíčová slova}
+ 	  výuka, učebnice, známkování, digitální, umělá inteligence (AI)
+ 	 
+ 	  \section*{Abstract}
+ 	  The purpose of this project is to implement a unified integrated digital education and grading platform that will facilitate and improve school teaching results with the help of, among other methods, artificial intelligence and elements of gamification. The application is designed with all subjects in mind and includes online textbooks with interactive elements, courses with assignments, freely accessible practice exercises based on textbooks, as well as a digital testing system with built-in measures against academic dishonesty and cheating during the testing.
+ 	  
+ 	   \section*{Keywords}
+ 	   education, textbook, grading, digital, artificial intelligence (AI)
+ 
+ 	% obsah
+ 	\newpage
+	\tableofcontents{}
+	
+	% úvod
+	\newpage
+	\section{Úvod}
+	
+	% začátek práce
+	
+	\newpage
+	\section{Teoretické východisko}
+	\subsection{Současně dostupné učebnice}
+	
+	\subsection{Definice ideální učebnice}
+	
+	\subsection{Požadavky pro novou digitální učebnici}
+	
+	\subsection{Microlearning a tzv. “gamifikace”}
+	
+	\subsection{Motivace studentů k výuce}
+
+	\newpage
+	\section{Funkce programu}
+	\subsection{Učebnice}
+	\subsubsection{Přídávání textu}
+	\subsubsection{Pojmy}
+	\subsubsection{Procvičování}
+	\subsubsection{Obrázky a 3D modely}
+	\subsubsection{Interaktivní prvky}
+	Interaktivní prvky jsou implementované za pomocí vlastního programovacího jazyka RESIN.
+	
+	\subsection{Kurzy}
+	\subsubsection{Úkoly}
+	\subsubsection{Testování}
+	
+	\subsection{Docházka a rozvrh hodin}
+
+	\newpage
+	\section{Webová aplikace}
+	\subsection{Použité technologie}
+	\cite{Drizzle}
+	\cite{Svelte}
+	\cite{Cloudflare}
+	
+	\subsection{Implementace programu}
+	
+	\subsubsection{Učebnice a kurzy}
+	
+	Vyhledávání v kurzech bylo implementováno za pomocí Burkhard-Kellerova stromu  \cite{BKTree}
+	a Wagner-Fischerova algoritmu \cite{WagnerFischer} pro Damerau-Levenshteinovou vzdálenost.
+	
+	Damerau-Levenshtein  \cite{Damerau} \cite{Levenshtein}
+		
+	\subsubsection{Generace a opravovaní testů}
+	
+	\subsubsection{Administrace}
+	
+	\subsubsection{Uživatelské rozhraní}
+	
+	\subsubsection{API Rozhraní}
+	
+	\newpage
+	\section{Mobilní aplikace}
+	\subsection{Použité technologie}
+	
+	\subsection{Uživatelské rozhraní}
+	Mobilní aplikace tvoří další frontend.....
+	
+	\subsection{Komunikace  s webovou aplikací}
+	
+	\newpage
+	\section{Testový obsah učebnice}
+	\subsection{Učebnice Biologie}
+	\subsection{Učebnice ZSV}
+	
+	\newpage
+	\section{Testování}
+	\subsection{Metodika}
+	\subsection{Průběh}
+	\subsection{Výsledky}
+	\subsubsection{Biologie, Gymnázium Arabská}
+		Kontrolní skupina
+	\subsubsection{Biologie, Gymnázium Nad Álejí}
+		Kontrolní skupina
+	\subsubsection{ZSV, Gymnázium Arabská}
+	
+	\subsubsection{Porovnání výsledků}
+	\subsubsection{Vyjádření pedagogů}
+
+	\newpage
+	\section{Rozvoj a budoucnost}
+
+	% závěr
+	\newpage
+	\section{Závěr}
+		
+	% seznam obrázků
+	\newpage
+	\listoffigures
+	
+	% seznam tabulek
+	\newpage
+	\listoftables
+	
+	% seznam grafů
+	\newpage
+	\listof{graph}{Seznam grafů}
+	
+	% seznam odb. pojmů
+	\newpage
+	\section*{Seznam odborných pojmů}
+	Zde se nachází seznam odborných pojmů, a zároveň jejich vysvětlení. Pojmy jsou seřazeny abecedně.
+	
+	% citace
+	\newpage
+	\section*{Citace}
+		Během psaní dokumentace nebyla umělá inteligence použita. Během psaní kódu byla použita ve velmi omezeném množství, a za všechny architektonické, algoritmické či jiné rozhodnutí stále odpovídají jednotliví autoři.
+		
+		\noindent
+		Všechny citace jsou uvedeny ve formátu ČSN ISO 690.
+		
+		\nocite{Hrozinka}
+		\nocite{Skolilova}
+		\nocite{Storek}
+		
+		\printbibliography[title=\empty]
+	
+\end{document}
