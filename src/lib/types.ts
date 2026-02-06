@@ -25,6 +25,9 @@ export type UserType = {
 	canChangeSettings: boolean;
 	canEditGamification: boolean;
 	lastMessage: number;
+	xpWeek: number;
+	xpTotal: number;
+	leagueId: number;
 };
 
 export type UserRoleType = {

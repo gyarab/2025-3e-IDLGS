@@ -52,6 +52,12 @@ export const user = pgTable('user', {
 	canChangeSettings: boolean('canChangeSettings').notNull().default(true),
 	//when setting new popup message - set to id of that message
 	lastMessage: integer('lastMessage').notNull(),
+	//for gamification: which league the user is in, 0 for lowest, -1 opt out
+	leagueId: integer('leagueId').notNull().default(0),
+	//for league
+	xpWeek: integer('xpWeek').notNull().default(0),
+	//for stats
+	xpTotal: integer('xpTotal').notNull().default(0),
 });
 
 export const userVerification = pgTable('userVerification', {

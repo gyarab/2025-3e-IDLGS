@@ -5,6 +5,7 @@ import * as misc from './schema/misc';
 import * as textbook from './schema/textbook';
 import * as user from './schema/user';
 import * as privacy from './schema/privacy';
+import * as statistics from './schema/statistics';
 
 export const schema = {
 	...course,
@@ -14,4 +15,5 @@ export const schema = {
 	...textbook,
 	...user,
 	...privacy,
+	...statistics,
 };

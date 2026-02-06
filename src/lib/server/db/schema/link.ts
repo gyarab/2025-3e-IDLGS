@@ -1,6 +1,9 @@
 import { pgTable, integer, boolean, numeric } from 'drizzle-orm/pg-core';
 import { user } from './user';
-import { course } from './course';
+import { 
+	course,
+	courseLesson
+} from './course';
 import {
 	articleHistoryVersion,
 	articleHistoryVersionEntry,
@@ -87,3 +90,24 @@ export const articleHistoryVersionEntryLinker = pgTable(
 			.notNull(),
 	},
 );
+
+export const userCourseLessonLinker = pgTable('userCourseLessonLinker', {
+	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
+	courseLesson: integer('courseLesson')
+		.references(() => courseLesson.id, {
+			onDelete: 'cascade',
+		})
+		.notNull(),
+	user: integer('user')
+		.references(() => user.id, {
+			onDelete: 'cascade',
+		})
+		.notNull(),
+	present: boolean('present').notNull().default(false),
+	late: boolean('late').notNull().default(false),
+	earlyLeave: boolean('earlyLeave').notNull().default(false),
+	excused: boolean('excused').notNull().default(false),
+	locked: boolean('locked').notNull().default(false),
+	uncountable: boolean('uncountable').notNull().default(false),
+	distance: boolean('distance').notNull().default(false),
+});	

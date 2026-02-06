@@ -17,6 +17,10 @@ sorting=nyt,
 \usepackage{hyperref}
 \usepackage{hyphsubst}
 \usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{soul}
+%https://tex.stackexchange.com/questions/392208/command-k-unavailable-in-encoding-ot1-error-takes-me-to-line-which-doesnt-eve#392210
+\usepackage[T1]{fontenc}
 
 \addbibresource{citace.bib}  
 
@@ -33,6 +37,8 @@ sorting=nyt,
 \floatname{graph}{Graf}
 \pagenumbering{arabic}
 \geometry{top=2.5cm, bottom=2.5cm, left=3cm, right=2.5cm}
+
+\babelhyphenation[czech]{}
 
 \pretitle{
 	\vspace*{\fill}
@@ -120,10 +126,16 @@ sorting=nyt,
  	  výuka, učebnice, známkování, digitální, umělá inteligence (AI)
  	 
  	  \section*{Abstract}
- 	  The purpose of this project is to implement a unified integrated digital education and grading platform that will facilitate and improve school teaching results with the help of, among other methods, artificial intelligence and elements of gamification. The application is designed with all subjects in mind and includes online textbooks with interactive elements, courses with assignments, freely accessible practice exercises based on textbooks, as well as a digital testing system with built-in measures against academic dishonesty and cheating during the testing.
+ 	  The purpose of this project is to implement a unified integrated digital education and grading platform that will facilitate education and improve its results with the help of, among other methods, artificial intelligence and elements of gamification. The application is designed with all subjects in mind and includes online textbooks with interactive elements, courses with assignments, freely accessible practice exercises based on textbooks, as well as a digital testing system with built-in measures against academic dishonesty and cheating during the testing.
  	  
  	   \section*{Keywords}
  	   education, textbook, grading, digital, artificial intelligence (AI)
+ 	   
+ 	    \section*{Anotacja}
+ 	    Cełem tego projektu to implementacja zjednoczonej zintegrowanej platformy digitalnej do edukacji oraz oceniania, która będzie, za pomocą mimo innego sztucznej inteligencji oraz grywalizacji, pomagać edukacji i poprawiać jej wyniki. Program jest zaprojektowany w taki sposób, żeby wszystkie przedmioty oraz tematy byli obsługiwane i zawiera wsparcie pierwastków interaktywnych, kursów z zadaniami, wolno dostępnymi  ćwiczeniami  na podstawie podręczników oraz system egzaminowy z wbudowanymi środkami przeciw ściągania podczas egzaminów lub nieuczciwości akademicznej.
+ 	    
+ 	    \section*{Słowa kłuczowe}
+ 	    edukacja, podręcznik, ocenianie, digitalny, sztuczna inteligencja (AI)
  
  	% obsah
  	\newpage
@@ -133,19 +145,221 @@ sorting=nyt,
 	\newpage
 	\section{Úvod}
 	
+	Dnešní doba je doba digitální. A školství, jeden z nejdůležitějších orgánů každého států,  se svými institucemi z
+	19. století, nesmí zůstat pozadu. Mělo by využívat dnešní moderní možnosti, které razantně výuku usnadňují, vylepšují a poskytují ohromný potenciál k rozvoji schopností 
+	
+	Cílem tohoto projektu je implementace digitálního učebnicového, kurzového, známkovacího i docházkového systému, který bude splňovat všechna didaktická doporučení, bude příjemný pro použítí jak pedagogy, tak i žáky či studenty, který bude možné použít na jakýkoliv předmět a který, za pomocí psychologie, gamifikace a nových technologií - například umělé inteligence - bude motivovat žáky k výuce 	předmětu a k dosažení lepších výsledků. 
+	
+	Systém také obsahuje opatření proti podvodům a akademické nečesnosti během režimu testování, či automatické porovnání textu při odevzdávání úkolů.
+	
+	% TODO finish
+	
 	% začátek práce
 	
 	\newpage
 	\section{Teoretické východisko}
 	\subsection{Současně dostupné učebnice}
+	\subsubsection{Google Classroom}
+	TODO  stojí peníze, nemá rozvrh hodin, nemá integrované zdroje učebnic, velmi omezený počet otázek,  nemá docházku
 	
-	\subsection{Definice ideální učebnice}
+	\subsubsection{Moodle}
+	TODO příliš komplikované, nemá rozvrh hodin,  nemá generaci PDF testů či anticheat metody,  nemá docházku
 	
+	\subsubsection{Chamilo}
+	TODO jen francouzsky a španělsky, nemá rozvrh hodin,  nemá generaci PDF testů či anticheat metody,  nemá docházku
+	
+	\subsubsection{TalentLMS}
+	TODO stojí peníze, nemá rozvrh hodin, nemá generaci PDF testů či anticheat metody,  nemá docházku
+	
+	\subsubsection{Canvas (Instructure)}
+	TODO stojí peníze, nemá rozvrh hodin, nemá generaci PDF testů či anticheat metody, nemá docházku
+
+	\subsubsection{Ekdyson}
+	TODO pouze pro jednu učebnici, není zadávání úkolů, neni generace PDF testů, není anticheat, není docházka, třeba vlastní hosting
+	RP voplakal, 
+	
+	%tenhle je na 1. a my jsme lepší
+	Práce se umístila na 1. místě v soutěži SOČ (Středoškolská odborná činnost) v roce 2024. \cite{SOC24}
+	
+	\subsubsection{Porovnání}
+	TODO tabulka, taková ta marketingová
+	
+	\newpage
 	\subsection{Požadavky pro novou digitální učebnici}
 	
+	\newpage
+	\subsection{Definice ideální učebnice a jejich plnění}
+	Ideální učebnice, jak definována podle Institutu George Eckerta \cite{Standard}, musí nutně splňovat následující kritéria (sekce E - \enquote*{Standardy kvality pro didaktický návrh učebnice}, sekce F - \enquote*{Standardy kvality pro jazyk učebnic} a sekce G - \enquote*{Standardy kvality pro elektronické komponenty učebnice a elektronické učebnice}).
+	
+	Níže jsou uvedeny všechna pravidla sekce G a vybraná pravidla sekcí E a F, které je možné taktéž aplikovat na technickou a nikoli pouze obsahovou stránku učebnice.
+	
+	% vyjmenujeme pravidla a pak komentář jak toho docílíme
+	% sekce E str 123 sekce G 173
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{E1. Vysvětlení pojmů.} \\
+				\enquote{\textit{
+				Definice každého nového specialistického pojmu, v textu použitého poprvé, musí být obsažena na stejné stránce, na které je pojem poprvé zmíněn a zároveň v přehledu na konci učebnice. Autor musí používat stejnou definici ve všech částech učebnice.
+				}}
+		\end{quotation}
+		
+		Tento požadavek je splněn funkcí \enquote{Definice pojmů}. Autor učebnice přídá pro každý pojem definici, a systém následně automaticky definici na stejné straně přídá při kliknutí na slovo. Zároveň strana definice pojmů pro uživatele plní funkci přehledu.
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{E2. Funkční využití ilustrací, obrázků a ikonek.} \\
+			\enquote{\textit{
+				Ilustrace, obrázky nebo ikonky musí mít jasný důvod; splňují specifickou funkci v učebnici a musí být umístěny všude, kde mohou účinněji přenést zprávu než by ji přenesli slova nebo čísla.
+			}}
+		\end{quotation}
+		
+		Tento požadavek je splněn funkcemi přídávání obrázků a knihovnou obrázků.
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{E7. Přítomnost otázek a cvičení v učebnici.} \\
+			\enquote{\textit{
+					Každá učebnice musí nepřetržitě prezentovat otázky a cvičení studentům, a to po ve všech částích knihy.
+			}}
+		\end{quotation}
+	
+		Tento požadavek je splněn funkcemi automatického procvičování v učebnici. Studenti si mohou, za pomoci umělé inteligence, vygenerovat otázky, které jsou na učebnice založené, a za jejich pomoci aktivně procvičovat. Tato funkce je reklamována pod každým článek tak, aby studenta co nejvíc motivovala k vyplnění co největšího počtu otázek.
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{E8. Význam otázek a cvičení.} \\
+			\enquote{\textit{
+				Učebnice by neměli obsahovat nesmyslné, nerealistické či nejednoznačné otázky či úkoly.
+			}}
+		\end{quotation}
+		
+		% TODO procenta
+		Tento požadavek je v učebnici splněn velmi přísným systémovým promptem pro umělou inteligenci, která otázky generuje. Systém generací otázek byl v praxi otestován, a pouze na TODO\% vygenerovaných otázek byly uživatelské reakce negativní.
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{E9. Různorodost otázek a cvičení.} \\
+			\enquote{\textit{
+				Učebnice musí obsahovat velmi různorodé otázky a cvičení, a to jak ve formě, úrovni složitosti a počtu osob potřebných a jejich vyřešení.
+			}}
+		\end{quotation}
+		
+		Tento požadek je taký částečně splněn generativní umělou inteligencí. Generuje se vždy několik různých typů otázek s různou složitostí. Počet potřebných osob pro vyřešení otázky je avšak ale vždy jeden.
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{F3. Kontrola délky vět.} \\
+			\enquote{\textit{
+					Délka vět v učebnicích musí být držena pod kontrolou a musí korespondovat k úrovni studentů.
+			}}
+		\end{quotation}
+		
+		Učebnice se aktivně pokouší vymáhat dodržování tohoto pravidla autory učebnice. Pří úpravě článku v učebnici se automaticky počítá délka věty - počet slov mezi interpunkcí - a zároveň průměrná délka slov v každé větě. Slovo je v tuto chvíli definováno jako určitý počet písmen obklopených mezerami. 
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		Učebnice vypíše varování nad danou větou pouze v následujících případech:
+		
+		\begin{itemize}
+		\item Průměrná délka slov v dané větě je nížší než 80\% průměrné délky slov.
+		\item Průměrná délka slov v dané větě je vyšší než 200\% průměrné délky slov.
+		\item Délka věty je nižší než 70\% průměrné délky věty.
+		\item Délka věty je vyšší než 150\% průměrné délky věty.
+		\end{itemize}
+	
+		Je-li věta kratší než 4 slova, není varování vypsáno. Takové krátké věty se považují za stylistický výběr, nikoliv přílišné snížení úrovně. Stejně tak tomu je, je-li průměrná délka slov ve větě menší než 2.
+	\end{samepage}
+	
+	Průměrná délka vět v anglojazyčném textovém korpusu činí 24,88 slov \cite{LengthOfSentence}. Průměrná délka slova v anglickém jazyce činila v roce 2012 4,25 písmen, v ruském jazyce zase 5,85 písmen. \cite{LengthOfWord}.
+	
+	Průměrná délka slova, která je při výpočtech použita, závisí na vybraném jazyce uživatele. Je-li vybrán jazyk slovanský - polština, čeština či ruština - použije se průměr pro ruštinu. Je-li vybrán jakýkoliv jiný jazyk - v učebnici pouze němčina či angličtina - použije se průměr pro angličtinu.
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{G1. Důvody k použití elektronických prvků učebnice.} \\
+			\enquote{\textit{
+				Elektronické verze učenice dávají smysl pokud obsahují materiál který není možné jednoduše zahrnout v tištěné podobě a který podstatně pomůže výuce.
+			}}
+		\end{quotation}
+		
+		Tento požadavek je učebnicí jednoznačně splněn. Učebnice obsahuje přehledný způsob upravování, podporu 3D modelů, interaktivních cvičení, automatického procvičování, obsahuje stylistické pomůcky a audiovizuální nástroje. Tyto funkce nejsou v standardní papírové učebnici dostupné a všechny tyto funkce jednoznačně prospějí vzdělávací hodnotě učebnice. Značný počet učebnic obsahuje online doplňky, případně CD disk.
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{G2. Poměr mezi různými typy elektronických záznamů (audio, video...) a jejich efekt na výuku.} \\
+			\enquote{\textit{
+				Přítomnost a poměr různých typů elektronických záznámů (audio, video, animace, testy...)  musí být určen na základě jejich přínosu k výuce. 
+			}}
+		\end{quotation}
+		
+		Poměr jednotlivých typů interaktivních prvků určuje autor učebnice, učebnice ale všechny zmíněné interaktivní prvky podporuje.
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{G3. Struktura elektronických učebnic.} \\
+			\enquote{\textit{
+					Na rozdíl od zvyklých tištěných učebnic, kde obsah je propojen lineární strukturou, obsah v e-publikacích by měl tvořit širokou síť  která odpovídá struktuře daného předmětu.
+			}}
+		\end{quotation}
+		
+		Učebnice tento požadavek splňuje. V článku má autor učebnice možnost dodat odkazy na podstatné články, které se taktéž promítnou i do shrnutí na konci. Dodatečně je přecházení mezi články o mnoho jednodušší než v tradiční tištěné učebnici, a uživatel nemusí články v lineárním pořadí číst. Za pomocí této metody je možné učebnici procházet jak lineárně, tak i nelineárně. Samotná struktura učebnice závisí na její autorovi, nástroj ale podporuje jakoukoliv.
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{G4. Adaptibilita elektronické učebnice k potřebám studentů} \\
+			\enquote{\textit{
+				Jeden ze základních indikátorů kvality digitální učebnice je to, jak moc využivá učebnice možnosti digitálních médií, obzvláště jejich interaktivity. Je úspěšná v adaptaci obsahu pro různé zájmy? Slouží jako důležitý nástroj podporující proces vzdělání s pochopením?
+			}}
+		\end{quotation}
+		
+		Učebnice tento požadavek částečně splňuje.  Možnosti digitálních médií využivá svými funkcemi - podporou 3D modelů, generací otázek a karet k procvičování, sumarizací, podporou nelineární struktury atd. - naprosto dostatečně, a svými motivačními prvky proces vzdělávání žáka jednoznačně zrychluje a zpříjemňuje. Hlášky při akcích studenta jsou záměrně napsány tak, aby učebnice se k studenovi chovala - minimálně z pohledu studenta - s pochopením.
+		
+		Přizpůsobení obsahu studentům závisí na autorovi dané učebnice, nástroj do tohoto nezasahuje.
+	\end{samepage}
+
+	\newpage
 	\subsection{Microlearning a tzv. “gamifikace”}
 	
+	\cite{Microlearning}
+	
+	\newpage
 	\subsection{Motivace studentů k výuce}
+	\subsubsection{Hybridní výuka}
+	\cite{EffectOfBlendedLearningMotivation}
+	
+	\subsubsection{Streak}
+	
+	\subsubsection{Denní úkoly}
+	
+	\subsubsection{XP a Ligy}
 
 	\newpage
 	\section{Funkce programu}
@@ -154,12 +368,16 @@ sorting=nyt,
 	\subsubsection{Pojmy}
 	\subsubsection{Procvičování}
 	\subsubsection{Obrázky a 3D modely}
+	Učebnice podporují přídávání jak obrázků, tak i 3D modelů.
+	
 	\subsubsection{Interaktivní prvky}
 	Interaktivní prvky jsou implementované za pomocí vlastního programovacího jazyka RESIN.
 	
 	\subsection{Kurzy}
 	\subsubsection{Úkoly}
 	\subsubsection{Testování}
+	\subsubsection{Opatření proti podvádění}
+	\subsubsection{Opatření proti plagiátu}
 	
 	\subsection{Docházka a rozvrh hodin}
 
@@ -174,8 +392,7 @@ sorting=nyt,
 	
 	\subsubsection{Učebnice a kurzy}
 	
-	Vyhledávání v kurzech bylo implementováno za pomocí Burkhard-Kellerova stromu  \cite{BKTree}
-	a Wagner-Fischerova algoritmu \cite{WagnerFischer} pro Damerau-Levenshteinovou vzdálenost.
+	Vyhledávání v kurzech bylo implementováno za pomocí a Wagner-Fischerova algoritmu \cite{WagnerFischer} pro Damerau-Levenshteinovou vzdálenost.
 	
 	Damerau-Levenshtein  \cite{Damerau} \cite{Levenshtein}
 		
@@ -217,6 +434,35 @@ sorting=nyt,
 
 	\newpage
 	\section{Rozvoj a budoucnost}
+	\subsection{Podpora standardů}
+	Jednoznačným současným nedostatkem tohoto systému je nepřítomnost podpory pro standardy systémů LMS. Standardy, které by se měli jako první podporovat, jsou: \cite{XAPI}
+	\begin{itemize}
+		\item cmi5, SCORM (Sharable Content Object Reference Model)
+		\item xAPI / Experience API
+	\end{itemize}
+	
+	Tyto rozhraní povolují komunikaci a sdílení dat napříč všemi digitálními vzdělávacími systémy a podpora těchto standardů by nejspíše adopci této platformy pomohla.
+	
+	\subsection{Podpora pluginů}
+	V tuto chvíli není možné nijak, mimo systém interaktivních prvků RESIN, změnit či rozšírit vzhled a funkčnost učebnice. V budoucnu bude určitě zapotřebí implementace pluginů, nejspíše za pomoci programovacího jazyka Lua. Úprava grafiky by se mohla realizovat nastavením vlastního CSS na úrovni buď školy či uživatele. 
+	
+	\subsection{Rozšíření docházkového systému}
+	Rozšíření docházkového systému by povolilo školám plně přejít na tento systém. Nejpodstatnější funkce, které v tuto chvíli schází, jsou:
+	\begin{itemize}
+		\item Účty zákonného zástupce
+		\item Evidence osobních údajů žáka
+		\item Podporu jednoduchého tisknutí standardů vysvědčení 
+		\item Školní administrace zaměstnanců
+		\item Napojení API pro evidenci průchodů a počtu žáků ve škole
+		\item Podpora rozpisů maturit pro jakoukoliv zemi, případně jiných národních zkoušek (např. Egzamin Ósmoklasisty v Polsku)
+	\end{itemize}
+	
+	\subsection{Komerční učebnice v rámci systému}
+	Podpora komercializace učebnice - zpoplatnění učebnice autorem - by mohlo učebnicový systém přeměnit na, mimo jiné, i online obchod s učebnicemi. Mohlo by to také motivovat větší nakladatelství a firmy, které učebnice či digitální pomůcky vytvářejí.
+	
+	\subsection{Oficiální certifikace a zabezpečení}
+	Oficiální certifikace o zabezpečení (a zároveň s tím spojené posílení zabezpečení) a ochraně dat by jednoznačně také mohlo prospět budoucí adopci systému. Jedná se o certifikaci pro, mimo jiné, směrnice EU NIS2 a GDPR.
+	
 
 	% závěr
 	\newpage
@@ -248,6 +494,7 @@ sorting=nyt,
 		Všechny citace jsou uvedeny ve formátu ČSN ISO 690.
 		
 		\nocite{Hrozinka}
+		\nocite{HrozinkaDva}
 		\nocite{Skolilova}
 		\nocite{Storek}
 		

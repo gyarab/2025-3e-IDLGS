@@ -54,32 +54,6 @@ export const wordSimilarity = (a: string, b: string): number => {
 	return (maxLen - distance) / maxLen;
 };
 
-//compute Burkhard-Keller (BK) tree
-//https://en.wikipedia.org/wiki/BK-tree
-//O(n2) build, O(log n) search
-//TODO
-
-export class BKNode {
-	word: string = '';
-	//distance, child nodes (multiple children can have same distance)
-	children: Array<{ distance: number; node: BKNode }> = [];
-	wordIndex: number = 0;
-}
-
-export class BKTree {
-	//TODO
-}
-
-export const addWordToBKTree = (root: BKNode, word: string): void => {
-	//TODO
-};
-
-//https://en.wikipedia.org/wiki/Finite-state_machine
-//https://en.wikipedia.org/wiki/Levenshtein_automaton
-//O(n)
-
-//BK tree better TODO
-
 //adds tooltip in text
 export const highlightInText = (
 	text: string,

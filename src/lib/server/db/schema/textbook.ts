@@ -156,35 +156,6 @@ export const highlight = pgTable(
 	],
 );
 
-//Burkhard-Keller (BK) tree node for articles
-//regenerated on every edit
-
-export const articleBkTreeNode = pgTable('articleBkTreeNode', {
-	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
-	article: integer('article')
-		.references(() => article.id, {
-			onDelete: 'cascade',
-		})
-		.notNull(),
-	word: text('word').notNull(),
-	wordIndex: integer('wordIndex').notNull().default(0),
-});
-
-export const articleBkTreeEdge = pgTable('articleBkTreeEdge', {
-	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
-	parentNode: integer('parentNode')
-		.references(() => articleBkTreeNode.id, {
-			onDelete: 'cascade',
-		})
-		.notNull(),
-	childNode: integer('childNode')
-		.references(() => articleBkTreeNode.id, {
-			onDelete: 'cascade',
-		})
-		.notNull(),
-	distance: integer('distance').notNull().default(0),
-});
-
 //article history
 //rollback painful but not needed often
 export const articleHistoryVersion = pgTable('articleHistoryVersion', {

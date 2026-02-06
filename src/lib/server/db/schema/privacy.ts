@@ -1,4 +1,4 @@
-import { pgTable, text, integer, timestamp, check } from 'drizzle-orm/pg-core';
+import { pgTable, text, integer, timestamp } from 'drizzle-orm/pg-core';
 
 export const privacyPolicy = pgTable('privacyPolicy', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),

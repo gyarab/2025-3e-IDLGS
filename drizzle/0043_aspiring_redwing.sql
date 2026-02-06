@@ -1,0 +1,2 @@
+ALTER TABLE "userCourseLessonLinker" ADD COLUMN "uncountable" boolean DEFAULT false NOT NULL;--> statement-breakpoint
+ALTER TABLE "userCourseLessonLinker" ADD COLUMN "distance" boolean DEFAULT false NOT NULL;

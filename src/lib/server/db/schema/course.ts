@@ -80,6 +80,7 @@ export const course = pgTable(
 			.notNull()
 			.$defaultFn(() => crypto.randomUUID()),
 		archived: boolean('archived').notNull().default(false),
+		treatLateAsAbsence: boolean('treatLateAsAbsence').notNull().default(false),
 	},
 	(table) => [
 		check('redMinCheck', sql`${table.red} >= 0`),
@@ -208,4 +209,35 @@ export const courseCodes = pgTable('courseCode', {
 		})
 		.notNull(),
 	code: text('code').notNull(),
+});
+
+//definition of lesson time
+export const courseLessonTemplate = pgTable('courseLessonTemplate', {
+	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
+	startTime: timestamp('startTime')
+		.notNull()
+		.$defaultFn(() => new Date()),
+	endTime: timestamp('endTime')
+		.notNull()
+		.$defaultFn(() => new Date()),
+	additionalNote: text('additionalNote').notNull().default(''),
+	uuid: text('uuid')
+		.notNull()
+		.$defaultFn(() => crypto.randomUUID()),
+});
+
+//single lesson in course
+export const courseLesson = pgTable('courseLesson', {
+	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
+	course: integer('course')
+		.references(() => course.id, {
+			onDelete: 'cascade',
+		})
+		.notNull(),
+	title: text('title').notNull().default(''),
+	note: text('note').notNull().default(''),
+	order: integer('order').notNull().default(0),
+	uuid: text('uuid')
+		.notNull()
+		.$defaultFn(() => crypto.randomUUID()),
 });
