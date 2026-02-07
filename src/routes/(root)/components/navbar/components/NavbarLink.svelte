@@ -9,11 +9,13 @@
 		emoji,
 		children,
 		classCss,
+		reload = false,
 	}: {
 		link: string;
 		emoji: string;
 		children: Snippet;
 		classCss?: string;
+		reload?: boolean;
 	} = $props();
 </script>
 
@@ -22,6 +24,7 @@
 	class="{page.url.pathname == link
 		? 'underline decoration-emerald-600 decoration-2 underline-offset-6'
 		: ''} {classCss}"
+	data-sveltekit-reload={reload}
 >
 	<HoverEmoji {emoji} />
 	{@render children()}

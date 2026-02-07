@@ -13,14 +13,10 @@
 	import SuccessBox from '$component/SuccessBox.svelte';
 	import UnsavedChangesBox from '$component/UnsavedChangesBox.svelte';
 	import { rerunInputCallbacks, setInputCallbacks } from '$lib';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import type { TextbookType, UserType, UserTypeLimited } from '$lib/types';
-
-	let ready = $state(false);
-
-	onMount(() => {
-		ready = true;
-	});
+	import { browser } from '$app/environment';
+	import { page } from '$app/state';
 
 	let {
 		data,
@@ -35,6 +31,42 @@
 			searchEnd: number;
 		};
 	} = $props();
+
+	let ready = $state(false);
+
+	let updateInterval: number = $state(-1);
+
+	const scrollWhereNeeded = () => {
+		if (!data.searchStart || !data.searchEnd) return;
+
+		const y = document.getElementById('searchResult')?.offsetTop ?? 0;
+
+		window.scrollTo({
+			top: y,
+			behavior: 'smooth',
+		});
+	};
+
+	onMount(() => {
+		if (data.searchStart && data.searchEnd) {
+			displayDescription =
+				displayDescription.substring(0, data.searchStart) +
+				`<mark id="searchResult">${displayDescription.substring(data.searchStart, data.searchEnd)}</mark>` +
+				displayDescription.substring(data.searchEnd);
+		}
+
+		if (browser) {
+			//we need minimal delay to ensure that the element is rendered
+			//its serverside anyway
+			updateInterval = window.setTimeout(scrollWhereNeeded, 10);
+		}
+
+		ready = true;
+	});
+	onDestroy(() => {
+		if(!browser) return;
+		window.clearTimeout(updateInterval);
+	});
 
 	let editingDescription: boolean = $state(false);
 	let displayDescription: string = $derived(data.textbook.description);
@@ -55,28 +87,6 @@
 				inputElementChangeCallback,
 				formSubmitChangeCallback,
 			);
-		}
-	});
-
-	$effect(() => {
-		if (displayDescription.length > 0) {
-			const y =
-				document.getElementById('searchResult')?.getBoundingClientRect()
-					.top ?? 0;
-
-			window.scrollTo({
-				top: y - 50,
-				behavior: 'smooth',
-			});
-		}
-	});
-
-	onMount(() => {
-		if (data.searchStart && data.searchEnd) {
-			displayDescription =
-				displayDescription.substring(0, data.searchStart) +
-				`<mark id="searchResult">${displayDescription.substring(data.searchStart, data.searchEnd)}</mark>` +
-				displayDescription.substring(data.searchEnd);
 		}
 	});
 </script>
@@ -156,6 +166,7 @@
 					editingDescription = false;
 					formSuccessMessage =
 						m.textbookDescriptionUpdatedSuccessfully();
+					goto(`/textbook/${data.textbook.uuid}`);
 				}}
 			>
 				<HiddenInput
@@ -204,7 +215,10 @@
 	/>
 
 	{#if !editingDescription}
-		<div class="flex w-full grow flex-col gap-2">
+		<div
+			class="flex w-full grow flex-col gap-2"
+			id="markdownContainer"
+		>
 			{@html renderMarkdown(displayDescription)}
 		</div>
 

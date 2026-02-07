@@ -2,11 +2,9 @@
 	import { m } from '$lib/paraglide/messages';
 	import { getLocale, setLocale, type Locale } from '$lib/paraglide/runtime';
 	import Logo from '../Logo.svelte';
-	import HoverEmoji from '../HoverEmoji.svelte';
 	import type { UserType } from '$lib/types';
 	import { writeDegree } from '$lib';
 	import NavbarLink from './components/NavbarLink.svelte';
-	import Navbar from './Navbar.svelte';
 
 	let value: Locale = $state(getLocale());
 
@@ -98,6 +96,7 @@
 		<NavbarLink
 			link="/logout"
 			emoji="logout-box"
+			reload={true}
 		>
 			{m.logout()}
 		</NavbarLink>

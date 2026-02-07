@@ -12,5 +12,6 @@ export const load = async (event) => {
 	event.cookies.set('session', 'not anymore there is a blanket', {
 		path: '/',
 	});
-	redirect(303, '/');
+
+	throw redirect(303, '/');
 };

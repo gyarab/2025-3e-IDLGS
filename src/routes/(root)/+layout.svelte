@@ -26,19 +26,21 @@
 	></script>
 </svelte:head>
 
-<div
-	class="flex min-h-screen! w-screen! max-w-screen! min-w-screen! grow flex-col"
->
-	{#if data.user}
-		<NavbarLoggedIn user={data.user} />
-		<NavbarLoggedInMobile user={data.user} />
-	{:else}
-		<Navbar />
-		<NavbarMobile />
-	{/if}
-	<div class="relative flex w-full grow flex-col">
-		{@render children()}
+{#key data.user}
+	<div
+		class="flex min-h-screen! w-screen! max-w-screen! min-w-screen! grow flex-col"
+	>
+		{#if data.user}
+			<NavbarLoggedIn user={data.user} />
+			<NavbarLoggedInMobile user={data.user} />
+		{:else}
+			<Navbar />
+			<NavbarMobile />
+		{/if}
+		<div class="relative flex w-full grow flex-col">
+			{@render children()}
+		</div>
+		<Footer user={data.user} />
+		<FooterMobile user={data.user} />
 	</div>
-	<Footer user={data.user} />
-	<FooterMobile user={data.user} />
-</div>
+{/key}
