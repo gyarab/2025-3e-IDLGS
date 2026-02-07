@@ -59,7 +59,7 @@
 			{/each}
 		</div>
 		<p
-			class="text-justify w-full overflow-scroll! text-sm font-light text-ellipsis opacity-80"
+			class="w-full overflow-scroll! text-justify text-sm font-light text-ellipsis opacity-80"
 		>
 			{@html textbook.description.split('\n')[0]}
 		</p>

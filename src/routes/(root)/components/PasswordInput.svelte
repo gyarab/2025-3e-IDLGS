@@ -23,7 +23,9 @@
 <div class="relative flex w-full flex-col items-center justify-center gap-2">
 	<div class="flex w-full grow flex-row items-center justify-center gap-2">
 		{#if label.length != 0}
-			<h3 class="whitespace-nowrap {cssLabelClass} font-light">{label}:</h3>
+			<h3 class="whitespace-nowrap {cssLabelClass} font-light">
+				{label}:
+			</h3>
 		{/if}
 		<div
 			class="flex w-full flex-row items-center justify-center overflow-hidden"

@@ -17,5 +17,5 @@ export const schema = {
 	...user,
 	...privacy,
 	...statistics,
-	...commerce
+	...commerce,
 };

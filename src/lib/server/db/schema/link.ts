@@ -22,7 +22,9 @@ export const userCourseLinker = pgTable('userCourseLinker', {
 			onDelete: 'cascade',
 		})
 		.notNull(),
-	dekEncrypted: text('dekEncrypted').notNull().$defaultFn(() => crypto.randomUUID()),
+	dekEncrypted: text('dekEncrypted')
+		.notNull()
+		.$defaultFn(() => crypto.randomUUID()),
 });
 
 export const userTextbookLinker = pgTable('userTextbookLinker', {
@@ -40,7 +42,9 @@ export const userTextbookLinker = pgTable('userTextbookLinker', {
 		})
 		.notNull(),
 	readProgress: numeric('readProgress').notNull().default('0'),
-	dekEncrypted: text('dekEncrypted').notNull().$defaultFn(() => crypto.randomUUID()),
+	dekEncrypted: text('dekEncrypted')
+		.notNull()
+		.$defaultFn(() => crypto.randomUUID()),
 });
 
 export const userAssignmentLinker = pgTable('userAssignmentLinker', {

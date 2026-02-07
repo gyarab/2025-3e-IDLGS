@@ -41,8 +41,7 @@
 	}}
 >
 	<div
-		class="flex w-full grow flex-col gap-2 rounded {cssOverride.length >
-		0
+		class="flex w-full grow flex-col gap-2 rounded {cssOverride.length > 0
 			? cssOverride
 			: 'p-5'} backdrop-blur-xl"
 	>

@@ -58,7 +58,7 @@
 	let formAlert: string = $state('');
 </script>
 
-<div class="sticky left-0 h-[94svh] min-w-1/5 overflow-clip xl:top-[6vh] ">
+<div class="sticky left-0 h-[94svh] min-w-1/5 overflow-clip xl:top-[6vh]">
 	<WideCard
 		cssAddition="grow rounded-none! border-s-0!  border-s-0! border-t-0! border-b-0!"
 		r={textbook.red}

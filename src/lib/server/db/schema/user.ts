@@ -40,10 +40,9 @@ export const user = pgTable('user', {
 	//student / teacher / director
 	schoolTeacher: boolean('schoolTeacher').notNull().default(false),
 	schoolDirector: boolean('schoolDirector').notNull().default(false),
-	school: integer('school')
-		.references(() => school.id, {
-			onDelete: 'set null',
-		}),
+	school: integer('school').references(() => school.id, {
+		onDelete: 'set null',
+	}),
 	//API key - read only
 	readOnlyKey: text('readOnlyKey')
 		.notNull()

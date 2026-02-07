@@ -56,7 +56,9 @@
 				</div>
 			{/each}
 		</div>
-		<p class="w-full text-sm font-light text-ellipsis opacity-80 text-justify">
+		<p
+			class="w-full text-justify text-sm font-light text-ellipsis opacity-80"
+		>
 			{@html course.description.split('\n')[0]}
 		</p>
 
