@@ -63,6 +63,6 @@
 		"katex": "^0.16.27",
 		"markdown-it": "^14.1.0",
 		"postgres": "^3.4.7",
-		"remixicon": "^4.7.0"
+		"remixicon": "^4.9.1"
 	}
 }
