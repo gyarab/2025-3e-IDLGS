@@ -194,7 +194,6 @@ export const loadSingleTextbook = async (
 	return textbook[0];
 };
 
-
 //for search function
 export const loadTextbookText = async (textbookUuid: string) => {
 	const db = getRequestEvent().locals.db;
@@ -233,26 +232,33 @@ export const loadTextbookText = async (textbookUuid: string) => {
 		})
 		.from(schema.article)
 		.where(
-			inArray(schema.article.chapter, chapters.map((c) => c.id)),
+			inArray(
+				schema.article.chapter,
+				chapters.map((c) => c.id),
+			),
 		);
 
-	return [...articles.map((article) => ({
-		uuid: article.uuid,
-		name: article.name,
-		text: article.text,
-		article: true,
-		chapter: false,
-	})), ...chapters.map((chapter) => ({
-		uuid: chapter.uuid,
-		name: chapter.name,
-		text: chapter.description,
-		article: false,
-		chapter: true,
-	})), {
-		uuid: textbook[0].uuid,
-		name: '',
-		text: textbook[0].description,
-		article: false,
-		chapter: false,
-	}];
+	return [
+		...articles.map((article) => ({
+			uuid: article.uuid,
+			name: article.name,
+			text: article.text,
+			article: true,
+			chapter: false,
+		})),
+		...chapters.map((chapter) => ({
+			uuid: chapter.uuid,
+			name: chapter.name,
+			text: chapter.description,
+			article: false,
+			chapter: true,
+		})),
+		{
+			uuid: textbook[0].uuid,
+			name: '',
+			text: textbook[0].description,
+			article: false,
+			chapter: false,
+		},
+	];
 };

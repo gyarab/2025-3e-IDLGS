@@ -34,7 +34,7 @@ export const loadArticle = async (uuid: string, textbookUuid?: string) => {
 
 		//find definitions and apply them
 
-		for(const definition of definitions) {
+		for (const definition of definitions) {
 			//TODO
 		}
 	}

@@ -90,10 +90,10 @@
 						onclick={() => {
 							let address = `/textbook/${page.params.id}`;
 
-							if(result.chapter) {
+							if (result.chapter) {
 								address += `/${result.chapter}`;
 							}
-							if(result.article) {
+							if (result.article) {
 								address += `/${result.article}`;
 							}
 
@@ -108,10 +108,10 @@
 								result.end,
 							)}
 						</span>
-						<span class="opacity-80 italic text-ellipsis! overflow-hidden! ">
-							{data.text[result.id!].text.substring(
-								result.end,
-							)}
+						<span
+							class="overflow-hidden! text-ellipsis! italic opacity-80"
+						>
+							{data.text[result.id!].text.substring(result.end)}
 						</span>
 					</Button>
 				</WideCard>
