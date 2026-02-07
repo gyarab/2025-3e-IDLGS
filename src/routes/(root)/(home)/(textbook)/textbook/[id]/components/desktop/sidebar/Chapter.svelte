@@ -183,7 +183,7 @@
 			/>
 		{:else}
 			<div
-				class="flex flex-row w-full gap-1 items-center opacity-70 pl-4 pr-4"
+				class="flex flex-row w-full gap-1 items-center opacity-80 pl-4 pr-4"
 			>
 				{m.noArticlesInChapter()}
 			</div>

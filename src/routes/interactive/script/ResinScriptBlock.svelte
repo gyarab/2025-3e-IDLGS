@@ -65,7 +65,7 @@
 
 <div
 	class="
-absolute z-40 flex flex-row items-center rounded-lg p-2 font-medium
+absolute z-40 flex flex-row items-center rounded p-2 font-medium
 "
 	style="
 	background-color: #00000000;

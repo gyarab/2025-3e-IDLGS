@@ -38,7 +38,7 @@
 	/* .button == button */
 	button,
 	.button {
-		@apply flex flex-row items-center justify-center gap-1 rounded-lg font-medium hover:brightness-80 active:brightness-60 disabled:brightness-60 max-lg:p-2 lg:p-3;
+		@apply flex flex-row items-center justify-center gap-1 rounded font-medium hover:brightness-80 active:brightness-60 disabled:brightness-60 max-lg:p-2 lg:p-3;
 	}
 	.button-none {
 		@apply gap-1 p-0! font-light! hover:brightness-100! active:brightness-100!;
@@ -63,13 +63,13 @@
 	}
 
 	.input-text {
-		@apply min-w-0 rounded-lg border-0! bg-neutral-700/40 text-white backdrop-blur placeholder:font-light! placeholder:text-white placeholder:opacity-80 backdrop:blur-2xl;
+		@apply min-w-0 rounded border-0! bg-neutral-700/40 text-white backdrop-blur-xl placeholder:font-light! placeholder:text-white placeholder:opacity-80 backdrop:blur-2xl;
 	}
 	.input-checkbox {
-		@apply appearance-auto rounded-lg bg-white! text-violet-800 accent-violet-800 outline-0 hover:brightness-80;
+		@apply appearance-auto rounded bg-white! text-violet-800 accent-violet-800 outline-0 hover:brightness-80;
 	}
 	.input-color {
-		@apply rounded-lg border-2 border-white outline-offset-2 outline-white active:outline-2;
+		@apply rounded border-2 border-white outline-offset-2 outline-white active:outline-2;
 	}
 	input {
 		@apply min-w-0;
@@ -87,7 +87,7 @@
 	}
 
 	.input-text-resin {
-		@apply rounded-lg border-2 text-violet-800 placeholder:font-light! placeholder:text-violet-800/50;
+		@apply rounded border-2 text-violet-800 placeholder:font-light! placeholder:text-violet-800/50;
 	}
 
 	a:hover {
@@ -110,7 +110,7 @@
 	}
 
 	.standardModal {
-		@apply h-fit border-2 border-neutral-500 bg-neutral-500/70 shadow-2xl backdrop-blur;
+		@apply h-fit border-2 border-neutral-500 bg-neutral-500/70 shadow-2xl backdrop-blur-xl;
 	}
 
 	.markdownText {

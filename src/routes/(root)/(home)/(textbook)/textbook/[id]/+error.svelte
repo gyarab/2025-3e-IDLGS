@@ -15,7 +15,7 @@
 		<h2 class="text-5xl font-bold">
 			{m.anErrorOccurred()}
 		</h2>
-		<p class="text-lg font-light! opacity-70">
+		<p class="text-lg font-light! opacity-80">
 			{#if page.status === 404}
 				{m.noChapterOrArticleAtThisAddress()}
 			{:else}

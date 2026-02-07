@@ -76,7 +76,7 @@
 			? m.addPeopleToCourse()
 			: m.addAuthorsToTextbook()}
 	</h2>
-	<div class="flex grow flex-col gap-2 rounded-lg bg-neutral-700/40 p-2">
+	<div class="flex grow flex-col gap-2 rounded bg-neutral-700/40 p-2">
 		<span class="group relative flex w-full flex-col gap-2">
 			<TextInput
 				bind:value={query}
@@ -121,7 +121,7 @@
 					/>
 				{:else}
 					<div
-						class="flex flex-col gap-2 justify-center items-center grow w-full opacity-70"
+						class="flex flex-col gap-2 justify-center items-center grow w-full opacity-80"
 					>
 						{m.noUsersAddedYet()}
 					</div>
@@ -130,7 +130,7 @@
 		{/key}
 	</div>
 	<div
-		class="flex w-full flex-row items-center justify-center gap-1 opacity-70"
+		class="flex w-full flex-row items-center justify-center gap-1 opacity-80"
 	>
 		{#if type == 'course'}
 			{m.selectUsersWhichWillHaveAccessToTheCourseExceptForYou()}.
@@ -150,7 +150,7 @@
 				bind:checked={internet}
 				label={m.publishTextbookOnTheInternet()}
 			/>
-			<p class="grow opacity-70">
+			<p class="grow opacity-80">
 				{m.itWillBeVisibleToEveryoneAndWillShowUpInSearchEngines()}.
 			</p>
 		</div>

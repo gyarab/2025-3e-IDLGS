@@ -49,7 +49,7 @@
 					<span class="text-lg font-medium">
 						{m.noDefinitionsInTextbookYet()}
 					</span>
-					<span class="opacity-70">
+					<span class="opacity-80">
 						{m.addADefinitionByClickingTheButtonBelow()}
 					</span>
 				</div>

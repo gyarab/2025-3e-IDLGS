@@ -78,7 +78,7 @@
 				<h2 class="w-full max-xl:text-center xl:text-left">
 					{m.passwordResetSuccessfully()}
 				</h2>
-				<p class="font-light opacity-70">
+				<p class="font-light opacity-80">
 					{m.youCanNowLogInWithYourNewPassword()}.
 				</p>
 				<Button

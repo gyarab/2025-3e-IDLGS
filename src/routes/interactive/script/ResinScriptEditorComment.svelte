@@ -24,7 +24,7 @@
 
 <button
 	class="
-absolute z-39 flex flex-row items-center overflow-hidden rounded-lg p-2 font-medium text-ellipsis
+absolute z-39 flex flex-row items-center overflow-hidden rounded p-2 font-medium text-ellipsis
 "
 	style="
 	background-color: #ffd9b7;

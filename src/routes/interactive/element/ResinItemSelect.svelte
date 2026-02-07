@@ -11,7 +11,7 @@
 </script>
 
 <button
-	class="group flex flex-col items-center justify-center gap-2 rounded-lg bg-neutral-500 p-2 hover:bg-emerald-600"
+	class="group flex flex-col items-center justify-center gap-2 rounded bg-neutral-500 p-2 hover:bg-emerald-600"
 	onclick={(e) => onclick(e)}
 >
 	<span class="flex flex-col gap-2 text-2xl">

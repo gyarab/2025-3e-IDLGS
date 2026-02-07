@@ -29,9 +29,9 @@
 	w-full flex-col
 	gap-2 border-2 shadow-xl hover:shadow-2xl
 	{cssParentOverride} {cssAddition}
-	max-xl:border-s-0! max-xl:border-e-0! max-xl:p-0! xl:rounded-lg
+	max-xl:border-s-0! max-xl:border-e-0! max-xl:p-0! xl:rounded
 		"
-	style="background-color: rgb({r} {g} {b} / 30%); border-color: rgb({r} {g} {b} / 30%);"
+	style="background-color: rgb({r} {g} {b} / 50%); border-color: rgb({r} {g} {b});"
 	in:fly|global={{
 		x: 0,
 		y: 100,
@@ -41,10 +41,10 @@
 	}}
 >
 	<div
-		class="flex w-full grow flex-col gap-2 rounded-lg {cssOverride.length >
+		class="flex w-full grow flex-col gap-2 rounded {cssOverride.length >
 		0
 			? cssOverride
-			: 'p-5'} backdrop-blur"
+			: 'p-5'} backdrop-blur-xl"
 	>
 		{@render children?.()}
 	</div>

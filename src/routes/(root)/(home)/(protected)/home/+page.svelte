@@ -99,13 +99,13 @@
 
 					{#if activeItems.length === 0 && !data.user.canCreateCourses && !data.user.canCreateTextbooks}
 						<div
-							class="flex w-full grow flex-col items-center justify-center gap-2 text-lg font-light opacity-70"
+							class="flex w-full grow flex-col items-center justify-center gap-2 text-lg font-light opacity-80"
 						>
 							{m.noCoursesOrTextbooksAvailableYet()}
 						</div>
 					{:else if activeItems.length === 0 && searchValue.length > 0}
 						<div
-							class="flex w-full grow flex-col items-center justify-center gap-2 text-lg font-light opacity-70"
+							class="flex w-full grow flex-col items-center justify-center gap-2 text-lg font-light opacity-80"
 						>
 							{m.noCoursesOrTextbooksMatchYourSearch()}
 						</div>
@@ -151,20 +151,20 @@
 							{m.archivedCoursesAndTextbooks()}
 						</h2>
 						<div class="grow"></div>
-						<p class="opacity-70">
+						<p class="opacity-80">
 							{m.archivedCoursesAndTextbooksAreReadOnlyEverythingIsLeftAsItWasAtTheMomentOfArchiving()}
 						</p>
 					</div>
 
 					{#if archivedItems.length === 0 && searchValue.length === 0}
 						<div
-							class="flex w-full grow flex-col items-center justify-center gap-2 text-lg font-light opacity-70"
+							class="flex w-full grow flex-col items-center justify-center gap-2 text-lg font-light opacity-80"
 						>
 							{m.noArchivedCoursesOrTextbooksYet()}
 						</div>
 					{:else if archivedItems.length === 0 && searchValue.length > 0}
 						<div
-							class="flex w-full grow flex-col items-center justify-center gap-2 text-lg font-light opacity-70"
+							class="flex w-full grow flex-col items-center justify-center gap-2 text-lg font-light opacity-80"
 						>
 							{m.noArchivedCoursesOrTextbooksMatchYourSearch()}
 						</div>

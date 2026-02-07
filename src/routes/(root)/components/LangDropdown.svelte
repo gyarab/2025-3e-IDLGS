@@ -13,7 +13,7 @@
 	content={m.languageName({}, { locale: getLocale() })}
 >
 	<ul
-		class="flex w-full grow flex-col rounded-lg {cssLocal} font-medium! **:font-medium!"
+		class="flex w-full grow flex-col rounded {cssLocal} font-medium! **:font-medium!"
 	>
 		{#each locales as locale (locale)}
 			<li

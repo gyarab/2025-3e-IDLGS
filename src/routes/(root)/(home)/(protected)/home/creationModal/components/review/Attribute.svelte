@@ -30,7 +30,7 @@
 	</div>
 	<div
 		class={valueLong
-			? 'w-full grow text-lg italic opacity-70'
+			? 'w-full grow text-lg italic opacity-80'
 			: 'font-medium'}
 	>
 		{#if html}

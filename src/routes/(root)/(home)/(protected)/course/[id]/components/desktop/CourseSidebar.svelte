@@ -20,9 +20,10 @@
 	} = $props();
 </script>
 
-<div class="sticky left-0 h-[94svh] min-w-1/5 overflow-clip p-2 xl:top-[6vh]">
+<div class="sticky left-0 h-[94svh] min-w-1/5 overflow-clip xl:top-[6vh]">
 	<WideCard
-		cssAddition="grow"
+		cssAddition="grow rounded-none! border-s-0! border-t-0! border-b-0!"
+		cssOverride="p-5 rounded-none!"
 		r={data.course.red}
 		g={data.course.green}
 		b={data.course.blue}
@@ -32,7 +33,7 @@
 			{data.course.name}
 		</h2>
 
-		<div class="flex w-full flex-col gap-0">
+		<div class="flex w-full flex-col gap-0 text-lg">
 			<Button
 				btn="button-none w-full"
 				emoji="home"

@@ -85,7 +85,7 @@
 			<h2 class="text-xl">
 				{m.inviteCodeExpiryDate()}:
 			</h2>
-			<span class={expiryCheck ? 'pointer-events-none opacity-70' : ''}>
+			<span class={expiryCheck ? 'pointer-events-none opacity-80' : ''}>
 				<DateInput
 					bind:day={expiryDay}
 					bind:month={expiryMonth}

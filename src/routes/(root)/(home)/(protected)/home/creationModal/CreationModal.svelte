@@ -60,7 +60,7 @@
 {#key stage}
 	<Modal
 		bind:showModal
-		cssClass="backdrop-blur"
+		cssClass="backdrop-blur-xl"
 		cssStyle="background-color: rgb({red}, {green}, {blue}, 0.7) !important;"
 	>
 		{#if stage == 0}

@@ -41,7 +41,7 @@
 				<i class="ri-file-list-3-line text-3xl"></i>
 				{course.name}
 			</div>
-			<div class="text-lg font-light opacity-70">
+			<div class="text-lg font-light opacity-80">
 				{course.subject}
 			</div>
 		</h2>
@@ -49,14 +49,14 @@
 			{#each course.people?.filter((v) => v.isOwner || v.isTeacher) as people (people.uuid)}
 				<div class="flex w-full flex-row items-center gap-1">
 					<i class="ri-user-3-line text-lg"></i>
-					<span class="text-left opacity-70">
+					<span class="text-left opacity-80">
 						{people.name}
 						{people.surname}
 					</span>
 				</div>
 			{/each}
 		</div>
-		<p class="w-full text-sm font-light text-ellipsis opacity-70">
+		<p class="w-full text-sm font-light text-ellipsis opacity-80 text-justify">
 			{@html course.description.split('\n')[0]}
 		</p>
 
@@ -97,7 +97,7 @@
 				<div class="grow"></div>
 				<div class="flex flex-row items-center justify-center gap-2">
 					<span class="text-3xl font-bold"> 1 </span>
-					<span class="text-2xl font-light opacity-70"> (90%) </span>
+					<span class="text-2xl font-light opacity-80"> (90%) </span>
 				</div>
 			</WideCard>
 		</span>

@@ -34,7 +34,7 @@
 <div class="flex w-full grow flex-col gap-2">
 	<h2>{m.gradesInCourse()}</h2>
 	<div class="flex w-full flex-col items-center gap-4">
-		<p class="w-full opacity-70">
+		<p class="w-full opacity-80">
 			{m.selectAGradingPreset()}
 		</p>
 
@@ -97,7 +97,7 @@
 		</div>
 	{:else}
 		<div
-			class="flex grow flex-col items-center justify-center text-white opacity-70"
+			class="flex grow flex-col items-center justify-center text-white opacity-80"
 		>
 			{m.selectAGradingPreset()}
 		</div>

@@ -52,7 +52,7 @@
 			{/each}
 		</div>
 
-		<span class="italic opacity-70">
+		<span class="italic opacity-80">
 			{m.orSelectACustomColor()}:
 		</span>
 
@@ -61,7 +61,7 @@
 			bind:value={color}
 			class="input-color"
 		/>
-		<span class="opacity-70">
+		<span class="opacity-80">
 			{color}
 		</span>
 	</div>

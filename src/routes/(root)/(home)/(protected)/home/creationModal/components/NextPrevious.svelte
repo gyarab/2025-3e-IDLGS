@@ -40,14 +40,14 @@
 			<span class="">
 				{currentStep}
 			</span>
-			<span class="opacity-70">
+			<span class="opacity-80">
 				{m.outOf()}
 			</span>
-			<span class="opacity-70">
+			<span class="opacity-80">
 				{maxStep}
 			</span>
 		</div>
-		<div class="flex flex-row items-center gap-1 opacity-70">
+		<div class="flex flex-row items-center gap-1 opacity-80">
 			{message}.
 		</div>
 	</div>

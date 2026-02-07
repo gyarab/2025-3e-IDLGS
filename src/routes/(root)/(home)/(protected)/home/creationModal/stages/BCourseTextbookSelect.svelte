@@ -98,9 +98,9 @@
 		{:else}
 			<div class="flex w-full grow flex-col items-center justify-center">
 				{#if query.length == 0}
-					<p class="opacity-70">{m.noTextbooksAvailable()}</p>
+					<p class="opacity-80">{m.noTextbooksAvailable()}</p>
 				{:else}
-					<p class="opacity-70">{m.noTextbooksFound()}</p>
+					<p class="opacity-80">{m.noTextbooksFound()}</p>
 				{/if}
 			</div>
 		{/if}

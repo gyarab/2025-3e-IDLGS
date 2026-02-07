@@ -39,7 +39,7 @@
 					{m.passwordRecovery()}
 				</h2>
 
-				<p class="w-full font-light opacity-70 max-xl:text-sm">
+				<p class="w-full font-light opacity-80 max-xl:text-sm">
 					{m.enterYourAccountsEmailAddressIfItExistsYouWillRecieveAResetLink()}
 					<br />
 					{@html renderMarkdown(
@@ -77,7 +77,7 @@
 				<h2 class="w-full text-white max-xl:text-center xl:text-left">
 					{m.emailSent()}
 				</h2>
-				<p class="font-light opacity-70">
+				<p class="font-light opacity-80">
 					{m.checkYourInboxIncludingTheSpamFolder()}
 					{@html renderMarkdown(
 						m.theLinkWillExpireInFifteenMinutes(),
@@ -96,7 +96,7 @@
 				<h2 class="w-full text-white max-xl:text-center xl:text-left">
 					{m.anErrorOccurred()}
 				</h2>
-				<p class="font-light opacity-70">
+				<p class="font-light opacity-80">
 					{m.theEmailCouldNotBeSentPleaseTryAgain()}
 				</p>
 				<Button

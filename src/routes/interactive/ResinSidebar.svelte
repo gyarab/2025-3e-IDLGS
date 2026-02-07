@@ -148,7 +148,7 @@
 	</div>
 
 	<div class="grow"></div>
-	<p class="italic opacity-70">
+	<p class="italic opacity-80">
 		{JSON.stringify(el)}
 	</p>
 </div>

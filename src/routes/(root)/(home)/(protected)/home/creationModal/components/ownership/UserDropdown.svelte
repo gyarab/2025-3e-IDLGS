@@ -39,7 +39,7 @@
 			/>
 		{:else}
 			<div
-				class="flex flex-col justify-center items-center w-full grow text-neutral-700 opacity-70"
+				class="flex flex-col justify-center items-center w-full grow text-neutral-700 opacity-80"
 			>
 				{m.noUsersFound()}
 			</div>

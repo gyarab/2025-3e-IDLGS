@@ -94,6 +94,7 @@
 		<Button
 			btn="button-none"
 			type="submit"
+			emoji="check"
 			action={`/textbook/${textbookUuid}/${chapterUuid}/?/editArticleName`}
 			label={m.save()}
 			onclick={() => {

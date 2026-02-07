@@ -89,9 +89,9 @@
 	border-2 shadow-xl perspective-[1600px] hover:shadow-2xl
 	{hover ? 'hover:border-neutral-300!' : ''}
 	{css}
-	max-xl:border-s-0! max-xl:border-e-0! max-xl:p-0! xl:rounded-lg
+	max-xl:border-s-0! max-xl:border-e-0! max-xl:p-0! xl:rounded
 	"
-		style="background-color: rgb({r} {g} {b} / 30%); border-color: rgb({r} {g} {b} / 30%); {perspective
+		style="background-color: rgb({r} {g} {b} / 50%); border-color: rgb({r} {g} {b}); {perspective
 			? `transform: rotateX(${yRotation}deg) rotateY(${xRotation}deg) translateZ(0);`
 			: ''}"
 		in:fly|global={{
@@ -106,7 +106,7 @@
 			disabled={disable}
 			class="
 		disable:brightness-100! static flex h-full max-h-full min-h-full w-full max-w-full
-		min-w-full grow flex-col gap-2 rounded-lg {padding} backdrop-blur hover:brightness-100!
+		min-w-full grow flex-col gap-2 rounded {padding} backdrop-blur-xl hover:brightness-100!
 		{hover ? 'hover:backdrop-brightness-120' : ''}
 		"
 			onclick={() => {

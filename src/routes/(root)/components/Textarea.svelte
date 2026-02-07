@@ -65,7 +65,7 @@
 	{#if maxLength && !preview}
 		<div
 			class="
-			absolute right-2 bottom-2 z-10 text-base opacity-70
+			absolute right-2 bottom-2 z-10 text-base opacity-80
 			{value.length >= maxLength ? 'font-medium text-red-700' : ''}
 		"
 		>

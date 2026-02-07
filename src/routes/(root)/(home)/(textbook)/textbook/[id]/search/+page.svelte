@@ -44,7 +44,7 @@
 		<LoadingAnimationHandler />
 	{:else if query.trim().length === 0}
 		<div
-			class="flex w-full grow flex-col items-center justify-center gap-0 text-center opacity-50"
+			class="flex w-full grow flex-col items-center justify-center gap-0 text-center opacity-80"
 		>
 			{m.searchResultsWillShowUpHere()}.
 			<br />

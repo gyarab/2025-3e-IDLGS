@@ -49,7 +49,7 @@
 		{#each grades as grade, index (grade.name)}
 			<!-- calculation so no gaps in grades-->
 			<div
-				class="absolute top-0 flex min-h-2 -translate-y-1/2 flex-col items-center rounded-lg"
+				class="absolute top-0 flex min-h-2 -translate-y-1/2 flex-col items-center rounded"
 				style="
 				right: {grade.min}%;
 				width: {Math.min(100, grade.max + 0.9999999) - grade.min}%;

@@ -19,7 +19,7 @@
 
 <Modal
 	bind:showModal
-	cssClass="bg-neutral-500/70 backdrop-blur border-neutral-500 border-2 h-fit"
+	cssClass="bg-neutral-500/70 backdrop-blur-xl border-neutral-500 border-2 h-fit"
 >
 	<Form
 		cssClass="flex w-full grow flex-col gap-2"

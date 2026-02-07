@@ -37,7 +37,7 @@
 			<div
 				class="
 				{inUse ? '' : 'hidden'}
-				absolute right-0 z-50! min-w-full rounded-lg bg-white
+				absolute right-0 z-50! min-w-full rounded bg-white
 				{downDirection ? 'top-10' : 'top-0 -translate-y-full'}
 			"
 				onmouseenter={() => {

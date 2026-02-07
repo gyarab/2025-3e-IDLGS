@@ -87,7 +87,7 @@
 
 <div
 	id="{index}timelinehandle"
-	class="absolute top-4 z-10 flex flex-col rounded-lg bg-white p-1"
+	class="absolute top-4 z-10 flex flex-col rounded bg-white p-1"
 	style="right: {Math.min(
 		98,
 		grades[index]?.max ?? 0,

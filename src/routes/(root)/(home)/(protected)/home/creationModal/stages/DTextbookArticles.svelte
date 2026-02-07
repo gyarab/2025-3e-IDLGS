@@ -26,7 +26,7 @@
 <div class="flex w-full grow flex-col gap-2">
 	<div class="flex w-full flex-row items-center gap-2">
 		<h2>{m.textbookChaptersAndArticles()}</h2>
-		<p class="opacity-70">
+		<p class="opacity-80">
 			{m.selectChapterOrArticleByClickingOnIt()}.
 			{m.toAddOneEnterItsNameAndPressAddNew()}.
 		</p>
@@ -74,14 +74,14 @@
 					</ItemList>
 				{:else}
 					<div
-						class="flex w-full grow flex-col items-center justify-center text-white opacity-70"
+						class="flex w-full grow flex-col items-center justify-center text-white opacity-80"
 					>
 						{m.noChapterSelected()}
 					</div>
 				{/if}
 			{:else}
 				<div
-					class="flex w-full grow flex-col items-center justify-center text-white opacity-70"
+					class="flex w-full grow flex-col items-center justify-center text-white opacity-80"
 				>
 					{m.toCreateArticlesFirstAddAChapter()}
 				</div>

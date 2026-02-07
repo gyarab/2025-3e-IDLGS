@@ -42,7 +42,7 @@
 				<i class="ri-book-ai-line text-3xl"></i>
 				{textbook.name}
 			</div>
-			<div class="text-lg font-light opacity-70">
+			<div class="text-lg font-light opacity-80">
 				{textbook.subject}
 			</div>
 		</h2>
@@ -51,7 +51,7 @@
 				<div class="flex w-full flex-row items-center gap-1">
 					<i class="ri-user-3-line text-lg"></i>
 
-					<span class="text-left opacity-70">
+					<span class="text-left opacity-80">
 						{author.name}
 						{author.surname}
 					</span>
@@ -59,7 +59,7 @@
 			{/each}
 		</div>
 		<p
-			class="w-full overflow-scroll! text-left text-sm font-light text-ellipsis opacity-70"
+			class="text-justify w-full overflow-scroll! text-sm font-light text-ellipsis opacity-80"
 		>
 			{@html textbook.description.split('\n')[0]}
 		</p>

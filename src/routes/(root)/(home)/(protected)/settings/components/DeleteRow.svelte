@@ -23,7 +23,7 @@
 	<span class="text-lg">
 		{m.deleteAccount()}
 	</span>
-	<span class="text-sm opacity-70">
+	<span class="text-sm opacity-80">
 		{m.deletingYourAccountIsAnIrreversibleAction()}
 	</span>
 	<div class="grow"></div>

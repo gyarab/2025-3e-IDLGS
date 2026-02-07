@@ -23,7 +23,7 @@
 	<span class="text-lg">
 		{m.resetStreak()}
 	</span>
-	<span class="text-sm opacity-70">
+	<span class="text-sm opacity-80">
 		{m.resettingYourStreakIsAnIrreversibleAction()}
 	</span>
 	<div class="grow"></div>

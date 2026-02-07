@@ -24,7 +24,7 @@
 	} = $props();
 </script>
 
-<div class="flex max-h-1/3 grow flex-col gap-2 rounded-lg bg-neutral-600 p-5">
+<div class="flex max-h-1/3 grow flex-col gap-2 rounded bg-neutral-600 p-5">
 	<h3>{m.addNewElement()}</h3>
 	<div class="grid grid-cols-3 gap-2 overflow-scroll">
 		<ResinItemSelect

@@ -22,7 +22,7 @@
 	{#each grades as grade, index (grade.name)}
 		<div class="flex w-full grow flex-col gap-2">
 			<div
-				class="flex grow flex-col items-center justify-center gap-2 rounded-lg bg-white p-2 text-xl"
+				class="flex grow flex-col items-center justify-center gap-2 rounded bg-white p-2 text-xl"
 				style="color: rgb({red}, {green}, {blue});"
 			>
 				<span class="flex flex-row gap-1 text-3xl font-medium">

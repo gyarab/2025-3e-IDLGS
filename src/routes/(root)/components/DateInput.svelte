@@ -89,7 +89,7 @@
 							</Button>
 						{:else}
 							<span
-								class="w-8! p-2 text-center text-nowrap italic opacity-70"
+								class="w-8! p-2 text-center text-nowrap italic opacity-80"
 							>
 								{i + 1}
 							</span>

@@ -31,13 +31,13 @@
 		</span>
 		{#if notButton}
 			<div
-				class="flex flex-col {cssClass} rounded-lg! p-2! text-center! font-light!"
+				class="flex flex-col {cssClass} rounded! p-2! text-center! font-light!"
 			>
 				{@render children()}
 			</div>
 		{:else}
 			<Button
-				cssClass="flex flex-col {cssClass} p-0 rounded-lg! font-light! text-center!"
+				cssClass="flex flex-col {cssClass} p-0 rounded! font-light! text-center!"
 				emoji=""
 				btn="button-none"
 				onclick={() => {

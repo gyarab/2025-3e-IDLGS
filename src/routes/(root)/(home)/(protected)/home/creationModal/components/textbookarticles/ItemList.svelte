@@ -23,7 +23,7 @@
 
 <div class="flex min-w-0 grow flex-col">
 	<div
-		class="flex w-full grow flex-col gap-2 rounded-lg bg-neutral-700/40 p-2 shadow-xl"
+		class="flex w-full grow flex-col gap-2 rounded bg-neutral-700/40 p-2 shadow-xl"
 	>
 		<div class="flex w-full grow flex-col gap-2 overflow-scroll">
 			{#key items}
@@ -32,7 +32,7 @@
 						<div
 							class="
 					flex w-full
-					flex-row items-center gap-0 rounded-lg
+					flex-row items-center gap-0 rounded
 					{item == selectedItem ? 'bg-white' : '*:not-hover:text-white *:hover:bg-white'}
 				"
 						>
@@ -78,7 +78,7 @@
 			{/key}
 			<Button
 				btn="button-transparent"
-				cssClass="grow flex flex-col bg-transparent w-full text-white opacity-70 font-light"
+				cssClass="grow flex flex-col bg-transparent w-full text-white opacity-80 font-light"
 				onclick={() => {
 					selectedItem = '';
 					editMode = -1;

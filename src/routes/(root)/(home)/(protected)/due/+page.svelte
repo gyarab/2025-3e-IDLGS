@@ -61,7 +61,7 @@
 					<Assignment {assignment} />
 				{:else}
 					<div
-						class="flex flex-col justify-center items-center w-full grow opacity-70"
+						class="flex flex-col justify-center items-center w-full grow opacity-80"
 					>
 						{m.noAssignmentsPastDeadline()}.
 						{m.goodJob()}
@@ -87,7 +87,7 @@
 					<Assignment {assignment} />
 				{:else}
 					<div
-						class="flex flex-col justify-center items-center w-full grow opacity-70"
+						class="flex flex-col justify-center items-center w-full grow opacity-80"
 					>
 						{m.noAssignmentsDueTodayOrTomorrow()}.
 					</div>
@@ -112,7 +112,7 @@
 					<Assignment {assignment} />
 				{:else}
 					<div
-						class="flex flex-col justify-center items-center w-full grow opacity-70"
+						class="flex flex-col justify-center items-center w-full grow opacity-80"
 					>
 						{m.noOtherAssignmentsDue()}.
 					</div>
