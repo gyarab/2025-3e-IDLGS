@@ -5,13 +5,13 @@ import { eq } from 'drizzle-orm';
 export const load = async (event) => {
 	const cookie = event.cookies.get('session');
 
-	await event.locals.db
-		.delete(schema.userSession)
-		.where(eq(schema.userSession.token, cookie as string));
-
 	event.cookies.set('session', 'not anymore there is a blanket', {
 		path: '/',
 	});
 
-	throw redirect(303, '/');
+	await event.locals.db
+		.delete(schema.userSession)
+		.where(eq(schema.userSession.token, cookie as string));
+
+	redirect(303, '/');
 };

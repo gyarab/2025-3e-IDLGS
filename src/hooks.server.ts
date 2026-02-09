@@ -43,8 +43,6 @@ const handleDatabase: Handle = async ({ event, resolve }) => {
 	event.locals.db = drizzle(
 		postgres(event.platform?.env.HYPERDRIVE.connectionString as string, {
 			prepare: false,
-			max: 1,
-			max_lifetime: 1,
 		}),
 		{ schema: schema },
 	);
