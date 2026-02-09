@@ -41,7 +41,8 @@
 				{definition}
 				bind:successMessage
 				bind:alertMessage
-				highlighted={page.url.searchParams.get('uuid') === definition.uuid}	
+				highlighted={page.url.searchParams.get('uuid') ===
+					definition.uuid}
 			/>
 		{:else}
 			{#if data.isEditor || data.isOwner}

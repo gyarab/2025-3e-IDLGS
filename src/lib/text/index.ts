@@ -44,7 +44,7 @@ export const wordDistance = (a: string, b: string, max: number): number => {
 			//bailout - we build matrix row by row, we can exit
 			//https://www.youtube.com/watch?v=eneSE4vVAOs
 			//video does not have code!
-			if(d[i][j] > max) {
+			if (d[i][j] > max) {
 				return max + 1;
 			}
 		}
@@ -56,7 +56,7 @@ export const wordDistance = (a: string, b: string, max: number): number => {
 //similarity score: (length - changes) / maximum distance
 export const wordSimilarity = (a: string, b: string): number => {
 	const maxLen = Math.max(a.length, b.length);
-	const distance = wordDistance(a, b, maxLen*0.8);
+	const distance = wordDistance(a, b, maxLen * 0.8);
 	if (maxLen === 0) return 1; //both strings are empty
 	return (maxLen - distance) / maxLen;
 };

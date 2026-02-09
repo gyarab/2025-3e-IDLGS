@@ -33,13 +33,13 @@
 >
 	{word}
 
-	<Tooltip 
+	<Tooltip
 		showTooltip={isPopupActive}
 		cssButtonOverride="p-1! flex-row! gap-1!"
 	>
 		{description}
 
-		<a 
+		<a
 			href="/textbook/{page.params.id}/definitions?uuid={uuid}"
 			aria-label={m.viewInDefinitionList()}
 		>

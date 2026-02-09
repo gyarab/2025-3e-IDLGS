@@ -31,14 +31,17 @@ export const loadArticle = async (uuid: string) => {
 		})
 		.from(schema.articleDefinitionIndex)
 		.innerJoin(
-			schema.textbookWordDefinition, 
-			eq(schema.textbookWordDefinition.id, schema.articleDefinitionIndex.definition)
+			schema.textbookWordDefinition,
+			eq(
+				schema.textbookWordDefinition.id,
+				schema.articleDefinitionIndex.definition,
+			),
 		)
 		.where(eq(schema.articleDefinitionIndex.article, result[0].id));
 
 	for (const definition of definitions) {
 		result[0].text = [
-			...result[0].text.slice(0,definition.startIndex), 
+			...result[0].text.slice(0, definition.startIndex),
 			`<span class="definitionMountPlace" data-uuid="${definition.uuid}" data-word="${definition.word}" data-description="${definition.description}"></span>`,
 			...result[0].text.slice(definition.endIndex),
 		].join('');

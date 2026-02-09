@@ -231,7 +231,10 @@ export const loadTextbookText = async (textbookUuid: string) => {
 			chapterUuid: schema.chapter.uuid,
 		})
 		.from(schema.article)
-		.innerJoin(schema.chapter, eq(schema.article.chapter, schema.chapter.id))
+		.innerJoin(
+			schema.chapter,
+			eq(schema.article.chapter, schema.chapter.id),
+		)
 		.where(
 			inArray(
 				schema.article.chapter,
