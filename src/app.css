@@ -43,6 +43,10 @@
 	.button-none {
 		@apply gap-1 p-0! font-light! hover:brightness-100! active:brightness-100!;
 	}
+	/* no paragraph setup */
+	.button-none-p {
+		@apply gap-1 font-light! hover:brightness-100! active:brightness-100!;
+	}
 	.button-primary {
 		@apply bg-linear-to-tr from-violet-800 to-emerald-600 text-white!;
 	}

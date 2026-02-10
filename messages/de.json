@@ -472,5 +472,7 @@
 	"updateDefinition": "Definition aktualisieren",
 	"definitionUpdatedSuccessfully": "Definition erfolgreich aktualisiert",
 	"couldNotUpdateDefinition": "Definition konnte nicht aktualisiert werden",
-	"viewInDefinitionList": "In der Definitionsliste anzeigen"
+	"viewInDefinitionList": "In der Definitionsliste anzeigen",
+	"schoolAdministration": "Schulverwaltung",
+	"lessonPlan": "Stundenplan"
 }

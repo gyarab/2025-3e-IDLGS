@@ -36,6 +36,8 @@
 	<Tooltip
 		showTooltip={isPopupActive}
 		cssButtonOverride="p-1! flex-row! gap-1!"
+		cssClass="bg-violet-800"
+		cssClass2="text-violet-800"
 	>
 		{description}
 

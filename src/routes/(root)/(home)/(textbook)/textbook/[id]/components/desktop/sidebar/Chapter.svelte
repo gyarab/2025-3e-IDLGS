@@ -42,7 +42,7 @@
 </script>
 
 <Form
-	cssClass="flex w-full flex-col gap-0 pr-0 pl-0"
+	cssClass="flex w-full flex-col gap-0 ps-8! p-1 border-collapse!"
 	action=""
 	smallLoadAnimation={true}
 	start={async () => {
@@ -167,39 +167,41 @@
 	</div>
 
 	{#if isOpen}
-		{#each chapter.articlesLimited as article, articleI (article.uuid)}
-			<Article
-				{article}
-				{textbookUuid}
-				chapterUuid={chapter.uuid}
-				{canEdit}
-				{showEditButtons}
-				i={articleI}
-				chapterI={i}
-				amount={chapter.articlesLimited!.length}
-				chapterAmount={amount}
-				bind:formMessage
-				bind:formAlert
-			/>
-		{:else}
-			<div
-				class="flex flex-row w-full gap-1 items-center opacity-80 pl-4 pr-4"
-			>
-				{m.noArticlesInChapter()}
-			</div>
-		{/each}
-
-		{#if canEdit && showEditButtons}
-			<Button
-				btn="button-none w-full *:font-medium ml-4"
-				emoji="add-circle"
-				onclick={() => (addArticleModal = true)}
-			>
-				<div class="flex w-full flex-row gap-1">
-					{m.addAnArticle()}
+		<div class="flex w-full grow flex-col gap-0 *:border-b *:border-t *:border-white/10 border-collapse *:first:border-t-0! *:last:border-b-0!">
+			{#each chapter.articlesLimited as article, articleI (article.uuid)}
+				<Article
+					{article}
+					{textbookUuid}
+					chapterUuid={chapter.uuid}
+					{canEdit}
+					{showEditButtons}
+					i={articleI}
+					chapterI={i}
+					amount={chapter.articlesLimited!.length}
+					chapterAmount={amount}
+					bind:formMessage
+					bind:formAlert
+				/>
+			{:else}
+				<div
+					class="flex flex-row w-full gap-1 items-center opacity-80 pl-4 pr-4"
+				>
+					{m.noArticlesInChapter()}
 				</div>
-			</Button>
-		{/if}
+			{/each}
+
+			{#if canEdit && showEditButtons}
+				<Button
+					btn="button-none w-full *:font-medium ml-4"
+					emoji="add-circle"
+					onclick={() => (addArticleModal = true)}
+				>
+					<div class="flex w-full flex-row gap-1">
+						{m.addAnArticle()}
+					</div>
+				</Button>
+			{/if}
+		</div>
 	{/if}
 </Form>
 

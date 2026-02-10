@@ -472,5 +472,7 @@
 	"updateDefinition": "Aktualizovat definici",
 	"definitionUpdatedSuccessfully": "Definice byla úspěšně aktualizována",
 	"couldNotUpdateDefinition": "Nepodařilo se aktualizovat definici",
-	"viewInDefinitionList": "Zobrazit v seznamu definic"
+	"viewInDefinitionList": "Zobrazit v seznamu definic",
+	"schoolAdministration": "Správa školy",
+	"lessonPlan": "Rozvrh hodin"
 }

@@ -472,5 +472,7 @@
 	"updateDefinition": "Обновить определение",
 	"definitionUpdatedSuccessfully": "Определение успешно обновлено",
 	"couldNotUpdateDefinition": "Не удалось обновить определение",
-	"viewInDefinitionList": "Посмотреть в списке определений"
+	"viewInDefinitionList": "Посмотреть в списке определений",
+	"schoolAdministration": "Администрация школы",
+	"lessonPlan": "Рaсписание уроков"
 }

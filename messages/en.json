@@ -472,5 +472,7 @@
 	"updateDefinition": "Update Definition",
 	"definitionUpdatedSuccessfully": "Definition updated successfully",
 	"couldNotUpdateDefinition": "Could not update definition",
-	"viewInDefinitionList": "View in definition list"
+	"viewInDefinitionList": "View in definition list",
+	"schoolAdministration": "School Administration",
+	"lessonPlan": "Lesson Plan"
 }

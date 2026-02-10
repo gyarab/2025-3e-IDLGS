@@ -472,5 +472,7 @@
 	"updateDefinition": "Zaktualizuj definicję",
 	"definitionUpdatedSuccessfully": "Definicja została pomyślnie zaktualizowana",
 	"couldNotUpdateDefinition": "Nie można zaktualizować definicji",
-	"viewInDefinitionList": "Zobacz na liście definicji"
+	"viewInDefinitionList": "Zobacz na liście definicji",
+	"schoolAdministration": "Administracja szkolna",
+	"lessonPlan": "Plan lekcji"
 }

@@ -3,6 +3,10 @@
 	import WideCard from '$component/WideCard.svelte';
 	import { m } from '$lib/paraglide/messages';
 	import { writeDays } from '$lib/plural';
+	import LessonPlan from './LessonPlan.svelte';
+	import LessonInfo from './LessonInfo.svelte';
+
+	//TODO add lesson plan
 
 	let {
 		user,
@@ -13,9 +17,12 @@
 
 <WideCard>
 	<div
-		class="grid h-[30vh] w-full gap-10 *:flex *:flex-col *:gap-2 max-xl:grid-cols-1 xl:grid-cols-2"
+		class="
+			flex h-[30vh] w-full max-xl:gap-10 xl:gap-4 *:flex *:flex-col *:gap-2 max-xl:flex-col xl:flex-row
+			*:border-e-2 *:border-neutral-500 *:last:border-e-0
+		"
 	>
-		<div>
+		<div class="min-w-1/4">
 			<div class="flex w-full flex-row items-center gap-2">
 				{#if user.extended}
 					<i class="ri-fire-fill text-5xl text-amber-600"></i>
@@ -28,10 +35,16 @@
 				</h2>
 			</div>
 		</div>
-		<div>
+		<div class="min-w-1/3">
 			<div class="flex w-full flex-row items-center gap-2">
 				<i class="ri-calendar-todo-line text-5xl text-neutral-300"></i>
 				<h2>{m.dailyChallenges()}</h2>
+			</div>
+		</div>
+		<div class="grow">
+			<div class="flex w-full flex-row items-center gap-2">
+				<i class="ri-table-line text-5xl text-neutral-300"></i>
+				<h2>{m.lessonPlan()}</h2>
 			</div>
 		</div>
 	</div>

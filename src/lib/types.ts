@@ -28,6 +28,41 @@ export type UserType = {
 	xpWeek: number;
 	xpTotal: number;
 	leagueId: number;
+	parentEmail1: string;
+	parentEmail2: string;
+	schoolTeacher: boolean;
+	schoolDirector: boolean;
+	school?: SchoolType;
+	publicKey: string;
+	readOnlyKey: string;
+	apiKey: string;
+};
+
+export type SchoolType = {
+	name: string;
+	address: string;
+	note: string;
+	descriptor: string;
+	responsiblePerson: string;
+	setup: boolean;
+	publicKey: string;
+};
+
+export type CompanyType = {
+	name: string;
+	address: string;
+	note: string;
+	descriptor: string;
+	responsiblePerson: string;
+	publicKey: string;
+};
+
+export type UserLessonPlanType = {
+	//TODO
+};
+
+export type SchoolLessonPlanType = {
+	//TODO
 };
 
 export type UserRoleType = {

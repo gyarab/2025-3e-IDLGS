@@ -20,7 +20,9 @@
 	} = $props();
 </script>
 
-<div class="sticky left-0 h-[94svh] min-w-1/5 overflow-clip xl:top-[6vh]">
+<div class="
+	sticky left-0 h-[94svh] min-w-1/5 overflow-clip xl:top-[6vh]
+">
 	<WideCard
 		cssAddition="grow rounded-none! border-s-0! border-t-0! border-b-0!"
 		cssOverride="p-5 rounded-none!"
@@ -28,14 +30,21 @@
 		g={data.course.green}
 		b={data.course.blue}
 	>
-		<h2 class="flex flex-row items-center gap-1">
+		<h2 class="
+			flex flex-row items-center gap-1
+			border-b-2 border-white
+		">
 			<i class="ri-file-list-3-line text-3xl"></i>
 			{data.course.name}
 		</h2>
 
-		<div class="flex w-full flex-col gap-0 text-lg">
+		<div class="
+			flex w-full flex-col gap-0 text-lg
+			*:border-b *:border-t *:border-collapse *:border-white/20 *:rounded-none			
+			*:first:border-t-0! *:last:border-b-0! 
+		">
 			<Button
-				btn="button-none w-full"
+				btn="button-none-p w-full p-1!"
 				emoji="home"
 				onclick={() => {
 					goto(`/course/${data.course.uuid}/`);
@@ -47,7 +56,7 @@
 			</Button>
 
 			<Button
-				btn="button-none w-full"
+				btn="button-none-p w-full p-1!"
 				emoji="search"
 				onclick={() => {
 					goto(`/course/${data.course.uuid}/search/`);
@@ -59,7 +68,7 @@
 			</Button>
 
 			<Button
-				btn="button-none w-full"
+				btn="button-none-p w-full p-1!"
 				emoji="group"
 				onclick={() => {
 					goto(`/course/${data.course.uuid}/people/`);
@@ -72,7 +81,7 @@
 
 			{#if data.isOwner || data.isTeacher}
 				<Button
-					btn="button-none w-full"
+					btn="button-none-p w-full p-1!"
 					emoji="calendar-2"
 					onclick={() => {
 						goto(`/course/${data.course.uuid}/plan/`);
@@ -83,7 +92,7 @@
 					</div>
 				</Button>
 				<Button
-					btn="button-none w-full"
+					btn="button-none-p w-full p-1!"
 					emoji="line-chart"
 					onclick={() => {
 						goto(`/course/${data.course.uuid}/grades/`);
@@ -94,7 +103,7 @@
 					</div>
 				</Button>
 				<Button
-					btn="button-none w-full"
+					btn="button-none-p w-full p-1!"
 					emoji="pie-chart"
 					onclick={() => {
 						goto(`/course/${data.course.uuid}/statistics/`);
@@ -107,7 +116,7 @@
 
 				<!-- settings -->
 				<Button
-					btn="button-none w-full"
+					btn="button-none-p w-full p-1!"
 					emoji="settings"
 					onclick={() => {
 						goto(`/course/${data.course.uuid}/settings/`);
@@ -119,7 +128,7 @@
 				</Button>
 			{:else}
 				<Button
-					btn="button-none w-full"
+					btn="button-none-p w-full p-1!"
 					emoji="draft"
 					onclick={() => {
 						goto(`/course/${data.course.uuid}/work/`);

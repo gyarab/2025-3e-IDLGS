@@ -28,7 +28,7 @@
 	class="fixed top-0 left-0 z-50! flex h-[6svh] w-full flex-col items-center justify-center bg-violet-900 max-xl:hidden print:hidden"
 >
 	<div
-		class="3xl:gap-10 fixed z-40! flex flex-row items-center font-medium text-white! *:flex-nowrap *:text-nowrap xl:gap-2 2xl:gap-6"
+		class="w-6/8 grow 3xl:gap-10 fixed z-40! flex flex-row items-center font-medium text-white! *:flex-nowrap *:text-nowrap xl:gap-2 2xl:gap-6"
 	>
 		<Logo whiteBackground={false} />
 
@@ -54,27 +54,13 @@
 		</NavbarLink>
 
 		<NavbarLink
-			link="/study"
-			emoji="book-open"
+			link="/admin"
+			emoji="school"
 		>
-			{m.selfStudying()}
+			{m.schoolAdministration()}
 		</NavbarLink>
 
 		<div class="grow"></div>
-
-		<!-- if admin: show admin page -->
-		{#if user.admin}
-			<NavbarLink
-				link="/admin"
-				emoji="government"
-			>
-				{m.administration()}
-			</NavbarLink>
-
-			<div class="grow"></div>
-		{/if}
-
-		<!-- clicking both user and settings icon redirects to settings -->
 
 		<NavbarLink
 			link="/settings"
@@ -83,14 +69,6 @@
 			<span>{writeDegree(user.degree)}</span>
 			<span>{user.name}</span>
 			<span>{user.surname}</span>
-		</NavbarLink>
-
-		<NavbarLink
-			link="/settings"
-			emoji="settings"
-			classCss="max-2xl:hidden"
-		>
-			{m.settings()}
 		</NavbarLink>
 
 		<NavbarLink
