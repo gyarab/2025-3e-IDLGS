@@ -4,7 +4,7 @@
 	import TextInput from '$component/TextInput.svelte';
 	import LoadingAnimationHandler from '$component/LoadingAnimationHandler.svelte';
 	import { searchInText, searchPreprocess } from '$lib/text/index.js';
-	import Button from '$src/routes/(root)/components/Button.svelte';
+	import Button from '$component/Button.svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 

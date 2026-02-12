@@ -21,7 +21,7 @@ Author: Martin Bykov
 
 <button
 	class="
-	flex flex-row items-end gap-2 rounded-xl p-2
+	flex flex-row items-end gap-2 rounded-lg p-2
 	{uuidVariable == el.uuid ? 'bg-blue-900' : 'bg-neutral-500'}
 	hover:bg-blue-900
 	"

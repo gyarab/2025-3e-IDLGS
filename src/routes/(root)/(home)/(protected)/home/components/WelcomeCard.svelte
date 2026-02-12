@@ -15,11 +15,7 @@
 	} = $props();
 </script>
 
-<WideCard
-	r={120}
-	g={120}
-	b={120}
->
+<WideCard>
 	<div
 		class="
 			flex h-[30svh] w-full *:flex *:flex-col *:gap-2 *:border-e-2 *:border-neutral-500 *:last:border-e-0 max-xl:flex-col
@@ -27,23 +23,32 @@
 		"
 	>
 		<div class="min-w-1/4">
-			<div class="flex w-full flex-row items-center gap-2">
-				{#if user.extended}
-					<i class="ri-fire-fill text-5xl text-amber-600"></i>
-				{:else}
-					<i class="ri-fire-line text-5xl text-neutral-300"></i>
-				{/if}
-				<h2>
-					{m.streak()}: {user.streak}
-					{writeDays(user.streak)}
-				</h2>
-			</div>
+			{#if user.gamification && !user.schoolDirector && !user.schoolTeacher}
+				<div class="flex w-full flex-row items-center gap-2">
+					{#if user.extended}
+						<i class="ri-fire-fill text-5xl text-amber-600"></i>
+					{:else}
+						<i class="ri-fire-line text-5xl text-neutral-300"></i>
+					{/if}
+					<h2>
+						{m.streak()}: {user.streak}
+						{writeDays(user.streak)}
+					</h2>
+				</div>
+			{:else}
+				<div class="flex w-full flex-row items-center gap-2"></div>
+			{/if}
 		</div>
 		<div class="min-w-1/3">
-			<div class="flex w-full flex-row items-center gap-2">
-				<i class="ri-calendar-todo-line text-5xl text-neutral-300"></i>
-				<h2>{m.dailyChallenges()}</h2>
-			</div>
+			{#if !user.schoolDirector && !user.schoolTeacher}
+				<div class="flex w-full flex-row items-center gap-2">
+					<i class="ri-calendar-todo-line text-5xl text-neutral-300"
+					></i>
+					<h2>{m.dailyChallenges()}</h2>
+				</div>
+			{:else}
+				<div class="flex w-full flex-row items-center gap-2"></div>
+			{/if}
 		</div>
 		<div class="grow">
 			<div class="flex w-full flex-row items-center gap-2">

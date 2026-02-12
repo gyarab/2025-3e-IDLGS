@@ -14,15 +14,15 @@
 	});
 </script>
 
-<!-- 94svh because header is 4svh (mobile is 8) -->
+<!-- 96svh because header is 4svh (mobile is 8) -->
 {#if ready}
 	{#key ready}
 		<div
-			class="relative flex w-full flex-col items-center justify-center gap-6 overflow-hidden bg-blue-900 text-neutral-100 *:z-3 max-xl:min-h-[92svh] xl:min-h-[94svh]"
+			class="relative flex w-full flex-col items-center justify-center gap-6 overflow-hidden bg-blue-900 text-neutral-100 *:z-3 max-xl:min-h-[92svh] xl:min-h-[96svh]"
 		>
 			<!-- bg image -->
 			<div
-				class="absolute z-1! h-[94svh] max-h-[94svh] min-h-[94svh] w-screen max-w-screen min-w-screen {getImageBackgroundClassRaw(
+				class="absolute z-1! h-[96svh] max-h-[96svh] min-h-[96asvh] w-screen max-w-screen min-w-screen {getImageBackgroundClassRaw(
 					1,
 				)}"
 			></div>

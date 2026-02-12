@@ -121,6 +121,7 @@
 				onclick={() => {
 					isOpen = !isOpen;
 				}}
+				label={isOpen ? m.collapse() : m.expand()}
 			/>
 			{#if canEdit && showEditButtons}
 				<div class="grow"></div>

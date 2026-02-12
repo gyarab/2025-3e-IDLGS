@@ -3,9 +3,9 @@
 	import { fly } from 'svelte/transition';
 
 	let {
-		r = 120,
-		g = 120,
-		b = 120,
+		r = 100,
+		g = 100,
+		b = 100,
 		borderr = r,
 		borderg = g,
 		borderb = b,
@@ -35,7 +35,7 @@
 	w-full flex-col
 	gap-2 border-2 shadow-xl hover:shadow-2xl
 	{cssParentOverride} {cssAddition}
-	max-xl:border-s-0! max-xl:border-e-0! max-xl:p-0! xl:rounded-xl
+	max-xl:border-s-0! max-xl:border-e-0! max-xl:p-0! xl:rounded-lg
 		"
 	style="background-color: rgb({r} {g} {b} / 50%); border-color: rgb({borderr} {borderg} {borderb});"
 	in:fly|global={{

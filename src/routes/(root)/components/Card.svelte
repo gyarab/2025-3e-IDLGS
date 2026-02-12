@@ -5,9 +5,9 @@
 
 	let {
 		children,
-		r = 120,
-		g = 120,
-		b = 120,
+		r = 100,
+		g = 100,
+		b = 100,
 		delay = 0,
 		perspective,
 		onclick = () => {},

@@ -76,7 +76,7 @@
 			? m.addPeopleToCourse()
 			: m.addAuthorsToTextbook()}
 	</h2>
-	<div class="flex grow flex-col gap-2 rounded-xl bg-neutral-700/40 p-2">
+	<div class="flex grow flex-col gap-2 rounded-lg bg-neutral-700/40 p-2">
 		<span class="group relative flex w-full flex-col gap-2">
 			<TextInput
 				bind:value={query}

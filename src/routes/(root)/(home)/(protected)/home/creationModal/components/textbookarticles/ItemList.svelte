@@ -23,7 +23,7 @@
 
 <div class="flex min-w-0 grow flex-col">
 	<div
-		class="flex w-full grow flex-col gap-2 rounded-xl bg-neutral-700/40 p-2 shadow-xl"
+		class="flex w-full grow flex-col gap-2 rounded-lg bg-neutral-700/40 p-2 shadow-xl"
 	>
 		<div class="flex w-full grow flex-col gap-2 overflow-scroll">
 			{#key items}

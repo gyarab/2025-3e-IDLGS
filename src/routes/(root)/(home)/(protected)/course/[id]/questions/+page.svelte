@@ -13,6 +13,12 @@
 	} = $props();
 </script>
 
+<svelte:head>
+	<title>
+		{m.questionsList()} - {data.course.name} - {m.textbookNameShort()}
+	</title>
+</svelte:head>
+
 <WideCard
 	cssAddition="grow"
 	r={80 + data.course.red / 5}

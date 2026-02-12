@@ -1,7 +1,7 @@
 <script lang="ts">
 	import WideCard from '$component/WideCard.svelte';
 	import type { CourseType } from '$lib/types';
-	import Button from '$src/routes/(root)/components/Button.svelte';
+	import Button from '$component/Button.svelte';
 	import { goto } from '$app/navigation';
 	import { m } from '$lib/paraglide/messages';
 	import ExercisesDueBox from './sub/ExercisesDueBox.svelte';
@@ -22,7 +22,7 @@
 
 <div
 	class="
-	sticky left-0 h-[94svh] max-h-[94svh] min-w-1/5 overflow-clip xl:top-[4svh]
+	sticky left-0 h-[96svh] max-h-[96svh] min-w-1/5 overflow-clip top-0
 "
 >
 	<WideCard

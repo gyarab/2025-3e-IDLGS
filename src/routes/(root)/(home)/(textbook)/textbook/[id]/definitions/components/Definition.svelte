@@ -6,8 +6,8 @@
 	import Form from '$component/Form.svelte';
 	import Modal from '$component/Modal.svelte';
 	import WideCard from '$component/WideCard.svelte';
-	import TextInput from '$src/routes/(root)/components/TextInput.svelte';
-	import HiddenInput from '$src/routes/(root)/components/HiddenInput.svelte';
+	import TextInput from '$component/TextInput.svelte';
+	import HiddenInput from '$component/HiddenInput.svelte';
 
 	let {
 		definition,
@@ -26,7 +26,7 @@
 
 <WideCard
 	cssOverride="
-		flex flex-row w-full items-center gap-0 p-0! rounded-xl
+		flex flex-row w-full items-center gap-0 p-0! rounded-lg
 		{highlighted ? 'bg-yellow-500/70 border-yellow-500 ' : ''}
 	"
 	cssParentOverride="border-0!"

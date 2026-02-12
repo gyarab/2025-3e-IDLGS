@@ -3,9 +3,9 @@
 	import WideCard from '$component/WideCard.svelte';
 	import type { TextbookType } from '$lib/types';
 	import type { ArticleType } from '$lib/types';
-	import Form from '$src/routes/(root)/components/Form.svelte';
-	import Button from '$src/routes/(root)/components/Button.svelte';
-	import Textarea from '$src/routes/(root)/components/Textarea.svelte';
+	import Form from '$component/Form.svelte';
+	import Button from '$component/Button.svelte';
+	import Textarea from '$component/Textarea.svelte';
 	import { mount, onMount } from 'svelte';
 	import WordTooltip from '../../components/WordTooltip.svelte';
 

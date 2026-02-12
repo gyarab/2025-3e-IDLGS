@@ -5,8 +5,8 @@
 	import Form from '$component/Form.svelte';
 	import Modal from '$component/Modal.svelte';
 	import TextInput from '$component/TextInput.svelte';
-	import SuccessBox from '$src/routes/(root)/components/SuccessBox.svelte';
-	import AlertBox from '$src/routes/(root)/components/AlertBox.svelte';
+	import SuccessBox from '$component/SuccessBox.svelte';
+	import AlertBox from '$component/AlertBox.svelte';
 	import Definition from './components/Definition.svelte';
 	import { page } from '$app/state';
 

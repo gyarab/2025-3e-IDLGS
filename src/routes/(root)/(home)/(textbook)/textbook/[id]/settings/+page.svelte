@@ -5,7 +5,7 @@
 	import UnsavedChangesBox from '$component/UnsavedChangesBox.svelte';
 	import WideCard from '$component/WideCard.svelte';
 	import { setInputCallbacks } from '$lib';
-	import Button from '$src/routes/(root)/components/Button.svelte';
+	import Button from '$component/Button.svelte';
 
 	let { data } = $props();
 

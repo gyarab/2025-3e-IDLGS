@@ -58,6 +58,7 @@
 	"dependencies": {
 		"@cloudflare/workers-types": "^4.20260117.0",
 		"@sveltejs/adapter-cloudflare": "^7.2.4",
+		"chart.js": "^4.5.1",
 		"cloudinary": "^2.9.0",
 		"highlight.js": "^11.11.1",
 		"katex": "^0.16.27",

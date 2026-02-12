@@ -156,7 +156,7 @@ Author: Martin Bykov
 
 		<ResinElementAddition {el} />
 
-		<div class="flex grow flex-col gap-2 rounded-xl bg-neutral-600 p-5">
+		<div class="flex grow flex-col gap-2 rounded-lg bg-neutral-600 p-5">
 			<h3>{m.currentlyAddedElements()}</h3>
 			{#key el}
 				{#each el?.elements as element (element.uuid)}
@@ -173,7 +173,7 @@ Author: Martin Bykov
 				{/each}
 			{/key}
 		</div>
-		<div class="flex grow flex-col gap-2 rounded-xl bg-neutral-600 p-5">
+		<div class="flex grow flex-col gap-2 rounded-lg bg-neutral-600 p-5">
 			<h3>{m.manageElement()}</h3>
 			<div class="flex flex-row gap-2">
 				{m.aspectRatio()}
@@ -258,7 +258,7 @@ Author: Martin Bykov
 		class="flex grow-20 flex-col items-center justify-center gap-2 bg-linear-to-tr from-blue-900 to-cyan-600"
 	>
 		<div
-			class="relative max-h-screen rounded-xl bg-white"
+			class="relative max-h-screen rounded-lg bg-white"
 			bind:clientWidth={elementWidthShowValue}
 			bind:clientHeight={elementHeightShowValue}
 			style="width: {elementWidthShowValue}px; height: {elementHeightShowValue}px;"

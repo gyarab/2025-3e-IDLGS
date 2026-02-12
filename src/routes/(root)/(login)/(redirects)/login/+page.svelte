@@ -88,7 +88,7 @@
 						{m.forgotPassword()}
 						<a
 							href="/forgot/"
-							class="text-violet-300"
+							class="text-blue-300"
 						>
 							{m.reset()}
 						</a>

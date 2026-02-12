@@ -3,7 +3,7 @@
 	import Button from '$component/Button.svelte';
 	import Tooltip from '$component/Tooltip.svelte';
 	import { m } from '$lib/paraglide/messages';
-	import HoverEmoji from '$src/routes/(root)/components/HoverEmoji.svelte';
+	import HoverEmoji from '$component/HoverEmoji.svelte';
 
 	let {
 		description,

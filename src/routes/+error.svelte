@@ -16,7 +16,7 @@ relative flex w-full grow flex-col items-center
 justify-center bg-linear-to-tr from-cyan-600 to-blue-900
 "
 >
-	<div class="flex flex-col gap-2 rounded-xl bg-white p-5">
+	<div class="flex flex-col gap-2 rounded-lg bg-white p-5">
 		<div class="text-xl text-blue-900">
 			{m.anErrorOccurred()}:
 		</div>

@@ -64,7 +64,7 @@
 
 		<Button
 			emoji="login-box"
-			btn="button-blue"
+			btn="button-blue p-1! ps-2! pe-2!"
 			onclick={() => {
 				goto('/login', {
 					invalidateAll: true,

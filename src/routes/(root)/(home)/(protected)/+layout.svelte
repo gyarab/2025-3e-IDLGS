@@ -15,7 +15,9 @@
 	} = $props();
 </script>
 
-{@render children()}
+<div class="flex flex-col grow min-h-screen">
+	{@render children()}
+</div>
 
 {#if data.messages.length > 0}
 	<MessageModal messages={data.messages} />
