@@ -40,7 +40,7 @@
 		"@types/nodemailer": "^7.0.5",
 		"drizzle-kit": "^0.31.8",
 		"drizzle-orm": "^0.45.0",
-		"eslint": "^9.38.0",
+		"eslint": "^10.0.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.12.4",
 		"globals": "^17.0.0",
