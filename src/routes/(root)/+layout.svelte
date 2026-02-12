@@ -35,7 +35,7 @@
 		{:else}
 			<Navbar />
 		{/if}
-		<div class="relative flex w-full grow flex-col max-w-screen">
+		<div class="relative flex w-full max-w-screen grow flex-col">
 			{@render children()}
 		</div>
 		<Footer user={data.user} />

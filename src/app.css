@@ -35,12 +35,12 @@
 		@apply text-xl font-medium;
 	}
 	h4 {
-		@apply text-lg font-medium
+		@apply text-lg font-medium;
 	}
 	/* .button == button */
 	button,
 	.button {
-		@apply flex flex-row items-center justify-center gap-1 rounded-lg font-medium transition-all duration-200 hover:brightness-80 active:brightness-60 disabled:brightness-60 p-2;
+		@apply flex flex-row items-center justify-center gap-1 rounded-lg p-2 font-medium transition-all duration-200 hover:brightness-80 active:brightness-60 disabled:brightness-60;
 	}
 	.button-none {
 		@apply gap-1 p-0! font-light! hover:brightness-100! active:brightness-100!;

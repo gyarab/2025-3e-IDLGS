@@ -278,7 +278,7 @@
 						{m.teachersPay()}
 					</div>
 				</Button>
-			
+
 				<!-- maintenance -->
 				<Button
 					btn="button-none"
@@ -316,7 +316,7 @@
 					<div class="flex w-full flex-row gap-1">
 						{m.schoolBudget()}
 					</div>
-				</Button>	
+				</Button>
 
 				<!-- billing information -->
 				<Button

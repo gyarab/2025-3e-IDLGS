@@ -21,9 +21,7 @@
 	*:flex-col
 "
 >
-	<AdminSidebar
-
-	/>
+	<AdminSidebar />
 	<AdminContentPositioning>
 		{@render children()}
 	</AdminContentPositioning>

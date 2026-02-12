@@ -19,7 +19,10 @@
 	} = $props();
 </script>
 
-<div id="loggedInNavbarMobileFill" class="w-full h-[8svh]"></div>
+<div
+	id="loggedInNavbarMobileFill"
+	class="h-[8svh] w-full"
+></div>
 <nav
 	id="loggedInNavbarMobile"
 	class="fixed bottom-0 left-0 z-50! flex h-[8svh]

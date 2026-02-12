@@ -33,7 +33,9 @@
 		/>
 	</div>
 	{#if isOpen}
-		<div class="flex flex-col gap-0 ps-4 *:border-t *:border-b *:border-white/10 *:first:border-t-0! *:last:border-b-0! opacity-80">
+		<div
+			class="flex flex-col gap-0 ps-4 opacity-80 *:border-t *:border-b *:border-white/10 *:first:border-t-0! *:last:border-b-0!"
+		>
 			{@render children()}
 		</div>
 	{/if}

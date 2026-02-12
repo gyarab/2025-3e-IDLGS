@@ -22,7 +22,7 @@
 
 <div
 	class="
-	sticky left-0 h-[96svh] max-h-[96svh] min-w-1/5 overflow-clip top-0
+	sticky top-0 left-0 h-[96svh] max-h-[96svh] min-w-1/5 overflow-clip
 "
 >
 	<WideCard

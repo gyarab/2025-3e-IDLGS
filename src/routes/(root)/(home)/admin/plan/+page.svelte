@@ -1,10 +1,8 @@
 <script lang="ts">
-	import { m } from "$lib/paraglide/messages";
-	import WideCard from "$component/WideCard.svelte";
+	import { m } from '$lib/paraglide/messages';
+	import WideCard from '$component/WideCard.svelte';
 </script>
 
-<WideCard
-	cssAddition="grow"
->
+<WideCard cssAddition="grow">
 	<div></div>
 </WideCard>

@@ -15,7 +15,7 @@
 	} = $props();
 </script>
 
-<div class="flex flex-col grow min-h-screen">
+<div class="flex min-h-screen grow flex-col">
 	{@render children()}
 </div>
 
