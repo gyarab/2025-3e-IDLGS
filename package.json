@@ -62,7 +62,7 @@
 		"cloudinary": "^2.9.0",
 		"highlight.js": "^11.11.1",
 		"katex": "^0.16.27",
-		"markdown-it": "^14.1.0",
+		"markdown-it": "^14.1.1",
 		"postgres": "^3.4.7",
 		"remixicon": "^4.9.1"
 	}
