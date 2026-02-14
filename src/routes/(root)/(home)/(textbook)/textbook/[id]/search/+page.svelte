@@ -117,7 +117,9 @@
 					</Button>
 				</WideCard>
 			{:else}
-				<div class="flex flex-row w-full items-center justify-center grow">
+				<div
+					class="flex flex-row w-full items-center justify-center grow"
+				>
 					<!-- TODO -->
 				</div>
 			{/each}

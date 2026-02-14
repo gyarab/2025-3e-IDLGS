@@ -38,7 +38,9 @@ export const formRunner = async (
 	if (additionalFields) {
 		for (let i = 0; i < additionalFields.length; i++)
 			if (formData.has(additionalFields[i]))
-				object[additionalFields[i]] = formData.get(additionalFields[i])?.toString();
+				object[additionalFields[i]] = formData
+					.get(additionalFields[i])
+					?.toString();
 	}
 
 	const value = await runner(

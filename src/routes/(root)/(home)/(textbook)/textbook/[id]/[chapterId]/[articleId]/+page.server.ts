@@ -13,12 +13,12 @@ export const actions = {
 		return await formRunner(
 			[],
 			async (event, formData, cookies, user) => {
-				if (!(
-					await isUserAuthorizedTextbook(
+				if (
+					!(await isUserAuthorizedTextbook(
 						event.params.id!,
 						user.uuid,
-					)
-				)) {
+					))
+				) {
 					return fail(403);
 				}
 
@@ -37,19 +37,28 @@ export const actions = {
 				const definitions = await event.locals.db
 					.select()
 					.from(schema.textbookWordDefinition)
-					.innerJoin(schema.textbook, eq(schema.textbook.id, schema.textbookWordDefinition.textbook))
+					.innerJoin(
+						schema.textbook,
+						eq(
+							schema.textbook.id,
+							schema.textbookWordDefinition.textbook,
+						),
+					)
 					.where(eq(schema.textbook.uuid, event.params.id!));
 
 				try {
-					const article = (await event.locals.db
-						.update(schema.article)
-						.set(object)
-						.where(
-							eq(
-								schema.article.uuid,
-								event.params.articleId!,
-							),
-						).returning())[0];
+					const article = (
+						await event.locals.db
+							.update(schema.article)
+							.set(object)
+							.where(
+								eq(
+									schema.article.uuid,
+									event.params.articleId!,
+								),
+							)
+							.returning()
+					)[0];
 
 					const words = searchPreprocess(article.text);
 
@@ -58,14 +67,16 @@ export const actions = {
 						adis.push(
 							...searchInText(
 								definition.textbookWordDefinition.word,
-								words
+								words,
 							).map((res: SearchResultType) => {
-								console.log(`Definition "${definition.textbookWordDefinition.word}" found at ${res.start}-${res.end}`);
+								console.log(
+									`Definition "${definition.textbookWordDefinition.word}" found at ${res.start}-${res.end}`,
+								);
 								return {
 									...res,
 									id: definition.textbookWordDefinition.id!,
-								}
-							})
+								};
+							}),
 						);
 					}
 
@@ -82,14 +93,16 @@ export const actions = {
 
 							await tx
 								.insert(schema.articleDefinitionIndex)
-								.values(adis.map((adi: SearchResultType) => {
-									return {
-										article: article.id!,
-										startIndex: adi.start,
-										endIndex: adi.end,
-										definition: adi.id!,
-									}
-								}));
+								.values(
+									adis.map((adi: SearchResultType) => {
+										return {
+											article: article.id!,
+											startIndex: adi.start,
+											endIndex: adi.end,
+											definition: adi.id!,
+										};
+									}),
+								);
 						});
 					}
 				} catch (e) {
@@ -98,7 +111,7 @@ export const actions = {
 				}
 			},
 			false,
-			['name', 'content']
+			['name', 'content'],
 		);
 	},
 };

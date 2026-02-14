@@ -32,9 +32,11 @@ export const lessonPlanItem = pgTable('lessonPlanItem', {
 		.$defaultFn(() => new Date()),
 	additionalNote: text('additionalNote').notNull().default(''),
 	subject: text('subject').notNull().default(''),
-	teacher: integer('teacher').references(() => user.id, {
-		onDelete: 'cascade',
-	}).notNull(),
+	teacher: integer('teacher')
+		.references(() => user.id, {
+			onDelete: 'cascade',
+		})
+		.notNull(),
 	uuid: text('uuid')
 		.notNull()
 		.$defaultFn(() => crypto.randomUUID()),

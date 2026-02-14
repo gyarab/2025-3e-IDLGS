@@ -58,7 +58,8 @@ export const wordSimilarity = (a: string, b: string): number => {
 export const searchPreprocess = (text: string): string[] => {
 	return text
 		.toLocaleLowerCase()
-		.normalize('NFD').replaceAll(/[\u0300-\u036f]/g, '') //remove accents (normalize + remove Unicode block) - https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript
+		.normalize('NFD')
+		.replaceAll(/[\u0300-\u036f]/g, '') //remove accents (normalize + remove Unicode block) - https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript
 		.replaceAll(/\$([^\$]+)\$/gmsu, (match) => {
 			return '?'.repeat(match.length);
 		}) //remove math
@@ -76,7 +77,11 @@ export const searchInText = (
 ): SearchResultType[] => {
 	if (query.length >= 30) return [];
 
-	const queries: string[] = query.toLocaleLowerCase().normalize('NFD').replaceAll(/[\u0300-\u036f]/g, '').split(' ');
+	const queries: string[] = query
+		.toLocaleLowerCase()
+		.normalize('NFD')
+		.replaceAll(/[\u0300-\u036f]/g, '')
+		.split(' ');
 
 	let results: SearchResultType[] = [];
 	let letterId = 0;
@@ -93,16 +98,21 @@ export const searchInText = (
 			if (word.length === 0) {
 				letterId += 1;
 				wordId += 1;
-				if(wordId + wordOffset >= words.length) break;
+				if (wordId + wordOffset >= words.length) break;
 				continue;
 			}
 
 			word = words[wordId + wordOffset];
-			if(wordOffset === 0) {
+			if (wordOffset === 0) {
 				startLetterId = letterId;
 			}
 
-			console.log(`Comparing "${word}" with "${queries[wordOffset]}"`, wordOffset, startLetterId, letterId);
+			console.log(
+				`Comparing "${word}" with "${queries[wordOffset]}"`,
+				wordOffset,
+				startLetterId,
+				letterId,
+			);
 
 			//first character
 			//4 characters from the word is too much
@@ -134,8 +144,7 @@ export const searchInText = (
 				letterId += word.length;
 				letterId += 1;
 				wordOffset += 1;
-			}
-			else {
+			} else {
 				console.log(`Chain break`);
 				break;
 			}

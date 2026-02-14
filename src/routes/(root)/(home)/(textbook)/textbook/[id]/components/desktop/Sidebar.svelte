@@ -62,7 +62,9 @@
 	let formAlert: string = $state('');
 </script>
 
-<div class="sticky top-[4svh] left-0 h-[96svh] max--h-[96svh] min-w-1/5 overflow-clip">
+<div
+	class="max--h-[96svh] sticky top-[4svh] left-0 h-[96svh] min-w-1/5 overflow-clip"
+>
 	<WideCard
 		cssAddition="grow rounded-none! border-s-0! border-s-0! border-t-0! border-b-0! overflow-scroll"
 		r={textbook.red / 5 + 80}

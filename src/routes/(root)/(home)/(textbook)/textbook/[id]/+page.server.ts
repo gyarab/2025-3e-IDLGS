@@ -28,14 +28,14 @@ export const actions = {
 				const name = formData['name']?.trim();
 				const description = formData['description']?.trim();
 
-				if(!name && !description) return fail(400);
+				if (!name && !description) return fail(400);
 
-				let object: {[key: string]: string | Date} = {
+				let object: { [key: string]: string | Date } = {
 					modifiedAt: new Date(),
 				};
 
-				if(name) object['name'] = name;
-				if(description) object['description'] = description;
+				if (name) object['name'] = name;
+				if (description) object['description'] = description;
 
 				try {
 					await event.locals.db
@@ -48,7 +48,7 @@ export const actions = {
 				}
 			},
 			false,
-			['name', 'description']
+			['name', 'description'],
 		);
 	},
 	addChapter: async () => {

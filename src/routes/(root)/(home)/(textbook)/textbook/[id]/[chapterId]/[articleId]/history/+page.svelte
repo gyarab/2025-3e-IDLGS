@@ -1,6 +1,6 @@
 <script lang="ts">
-	import WideCard from "$src/routes/(root)/components/WideCard.svelte";
-	import type { TextbookType, ArticleType } from "$lib/types";
+	import WideCard from '$src/routes/(root)/components/WideCard.svelte';
+	import type { TextbookType, ArticleType } from '$lib/types';
 
 	let {
 		data,
@@ -12,7 +12,7 @@
 	} = $props();
 </script>
 
-<WideCard 
+<WideCard
 	cssAddition="grow"
 	r={data.textbook.red / 5 + 80}
 	g={data.textbook.green / 5 + 80}
