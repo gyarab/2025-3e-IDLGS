@@ -508,5 +508,8 @@
 	"inventory": "Inventář",
 	"employees": "Zaměstnanci",
 	"disciplinaryMeasures": "Výchovná opatření",
-	"itAdministration": "Správa IT"
+	"itAdministration": "Správa IT",
+	"articleContentUpdatedSuccessfully": "Obsah článku byl úspěšně aktualizován",
+	"chapterDescriptionUpdatedSuccessfully": "Popis kapitoly byl úspěšně aktualizován",
+	"articleNameUpdatedSuccessfully": "Název článku byl úspěšně aktualizován"
 }

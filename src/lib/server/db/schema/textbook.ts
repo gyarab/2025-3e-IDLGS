@@ -71,6 +71,8 @@ export const article = pgTable('article', {
 	name: text('name').notNull(),
 	text: text('text').notNull(),
 	order: integer('order').notNull().default(0),
+	modifiedAt: timestamp('modifiedAt').default(new Date()).notNull(),
+	createdAt: timestamp('createdAt').default(new Date()).notNull(),
 });
 
 export const textbookWordDefinition = pgTable('textbookWordDefinition', {

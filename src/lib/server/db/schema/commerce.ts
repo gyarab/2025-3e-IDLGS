@@ -6,6 +6,7 @@ import {
 	boolean,
 } from 'drizzle-orm/pg-core';
 import { user } from './user';
+import { school } from './school';
 
 export const productKey = pgTable('productKey', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
@@ -36,20 +37,6 @@ export const purchase = pgTable('purchase', {
 	time: timestamp('time')
 		.notNull()
 		.$defaultFn(() => new Date()),
-});
-
-export const school = pgTable('school', {
-	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
-	name: text('name').notNull().default(''),
-	address: text('address').notNull().default(''),
-	note: text('note').notNull().default(''),
-	descriptor: text('descriptor').notNull().default(''),
-	responsiblePerson: text('responsiblePerson').notNull().default(''),
-	//if not show OOBE
-	setup: boolean('setup').notNull().default(false),
-	publicKey: text('publicKey')
-		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
 });
 
 export const company = pgTable('company', {

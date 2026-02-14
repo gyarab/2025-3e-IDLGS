@@ -508,5 +508,8 @@
 	"inventory": "Инвентарь",
 	"employees": "Сотрудники",
 	"disciplinaryMeasures": "Дисциплинарные меры",
-	"itAdministration": "ИТ-администрирование"
+	"itAdministration": "ИТ-администрирование",
+	"articleContentUpdatedSuccessfully": "Содержание статьи успешно обновлено",
+	"chapterDescriptionUpdatedSuccessfully": "Описание главы успешно обновлено",
+	"articleNameUpdatedSuccessfully": "Название статьи успешно обновлено"
 }

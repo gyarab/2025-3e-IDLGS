@@ -6,7 +6,7 @@ import {
 	date,
 	boolean,
 } from 'drizzle-orm/pg-core';
-import { school } from './commerce';
+import { school } from './school';
 
 //TODO encrypt name, surname, parent emails, email, degree
 

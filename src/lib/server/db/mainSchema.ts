@@ -7,6 +7,7 @@ import * as user from './schema/user';
 import * as privacy from './schema/privacy';
 import * as statistics from './schema/statistics';
 import * as commerce from './schema/commerce';
+import * as school from './schema/school';
 
 export const schema = {
 	...course,
@@ -18,4 +19,5 @@ export const schema = {
 	...privacy,
 	...statistics,
 	...commerce,
+	...school,
 };

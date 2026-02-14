@@ -12,9 +12,9 @@ export const load = async (event) => {
 };
 
 export const actions = {
-	updateName: async (event) => {
+	update: async () => {
 		return await formRunner(
-			['uuid', 'name'],
+			[],
 			async (event, formData, cookies, user) => {
 				if (
 					(await isUserAuthorizedTextbook(
@@ -25,47 +25,30 @@ export const actions = {
 					return fail(403);
 				}
 
-				try {
-					await event.locals.db
-						.update(schema.textbook)
-						.set({
-							name: formData['name'],
-							modifiedAt: new Date(),
-						})
-						.where(eq(schema.textbook.uuid, formData['uuid']));
-				} catch (e) {
-					writeLog(event, 'ERROR', 'DB error', user);
-					return fail(500);
-				}
-			},
-		);
-	},
-	updateDescription: async (event) => {
-		return await formRunner(
-			['uuid', 'description'],
-			async (event, formData, cookies, user) => {
-				if (
-					(await isUserAuthorizedTextbook(
-						event.params.id!,
-						user.uuid,
-					)) === false
-				) {
-					return fail(403);
-				}
+				const name = formData['name']?.trim();
+				const description = formData['description']?.trim();
+
+				if(!name && !description) return fail(400);
+
+				let object: {[key: string]: string | Date} = {
+					modifiedAt: new Date(),
+				};
+
+				if(name) object['name'] = name;
+				if(description) object['description'] = description;
 
 				try {
 					await event.locals.db
 						.update(schema.textbook)
-						.set({
-							description: formData['description'],
-							modifiedAt: new Date(),
-						})
-						.where(eq(schema.textbook.uuid, formData['uuid']));
+						.set(object)
+						.where(eq(schema.textbook.uuid, event.params.id!));
 				} catch (e) {
 					writeLog(event, 'ERROR', 'DB error', user);
 					return fail(500);
 				}
 			},
+			false,
+			['name', 'description']
 		);
 	},
 	addChapter: async () => {

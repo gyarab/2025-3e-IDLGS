@@ -132,9 +132,11 @@ export type ArticleLimitedType = {
 };
 
 export type ArticleType = {
+	id?: number;
 	uuid: string;
 	name: string;
 	text: string;
+	textRaw?: string;
 	order: number;
 };
 

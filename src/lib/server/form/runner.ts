@@ -15,6 +15,7 @@ export const formRunner = async (
 		formDataRaw: FormData,
 	) => Promise<ActionFailure | unknown>,
 	ignoreUser: boolean = false,
+	additionalFields: string[] = [],
 ) => {
 	const event = getRequestEvent();
 
@@ -33,6 +34,11 @@ export const formRunner = async (
 	let object: { [key: string]: any } = {};
 	for (let i = 0; i < requiredFields.length; i++) {
 		object[requiredFields[i]] = formData.get(requiredFields[i])?.toString();
+	}
+	if (additionalFields) {
+		for (let i = 0; i < additionalFields.length; i++)
+			if (formData.has(additionalFields[i]))
+				object[additionalFields[i]] = formData.get(additionalFields[i])?.toString();
 	}
 
 	const value = await runner(

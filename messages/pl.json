@@ -508,5 +508,8 @@
 	"inventory": "Inwentarz",
 	"employees": "Pracownicy",
 	"disciplinaryMeasures": "Środki dyscyplinarne",
-	"itAdministration": "Administracja IT"
+	"itAdministration": "Administracja IT",
+	"articleContentUpdatedSuccessfully": "Zawartość artykułu została pomyślnie zaktualizowana",
+	"chapterDescriptionUpdatedSuccessfully": "Opis rozdziału został pomyślnie zaktualizowany",
+	"articleNameUpdatedSuccessfully": "Nazwa artykułu została pomyślnie zaktualizowana"
 }

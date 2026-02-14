@@ -16,13 +16,16 @@
 		data.text.map((v) => searchPreprocess(v.text)),
 	);
 
+	$inspect(processedData); //TODO remove
+
 	let results = $derived.by(() => {
-		if (query.length <= 3) return [];
+		const trimmedQuery = query.trim();
+		if (trimmedQuery.length <= 3) return [];
 
 		let temp = [];
 		for (let i = 0; i < processedData.length; i++) {
 			temp.push(
-				...searchInText(query, processedData[i]).map((v) => {
+				...searchInText(trimmedQuery, processedData[i]).map((v) => {
 					return {
 						...v,
 						id: i,
@@ -82,7 +85,8 @@
 				>
 					<Button
 						btn="button-none"
-						cssClass="flex flex-row gap-1 text-ellipsis overflow-hidden text-nowrap"
+						type="button"
+						cssClass="flex flex-row gap-0 text-ellipsis overflow-hidden text-nowrap"
 						emoji=""
 						onclick={() => {
 							let address = `/textbook/${page.params.id}`;
@@ -112,6 +116,10 @@
 						</span>
 					</Button>
 				</WideCard>
+			{:else}
+				<div class="flex flex-row w-full items-center justify-center grow">
+					<!-- TODO -->
+				</div>
 			{/each}
 		</div>
 	{/if}

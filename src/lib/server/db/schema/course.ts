@@ -213,21 +213,6 @@ export const courseCodes = pgTable('courseCode', {
 	code: text('code').notNull(),
 });
 
-//definition of lesson time
-export const courseLessonTemplate = pgTable('courseLessonTemplate', {
-	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
-	startTime: timestamp('startTime')
-		.notNull()
-		.$defaultFn(() => new Date()),
-	endTime: timestamp('endTime')
-		.notNull()
-		.$defaultFn(() => new Date()),
-	additionalNote: text('additionalNote').notNull().default(''),
-	uuid: text('uuid')
-		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
-});
-
 //single lesson in course
 export const courseLesson = pgTable('courseLesson', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),

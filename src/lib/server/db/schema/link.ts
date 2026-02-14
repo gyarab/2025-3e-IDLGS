@@ -114,3 +114,17 @@ export const userCourseLessonLinker = pgTable('userCourseLessonLinker', {
 	uncountable: boolean('uncountable').notNull().default(false),
 	distance: boolean('distance').notNull().default(false),
 });
+
+export const schoolLessonPlanItemLinker = pgTable('schoolLessonPlanItemLinker', {
+	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
+	lessonPlanItem: integer('lessonPlanItem')
+		.references(() => courseLesson.id, {
+			onDelete: 'cascade',
+		})
+		.notNull(),
+	school: integer('school')
+		.references(() => course.id, {
+			onDelete: 'cascade',
+		})
+		.notNull(),
+});

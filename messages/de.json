@@ -508,5 +508,8 @@
 	"inventory": "Inventar",
 	"employees": "Mitarbeiter",
 	"disciplinaryMeasures": "Disziplinarmaßnahmen",
-	"itAdministration": "IT-Administration"
+	"itAdministration": "IT-Administration",
+	"articleContentUpdatedSuccessfully": "Artikelinhalt erfolgreich aktualisiert",
+	"chapterDescriptionUpdatedSuccessfully": "Kapitelbeschreibung erfolgreich aktualisiert",
+	"articleNameUpdatedSuccessfully": "Artikelname erfolgreich aktualisiert"
 }
