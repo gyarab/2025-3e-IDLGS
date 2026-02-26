@@ -15,7 +15,7 @@
 
 <svelte:head>
 	<title>
-		{m.questionsList()} - {data.course.name} - {m.textbookNameShort()}
+		{m.questionList()} - {data.course.name} - {m.textbookNameShort()}
 	</title>
 </svelte:head>
 

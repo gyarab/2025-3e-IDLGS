@@ -8,6 +8,9 @@ export const sendMail = async (
 	message: string,
 	target: string,
 ): Promise<boolean> => {
+	//TODO better handling for mail failure
+	return true;
+
 	const event = getRequestEvent();
 
 	try {

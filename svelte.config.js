@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-cloudflare';
+import adapter from '@sveltejs/adapter-node';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -16,15 +16,14 @@ const config = {
 			directives: {
 				'default-src': ['none'],
 				'font-src': ['self', 'fonts.gstatic.com', 'data:'],
-				'script-src': ['self', '*.cloudflare.com'],
+				'script-src': ['self', 'martinbykov.eu', 'cdn.jsdelivr.net/npm/@cap.js/', 'blob:', 'wasm-unsafe-eval'],
 				'object-src': ['self'],
 				'img-src': ['self', 'res.cloudinary.com', 'data:'],
 				//sveltekit announcer issue + we use this
 				'style-src': ['self', 'fonts.googleapis.com', 'unsafe-inline'],
 				'frame-ancestors': ['none'],
-				'connect-src': ['self', 'notifications.martinbykov.eu'],
+				'connect-src': ['cdn.jsdelivr.net/npm/@cap.js/', 'self', 'notifications.martinbykov.eu', 'martinbykov.eu'],
 				'frame-src': [
-					'*.cloudflare.com',
 					'www.youtube-nocookie.com',
 					'youtube-nocookie.com',
 					'youtube.com',
@@ -40,10 +39,7 @@ const config = {
 			},
 			mode: 'auto',
 		},
-		adapter: adapter({
-			config: 'wrangler.jsonc',
-			fallback: 'plaintext',
-		}),
+		adapter: adapter(),
 		csrf: {
 			trustedOrigins: ['*.gyarab.cz', '*.martinbykov.eu'],
 		},

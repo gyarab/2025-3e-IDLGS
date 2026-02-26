@@ -2,7 +2,6 @@ import { type Handle, type ServerInit } from '@sveltejs/kit';
 import { paraglideMiddleware } from '$lib/paraglide/server';
 import { sequence } from '@sveltejs/kit/hooks';
 import { createUser } from '$lib/server/user';
-import { env } from '$env/dynamic/private';
 import { schema } from '$lib/server/db/mainSchema';
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
@@ -41,7 +40,7 @@ const handleSecurity: Handle = async ({ event, resolve }) => {
 
 const handleDatabase: Handle = async ({ event, resolve }) => {
 	event.locals.db = drizzle(
-		postgres(event.platform?.env.HYPERDRIVE.connectionString as string, {
+		postgres(process.env.DATABASE_URL as string, {
 			prepare: false,
 			max_lifetime: 10,
 			max: 100,
@@ -53,20 +52,19 @@ const handleDatabase: Handle = async ({ event, resolve }) => {
 	return resolve(event);
 };
 
-//dev only
 const handleDefaultUser: Handle = async ({ event, resolve }) => {
-	if (!env.DEV || !env.DEFAULT_EMAIL || !env.DEFAULT_PASSWORD)
+	if (!process.env.DEFAULT_EMAIL || !process.env.DEFAULT_PASSWORD)
 		throw Error('ENV vars not set!');
 
 	const query = await event.locals.db.select().from(schema.user).limit(1);
 
 	if (query.length === 0) {
 		await createUser(
-			env.DEFAULT_EMAIL,
+			process.env.DEFAULT_EMAIL,
 			'IDLGS',
 			'Administration',
 			'none',
-			env.DEFAULT_PASSWORD,
+			process.env.DEFAULT_PASSWORD,
 			new Date(2008, 4, 25, 5, 31, 0, 0),
 			'pl',
 			true,
@@ -93,9 +91,9 @@ export const handle: Handle = sequence(
 
 export const init: ServerInit = async () => {
 	cloudinary.config({
-		cloud_name: env.CLOUDINARY_CLOUD_NAME,
-		api_key: env.CLOUDINARY_API_KEY,
-		api_secret: env.CLOUDINARY_API_SECRET,
+		cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+		api_key: process.env.CLOUDINARY_API_KEY,
+		api_secret: process.env.CLOUDINARY_API_SECRET,
 		secure: true,
 	});
 };

@@ -2,22 +2,20 @@ import {
 	comparePassword,
 	USER_SESSION_LENGTH,
 	USER_SESSION_LENGTH_REMEMBER,
-	validateTurnstile,
 } from '$lib/server/user';
 import { fail } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
 import { schema } from '$lib/server/db/mainSchema';
 import { eq } from 'drizzle-orm';
 import { EMAIL_REGEX } from '$lib/server/user';
-import * as crypto from 'node:crypto';
 import { formRunner } from '$lib/server/form/runner';
 
-export const load = async () => {};
+export const load = async () => { };
 
 export const actions = {
 	login: async () => {
 		return await formRunner(
-			['email', 'password', 'cf-turnstile-response'],
+			['email', 'password'],
 			async (event, formData, _cookies, _user, formDataRaw) => {
 				const email = formData['email'].toLowerCase().trim();
 				const password = formData['password'];
@@ -31,17 +29,20 @@ export const actions = {
 					return fail(400, {});
 				}
 
-				if (
-					!(await validateTurnstile(
-						(event.request.headers.get(
-							'CF-Connecting-IP',
-						) as string) ||
-							event.request.headers.get('X-Forwarded-For') ||
-							'unknown',
-						formData['cf-turnstile-response'],
-						env.CLOUDFLARE_SECRET,
-					))
-				) {
+				const captchaResponse = await event.fetch(
+					'https://martinbykov.eu/645d6876bc/siteverify',
+					{
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({
+							secret: process.env.CAPTCHA,
+							response: formDataRaw.get('captcha'),
+						}),
+					},
+				);
+				if (!(await captchaResponse.json()).success) {
 					return fail(401, {});
 				}
 
@@ -77,9 +78,9 @@ export const actions = {
 							user: user.id,
 							expiresAt: new Date(
 								Date.now() +
-									(remember
-										? USER_SESSION_LENGTH_REMEMBER
-										: USER_SESSION_LENGTH),
+								(remember
+									? USER_SESSION_LENGTH_REMEMBER
+									: USER_SESSION_LENGTH),
 							),
 						})
 						.returning()

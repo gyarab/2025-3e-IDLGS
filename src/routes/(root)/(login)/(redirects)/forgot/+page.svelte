@@ -3,13 +3,14 @@
 	import Form from '$component/Form.svelte';
 	import Button from '$component/Button.svelte';
 	import TextInput from '$component/TextInput.svelte';
-	import { cloudflareTurnstileBox } from '$lib';
 	import { renderMarkdown } from '$lib/markdown';
 	import { goto } from '$app/navigation';
 	import Card from '$component/Card.svelte';
 
 	let sent = $state(false);
 	let error = $state(false);
+
+	let solved = $state(false);
 </script>
 
 <svelte:head>
@@ -53,9 +54,14 @@
 					cssClass="w-full"
 				/>
 
-				{#key window.turnstile}
-					<div use:cloudflareTurnstileBox></div>
-				{/key}
+				<!-- TODO abstract -->
+				<cap-widget
+					id="cap"
+					data-cap-api-endpoint="https://martinbykov.eu/645d6876bc"
+					onsolve={() => {
+						solved = true;
+					}}
+				></cap-widget>
 
 				<Button
 					emoji="mail-send"

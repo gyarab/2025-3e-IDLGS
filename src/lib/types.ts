@@ -32,7 +32,7 @@ export type UserType = {
 	parentEmail2: string;
 	schoolTeacher: boolean;
 	schoolDirector: boolean;
-	school?: SchoolType | undefined | null;
+	school?: SchoolType | number | undefined | null;
 	publicKey: string;
 	readOnlyKey: string;
 	apiKey: string;

@@ -4,6 +4,15 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
+cap-widget {
+	--cap-widget-width: 100%;
+	--cap-font: 'Lexend', sans-serif;
+	--cap-spinner-color: oklch(50% 0.134 242.749);
+	--cap-background: #ffffff;
+	--cap-color: #000000;
+	--cap-border-color: #00000000;
+}
+
 @theme {
 	--font-finland: 'Finlandica', sans-serif;
 	--font-inter: 'Inter', sans-serif;

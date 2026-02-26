@@ -1,6 +1,8 @@
 import type { UserTypeLimited } from './types';
 import type { RequestEvent } from '@sveltejs/kit';
 
+//TODO change way we get country from request
+
 export type LogType = 'INFO' | 'WEIRD' | 'ERROR';
 
 export const writeLog = (

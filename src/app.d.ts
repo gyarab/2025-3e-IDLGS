@@ -1,7 +1,6 @@
 // See https://svelte.dev/docs/kit/types#app.d.ts
 
 import type { DBType } from '$lib/server/db/types';
-import type { Ai, Hyperdrive } from '@cloudflare/workers-types';
 
 // for information about these interfaces
 declare global {
@@ -12,12 +11,7 @@ declare global {
 		}
 		// interface PageData {}
 		// interface PageState {}
-		interface Platform {
-			env: {
-				HYPERDRIVE: Hyperdrive;
-				AI: Ai;
-			};
-		}
+		//interface Platform {};
 	}
 	interface Window {
 		/* eslint-disable @typescript-eslint/no-explicit-any */
@@ -25,4 +19,4 @@ declare global {
 	}
 }
 
-export {};
+export { };

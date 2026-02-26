@@ -8,29 +8,6 @@ import { writeLog } from '$lib/log';
 import { m } from '$lib/paraglide/messages';
 import { renderMarkdown } from '$lib/markdown';
 import type { Locale } from '$lib/paraglide/runtime';
-import { checkPassword } from '$lib';
-
-export const validateTurnstile = async (
-	ip: string,
-	token: string,
-	secret: string,
-): Promise<boolean> => {
-	try {
-		const response = await fetch(
-			'https://challenges.cloudflare.com/turnstile/v0/siteverify',
-			{
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ ip, secret, response: token }),
-			},
-		);
-		const outcome = await response.json();
-		return outcome.success;
-	} catch (e) {
-		console.error('Turnstile validation error:', e);
-		return false;
-	}
-};
 
 export const EMAIL_REGEX = /(.+)@(.+)\.(.+)/su;
 

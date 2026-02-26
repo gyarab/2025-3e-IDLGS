@@ -6,7 +6,6 @@
 	import PasswordInput from '$component/PasswordInput.svelte';
 	import Form from '$component/Form.svelte';
 	import AlertBox from '$component/AlertBox.svelte';
-	import { cloudflareTurnstileBox } from '$lib';
 	import Card from '$component/Card.svelte';
 	import TextInput from '$component/TextInput.svelte';
 
@@ -16,12 +15,19 @@
 	onMount(() => {
 		ready = true;
 	});
+
+	let solved = $state(false);
 </script>
 
 <svelte:head>
 	<title>
 		{m.login()} - {m.textbookNameShort()}
 	</title>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@cap.js/widget"
+		async
+		defer
+	></script>
 </svelte:head>
 
 <AlertBox bind:message={formMessage} />
@@ -67,14 +73,21 @@
 					<label for="remember">{m.rememberMe()}</label>
 				</div>
 
-				{#key ready && window.turnstile}
-					<div use:cloudflareTurnstileBox></div>
-				{/key}
+				{#if ready}
+					<cap-widget
+						id="cap"
+						data-cap-api-endpoint="https://martinbykov.eu/645d6876bc"
+						onsolve={() => {
+							solved = true;
+						}}
+					></cap-widget>
+				{/if}
 
 				<Button
 					emoji="login-box"
 					btn="button-blue"
 					type="submit"
+					disabled={!solved}
 				>
 					{m.login()}
 				</Button>
