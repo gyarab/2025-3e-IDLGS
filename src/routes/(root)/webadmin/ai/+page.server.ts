@@ -6,8 +6,6 @@ export const actions = {
 			['prompt'],
 			async (event, formData, cookies, user) => {
 				const prompt = formData['prompt'];
-
-				
 			},
 		);
 	},

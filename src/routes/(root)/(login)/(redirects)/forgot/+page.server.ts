@@ -10,7 +10,7 @@ import { writeLog } from '$lib/log';
 import { renderMarkdown } from '$lib/markdown';
 import type { Locale } from '$lib/paraglide/runtime.js';
 
-export const load = async () => { };
+export const load = async () => {};
 
 export const actions = {
 	sendMail: async () => {
