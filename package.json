@@ -28,7 +28,7 @@
 	"devDependencies": {
 		"@eslint/compat": "^2.0.2",
 		"@eslint/js": "^9.39.2",
-		"@inlang/paraglide-js": "^2.3.2",
+		"@inlang/paraglide-js": "^2.13.0",
 		"@libsql/client": "^0.17.0",
 		"@sveltejs/adapter-node": "^5.5.3",
 		"@sveltejs/kit": "^2.49.5",
