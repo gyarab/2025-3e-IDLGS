@@ -10,7 +10,7 @@ import { eq } from 'drizzle-orm';
 import { EMAIL_REGEX } from '$lib/server/user';
 import { formRunner } from '$lib/server/form/runner';
 
-export const load = async () => { };
+export const load = async () => {};
 
 export const actions = {
 	login: async () => {
@@ -80,9 +80,9 @@ export const actions = {
 							user: user.id,
 							expiresAt: new Date(
 								Date.now() +
-								(remember
-									? USER_SESSION_LENGTH_REMEMBER
-									: USER_SESSION_LENGTH),
+									(remember
+										? USER_SESSION_LENGTH_REMEMBER
+										: USER_SESSION_LENGTH),
 							),
 						})
 						.returning()

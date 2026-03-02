@@ -75,7 +75,6 @@
 					btn="button-blue"
 					type="submit"
 					disabled={!solved}
-
 				>
 					{m.sendEmail()}
 				</Button>

@@ -9,9 +9,7 @@
 	import Card from '$component/Card.svelte';
 	import TextInput from '$component/TextInput.svelte';
 
-	let {
-		data
-	} = $props();
+	let { data } = $props();
 
 	let ready = $state(false);
 	let formMessage = $state('');
