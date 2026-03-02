@@ -10,7 +10,7 @@ import { eq } from 'drizzle-orm';
 import { EMAIL_REGEX } from '$lib/server/user';
 import { formRunner } from '$lib/server/form/runner';
 
-export const load = async () => {};
+export const load = async () => { };
 
 export const actions = {
 	login: async () => {
@@ -29,21 +29,23 @@ export const actions = {
 					return fail(400, {});
 				}
 
-				const captchaResponse = await event.fetch(
-					'http://localhost:3100/645d6876bc/siteverify',
-					{
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json',
+				if (!process.env.DEV) {
+					const captchaResponse = await event.fetch(
+						'http://localhost:3100/645d6876bc/siteverify',
+						{
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json',
+							},
+							body: JSON.stringify({
+								secret: process.env.CAPTCHA,
+								response: formDataRaw.get('cap-token'),
+							}),
 						},
-						body: JSON.stringify({
-							secret: process.env.CAPTCHA,
-							response: formDataRaw.get('cap-token'),
-						}),
-					},
-				);
-				if (!(await captchaResponse.json()).success) {
-					return fail(401, {});
+					);
+					if (!(await captchaResponse.json()).success) {
+						return fail(401, {});
+					}
 				}
 
 				const user = (
@@ -78,9 +80,9 @@ export const actions = {
 							user: user.id,
 							expiresAt: new Date(
 								Date.now() +
-									(remember
-										? USER_SESSION_LENGTH_REMEMBER
-										: USER_SESSION_LENGTH),
+								(remember
+									? USER_SESSION_LENGTH_REMEMBER
+									: USER_SESSION_LENGTH),
 							),
 						})
 						.returning()

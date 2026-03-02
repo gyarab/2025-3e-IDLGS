@@ -65,3 +65,5 @@ documentation/*.run.xml
 documentation/*.gz
 documentation/*.bcf
 documentation/*.grp
+
+**/__pycache__/**

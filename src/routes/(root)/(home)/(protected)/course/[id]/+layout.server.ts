@@ -23,7 +23,7 @@ export const load = async (event) => {
 	return {
 		course: course,
 		isTeacher: course.people!.some(
-			(person) => person.uuid === user?.uuid && person.isEditor,
+			(person) => person.uuid === user?.uuid && person.isTeacher,
 		),
 		isOwner: course.people!.some(
 			(person) => person.uuid === user?.uuid && person.isOwner,

@@ -6,6 +6,7 @@ import { schema } from '$lib/server/db/mainSchema';
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 import { v2 as cloudinary } from 'cloudinary';
+import { initializeModel } from '$lib/server/question/generate';
 
 const handleParaglide: Handle = ({ event, resolve }) =>
 	paraglideMiddleware(event.request, ({ request, locale }) => {
@@ -96,4 +97,6 @@ export const init: ServerInit = async () => {
 		api_secret: process.env.CLOUDINARY_API_SECRET,
 		secure: true,
 	});
+
+	await initializeModel();
 };

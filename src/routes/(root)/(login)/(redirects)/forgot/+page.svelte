@@ -7,10 +7,12 @@
 	import { goto } from '$app/navigation';
 	import Card from '$component/Card.svelte';
 
+	let { data } = $props();
+
 	let sent = $state(false);
 	let error = $state(false);
 
-	let solved = $state(false);
+	let solved = $derived(data.dev);
 </script>
 
 <svelte:head>
@@ -31,12 +33,11 @@
 			success={async () => {
 				sent = true;
 			}}
-			d
 			failure={async () => {
 				error = true;
 			}}
 			final={async () => {
-				solved = false;
+				solved = data.dev;
 			}}
 		>
 			{#if !sent && !error}
@@ -59,18 +60,22 @@
 				/>
 
 				<!-- TODO abstract -->
-				<cap-widget
-					id="cap"
-					data-cap-api-endpoint="https://ucebnice.martinbykov.eu/645d6876bc"
-					onsolve={() => {
-						solved = true;
-					}}
-				></cap-widget>
+				{#if !data.dev}
+					<cap-widget
+						id="cap"
+						data-cap-api-endpoint="https://ucebnice.martinbykov.eu/645d6876bc"
+						onsolve={() => {
+							solved = true;
+						}}
+					></cap-widget>
+				{/if}
 
 				<Button
 					emoji="mail-send"
 					btn="button-blue"
 					type="submit"
+					disabled={!solved}
+
 				>
 					{m.sendEmail()}
 				</Button>

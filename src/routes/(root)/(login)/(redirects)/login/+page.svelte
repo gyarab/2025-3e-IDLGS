@@ -9,6 +9,10 @@
 	import Card from '$component/Card.svelte';
 	import TextInput from '$component/TextInput.svelte';
 
+	let {
+		data
+	} = $props();
+
 	let ready = $state(false);
 	let formMessage = $state('');
 
@@ -16,7 +20,7 @@
 		ready = true;
 	});
 
-	let solved = $state(false);
+	let solved = $derived(data.dev);
 </script>
 
 <svelte:head>
@@ -48,7 +52,7 @@
 					formMessage = m.incorrectCredentials();
 				}}
 				final={async () => {
-					solved = false;
+					solved = data.dev;
 				}}
 			>
 				<h2 class="w-full text-white max-xl:text-center xl:text-left">
@@ -76,7 +80,7 @@
 					<label for="remember">{m.rememberMe()}</label>
 				</div>
 
-				{#if ready}
+				{#if ready && !data.dev}
 					<cap-widget
 						id="cap"
 						data-cap-api-endpoint="https://ucebnice.martinbykov.eu/645d6876bc"

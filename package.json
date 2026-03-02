@@ -62,6 +62,8 @@
 		"highlight.js": "^11.11.1",
 		"katex": "^0.16.27",
 		"markdown-it": "^14.1.0",
+		"node-calls-python": "^1.11.1",
+		"node-gyp": "^12.2.0",
 		"postgres": "^3.4.7",
 		"remixicon": "^4.9.1",
 		"vite-plugin-env-compatible": "^2.0.1"

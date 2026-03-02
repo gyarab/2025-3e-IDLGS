@@ -178,7 +178,7 @@ export const actions = {
 				}
 				if (users.indexOf(user.uuid) === -1) {
 					users.push(user.uuid);
-					roles.push('teacher');
+					roles.push('owner');
 				}
 
 				//try {

@@ -9,7 +9,7 @@ import { writeLog } from '$lib/log';
 import { renderMarkdown } from '$lib/markdown';
 import type { Locale } from '$lib/paraglide/runtime.js';
 
-export const load = async () => {};
+export const load = async () => { };
 
 export const actions = {
 	sendMail: async () => {
@@ -20,21 +20,23 @@ export const actions = {
 					return fail(400);
 				}
 
-				const captchaResponse = await event.fetch(
-					'http://localhost:3100/645d6876bc/siteverify',
-					{
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json',
+				if (!process.env.DEV) {
+					const captchaResponse = await event.fetch(
+						'http://localhost:3100/645d6876bc/siteverify',
+						{
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json',
+							},
+							body: JSON.stringify({
+								secret: process.env.CAPTCHA,
+								response: formDataRaw.get('cap-token'),
+							}),
 						},
-						body: JSON.stringify({
-							secret: process.env.CAPTCHA,
-							response: formDataRaw.get('cap-token'),
-						}),
-					},
-				);
-				if (!(await captchaResponse.json()).success) {
-					return fail(401, {});
+					);
+					if (!(await captchaResponse.json()).success) {
+						return fail(401, {});
+					}
 				}
 
 				try {

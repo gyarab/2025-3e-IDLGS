@@ -10,5 +10,6 @@ export const load = async (event) => {
 
 	return {
 		user: user,
+		dev: Boolean(process.env.DEV),
 	};
 };

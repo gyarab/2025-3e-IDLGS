@@ -16,7 +16,7 @@
 		data.text.map((v) => searchPreprocess(v.text)),
 	);
 
-	$inspect(processedData); //TODO remove
+	$inspect(processedData); //TODO remove and fix search
 
 	let results = $derived.by(() => {
 		const trimmedQuery = query.trim();
