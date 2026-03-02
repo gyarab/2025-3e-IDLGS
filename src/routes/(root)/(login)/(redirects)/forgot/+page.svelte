@@ -31,8 +31,11 @@
 			success={async () => {
 				sent = true;
 			}}
-			failure={async () => {
+		d	failure={async () => {
 				error = true;
+			}}
+			final={async () => {
+				solved = false;
 			}}
 		>
 			{#if !sent && !error}
@@ -57,7 +60,7 @@
 				<!-- TODO abstract -->
 				<cap-widget
 					id="cap"
-					data-cap-api-endpoint="https://martinbykov.eu/645d6876bc"
+					data-cap-api-endpoint="https://ucebnice.martinbykov.eu/645d6876bc"
 					onsolve={() => {
 						solved = true;
 					}}

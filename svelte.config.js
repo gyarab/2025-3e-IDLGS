@@ -41,7 +41,11 @@ const config = {
 		},
 		adapter: adapter(),
 		csrf: {
-			trustedOrigins: ['*.gyarab.cz', '*.martinbykov.eu'],
+			trustedOrigins: ['https://ucebnice.martinbykov.eu', 'https://notifications.martinbykov.eu', 'https://martinbykov.eu', 'https://www.martinbykov.eu'],
+		},
+		paths: {
+			base: '',
+			assets: '',	
 		},
 	},
 };

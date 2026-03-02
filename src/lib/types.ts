@@ -250,24 +250,6 @@ export type TestCheatingType = {
 	//TODO more
 };
 
-//Cloudflare AI workers
-//Question generation
-
-export type AIMessageType = {
-	role: 'system' | 'user';
-	content: string;
-};
-
-export type AIGenerationQuestionType =
-	| 'QT:ABC'
-	| 'QT:ABCD'
-	| 'QT:ABCDE'
-	| 'QT:ABCDEF'
-	| 'QT:TF'
-	| 'QT:FILL'
-	| 'QT:OPEN'
-	| 'QT:CROSS';
-
 //Internal types
 
 export type SearchResultType = {

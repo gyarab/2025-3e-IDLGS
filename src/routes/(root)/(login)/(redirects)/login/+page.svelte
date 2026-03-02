@@ -47,6 +47,9 @@
 				failure={async () => {
 					formMessage = m.incorrectCredentials();
 				}}
+				final={async () => {
+					solved = false;
+				}}
 			>
 				<h2 class="w-full text-white max-xl:text-center xl:text-left">
 					{m.login()}
@@ -76,7 +79,7 @@
 				{#if ready}
 					<cap-widget
 						id="cap"
-						data-cap-api-endpoint="https://martinbykov.eu/645d6876bc"
+						data-cap-api-endpoint="https://ucebnice.martinbykov.eu/645d6876bc"
 						onsolve={() => {
 							solved = true;
 						}}

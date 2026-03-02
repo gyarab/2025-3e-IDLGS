@@ -30,7 +30,7 @@ export const actions = {
 				}
 
 				const captchaResponse = await event.fetch(
-					'https://martinbykov.eu/645d6876bc/siteverify',
+					'http://localhost:3100/645d6876bc/siteverify',
 					{
 						method: 'POST',
 						headers: {
@@ -38,7 +38,7 @@ export const actions = {
 						},
 						body: JSON.stringify({
 							secret: process.env.CAPTCHA,
-							response: formDataRaw.get('captcha'),
+							response: formDataRaw.get('cap-token'),
 						}),
 					},
 				);

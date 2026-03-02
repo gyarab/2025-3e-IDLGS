@@ -19,13 +19,6 @@
 	} = $props();
 </script>
 
-<svelte:head>
-	<script
-		src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
-		defer
-	></script>
-</svelte:head>
-
 {#key data.user}
 	<div
 		class="flex min-h-screen! w-screen! max-w-screen! min-w-screen! grow flex-col"

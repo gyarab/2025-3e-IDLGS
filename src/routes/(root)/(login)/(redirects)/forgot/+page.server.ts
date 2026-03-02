@@ -4,7 +4,6 @@ import { sendMail } from '$lib/server/mail';
 import { EMAIL_REGEX } from '$lib/server/user';
 import { fail } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
-import { env } from '$env/dynamic/private';
 import { m } from '$lib/paraglide/messages';
 import { writeLog } from '$lib/log';
 import { renderMarkdown } from '$lib/markdown';
@@ -22,7 +21,7 @@ export const actions = {
 				}
 
 				const captchaResponse = await event.fetch(
-					'https://martinbykov.eu/645d6876bc/siteverify',
+					'http://localhost:3100/645d6876bc/siteverify',
 					{
 						method: 'POST',
 						headers: {
@@ -30,7 +29,7 @@ export const actions = {
 						},
 						body: JSON.stringify({
 							secret: process.env.CAPTCHA,
-							response: formDataRaw.get('captcha'),
+							response: formDataRaw.get('cap-token'),
 						}),
 					},
 				);
