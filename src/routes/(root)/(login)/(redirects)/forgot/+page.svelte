@@ -31,7 +31,8 @@
 			success={async () => {
 				sent = true;
 			}}
-		d	failure={async () => {
+			d
+			failure={async () => {
 				error = true;
 			}}
 			final={async () => {
