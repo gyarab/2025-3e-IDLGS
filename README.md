@@ -1,6 +1,6 @@
 # Integrovaná vzdělávací a známkovací platforma
 
-Cílem projektu je vytvoření jednotné digitální učebnice pro elektronickou výuku předmětů. Do aplikace by byla možnost zadat úkoly a články, otázky ze článků by se za pomoci specializovaného modelu umělé inteligence vygenerovali.
+Cílem projektu je vytvoření jednotné digitální učebnice pro elektronickou výuku předmětů. Do aplikace by byla možnost zadat úkoly a články, otázky ze článků by se za pomoci specializovaného modelu vygenerovali.
 
 Aplikace by měla splňovat následující požadavky:
 
@@ -16,11 +16,6 @@ Aplikace by měla podle plánů být otestována jak na Gymnáziu Arabská pod v
 
 Jedná se o soubor formátovaných článků s interaktivními prvky. Učebnici je možné použít v několika kurzech.
 Učebnice se smí kopírovat a upravovat i během její využití v kurzu/kurzech.
-
-# Kurzy
-
-Místo kde se zádavají a známkují úkoly.
-Každý kurz používá jednu učebnici, povinně vlastní.
 
 # Volné procvičování
 

@@ -1,9 +1,0 @@
-import { RElement } from '../element.svelte';
-
-export class RElementGraph extends RElement {
-	graphType: string = '';
-
-	constructor() {
-		super('Graph', 25, 25, 50, 50, true, '#808080', '#ffffff', 10, 1);
-	}
-}

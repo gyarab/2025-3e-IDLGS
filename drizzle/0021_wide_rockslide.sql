@@ -1,2 +1,0 @@
-ALTER TABLE "textbookWordDefinition" ADD COLUMN "textbook" integer NOT NULL;--> statement-breakpoint
-ALTER TABLE "textbookWordDefinition" ADD CONSTRAINT "textbookWordDefinition_textbook_textbook_id_fk" FOREIGN KEY ("textbook") REFERENCES "public"."textbook"("id") ON DELETE cascade ON UPDATE no action;

@@ -1,1 +1,0 @@
-ALTER TABLE "userCourseLessonLinker" ADD COLUMN "earlyLeave" boolean DEFAULT false NOT NULL;

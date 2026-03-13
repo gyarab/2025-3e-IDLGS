@@ -1,1 +1,0 @@
-ALTER TABLE "user" ADD COLUMN "canChangeSettings" boolean DEFAULT true NOT NULL;

@@ -1,1 +1,0 @@
-//RESIN script code element operations (accessing, modifying our element but others too etc.)

@@ -1,1 +1,0 @@
-//RESIN script event operations

@@ -1,1 +1,0 @@
-ALTER TABLE "courseCode" ADD COLUMN "code" text NOT NULL;
