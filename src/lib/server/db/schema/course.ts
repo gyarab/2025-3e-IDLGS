@@ -9,6 +9,7 @@ import {
 import { sql } from 'drizzle-orm';
 import { user } from './user';
 import { textbook } from './textbook';
+import { uuidProvider } from '../uuid';
 
 export const grade = pgTable(
 	'grade',
@@ -78,7 +79,7 @@ export const course = pgTable(
 		blue: integer('blue').notNull().default(255),
 		uuid: text('uuid')
 			.notNull()
-			.$defaultFn(() => crypto.randomUUID()),
+			.$defaultFn(() => uuidProvider()),
 		archived: boolean('archived').notNull().default(false),
 		treatLateAsAbsence: boolean('treatLateAsAbsence')
 			.notNull()
@@ -114,7 +115,7 @@ export const assignment = pgTable('assignment', {
 	description: text('description').notNull().default(''),
 	uuid: text('uuid')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 	author: integer('author').references(() => user.id, {
 		onDelete: 'set null',
 	}),
@@ -136,7 +137,7 @@ export const assignmentComment = pgTable('assignmentComment', {
 	}),
 	uuid: text('uuid')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 });
 
 export const courseMessage = pgTable('courseMessage', {
@@ -155,7 +156,7 @@ export const courseMessage = pgTable('courseMessage', {
 	}),
 	uuid: text('uuid')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 });
 
 export const courseMessageComment = pgTable('courseMessageComment', {
@@ -174,7 +175,7 @@ export const courseMessageComment = pgTable('courseMessageComment', {
 	}),
 	uuid: text('uuid')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 });
 
 export const question = pgTable('question', {
@@ -195,7 +196,7 @@ export const question = pgTable('question', {
 	aitr: text('aitr').notNull().default(''),
 	uuid: text('uuid')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 });
 
 export const courseCodes = pgTable('courseCode', {
@@ -226,5 +227,5 @@ export const courseLesson = pgTable('courseLesson', {
 	order: integer('order').notNull().default(0),
 	uuid: text('uuid')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 });

@@ -13,10 +13,8 @@
 	let query = $state('');
 
 	const processedData = $derived(
-		data.text.map((v) => searchPreprocess(v.text)),
+		data.text?.map((v) => searchPreprocess(v.text)),
 	);
-
-	$inspect(processedData); //TODO remove and fix search
 
 	let results = $derived.by(() => {
 		const trimmedQuery = query.trim();

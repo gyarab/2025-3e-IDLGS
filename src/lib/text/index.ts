@@ -4,6 +4,7 @@
 //https://www.youtube.com/watch?v=eneSE4vVAOs
 
 import type { SearchResultType, TextbookDefinitionType } from '$lib/types';
+import { ConsoleLogWriter } from 'drizzle-orm';
 
 //Wagner-Fischer algorithm for Damerau-Levenshtein distance
 export const wordDistance = (a: string, b: string): number => {
@@ -55,7 +56,8 @@ export const wordSimilarity = (a: string, b: string): number => {
 	return (maxLen - distance) / maxLen;
 };
 
-export const searchPreprocess = (text: string): string[] => {
+//TODO UNIT TEST FOR THIS
+export const searchPreprocessInputPipeline = (text: string): string => {
 	return text
 		.toLocaleLowerCase()
 		.normalize('NFD')
@@ -63,30 +65,56 @@ export const searchPreprocess = (text: string): string[] => {
 		.replaceAll(/\$([^\$]+)\$/gmsu, (match) => {
 			return '?'.repeat(match.length);
 		}) //remove math
-		.replaceAll(/\n/g, ' ')
-		.replaceAll(/[^A-Za-z0-9]/g, ' ')
-		.split(' ');
+		.replaceAll(/\r\n/g, '  ') //2 for 2
+		.replaceAll(/[^A-Za-z0-9]/g, ' ');
+}
+
+export const searchPreprocess = (text: string): {
+	word: string,
+	startIndex: number,
+}[] => {
+	let data = searchPreprocessInputPipeline(text);
+
+	let result = [];
+	
+	console.log(data);
+	//split with index
+	let lastSpaceIndex = -1;
+	for(let i = 0; i < data.length; i++) {
+		if(data[i] === ' ' || i === data.length - 1) {
+			if(i - lastSpaceIndex > 1) { //avoid empty words
+				result.push({
+					word: data.slice(lastSpaceIndex + 1, i + (i === data.length - 1 ? 1 : 0)).trim(),
+					startIndex: lastSpaceIndex + 1
+				});
+			}
+			lastSpaceIndex = i;
+		}
+	}
+
+	console.log(result, text.length, data.length);
+	//TODO UNIT TEST FOR THIS
+	if(text.length !== data.length) {
+		throw new Error("Preprocessing error: length mismatch"); //something went really wrong
+	}
+
+	return result;
 };
 
-//TODO fix!!!!!
-
-//returns start indexes, this is "good enough" for our use case
 export const searchInText = (
 	query: string,
-	words: string[],
+	words: { word: string, startIndex: number }[],
 ): SearchResultType[] => {
 	if (query.length >= 30) return [];
 
-	const queries: string[] = query
-		.toLocaleLowerCase()
-		.normalize('NFD')
-		.replaceAll(/[\u0300-\u036f]/g, '')
-		.split(' ');
+	const queries: string[] = searchPreprocessInputPipeline(query).split(' ');
 
 	let results: SearchResultType[] = [];
 	let letterId = 0;
 	let wordId = 0;
 	let startLetterId = 0;
+
+	console.log(words);
 
 	while (wordId < words.length) {
 		let wordOffset = 0;
@@ -95,11 +123,11 @@ export const searchInText = (
 
 			//for each multiword query - check each word, every word has to match similarity edge
 
-			if (word.length === 0) {
+			if (word.word.length === 0) {
 				letterId += 1;
 				wordId += 1;
 				if (wordId + wordOffset >= words.length) break;
-				continue;
+				else continue;
 			}
 
 			word = words[wordId + wordOffset];
@@ -108,7 +136,7 @@ export const searchInText = (
 			}
 
 			console.log(
-				`Comparing "${word}" with "${queries[wordOffset]}"`,
+				`Comparing "${word.word}" with "${queries[wordOffset]}"`,
 				wordOffset,
 				startLetterId,
 				letterId,
@@ -118,34 +146,41 @@ export const searchInText = (
 			//4 characters from the word is too much
 
 			if (
-				word[0] != queries[wordOffset][0] ||
-				Math.abs(word.length - queries[wordOffset].length) >= 4
+				word.word[0] != queries[wordOffset][0] ||
+				Math.abs(word.word.length - queries[wordOffset].length) >= 4
 			) {
+				letterId += word.word.length;
+				letterId += 1;
+				wordId += 1;
 				break;
 			}
 
-			const similarity = wordSimilarity(word, queries[wordOffset]);
+			const similarity = wordSimilarity(word.word, queries[wordOffset]);
 
 			if (similarity >= 0.75) {
 				if (wordOffset === queries.length - 1) {
 					console.log(`Match found`);
 					results.push({
 						start: startLetterId,
-						end: letterId + word.length, //whole query length
+						end: letterId + word.word.length, //whole query length
 						similarity: similarity,
 					});
 
-					letterId += word.length;
+					letterId += word.word.length;
 					letterId += 1;
 					wordId += wordOffset; //move after the whole query
 					break;
 				}
 
-				letterId += word.length;
+				letterId += word.word.length;
 				letterId += 1;
 				wordOffset += 1;
 			} else {
 				console.log(`Chain break`);
+
+				wordId += 1;
+				letterId += word.word.length;
+				letterId += 1;
 				break;
 			}
 		}

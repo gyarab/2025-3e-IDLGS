@@ -33,6 +33,10 @@ cap-widget {
 	scrollbar-width: auto;
 }
 
+::selection {
+	@apply bg-blue-900 text-white!;
+}
+
 @layer components {
 	h1 {
 		@apply text-4xl font-medium;

@@ -6,6 +6,7 @@ import {
 	boolean,
 } from 'drizzle-orm/pg-core';
 import { user } from './user';
+import { uuidProvider } from '../uuid';
 
 export const school = pgTable('school', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
@@ -18,7 +19,7 @@ export const school = pgTable('school', {
 	setup: boolean('setup').notNull().default(false),
 	publicKey: text('publicKey')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 });
 
 //lesson time
@@ -39,5 +40,5 @@ export const lessonPlanItem = pgTable('lessonPlanItem', {
 		.notNull(),
 	uuid: text('uuid')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 });

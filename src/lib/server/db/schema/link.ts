@@ -7,6 +7,7 @@ import {
 	textbook,
 } from './textbook';
 import { dailyChallenges } from './misc';
+import { uuidProvider } from '../uuid';
 
 export const userCourseLinker = pgTable('userCourseLinker', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
@@ -24,7 +25,7 @@ export const userCourseLinker = pgTable('userCourseLinker', {
 		.notNull(),
 	dekEncrypted: text('dekEncrypted')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 });
 
 export const userTextbookLinker = pgTable('userTextbookLinker', {
@@ -44,7 +45,7 @@ export const userTextbookLinker = pgTable('userTextbookLinker', {
 	readProgress: numeric('readProgress').notNull().default('0'),
 	dekEncrypted: text('dekEncrypted')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 });
 
 export const userAssignmentLinker = pgTable('userAssignmentLinker', {

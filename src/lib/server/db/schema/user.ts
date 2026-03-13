@@ -7,6 +7,7 @@ import {
 	boolean,
 } from 'drizzle-orm/pg-core';
 import { school } from './school';
+import { uuidProvider } from '../uuid';
 
 //TODO encrypt name, surname, parent emails, email, degree
 
@@ -14,7 +15,7 @@ export const user = pgTable('user', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
 	uuid: text('uuid')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 	email: text('email').notNull().default('').unique(),
 	parentEmail1: text('parentEmail1').notNull().default(''),
 	parentEmail2: text('parentEmail2').notNull().default(''),
@@ -46,11 +47,11 @@ export const user = pgTable('user', {
 	//API key - read only
 	readOnlyKey: text('readOnlyKey')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 	//API key - write access
 	apiKey: text('apiKey')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 	name: text('name').notNull(),
 	surname: text('surname').notNull(),
 	degree: text('degree').notNull(),
@@ -79,7 +80,7 @@ export const userVerification = pgTable('userVerification', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
 	uuid: text('uuid')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 	user: integer('user')
 		.references(() => user.id)
 		.notNull(),
@@ -89,7 +90,7 @@ export const userSession = pgTable('userSession', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
 	token: text('token')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 	user: integer('user')
 		.references(() => user.id, {
 			onDelete: 'cascade',

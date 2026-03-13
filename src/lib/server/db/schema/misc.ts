@@ -1,6 +1,7 @@
 import { pgTable, text, integer, check, timestamp } from 'drizzle-orm/pg-core';
 import { user } from './user';
 import { sql } from 'drizzle-orm';
+import { uuidProvider } from '../uuid';
 
 //only for admin
 export const blog = pgTable('blog', {
@@ -47,7 +48,7 @@ export const passwordReset = pgTable('passwordReset', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
 	uuid: text('uuid')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 	expiresAt: timestamp('expiresAt')
 		.notNull()
 		.$defaultFn(() => {

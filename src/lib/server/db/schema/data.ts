@@ -1,11 +1,12 @@
 import { pgTable, text, integer, customType } from 'drizzle-orm/pg-core';
 import { article } from './textbook';
+import { uuidProvider } from '../uuid';
 
 export const image = pgTable('image', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
 	uuid: text('uuid')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 	link: text('link').notNull().default(''),
 	alt: text('alt').notNull().default(''),
 	name: text('name').notNull().default(''),
@@ -20,14 +21,14 @@ export const audio = pgTable('audio', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
 	uuid: text('uuid')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 });
 
 export const interactiveElement = pgTable('interactiveElement', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
 	uuid: text('uuid')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 	rawData: text('rawData').notNull().default(''),
 });
 

@@ -8,6 +8,7 @@ import {
 } from 'drizzle-orm/pg-core';
 import { desc, sql } from 'drizzle-orm';
 import { user } from './user';
+import { uuidProvider } from '../uuid';
 
 export const textbook = pgTable(
 	'textbook',
@@ -15,7 +16,7 @@ export const textbook = pgTable(
 		id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
 		uuid: text('uuid')
 			.notNull()
-			.$defaultFn(() => crypto.randomUUID()),
+			.$defaultFn(() => uuidProvider()),
 		name: text('name').notNull().default(''),
 		description: text('description').notNull().default(''),
 		summary: text('summary').notNull().default(''),
@@ -46,7 +47,7 @@ export const chapter = pgTable('chapter', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
 	uuid: text('uuid')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 	name: text('name').notNull(),
 	summary: text('summary').notNull(),
 	description: text('description').notNull().default(''),
@@ -62,7 +63,7 @@ export const article = pgTable('article', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
 	uuid: text('uuid')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 	chapter: integer('chapter')
 		.references(() => chapter.id, {
 			onDelete: 'cascade',
@@ -84,7 +85,7 @@ export const textbookWordDefinition = pgTable('textbookWordDefinition', {
 		.notNull(),
 	uuid: text('uuid')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 });
 
 export const bookmark = pgTable(
@@ -108,7 +109,7 @@ export const bookmark = pgTable(
 		textIndex: integer('textIndex').notNull().default(0),
 		uuid: text('uuid')
 			.notNull()
-			.$defaultFn(() => crypto.randomUUID()),
+			.$defaultFn(() => uuidProvider()),
 	},
 	(table) => [
 		check('redMinCheck', sql`${table.red} >= 0`),
@@ -147,7 +148,7 @@ export const highlight = pgTable(
 		endIndex: integer('endIndex').notNull().default(0),
 		uuid: text('uuid')
 			.notNull()
-			.$defaultFn(() => crypto.randomUUID()),
+			.$defaultFn(() => uuidProvider()),
 	},
 	(table) => [
 		check('redMinCheck', sql`${table.red} >= 0`),
@@ -176,7 +177,7 @@ export const articleHistoryVersion = pgTable('articleHistoryVersion', {
 		.$defaultFn(() => new Date()),
 	uuid: text('uuid')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 	note: text('note').notNull().default(''),
 });
 

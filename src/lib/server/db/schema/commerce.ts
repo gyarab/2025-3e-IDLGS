@@ -7,6 +7,7 @@ import {
 } from 'drizzle-orm/pg-core';
 import { user } from './user';
 import { school } from './school';
+import { uuidProvider } from '../uuid';
 
 export const productKey = pgTable('productKey', {
 	id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
@@ -48,5 +49,5 @@ export const company = pgTable('company', {
 	responsiblePerson: text('responsiblePerson').notNull().default(''),
 	publicKey: text('publicKey')
 		.notNull()
-		.$defaultFn(() => crypto.randomUUID()),
+		.$defaultFn(() => uuidProvider()),
 });

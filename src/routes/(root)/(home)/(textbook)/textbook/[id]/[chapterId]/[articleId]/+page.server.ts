@@ -69,9 +69,6 @@ export const actions = {
 								definition.textbookWordDefinition.word,
 								words,
 							).map((res: SearchResultType) => {
-								console.log(
-									`Definition "${definition.textbookWordDefinition.word}" found at ${res.start}-${res.end}`,
-								);
 								return {
 									...res,
 									id: definition.textbookWordDefinition.id!,
