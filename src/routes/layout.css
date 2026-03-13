@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap');
+
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+cap-widget {
+
+}
+
+@theme {
+	--font-inter: 'Inter', sans-serif;
+	--font-mulish: 'Mulish', sans-serif;
+	--font-wix: 'Wix Madefor Text', sans-serif;
+}
+
+@layer base {
+	:root {
+		@apply font-inter font-light;
+	}
+}
+
+@layer components {
+	h1 {
+		@apply text-xl;
+	}	
+	h2 {
+		@apply text-lg;
+	}
+}

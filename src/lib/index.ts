@@ -1,0 +1,1 @@
+export const TEMP_ACCENT_COLOR = "#ff8800";

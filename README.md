@@ -1,35 +1,42 @@
-# Integrovaná vzdělávací a známkovací platforma
+# sv
 
-Cílem projektu je vytvoření jednotné digitální učebnice pro elektronickou výuku předmětů. Do aplikace by byla možnost zadat úkoly a články, otázky ze článků by se za pomoci specializovaného modelu vygenerovali.
+Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
-Aplikace by měla splňovat následující požadavky:
+## Creating a project
 
-- Použitelná na všech typech zařízení – od telefonů, počítačů až po televize (pokud mají webový prohlížeč)
-- Jednoduchá jak pro uživatele (studenty), tak i zadavatele (učitele)
-- Vylepšuje průměry studentů a nabádající studenty k hlubší výuce předmětu, používá psychologické triky a gamifikaci
-- Jednoduché rozšiřování vlastními modulya
-- Sbírání dat a dávání rad jak studentům, tak i přehled profesorům
+If you're seeing this, you've probably already done this step. Congrats!
 
-Aplikace by měla podle plánů být otestována jak na Gymnáziu Arabská pod vedením pana prof. Hrozinky, tak také paní prof. Irenou Skolilovou na Gymnáziu Nad Álejí. Testování bude probíhat v roce 2026.
+```sh
+# create a new project
+npx sv create my-app
+```
 
-# Digitální učebnice
+To recreate this project with the same configuration:
 
-Jedná se o soubor formátovaných článků s interaktivními prvky. Učebnici je možné použít v několika kurzech.
-Učebnice se smí kopírovat a upravovat i během její využití v kurzu/kurzech.
+```sh
+# recreate this project
+npx sv@0.12.7 create --template minimal --types ts --add prettier eslint tailwindcss="plugins:typography,forms" sveltekit-adapter="adapter:node" drizzle="database:postgresql+postgresql:postgres.js+docker:yes" paraglide="languageTags:en, cs+demo:no" --install npm ./
+```
 
-# Volné procvičování
+## Developing
 
-Možnost si protrénovat nějakou učebnici použitou v kurzu za pomocí otázek buď napsaných učitelem či vygenerovaných AI (v případě technické nemožnosti algoritmem).
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-# Moduly
+```sh
+npm run dev
 
-Moduly budou skriptovány za pomocí vlastního skriptovacího jazyka. Moduly přídávají interaktivní funkčnost - podporují tlačítka, proměnné atd.
-Je možné také přidat embed.
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
 
-# Technologie
+## Building
 
-Pro frontend i backend bude použit SvelteKit a Tailwind.
+To create a production version of your app:
 
-# Poznámka
+```sh
+npm run build
+```
 
-Tento plán není kompletní či garantován, jedná se o rámcový nápad. Aplikace bude přispůsobena požadavkům jak ze strany klientů (pana prof. Hrozinky a paní prof. Skolilové) tak i ze strany uživatelů.
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
