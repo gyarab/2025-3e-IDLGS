@@ -67,25 +67,33 @@ export const searchPreprocessInputPipeline = (text: string): string => {
 		}) //remove math
 		.replaceAll(/\r\n/g, '  ') //2 for 2
 		.replaceAll(/[^A-Za-z0-9]/g, ' ');
-}
+};
 
-export const searchPreprocess = (text: string): {
-	word: string,
-	startIndex: number,
+export const searchPreprocess = (
+	text: string,
+): {
+	word: string;
+	startIndex: number;
 }[] => {
 	let data = searchPreprocessInputPipeline(text);
 
 	let result = [];
-	
+
 	console.log(data);
 	//split with index
 	let lastSpaceIndex = -1;
-	for(let i = 0; i < data.length; i++) {
-		if(data[i] === ' ' || i === data.length - 1) {
-			if(i - lastSpaceIndex > 1) { //avoid empty words
+	for (let i = 0; i < data.length; i++) {
+		if (data[i] === ' ' || i === data.length - 1) {
+			if (i - lastSpaceIndex > 1) {
+				//avoid empty words
 				result.push({
-					word: data.slice(lastSpaceIndex + 1, i + (i === data.length - 1 ? 1 : 0)).trim(),
-					startIndex: lastSpaceIndex + 1
+					word: data
+						.slice(
+							lastSpaceIndex + 1,
+							i + (i === data.length - 1 ? 1 : 0),
+						)
+						.trim(),
+					startIndex: lastSpaceIndex + 1,
 				});
 			}
 			lastSpaceIndex = i;
@@ -94,8 +102,8 @@ export const searchPreprocess = (text: string): {
 
 	console.log(result, text.length, data.length);
 	//TODO UNIT TEST FOR THIS
-	if(text.length !== data.length) {
-		throw new Error("Preprocessing error: length mismatch"); //something went really wrong
+	if (text.length !== data.length) {
+		throw new Error('Preprocessing error: length mismatch'); //something went really wrong
 	}
 
 	return result;
@@ -103,7 +111,7 @@ export const searchPreprocess = (text: string): {
 
 export const searchInText = (
 	query: string,
-	words: { word: string, startIndex: number }[],
+	words: { word: string; startIndex: number }[],
 ): SearchResultType[] => {
 	if (query.length >= 30) return [];
 
