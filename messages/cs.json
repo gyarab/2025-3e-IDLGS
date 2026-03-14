@@ -2,5 +2,12 @@
 	"openSidebar": "Otevřít postranní panel",
 	"closeSidebar": "Zavřít postranní panel",
 	"openNavbar": "Otevřít navigační panel",
-	"closeNavbar": "Zavřít navigační panel"
+	"closeNavbar": "Zavřít navigační panel",
+	"extendSidebar": "Rozšířit panel",
+	"collapseSidebar": "Sbalit panel",
+	"textbookHome": "Domů",
+	"library": "Knihovna",
+	"navigator": "Navigátor",
+	"search": "Hledat",
+	"commandPaletteDescription": ""
 }

@@ -12,10 +12,17 @@
 </script>
 
 <button
-	class="fixed top-0 z-50! h-[7svh] w-screen opacity-0"
+	class="fixed top-0 z-11! h-[7svh] w-screen"
 	onclick={() => (open = !open)}
 	aria-label={open ? m.closeNavbar() : m.openNavbar()}
-></button>
+>
+	{#if !open}
+		<i 
+		class="ri-arrow-down-s-fill text-white text-6xl! absolute -top-6 left-3/4 opacity-100!"
+		transition:fly|global={{ y: -50, duration: 200, opacity: 0 }}
+	></i>
+	{/if}
+</button>
 
 {#if open}
 	<div
@@ -31,8 +38,9 @@
 			
 		</div>
 	</div>
+	<div class="z-0! h-[calc(7svh+calc(var(--spacing)*8))] w-screen"></div>
 {:else}
-	<div></div>
+	<div class="z-0! h-8 w-screen"></div>
+	
 {/if}
 
-<div class="z-0! h-[calc(7svh+calc(var(--spacing)*8))] w-screen"></div>

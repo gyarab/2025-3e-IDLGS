@@ -1,8 +1,8 @@
 <script lang="ts">
 	let {
-		emoji
+		emoji,
 	}: {
-		emoji: string
+		emoji: string,
 	} = $props();
 </script>
 

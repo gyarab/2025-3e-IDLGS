@@ -2,5 +2,12 @@
 	"openSidebar": "Open sidebar",
 	"closeSidebar": "Close sidebar",
 	"openNavbar": "Open navbar",
-	"closeNavbar": "Close navbar"	
+	"closeNavbar": "Close navbar",
+	"extendSidebar": "Extend sidebar",
+	"collapseSidebar": "Collapse sidebar",
+	"textbookHome": "Home",
+	"library": "Library",
+	"navigator": "Navigator",
+	"search": "Search",
+	"commandPaletteDescription": ""
 }

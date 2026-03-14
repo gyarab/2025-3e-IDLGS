@@ -1,28 +1,66 @@
 <script lang="ts">
 	import { fly } from "svelte/transition";
 	import { m } from "$lib/paraglide/messages";
+	import SidebarButton from "./components/SidebarButton.svelte";
 
 	let open = $state(false);
+	let extended = $state(false);
 
 	let {
-		accentColor
+		accentColor,
+		commandPaletteOpen = $bindable(false),
 	}: {
-		accentColor: string
+		accentColor: string,
+		commandPaletteOpen: boolean
 	} = $props();
 </script>
 
-<button class="fixed h-screen w-[7svh] opacity-0 left-0 z-49! top-0"
-	onclick={() => (open = !open)}
-	aria-label={open ? m.closeSidebar() : m.openSidebar()}
-></button>
-
 {#if open}
 	<div
-		class="left-0 top-0 fixed flex h-screen w-[7svh] grow flex-col bg-neutral-100 border-r-2 shadow-xl"
-		style="border-color: {accentColor};"
+		class="pt-5 pb-5 {extended ? ' w-[20svh]' : ' w-[7svh]'} z-12! left-0 top-0 fixed flex h-screen grow gap-5 flex-col bg-neutral-800 hover:bg-neutral-800/70 shadow-xl **:z-20! transition-all duration-200"
 		transition:fly|global={{ x: -100, duration: 200, opacity: 0 }}
 >
+	<SidebarButton
+		onclick={() => {commandPaletteOpen = !commandPaletteOpen}}
+		emoji="compass-discover"
+		description={m.navigator()}
+		bind:extended
+	/>
+	<SidebarButton 
+		onclick={() => {}}
+		emoji="home-2"
+		description={m.textbookHome()}
+		bind:extended
+	/>
+	<SidebarButton 
+		onclick={() => {}}
+		emoji="book-3"
+		description={m.library()}
+		bind:extended
+	/>
+	<button 
+		class="grow opacity-0 w-full"
+		onclick={() => (open = false)}
+		aria-label={m.closeSidebar()}
+	></button>
+	<SidebarButton 
+		textSize="text-6xl"
+		gapSize="-ms-6"
+		onclick={() => {extended = !extended}}
+		emoji={extended ? "arrow-left-s" : "arrow-right-s"}
+		description={extended ? m.collapseSidebar() : m.extendSidebar()}
+		bind:extended
+	/>
 	</div>
 {:else}
-	<div></div>
+	<button class="fixed h-screen w-[7svh] left-0 z-50! top-0 flex flex-col"
+	onclick={() => (open = true)}
+	aria-label={m.openSidebar()}
+>
+	<div class="grow"></div>
+	<i 
+		class="ri-arrow-right-s-fill text-black text-6xl -ms-13"
+		transition:fly|global={{ x: -100, duration: 200, opacity: 0 }}
+	></i>
+</button>
 {/if}

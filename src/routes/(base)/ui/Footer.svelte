@@ -1,3 +1,3 @@
-<div class="flex flex-row grow w-full h-[20svh] bg-neutral-700">
-
+<!-- Footer.svelte -->
+<div class="relative z-5 flex flex-row grow w-full min-w-screen! h-[20svh] bg-neutral-700! text-white!">
 </div>

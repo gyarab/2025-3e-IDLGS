@@ -47,6 +47,12 @@
 		"vite": "^7.3.1"
 	},
 	"dependencies": {
-		"remixicon": "^4.9.1"
+		"chart.js": "^4.5.1",
+		"highlighter.js": "^1.0.0",
+		"katex": "^0.16.38",
+		"node-calls-python": "^1.11.1",
+		"node-gyp": "^12.2.0",
+		"remixicon": "^4.9.1",
+		"vite-plugin-env-compatible": "^2.0.1"
 	}
 }
