@@ -9,5 +9,8 @@
 	"library": "Knihovna",
 	"navigator": "Navigátor",
 	"search": "Hledat",
-	"commandPaletteDescription": ""
+	"commandPaletteDescription": "",
+	"darkMode": "Tmavý režim",
+	"lightMode": "Světlý režim",
+	"practice": "Procvičování"
 }

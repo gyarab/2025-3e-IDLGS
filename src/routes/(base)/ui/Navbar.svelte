@@ -2,12 +2,14 @@
 	import { fly } from 'svelte/transition';
 	import { m } from '$lib/paraglide/messages';
 
-	let open = $state(false);
-
 	let {
-		accentColor
+		accentColor,
+		open = $bindable(false),
+		darkMode
 	}: {
 		accentColor: string;
+		open: boolean,
+		darkMode: boolean,
 	} = $props();
 </script>
 
@@ -18,7 +20,7 @@
 >
 	{#if !open}
 		<i 
-		class="ri-arrow-down-s-fill text-white text-6xl! absolute -top-6 left-3/4 opacity-100!"
+		class="ri-arrow-down-s-fill {darkMode ? 'text-neutral-700' : 'text-white'} text-6xl! absolute -top-6 left-3/4 opacity-100!"
 		transition:fly|global={{ y: -50, duration: 200, opacity: 0 }}
 	></i>
 	{/if}
@@ -26,7 +28,7 @@
 
 {#if open}
 	<div
-		class="fixed z-10! flex h-[7svh] w-screen grow flex-col items-center justify-center gap-2 border-b-2 bg-neutral-100 shadow-xl"
+		class="{darkMode ? 'bg-neutral-700 text-white' : 'bg-neutral-100 text-black'} fixed z-10! flex h-[7svh] w-screen grow flex-col items-center justify-center gap-2 border-b-2 shadow-xl"
 		style="border-color: {accentColor};"
 		transition:fly|global={{ y: -100, duration: 200, opacity: 0 }}
 	>

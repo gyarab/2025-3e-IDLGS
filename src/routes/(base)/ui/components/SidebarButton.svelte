@@ -9,13 +9,19 @@
 		extended = $bindable(false),
 		textSize = "text-5xl",
 		gapSize="-ms-2 text-xl font-bold!",
+		type = "button",
+		formname = "",
+		formvalue = "",
 	}: {
 		onclick: () => void,
 		emoji: string,
 		description: string,
 		extended: boolean,
 		textSize?: string
-		gapSize?: string
+		gapSize?: string,
+		type?: "button" | "submit" | "reset",
+		formname?: string,
+		formvalue?: string,
 	} = $props();
 </script>
 
@@ -24,6 +30,9 @@
 	onclick={() => {
 		onclick();
 	}}
+	type={type}
+	name={formname}
+	value={formvalue}
 >
 	<HoverEmoji {emoji} />
 	{#if extended}

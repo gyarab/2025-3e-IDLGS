@@ -9,5 +9,8 @@
 	"library": "Library",
 	"navigator": "Navigator",
 	"search": "Search",
-	"commandPaletteDescription": ""
+	"commandPaletteDescription": "",
+	"darkMode": "Dark mode",
+	"lightMode": "Light mode",
+	"practice": "Practice"
 }

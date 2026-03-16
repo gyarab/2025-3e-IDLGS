@@ -2,16 +2,20 @@
 	import { fly } from "svelte/transition";
 	import { m } from "$lib/paraglide/messages";
 	import SidebarButton from "./components/SidebarButton.svelte";
+	import { enhance } from "$app/forms";
 
-	let open = $state(false);
 	let extended = $state(false);
 
 	let {
 		accentColor,
 		commandPaletteOpen = $bindable(false),
+		open = $bindable(false),
+		darkMode = $bindable(false),
 	}: {
 		accentColor: string,
-		commandPaletteOpen: boolean
+		commandPaletteOpen: boolean,
+		open: boolean,
+		darkMode: boolean,
 	} = $props();
 </script>
 
@@ -38,11 +42,33 @@
 		description={m.library()}
 		bind:extended
 	/>
+	<SidebarButton 
+		onclick={() => {}}
+		emoji="target"
+		description={m.practice()}
+		bind:extended
+	/>
 	<button 
 		class="grow opacity-0 w-full"
 		onclick={() => (open = false)}
 		aria-label={m.closeSidebar()}
 	></button>
+	<form 
+		class=""
+		method="POST"
+		action="/?/setDarkMode"
+		use:enhance
+	>
+	<SidebarButton 
+		type="submit"
+		formname="darkMode"
+		formvalue={darkMode ? "light" : "dark"}
+		onclick={() => {}}
+		emoji={darkMode ? "sun" : "moon"}
+		description={darkMode ? m.lightMode() : m.darkMode()}
+		bind:extended
+	/>
+	</form>
 	<SidebarButton 
 		textSize="text-6xl"
 		gapSize="-ms-6"
