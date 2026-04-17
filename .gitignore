@@ -27,3 +27,6 @@ project.inlang/cache/
 
 .vscode/
 venv/
+
+*.tar.gz
+*.tgz
