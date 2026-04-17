@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { fly, fade } from "svelte/transition";
-	import HoverEmoji from "../../components/HoverEmoji.svelte";
+	import HoverEmoji from "../../../components/HoverEmoji.svelte";
 
 	let {
 		onclick,
