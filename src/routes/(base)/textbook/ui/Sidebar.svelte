@@ -21,7 +21,7 @@
 
 {#if open}
 	<div
-		class="pt-5 pb-5 {extended ? ' w-[20svh]' : ' w-[7svh]'} z-12! left-0 top-0 fixed flex h-screen grow gap-5 flex-col bg-neutral-800 hover:bg-neutral-800/70 shadow-xl **:z-20! transition-all duration-200"
+		class="pt-5 pb-5 {extended ? ' w-[24svh]' : ' w-[7svh]'} z-12! left-0 top-0 fixed flex h-screen grow gap-5 flex-col bg-neutral-800 hover:bg-neutral-800/70 shadow-xl **:z-20! transition-all duration-200"
 		transition:fly|global={{ x: -100, duration: 200, opacity: 0 }}
 >
 	<SidebarButton
@@ -70,8 +70,7 @@
 	/>
 	</form>
 	<SidebarButton 
-		textSize="text-6xl"
-		gapSize="-ms-6"
+		textSize="text-5xl"
 		onclick={() => {extended = !extended}}
 		emoji={extended ? "arrow-left-s" : "arrow-right-s"}
 		description={extended ? m.collapseSidebar() : m.extendSidebar()}
@@ -85,7 +84,7 @@
 >
 	<div class="grow"></div>
 	<i 
-		class="ri-arrow-right-s-fill text-black text-6xl -ms-13"
+		class="ri-arrow-right-s-fill text-black text-6xl -ms-4"
 		transition:fly|global={{ x: -100, duration: 200, opacity: 0 }}
 	></i>
 </button>

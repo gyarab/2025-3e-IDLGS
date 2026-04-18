@@ -7,7 +7,7 @@
 		emoji,
 		description,
 		extended = $bindable(false),
-		textSize = "text-5xl",
+		textSize = "text-4xl",
 		gapSize="-ms-2 text-xl font-bold!",
 		type = "button",
 		formname = "",
@@ -26,7 +26,7 @@
 </script>
 
 <button 
-	class="text-white! {textSize} w-full! group z-20! flex flex-row justify-center items-center gap-4 ps-1 pe-1"
+	class="text-white! {textSize} w-full! group z-20! flex flex-row justify-center items-center gap-4 px-4"
 	onclick={() => {
 		onclick();
 	}}
@@ -39,7 +39,7 @@
 		<span 
 			in:fly|global={{ x: -20, duration: 100, opacity: 0, delay: 200 }}
 			out:fade|global={{ duration: 100, delay: 0 }}
-			class="group-hover:scale-110 text-base text-nowrap {gapSize} flex flex-row w-full items-center justify-center transition-all duration-100"
+			class="group-hover:scale-110 text-base text-nowrap {gapSize} flex flex-row w-full items-center justify-start transition-all duration-100"
 		>
 			{description}
 		</span>
