@@ -40,9 +40,6 @@
 			
 		</div>
 	</div>
-	<div class="z-0! h-[calc(7svh+calc(var(--spacing)*8))] w-screen"></div>
-{:else}
-	<div class="z-0! h-8 w-screen"></div>
-	
+	<div class="z-0! h-[7svh] w-screen"></div>
 {/if}
 

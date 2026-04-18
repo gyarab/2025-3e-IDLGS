@@ -40,7 +40,7 @@ import Navbar from "./ui/Navbar.svelte";
 
 <Navbar {darkMode} bind:open={navbarOpen} accentColor={data.color} />
 
-<div class="relative flex flex-col grow w-screen min-h-screen overflow-x-hidden overflow-y-scroll items-center **:z-5">
+<div class="{data.darkMode ? "**:text-white" : "**:text-black"} relative flex flex-col grow w-screen min-h-screen overflow-x-hidden overflow-y-scroll items-center **:z-5">
 	{@render children()}
 </div>
 

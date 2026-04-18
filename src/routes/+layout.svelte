@@ -4,8 +4,14 @@
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import 'remixicon/fonts/remixicon.css'
+	import type { Snippet } from 'svelte';
 
-	let { children } = $props();
+	let { children, data }: {
+		children: Snippet,
+		data: {
+			darkMode: boolean,
+		}
+	} = $props();
 </script>
 
 <svelte:head>

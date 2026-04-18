@@ -6,15 +6,21 @@
 		text,
 		disabled = false,
 		type = "button",
-		label,
+		label=text,
 		id = "",
+		css,
+		style,
+		onclick,
 	}: {
 		emoji: string
 		text: string
 		disabled?: boolean
 		label?: string,
 		type: "button" | "submit" | "reset",
-		id?: string
+		id?: string,
+		css?: string,
+		style?: string,
+		onclick: (event: Event) => void,
 	} = $props();
 
 </script>
@@ -24,7 +30,11 @@
 	{id}
 	{disabled}
 	aria-label={label}
+	title={label}
+	class="{css} flex flex-row justify-center items-center gap-1"
+	{onclick}
+	{style}
 >
-	<HoverEmoji {emoji} />
+	<HoverEmoji {emoji} css="text-2xl" />
 	{text}
 </button>
