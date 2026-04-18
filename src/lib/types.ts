@@ -11,6 +11,6 @@ export type UserType = {
 };
 
 export type ExerciseType = {
-	type: "CRS" | "IMG" | "GRP" | "GEO" | "PRG";
+	type: 'CRS' | 'IMG' | 'GRP' | 'GEO' | 'PRG';
 	//TODO
 };

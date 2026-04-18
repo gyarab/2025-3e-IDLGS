@@ -75,7 +75,12 @@
 			darkMode ? m.lightMode() : m.darkMode(),
 		]}
 		actions={[
-			() => goto(resolve('/(base)/textbook/[textbook]/exercises', { textbook: page.params.textbook! })),
+			() =>
+				goto(
+					resolve('/(base)/textbook/[textbook]/exercises', {
+						textbook: page.params.textbook!,
+					}),
+				),
 			() => goto(resolve('/help/exercises/creation')),
 			async () => {
 				await setDarkMode(!darkMode);

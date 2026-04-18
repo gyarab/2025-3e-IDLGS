@@ -40,7 +40,12 @@
 				css="buttonPrimary"
 				style="background-color: {data.color};"
 				onclick={() => {
-					goto(resolve('/(base)/textbook/[textbook]/exercises/create', { textbook: page.params.textbook! }));
+					goto(
+						resolve(
+							'/(base)/textbook/[textbook]/exercises/create',
+							{ textbook: page.params.textbook! },
+						),
+					);
 				}}
 			/>
 		</div>
