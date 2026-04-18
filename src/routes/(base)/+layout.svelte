@@ -20,10 +20,10 @@ import Navbar from "./ui/Navbar.svelte";
 	let navbarOpen = $state(false);
 
 		const keyboardHandler = (e: KeyboardEvent) => {
-		if(e.key === "f") {
-			e.preventDefault();
-			navbarOpen = !navbarOpen;
-		}
+			if(e.key === "f") {
+				e.preventDefault();
+				navbarOpen = !navbarOpen;
+			}
 		}
 
 		onMount(() => {
