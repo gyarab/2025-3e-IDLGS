@@ -52,12 +52,11 @@ jobs:
             - name: 'Run ESLint'
               run: |
                   npm ci
-                  npm run eslint
+                  npm run lint
             - name: 'Make .env file'
               run: |
                   touch .env
                   echo DATABASE_URL=\"\" >> .env
-                  echo CLOUDFLARE_SECRET=\"\" >> .env
                   echo DEFAULT_EMAIL=\"\" >> .env
                   echo DEFAULT_PASSWORD=\"\" >> .env
             - name: 'Run SvelteKit Check'

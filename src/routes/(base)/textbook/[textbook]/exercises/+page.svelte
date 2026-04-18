@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
 	import { m } from '$lib/paraglide/messages';
 	import Button from '$src/routes/(base)/components/Button.svelte';
 
@@ -38,7 +40,7 @@
 				css="buttonPrimary"
 				style="background-color: {data.color};"
 				onclick={() => {
-					goto('exercises/create');
+					goto(resolve('/(base)/textbook/[textbook]/exercises/create', { textbook: page.params.textbook! }));
 				}}
 			/>
 		</div>

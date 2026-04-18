@@ -20,7 +20,7 @@
 		}}
 		{color}
 		{darkMode}
-		emoji={'grid'}
+		emoji="grid"
 		i={1}
 		text={m.crosswordWithGuess()}
 	/>
@@ -30,7 +30,7 @@
 		}}
 		{color}
 		{darkMode}
-		emoji={'table'}
+		emoji="table"
 		i={2}
 		text={m.crosswordWithoutGuess()}
 	/>
@@ -40,7 +40,7 @@
 		}}
 		{color}
 		{darkMode}
-		emoji={'connector'}
+		emoji="connector"
 		i={3}
 		text={m.connectingDefinitions()}
 	/>
@@ -50,7 +50,7 @@
 		}}
 		{color}
 		{darkMode}
-		emoji={'calculator'}
+		emoji="calculator"
 		i={4}
 		text={m.graphingCalculator()}
 	/>
@@ -60,7 +60,7 @@
 		}}
 		{color}
 		{darkMode}
-		emoji={'shapes'}
+		emoji="shapes"
 		i={5}
 		text={m.geometricalCanvas()}
 	/>
@@ -70,7 +70,7 @@
 		}}
 		{color}
 		{darkMode}
-		emoji={'external-link'}
+		emoji="external-link"
 		i={6}
 		text={m.externalEmbed()}
 	/>

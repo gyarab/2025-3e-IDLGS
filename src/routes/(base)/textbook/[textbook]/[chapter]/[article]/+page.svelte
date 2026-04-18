@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onDestroy, onMount, type Snippet } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import Sidebar from './ui/Sidebar.svelte';
 	import CommandPalette from './ui/CommandPalette.svelte';
 	import Background from './ui/components/Background.svelte';
@@ -7,10 +7,8 @@
 	import ReadBox from './ui/ReadBox.svelte';
 
 	let {
-		children,
 		data,
 	}: {
-		children: Snippet;
 		data: {
 			color: string;
 			darkMode: boolean;

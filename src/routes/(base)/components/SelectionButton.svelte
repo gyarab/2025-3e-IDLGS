@@ -36,7 +36,7 @@
 	<div
 		class="{cssTop} flex w-full flex-row text-white! *:border-collapse *:rounded-none *:border *:border-t-0 *:border-b-0 *:border-white *:first:rounded-s-full *:first:border-s-0 *:last:rounded-e-full *:last:border-e-0"
 	>
-		{#each { length: length } as _, i}
+		{#each { length: length } as _, i (i)}
 			<button
 				class="{css} flex grow flex-row items-center justify-center gap-1 p-2 ps-3 pe-3 font-bold hover:translate-0! hover:brightness-75 active:brightness-50"
 				{style}

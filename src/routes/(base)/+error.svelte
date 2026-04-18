@@ -4,4 +4,6 @@
 	//TODO
 </script>
 
-<div></div>
+<div>
+	{page.status}
+</div>

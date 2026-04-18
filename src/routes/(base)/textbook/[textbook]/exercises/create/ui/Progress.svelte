@@ -6,6 +6,8 @@
 	import { goto, invalidateAll } from '$app/navigation';
 	import { darkenHex, setDarkMode } from '$lib';
 	import Button from '$src/routes/(base)/components/Button.svelte';
+	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
 
 	let {
 		stage = $bindable(0),
@@ -40,7 +42,7 @@
 		</div>
 
 		{#key stage}
-			{#each texts as text, i}
+			{#each texts as text, i (i)}
 				<ProgressItem
 					{color}
 					{text}
@@ -73,8 +75,8 @@
 			darkMode ? m.lightMode() : m.darkMode(),
 		]}
 		actions={[
-			() => goto('.'),
-			() => goto('/help/exercises/creation', {}),
+			() => goto(resolve('/(base)/textbook/[textbook]/exercises', { textbook: page.params.textbook! })),
+			() => goto(resolve('/help/exercises/creation')),
 			async () => {
 				await setDarkMode(!darkMode);
 				await invalidateAll();

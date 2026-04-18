@@ -7,7 +7,7 @@ import {
 	boolean,
 	check,
 } from 'drizzle-orm/pg-core';
-import { desc, sql } from 'drizzle-orm';
+import { sql } from 'drizzle-orm';
 
 export const user = pgTable('user', {
 	id: serial('id').primaryKey(),
