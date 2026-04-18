@@ -31,3 +31,25 @@ export const disableScroll = () => {
 	document.body.style.overflow = 'hidden';
 	document.body.style.maxHeight = '100svh';
 };
+
+export const darkenHex = (hex: string, amount: number): string => {
+	let r = parseInt(hex.slice(-6, -4), 16);
+	let g = parseInt(hex.slice(-4, -2), 16);
+	let b = parseInt(hex.slice(-2), 16);
+
+	r = Math.max(0, r - amount);
+	g = Math.max(0, g - amount);
+	b = Math.max(0, b - amount);
+	
+	return '#'+[r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
+};
+
+export const setDarkMode = async (enabled: boolean) => {
+	await fetch("/?/setDarkMode", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/x-www-form-urlencoded"
+		},
+		body: `darkMode=${enabled ? "dark" : "light"}`
+	});
+};

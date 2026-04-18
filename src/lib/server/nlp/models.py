@@ -49,29 +49,29 @@ def extractAnswers(model: stanza.Pipeline, question: str):
 #Under your command
 #We shall reach our land. 𝄇
 #			   """))
-print(extractAnswers(pl, """I
-Jeszcze Polska nie zginęła,
-Kiedy my żyjemy.
-Co nam obca przemoc wzięła,
-Szablą odbierzemy.
-
-Refren:
-𝄆 Marsz, marsz, Dąbrowski,
-Z ziemi włoskiej do Polski.
-Za twoim przewodem
-Złączym się z narodem. 𝄇
-
-II
-Przejdziem Wisłę, przejdziem Wartę,
-Będziem Polakami.
-Dał nam przykład Bonaparte,
-Jak zwyciężać mamy.
-"""))
-#print(extractAnswers(cs, """Kde domov můj, kde domov můj,
-#voda hučí po lučinách,
-#bory šumí po skalinách,
-#v sadě skví se jara květ,
-#zemský ráj to na pohled!
-#A to je ta krásná země,
-#𝄆 země česká domov můj! 𝄇
+#print(extractAnswers(pl, """I
+#Jeszcze Polska nie zginęła,
+#Kiedy my żyjemy.
+#Co nam obca przemoc wzięła,
+#Szablą odbierzemy.
+#
+#Refren:
+#𝄆 Marsz, marsz, Dąbrowski,
+#Z ziemi włoskiej do Polski.
+#Za twoim przewodem
+#Złączym się z narodem. 𝄇
+#
+#II
+#Przejdziem Wisłę, przejdziem Wartę,
+#Będziem Polakami.
+#Dał nam przykład Bonaparte,
+#Jak zwyciężać mamy.
 #"""))
+print(extractAnswers(cs, """Kde domov můj, kde domov můj,
+voda hučí po lučinách,
+bory šumí po skalinách,
+v sadě skví se jara květ,
+zemský ráj to na pohled!
+A to je ta krásná země,
+𝄆 země česká domov můj! 𝄇
+"""))
