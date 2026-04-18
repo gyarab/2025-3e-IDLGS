@@ -1,6 +1,6 @@
-import { browser } from "$app/environment";
+import { browser } from '$app/environment';
 
-export const TEMP_ACCENT_COLOR = "#ff8800";
+export const TEMP_ACCENT_COLOR = '#ff8800';
 
 export const isInViewport = (element: HTMLElement): Promise<boolean> => {
 	return new Promise((resolve) => {
@@ -40,16 +40,16 @@ export const darkenHex = (hex: string, amount: number): string => {
 	r = Math.max(0, r - amount);
 	g = Math.max(0, g - amount);
 	b = Math.max(0, b - amount);
-	
-	return '#'+[r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
+
+	return '#' + [r, g, b].map((x) => x.toString(16).padStart(2, '0')).join('');
 };
 
 export const setDarkMode = async (enabled: boolean) => {
-	await fetch("/?/setDarkMode", {
-		method: "POST",
+	await fetch('/?/setDarkMode', {
+		method: 'POST',
 		headers: {
-			"Content-Type": "application/x-www-form-urlencoded"
+			'Content-Type': 'application/x-www-form-urlencoded',
 		},
-		body: `darkMode=${enabled ? "dark" : "light"}`
+		body: `darkMode=${enabled ? 'dark' : 'light'}`,
 	});
 };

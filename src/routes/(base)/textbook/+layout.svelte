@@ -1,21 +1,22 @@
 <script lang="ts">
-	import { type Snippet } from "svelte";
+	import { type Snippet } from 'svelte';
 
 	let {
 		children,
-		data
+		data,
 	}: {
-		children: Snippet,
+		children: Snippet;
 		data: {
-			color: string,
-			darkMode: boolean
-		},
+			color: string;
+			darkMode: boolean;
+		};
 	} = $props();
 
 	let darkMode = $derived(data.darkMode);
 </script>
 
-<div class="relative flex flex-col grow w-screen min-h-screen overflow-x-hidden overflow-y-scroll items-center **:z-5">
+<div
+	class="relative flex min-h-screen w-screen grow flex-col items-center overflow-x-hidden overflow-y-scroll **:z-5"
+>
 	{@render children()}
 </div>
-

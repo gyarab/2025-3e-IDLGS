@@ -1,28 +1,27 @@
 <script lang="ts">
-	import HoverEmoji from "./HoverEmoji.svelte";
+	import HoverEmoji from './HoverEmoji.svelte';
 
 	let {
 		emoji,
 		text,
 		disabled = false,
-		type = "button",
-		label=text,
-		id = "",
+		type = 'button',
+		label = text,
+		id = '',
 		css,
 		style,
 		onclick,
 	}: {
-		emoji: string
-		text: string
-		disabled?: boolean
-		label?: string,
-		type: "button" | "submit" | "reset",
-		id?: string,
-		css?: string,
-		style?: string,
-		onclick: (event: Event) => void,
+		emoji: string;
+		text: string;
+		disabled?: boolean;
+		label?: string;
+		type: 'button' | 'submit' | 'reset';
+		id?: string;
+		css?: string;
+		style?: string;
+		onclick: (event: Event) => void;
 	} = $props();
-
 </script>
 
 <button
@@ -31,10 +30,13 @@
 	{disabled}
 	aria-label={label}
 	title={label}
-	class="{css} flex flex-row justify-center items-center gap-1"
+	class="{css} flex flex-row items-center justify-center gap-1"
 	{onclick}
 	{style}
 >
-	<HoverEmoji {emoji} css="text-2xl" />
+	<HoverEmoji
+		{emoji}
+		css="text-2xl"
+	/>
 	{text}
 </button>

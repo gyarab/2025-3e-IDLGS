@@ -2,20 +2,20 @@
 	let {
 		accentColor,
 		percentRead = 0,
-		darkMode
+		darkMode,
 	}: {
-		accentColor: string,
-		percentRead: number,
-		darkMode: boolean
+		accentColor: string;
+		percentRead: number;
+		darkMode: boolean;
 	} = $props();
 </script>
 
-<div 
-	class="{darkMode ? 'to-neutral-500!' : 'to-white!'} fixed left-0 top-0 w-screen h-screen z-0! bg-fixed bg-linear-to-br to-100%"
+<div
+	class="{darkMode
+		? 'to-neutral-500!'
+		: 'to-white!'} fixed top-0 left-0 z-0! h-screen w-screen bg-linear-to-br to-100% bg-fixed"
 	style="
 		--tw-gradient-from-position: {percentRead}%;
 		--tw-gradient-from: {accentColor};
 	"
->
-
-</div>
+></div>

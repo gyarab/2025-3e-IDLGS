@@ -5,20 +5,23 @@
 		text,
 		color,
 	}: {
-		done: boolean,
-		current: boolean,
-		text: string,
-		color: string,
+		done: boolean;
+		current: boolean;
+		text: string;
+		color: string;
 	} = $props();
 </script>
 
-<div class="flex flex-row w-full items-center gap-1 relative z-50!">
+<div class="relative z-50! flex w-full flex-row items-center gap-1">
 	{#if current}
-		<i class="text-3xl ri-login-circle-fill" style="color: {color} !important;"></i>
+		<i
+			class="ri-login-circle-fill text-3xl"
+			style="color: {color} !important;"
+		></i>
 	{:else if done}
-		<i class="text-3xl ri-checkbox-circle-fill text-green-600!"></i>
+		<i class="ri-checkbox-circle-fill text-3xl text-green-600!"></i>
 	{:else}
-		<i class="text-3xl ri-checkbox-blank-circle-line"></i>
+		<i class="ri-checkbox-blank-circle-line text-3xl"></i>
 	{/if}
 	<p class="text-lg">
 		{text}

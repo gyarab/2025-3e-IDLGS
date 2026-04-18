@@ -1,5 +1,4 @@
 <script lang="ts">
-
 </script>
 
 <!--
@@ -10,6 +9,4 @@ Show adding and usage.
 
 -->
 
-<div>
-
-</div>
+<div></div>

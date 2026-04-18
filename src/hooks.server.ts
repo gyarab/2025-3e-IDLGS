@@ -11,7 +11,7 @@ const handleParaglide: Handle = ({ event, resolve }) =>
 			transformPageChunk: ({ html }) =>
 				html
 					.replace('%paraglide.lang%', locale)
-					.replace('%paraglide.dir%', getTextDirection(locale))
+					.replace('%paraglide.dir%', getTextDirection(locale)),
 		});
 	});
 
@@ -28,13 +28,19 @@ const securityHeaders = {
 	'Cross-Origin-Opener-Policy': 'same-origin',
 	'X-Frame-Options': 'SAMEORIGIN',
 	'X-Content-Type-Options': 'nosniff',
-	'Referrer-Policy': 'strict-origin-when-cross-origin'
+	'Referrer-Policy': 'strict-origin-when-cross-origin',
 };
 
 const handleSecurity: Handle = async ({ event, resolve }) => {
 	const response = await resolve(event);
-	Object.entries(securityHeaders).forEach(([header, value]) => response.headers.set(header, value));
+	Object.entries(securityHeaders).forEach(([header, value]) =>
+		response.headers.set(header, value),
+	);
 	return response;
 };
 
-export const handle: Handle = sequence(handleSecurity, handleParaglide, handleDatabase);
+export const handle: Handle = sequence(
+	handleSecurity,
+	handleParaglide,
+	handleDatabase,
+);

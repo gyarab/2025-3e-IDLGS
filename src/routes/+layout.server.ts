@@ -4,6 +4,6 @@ import { TEMP_ACCENT_COLOR } from '$lib';
 export const load = async (event) => {
 	return {
 		color: TEMP_ACCENT_COLOR,
-		darkMode: (event.cookies.get("darkMode") == "dark")
-	}
+		darkMode: event.cookies.get('darkMode') == 'dark',
+	};
 };

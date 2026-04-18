@@ -3,19 +3,25 @@
 	import { locales, localizeHref } from '$lib/paraglide/runtime';
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
-	import 'remixicon/fonts/remixicon.css'
+	import 'remixicon/fonts/remixicon.css';
 	import type { Snippet } from 'svelte';
 
-	let { children, data }: {
-		children: Snippet,
+	let {
+		children,
+		data,
+	}: {
+		children: Snippet;
 		data: {
-			darkMode: boolean,
-		}
+			darkMode: boolean;
+		};
 	} = $props();
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
+	<link
+		rel="icon"
+		href={favicon}
+	/>
 </svelte:head>
 
 {@render children()}

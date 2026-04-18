@@ -19,16 +19,16 @@ jobs:
             - name: Run Prettier
               uses: actions/setup-node@v4
               with:
-                  node-version: 22
+                  node-version: 24
                   cache: 'npm'
             - name: Install and format
               run: |
                   npm ci
-                  npx prettier --write src/
+                  npm run format
             - name: Commit changes
               run: |
                   git config --global user.email "actions@github.com"
-                  git config --global user.name "Glorious Revolutionary Code Formatter"
+                  git config --global user.name "IDLGS"
                   git add -A
                   if [[ -n $(git commit -am "[AUTOMATIC] Code formatting") ]]; then
                     echo "1=1"
@@ -44,10 +44,10 @@ jobs:
         needs: prettier
         steps:
             - uses: actions/checkout@v4
-            - name: 'Use Node.js 22'
+            - name: 'Use Node.js 24'
               uses: actions/setup-node@v4
               with:
-                  node-version: 22
+                  node-version: 24
                   cache: 'npm'
             - name: 'Run ESLint'
               run: |

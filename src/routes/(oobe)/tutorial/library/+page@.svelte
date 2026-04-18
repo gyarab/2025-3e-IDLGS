@@ -1,5 +1,4 @@
 <script lang="ts">
-
 </script>
 
 <!--
@@ -10,6 +9,4 @@ Sharing your work, view others, ratings.
 
 -->
 
-<div>
-
-</div>
+<div></div>

@@ -1,5 +1,4 @@
 <script lang="ts">
-
 </script>
 
 <!--
@@ -12,6 +11,4 @@ for each page/section own page, opened when section first visited
 
 -->
 
-<div>
-
-</div>
+<div></div>

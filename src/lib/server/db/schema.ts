@@ -1,4 +1,12 @@
-import { pgTable, serial, integer, text, timestamp, boolean, check } from 'drizzle-orm/pg-core';
+import {
+	pgTable,
+	serial,
+	integer,
+	text,
+	timestamp,
+	boolean,
+	check,
+} from 'drizzle-orm/pg-core';
 import { desc, sql } from 'drizzle-orm';
 
 export const user = pgTable('user', {
@@ -13,13 +21,19 @@ export const user = pgTable('user', {
 	salt: text('salt').notNull(),
 	registeredAt: timestamp('registeredAt').notNull().defaultNow(),
 	firstLogin: boolean('firstLogin').notNull().default(true),
-	playedTextbookTutorial: boolean('playedTextbookTutorial').notNull().default(false),
-	playedLibraryTutorial: boolean('playedLibraryTutorial').notNull().default(false),
-	playedGalleryTutorial: boolean('playedGalleryTutorial').notNull().default(false),
-	degree: text('degree').notNull().default("none"),
-	institution: text('institution').notNull().default("none"),
+	playedTextbookTutorial: boolean('playedTextbookTutorial')
+		.notNull()
+		.default(false),
+	playedLibraryTutorial: boolean('playedLibraryTutorial')
+		.notNull()
+		.default(false),
+	playedGalleryTutorial: boolean('playedGalleryTutorial')
+		.notNull()
+		.default(false),
+	degree: text('degree').notNull().default('none'),
+	institution: text('institution').notNull().default('none'),
 	profilePicture: integer('profilePicture').references(() => resource.id),
-	description: text('description').notNull().default(""),
+	description: text('description').notNull().default(''),
 	lastSeenAt: timestamp('lastSeenAt').notNull().defaultNow(),
 });
 
@@ -31,34 +45,43 @@ export const resource = pgTable('resource', {
 	type: text('type').notNull(),
 });
 
-export const textbook = pgTable('textbook', {
-	id: serial('id').primaryKey(),
-	title: text('title').notNull(),
-	r: integer('r').notNull().default(0),
-	g: integer('g').notNull().default(0),
-	b: integer('b').notNull().default(0),
-	//TODO setting
-	noAiQuestions: boolean('noAIQuestions').notNull().default(false),
-
-}, (table) => [
-	check('r', sql`${table.r} >= 0 AND ${table.r} <= 255`),
-	check('g', sql`${table.g} >= 0 AND ${table.g} <= 255`),
-	check('b', sql`${table.b} >= 0 AND ${table.b} <= 255`),
-]);
+export const textbook = pgTable(
+	'textbook',
+	{
+		id: serial('id').primaryKey(),
+		title: text('title').notNull(),
+		r: integer('r').notNull().default(0),
+		g: integer('g').notNull().default(0),
+		b: integer('b').notNull().default(0),
+		//TODO setting
+		noAiQuestions: boolean('noAIQuestions').notNull().default(false),
+	},
+	(table) => [
+		check('r', sql`${table.r} >= 0 AND ${table.r} <= 255`),
+		check('g', sql`${table.g} >= 0 AND ${table.g} <= 255`),
+		check('b', sql`${table.b} >= 0 AND ${table.b} <= 255`),
+	],
+);
 
 export const chapter = pgTable('chapter', {
 	id: serial('id').primaryKey(),
-	textbookId: integer('textbookId').notNull().references(() => textbook.id),
+	textbookId: integer('textbookId')
+		.notNull()
+		.references(() => textbook.id),
 });
 
 export const article = pgTable('article', {
 	id: serial('id').primaryKey(),
-	chapterId: integer('chapterId').notNull().references(() => chapter.id),
+	chapterId: integer('chapterId')
+		.notNull()
+		.references(() => chapter.id),
 });
 
 export const question = pgTable('question', {
 	id: serial('id').primaryKey(),
-	articleId: integer('articleId').notNull().references(() => article.id),
+	articleId: integer('articleId')
+		.notNull()
+		.references(() => article.id),
 });
 
 export const exercise = pgTable('exercise', {

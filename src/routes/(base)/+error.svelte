@@ -1,9 +1,7 @@
 <script lang="ts">
-	import { page } from "$app/state";
+	import { page } from '$app/state';
 
 	//TODO
 </script>
 
-<div>
-
-</div>
+<div></div>

@@ -1,45 +1,45 @@
 <script lang="ts">
-	import { fly, fade } from "svelte/transition";
-	import HoverEmoji from "$src/routes/(base)/components/HoverEmoji.svelte";
+	import { fly, fade } from 'svelte/transition';
+	import HoverEmoji from '$src/routes/(base)/components/HoverEmoji.svelte';
 
 	let {
 		onclick,
 		emoji,
 		description,
 		extended = $bindable(false),
-		textSize = "text-4xl",
-		gapSize="-ms-2 text-xl font-bold!",
-		type = "button",
-		formname = "",
-		formvalue = "",
+		textSize = 'text-4xl',
+		gapSize = '-ms-2 text-xl font-bold!',
+		type = 'button',
+		formname = '',
+		formvalue = '',
 	}: {
-		onclick: () => void,
-		emoji: string,
-		description: string,
-		extended: boolean,
-		textSize?: string
-		gapSize?: string,
-		type?: "button" | "submit" | "reset",
-		formname?: string,
-		formvalue?: string,
+		onclick: () => void;
+		emoji: string;
+		description: string;
+		extended: boolean;
+		textSize?: string;
+		gapSize?: string;
+		type?: 'button' | 'submit' | 'reset';
+		formname?: string;
+		formvalue?: string;
 	} = $props();
 </script>
 
-<button 
-	class="text-white! {textSize} w-full! group z-20! flex flex-row justify-center items-center gap-4 px-4"
+<button
+	class="text-white! {textSize} group z-20! flex w-full! flex-row items-center justify-center gap-4 px-4"
 	onclick={() => {
 		onclick();
 	}}
-	type={type}
+	{type}
 	name={formname}
 	value={formvalue}
 >
 	<HoverEmoji {emoji} />
 	{#if extended}
-		<span 
+		<span
 			in:fly|global={{ x: -20, duration: 100, opacity: 0, delay: 200 }}
 			out:fade|global={{ duration: 100, delay: 0 }}
-			class="group-hover:scale-110 text-base text-nowrap {gapSize} flex flex-row w-full items-center justify-start transition-all duration-100"
+			class="text-base text-nowrap group-hover:scale-110 {gapSize} flex w-full flex-row items-center justify-start transition-all duration-100"
 		>
 			{description}
 		</span>
