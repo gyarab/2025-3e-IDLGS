@@ -21,14 +21,14 @@
 </script>
 
 <div class="flex w-full grow flex-col gap-2">
-	<div 
+	<div
 		class="mb-2 flex w-full flex-row"
-		in:fly={{ x: 1000, y: 0, duration: 300, delay: 100, opacity: 0}}
+		in:fly={{ x: 1000, y: 0, duration: 300, delay: 100, opacity: 0 }}
 	>
 		<h2 class="text-2xl font-bold">{m.basicExerciseInformation()}</h2>
 	</div>
 
-	<span in:fly={{ x: 1000, y: 0, duration: 300, delay: 300, opacity: 0}}>
+	<span in:fly={{ x: 1000, y: 0, duration: 300, delay: 300, opacity: 0 }}>
 		<TextInput
 			bind:value={name}
 			{darkMode}
@@ -38,7 +38,10 @@
 		/>
 	</span>
 
-	<span class="flex flex-col grow max-h-1/4" in:fly={{ x: 1000, y: 0, duration: 300, delay: 500, opacity: 0}}>
+	<span
+		class="flex max-h-1/4 grow flex-col"
+		in:fly={{ x: 1000, y: 0, duration: 300, delay: 500, opacity: 0 }}
+	>
 		<TextArea
 			bind:value={description}
 			css="grow"
@@ -48,7 +51,7 @@
 		/>
 	</span>
 
-	<span in:fly={{ x: 1000, y: 0, duration: 300, delay: 700, opacity: 0}}>
+	<span in:fly={{ x: 1000, y: 0, duration: 300, delay: 700, opacity: 0 }}>
 		<ImageInput
 			bind:value={name}
 			{darkMode}

@@ -25,7 +25,7 @@ const handleDatabase: Handle = async ({ event, resolve }) => {
 const handleStandaloneMode: Handle = async ({ event, resolve }) => {
 	//TODO
 	return resolve(event);
-}
+};
 
 const securityHeaders = {
 	'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',

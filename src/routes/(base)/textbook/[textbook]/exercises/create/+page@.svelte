@@ -22,9 +22,9 @@
 	let stage = $state(0);
 
 	//exercise temp data
-	let type = $state("");
-	let name = $state("");
-	let description = $state("");
+	let type = $state('');
+	let name = $state('');
+	let description = $state('');
 
 	onMount(() => {
 		runAnim = true;
@@ -68,7 +68,7 @@
 					darkMode={data.darkMode}
 					color={data.color}
 				/>
-				<div class="flex w-full grow flex-col p-4 gap-4">
+				<div class="flex w-full grow flex-col gap-4 p-4">
 					{#if stage == 0}
 						<TypeSelection
 							color={data.color}
@@ -85,31 +85,19 @@
 							bind:description
 						/>
 					{:else if stage == 2}
-						{#if type == "CRS"}
-
-						{:else if type == "CRW"}
-
-						{:else if type == "DEF"}
-
-						{:else if type == "GRP"}
-
-						{:else if type == "GEO"}
-
-						{:else if type == "EXT"}
-
-						{/if}						
+						{#if type == 'CRS'}{:else if type == 'CRW'}{:else if type == 'DEF'}{:else if type == 'GRP'}{:else if type == 'GEO'}{:else if type == 'EXT'}{/if}
 					{/if}
 					{#if stage != 0}
-					<PageControl 
-						bind:stage
-						darkMode={data.darkMode}
-						color={data.color}
-						disableNext={
-							(stage == 1 && (name.length == 0 || description.length == 0)) ||
-							(false)
-						}
-						disablePrev={false}
-					/>
+						<PageControl
+							bind:stage
+							darkMode={data.darkMode}
+							color={data.color}
+							disableNext={(stage == 1 &&
+								(name.length == 0 ||
+									description.length == 0)) ||
+								false}
+							disablePrev={false}
+						/>
 					{/if}
 				</div>
 			</div>

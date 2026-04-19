@@ -38,7 +38,7 @@
 		<i
 			class="ri-upload-line text-5xl font-bold transition-all duration-300 group-hover:-translate-y-1"
 		></i>
-		<div class="flex flex-col gap-2 h-full grow">
+		<div class="flex h-full grow flex-col gap-2">
 			<h2 class="text-base opacity-70">
 				{#if value.length == 0}
 					{#if placeholder.length == 0}
@@ -47,7 +47,7 @@
 						{placeholder}
 					{/if}
 				{:else}
-					{value.split(/\\|\//gus)}
+					{value.split(/\\|\//gsu)}
 				{/if}
 			</h2>
 		</div>

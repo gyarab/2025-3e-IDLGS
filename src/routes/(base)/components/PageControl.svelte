@@ -22,21 +22,9 @@
 
 	<SelectionButton
 		style="background-color: {color};"
-		texts={[
-			m.goBack(),
-			m.goForward(),
-		]}
-		disabled={[
-			stage == 0 || disablePrev,
-			disableNext,
-		]}
-		actions={[
-			() => stage--,
-			() => stage++
-		]}
-		emojis={[
-			"arrow-left-double",
-			"arrow-right-double"
-		]}
-	 />
+		texts={[m.goBack(), m.goForward()]}
+		disabled={[stage == 0 || disablePrev, disableNext]}
+		actions={[() => stage--, () => stage++]}
+		emojis={['arrow-left-double', 'arrow-right-double']}
+	/>
 </div>

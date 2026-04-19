@@ -37,9 +37,7 @@ const cloudinaryUpload = async (file: File): Promise<string | undefined> => {
 				},
 				(error, uploadResult) => {
 					if (error) {
-						console.error(
-							`Error uploading file: ${error}`,
-						);
+						console.error(`Error uploading file: ${error}`);
 						resolve(undefined);
 						return undefined;
 					}
@@ -48,9 +46,7 @@ const cloudinaryUpload = async (file: File): Promise<string | undefined> => {
 			)
 			.end(byteArrayBuffer);
 	}).then((uploadResult) => {
-		console.log(
-			`Error uploading file: ${JSON.stringify(uploadResult)}`,
-		);
+		console.log(`Error uploading file: ${JSON.stringify(uploadResult)}`);
 		return uploadResult;
 	});
 

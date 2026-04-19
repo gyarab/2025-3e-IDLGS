@@ -6,7 +6,7 @@
 		stage = $bindable(0),
 		darkMode,
 		color,
-		type = $bindable(""),
+		type = $bindable(''),
 	}: {
 		stage: number;
 		darkMode: boolean;
@@ -19,7 +19,7 @@
 	<TypeSelectionButton
 		onclick={() => {
 			stage++;
-			type = "CRS";
+			type = 'CRS';
 		}}
 		{color}
 		{darkMode}
@@ -30,7 +30,7 @@
 	<TypeSelectionButton
 		onclick={() => {
 			stage++;
-			type = "CRW";
+			type = 'CRW';
 		}}
 		{color}
 		{darkMode}
@@ -41,7 +41,7 @@
 	<TypeSelectionButton
 		onclick={() => {
 			stage++;
-			type = "DEF";
+			type = 'DEF';
 		}}
 		{color}
 		{darkMode}
@@ -52,7 +52,7 @@
 	<TypeSelectionButton
 		onclick={() => {
 			stage++;
-			type = "GRP";
+			type = 'GRP';
 		}}
 		{color}
 		{darkMode}
@@ -63,7 +63,7 @@
 	<TypeSelectionButton
 		onclick={() => {
 			stage++;
-			type = "GEO";
+			type = 'GEO';
 		}}
 		{color}
 		{darkMode}
@@ -74,7 +74,7 @@
 	<TypeSelectionButton
 		onclick={() => {
 			stage++;
-			type = "EXT";
+			type = 'EXT';
 		}}
 		{color}
 		{darkMode}

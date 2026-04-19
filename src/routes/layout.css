@@ -5,7 +5,6 @@
 @plugin '@tailwindcss/typography';
 
 cap-widget {
-
 }
 
 @theme {
@@ -40,12 +39,12 @@ cap-widget {
 		@apply p-2;
 	}
 	input:focus {
-		@apply outline-0; 
+		@apply outline-0;
 	}
 	input::placeholder {
 		@apply opacity-70;
 	}
 	textarea::placeholder {
 		@apply opacity-70;
-	};
+	}
 }
