@@ -6,17 +6,20 @@
 		stage = $bindable(0),
 		darkMode,
 		color,
+		type = $bindable(""),
 	}: {
 		stage: number;
 		darkMode: boolean;
 		color: string;
+		type: string;
 	} = $props();
 </script>
 
-<div class="grid grow-3 grid-cols-3 grid-rows-2 gap-4 p-4">
+<div class="grid grow-3 grid-cols-3 grid-rows-2 gap-4">
 	<TypeSelectionButton
 		onclick={() => {
 			stage++;
+			type = "CRS";
 		}}
 		{color}
 		{darkMode}
@@ -27,6 +30,7 @@
 	<TypeSelectionButton
 		onclick={() => {
 			stage++;
+			type = "CRW";
 		}}
 		{color}
 		{darkMode}
@@ -37,6 +41,7 @@
 	<TypeSelectionButton
 		onclick={() => {
 			stage++;
+			type = "DEF";
 		}}
 		{color}
 		{darkMode}
@@ -47,6 +52,7 @@
 	<TypeSelectionButton
 		onclick={() => {
 			stage++;
+			type = "GRP";
 		}}
 		{color}
 		{darkMode}
@@ -57,6 +63,7 @@
 	<TypeSelectionButton
 		onclick={() => {
 			stage++;
+			type = "GEO";
 		}}
 		{color}
 		{darkMode}
@@ -67,6 +74,7 @@
 	<TypeSelectionButton
 		onclick={() => {
 			stage++;
+			type = "EXT";
 		}}
 		{color}
 		{darkMode}

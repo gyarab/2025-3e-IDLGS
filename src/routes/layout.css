@@ -5,6 +5,7 @@
 @plugin '@tailwindcss/typography';
 
 cap-widget {
+
 }
 
 @theme {
@@ -26,9 +27,6 @@ cap-widget {
 	h2 {
 		@apply text-lg;
 	}
-	input[type='text'] {
-		@apply rounded-md border border-neutral-300 p-0.5;
-	}
 	hr {
 		@apply opacity-10;
 	}
@@ -41,4 +39,13 @@ cap-widget {
 	.buttonLarge {
 		@apply p-2;
 	}
+	input:focus {
+		@apply outline-0; 
+	}
+	input::placeholder {
+		@apply opacity-70;
+	}
+	textarea::placeholder {
+		@apply opacity-70;
+	};
 }

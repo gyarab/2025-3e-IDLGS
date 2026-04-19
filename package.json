@@ -52,6 +52,7 @@
 	},
 	"dependencies": {
 		"chart.js": "^4.5.1",
+		"cloudinary": "^2.9.0",
 		"highlighter.js": "^1.0.0",
 		"katex": "^0.16.38",
 		"node-calls-python": "^1.11.1",

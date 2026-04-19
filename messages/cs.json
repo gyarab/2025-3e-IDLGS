@@ -31,6 +31,11 @@
 	"referencesToMaterial": "Odkazy na materiál",
 	"helpMenu": "Nápověda",
 	"goBack": "Zpět",
-	"goForward": "Vpřed",
-	"cancel": "Zrušit"
+	"goForward": "Dále",
+	"cancel": "Zrušit",
+	"exerciseName": "Název cvičení",
+	"enterExerciseName": "Zadejte název cvičení",
+	"enterExerciseDescription": "Zadejte popis cvičení",
+	"uploadFile": "Nahrát soubor",
+	"uploadThumbnail": "Nahrát náhled"
 }

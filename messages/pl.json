@@ -32,5 +32,10 @@
 	"helpMenu": "Pomoc",
 	"goBack": "Wstecz",
 	"goForward": "Dalej",
-	"cancel": "Anuluj"
+	"cancel": "Anuluj",
+	"exerciseName": "Nazwa ćwiczenia",
+	"enterExerciseName": "Wprowadź nazwę ćwiczenia",
+	"enterExerciseDescription": "Wprowadź opis ćwiczenia",
+	"uploadFile": "Prześlij plik",
+	"uploadThumbnail": "Prześlij miniaturę"
 }

@@ -1,0 +1,60 @@
+<script lang="ts">
+	import { m } from '$lib/paraglide/messages';
+	import ImageInput from '$src/routes/(base)/components/ImageInput.svelte';
+	import TextArea from '$src/routes/(base)/components/TextArea.svelte';
+	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
+	import { fly } from 'svelte/transition';
+
+	let {
+		stage = $bindable(1),
+		darkMode,
+		color,
+		name = $bindable(''),
+		description = $bindable(''),
+	}: {
+		stage: number;
+		darkMode: boolean;
+		color: string;
+		name: string;
+		description: string;
+	} = $props();
+</script>
+
+<div class="flex w-full grow flex-col gap-2">
+	<div 
+		class="mb-2 flex w-full flex-row"
+		in:fly={{ x: 1000, y: 0, duration: 300, delay: 100, opacity: 0}}
+	>
+		<h2 class="text-2xl font-bold">{m.basicExerciseInformation()}</h2>
+	</div>
+
+	<span in:fly={{ x: 1000, y: 0, duration: 300, delay: 300, opacity: 0}}>
+		<TextInput
+			bind:value={name}
+			{darkMode}
+			{color}
+			css="w-1/2"
+			placeholder={m.enterExerciseName()}
+		/>
+	</span>
+
+	<span class="flex flex-col grow max-h-1/4" in:fly={{ x: 1000, y: 0, duration: 300, delay: 500, opacity: 0}}>
+		<TextArea
+			bind:value={description}
+			css="grow"
+			{color}
+			{darkMode}
+			placeholder={m.enterExerciseDescription()}
+		/>
+	</span>
+
+	<span in:fly={{ x: 1000, y: 0, duration: 300, delay: 700, opacity: 0}}>
+		<ImageInput
+			bind:value={name}
+			{darkMode}
+			{color}
+			css="w-1/2"
+			placeholder={m.uploadThumbnail()}
+		/>
+	</span>
+</div>

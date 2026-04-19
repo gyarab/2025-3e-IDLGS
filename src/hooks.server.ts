@@ -2,6 +2,8 @@ import type { Handle } from '@sveltejs/kit';
 import { getTextDirection } from '$lib/paraglide/runtime';
 import { paraglideMiddleware } from '$lib/paraglide/server';
 import { sequence } from '@sveltejs/kit/hooks';
+import databaseSchema from '$lib/server/db/schema';
+import { db } from '$lib/server/db';
 
 const handleParaglide: Handle = ({ event, resolve }) =>
 	paraglideMiddleware(event.request, ({ request, locale }) => {
@@ -19,6 +21,11 @@ const handleDatabase: Handle = async ({ event, resolve }) => {
 	//TODO
 	return resolve(event);
 };
+
+const handleStandaloneMode: Handle = async ({ event, resolve }) => {
+	//TODO
+	return resolve(event);
+}
 
 const securityHeaders = {
 	'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
@@ -42,5 +49,6 @@ const handleSecurity: Handle = async ({ event, resolve }) => {
 export const handle: Handle = sequence(
 	handleSecurity,
 	handleParaglide,
+	handleStandaloneMode,
 	handleDatabase,
 );

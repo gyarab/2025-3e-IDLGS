@@ -5,7 +5,6 @@
 	import SelectionButton from '$src/routes/(base)/components/SelectionButton.svelte';
 	import { goto, invalidateAll } from '$app/navigation';
 	import { darkenHex, setDarkMode } from '$lib';
-	import Button from '$src/routes/(base)/components/Button.svelte';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 
@@ -54,16 +53,6 @@
 	</div>
 
 	<div class="grow"></div>
-
-	<Button
-		css="buttonPrimary font-bold"
-		style="background-color: {color};"
-		type="button"
-		text={m.goBack()}
-		emoji="arrow-go-back"
-		onclick={() => stage--}
-		disabled={stage === 0}
-	/>
 
 	<SelectionButton
 		style="background-color: {darkenHex(color, 50)};"

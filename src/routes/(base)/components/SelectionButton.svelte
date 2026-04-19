@@ -10,6 +10,7 @@
 		css,
 		style,
 		cssTop,
+		disabled,
 	}: {
 		texts?: string[];
 		labels?: string[];
@@ -19,6 +20,7 @@
 		css?: string;
 		style?: string;
 		cssTop?: string;
+		disabled?: boolean[];
 	} = $props();
 
 	let length = $derived(
@@ -34,7 +36,7 @@
 
 {#key texts || actions || answers || emojis}
 	<div
-		class="{cssTop} flex w-full flex-row text-white! *:border-collapse *:rounded-none *:border *:border-t-0 *:border-b-0 *:border-white *:first:rounded-s-full *:first:border-s-0 *:last:rounded-e-full *:last:border-e-0"
+		class="{cssTop} flex flex-row text-white! *:border-collapse *:rounded-none *:border *:border-t-0 *:border-b-0 *:border-white *:first:rounded-s-full *:first:border-s-0 *:last:rounded-e-full *:last:border-e-0"
 	>
 		{#each { length: length } as _, i (i)}
 			<button
@@ -43,6 +45,7 @@
 				onclick={actions?.at(i) ?? (() => {})}
 				title={labels?.at(i) ?? ''}
 				aria-label={labels?.at(i) ?? ''}
+				disabled={disabled?.at(i) ?? false}
 			>
 				{#if emojis}
 					<HoverEmoji

@@ -5,6 +5,8 @@
 	import Progress from './ui/Progress.svelte';
 	import TypeSelection from './ui/TypeSelection.svelte';
 	import { darkenHex } from '$lib';
+	import BasicInformation from './ui/BasicInformation.svelte';
+	import PageControl from '../../../../components/PageControl.svelte';
 
 	let {
 		data,
@@ -18,6 +20,11 @@
 	let runAnim = $state(false);
 
 	let stage = $state(0);
+
+	//exercise temp data
+	let type = $state("");
+	let name = $state("");
+	let description = $state("");
 
 	onMount(() => {
 		runAnim = true;
@@ -61,13 +68,50 @@
 					darkMode={data.darkMode}
 					color={data.color}
 				/>
-				{#if stage == 0}
-					<TypeSelection
-						color={data.color}
-						darkMode={data.darkMode}
+				<div class="flex w-full grow flex-col p-4 gap-4">
+					{#if stage == 0}
+						<TypeSelection
+							color={data.color}
+							darkMode={data.darkMode}
+							bind:stage
+							bind:type
+						/>
+					{:else if stage == 1}
+						<BasicInformation
+							darkMode={data.darkMode}
+							color={data.color}
+							bind:stage
+							bind:name
+							bind:description
+						/>
+					{:else if stage == 2}
+						{#if type == "CRS"}
+
+						{:else if type == "CRW"}
+
+						{:else if type == "DEF"}
+
+						{:else if type == "GRP"}
+
+						{:else if type == "GEO"}
+
+						{:else if type == "EXT"}
+
+						{/if}						
+					{/if}
+					{#if stage != 0}
+					<PageControl 
 						bind:stage
+						darkMode={data.darkMode}
+						color={data.color}
+						disableNext={
+							(stage == 1 && (name.length == 0 || description.length == 0)) ||
+							(false)
+						}
+						disablePrev={false}
 					/>
-				{/if}
+					{/if}
+				</div>
 			</div>
 		</div>
 	</div>
