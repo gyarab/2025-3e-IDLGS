@@ -40,5 +40,7 @@
 	"enterExerciseName": "Wprowadź nazwę ćwiczenia",
 	"enterExerciseDescription": "Wprowadź opis ćwiczenia",
 	"uploadFile": "Prześlij plik",
-	"uploadThumbnail": "Prześlij miniaturę"
+	"uploadThumbnail": "Prześlij miniaturę",
+	"loading": "Ładowanie",
+	"itsTakingLongerThanExpected": "To zajmuje więcej czasu niż oczekiwano"
 }

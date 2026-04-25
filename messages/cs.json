@@ -40,5 +40,7 @@
 	"enterExerciseName": "Zadejte název cvičení",
 	"enterExerciseDescription": "Zadejte popis cvičení",
 	"uploadFile": "Nahrát soubor",
-	"uploadThumbnail": "Nahrát náhled"
+	"uploadThumbnail": "Nahrát náhled",
+	"loading": "Načítání",
+	"itsTakingLongerThanExpected": "Trvá to déle než by mělo"
 }

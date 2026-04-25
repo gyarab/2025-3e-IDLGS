@@ -6,7 +6,6 @@ const config = {
 		alias: {
 			$lib: 'src/lib/',
 			$src: 'src/',
-			$component: 'src/routes/(root)/components/',
 		},
 		csp: {
 			directives: {
@@ -14,7 +13,7 @@ const config = {
 				'font-src': ['self', 'fonts.gstatic.com', 'data:'],
 				'script-src': [
 					'self',
-					'martinbykov.eu',
+					'captcha.martinbykov.eu',
 					'cdn.jsdelivr.net/npm/@cap.js/',
 					'blob:',
 					'wasm-unsafe-eval',
@@ -27,7 +26,7 @@ const config = {
 				'connect-src': [
 					'cdn.jsdelivr.net/npm/@cap.js/',
 					'self',
-					'martinbykov.eu',
+					'captcha.martinbykov.eu',
 				],
 				'frame-src': [
 					'www.youtube-nocookie.com',
@@ -35,6 +34,7 @@ const config = {
 					'youtube.com',
 					'www.youtube.com',
 					'consent.youtube.com',
+					'self',
 				],
 				'media-src': ['self'],
 				'base-uri': ['self'],

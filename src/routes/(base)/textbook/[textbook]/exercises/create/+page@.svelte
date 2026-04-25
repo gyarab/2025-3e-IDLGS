@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { darkMode, m } from '$lib/paraglide/messages';
+	import { m } from '$lib/paraglide/messages';
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import Progress from './ui/Progress.svelte';
@@ -7,6 +7,12 @@
 	import { darkenHex } from '$lib';
 	import BasicInformation from './ui/BasicInformation.svelte';
 	import PageControl from '../../../../components/PageControl.svelte';
+	import CRSEditor from './editor/CRSEditor.svelte';
+	import CRWEditor from './editor/CRWEditor.svelte';
+	import DEFEditor from './editor/DEFEditor.svelte';
+	import GRPEditor from './editor/GRPEditor.svelte';
+	import GEOEditor from './editor/GEOEditor.svelte';
+	import EXTEditor from './editor/EXTEditor.svelte';
 
 	let {
 		data,
@@ -17,14 +23,32 @@
 		};
 	} = $props();
 
-	let runAnim = $state(false);
+	let runAnim: boolean = $state(false);
 
-	let stage = $state(0);
+	let stage: number = $state(0);
 
 	//exercise temp data
-	let type = $state('');
-	let name = $state('');
-	let description = $state('');
+	let type: string = $state('');
+	let name: string = $state('');
+	let description: string = $state('');
+	let thumbnail: string = $state('');
+
+	let backgroundColorR: number = $state(255);
+	let backgroundColorG: number = $state(255);
+	let backgroundColorB: number = $state(255);
+	let foregroundColorR: number = $state(0);
+	let foregroundColorG: number = $state(0);
+	let foregroundColorB: number = $state(0);
+
+	//crossword (crs/crw) specific data
+	let crWords: string[] = $state([]);
+	let crClues: string[] = $state([]);
+	let crDescriptions: string[] = $state([]);
+	let crSolution: string = $state('');
+
+	//crs specific data
+	let crsOffsets: number[] = $state([]);
+	let crsColumnId: number = $state(0);
 
 	onMount(() => {
 		runAnim = true;
@@ -83,9 +107,35 @@
 							bind:stage
 							bind:name
 							bind:description
+							bind:thumbnail
 						/>
 					{:else if stage == 2}
-						{#if type == 'CRS'}{:else if type == 'CRW'}{:else if type == 'DEF'}{:else if type == 'GRP'}{:else if type == 'GEO'}{:else if type == 'EXT'}{/if}
+						{#if type == 'CRS'}
+							<CRSEditor
+								bind:backgroundColorR
+								bind:backgroundColorG
+								bind:backgroundColorB
+								bind:foregroundColorR
+								bind:foregroundColorG
+								bind:foregroundColorB
+								bind:crsOffsets
+								bind:crsColumnId
+								bind:crWords
+								bind:crClues
+								bind:crDescriptions
+								bind:crSolution
+							/>
+						{:else if type == 'CRW'}
+							<CRWEditor />
+						{:else if type == 'DEF'}
+							<DEFEditor />
+						{:else if type == 'GRP'}
+							<GRPEditor />
+						{:else if type == 'GEO'}
+							<GEOEditor />
+						{:else if type == 'EXT'}
+							<EXTEditor />
+						{/if}
 					{/if}
 					{#if stage != 0}
 						<PageControl
@@ -94,7 +144,9 @@
 							color={data.color}
 							disableNext={(stage == 1 &&
 								(name.length == 0 ||
-									description.length == 0)) ||
+									description.length == 0 ||
+									thumbnail.length == 0)) ||
+								stage == 2 ||
 								false}
 							disablePrev={false}
 						/>
