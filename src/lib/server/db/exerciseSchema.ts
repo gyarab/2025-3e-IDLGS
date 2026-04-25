@@ -31,12 +31,40 @@ export const exercise = pgTable(
 		grp: integer('grp').references(() => exerciseGraph.id),
 		geo: integer('geo').references(() => exerciseGeometry.id),
 		ext: integer('ext').references(() => exerciseEmbed.id),
+
+		backgroundColorR: integer('backgroundColorR').notNull().default(255),
+		backgroundColorG: integer('backgroundColorG').notNull().default(255),
+		backgroundColorB: integer('backgroundColorB').notNull().default(255),
+
+		foregroundColorR: integer('foregroundColorR').notNull().default(0),
+		foregroundColorG: integer('foregroundColorG').notNull().default(0),
+		foregroundColorB: integer('foregroundColorB').notNull().default(0),
 	},
 	(table) => [
 		check(
 			'type',
 			sql`${table.type} IN ('CRS', 'CRW', 'DEF', 'GRP', 'GEO', 'EXT')`,
 		),
+		check(
+			'exerciseTypeData',
+			sql`(type = 'CRS' AND crs IS NOT NULL AND crosswordDataId IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL) OR
+			(type = 'CRW' AND crw IS NOT NULL AND crosswordDataId IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL) OR
+			(type = 'DEF' AND def IS NOT NULL AND crosswordDataId IS NULL AND crs IS NULL AND crw IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL) OR
+			(type = 'GRP' AND grp IS NOT NULL AND crosswordDataId IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND geo IS NULL AND ext IS NULL) OR
+			(type = 'GEO' AND geo IS NOT NULL AND crosswordDataId IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND grp IS NULL AND ext IS NULL) OR
+			(type = 'EXT' AND ext IS NOT NULL AND crosswordDataId IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL) OR
+			(type = 'CRW' AND crosswordDataId IS NOT NULL AND crs IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL)
+			`,
+		),
+		check(
+			'colorValues',
+			sql`(backgroundColorR >= 0 AND backgroundColorR <= 255) AND
+			(backgroundColorG >= 0 AND backgroundColorG <= 255) AND
+			(backgroundColorB >= 0 AND backgroundColorB <= 255) AND
+			(foregroundColorR >= 0 AND foregroundColorR <= 255) AND
+			(foregroundColorG >= 0 AND foregroundColorG <= 255) AND
+			(foregroundColorB >= 0 AND foregroundColorB <= 255)`,
+		)
 	],
 );
 

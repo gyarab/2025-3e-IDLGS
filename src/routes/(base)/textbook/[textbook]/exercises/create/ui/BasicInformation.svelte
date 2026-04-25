@@ -11,12 +11,14 @@
 		color,
 		name = $bindable(''),
 		description = $bindable(''),
+		thumbnail = $bindable(''),
 	}: {
 		stage: number;
 		darkMode: boolean;
 		color: string;
 		name: string;
 		description: string;
+		thumbnail: string;
 	} = $props();
 </script>
 
@@ -53,7 +55,7 @@
 
 	<span in:fly={{ x: 1000, y: 0, duration: 300, delay: 700, opacity: 0 }}>
 		<ImageInput
-			bind:value={name}
+			bind:value={thumbnail}
 			{darkMode}
 			{color}
 			css="w-1/2"
