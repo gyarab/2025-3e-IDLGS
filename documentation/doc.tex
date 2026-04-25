@@ -126,18 +126,18 @@ sorting=nyt,
  	 \section*{Anotace}
  	 
  	  \section*{Klíčová slova}
-
+		učebnice, vzdělání, platforma, interaktivita, generace cvičení
  	 
  	  \section*{Abstract}
  	  
  	   \section*{Keywords}
-
+		textbook, education, platform, interactivity, exercise generation
  	   
  	    \section*{Anotacja}
  	   
  	    
  	    \section*{Słowa kłuczowe}
-
+		podręcznik, edukacja, platforma, interaktywność, generacja ćwiczeń
  
  	% obsah
  	\newpage
@@ -225,7 +225,7 @@ sorting=nyt,
 				}}
 		\end{quotation}
 		
-		Tento požadavek je splněn funkcí \enquote{Definice pojmů}. Autor učebnice přídá pro každý pojem definici, a systém následně automaticky definici na stejné straně přídá při kliknutí na slovo. Zároveň strana definice pojmů pro uživatele plní funkci přehledu.
+		Tento požadavek je splněn funkce \enquote{Definice pojmů}. Autor učebnice přídá pro každý pojem definici, a systém následně automaticky definici na stejné straně přídá při kliknutí na slovo. Zároveň strana definice pojmů pro uživatele plní funkci přehledu.
 	\end{samepage}
 	
 	\filbreak
@@ -278,7 +278,7 @@ sorting=nyt,
 			}}
 		\end{quotation}
 		
-		Tento požadek je taký částečně splněn generativní umělou inteligencí. Generuje se vždy několik různých typů otázek s různou složitostí. Počet potřebných osob pro vyřešení otázky je avšak ale vždy jeden.
+		Tento požadek je taký částečně splněn automatickou generací otázek. Generuje se vždy několik různých typů otázek s různou složitostí. Počet potřebných osob pro vyřešení otázky je avšak ale vždy jeden.
 	\end{samepage}
 	
 	\filbreak
@@ -287,11 +287,11 @@ sorting=nyt,
 		\begin{quotation}
 			\textbf{E10. Různorodost způsobů učení v otázkách a úkolech} \\
 			\enquote{\textit{
-				TODO
+				Otázky a úkoly v učebnicích by měly podporovat cíle a výsledky v daném předmětu za pomocí různých metod výuky a učení se.
 			}}
 		\end{quotation}
 		
-	
+		Toto pravidlo je učebnicí splněno za pomoci interaktivních a multimediálních prvků.  Za užití jejich kombinace je možné docílit nejúčinnějšího způsobu učení většině typů lidem dle klasifikace VARK \cite{VARK} - tzn. vizuálního  (\enquote*{\textit{Visual}}) za pomocí multimediálních prvků, zvukového (\enquote*{\textit{Aural}}) za pomoci režimu text-to-speech a písemného (\enquote*{\textit{Read/Write}}) za pomoci hlavního textu učebnice. Kinestetický  (\enquote*{\textit{Kinesthetic}}) typ nemůže učebnice bohužel obsloužit - zde to závisí na autorovi učebnice, zda uskuteční realizaci cvičení mimo obrazovku (mj. i labolatorních) či ne.
 	\end{samepage}
 	
 	\filbreak
@@ -300,11 +300,11 @@ sorting=nyt,
 		\begin{quotation}
 			\textbf{E11. Otázky a úkoly pro zhodnocení vzdělavacího postupu studenta} \\
 			\enquote{\textit{
-					TODO
+				Pokud učebnice obsahuje otázky používáné k monitorování a hodnocení progresu učení, musí podporovat různé metody a úrovně učení se.
 			}}
 		\end{quotation}
 		
-		
+		Toto pravidlo, které naráží na různé typy otázek a cvičení, které vyžadují různé typy odpovědí (tj. creativní a inovativní produkce, pochopení obsahu, aplikace znalostí apod.). Učebnice toto podporuje za pomoci funkce interaktivních cvičení a generovaných otázek, typu kterých má učebnice značný počet.
 	\end{samepage}
 	
 		\filbreak
@@ -313,11 +313,11 @@ sorting=nyt,
 		\begin{quotation}
 			\textbf{E12. Podpora rozvoje vývoje kreativního myšlení a chování} \\
 			\enquote{\textit{
-					TODO
+					V závislosti na typu a cílu předmětu, učebnice by měly tvořit situace takové, kde student může použít svojí kreativitu.
 			}}
 		\end{quotation}
 		
-		TODO zpětná vazba, textové pole "napiš, co sis odnesl" + captcha
+		Toto pravidlo splňuje učebnice za pomocí formuláře, nalezeného na konci každého článku, který nabízí studentům možnost se volně vyjádřit a popsat, co se v dané kapitole naučili. Tato informace je následně přeposlána autorovi učebnice.
 	\end{samepage}
 	
 	\filbreak
@@ -326,11 +326,11 @@ sorting=nyt,
 		\begin{quotation}
 			\textbf{F1. Dodržování lingvistických norem} \\
 			\enquote{\textit{
-				TODO
+				Učebnice musí dodržovat pravidla a standardy jazyku, ve kterém je tištěna.
 			}}
 		\end{quotation}
 		
-		Gramatická kontrola
+	   Toto pravidlo učebnice splňuje za pomocí integrované kontroly chyb v editoru textu. Při jakékoliv nalezené chybě bude autor učebnice před uložením textu upozoněn, a následně se může rozhodnout buď pro proignorování chyby, nebo pro její nápravu.
 	\end{samepage}
 	
 	\filbreak
@@ -339,11 +339,12 @@ sorting=nyt,
 		\begin{quotation}
 			\textbf{F2. Vysvětlení neznámých slov} \\
 			\enquote{\textit{
-					TODO
+				Pro každé slovo u kterého autor očekává to, že nebude většině studentů známo, musí být přídána jeho základní definice na první straně, na které se slovo nachází.
 			}}
 		\end{quotation}
 		
-		Toto pravidlo učebnice dodržuje funkcí TODO definice pojmů 
+		Toto pravidlo učebnice dodržuje za pomocí funkce \enquote{Definice pojmů} a za pomocí analýzy neznámých slov. Narazí-li program na slovo, které se nenachází v orientačním seznamu 10 000 slov (a není jeho tvarem - na záíkladní tvar ho převádí model NLP), a zároveň není v seznamu definicí, upozorní na to autora učebnice, a nabídne mu možnost přídání slova do definice.
+		% TODO CITACE WIKTIONARY SEZNAM 10000 NEJPOUŽÍVANĚJŠÍCH
 	\end{samepage}
 	
 	\filbreak
@@ -447,14 +448,17 @@ sorting=nyt,
 	Učebnice podporují přídávání jak obrázků, tak i 3D modelů.
 	
 	\subsection{Interaktivní prvky}
-	Interaktivní prvky jsou implementované za pomocí vlastního programovacího jazyka RESIN.
-	
+   	\subsubsection{Typy interaktivních prvků}
 	
 	\subsection{Prvky sloužící k přívětivosti k novým uživatelům}
 	\subsubsection{Tutoriál a OOBE}
 	\subsubsection{Vestavěná pomoc a dokumentace}
 	
 	\subsection{Analytické prvky}
+	\subsubsection{Analýza délky vět a slov}
+	\subsubsection{Analýza počtu multimediálních prvků}	
+	\subsubsection{Analýza duplikátních titulků}
+	\subsubsection{Analýza vzácných a netypických slov}
 	
 	\subsection{Nápomocné prvky pro autora}
 	Během úpravy textu v učebnici, napomáhá učebnice autorovi

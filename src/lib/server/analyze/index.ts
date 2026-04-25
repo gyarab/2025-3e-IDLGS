@@ -40,6 +40,10 @@ TODO
 //TODO analyze percentage length of sections in article
 //TODO find duplicates in article titles
 
+//TODO analyze uncommon words in article that dont have a definition
+//use this https://en.wiktionary.org/wiki/Wiktionary:Frequency_lists/Czech_wordlist for each language (for some unsupported, add table in documentation)
+//use NLP to find basic form of word
+
 export const analyzeSentenceLength = (text: string) => {};
 
 export const analyzeWordLength = (text: string) => {};
@@ -49,3 +53,5 @@ export const analyzeMediaCount = (text: string) => {};
 export const analyzeSectionLength = (text: string) => {};
 
 export const analyzeDuplicateTitles = (text: string) => {};
+
+export const analyzeUncommonWords = (text: string) => {};
