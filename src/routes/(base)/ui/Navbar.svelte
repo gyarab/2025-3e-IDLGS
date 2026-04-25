@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { fly } from 'svelte/transition';
-    import { m } from '$lib/paraglide/messages';
-    import NavButton from '$src/routes/(base)/components/NavBarButton.svelte';
+	import { fly } from 'svelte/transition';
+	import { m } from '$lib/paraglide/messages';
+	import NavButton from '$src/routes/(base)/components/NavBarButton.svelte';
 
 	let {
 		accentColor,
@@ -48,30 +48,30 @@
 
 			<div class="grow"></div>
 
-            <nav class="flex h-full items-center gap-2">
-                <NavButton 
-                    onclick={() => {}}
-                    icon="ri-user-line"
-                    {accentColor}
-                >
-                    {m.profile()}
-                </NavButton>
+			<nav class="flex h-full items-center gap-2">
+				<NavButton
+					onclick={() => {}}
+					icon="ri-user-line"
+					{accentColor}
+				>
+					{m.profile()}
+				</NavButton>
 
-                <NavButton 
-                    onclick={() => {}}
-                    icon="ri-book-open-line"
-                    {accentColor}
-                >
-                    {m.gallery()}
-                </NavButton>
+				<NavButton
+					onclick={() => {}}
+					icon="ri-book-open-line"
+					{accentColor}
+				>
+					{m.gallery()}
+				</NavButton>
 
-                <NavButton 
-                    onclick={() => {}}
-                    icon="ri-settings-4-line"
-                    {accentColor}
-                >
-                    {m.settings()}
-                </NavButton>
+				<NavButton
+					onclick={() => {}}
+					icon="ri-settings-4-line"
+					{accentColor}
+				>
+					{m.settings()}
+				</NavButton>
 
 				<button
 					onclick={() => (open = false)}
