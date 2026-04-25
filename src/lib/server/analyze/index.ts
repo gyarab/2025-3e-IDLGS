@@ -40,23 +40,12 @@ TODO
 //TODO analyze percentage length of sections in article
 //TODO find duplicates in article titles
 
-export const analyzeSentenceLength = (text: string) => {
+export const analyzeSentenceLength = (text: string) => {};
 
-};
+export const analyzeWordLength = (text: string) => {};
 
-export const analyzeWordLength = (text: string) => {
+export const analyzeMediaCount = (text: string) => {};
 
-};
+export const analyzeSectionLength = (text: string) => {};
 
-export const analyzeMediaCount = (text: string) => {
-
-};
-
-export const analyzeSectionLength = (text: string) => {
-
-};
-
-export const analyzeDuplicateTitles = (text: string) => {
-
-};
-
+export const analyzeDuplicateTitles = (text: string) => {};

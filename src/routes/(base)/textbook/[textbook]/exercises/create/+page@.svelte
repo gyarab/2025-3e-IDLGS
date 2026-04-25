@@ -39,12 +39,12 @@
 	let foregroundColorR: number = $state(0);
 	let foregroundColorG: number = $state(0);
 	let foregroundColorB: number = $state(0);
-	
+
 	//crossword (crs/crw) specific data
 	let crWords: string[] = $state([]);
 	let crClues: string[] = $state([]);
-	let crDescriptions: string[] = $state([]);	
-	let crSolution: string = $state("");
+	let crDescriptions: string[] = $state([]);
+	let crSolution: string = $state('');
 
 	//crs specific data
 	let crsOffsets: number[] = $state([]);
@@ -126,25 +126,15 @@
 								bind:crSolution
 							/>
 						{:else if type == 'CRW'}
-							<CRWEditor
-							
-							/>
+							<CRWEditor />
 						{:else if type == 'DEF'}
-							<DEFEditor
-							
-							/>
+							<DEFEditor />
 						{:else if type == 'GRP'}
-							<GRPEditor
-							
-							/>
+							<GRPEditor />
 						{:else if type == 'GEO'}
-							<GEOEditor
-							
-							/>
+							<GEOEditor />
 						{:else if type == 'EXT'}
-							<EXTEditor
-							
-							/>
+							<EXTEditor />
 						{/if}
 					{/if}
 					{#if stage != 0}
@@ -156,7 +146,7 @@
 								(name.length == 0 ||
 									description.length == 0 ||
 									thumbnail.length == 0)) ||
-									(stage == 2) ||
+								stage == 2 ||
 								false}
 							disablePrev={false}
 						/>

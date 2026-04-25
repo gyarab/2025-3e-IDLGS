@@ -64,7 +64,7 @@ export const exercise = pgTable(
 			(foregroundColorR >= 0 AND foregroundColorR <= 255) AND
 			(foregroundColorG >= 0 AND foregroundColorG <= 255) AND
 			(foregroundColorB >= 0 AND foregroundColorB <= 255)`,
-		)
+		),
 	],
 );
 

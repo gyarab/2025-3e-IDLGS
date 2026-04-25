@@ -12,6 +12,4 @@
 	} = $props();
 </script>
 
-<div>
-	worddesc
-</div>
+<div>worddesc</div>

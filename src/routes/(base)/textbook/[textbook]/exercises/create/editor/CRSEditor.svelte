@@ -7,7 +7,7 @@
 		crWords = $bindable([]),
 		crClues = $bindable([]),
 		crDescriptions = $bindable([]),
-		crSolution = $bindable(""),
+		crSolution = $bindable(''),
 		backgroundColorR = $bindable(0),
 		backgroundColorG = $bindable(0),
 		backgroundColorB = $bindable(0),
@@ -40,7 +40,7 @@
 		<h2 class="text-2xl font-bold">{m.crosswordWithGuess()}</h2>
 	</div>
 
-	<div class="flex flex-row w-full gap-2 justify-center">
+	<div class="flex w-full flex-row justify-center gap-2">
 		<!-- TODO edit buttons row -->
 	</div>
 
@@ -57,6 +57,5 @@
 		{foregroundColorR}
 		{foregroundColorG}
 		{foregroundColorB}
-
 	/>
 </div>

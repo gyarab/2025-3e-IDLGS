@@ -34,7 +34,7 @@ const config = {
 					'youtube.com',
 					'www.youtube.com',
 					'consent.youtube.com',
-					'self'
+					'self',
 				],
 				'media-src': ['self'],
 				'base-uri': ['self'],
