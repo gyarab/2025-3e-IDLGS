@@ -1,6 +1,7 @@
 <script lang="ts">
     import { fly } from 'svelte/transition';
     import { m } from '$lib/paraglide/messages';
+    import NavButton from '$src/routes/(base)/components/NavBarButton.svelte';
 
     let {
         accentColor,
@@ -43,29 +44,29 @@
             <div class="grow"></div>
 
             <nav class="flex h-full items-center gap-2">
-                <button 
+                <NavButton 
                     onclick={() => {}}
-                    class="tab-btn"
-                    style="--accent: {accentColor}"
+                    icon="ri-user-line"
+                    {accentColor}
                 >
-                    <i class="ri-user-line ml-1"></i> {m.profile()}
-                </button>
+                    {m.profile()}
+                </NavButton>
 
-                <button 
+                <NavButton 
                     onclick={() => {}}
-                    class="tab-btn"
-                    style="--accent: {accentColor}"
+                    icon="ri-book-open-line"
+                    {accentColor}
                 >
-                    <i class="ri-book-open-line ml-1"></i> {m.gallery()}
-                </button>
+                    {m.gallery()}
+                </NavButton>
 
-                <button 
+                <NavButton 
                     onclick={() => {}}
-                    class="tab-btn"
-                    style="--accent: {accentColor}"
+                    icon="ri-settings-4-line"
+                    {accentColor}
                 >
-                    <i class="ri-settings-4-line ml-1"></i> {m.settings()}
-                </button>
+                    {m.settings()}
+                </NavButton>
 
                 <button 
                     onclick={() => open = false}
