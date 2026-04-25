@@ -40,5 +40,7 @@
 	"enterExerciseName": "Enter exercise name",
 	"enterExerciseDescription": "Enter exercise description",
 	"uploadFile": "Upload file",
-	"uploadThumbnail": "Upload thumbnail"
+	"uploadThumbnail": "Upload thumbnail",
+	"loading": "Loading",
+	"itsTakingLongerThanExpected": "It's taking longer than expected"
 }

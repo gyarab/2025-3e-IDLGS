@@ -25,8 +25,42 @@ vite.config.ts.timestamp-*
 src/lib/paraglide
 project.inlang/cache/
 
+# IDEs and virtual environments
 .vscode/
 venv/
 
+# Archives
 *.tar.gz
 *.tgz
+
+# Autosaves and temp files
+*.*~
+*.swp
+*.tmp
+*.log
+
+# Documentation
+documentation/*.pdf
+documentation/*.aux
+documentation/*.bit
+documentation/*.blg
+documentation/*.bbl
+documentation/*.lof
+documentation/*.log
+documentation/*.lot
+documentation/*.glo
+documentation/*.glx
+documentation/*.gxg
+documentation/*.gxs
+documentation/*.idx
+documentation/*.ilg
+documentation/*.ind
+documentation/*.out
+documentation/*.url
+documentation/*.svn
+documentation/*.toc
+documentation/*.run.xml
+documentation/*.gz
+documentation/*.bcf
+documentation/*.grp
+

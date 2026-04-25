@@ -1,0 +1,515 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{csquotes}
+\usepackage[czech]{babel}
+\usepackage{titling}
+\usepackage[
+backend=biber,
+bibstyle=iso-numeric,
+citestyle=numeric,
+hyperref,
+sortlocale=cs_CZ,
+sortcites,
+sorting=nyt,
+]{biblatex}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{hyphsubst}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{soul}
+%https://tex.stackexchange.com/questions/392208/command-k-unavailable-in-encoding-ot1-error-takes-me-to-line-which-doesnt-eve#392210
+\usepackage[T1]{fontenc}
+
+\addbibresource{citace.bib}  
+
+\titlelabel{\thetitle.\quad}
+
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+\newfloat{graph}{tbp}{grp}
+\floatname{graph}{Graf}
+\pagenumbering{arabic}
+\geometry{top=2.5cm, bottom=2.5cm, left=3cm, right=2.5cm}
+
+\babelhyphenation[czech]{}
+
+\pretitle{
+	\vspace*{\fill}
+	\Huge \bfseries
+	\begin{center}
+}
+\title{
+	Digitální učebnicová platforma s interaktivními prvky
+}
+\posttitle{
+	\end{center}
+	\begin{center}
+		\Large Ročníková práce
+	\end{center}
+}
+\preauthor{
+		\begin{center}
+}
+\author{Martin Bykov, Kira Stěpanova, Ali Yunussov}
+\postauthor{
+	\end{center}
+}
+\predate{
+	\begin{center}
+}
+\date{4. května 2026}
+\postdate{
+	\end{center}
+	\vspace*{\fill}	
+}
+
+\begin{document}			
+	\maketitle
+	\newpage
+	
+	% popisna strana
+	\noindent
+	\textbf{\Large Gymnázium Arabská, Praha 6, Arabská 14} 	\newline
+	Arabská 14, Praha 6, 160 00
+
+	\vspace*{\fill}
+	
+	\noindent
+	\textbf{Předmět:} Programování 	\newline
+	\textbf{Téma:} \thetitle
+	
+	\vspace*{\fill}
+	
+	\noindent
+	\textbf{Autoři:} {\theauthor} \newline
+	\textbf{Třída:} {3.E} \newline
+	\textbf{Školní rok:} {2025/2026} \newline
+	\textbf{Vedoucí práce:} {Mgr. Šimon Hrozinka} \newline
+	\textbf{Konzultanti:} {Mgr. Irena Skolilová, Mgr. Jan Lána} \newline
+ 
+ 	 \newpage
+ 	\section*{Prohlášení}
+ 	Prohlašujeme, že jsme jedinými autory tohoto projektu, že všechny citace jsou řádně označené a že všechna použitá literatura či další zdroje jsou v práci uvedené.
+ 	Tímto dle zákona 121/2000 Sb. (tzv. Autorský zákon) ve znění pozdějších předpisů udělujeme bezúplatně škole Gymnázium, Praha 6, Arabská 14 oprávnění výkonu práva na rozmnožování díla (§ 13), práva na sdělování díla veřejnosti (§ 18) na dobu časově neomezenou bez omezení územního rozsahu.
+ 	
+ 	\vspace*{2cm}
+ 	
+ 	\noindent
+ 	Martin Bykov
+ 	\hrulefill
+
+ 	\vspace*{2cm}
+	
+	\noindent
+ 	 Kira Stěpanova
+ 	\hrulefill
+ 
+  	\vspace*{2cm}
+ 
+ 	\noindent
+  	Ali Yunussov
+ 	\hrulefill
+ 	
+ 	 \vspace*{4cm}
+ 	  	
+ 	  \hfill V Praze dne \hspace*{0,1cm}  \hrulefill \hspace*{0,1cm}  května 2026.
+ 	
+ 	% anotace
+ 	 \newpage
+ 	 \section*{Anotace}
+ 	 
+ 	  \section*{Klíčová slova}
+
+ 	 
+ 	  \section*{Abstract}
+ 	  
+ 	   \section*{Keywords}
+
+ 	   
+ 	    \section*{Anotacja}
+ 	   
+ 	    
+ 	    \section*{Słowa kłuczowe}
+
+ 
+ 	% obsah
+ 	\newpage
+	\tableofcontents{}
+	
+	% úvod
+	\newpage
+	\section{Úvod}
+	
+	Dnešní doba je doba digitální. A školství, jeden z nejdůležitějších orgánů každého států,  se svými institucemi z
+	19. století, nesmí zůstat pozadu. Mělo by využívat dnešní moderní možnosti, které razantně výuku usnadňují, vylepšují a poskytují ohromný potenciál k rozvoji schopností 
+	
+	Cílem tohoto projektu je implementace digitální učebnice, která by splňovala všechna didaktická doporučení, bude příjemný pro použítí jak pedagogy, tak i žáky či studenty, který bude možné použít na jakýkoliv předmět a který, za pomocí psychologie, gamifikace a nových technologií - například umělé inteligence - bude motivovat žáky k výuce 	předmětu a k dosažení lepších výsledků. 
+	
+	
+	% TODO finish
+	
+	% začátek práce
+	
+	\newpage
+	\section{Teoretické východisko}
+	
+	\newpage
+	\subsection{Požadavky pro novou digitální učebnici}
+	
+	\newpage
+	\subsection{Definice ideální učebnice a jejich plnění}
+	Ideální učebnice, jak definována podle knihy Ivana Iviće, Any Pešikan a Slobodanky Antić ze Fakulty Filosofie Univerzity v Bělehradu, vydané Institutem George Eckerta v německém městě Göttingen \cite{Standard} musí, a přinejmenším by měla, nutně splňovat následující kritéria. Kritéria jsou v standartu rozděleny na několik sekcí, a to:
+	\begin{itemize}
+	\item{} \enquote*{Standardy kvality pro učebnice jako knih uživáných studenty} (kapitola B)
+	\item{} \enquote*{Standardy kvality pro didaktický návrh učebnice} (kapitola E)
+	\item{} \enquote*{Standardy kvality pro jazyk učebnic} (kapitola F)
+	\item{} \enquote*{Standardy kvality pro elektronické komponenty učebnice a elektronické učebnice} (kapitola G)
+	\end{itemize}
+	
+	Níže jsou uvedeny všechna pravidla, a jejich dodržení učebnicovým systémem. \textbf{Některá pravidla jsou vynechána} - jedná se pouze o ty, \textbf{které se týkají přímo a pouze obsahu závisejícího na autoru, a na které by infrastuktura učebnice neměla žádný vliv.} Mezi tyto pravidla spadají všechna pravidla kapitol \textit{A}, \textit{D}, \textit{C}, a pravidla \textit{E3.} o didaktické hodnotě příkladů,  \textit{E4.} o smysluplném propojení konceptů a znalostí, \textit{E5.} o řadách integrace obsahu, \textit{E6.} o učinných způsobech prezentace hodnot v tištěných učebnicích a \textit{E13.} o podpoře kritického myšlení.
+	
+	% vyjmenujeme pravidla a pak komentář jak toho docílíme	
+	% sekce B str 77 sekce E str 123 sekce G 173
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{B1. Obsah a jeho smysl} \\
+			\enquote{\textit{
+					Učebnice musí obsahovat obsah - specifický prvek, který detailně popisuje celý obsah učebnice organizovaný dle jasných pravidel (např. logicky, chronologicky, dle tématu či hierarchicky).
+			}}
+		\end{quotation}
+		
+		Tento požadavek je splněn funkcí \enquote{Obsah učebnice}. Obsah učebnice je pro každou učebnici automaticky vygenerován na základě vnitřního dělení učebnice na kapitoly a články.
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{B2. Podpora procesu vývoje znalostí studenta v užívání knih dle jejich zkušeností s učebnicemi} \\
+			\enquote{\textit{
+					Učebnice by měla obsahovat organizační prvky, jejichž hlavní funkcí je vytvoření schopnosti nezávislého použití učebnice studentem a jeho/její ability nalezení potřebné informace.
+			}}
+		\end{quotation}
+		
+		Toto pravidlo odkazuje především na různé indexy, směrovací prvky, seznamy obrázků, vysvětlivky atd. Seznamy obrázků jsou implementovány za pomocí funkce galerie. Směrovací prvky jsou implementovány v každém článku. Vysvětlovací prvky jsou implementovány za pomocí funkce \enquote{Definice pojmů}.
+	\end{samepage}
+	
+	\filbreak
+	
+		\begin{samepage}
+		\begin{quotation}
+			\textbf{B3. Návrh ilustrací a grafických prvků učebnice} \\
+			\enquote{\textit{
+				Struktura učebnice musí být jasně typograficky označena čitelným způsobem, a tyto označení musí být užívany v celé knize.
+			}}
+		\end{quotation}
+		
+		Toto pravidlo učebnice splňuje svým grafickým designem. Všechny tématické celky jsou označeny jasným způsobem, a navigace mezi nimi je za pomocí přehledných rozcestníků a tzv.  \enquote{Příkazové palety} velmi jednoduchá.
+	\end{samepage}
+		
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{E1. Vysvětlení pojmů.} \\
+				\enquote{\textit{
+				Definice každého nového specialistického pojmu, v textu použitého poprvé, musí být obsažena na stejné stránce, na které je pojem poprvé zmíněn a zároveň v přehledu na konci učebnice. Autor musí používat stejnou definici ve všech částech učebnice.
+				}}
+		\end{quotation}
+		
+		Tento požadavek je splněn funkcí \enquote{Definice pojmů}. Autor učebnice přídá pro každý pojem definici, a systém následně automaticky definici na stejné straně přídá při kliknutí na slovo. Zároveň strana definice pojmů pro uživatele plní funkci přehledu.
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{E2. Funkční využití ilustrací, obrázků a ikonek.} \\
+			\enquote{\textit{
+				Ilustrace, obrázky nebo ikonky musí mít jasný důvod; splňují specifickou funkci v učebnici a musí být umístěny všude, kde mohou účinněji přenést zprávu než by ji přenesli slova nebo čísla.
+			}}
+		\end{quotation}
+		
+		Tento požadavek je splněn funkcemi přídávání obrázků, grafů a materiálů, stejně jako systémem knihovny obrázků a automatické kontroly hustoty obrázků.
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{E7. Přítomnost otázek a cvičení v učebnici.} \\
+			\enquote{\textit{
+					Každá učebnice musí nepřetržitě prezentovat otázky a cvičení studentům, a to po ve všech částích knihy.
+			}}
+		\end{quotation}
+	
+		Tento požadavek je splněn funkcemi automatického procvičování v učebnici. Studenti si mohou, za pomoci umělé inteligence, vygenerovat otázky, které jsou na učebnice založené, a za jejich pomoci aktivně procvičovat. Tato funkce je reklamována pod každým článek tak, aby studenta co nejvíc motivovala k vyplnění co největšího počtu otázek.
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{E8. Význam otázek a cvičení.} \\
+			\enquote{\textit{
+				Učebnice by neměli obsahovat nesmyslné, nerealistické či nejednoznačné otázky či úkoly.
+			}}
+		\end{quotation}
+		
+		% TODO procenta
+		Tento požadavek je v učebnici splněn velmi přísným systémovým promptem pro umělou inteligenci, která otázky generuje. Systém generací otázek byl v praxi otestován, a pouze na TODO\% vygenerovaných otázek byly uživatelské reakce negativní.
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{E9. Různorodost otázek a cvičení.} \\
+			\enquote{\textit{
+				Učebnice musí obsahovat velmi různorodé otázky a cvičení, a to jak ve formě, úrovni složitosti a počtu osob potřebných a jejich vyřešení.
+			}}
+		\end{quotation}
+		
+		Tento požadek je taký částečně splněn generativní umělou inteligencí. Generuje se vždy několik různých typů otázek s různou složitostí. Počet potřebných osob pro vyřešení otázky je avšak ale vždy jeden.
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{E10. Různorodost způsobů učení v otázkách a úkolech} \\
+			\enquote{\textit{
+				TODO
+			}}
+		\end{quotation}
+		
+	
+	\end{samepage}
+	
+	\filbreak
+	
+		\begin{samepage}
+		\begin{quotation}
+			\textbf{E11. Otázky a úkoly pro zhodnocení vzdělavacího postupu studenta} \\
+			\enquote{\textit{
+					TODO
+			}}
+		\end{quotation}
+		
+		
+	\end{samepage}
+	
+		\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{E12. Podpora rozvoje vývoje kreativního myšlení a chování} \\
+			\enquote{\textit{
+					TODO
+			}}
+		\end{quotation}
+		
+		TODO zpětná vazba, textové pole "napiš, co sis odnesl" + captcha
+	\end{samepage}
+	
+	\filbreak
+	
+		\begin{samepage}
+		\begin{quotation}
+			\textbf{F1. Dodržování lingvistických norem} \\
+			\enquote{\textit{
+				TODO
+			}}
+		\end{quotation}
+		
+		Gramatická kontrola
+	\end{samepage}
+	
+	\filbreak
+	
+		\begin{samepage}
+		\begin{quotation}
+			\textbf{F2. Vysvětlení neznámých slov} \\
+			\enquote{\textit{
+					TODO
+			}}
+		\end{quotation}
+		
+		Toto pravidlo učebnice dodržuje funkcí TODO definice pojmů 
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{F3. Kontrola délky vět.} \\
+			\enquote{\textit{
+					Délka vět v učebnicích musí být držena pod kontrolou a musí korespondovat k úrovni studentů.
+			}}
+		\end{quotation}
+		
+		Učebnice se aktivně pokouší vymáhat dodržování tohoto pravidla autory učebnice. Pří úpravě článku v učebnici se automaticky počítá délka věty - počet slov mezi interpunkcí - a zároveň průměrná délka slov v každé větě. Slovo je v tuto chvíli definováno jako určitý počet písmen obklopených mezerami. 
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		Učebnice vypíše varování nad danou větou pouze v následujících případech:
+		
+		\begin{itemize}
+		\item Průměrná délka slov v dané větě je nížší než 80\% průměrné délky slov.
+		\item Průměrná délka slov v dané větě je vyšší než 200\% průměrné délky slov.
+		\item Délka věty je nižší než 70\% průměrné délky věty.
+		\item Délka věty je vyšší než 150\% průměrné délky věty.
+		\end{itemize}
+	
+		Je-li věta kratší než 4 slova, není varování vypsáno. Takové krátké věty se považují za stylistický výběr, nikoliv přílišné snížení úrovně. Stejně tak tomu je, je-li průměrná délka slov ve větě menší než 2.
+	\end{samepage}
+	
+	Průměrná délka vět v anglojazyčném textovém korpusu činí 24,88 slov \cite{LengthOfSentence}. Průměrná délka slova v anglickém jazyce činila v roce 2012 4,25 písmen, v ruském jazyce zase 5,85 písmen. \cite{LengthOfWord}.
+	
+	Průměrná délka slova, která je při výpočtech použita, závisí na vybraném jazyce uživatele. Je-li vybrán jazyk slovanský - polština, čeština či ruština - použije se průměr pro ruštinu. Je-li vybrán jakýkoliv jiný jazyk - v učebnici pouze němčina či angličtina - použije se průměr pro angličtinu.
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{G1. Důvody k použití elektronických prvků učebnice.} \\
+			\enquote{\textit{
+				Elektronické verze učenice dávají smysl pokud obsahují materiál který není možné jednoduše zahrnout v tištěné podobě a který podstatně pomůže výuce.
+			}}
+		\end{quotation}
+		
+		Tento požadavek je učebnicí jednoznačně splněn. Učebnice obsahuje přehledný způsob upravování, podporu 3D modelů, interaktivních cvičení, automatického procvičování, obsahuje stylistické pomůcky a audiovizuální nástroje. Tyto funkce nejsou v standardní papírové učebnici dostupné a všechny tyto funkce jednoznačně prospějí vzdělávací hodnotě učebnice. Značný počet učebnic obsahuje online doplňky, případně CD disk.
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{G2. Poměr mezi různými typy elektronických záznamů (audio, video...) a jejich efekt na výuku.} \\
+			\enquote{\textit{
+				Přítomnost a poměr různých typů elektronických záznámů (audio, video, animace, testy...)  musí být určen na základě jejich přínosu k výuce. 
+			}}
+		\end{quotation}
+		
+		Poměr jednotlivých typů interaktivních prvků určuje autor učebnice, učebnice ale všechny zmíněné interaktivní prvky podporuje.
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{G3. Struktura elektronických učebnic.} \\
+			\enquote{\textit{
+					Na rozdíl od zvyklých tištěných učebnic, kde obsah je propojen lineární strukturou, obsah v e-publikacích by měl tvořit širokou síť  která odpovídá struktuře daného předmětu.
+			}}
+		\end{quotation}
+		
+		Učebnice tento požadavek splňuje. V článku má autor učebnice možnost dodat odkazy na podstatné články, které se taktéž promítnou i do shrnutí na konci. Dodatečně je přecházení mezi články o mnoho jednodušší než v tradiční tištěné učebnici, a uživatel nemusí články v lineárním pořadí číst. Za pomocí této metody je možné učebnici procházet jak lineárně, tak i nelineárně. Samotná struktura učebnice závisí na její autorovi, nástroj ale podporuje jakoukoliv.
+	\end{samepage}
+	
+	\filbreak
+	
+	\begin{samepage}
+		\begin{quotation}
+			\textbf{G4. Adaptibilita elektronické učebnice k potřebám studentů} \\
+			\enquote{\textit{
+				Jeden ze základních indikátorů kvality digitální učebnice je to, jak moc využivá učebnice možnosti digitálních médií, obzvláště jejich interaktivity. Je úspěšná v adaptaci obsahu pro různé zájmy? Slouží jako důležitý nástroj podporující proces vzdělání s pochopením?
+			}}
+		\end{quotation}
+		
+		Učebnice tento požadavek částečně splňuje.  Možnosti digitálních médií využivá svými funkcemi - podporou 3D modelů, generací otázek a karet k procvičování, sumarizací, podporou nelineární struktury atd. - naprosto dostatečně, a svými motivačními prvky proces vzdělávání žáka jednoznačně zrychluje a zpříjemňuje. Hlášky při akcích studenta jsou záměrně napsány tak, aby učebnice se k studenovi chovala - minimálně z pohledu studenta - s pochopením.
+		
+		Přizpůsobení obsahu studentům závisí na autorovi dané učebnice, nástroj do tohoto nezasahuje.
+	\end{samepage}
+	
+	\newpage
+	\section{Bezpečnost dat}
+	\subsection{Osobní informace}
+	\subsection{Kurzy a učebnice}
+
+	\newpage
+	\section{Funkce učebnice}
+	\subsection{Fixní prvky}
+	\subsubsection{Přídávání textu}
+	\subsubsection{Pojmy}
+	\subsubsection{Procvičování}
+	\subsubsection{Multimediální prvky}
+	Učebnice podporují přídávání jak obrázků, tak i 3D modelů.
+	
+	\subsection{Interaktivní prvky}
+	Interaktivní prvky jsou implementované za pomocí vlastního programovacího jazyka RESIN.
+	
+	
+	\subsection{Prvky sloužící k přívětivosti k novým uživatelům}
+	\subsubsection{Tutoriál a OOBE}
+	\subsubsection{Vestavěná pomoc a dokumentace}
+	
+	\subsection{Analytické prvky}
+	
+	\subsection{Nápomocné prvky pro autora}
+	Během úpravy textu v učebnici, napomáhá učebnice autorovi
+	TODO analyza textu
+		
+	\newpage
+	\section{Deployment}
+	\subsection{Použité technologie}
+	\cite{Drizzle}
+	\cite{Svelte}
+	
+	\subsection{Možnosti hostování programu}
+	Program obsahuje 2 možnosti, jakým způsobem učebnici nastavit. Existuje možnost buď standardního režimu, kde instance obsahuje jednu či více učebnic, které je možné všechny navšívit z knihovny. Existuje také možnost režimu jedné učebnice, který zveřeňuje pouze jednu učebnici v databázi (a není-li žádná nastavena, sám ji tvoří).
+	
+	\newpage
+	\section{Testový obsah učebnice}
+	\subsection{Učebnice Biologie}
+	
+		
+	\section{Vyjádření pedagogů}
+
+	% závěr
+	\newpage
+	\section{Závěr}
+		
+	% seznam obrázků
+	\newpage
+	\listoffigures
+	
+	% seznam tabulek
+	\newpage
+	\listoftables
+	
+	% seznam grafů
+	\newpage
+	\listof{graph}{Seznam grafů}
+	
+	% seznam odb. pojmů
+	\newpage
+	\section*{Seznam odborných pojmů}
+	Zde se nachází seznam odborných pojmů, a zároveň jejich vysvětlení. Pojmy jsou seřazeny abecedně.
+	
+	% citace
+	\newpage
+	\section*{Citace}
+		Během psaní dokumentace nebyla umělá inteligence použita. Během psaní kódu byla použita ve velmi omezeném množství, a za všechny architektonické, algoritmické či jiné rozhodnutí stále odpovídají jednotliví autoři.
+		
+		\noindent
+		Všechny citace jsou uvedeny ve formátu ČSN ISO 690.
+		
+		\nocite{Hrozinka}
+		\nocite{HrozinkaDva}
+		\nocite{Skolilova}
+		\nocite{MDN}
+		
+		\printbibliography[title=\empty]
+	
+\end{document}
