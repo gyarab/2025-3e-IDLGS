@@ -123,21 +123,29 @@ sorting=nyt,
  	
  	% anotace
  	 \newpage
- 	 \section*{Anotace}
+ 	  \section*{Anotace}
+ 	 	Tento projekt implementuje digitální učebnicový systém, který za pomoci moderních technologií splňuje všechny didaktické požadavky, rozvíjí dovednosti jak žáků, tak i studentů a zároveň napomáhá autorům při psaní kvalitního textu, informujíc o závadach v reálném čase. Cílem je taktéž motivace žáků prostřednictvím generace otázek modelem NLP, automaticky vytvořeným přehledným obsahem a navigací či stránkami obsahujícími definice pojmů.
  	 
  	  \section*{Klíčová slova}
 		učebnice, vzdělání, platforma, interaktivita, generace cvičení
  	 
  	  \section*{Abstract}
+ 	  This project implements a digital textbook system that - with the use of modern technologies - fulfills all didactic and pedagogical requirements, develops students' skills, helps the textbook authors with text quality and informs about any issues that may potentially arise in real time. The goal is also the motivation of students using NLP-based question generation, automatically created tables of contents and navigation, as well as using pages with definitions of terms and unknown words.
  	  
  	   \section*{Keywords}
 		textbook, education, platform, interactivity, exercise generation
  	   
  	    \section*{Anotacja}
+ 	    Cel tego projektu do implementacja cyfrowego systemu podręcznikowego, który za użyciem technologii nowoczesnych spełnia wszystkie warunki dydaktyczne oraz pedagogiczne, rozwija umiejętności uczniów lub studentów, wspomaga autorom tekstu podręcznika z odnalezeniem błędów i informuje o blędach które mogłyby się hipotetycznie w textu pojawić.  Celem jest też motywacja studentów za pomocą modelu NLP formułującego pytania, za pomocą prostej nawigacji i spisów treści tak jak za pomocą stron z definicjami terminów naukowy oraz słów nieznanych.
  	   
  	    
  	    \section*{Słowa kłuczowe}
 		podręcznik, edukacja, platforma, interaktywność, generacja ćwiczeń
+		
+		 \newpage
+		 
+		 \section*{Poděkování}
+		 Rádi bychom poděkovali
  
  	% obsah
  	\newpage
@@ -148,23 +156,32 @@ sorting=nyt,
 	\section{Úvod}
 	
 	Dnešní doba je doba digitální. A školství, jeden z nejdůležitějších orgánů každého států,  se svými institucemi z
-	19. století, nesmí zůstat pozadu. Mělo by využívat dnešní moderní možnosti, které razantně výuku usnadňují, vylepšují a poskytují ohromný potenciál k rozvoji schopností 
+	19. století, nesmí zůstat pozadu. Mělo by využívat dnešní moderní možnosti, které razantně výuku usnadňují, vylepšují a poskytují ohromný potenciál k rozvoji schopností a kompetencí.
 	
-	Cílem tohoto projektu je implementace digitální učebnice, která by splňovala všechna didaktická doporučení, bude příjemný pro použítí jak pedagogy, tak i žáky či studenty, který bude možné použít na jakýkoliv předmět a který, za pomocí psychologie, gamifikace a nových technologií - například umělé inteligence - bude motivovat žáky k výuce 	předmětu a k dosažení lepších výsledků. 
+	Cílem tohoto projektu je implementace digitální učebnice, která by splňovala všechna didaktická doporučení, bude příjemná pro použítí jak pedagogy, tak i žáky či studenty, kterou bude možné použít na jakýkoliv předmět a která, za pomocí psychologie, gamifikace a nových technologií - například NLP modelů - bude motivovat žáky k výuce předmětu a k dosažení lepších výsledků. 
 	
 	
 	% TODO finish
+	% https://publikacje.pan.pl/book/148575/krzyzyk-danuta-synowiec-helena-jezyk-podrecznikow-szkolnych-w-kontekscie-ich-funkcji-dydaktycznych-2023\
+	% https://publikacje.pan.pl/dlibra/flipbook/129335
 	
 	% začátek práce
 	
 	\newpage
 	\section{Teoretické východisko}
+	\subsection{Cíle učebnice}
+	Hlavní funkce učebnice je možné určit následovně
+	
+	\subsection{Problémy současných učebnic}
+	
+	\subsection{Problémy současných digitálních učebnic}
+	
 	
 	\newpage
 	\subsection{Požadavky pro novou digitální učebnici}
 	
 	\newpage
-	\subsection{Definice ideální učebnice a jejich plnění}
+	\subsection{Standardy učebnice a jejich plnění}
 	Ideální učebnice, jak definována podle knihy Ivana Iviće, Any Pešikan a Slobodanky Antić ze Fakulty Filosofie Univerzity v Bělehradu, vydané Institutem George Eckerta v německém městě Göttingen \cite{Standard} musí, a přinejmenším by měla, nutně splňovat následující kritéria. Kritéria jsou v standartu rozděleny na několik sekcí, a to:
 	\begin{itemize}
 	\item{} \enquote*{Standardy kvality pro učebnice jako knih uživáných studenty} (kapitola B)
@@ -225,7 +242,7 @@ sorting=nyt,
 				}}
 		\end{quotation}
 		
-		Tento požadavek je splněn funkce \enquote{Definice pojmů}. Autor učebnice přídá pro každý pojem definici, a systém následně automaticky definici na stejné straně přídá při kliknutí na slovo. Zároveň strana definice pojmů pro uživatele plní funkci přehledu.
+		Tento požadavek je splněn funkcí \enquote{Definice pojmů}. Autor učebnice přídá pro každý pojem definici, a systém následně automaticky definici na stejné straně přídá při kliknutí na slovo. Zároveň strana definice pojmů pro uživatele plní funkci přehledu.
 	\end{samepage}
 	
 	\filbreak
@@ -500,6 +517,9 @@ sorting=nyt,
 	\newpage
 	\section*{Seznam odborných pojmů}
 	Zde se nachází seznam odborných pojmů, a zároveň jejich vysvětlení. Pojmy jsou seřazeny abecedně.
+	
+	\textbf{NLP} \textit{angl. natural language processing, zpracování přirozeného jazyka} Model, který analyzuje věty a paragrafy a transformuje je na struktury, které je možné počítačem jednodušeji procesovat.
+	\newline
 	
 	% citace
 	\newpage
