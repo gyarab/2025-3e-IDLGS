@@ -124,19 +124,19 @@ sorting=nyt,
  	% anotace
  	 \newpage
  	  \section*{Anotace}
- 	 	Tento projekt implementuje digitální učebnicový systém, který za pomoci moderních technologií splňuje všechny didaktické požadavky, rozvíjí dovednosti jak žáků, tak i studentů a zároveň napomáhá autorům při psaní kvalitního textu, informujíc o závadach v reálném čase. Cílem je taktéž motivace žáků prostřednictvím generace otázek modelem NLP, automaticky vytvořeným přehledným obsahem a navigací či stránkami obsahujícími definice pojmů.
+ 	 	Tento projekt implementuje digitální učebnicový systém, který za pomoci moderních technologií splňuje všechny didaktické požadavky, rozvíjí dovednosti jak žáků, tak i studentů a zároveň napomáhá autorům při psaní kvalitního textu, informujíc o závadach v reálném čase. Cílem je taktéž motivace žáků prostřednictvím generace otázek modelem NLP a interaktivními otázkami, automaticky vytvořeným přehledným obsahem a navigací či stránkami obsahujícími definice pojmů.
  	 
  	  \section*{Klíčová slova}
 		učebnice, vzdělání, platforma, interaktivita, generace cvičení
  	 
  	  \section*{Abstract}
- 	  This project implements a digital textbook system that - with the use of modern technologies - fulfills all didactic and pedagogical requirements, develops students' skills, helps the textbook authors with text quality and informs about any issues that may potentially arise in real time. The goal is also the motivation of students using NLP-based question generation, automatically created tables of contents and navigation, as well as using pages with definitions of terms and unknown words.
+ 	  This project implements a digital textbook system that - with the use of modern technologies - fulfills all didactic and pedagogical requirements, develops students' skills, helps the textbook authors with text quality and informs about any issues that may potentially arise in real time. The goal is also the motivation of students using NLP-based question generation and interactive exercises, automatically created tables of contents and navigation, as well as using pages with definitions of terms and unknown words.
  	  
  	   \section*{Keywords}
 		textbook, education, platform, interactivity, exercise generation
  	   
  	    \section*{Anotacja}
- 	    Cel tego projektu do implementacja cyfrowego systemu podręcznikowego, który za użyciem technologii nowoczesnych spełnia wszystkie warunki dydaktyczne oraz pedagogiczne, rozwija umiejętności uczniów lub studentów, wspomaga autorom tekstu podręcznika z odnalezeniem błędów i informuje o blędach które mogłyby się hipotetycznie w textu pojawić.  Celem jest też motywacja studentów za pomocą modelu NLP formułującego pytania, za pomocą prostej nawigacji i spisów treści tak jak za pomocą stron z definicjami terminów naukowy oraz słów nieznanych.
+ 	    Cel tego projektu do implementacja cyfrowego systemu podręcznikowego, który za użyciem technologii nowoczesnych spełnia wszystkie warunki dydaktyczne oraz pedagogiczne, rozwija umiejętności uczniów lub studentów, wspomaga autorom tekstu podręcznika z odnalezeniem błędów i informuje o blędach które mogłyby się hipotetycznie w textu pojawić.  Celem jest też motywacja studentów za pomocą modelu NLP formułującego pytania oraz ćwiczeń interaktywnych, za pomocą prostej nawigacji i spisów treści tak jak za pomocą stron z definicjami terminów naukowy oraz słów nieznanych.
  	   
  	    
  	    \section*{Słowa kłuczowe}
@@ -145,52 +145,71 @@ sorting=nyt,
 		 \newpage
 		 
 		 \section*{Poděkování}
-		 Rádi bychom poděkovali
+		 Rádi bychom poděkovali panu magistrovi Šimonovi Hroznikovi za nápovědu při vývoji učebnice, za poskytnutí i alternativního materiálu k učebnici a za pomoc při testování učebnice v produkci.
  
  	% obsah
  	\newpage
 	\tableofcontents{}
 	
-	% úvod
 	\newpage
-	\section{Úvod}
-	
-	Dnešní doba je doba digitální. A školství, jeden z nejdůležitějších orgánů každého států,  se svými institucemi z
-	19. století, nesmí zůstat pozadu. Mělo by využívat dnešní moderní možnosti, které razantně výuku usnadňují, vylepšují a poskytují ohromný potenciál k rozvoji schopností a kompetencí.
-	
-	Cílem tohoto projektu je implementace digitální učebnice, která by splňovala všechna didaktická doporučení, bude příjemná pro použítí jak pedagogy, tak i žáky či studenty, kterou bude možné použít na jakýkoliv předmět a která, za pomocí psychologie, gamifikace a nových technologií - například NLP modelů - bude motivovat žáky k výuce předmětu a k dosažení lepších výsledků. 
-	
-	
-	% TODO finish
-	% https://publikacje.pan.pl/book/148575/krzyzyk-danuta-synowiec-helena-jezyk-podrecznikow-szkolnych-w-kontekscie-ich-funkcji-dydaktycznych-2023\
-	% https://publikacje.pan.pl/dlibra/flipbook/129335
-	
-	% začátek práce
+\section*{Úvod}
+	Cílem tohoto projektu je implementace digitálního učebnicového systému, řešícího a splňujícího všechna podstatná didaktická kritéria, řešícího všechny podstatné problémy a podporujícího všechny cílové skupiny - jak studenty při výuce za pomoci generace otázek modelem NLP či interaktivních cvičení, tak i učitele při psaní textu za pomoci analytických nástrojů a prvotřídní podpory multimediálních prvků. Učebnice zároveň podpuruje jednoduchou navigaci za pomoci příkazové palety, automatické generování slovníků a seznamu definic pojmů či neznámých.
 	
 	\newpage
 	\section{Teoretické východisko}
-	\subsection{Cíle učebnice}
-	Hlavní funkce učebnice je možné určit následovně
+	\subsection{Cílová skupina učebnice}
+		Učebnice je nejtradičnějším a nejpoužívanějším didaktickým nástrojem. Jedná se o nejdůležitejší knihu ve škole, která je velmi úzce svázana s výukovým plánem, bez které není možné si proces výuky představit. V dnešní době, na rozdíl od očekávání, učebnice nezůstali nahrazené, ale byli rozvinuté za pomoci dodání autovizuálních prvků a nový technologií. Taková učebnice je označována jako \textbf{e-učebnice}.
+	\cite[str. 5]{PAN2023}
+	V následujícím textu budeme je avšak přezdívat jako \textit{učebnice digitální.}
 	
-	\subsection{Problémy současných učebnic}
+	\textbf{Je nutno taktéž podotknout, že cílovou skupinu učebnic nejsou jedině žáci, nýbrž také učitelé.} Žákům učebnice slouží jako prostředek a nápomoc k poznání tématu, prohloubení znalostí a k nabytí dovedností, zatímco pro učitele slouží jako nápomoc k předání znalostí a jako nástroj, který jim dělá život jednodušší. 
+	\cite[str. 6-7]{PAN2023}
+	\textbf{Z toho plyne, že jakákoliv potenciální digitální učebnice by tím pádem měla pomáhat jak studentům a žákum, tak i učitelům a pedagogům, kterým by měla napomáhat při psaní kvalitnějšího textu.}
 	
-	\subsection{Problémy současných digitálních učebnic}
+	
+	\subsection{Funkce učebnice}
+
+	\begin{itemize}
+		\item{} funkce informační
+		\item{} funkce motivační
+		\item{} funkce transformační
+		\item{} funkce samovyučující
+		\item{} funkce kontrolně-hodnotící
+	\end{itemize}
+	\cite[str. 8]{PAN2023}
+	
+	Funkci informační plní v učebnici text autora: ať už popisující, zhodnoťující, citace zdrojů apod. 
+	
+	\cite[str. 13]{PAN2023}
+	
+	\subsection{Problémy současného vzdělávání}
+	\subsubsection{Rovnost, ideologie a sociální struktury ve vzdělávání}
 	
 	
+	
+	\cite{WPPzmiana}
+	
+	\subsubsection{Digitální kompetence mladých lidí}
+	V dnešním světě je digitální gramotnost \textit{(angl. digital literacy)} velmi důležitou
+	
+	
+	
+	\cite{WPPdigital}
+
 	\newpage
 	\subsection{Požadavky pro novou digitální učebnici}
-	
-	\newpage
-	\subsection{Standardy učebnice a jejich plnění}
-	Ideální učebnice, jak definována podle knihy Ivana Iviće, Any Pešikan a Slobodanky Antić ze Fakulty Filosofie Univerzity v Bělehradu, vydané Institutem George Eckerta v německém městě Göttingen \cite{Standard} musí, a přinejmenším by měla, nutně splňovat následující kritéria. Kritéria jsou v standartu rozděleny na několik sekcí, a to:
+	\subsubsection{Pravidla pro určení kvality učebnice z hlediska obsahu a podporovaných funkcí}
+	Kvalitní učebnice, jak definována podle knihy Ivana Iviće, Any Pešikan a Slobodanky Antić ze Fakulty Filosofie Univerzity v Bělehradu, \cite{Standard} musí, a přinejmenším by měla, nutně splňovat následující kritéria. Kritéria jsou v standartu rozděleny na několik sekcí, a to:
 	\begin{itemize}
-	\item{} \enquote*{Standardy kvality pro učebnice jako knih uživáných studenty} (kapitola B)
-	\item{} \enquote*{Standardy kvality pro didaktický návrh učebnice} (kapitola E)
-	\item{} \enquote*{Standardy kvality pro jazyk učebnic} (kapitola F)
-	\item{} \enquote*{Standardy kvality pro elektronické komponenty učebnice a elektronické učebnice} (kapitola G)
+	\item{} \enquote*{Standarty kvality pro učebnice jako knih uživáných studenty} (kapitola B)
+	\item{} \enquote*{Standarty kvality pro didaktický návrh učebnice} (kapitola E)
+	\item{} \enquote*{Standarty kvality pro jazyk učebnic} (kapitola F)
+	\item{} \enquote*{Standarty kvality pro elektronické komponenty učebnice a elektronické učebnice} (kapitola G)
 	\end{itemize}
 	
-	Níže jsou uvedeny všechna pravidla, a jejich dodržení učebnicovým systémem. \textbf{Některá pravidla jsou vynechána} - jedná se pouze o ty, \textbf{které se týkají přímo a pouze obsahu závisejícího na autoru, a na které by infrastuktura učebnice neměla žádný vliv.} Mezi tyto pravidla spadají všechna pravidla kapitol \textit{A}, \textit{D}, \textit{C}, a pravidla \textit{E3.} o didaktické hodnotě příkladů,  \textit{E4.} o smysluplném propojení konceptů a znalostí, \textit{E5.} o řadách integrace obsahu, \textit{E6.} o učinných způsobech prezentace hodnot v tištěných učebnicích a \textit{E13.} o podpoře kritického myšlení.
+	Níže jsou uvedeny všechna kritéria, a jejich dodržení učebnicovým systémem. \textbf{Některá pravidla jsou vynechána} - jedná se pouze o ty, \textbf{které se týkají přímo a pouze obsahu závisejícího na autoru, a na které by infrastuktura učebnice neměla žádný vliv.} Mezi tyto pravidla spadají všechna pravidla kapitol \textit{A}, \textit{D}, \textit{C}, a pravidla \textit{E3.} o didaktické hodnotě příkladů,  \textit{E4.} o smysluplném propojení konceptů a znalostí, \textit{E5.} o řadách integrace obsahu, \textit{E6.} o učinných způsobech prezentace hodnot v tištěných učebnicích a \textit{E13.} o podpoře kritického myšlení.
+	
+	\textbf{Tyto pravidla určují především funkce, které má učebnice obsahovat.} Detailní popis těchto jednolivých funkcí, a zároveň podmínek, které musí splňovat, bude následovat v následujících kapitolách.
 	
 	% vyjmenujeme pravidla a pak komentář jak toho docílíme	
 	% sekce B str 77 sekce E str 123 sekce G 173
@@ -309,6 +328,8 @@ sorting=nyt,
 		\end{quotation}
 		
 		Toto pravidlo je učebnicí splněno za pomoci interaktivních a multimediálních prvků.  Za užití jejich kombinace je možné docílit nejúčinnějšího způsobu učení většině typů lidem dle klasifikace VARK \cite{VARK} - tzn. vizuálního  (\enquote*{\textit{Visual}}) za pomocí multimediálních prvků, zvukového (\enquote*{\textit{Aural}}) za pomoci režimu text-to-speech a písemného (\enquote*{\textit{Read/Write}}) za pomoci hlavního textu učebnice. Kinestetický  (\enquote*{\textit{Kinesthetic}}) typ nemůže učebnice bohužel obsloužit - zde to závisí na autorovi učebnice, zda uskuteční realizaci cvičení mimo obrazovku (mj. i labolatorních) či ne.
+		
+		Dle dělení z pohledu pedagoga, a to na  \cite[s. 137]{PDO} TODO
 	\end{samepage}
 	
 	\filbreak
@@ -331,8 +352,7 @@ sorting=nyt,
 			\textbf{E12. Podpora rozvoje vývoje kreativního myšlení a chování} \\
 			\enquote{\textit{
 					V závislosti na typu a cílu předmětu, učebnice by měly tvořit situace takové, kde student může použít svojí kreativitu.
-			}}
-		\end{quotation}
+			}}		\end{quotation}
 		
 		Toto pravidlo splňuje učebnice za pomocí formuláře, nalezeného na konci každého článku, který nabízí studentům možnost se volně vyjádřit a popsat, co se v dané kapitole naučili. Tato informace je následně přeposlána autorovi učebnice.
 	\end{samepage}
@@ -347,7 +367,7 @@ sorting=nyt,
 			}}
 		\end{quotation}
 		
-	   Toto pravidlo učebnice splňuje za pomocí integrované kontroly chyb v editoru textu. Při jakékoliv nalezené chybě bude autor učebnice před uložením textu upozoněn, a následně se může rozhodnout buď pro proignorování chyby, nebo pro její nápravu.
+	   Toto pravidlo učebnice splňuje za pomocí integrované kontroly chyb v editoru textu. Při jakékoliv nalezené chybě bude autor učebnice před uložením textu upozoněn, a následně se může rozhodnout buď pro proignorování chyby, nebo pro její nápravu. \textbf{Tato podmínka je jedna z nejdůležitějších pro učebnice vůbec.} \cite[s. 81-87]{PAN2023} TODO PDO
 	\end{samepage}
 	
 	\filbreak
@@ -447,8 +467,33 @@ sorting=nyt,
 		
 		Učebnice tento požadavek částečně splňuje.  Možnosti digitálních médií využivá svými funkcemi - podporou 3D modelů, generací otázek a karet k procvičování, sumarizací, podporou nelineární struktury atd. - naprosto dostatečně, a svými motivačními prvky proces vzdělávání žáka jednoznačně zrychluje a zpříjemňuje. Hlášky při akcích studenta jsou záměrně napsány tak, aby učebnice se k studenovi chovala - minimálně z pohledu studenta - s pochopením.
 		
-		Přizpůsobení obsahu studentům závisí na autorovi dané učebnice, nástroj do tohoto nezasahuje.
+		Přizpůsobení obsahu studentům závisí na autorovi dané učebnice, nástroj do tohoto nezasahuje napřímo.
 	\end{samepage}
+
+	\newpage
+	
+	\subsubsection{Nástroje pro dodržení pravidel pro obsah textu}
+
+	\cite[s.60-80]{PAN2023} 
+
+	Je třeba ale poznamenta, že učebnice nemůže autora k použití zmíněných prvků, může je pouze nabídnout a k tomu aktivně nabádat.
+
+	\subsubsection{Nástroje pro dodržení pravidel grafického designu textu}
+	Pro lepší srozumitelnost textu je doporučeno využívat \textit{viz. pravidla sekce F v přechozí kapitole}.
+	
+	Je třeba ale znovu zmínit, že učebnice nemůže autora k správným rozhodnutím donutit, může je pouze nabídnout.
+	
+	% TODO jasnopis.pl simulator basically (using NLP models!)
+	\cite[s. 35-50]{PAN2023} 
+	
+	\subsubsection{Pravidla pro definice pojmů}
+	
+	\cite[s. 51-60]{PAN2023} 
+	
+	\subsubsection{Pravidla pro jednotlivá cvičení}
+	
+	\cite[s. 60-67]{PAN2023} 
+	\cite[]{WPPmodel} TODO projít si ten model tady 
 	
 	\newpage
 	\section{Bezpečnost dat}
