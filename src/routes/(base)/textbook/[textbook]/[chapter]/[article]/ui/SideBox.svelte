@@ -4,6 +4,4 @@
 	//page 69 in PAN2023
 </script>
 
-<div>
-
-</div>
+<div></div>
