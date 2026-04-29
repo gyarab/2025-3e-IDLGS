@@ -17,6 +17,8 @@ export const textbook = pgTable(
 		r: integer('r').notNull().default(0),
 		g: integer('g').notNull().default(0),
 		b: integer('b').notNull().default(0),
+		//education level according to ISCED
+		educationLevel: integer().notNull().default(0),
 		//TODO setting
 		noAiQuestions: boolean('noAIQuestions').notNull().default(false),
 	},

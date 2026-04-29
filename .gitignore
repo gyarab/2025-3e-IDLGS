@@ -64,3 +64,4 @@ documentation/*.gz
 documentation/*.bcf
 documentation/*.grp
 
+*.pyc
