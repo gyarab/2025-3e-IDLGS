@@ -1,7 +1,7 @@
 <script lang="ts">
 	let {
 		darkMode,
-		color
+		color,
 	}: {
 		darkMode: boolean;
 		color: string;
@@ -12,9 +12,7 @@
 
 <!-- TODO navigation to next/prev article, chapter, ... -->
 <div
-	class="shadow-lg flex w-6/10 flex-row justify-center rounded-lg p-2 min-h-[30svh] {darkMode
+	class="flex min-h-[30svh] w-6/10 flex-row justify-center rounded-lg p-2 shadow-lg {darkMode
 		? 'bg-neutral-800 text-white'
 		: 'bg-neutral-100 text-black'}"
->
-
-</div>
+></div>

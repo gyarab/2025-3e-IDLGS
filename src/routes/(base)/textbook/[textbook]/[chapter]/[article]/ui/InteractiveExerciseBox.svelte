@@ -13,8 +13,6 @@
 </script>
 
 <div
-	class="shadow-lg flex w-6/10 flex-row justify-center rounded-lg p-2 text-white min-h-[30svh]"
-	style="background-color: {darkenHex(color, darkMode ? 50 : 0)};"	
->
-
-</div>
+	class="flex min-h-[30svh] w-6/10 flex-row justify-center rounded-lg p-2 text-white shadow-lg"
+	style="background-color: {darkenHex(color, darkMode ? 50 : 0)};"
+></div>

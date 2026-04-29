@@ -31,7 +31,10 @@ export const textbook = pgTable(
 
 export const chapter = pgTable('chapter', {
 	id: serial('id').primaryKey(),
-	uuid: text('uuid').notNull().unique().$defaultFn(() => crypto.randomUUID()),
+	uuid: text('uuid')
+		.notNull()
+		.unique()
+		.$defaultFn(() => crypto.randomUUID()),
 	textbookId: integer('textbookId')
 		.notNull()
 		.references(() => textbook.id),
@@ -39,7 +42,10 @@ export const chapter = pgTable('chapter', {
 
 export const article = pgTable('article', {
 	id: serial('id').primaryKey(),
-	uuid: text('uuid').notNull().unique().$defaultFn(() => crypto.randomUUID()),
+	uuid: text('uuid')
+		.notNull()
+		.unique()
+		.$defaultFn(() => crypto.randomUUID()),
 	textCompressed: text('textCompressed').notNull(),
 	chapterId: integer('chapterId')
 		.notNull()
@@ -51,7 +57,9 @@ export const articleHistory = pgTable('articleHistory', {
 	articleId: integer('articleId')
 		.notNull()
 		.references(() => article.id),
-	userId: integer('userId').notNull().references(() => resource.id),
+	userId: integer('userId')
+		.notNull()
+		.references(() => resource.id),
 	textCompressed: text('textCompressed').notNull(),
 	visitedAt: integer('visitedAt').notNull(),
 });

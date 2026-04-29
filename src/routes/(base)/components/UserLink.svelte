@@ -2,7 +2,7 @@
 	import type { UserType } from '$lib/types';
 
 	let {
-		user
+		user,
 	}: {
 		user: UserType;
 	} = $props();

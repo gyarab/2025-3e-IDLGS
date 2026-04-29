@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { fade } from "svelte/transition";
+	import { fade } from 'svelte/transition';
 	import { disableScroll, enableScroll } from '$lib';
-	import type { Snippet } from "svelte";
+	import type { Snippet } from 'svelte';
 
 	let dialog: HTMLDialogElement | undefined = $state(undefined);
 
@@ -10,9 +10,9 @@
 		darkMode,
 		children,
 	}: {
-		open: boolean,
-		darkMode: boolean,
-		children: Snippet,
+		open: boolean;
+		darkMode: boolean;
+		children: Snippet;
 	} = $props();
 
 	$effect(() => {

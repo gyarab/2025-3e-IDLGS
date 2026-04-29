@@ -32,7 +32,10 @@ export const user = pgTable('user', {
 	profilePicture: integer('profilePicture').references(() => resource.id),
 	description: text('description').notNull().default(''),
 	lastSeenAt: timestamp('lastSeenAt').notNull().defaultNow(),
-	uuid: text('uuid').notNull().unique().$defaultFn(() => crypto.randomUUID()),
+	uuid: text('uuid')
+		.notNull()
+		.unique()
+		.$defaultFn(() => crypto.randomUUID()),
 });
 
 export const resource = pgTable('resource', {

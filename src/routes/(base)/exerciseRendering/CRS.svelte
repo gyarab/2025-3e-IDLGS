@@ -76,10 +76,7 @@
 											offsets[i]++;
 										},
 									]}
-									disabled={[
-										offsets[i] == 0,
-										false,
-									]}
+									disabled={[offsets[i] == 0, false]}
 								/>
 							</div>
 						{/if}

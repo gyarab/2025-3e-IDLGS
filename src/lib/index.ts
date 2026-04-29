@@ -56,7 +56,7 @@ export const setDarkMode = async (enabled: boolean) => {
 };
 
 export const getDateTimeString = (date: Date): string => {
-	let string = "";
+	let string = '';
 
 	const day = date.getDate();
 	const month = date.getMonth() + 1;
@@ -71,4 +71,4 @@ export const getDateTimeString = (date: Date): string => {
 	string += minutes.toString().padStart(2, '0');
 
 	return string;
-}
+};

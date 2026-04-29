@@ -1,7 +1,5 @@
 <script lang="ts">
-	import Toolbar from "./ui/Toolbar.svelte";
-
-
+	import Toolbar from './ui/Toolbar.svelte';
 </script>
 
 <div>

@@ -92,7 +92,7 @@
 />
 
 <div
-	class="mt-4 mb-4 gap-4 relative flex min-h-screen w-screen grow flex-col items-center overflow-x-hidden overflow-y-scroll **:z-5"
+	class="relative mt-4 mb-4 flex min-h-screen w-screen grow flex-col items-center gap-4 overflow-x-hidden overflow-y-scroll **:z-5"
 >
 	{#key percentArticleRead}
 		<Background
@@ -108,21 +108,22 @@
 		isEditor={true}
 		lastEditedDate={new Date()}
 		lastEditor={{
-			name: "Ali",
-			surname: "Yunussov",
-			middlename: "programator!",
-			degree: "dr inż.",
-			institution: "AGH",
+			name: 'Ali',
+			surname: 'Yunussov',
+			middlename: 'programator!',
+			degree: 'dr inż.',
+			institution: 'AGH',
 			profilePicture: new Blob(),
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+			description:
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 			registeredAt: new Date(),
 			firstLogin: false,
 			playedTextbookTutorial: false,
 			playedLibraryTutorial: false,
 			playedGalleryTutorial: false,
-			lastSeenAt: new Date(),	
-			email: "alyun@agh.pl",
-			uuid: "123e4567-e89b-12d3-a456-426614174000",
+			lastSeenAt: new Date(),
+			email: 'alyun@agh.pl',
+			uuid: '123e4567-e89b-12d3-a456-426614174000',
 		}}
 	/>
 
@@ -177,9 +178,9 @@
 	<InteractiveExerciseBox
 		{darkMode}
 		color={data.color}
-	 />
+	/>
 
-	<FeedbackForm 
+	<FeedbackForm
 		{darkMode}
 		color={data.color}
 	/>
@@ -187,7 +188,7 @@
 	<ArticleNavbox
 		{darkMode}
 		color={data.color}
-	 />
+	/>
 
 	<CommandPalette
 		bind:open={commandPaletteOpen}
