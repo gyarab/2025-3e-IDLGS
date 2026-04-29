@@ -33,7 +33,7 @@ cap-widget {
 		@apply transition-all duration-100 hover:brightness-70 not-disabled:hover:-translate-0.5 active:brightness-50 disabled:brightness-50 disabled:saturate-0;
 	}
 	.buttonPrimary {
-		@apply rounded-full p-2 ps-3 pe-3;
+		@apply rounded-full p-2 ps-3 pe-3 font-bold;
 	}
 	.buttonLarge {
 		@apply p-2;

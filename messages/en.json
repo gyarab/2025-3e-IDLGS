@@ -42,5 +42,21 @@
 	"uploadFile": "Upload file",
 	"uploadThumbnail": "Upload thumbnail",
 	"loading": "Loading",
-	"itsTakingLongerThanExpected": "It's taking longer than expected"
+	"itsTakingLongerThanExpected": "It's taking longer than expected",
+	"addWord": "Add word",
+	"hintForWord": "Hint for word",
+	"descriptionForWord": "Description for word",
+	"confirm": "Confirm",
+	"word": "Word",
+	"letters1": "letter",
+	"letters2": "letters",
+	"letters3": "letters",
+	"letters4": "letters",
+	"lettersP": "letters",
+	"showHint": "Show hint",
+	"hintShown": "Hint shown",
+	"editArticle": "Edit article",
+	"lastEdited": "Last edited",
+	"lastEditedByUser": "Last edited by user",
+	"viewHistory": "View history"
 }

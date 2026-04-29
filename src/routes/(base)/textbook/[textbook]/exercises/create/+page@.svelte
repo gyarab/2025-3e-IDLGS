@@ -124,6 +124,8 @@
 								bind:crClues
 								bind:crDescriptions
 								bind:crSolution
+								color={data.color}
+								darkMode={data.darkMode}
 							/>
 						{:else if type == 'CRW'}
 							<CRWEditor />

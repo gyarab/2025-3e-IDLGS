@@ -9,6 +9,7 @@
 		label = text,
 		id = '',
 		css,
+		hecss,
 		style,
 		onclick,
 	}: {
@@ -20,6 +21,7 @@
 		id?: string;
 		css?: string;
 		style?: string;
+		hecss?: string;
 		onclick: (event: Event) => void;
 	} = $props();
 </script>
@@ -36,7 +38,7 @@
 >
 	<HoverEmoji
 		{emoji}
-		css="text-2xl"
+		css="text-2xl {hecss}"
 	/>
 	{text}
 </button>

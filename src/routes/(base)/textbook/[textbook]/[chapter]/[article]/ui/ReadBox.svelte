@@ -9,7 +9,7 @@
 </script>
 
 <div
-	class="mt-4 flex w-1/2 flex-col rounded-lg bg-neutral-100! p-7 text-black! shadow-xl"
+	class="flex w-1/2 flex-col rounded-lg bg-neutral-100! p-7 text-black! shadow-xl"
 >
 	{@render children()}
 </div>

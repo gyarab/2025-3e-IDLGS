@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import type { UserType } from './types';
 
 export const TEMP_ACCENT_COLOR = '#ff8800';
 
@@ -53,3 +54,21 @@ export const setDarkMode = async (enabled: boolean) => {
 		body: `darkMode=${enabled ? 'dark' : 'light'}`,
 	});
 };
+
+export const getDateTimeString = (date: Date): string => {
+	let string = "";
+
+	const day = date.getDate();
+	const month = date.getMonth() + 1;
+	const year = date.getFullYear();
+	const hours = date.getHours();
+	const minutes = date.getMinutes();
+
+	string += day.toString() + '.';
+	string += month.toString() + '.';
+	string += year.toString() + ' ';
+	string += hours.toString() + ':';
+	string += minutes.toString().padStart(2, '0');
+
+	return string;
+}

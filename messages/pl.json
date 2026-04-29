@@ -42,5 +42,21 @@
 	"uploadFile": "Prześlij plik",
 	"uploadThumbnail": "Prześlij miniaturę",
 	"loading": "Ładowanie",
-	"itsTakingLongerThanExpected": "To zajmuje więcej czasu niż oczekiwano"
+	"itsTakingLongerThanExpected": "To zajmuje więcej czasu niż oczekiwano",
+	"addWord": "Dodaj słowo",
+	"hintForWord": "Podpowiedź dla słowa",
+	"descriptionForWord": "Opis dla słowa",
+	"confirm": "Potwierdź",
+	"word": "Słowo",
+	"letters1": "litera",
+	"letters2": "litery",
+	"letters3": "litery",
+	"letters4": "litery",
+	"lettersP": "liter",
+	"showHint": "Pokaż podpowiedź",
+	"hintShown": "Podpowiedź pokazana",
+	"editArticle": "Edytuj artykuł",
+	"lastEdited": "Ostatnia edycja",
+	"lastEditedByUser": "Ostatnia edycja przez użytkownika",
+	"viewHistory": "Zobacz historię"
 }

@@ -42,5 +42,21 @@
 	"uploadFile": "Nahrát soubor",
 	"uploadThumbnail": "Nahrát náhled",
 	"loading": "Načítání",
-	"itsTakingLongerThanExpected": "Trvá to déle než by mělo"
+	"itsTakingLongerThanExpected": "Trvá to déle než by mělo",
+	"addWord": "Přidat slovo",
+	"hintForWord": "Nápověda pro slovo",
+	"descriptionForWord": "Popis pro slovo",
+	"confirm": "Potvrdit",
+	"word": "Slovo",
+	"letters1": "písmeno",
+	"letters2": "písmena",
+	"letters3": "písmena",
+	"letters4": "písmena",
+	"lettersP": "písmen",
+	"showHint": "Zobrazit nápovědu",
+	"hintShown": "Nápověda zobrazena",
+	"editArticle": "Upravit článek",
+	"lastEdited": "Naposledy upraveno",
+	"lastEditedByUser": "Naposledy upraveno uživatelem",
+	"viewHistory": "Zobrazit historii"
 }

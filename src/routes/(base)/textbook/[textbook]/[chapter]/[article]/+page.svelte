@@ -5,6 +5,11 @@
 	import Background from './ui/components/Background.svelte';
 	import { browser } from '$app/environment';
 	import ReadBox from './ui/ReadBox.svelte';
+	import EditBox from './ui/EditBox.svelte';
+	import FeedbackForm from './ui/FeedbackForm.svelte';
+	import SideBox from './ui/SideBox.svelte';
+	import InteractiveExerciseBox from './ui/InteractiveExerciseBox.svelte';
+	import ArticleNavbox from './ui/ArticleNavbox.svelte';
 
 	let {
 		data,
@@ -87,7 +92,7 @@
 />
 
 <div
-	class="relative flex min-h-screen w-screen grow flex-col items-center overflow-x-hidden overflow-y-scroll **:z-5"
+	class="mt-4 mb-4 gap-4 relative flex min-h-screen w-screen grow flex-col items-center overflow-x-hidden overflow-y-scroll **:z-5"
 >
 	{#key percentArticleRead}
 		<Background
@@ -96,6 +101,30 @@
 			{darkMode}
 		/>
 	{/key}
+
+	<EditBox
+		{darkMode}
+		color={data.color}
+		isEditor={true}
+		lastEditedDate={new Date()}
+		lastEditor={{
+			name: "Ali",
+			surname: "Yunussov",
+			middlename: "programator!",
+			degree: "dr inż.",
+			institution: "AGH",
+			profilePicture: new Blob(),
+			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+			registeredAt: new Date(),
+			firstLogin: false,
+			playedTextbookTutorial: false,
+			playedLibraryTutorial: false,
+			playedGalleryTutorial: false,
+			lastSeenAt: new Date(),	
+			email: "alyun@agh.pl",
+			uuid: "123e4567-e89b-12d3-a456-426614174000",
+		}}
+	/>
 
 	<ReadBox>
 		aaa Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias nisi
@@ -141,6 +170,24 @@
 		cnotliwy, nieśmiały: Obce dla niego wyrazy miłosne, Choć czuł miłosne
 		zapały.
 	</ReadBox>
+
+	<!-- TODO-->
+	<SideBox />
+
+	<InteractiveExerciseBox
+		{darkMode}
+		color={data.color}
+	 />
+
+	<FeedbackForm 
+		{darkMode}
+		color={data.color}
+	/>
+
+	<ArticleNavbox
+		{darkMode}
+		color={data.color}
+	 />
 
 	<CommandPalette
 		bind:open={commandPaletteOpen}

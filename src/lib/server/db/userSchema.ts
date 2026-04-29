@@ -9,7 +9,6 @@ import {
 
 export const user = pgTable('user', {
 	id: serial('id').primaryKey(),
-	username: text('username').notNull(),
 	name: text('name').notNull(),
 	surname: text('surname').notNull(),
 	middlename: text('middlename').notNull(),
@@ -33,6 +32,7 @@ export const user = pgTable('user', {
 	profilePicture: integer('profilePicture').references(() => resource.id),
 	description: text('description').notNull().default(''),
 	lastSeenAt: timestamp('lastSeenAt').notNull().defaultNow(),
+	uuid: text('uuid').notNull().unique().$defaultFn(() => crypto.randomUUID()),
 });
 
 export const resource = pgTable('resource', {
