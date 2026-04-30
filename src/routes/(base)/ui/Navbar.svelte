@@ -76,7 +76,7 @@
 				<button
 					onclick={() => (open = false)}
 					class="ml-4 p-2 opacity-50 hover:opacity-100"
-					aria-label={m.collapse?.() ?? 'Collapse'}
+					aria-label={m.collapse()}
 				>
 					<i class="ri-close-line text-xl"></i>
 				</button>

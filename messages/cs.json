@@ -58,5 +58,6 @@
 	"editArticle": "Upravit článek",
 	"lastEdited": "Naposledy upraveno",
 	"lastEditedByUser": "Naposledy upraveno uživatelem",
-	"viewHistory": "Zobrazit historii"
+	"viewHistory": "Zobrazit historii",
+	"typeToSearch": ""
 }

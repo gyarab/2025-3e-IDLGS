@@ -21,9 +21,10 @@
 	} = $props();
 
 	let darkMode = $derived(data.darkMode);
+	let color = $derived(data.color);
 
 	let commandPaletteOpen = $state(false);
-	let sidebarOpen = $state(false);
+	let sidebarOpen = $state(true);
 	let focusMode = $state(false);
 
 	let windowScroll = $state(0);
@@ -193,5 +194,6 @@
 	<CommandPalette
 		bind:open={commandPaletteOpen}
 		{darkMode}
+		{color}
 	/>
 </div>
