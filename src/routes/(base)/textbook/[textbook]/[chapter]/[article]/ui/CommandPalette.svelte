@@ -39,27 +39,29 @@
 		<dialog
 			bind:this={dialog}
 			class="absolute top-1/3 left-1/2 z-51! flex min-h-1/2 w-1/2 grow -translate-1/2 flex-col gap-2 rounded-xl p-5
-				{darkMode ? 'bg-neutral-800/70 text-white' : 'bg-neutral-50/70 text-black'} backdrop-blur-sm"
+				{darkMode
+				? 'bg-neutral-800/70 text-white'
+				: 'bg-neutral-50/70 text-black'} backdrop-blur-sm"
 			transition:fade|global={{ duration: 250 }}
 		>
-<div class="flex items-center justify-between mb-4">
-    <h2 class="text-xl font-bold">title of command palette?</h2>
-    <Button 
-		text=""
-		emoji="close"
-		type="button"
-		onclick={() => {
-			open = false;
-		}}
-		css="rounded-lg px-3 py-3 hover:bg-neutral-500/20 transition-colors"
-	/>
-</div>
+			<div class="mb-4 flex items-center justify-between">
+				<h2 class="text-xl font-bold">title of command palette?</h2>
+				<Button
+					text=""
+					emoji="close"
+					type="button"
+					onclick={() => {
+						open = false;
+					}}
+					css="rounded-lg px-3 py-3 hover:bg-neutral-500/20 transition-colors"
+				/>
+			</div>
 			<p>{m.commandPaletteDescription()}</p>
-			<TextInput 
+			<TextInput
 				bind:value={query}
-				darkMode={darkMode}
+				{darkMode}
 				placeholder={m.typeToSearch()}
-				color={color}
+				{color}
 			/>
 			<hr />
 			{#if query.length > 0}
