@@ -15,7 +15,7 @@ cap-widget {
 
 @layer base {
 	:root {
-		@apply font-inter font-light;
+		@apply font-inter font-light p-0 m-0 overflow-x-hidden overflow-y-scroll;
 	}
 }
 
