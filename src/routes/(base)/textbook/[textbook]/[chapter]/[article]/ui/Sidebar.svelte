@@ -24,7 +24,9 @@
 		class="pt-5 pb-5 {extended ? ' w-[24svh]' : ' w-[7svh]'} 
 			fixed top-0 left-0 z-12! flex h-screen grow flex-col gap-5
 			transition-all duration-200 **:z-20!
-			{darkMode ? 'bg-neutral-800 text-neutral-200' : 'bg-neutral-200 text-neutral-800'}"
+			{darkMode
+			? 'bg-neutral-800 text-neutral-200'
+			: 'bg-neutral-200 text-neutral-800'}"
 		transition:fly|global={{ x: -100, duration: 200, opacity: 0 }}
 	>
 		<SidebarButton
