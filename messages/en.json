@@ -58,5 +58,10 @@
 	"editArticle": "Edit article",
 	"lastEdited": "Last edited",
 	"lastEditedByUser": "Last edited by user",
-	"viewHistory": "View history"
+	"viewHistory": "View history",
+	"typeToSearch": "Type to search",
+	"noResults": "No results",
+	"searchForTextbook": "Search for textbook",
+	"yourTextbooks": "Your textbooks",
+	"createTextbook": "Create textbook"
 }

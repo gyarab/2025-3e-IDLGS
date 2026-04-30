@@ -21,10 +21,10 @@ cap-widget {
 
 @layer components {
 	h1 {
-		@apply text-xl;
+		@apply text-2xl font-bold;
 	}
 	h2 {
-		@apply text-lg;
+		@apply text-lg font-bold;
 	}
 	hr {
 		@apply opacity-10;

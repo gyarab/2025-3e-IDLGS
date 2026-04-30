@@ -65,7 +65,7 @@
 
 {#key runAnim}
 	<div
-		class="relative flex h-screen! w-screen! flex-col items-center justify-center overflow-hidden bg-linear-to-br from-white from-0% to-white to-100%"
+		class="relative flex h-screen! w-screen! max-w-screen flex-col items-center justify-center overflow-hidden bg-linear-to-br from-white from-0% to-white to-100%"
 		style="--tw-gradient-from: {data.color}; --tw-gradient-to: {darkenHex(
 			data.color,
 			80,

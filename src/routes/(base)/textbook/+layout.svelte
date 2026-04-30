@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { darkenHex } from '$lib';
 	import { type Snippet } from 'svelte';
 
 	let {
@@ -16,7 +17,11 @@
 </script>
 
 <div
-	class="relative flex min-h-screen w-screen grow flex-col items-center overflow-x-hidden overflow-y-scroll **:z-5"
+	class="flex w-full grow flex-col items-center bg-linear-to-br from-white from-0% to-white to-100% p-4"
+	style="--tw-gradient-from: {data.color}; --tw-gradient-to: {darkenHex(
+		data.color,
+		80,
+	)};"
 >
 	{@render children()}
 </div>

@@ -1,8 +1,8 @@
-import * as user from './userSchema';
-import * as exercise from './exerciseSchema';
-import * as textbook from './textbookSchema';
+import * as user from './schema/userSchema';
+import * as exercise from './schema/exerciseSchema';
+import * as textbook from './schema/textbookSchema';
 
-const schema = {
+export const schema = {
 	...user,
 	...exercise,
 	...textbook,

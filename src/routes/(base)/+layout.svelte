@@ -13,11 +13,12 @@
 		data: {
 			color: string;
 			darkMode: boolean;
+			navbarOpen: boolean;
 		};
 	} = $props();
 
 	let darkMode = $derived(data.darkMode);
-	let navbarOpen = $state(false);
+	let navbarOpen = $derived(data.navbarOpen);
 
 	const keyboardHandler = (e: KeyboardEvent) => {
 		if (e.key === 'f') {

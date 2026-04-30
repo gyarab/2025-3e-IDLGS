@@ -59,5 +59,9 @@
 	"lastEdited": "Naposledy upraveno",
 	"lastEditedByUser": "Naposledy upraveno uživatelem",
 	"viewHistory": "Zobrazit historii",
-	"typeToSearch": ""
+	"typeToSearch": "Zadejte pro hledání",
+	"noResults": "Žádné výsledky",
+	"searchForTextbook": "Hledat učebnici",
+	"yourTextbooks": "Vaše učebnice",
+	"createTextbook": "Vytvořit učebnici"
 }

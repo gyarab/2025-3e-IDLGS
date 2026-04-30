@@ -1,19 +1,43 @@
-export type UserType = {
+export type UserTypeInfo = {
+	degree: string | null;
+	institution: string | null;
 	name: string;
 	surname: string;
 	middlename: string;
+	uuid: string;	
+	profilePicture: string | null; //url
+};
+
+export type UserType = UserTypeInfo & {
 	email: string;
 	registeredAt: Date;
-	firstLogin: boolean;
+	description: string;
+	lastSeenAt: Date;
+	r: number;
+	g: number;
+	b: number;
+};
+
+export type UserTypeFull = UserType & {
+	id: number;
+	password: string;
+	iterations: number;
+	salt: string;
 	playedTextbookTutorial: boolean;
 	playedLibraryTutorial: boolean;
 	playedGalleryTutorial: boolean;
-	degree: string;
-	institution: string;
-	profilePicture: Blob;
-	description: string;
-	lastSeenAt: Date;
+	firstLogin: boolean;
+};
+
+export type TextbookType = {
+	id: number;
 	uuid: string;
+	title: string;
+	r: number;
+	g: number;
+	b: number;
+	educationLevel: number;
+	authors: UserTypeInfo[];
 };
 
 export type ExerciseType = {

@@ -17,6 +17,8 @@
 		data: {
 			color: string;
 			darkMode: boolean;
+			navbarOpen: boolean;
+			sidebarOpen: boolean;
 		};
 	} = $props();
 
@@ -24,7 +26,7 @@
 	let color = $derived(data.color);
 
 	let commandPaletteOpen = $state(false);
-	let sidebarOpen = $state(true);
+	let sidebarOpen = $derived(data.sidebarOpen);
 	let focusMode = $state(false);
 
 	let windowScroll = $state(0);
@@ -114,17 +116,16 @@
 			middlename: 'programator!',
 			degree: 'dr inż.',
 			institution: 'AGH',
-			profilePicture: new Blob(),
+			profilePicture: "",
 			description:
 				'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 			registeredAt: new Date(),
-			firstLogin: false,
-			playedTextbookTutorial: false,
-			playedLibraryTutorial: false,
-			playedGalleryTutorial: false,
 			lastSeenAt: new Date(),
 			email: 'alyun@agh.pl',
 			uuid: '123e4567-e89b-12d3-a456-426614174000',
+			r: 128,
+			g: 128,
+			b: 128,
 		}}
 	/>
 

@@ -3,6 +3,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import SidebarButton from './components/SidebarButton.svelte';
 	import { enhance } from '$app/forms';
+	import { setSidebarOpen } from '$lib';
 
 	let extended = $state(false);
 
@@ -57,7 +58,10 @@
 		/>
 		<button
 			class="w-full grow opacity-0"
-			onclick={() => (open = false)}
+			onclick={async () => {
+				open = false;
+				await setSidebarOpen(false);
+			}}
 			aria-label={m.closeSidebar()}
 		></button>
 		<form
@@ -89,7 +93,10 @@
 {:else}
 	<button
 		class="fixed top-0 left-0 z-50! flex h-screen w-[7svh] flex-col text-white!"
-		onclick={() => (open = true)}
+		onclick={async () => {
+			open = true;
+			await setSidebarOpen(true);
+		}}
 		aria-label={m.openSidebar()}
 	>
 		<div class="grow"></div>

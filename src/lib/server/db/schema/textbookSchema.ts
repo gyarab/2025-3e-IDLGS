@@ -5,6 +5,7 @@ import {
 	text,
 	boolean,
 	check,
+	timestamp
 } from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm';
 import { resource } from './userSchema';
@@ -19,8 +20,12 @@ export const textbook = pgTable(
 		b: integer('b').notNull().default(0),
 		//education level according to ISCED
 		educationLevel: integer().notNull().default(0),
-		//TODO setting
-		noAiQuestions: boolean('noAIQuestions').notNull().default(false),
+		lastEditedAt: timestamp('lastEditedAt').notNull().$defaultFn(() => new Date()),
+		description: text('description').notNull().default(''),
+		uuid: text('uuid')
+			.notNull()
+			.unique()
+			.$defaultFn(() => crypto.randomUUID()),
 	},
 	(table) => [
 		check('r', sql`${table.r} >= 0 AND ${table.r} <= 255`),
@@ -28,6 +33,16 @@ export const textbook = pgTable(
 		check('b', sql`${table.b} >= 0 AND ${table.b} <= 255`),
 	],
 );
+
+export const textbookUserLinker = pgTable('textbookUserLinker', {
+	id: serial('id').primaryKey(),
+	textbookId: integer('textbookId')
+		.notNull()
+		.references(() => textbook.id, { onDelete: 'cascade' }),
+	userId: integer('userId')
+		.notNull()
+		.references(() => resource.id, { onDelete: 'cascade' }),
+});
 
 export const chapter = pgTable('chapter', {
 	id: serial('id').primaryKey(),
@@ -50,6 +65,9 @@ export const article = pgTable('article', {
 	chapterId: integer('chapterId')
 		.notNull()
 		.references(() => chapter.id),
+	textbookId: integer('textbookId')
+		.notNull()
+		.references(() => textbook.id),
 });
 
 export const articleHistory = pgTable('articleHistory', {

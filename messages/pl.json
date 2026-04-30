@@ -58,5 +58,10 @@
 	"editArticle": "Edytuj artykuł",
 	"lastEdited": "Ostatnia edycja",
 	"lastEditedByUser": "Ostatnia edycja przez użytkownika",
-	"viewHistory": "Zobacz historię"
+	"viewHistory": "Zobacz historię",
+	"typeToSearch": "Wpisz, aby wyszukać",
+	"noResults": "Brak wyników",
+	"searchForTextbook": "Szukaj podręcznika",
+	"yourTextbooks": "Twoje podręczniki",
+	"createTextbook": "Utwórz podręcznik"
 }

@@ -1,5 +1,4 @@
 import { browser } from '$app/environment';
-import type { UserType } from './types';
 
 export const TEMP_ACCENT_COLOR = '#ff8800';
 
@@ -55,6 +54,26 @@ export const setDarkMode = async (enabled: boolean) => {
 	});
 };
 
+export const setNavbarOpen = async (enabled: boolean) => {
+	await fetch('/?/setNavbarOpen', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+		},
+		body: `navbarOpen=${enabled ? 'true' : 'false'}`,
+	});
+}
+
+export const setSidebarOpen = async (enabled: boolean) => {
+	await fetch('/?/setSidebarOpen', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+		},
+		body: `sidebarOpen=${enabled ? 'true' : 'false'}`,
+	});
+}
+
 export const getDateTimeString = (date: Date): string => {
 	let string = '';
 
@@ -72,3 +91,5 @@ export const getDateTimeString = (date: Date): string => {
 
 	return string;
 };
+
+export const makeHex = (r: number, g: number, b: number): string => '#' + [r, g, b].map((x) =>x.toString(16)).join('');

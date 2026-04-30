@@ -2,6 +2,7 @@
 	import { fly } from 'svelte/transition';
 	import { m } from '$lib/paraglide/messages';
 	import NavButton from '$src/routes/(base)/components/NavBarButton.svelte';
+	import { setNavbarOpen } from '$lib';
 
 	let {
 		accentColor,
@@ -17,7 +18,10 @@
 {#if !open}
 	<button
 		class="fixed top-0 z-20 flex h-8 w-screen items-start justify-center"
-		onclick={() => (open = true)}
+		onclick={async () => {
+			open = true;
+			await setNavbarOpen(true);
+		}}
 		aria-label={m.openNavbar()}
 	>
 		<i
@@ -74,7 +78,10 @@
 				</NavButton>
 
 				<button
-					onclick={() => (open = false)}
+					onclick={async () => {
+						open = false;
+						await setNavbarOpen(false);
+					}}
 					class="ml-4 p-2 opacity-50 hover:opacity-100"
 					aria-label={m.collapse()}
 				>

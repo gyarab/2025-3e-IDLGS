@@ -2,8 +2,11 @@ import type { Handle } from '@sveltejs/kit';
 import { getTextDirection } from '$lib/paraglide/runtime';
 import { paraglideMiddleware } from '$lib/paraglide/server';
 import { sequence } from '@sveltejs/kit/hooks';
-import databaseSchema from '$lib/server/db/schema';
-import { db } from '$lib/server/db';
+import { schema as databaseSchema } from '$lib/server/db/schema';
+import { drizzle } from 'drizzle-orm/postgres-js';
+import postgres from 'postgres';
+import { count } from 'drizzle-orm';
+import { hashPassword } from '$lib/server/user';
 
 const handleParaglide: Handle = ({ event, resolve }) =>
 	paraglideMiddleware(event.request, ({ request, locale }) => {
@@ -18,12 +21,52 @@ const handleParaglide: Handle = ({ event, resolve }) =>
 	});
 
 const handleDatabase: Handle = async ({ event, resolve }) => {
-	//TODO
+	if (!process.env.DATABASE_URL) throw Error('DATABASE_URL not set!');
+
+	event.locals.db = drizzle(
+		postgres(process.env.DATABASE_URL, {
+			prepare: false,
+			max: 1,
+			max_lifetime: 1
+		}),
+		{ schema: databaseSchema }
+	);
+
+
 	return resolve(event);
 };
 
+const handleInitialUser: Handle = async ({ event, resolve }) => {
+	if((await event.locals.db.select({
+		count: count()
+	}).from(databaseSchema.user))[0].count === 0) {
+		if(!process.env.DEFAULT_EMAIL || !process.env.DEFAULT_PASSWORD) {
+			throw Error('No users in database and DEFAULT_EMAIL or DEFAULT_PASSWORD not set!');
+		}
+
+		const password = hashPassword(process.env.DEFAULT_PASSWORD);		
+
+		await event.locals.db.insert(databaseSchema.user).values({
+			name: "Administrator",
+			surname: "Account",
+			middlename: "",
+			email: process.env.DEFAULT_EMAIL,
+			registeredAt: new Date(),
+			description: "This is the default administrator account.",
+			password: password.password,
+			salt: password.salt,
+			iterations: password.iterations,
+		});
+	}
+
+	return resolve(event);
+}
+
 const handleStandaloneMode: Handle = async ({ event, resolve }) => {
-	//TODO
+	if(!process.env.MODE || process.env.MODE == "normal") return resolve(event);
+
+	//TODO standalone textbook mode (uuid)
+
 	return resolve(event);
 };
 
@@ -51,4 +94,5 @@ export const handle: Handle = sequence(
 	handleParaglide,
 	handleStandaloneMode,
 	handleDatabase,
+	handleInitialUser,
 );

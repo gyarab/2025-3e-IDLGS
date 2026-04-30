@@ -1,15 +1,19 @@
-import { fail } from '@sveltejs/kit';
+import { fail, isActionFailure, type RequestEvent } from '@sveltejs/kit';
+
+const cookieSetupAction = async (event: RequestEvent, name: string, allowed: string[]) => {
+	const data = await event.request.formData();
+	if (!data.has(name)) return fail(400);
+
+	const value = data.get(name) as string;
+	if (!allowed.includes(value)) return fail(400);
+
+	event.cookies.set(name, value, { path: '/' });
+
+	return {};
+};
 
 export const actions = {
-	setDarkMode: async (event) => {
-		const data = await event.request.formData();
-		if (!data.has('darkMode')) return fail(400);
-
-		const value = data.get('darkMode');
-		if (value != 'light' && value != 'dark') return fail(400);
-
-		event.cookies.set('darkMode', value, {
-			path: '/',
-		});
-	},
+	setDarkMode: async (event) => isActionFailure(await cookieSetupAction(event, 'darkMode', ['dark', 'light'])),
+	setNavbarOpen: async (event) => isActionFailure(await cookieSetupAction(event, 'navbarOpen', ['true', 'false'])),
+	setSidebarOpen: async (event) => isActionFailure(await cookieSetupAction(event, 'sidebarOpen', ['true', 'false'])),
 };

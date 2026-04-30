@@ -1,6 +1,6 @@
 import { pgTable, serial, integer, text, check } from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm';
-import { resource } from './userSchema';
+import { resource } from './userSchema.ts';
 
 export const exercise = pgTable(
 	'exercise',
@@ -47,23 +47,23 @@ export const exercise = pgTable(
 		),
 		check(
 			'exerciseTypeData',
-			sql`(type = 'CRS' AND crs IS NOT NULL AND crosswordDataId IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL) OR
-			(type = 'CRW' AND crw IS NOT NULL AND crosswordDataId IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL) OR
-			(type = 'DEF' AND def IS NOT NULL AND crosswordDataId IS NULL AND crs IS NULL AND crw IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL) OR
-			(type = 'GRP' AND grp IS NOT NULL AND crosswordDataId IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND geo IS NULL AND ext IS NULL) OR
-			(type = 'GEO' AND geo IS NOT NULL AND crosswordDataId IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND grp IS NULL AND ext IS NULL) OR
-			(type = 'EXT' AND ext IS NOT NULL AND crosswordDataId IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL) OR
-			(type = 'CRW' AND crosswordDataId IS NOT NULL AND crs IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL)
+			sql`(type = 'CRS' AND crs IS NOT NULL AND "crosswordDataId" IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL) OR
+			(type = 'CRW' AND crw IS NOT NULL AND "crosswordDataId" IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL) OR
+			(type = 'DEF' AND def IS NOT NULL AND "crosswordDataId" IS NULL AND crs IS NULL AND crw IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL) OR
+			(type = 'GRP' AND grp IS NOT NULL AND "crosswordDataId" IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND geo IS NULL AND ext IS NULL) OR
+			(type = 'GEO' AND geo IS NOT NULL AND "crosswordDataId" IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND grp IS NULL AND ext IS NULL) OR
+			(type = 'EXT' AND ext IS NOT NULL AND "crosswordDataId" IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL) OR
+			(type = 'CRW' AND "crosswordDataId" IS NOT NULL AND crs IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL)
 			`,
 		),
 		check(
 			'colorValues',
-			sql`(backgroundColorR >= 0 AND backgroundColorR <= 255) AND
-			(backgroundColorG >= 0 AND backgroundColorG <= 255) AND
-			(backgroundColorB >= 0 AND backgroundColorB <= 255) AND
-			(foregroundColorR >= 0 AND foregroundColorR <= 255) AND
-			(foregroundColorG >= 0 AND foregroundColorG <= 255) AND
-			(foregroundColorB >= 0 AND foregroundColorB <= 255)`,
+			sql`("backgroundColorR" >= 0 AND "backgroundColorR" <= 255) AND
+			("backgroundColorG" >= 0 AND "backgroundColorG" <= 255) AND
+			("backgroundColorB" >= 0 AND "backgroundColorB" <= 255) AND
+			("foregroundColorR" >= 0 AND "foregroundColorR" <= 255) AND
+			("foregroundColorG" >= 0 AND "foregroundColorG" <= 255) AND
+			("foregroundColorB" >= 0 AND "foregroundColorB" <= 255)`,
 		),
 	],
 );
@@ -133,6 +133,11 @@ export const exerciseDefinitions = pgTable('exerciseDefinitions', {
 
 export const exerciseGraph = pgTable('exerciseGraph', {
 	id: serial('id').primaryKey().notNull().unique(),
+});
+
+export const exerciseGraphFunction = pgTable('exerciseGraphFunction', {
+	id: serial('id').primaryKey().notNull().unique(),
+	latex: text('latex').notNull(),
 });
 
 export const exerciseGeometry = pgTable('exerciseGeometry', {
