@@ -1,3 +1,4 @@
+
 ## What is this folder?
 
 This is an [unpacked (git-friendly)](https://inlang.com/docs/unpacked-project) inlang project.
@@ -5,21 +6,17 @@ This is an [unpacked (git-friendly)](https://inlang.com/docs/unpacked-project) i
 ## At a glance
 
 Purpose:
-
 - This folder stores inlang project configuration and plugin cache data.
 - Translation files live outside this folder and are referenced from `settings.json`.
 
 Safe to edit:
-
 - `settings.json`
 
 Do not edit:
-
 - `cache/`
 - `.gitignore`
 
 Key files:
-
 - `settings.json` — locales, plugins, file patterns (source of truth)
 - `cache/` — plugin caches (safe to delete)
 - `.gitignore` — generated
@@ -61,14 +58,14 @@ npm install @inlang/sdk
 ```
 
 ```ts
-import { loadProjectFromDirectory, saveProjectToDirectory } from '@inlang/sdk';
+import { loadProjectFromDirectory, saveProjectToDirectory } from "@inlang/sdk";
 
-const project = await loadProjectFromDirectory({ path: './project.inlang' });
+const project = await loadProjectFromDirectory({ path: "./project.inlang" });
 // Query messages with SQLite + [Kysely](https://kysely.dev/) under the hood.
-const messages = await project.db.selectFrom('message').selectAll().execute();
+const messages = await project.db.selectFrom("message").selectAll().execute();
 
 // Use project.db to update messages.
-await saveProjectToDirectory({ path: './project.inlang', project });
+await saveProjectToDirectory({ path: "./project.inlang", project });
 ```
 
 ## Ideas for custom tooling
