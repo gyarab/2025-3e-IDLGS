@@ -35,7 +35,9 @@
 		<dialog
 			bind:this={dialog}
 			class="absolute top-1/3 left-1/2 z-51! flex h-1/2 w-1/2 grow -translate-1/2 flex-col gap-2 rounded-xl p-5
-				{darkMode ? 'bg-neutral-800/70 text-white' : 'bg-neutral-50/70 text-black'} backdrop-blur-sm"
+				{darkMode
+				? 'bg-neutral-800/70 text-white'
+				: 'bg-neutral-50/70 text-black'} backdrop-blur-sm"
 			transition:fade|global={{ duration: 250 }}
 		>
 			<h2>title of command palette?</h2>
