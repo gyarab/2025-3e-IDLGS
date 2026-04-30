@@ -21,9 +21,10 @@
 
 {#if open}
 	<div
-		class="pt-5 pb-5 {extended
-			? ' w-[24svh]'
-			: ' w-[7svh]'} fixed top-0 left-0 z-12! flex h-screen grow flex-col gap-5 bg-neutral-800 shadow-xl transition-all duration-200 **:z-20! hover:bg-neutral-800/70"
+		class="pt-5 pb-5 {extended ? ' w-[24svh]' : ' w-[7svh]'} 
+			fixed top-0 left-0 z-12! flex h-screen grow flex-col gap-5
+			transition-all duration-200 **:z-20!
+			{darkMode ? 'bg-neutral-800 text-neutral-200' : 'bg-neutral-200 text-neutral-800'}"
 		transition:fly|global={{ x: -100, duration: 200, opacity: 0 }}
 	>
 		<SidebarButton
@@ -79,13 +80,13 @@
 				extended = !extended;
 			}}
 			emoji={extended ? 'arrow-left-s' : 'arrow-right-s'}
-			description={extended ? m.collapseSidebar() : m.extendSidebar()}
+			description={extended ? m.collapse() : m.extendSidebar()}
 			bind:extended
 		/>
 	</div>
 {:else}
 	<button
-		class="fixed top-0 left-0 z-50! flex h-screen w-[7svh] flex-col"
+		class="fixed top-0 left-0 z-50! flex h-screen w-[7svh] flex-col text-white!"
 		onclick={() => (open = true)}
 		aria-label={m.openSidebar()}
 	>
