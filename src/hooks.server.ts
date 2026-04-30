@@ -27,32 +27,39 @@ const handleDatabase: Handle = async ({ event, resolve }) => {
 		postgres(process.env.DATABASE_URL, {
 			prepare: false,
 			max: 1,
-			max_lifetime: 1
+			max_lifetime: 1,
 		}),
-		{ schema: databaseSchema }
+		{ schema: databaseSchema },
 	);
-
 
 	return resolve(event);
 };
 
 const handleInitialUser: Handle = async ({ event, resolve }) => {
-	if((await event.locals.db.select({
-		count: count()
-	}).from(databaseSchema.user))[0].count === 0) {
-		if(!process.env.DEFAULT_EMAIL || !process.env.DEFAULT_PASSWORD) {
-			throw Error('No users in database and DEFAULT_EMAIL or DEFAULT_PASSWORD not set!');
+	if (
+		(
+			await event.locals.db
+				.select({
+					count: count(),
+				})
+				.from(databaseSchema.user)
+		)[0].count === 0
+	) {
+		if (!process.env.DEFAULT_EMAIL || !process.env.DEFAULT_PASSWORD) {
+			throw Error(
+				'No users in database and DEFAULT_EMAIL or DEFAULT_PASSWORD not set!',
+			);
 		}
 
-		const password = hashPassword(process.env.DEFAULT_PASSWORD);		
+		const password = hashPassword(process.env.DEFAULT_PASSWORD);
 
 		await event.locals.db.insert(databaseSchema.user).values({
-			name: "Administrator",
-			surname: "Account",
-			middlename: "",
+			name: 'Administrator',
+			surname: 'Account',
+			middlename: '',
 			email: process.env.DEFAULT_EMAIL,
 			registeredAt: new Date(),
-			description: "This is the default administrator account.",
+			description: 'This is the default administrator account.',
 			password: password.password,
 			salt: password.salt,
 			iterations: password.iterations,
@@ -60,10 +67,11 @@ const handleInitialUser: Handle = async ({ event, resolve }) => {
 	}
 
 	return resolve(event);
-}
+};
 
 const handleStandaloneMode: Handle = async ({ event, resolve }) => {
-	if(!process.env.MODE || process.env.MODE == "normal") return resolve(event);
+	if (!process.env.MODE || process.env.MODE == 'normal')
+		return resolve(event);
 
 	//TODO standalone textbook mode (uuid)
 

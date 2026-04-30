@@ -9,26 +9,39 @@ export const load = async (event) => {
 	let user: UserType | undefined = undefined;
 
 	if (sessionToken) {
-		user = (await event.locals.db.select({
-			name: databaseSchema.user.name,
-			surname: databaseSchema.user.surname,
-			middlename: databaseSchema.user.middlename,
-			email: databaseSchema.user.email,
-			registeredAt: databaseSchema.user.registeredAt,
-			degree: databaseSchema.user.degree,
-			institution: databaseSchema.user.institution,
-			profilePicture: databaseSchema.resource.url,
-			description: databaseSchema.user.description,
-			lastSeenAt: databaseSchema.user.lastSeenAt,
-			uuid: databaseSchema.user.uuid,
-			r: databaseSchema.user.r,
-			g: databaseSchema.user.g,
-			b: databaseSchema.user.b
-		}).from(databaseSchema.user)
-			.leftJoin(databaseSchema.resource, eq(databaseSchema.user.profilePicture, databaseSchema.resource.id))
-			.leftJoin(databaseSchema.session, eq(databaseSchema.user.id, databaseSchema.session.userId))
-			.where(eq(databaseSchema.session.token, sessionToken))
-			.limit(1))[0];
+		user = (
+			await event.locals.db
+				.select({
+					name: databaseSchema.user.name,
+					surname: databaseSchema.user.surname,
+					middlename: databaseSchema.user.middlename,
+					email: databaseSchema.user.email,
+					registeredAt: databaseSchema.user.registeredAt,
+					degree: databaseSchema.user.degree,
+					institution: databaseSchema.user.institution,
+					profilePicture: databaseSchema.resource.url,
+					description: databaseSchema.user.description,
+					lastSeenAt: databaseSchema.user.lastSeenAt,
+					uuid: databaseSchema.user.uuid,
+					r: databaseSchema.user.r,
+					g: databaseSchema.user.g,
+					b: databaseSchema.user.b,
+				})
+				.from(databaseSchema.user)
+				.leftJoin(
+					databaseSchema.resource,
+					eq(
+						databaseSchema.user.profilePicture,
+						databaseSchema.resource.id,
+					),
+				)
+				.leftJoin(
+					databaseSchema.session,
+					eq(databaseSchema.user.id, databaseSchema.session.userId),
+				)
+				.where(eq(databaseSchema.session.token, sessionToken))
+				.limit(1)
+		)[0];
 	}
 
 	return {

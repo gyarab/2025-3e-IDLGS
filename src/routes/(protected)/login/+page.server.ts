@@ -1,12 +1,6 @@
-export const load = async (event) => {
-
-};
+export const load = async (event) => {};
 
 export const actions = {
-	login: async (event) => {
-
-	},
-	logout: async (event) => {
-
-	},
+	login: async (event) => {},
+	logout: async (event) => {},
 };

@@ -4,7 +4,7 @@ export type UserTypeInfo = {
 	name: string;
 	surname: string;
 	middlename: string;
-	uuid: string;	
+	uuid: string;
 	profilePicture: string | null; //url
 };
 

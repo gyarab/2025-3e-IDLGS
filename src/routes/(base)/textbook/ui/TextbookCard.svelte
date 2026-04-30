@@ -1,7 +1,6 @@
 <script lang="ts">
-	import type { TextbookType } from "$lib/types";
+	import type { TextbookType } from '$lib/types';
 
-	
 	let {
 		textbook,
 		darkMode,
@@ -11,7 +10,6 @@
 		darkMode: boolean;
 		color: string;
 	} = $props();
-
 </script>
 
 <div>

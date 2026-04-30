@@ -62,7 +62,7 @@ export const setNavbarOpen = async (enabled: boolean) => {
 		},
 		body: `navbarOpen=${enabled ? 'true' : 'false'}`,
 	});
-}
+};
 
 export const setSidebarOpen = async (enabled: boolean) => {
 	await fetch('/?/setSidebarOpen', {
@@ -72,7 +72,7 @@ export const setSidebarOpen = async (enabled: boolean) => {
 		},
 		body: `sidebarOpen=${enabled ? 'true' : 'false'}`,
 	});
-}
+};
 
 export const getDateTimeString = (date: Date): string => {
 	let string = '';
@@ -92,4 +92,5 @@ export const getDateTimeString = (date: Date): string => {
 	return string;
 };
 
-export const makeHex = (r: number, g: number, b: number): string => '#' + [r, g, b].map((x) =>x.toString(16)).join('');
+export const makeHex = (r: number, g: number, b: number): string =>
+	'#' + [r, g, b].map((x) => x.toString(16)).join('');

@@ -1,16 +1,18 @@
 <script lang="ts">
-	import { makeHex, darkenHex } from "$lib";
-	import type { UserType } from "$lib/types";
+	import { makeHex, darkenHex } from '$lib';
+	import type { UserType } from '$lib/types';
 
 	let {
-		data
+		data,
 	}: {
 		data: {
 			user: UserType | null; // current logged in user
-		},
+		};
 	} = $props();
 
-	const userColor = $derived(data.user ? makeHex(data.user.r, data.user.g, data.user.b) : '#ff8800');
+	const userColor = $derived(
+		data.user ? makeHex(data.user.r, data.user.g, data.user.b) : '#ff8800',
+	);
 
 	// Default gradient state
 	let bgGradient = 'from-orange-400 to-rose-500';
@@ -34,8 +36,11 @@
 
 <div class="flex min-h-screen flex-col items-center bg-gray-50">
 	<div
-		class="h-40 w-full bg-linear-to-r from-white to-white relative shadow-inner transition-all duration-500"
-		style="--tw-gradient-from: ${userColor}; --tw-gradient-to: ${darkenHex(userColor, 50)};"
+		class="relative h-40 w-full bg-linear-to-r from-white to-white shadow-inner transition-all duration-500"
+		style="--tw-gradient-from: ${userColor}; --tw-gradient-to: ${darkenHex(
+			userColor,
+			50,
+		)};"
 	>
 		<div
 			class="absolute right-4 bottom-4 rounded-lg border border-white/30 bg-white/20 p-2 backdrop-blur-md"

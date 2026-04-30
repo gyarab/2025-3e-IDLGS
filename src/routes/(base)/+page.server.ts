@@ -1,6 +1,10 @@
 import { fail, isActionFailure, type RequestEvent } from '@sveltejs/kit';
 
-const cookieSetupAction = async (event: RequestEvent, name: string, allowed: string[]) => {
+const cookieSetupAction = async (
+	event: RequestEvent,
+	name: string,
+	allowed: string[],
+) => {
 	const data = await event.request.formData();
 	if (!data.has(name)) return fail(400);
 
@@ -13,7 +17,16 @@ const cookieSetupAction = async (event: RequestEvent, name: string, allowed: str
 };
 
 export const actions = {
-	setDarkMode: async (event) => isActionFailure(await cookieSetupAction(event, 'darkMode', ['dark', 'light'])),
-	setNavbarOpen: async (event) => isActionFailure(await cookieSetupAction(event, 'navbarOpen', ['true', 'false'])),
-	setSidebarOpen: async (event) => isActionFailure(await cookieSetupAction(event, 'sidebarOpen', ['true', 'false'])),
+	setDarkMode: async (event) =>
+		isActionFailure(
+			await cookieSetupAction(event, 'darkMode', ['dark', 'light']),
+		),
+	setNavbarOpen: async (event) =>
+		isActionFailure(
+			await cookieSetupAction(event, 'navbarOpen', ['true', 'false']),
+		),
+	setSidebarOpen: async (event) =>
+		isActionFailure(
+			await cookieSetupAction(event, 'sidebarOpen', ['true', 'false']),
+		),
 };

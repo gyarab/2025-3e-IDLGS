@@ -116,7 +116,7 @@
 			middlename: 'programator!',
 			degree: 'dr inż.',
 			institution: 'AGH',
-			profilePicture: "",
+			profilePicture: '',
 			description:
 				'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 			registeredAt: new Date(),

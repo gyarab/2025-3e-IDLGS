@@ -5,7 +5,7 @@ import {
 	text,
 	boolean,
 	check,
-	timestamp
+	timestamp,
 } from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm';
 import { resource } from './userSchema';
@@ -20,7 +20,9 @@ export const textbook = pgTable(
 		b: integer('b').notNull().default(0),
 		//education level according to ISCED
 		educationLevel: integer().notNull().default(0),
-		lastEditedAt: timestamp('lastEditedAt').notNull().$defaultFn(() => new Date()),
+		lastEditedAt: timestamp('lastEditedAt')
+			.notNull()
+			.$defaultFn(() => new Date()),
 		description: text('description').notNull().default(''),
 		uuid: text('uuid')
 			.notNull()

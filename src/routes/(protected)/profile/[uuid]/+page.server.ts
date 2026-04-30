@@ -18,9 +18,11 @@ export const load = async (event) => {
 					profilePicture: databaseSchema.resource.url,
 					r: databaseSchema.user.r,
 					g: databaseSchema.user.g,
-					b: databaseSchema.user.b
-				}).from(databaseSchema.user)
+					b: databaseSchema.user.b,
+				})
+				.from(databaseSchema.user)
 				.where(eq(databaseSchema.user.uuid, event.params.uuid))
-				.limit(1))[0]
+				.limit(1)
+		)[0],
 	};
 };
