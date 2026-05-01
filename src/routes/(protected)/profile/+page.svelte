@@ -38,13 +38,13 @@
 	></i>
 
 	<div
-		class="z-10 flex w-full max-w-lg flex-col gap-6 rounded-3xl sm:rounded-4xl p-6 md:p-8 shadow-2xl backdrop-blur-md {data.darkMode
+		class="z-10 flex w-full max-w-lg flex-col gap-6 rounded-3xl p-6 shadow-2xl backdrop-blur-md sm:rounded-4xl md:p-8 {data.darkMode
 			? 'bg-neutral-800/80 text-white'
 			: 'bg-white/90 text-black'}"
 	>
 		<header class="flex items-center gap-6">
 			<div
-				class="flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center rounded-2xl border-2"
+				class="flex h-20 w-20 items-center justify-center rounded-2xl border-2 sm:h-24 sm:w-24"
 				style:border-color="var(--brand)"
 			>
 				<span
@@ -53,8 +53,8 @@
 				>
 			</div>
 			<div>
-				<h1 class="text-2xl sm:text-3xl font-bold">{profile.name}</h1>
-				<p class="text-sm sm:text-base font-medium opacity-60">
+				<h1 class="text-2xl font-bold sm:text-3xl">{profile.name}</h1>
+				<p class="text-sm font-medium opacity-60 sm:text-base">
 					{profile.major} • {profile.university}
 				</p>
 			</div>
@@ -65,13 +65,13 @@
 		<div class="grid grid-cols-2 gap-4">
 			{#each profile.stats as { label, value }}
 				<div
-					class="flex flex-col justify-center items-center rounded-2xl border p-2 md:px-6 text-center transition-transform hover:scale-105 {data.darkMode
+					class="flex flex-col items-center justify-center rounded-2xl border p-2 text-center transition-transform hover:scale-105 md:px-6 {data.darkMode
 						? 'border-white/10 bg-neutral-700'
 						: 'border-orange-100 bg-orange-50'}"
 				>
 					<p
 						class="mb-1 text-sm font-semibold tracking-tighter uppercase opacity-60"
-            style="font-size: clamp(.5rem, 2.5vw, 1rem);"
+						style="font-size: clamp(.5rem, 2.5vw, 1rem);"
 					>
 						{label}
 					</p>
@@ -95,7 +95,11 @@
 				{#each profile.courses as { name, teacher, progress }}
 					<div class="flex items-center justify-between gap-4">
 						<div class="flex-1">
-							<h3 class="text-sm sm:text-base leading-tight font-semibold">{name}</h3>
+							<h3
+								class="text-sm leading-tight font-semibold sm:text-base"
+							>
+								{name}
+							</h3>
 							<p class="text-sm opacity-50">{teacher}</p>
 						</div>
 						<div class="flex w-1/2 items-center gap-4">
