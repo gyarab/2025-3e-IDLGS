@@ -5,7 +5,8 @@ import { eq } from 'drizzle-orm';
 
 //TODO cookies for open and close states of navbar, sidebar
 export const load = async (event) => {
-	const sessionToken: string | undefined = event.cookies.get('sessionTokenIDLGS');
+	const sessionToken: string | undefined =
+		event.cookies.get('sessionTokenIDLGS');
 	let user: UserType | undefined = undefined;
 
 	if (sessionToken) {

@@ -24,7 +24,7 @@
 		defer
 	></script>
 	<title>
-		{m.login()} | { m.idlgs()}
+		{m.login()} | {m.idlgs()}
 	</title>
 </svelte:head>
 
@@ -33,11 +33,9 @@
 	darkMode={data.darkMode}
 	css="w-1/4!"
 	success={async () => {
-		redirect(303, "/profile/");
+		redirect(303, '/profile/');
 	}}
-	failure={async () => {
-
-	}}
+	failure={async () => {}}
 >
 	<h1>{m.login()}</h1>
 
@@ -59,7 +57,7 @@
 
 	<cap-widget
 		id="cap"
-		class={data.darkMode ? "darkCap" : "lightCap"}
+		class={data.darkMode ? 'darkCap' : 'lightCap'}
 		data-cap-api-endpoint="https://captcha.martinbykov.eu/645d6876bc"
 		onsolve={() => {
 			solved = true;

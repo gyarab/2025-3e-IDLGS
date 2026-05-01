@@ -4,13 +4,18 @@ import nodemailer from 'nodemailer';
 let transporter: nodemailer.Transporter;
 let globalMailSourceAddress: string;
 
-export const initMail = async (mailSourceAddress: string, clientId: string, clientSecret: string, refreshToken: string) => {
+export const initMail = async (
+	mailSourceAddress: string,
+	clientId: string,
+	clientSecret: string,
+	refreshToken: string,
+) => {
 	globalMailSourceAddress = mailSourceAddress;
-	
+
 	transporter = nodemailer.createTransport({
-		service: "gmail", // Shortcut for Gmail's SMTP settings - see Well-Known Services
+		service: 'gmail', // Shortcut for Gmail's SMTP settings - see Well-Known Services
 		auth: {
-			type: "OAuth2",
+			type: 'OAuth2',
 			user: globalMailSourceAddress,
 			clientId: clientId,
 			clientSecret: clientSecret,
@@ -19,7 +24,11 @@ export const initMail = async (mailSourceAddress: string, clientId: string, clie
 	});
 };
 
-export const sendMail = async (recipient: string, subject: string, text: string) => {
+export const sendMail = async (
+	recipient: string,
+	subject: string,
+	text: string,
+) => {
 	try {
 		const result = await transporter.sendMail({
 			from: globalMailSourceAddress,
@@ -30,7 +39,7 @@ export const sendMail = async (recipient: string, subject: string, text: string)
 		});
 
 		console.log(`Sent message (${result.messageId}) to ${recipient}`);
-	} catch(e) {
-		console.error("Error: ", e);
+	} catch (e) {
+		console.error('Error: ', e);
 	}
-}
+};

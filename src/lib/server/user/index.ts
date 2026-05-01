@@ -33,6 +33,10 @@ export const verifyPassword = (
 ): boolean => {
 	return crypto.timingSafeEqual(
 		Buffer.from(hashedPassword),
-		Buffer.from(crypto.pbkdf2Sync(password, salt, iterations, 64, 'sha512').toString("hex"))
-	)
+		Buffer.from(
+			crypto
+				.pbkdf2Sync(password, salt, iterations, 64, 'sha512')
+				.toString('hex'),
+		),
+	);
 };

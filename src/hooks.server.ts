@@ -97,16 +97,14 @@ export const handle: Handle = sequence(
 );
 
 export const init: ServerInit = async () => {
-	
-
-	if(!process.env.MAIL_SOURCE_ADDRESS)
-		throw Error("No email address provided!");
-	if(!process.env.MAIL_CLIENT_ID)
-		throw Error("No Gmail client ID provided!");
-	if(!process.env.MAIL_CLIENT_SECRET)
-		throw Error("No Gmail client secret provided!");
-	if(!process.env.MAIL_REFRESH_TOKEN)
-		throw Error("No Gmail refresh token provided!");
+	if (!process.env.MAIL_SOURCE_ADDRESS)
+		throw Error('No email address provided!');
+	if (!process.env.MAIL_CLIENT_ID)
+		throw Error('No Gmail client ID provided!');
+	if (!process.env.MAIL_CLIENT_SECRET)
+		throw Error('No Gmail client secret provided!');
+	if (!process.env.MAIL_REFRESH_TOKEN)
+		throw Error('No Gmail refresh token provided!');
 
 	await initMail(
 		process.env.MAIL_SOURCE_ADDRESS,
@@ -119,5 +117,5 @@ export const init: ServerInit = async () => {
 		//TODO standalone textbook mode (uuid)
 	}
 
-	console.log("Initialization done!");
-}
+	console.log('Initialization done!');
+};

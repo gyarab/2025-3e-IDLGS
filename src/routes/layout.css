@@ -4,13 +4,13 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
-/* https://trycap.dev/guide/widget.html#styling */ 
+/* https://trycap.dev/guide/widget.html#styling */
 /* list of attributes */
 
 cap-widget {
 	--cap-widget-width: 100%;
 	--cap-font: 'Inter', sans-serif;
-	--cap-spinner-color: "#ff8800";
+	--cap-spinner-color: '#ff8800';
 }
 
 .lightCap {
@@ -38,10 +38,10 @@ cap-widget {
 
 @layer components {
 	h1 {
-		@apply text-2xl font-bold mb-1;
+		@apply mb-1 text-2xl font-bold;
 	}
 	h2 {
-		@apply text-lg font-bold mb-1;
+		@apply mb-1 text-lg font-bold;
 	}
 	hr {
 		@apply opacity-10;

@@ -1,4 +1,4 @@
-import markdownit from 'markdown-it'
+import markdownit from 'markdown-it';
 import hljs from 'highlight.js';
 import katex from 'katex';
 
@@ -20,16 +20,17 @@ export const initMdInstance = async () => {
 	markdownInstance = markdownit(MARKDOWN_CONFIG_OPTIONS);
 };
 
-
 //remove script, add math and render with syntax highlighting
 export const renderMarkdown = async (text: string): Promise<string> => {
-	let markdown = text.replaceAll(/<script>(.*)<\/script>/gmsu, "").replaceAll(/<math>(.*)<\/math>/gmsu, (_match, p1) => {
-		return katex.renderToString(p1, {
-			throwOnError: false,
-			fleqn: true,
-			displayMode: true,
+	let markdown = text
+		.replaceAll(/<script>(.*)<\/script>/gmsu, '')
+		.replaceAll(/<math>(.*)<\/math>/gmsu, (_match, p1) => {
+			return katex.renderToString(p1, {
+				throwOnError: false,
+				fleqn: true,
+				displayMode: true,
+			});
 		});
-	});
 
 	return `<div class="markdownText">${markdownInstance.render(markdown)}</div>`;
 };
