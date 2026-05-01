@@ -16,6 +16,7 @@ export type UserType = UserTypeInfo & {
 	r: number;
 	g: number;
 	b: number;
+	language: string;
 };
 
 export type UserTypeFull = UserType & {

@@ -2,6 +2,8 @@ import { makeHex, DEFAULT_ACCENT_COLOR } from '$lib';
 import type { UserType } from '$lib/types.js';
 import { schema as databaseSchema } from '$lib/server/db/schema';
 import { eq } from 'drizzle-orm';
+import { language } from '$lib/paraglide/messages.js';
+import { setLocale, type Locale } from '$lib/paraglide/runtime.js';
 
 //TODO cookies for open and close states of navbar, sidebar
 export const load = async (event) => {
@@ -27,6 +29,7 @@ export const load = async (event) => {
 					r: databaseSchema.user.r,
 					g: databaseSchema.user.g,
 					b: databaseSchema.user.b,
+					language: databaseSchema.user.language
 				})
 				.from(databaseSchema.user)
 				.leftJoin(
@@ -44,6 +47,8 @@ export const load = async (event) => {
 				.limit(1)
 		)[0];
 	}
+
+	if(user) setLocale(user.language as Locale);
 
 	return {
 		color: user ? makeHex(user.r, user.g, user.b) : DEFAULT_ACCENT_COLOR,

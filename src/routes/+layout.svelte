@@ -7,6 +7,8 @@
 	import Footer from './(base)/ui/Footer.svelte';
 	import { browser } from '$app/environment';
 	import { onMount, onDestroy } from 'svelte';
+	import { setLocale, type Locale } from '$lib/paraglide/runtime';
+	import type { UserType } from '$lib/types';
 
 	let {
 		children,
@@ -17,6 +19,7 @@
 			color: string;
 			darkMode: boolean;
 			navbarOpen: boolean;
+			user: UserType;
 		};
 	} = $props();
 
@@ -39,6 +42,7 @@
 		if (browser) {
 			addEventListener('keydown', keyboardHandler);
 		}
+		if(data.user) setLocale(data.user.language as Locale);
 	});
 	onDestroy(() => {
 		if (browser) {
@@ -63,7 +67,7 @@
 <div
 	class="{data.darkMode
 		? '**:text-white'
-		: '**:text-black'} relative flex min-h-screen w-screen max-w-screen grow flex-col items-center overflow-x-hidden overflow-y-scroll **:z-5"
+		: '**:text-black'} relative flex min-h-screen w-screen max-w-screen grow flex-col items-center overflow-x-hidden overflow-y-scroll **:z-5 mb-5 mt-5"
 >
 	{@render children()}
 </div>

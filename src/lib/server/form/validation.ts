@@ -30,24 +30,9 @@ export const formRunner = async (
 	if (userNeeded) {
 		const session = event.cookies.get('sessionTokenIDLGS');
 
-		user = (
+		const value = (
 			await (event.locals.db as DBType)
-				.select({
-					name: databaseSchema.user.name,
-					surname: databaseSchema.user.surname,
-					middlename: databaseSchema.user.middlename,
-					email: databaseSchema.user.email,
-					registeredAt: databaseSchema.user.registeredAt,
-					degree: databaseSchema.user.degree,
-					institution: databaseSchema.user.institution,
-					profilePicture: databaseSchema.resource.url,
-					description: databaseSchema.user.description,
-					lastSeenAt: databaseSchema.user.lastSeenAt,
-					uuid: databaseSchema.user.uuid,
-					r: databaseSchema.user.r,
-					g: databaseSchema.user.g,
-					b: databaseSchema.user.b,
-				})
+				.select()
 				.from(databaseSchema.user)
 				.leftJoin(
 					databaseSchema.resource,
@@ -62,6 +47,11 @@ export const formRunner = async (
 				)
 				.where(eq(databaseSchema.session.token, session))
 		)[0];
+
+		user = {
+			...value.user,
+			profilePicture: value.resource?.url ?? null
+		}
 	}
 
 	try {

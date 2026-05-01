@@ -93,4 +93,12 @@ export const getDateTimeString = (date: Date): string => {
 };
 
 export const makeHex = (r: number, g: number, b: number): string =>
-	'#' + [r, g, b].map((x) => x.toString(16)).join('');
+	'#' + [r, g, b].map((x) => x.toString(16).padStart(2, '0')).join('');
+
+export const getRGBFromHex = (color: string): number[] => {
+	return [
+		parseInt(color.slice(-6, -4), 16),
+		parseInt(color.slice(-4, -2), 16),
+		parseInt(color.slice(-2), 16),
+	];
+} 

@@ -4,6 +4,7 @@ import { schema as databaseSchema } from '$lib/server/db/schema';
 import { eq } from 'drizzle-orm';
 import { fail, redirect } from '@sveltejs/kit';
 import { verifyPassword } from '$lib/server/user/index.js';
+import { page } from '$app/state';
 
 export const load = async (event) => {
 	const pd = await event.parent();
@@ -15,9 +16,29 @@ export const actions = {
 	login: async (event) => {
 		return await formRunner(
 			event,
-			['email', 'password'],
+			['email', 'password', 'cap-token'],
 			false,
 			async (data: FormDataType, user: UserTypeFull | undefined) => {
+
+				if (!process.env.IGNORE_CAPTCHA) {
+					const captchaResponse = await event.fetch(
+						'https://captcha.martinbykov.eu/645d6876bc/siteverify',
+						{
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json',
+							},
+							body: JSON.stringify({
+								secret: process.env.CAPTCHA,
+								response: data['cap-token'],
+							}),
+						},
+					);
+					if (!(await captchaResponse.json()).success) {
+						return fail(400, {});
+					}
+				}
+
 				const userData = (
 					await event.locals.db
 						.select({

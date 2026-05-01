@@ -8,15 +8,17 @@
 		resizable = false,
 		rows = 2,
 		required = true,
+		name,
 	}: {
 		darkMode: boolean;
 		color: string;
 		css?: string;
 		placeholder: string;
-		value: string;
+		value?: string;
 		resizable?: boolean;
 		rows?: number;
 		required?: boolean;
+		name?: string;
 	} = $props();
 </script>
 
@@ -32,5 +34,6 @@
 			? 'bg-neutral-700 text-white! placeholder:text-white!'
 			: 'bg-neutral-200 text-black! placeholder:text-black!'}"
 		style="border-color: {color};"
+		{name}
 	></textarea>
 </div>

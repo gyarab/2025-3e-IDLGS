@@ -22,6 +22,7 @@ export const user = pgTable(
 		salt: text('salt').notNull(),
 		registeredAt: timestamp('registeredAt').notNull().defaultNow(),
 		firstLogin: boolean('firstLogin').notNull().default(true),
+		language: text('language').notNull().default('en'),
 		playedTextbookTutorial: boolean('playedTextbookTutorial')
 			.notNull()
 			.default(false),

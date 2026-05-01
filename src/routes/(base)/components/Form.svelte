@@ -15,6 +15,7 @@
 		success = async () => {},
 		failure = async () => {},
 		final = async () => {},
+		element = $bindable(),
 	}: {
 		target: string;
 		children: Snippet;
@@ -27,10 +28,12 @@
 		loading?: boolean;
 		reset?: boolean;
 		invalidateAll?: boolean;
+		element?: HTMLFormElement;
 	} = $props();
 </script>
 
 <form
+	bind:this={element}
 	method="POST"
 	enctype="multipart/form-data"
 	class="{css} flex w-full flex-col gap-2 rounded-lg p-4 shadow-lg {darkMode
