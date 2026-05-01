@@ -1,142 +1,121 @@
 <script lang="ts">
-	import { makeHex, darkenHex } from '$lib';
-	import type { UserType } from '$lib/types';
+	import { darkenHex } from '$lib';
 
-	let {
-		data,
-	}: {
-		data: {
-			user: UserType | null; // current logged in user
-		};
-	} = $props();
+	let { data = { darkMode: false, color: '#f97316' } } = $props();
 
-	const userColor = $derived(
-		data.user ? makeHex(data.user.r, data.user.g, data.user.b) : '#ff8800',
-	);
-
-	// Default gradient state
-	let bgGradient = 'from-orange-400 to-rose-500';
-
-	// Profile data
-	let user = {
-		name: 'Alex Rivera',
-		role: 'Medical Student',
-		bio: 'Currently studying Anatomy and Physiology. Lover of digital flashcards and dark roast coffee.',
-		booksRead: 12,
-		studyHours: 145,
+	let profile = {
+		name: 'John Doe',
+		major: 'Neuroscience',
+		university: 'State University',
+		stats: [
+			{ label: 'Time Spent Reading', value: '1240 min' },
+			{ label: 'Textbooks Finished', value: '8' },
+		],
+		courses: [
+			{ name: 'Organic Chemistry', teacher: 'Dr. Smith', progress: 85 },
+			{ name: 'Neural Pathways', teacher: 'Sarah Jenkins', progress: 30 },
+			{ name: 'Intro to Ethics', teacher: 'Prof. Marcus', progress: 100 },
+		],
 	};
-
-	const gradients = [
-		{ name: 'Orange (Default)', class: 'from-orange-400 to-rose-500' },
-		{ name: 'Ocean', class: 'from-blue-500 to-cyan-400' },
-		{ name: 'Midnight', class: 'from-indigo-600 to-purple-700' },
-		{ name: 'Nature', class: 'from-emerald-500 to-teal-600' },
-	];
 </script>
 
-<div class="flex min-h-screen flex-col items-center bg-gray-50">
+<svelte:head>
+	<title>{profile.name} | Profile</title>
+</svelte:head>
+
+<div
+	class="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden p-4"
+	style="background: linear-gradient(135deg, {data.color}, {darkenHex(
+		data.color,
+		80,
+	)}); --brand: {data.color};"
+>
+	<i
+		class="ri-user-line absolute right-1/20 bottom-1/6 scale-200 rotate-15 text-9xl text-white opacity-20"
+	></i>
+	<i
+		class="ri-book-open-line absolute top-1/4 left-1/20 scale-200 -rotate-15 text-9xl text-white opacity-20"
+	></i>
+
 	<div
-		class="relative h-40 w-full bg-linear-to-r from-white to-white shadow-inner transition-all duration-500"
-		style="--tw-gradient-from: ${userColor}; --tw-gradient-to: ${darkenHex(
-			userColor,
-			50,
-		)};"
+		class="z-10 flex w-full max-w-lg flex-col gap-6 rounded-3xl sm:rounded-4xl p-6 md:p-8 shadow-2xl backdrop-blur-md {data.darkMode
+			? 'bg-neutral-800/80 text-white'
+			: 'bg-white/90 text-black'}"
 	>
-		<div
-			class="absolute right-4 bottom-4 rounded-lg border border-white/30 bg-white/20 p-2 backdrop-blur-md"
-		>
-			<p
-				class="mb-2 text-xs font-semibold tracking-wider text-white uppercase"
+		<header class="flex items-center gap-6">
+			<div
+				class="flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center rounded-2xl border-2"
+				style:border-color="var(--brand)"
 			>
-				Customize Theme
-			</p>
-			<div class="flex gap-2">
-				{#each gradients as g}
-					<button
-						onclick={() => (bgGradient = g.class)}
-						class="h-6 w-6 rounded-full border-2 border-white transition-transform hover:scale-110 {g.class} bg-gradient-to-r"
-						title={g.name}
-					></button>
-				{/each}
+				<span
+					class="px-2 text-center text-xs font-bold tracking-wider uppercase"
+					style:color="var(--brand)">Student Profile</span
+				>
 			</div>
-		</div>
-	</div>
+			<div>
+				<h1 class="text-2xl sm:text-3xl font-bold">{profile.name}</h1>
+				<p class="text-sm sm:text-base font-medium opacity-60">
+					{profile.major} • {profile.university}
+				</p>
+			</div>
+		</header>
 
-	<div class="-mt-24 w-full max-w-4xl px-4 pb-12">
-		<div
-			class="flex flex-col items-start gap-8 rounded-2xl bg-white p-8 shadow-xl md:flex-row"
-		>
-			<div class="relative mx-auto md:mx-0">
+		<hr class="opacity-20" />
+
+		<div class="grid grid-cols-2 gap-4">
+			{#each profile.stats as { label, value }}
 				<div
-					class="h-40 w-40 overflow-hidden rounded-2xl border-4 border-white bg-gray-200 shadow-lg"
+					class="flex flex-col justify-center items-center rounded-2xl border p-2 md:px-6 text-center transition-transform hover:scale-105 {data.darkMode
+						? 'border-white/10 bg-neutral-700'
+						: 'border-orange-100 bg-orange-50'}"
 				>
-					<img
-						src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex"
-						alt="User Avatar"
-					/>
-				</div>
-			</div>
-
-			<div class="flex-1">
-				<div class="mb-4 flex items-center justify-between">
-					<h1 class="text-3xl font-bold text-gray-800">
-						{user.name}
-					</h1>
-					<button
-						class="rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
+					<p
+						class="mb-1 text-sm font-semibold tracking-tighter uppercase opacity-60"
+            style="font-size: clamp(.5rem, 2.5vw, 1rem);"
 					>
-						Edit Profile
-					</button>
+						{label}
+					</p>
+					<p
+						class="font-extrabold"
+						style="color: var(--brand); font-size: clamp(1rem, 5vw, 1.6rem);"
+					>
+						{value}
+					</p>
 				</div>
-
-				<p
-					class="mb-4 inline-block rounded-full bg-orange-100 px-3 py-1 text-sm font-semibold text-orange-700"
-				>
-					{user.role}
-				</p>
-
-				<p class="mb-6 leading-relaxed text-gray-600">
-					{user.bio}
-				</p>
-
-				<div class="grid grid-cols-2 gap-4 border-t pt-6">
-					<div class="rounded-xl bg-gray-50 p-4">
-						<p class="text-sm text-gray-500">Books in Library</p>
-						<p class="text-2xl font-bold text-gray-800">
-							{user.booksRead}
-						</p>
-					</div>
-					<div class="rounded-xl bg-gray-50 p-4">
-						<p class="text-sm text-gray-500">Study Hours</p>
-						<p class="text-2xl font-bold text-gray-800">
-							{user.studyHours}h
-						</p>
-					</div>
-				</div>
-			</div>
+			{/each}
 		</div>
 
-		<div class="mt-8">
-			<h2 class="mb-4 text-xl font-bold text-gray-800">
-				Recent Textbooks
+		<section class="mt-2">
+			<h2
+				class="mb-6 text-xl font-bold tracking-tight uppercase opacity-80"
+			>
+				Current Study Stack
 			</h2>
-			<div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
-				{#each Array(3) as _, i}
-					<div
-						class="flex h-32 items-center gap-4 rounded-xl border border-gray-100 bg-white p-4 shadow-sm"
-					>
-						<div
-							class="h-20 w-16 flex-shrink-0 rounded bg-gray-200 shadow-sm"
-						></div>
-						<div>
+			<div class="space-y-6">
+				{#each profile.courses as { name, teacher, progress }}
+					<div class="flex items-center justify-between gap-4">
+						<div class="flex-1">
+							<h3 class="text-sm sm:text-base leading-tight font-semibold">{name}</h3>
+							<p class="text-sm opacity-50">{teacher}</p>
+						</div>
+						<div class="flex w-1/2 items-center gap-4">
 							<div
-								class="mb-2 h-4 w-24 rounded bg-gray-200"
-							></div>
-							<div class="h-3 w-16 rounded bg-gray-100"></div>
+								class="h-2.5 w-full overflow-hidden rounded-full bg-black/5 dark:bg-white/10"
+							>
+								<div
+									class="h-full transition-all duration-1000"
+									style:width="{progress}%"
+									style:background-color="var(--brand)"
+								></div>
+							</div>
+							<span
+								class="w-10 text-sm font-black"
+								style:color="var(--brand)">{progress}%</span
+							>
 						</div>
 					</div>
 				{/each}
 			</div>
-		</div>
+		</section>
 	</div>
 </div>
