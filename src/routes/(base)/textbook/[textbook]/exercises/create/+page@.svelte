@@ -71,71 +71,71 @@
 	backLink={resolve('/(base)/textbook/[textbook]/exercises', {
 		textbook: page.params.textbook!,
 	})}
-	emoji={"ri-function-add-line"}
+	emoji={'ri-function-add-line'}
 	bind:stage
 >
-		{#if stage == 0}
-			<TypeSelection
+	{#if stage == 0}
+		<TypeSelection
+			color={data.color}
+			darkMode={data.darkMode}
+			bind:stage
+			bind:type
+		/>
+	{:else if stage == 1}
+		<BasicInformation
+			darkMode={data.darkMode}
+			color={data.color}
+			bind:stage
+			bind:name
+			bind:description
+			bind:thumbnail
+		/>
+	{:else if stage == 2}
+		{#if type == 'CRS'}
+			<CRSEditor
+				bind:backgroundColorR
+				bind:backgroundColorG
+				bind:backgroundColorB
+				bind:foregroundColorR
+				bind:foregroundColorG
+				bind:foregroundColorB
+				bind:crsOffsets
+				bind:crsColumnId
+				bind:crWords
+				bind:crClues
+				bind:crDescriptions
+				bind:crSolution
 				color={data.color}
 				darkMode={data.darkMode}
-				bind:stage
-				bind:type
 			/>
-		{:else if stage == 1}
-			<BasicInformation
-				darkMode={data.darkMode}
-				color={data.color}
-				bind:stage
-				bind:name
-				bind:description
-				bind:thumbnail
-			/>
-		{:else if stage == 2}
-			{#if type == 'CRS'}
-				<CRSEditor
-					bind:backgroundColorR
-					bind:backgroundColorG
-					bind:backgroundColorB
-					bind:foregroundColorR
-					bind:foregroundColorG
-					bind:foregroundColorB
-					bind:crsOffsets
-					bind:crsColumnId
-					bind:crWords
-					bind:crClues
-					bind:crDescriptions
-					bind:crSolution
-					color={data.color}
-					darkMode={data.darkMode}
-				/>
-			{:else if type == 'CRW'}
-				<CRWEditor />
-			{:else if type == 'DEF'}
-				<DEFEditor />
-			{:else if type == 'GRP'}
-				<GRPEditor />
-			{:else if type == 'GEO'}
-				<GEOEditor />
-			{:else if type == 'EXT'}
-				<EXTEditor />
-			{/if}
-		{:else if stage == 3}
-			<Review />
+		{:else if type == 'CRW'}
+			<CRWEditor />
+		{:else if type == 'DEF'}
+			<DEFEditor />
+		{:else if type == 'GRP'}
+			<GRPEditor />
+		{:else if type == 'GEO'}
+			<GEOEditor />
+		{:else if type == 'EXT'}
+			<EXTEditor />
 		{/if}
-		{#if stage != 0}
-			<PageControl
-				bind:stage
-				darkMode={data.darkMode}
-				color={data.color}
-				disableNext={(stage == 1 &&
-					(name.length == 0 ||
-						description.length == 0 ||
-						thumbnail.length == 0)) ||
-					stage == 2 ||
-					false}
-				disablePrev={false}
-				createText={m.createExercise()}
-				nextButtonCreate={stage == 3}
-			/>
-		{/if}
+	{:else if stage == 3}
+		<Review />
+	{/if}
+	{#if stage != 0}
+		<PageControl
+			bind:stage
+			darkMode={data.darkMode}
+			color={data.color}
+			disableNext={(stage == 1 &&
+				(name.length == 0 ||
+					description.length == 0 ||
+					thumbnail.length == 0)) ||
+				stage == 2 ||
+				false}
+			disablePrev={false}
+			createText={m.createExercise()}
+			nextButtonCreate={stage == 3}
+		/>
+	{/if}
 </CreateArea>

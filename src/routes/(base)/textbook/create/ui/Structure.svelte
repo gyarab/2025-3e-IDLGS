@@ -8,8 +8,8 @@
 		darkMode,
 		color,
 	}: {
-		darkMode: boolean,
-		color: string,
+		darkMode: boolean;
+		color: string;
 	} = $props();
 </script>
 

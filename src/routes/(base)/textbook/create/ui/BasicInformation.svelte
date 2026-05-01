@@ -8,8 +8,8 @@
 		darkMode,
 		color,
 	}: {
-		darkMode: boolean,
-		color: string,
+		darkMode: boolean;
+		color: string;
 	} = $props();
 </script>
 
@@ -20,7 +20,5 @@
 	>
 		<h2 class="text-2xl font-bold">{m.basicTextbookInformation()}</h2>
 	</div>
-	<div class="flex flex-col gap-2 w-full">
-		
-	</div>
+	<div class="flex w-full flex-col gap-2"></div>
 </div>

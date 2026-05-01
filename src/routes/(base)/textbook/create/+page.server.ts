@@ -5,7 +5,7 @@ import { redirect } from '@sveltejs/kit';
 
 export const load = async (event) => {
 	const pd = await event.parent();
-	if(!pd.user) redirect(302, resolve("/(protected)/login"));
+	if (!pd.user) redirect(302, resolve('/(protected)/login'));
 };
 
 export const actions = {
@@ -14,9 +14,7 @@ export const actions = {
 			event,
 			[],
 			true,
-			async (data: FormDataType, user: UserTypeInfo | undefined) => {
-				
-			},
-		)
+			async (data: FormDataType, user: UserTypeInfo | undefined) => {},
+		);
 	},
 };

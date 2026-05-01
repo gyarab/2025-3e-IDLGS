@@ -8,8 +8,8 @@
 		darkMode,
 		color,
 	}: {
-		darkMode: boolean,
-		color: string,
+		darkMode: boolean;
+		color: string;
 	} = $props();
 </script>
 
@@ -21,13 +21,9 @@
 		<h2 class="text-2xl font-bold">{m.additionalAuthors()}</h2>
 		<p>{m.additionalAuthorsDescription()}</p>
 	</div>
-	<div class="flex flex-row w-full">
-		<div class="grow flex flex-col gap-2">
-
-		</div>
-		<div class="h-1 {darkMode ? "bg-black" : "bg-white"}"></div>
-		<div class="grow flex flex-col gap-2">
-
-		</div>
+	<div class="flex w-full flex-row">
+		<div class="flex grow flex-col gap-2"></div>
+		<div class="h-1 {darkMode ? 'bg-black' : 'bg-white'}"></div>
+		<div class="flex grow flex-col gap-2"></div>
 	</div>
 </div>

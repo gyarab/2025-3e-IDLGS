@@ -29,7 +29,10 @@
 		texts={[m.goBack(), nextButtonCreate ? createText : m.goForward()]}
 		disabled={[stage == 0 || disablePrev, disableNext]}
 		actions={[() => stage--, () => stage++]}
-		emojis={['arrow-left-double', nextButtonCreate ? 'check-double' : 'arrow-right-double']}
+		emojis={[
+			'arrow-left-double',
+			nextButtonCreate ? 'check-double' : 'arrow-right-double',
+		]}
 		types={nextButtonCreate ? ['submit', 'button'] : ['button', 'button']}
 	/>
 </div>

@@ -37,7 +37,7 @@
 			css="buttonPrimary"
 			style="background-color: {data.color};"
 			onclick={() => {
-				goto(resolve("/(base)/textbook/create"));
+				goto(resolve('/(base)/textbook/create'));
 			}}
 		/>
 	</div>

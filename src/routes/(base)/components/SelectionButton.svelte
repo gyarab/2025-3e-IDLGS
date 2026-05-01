@@ -30,7 +30,7 @@
 		style?: string;
 		cssTop?: string;
 		disabled?: boolean[];
-		types?: ("button" | "submit" | "reset")[];
+		types?: ('button' | 'submit' | 'reset')[];
 	} = $props();
 
 	let length: number = $derived(

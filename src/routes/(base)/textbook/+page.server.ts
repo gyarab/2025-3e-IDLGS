@@ -5,7 +5,7 @@ import { resolve } from '$app/paths';
 
 export const load = async (event) => {
 	const pd = await event.parent();
-	if(!pd.user) redirect(302, resolve("/(protected)/login"));
+	if (!pd.user) redirect(302, resolve('/(protected)/login'));
 
 	return {
 		textbooks: await event.locals.db

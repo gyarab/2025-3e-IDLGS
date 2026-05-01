@@ -75,7 +75,7 @@ export const actions = {
 							token: sessionToken,
 						});
 
-					return redirect(302, resolve("/(protected)/login"));
+					return redirect(302, resolve('/(protected)/login'));
 				} else return fail(401);
 			},
 		);

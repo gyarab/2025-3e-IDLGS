@@ -5,7 +5,7 @@
 	import SelectionButton from '$src/routes/(base)/components/SelectionButton.svelte';
 	import { goto, invalidateAll } from '$app/navigation';
 	import { darkenHex, setDarkMode } from '$lib';
-	
+
 	let {
 		stage = $bindable(0),
 		color,
@@ -19,11 +19,11 @@
 		stage: number;
 		color: string;
 		darkMode: boolean;
-		texts: string[],
-		title: string,
-		backLink: string,
-		helpLink: string,
-		emoji: string,
+		texts: string[];
+		title: string;
+		backLink: string;
+		helpLink: string;
+		emoji: string;
 	} = $props();
 </script>
 
@@ -36,7 +36,7 @@
 	<div class="relative flex w-full flex-col gap-2">
 		<div class="flex w-full flex-row items-center gap-1 text-2xl">
 			<i class={emoji}></i>
-			<h1 class="text-2xl! font-bold mb-0!">{title}</h1>
+			<h1 class="mb-0! text-2xl! font-bold">{title}</h1>
 		</div>
 
 		{#key stage}
@@ -63,9 +63,7 @@
 			darkMode ? m.lightMode() : m.darkMode(),
 		]}
 		actions={[
-			() =>
-				goto(backLink
-					),
+			() => goto(backLink),
 			() => goto(helpLink),
 			async () => {
 				await setDarkMode(!darkMode);

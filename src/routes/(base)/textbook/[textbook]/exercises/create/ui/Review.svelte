@@ -2,6 +2,4 @@
 	// TODO
 </script>
 
-<div>
-	
-</div>
+<div></div>
