@@ -19,7 +19,6 @@ export const actions = {
 			['email', 'password', 'cap-token'],
 			false,
 			async (data: FormDataType, user: UserTypeFull | undefined) => {
-
 				if (!process.env.IGNORE_CAPTCHA) {
 					const captchaResponse = await event.fetch(
 						'https://captcha.martinbykov.eu/645d6876bc/siteverify',

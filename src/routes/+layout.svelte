@@ -42,7 +42,7 @@
 		if (browser) {
 			addEventListener('keydown', keyboardHandler);
 		}
-		if(data.user) setLocale(data.user.language as Locale);
+		if (data.user) setLocale(data.user.language as Locale);
 	});
 	onDestroy(() => {
 		if (browser) {
@@ -67,7 +67,7 @@
 <div
 	class="{data.darkMode
 		? '**:text-white'
-		: '**:text-black'} relative flex min-h-screen w-screen max-w-screen grow flex-col items-center overflow-x-hidden overflow-y-scroll **:z-5 mb-5 mt-5"
+		: '**:text-black'} relative mt-5 mb-5 flex min-h-screen w-screen max-w-screen grow flex-col items-center overflow-x-hidden overflow-y-scroll **:z-5"
 >
 	{@render children()}
 </div>

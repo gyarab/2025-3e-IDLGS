@@ -19,7 +19,7 @@ export const load = async (event) => {
 					r: databaseSchema.user.r,
 					g: databaseSchema.user.g,
 					b: databaseSchema.user.b,
-					language: databaseSchema.user.language
+					language: databaseSchema.user.language,
 				})
 				.from(databaseSchema.user)
 				.where(eq(databaseSchema.user.uuid, event.params.uuid))

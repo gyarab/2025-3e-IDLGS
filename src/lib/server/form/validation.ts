@@ -50,8 +50,8 @@ export const formRunner = async (
 
 		user = {
 			...value.user,
-			profilePicture: value.resource?.url ?? null
-		}
+			profilePicture: value.resource?.url ?? null,
+		};
 	}
 
 	try {

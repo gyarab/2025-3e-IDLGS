@@ -101,4 +101,4 @@ export const getRGBFromHex = (color: string): number[] => {
 		parseInt(color.slice(-4, -2), 16),
 		parseInt(color.slice(-2), 16),
 	];
-} 
+};

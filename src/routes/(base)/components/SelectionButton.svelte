@@ -40,7 +40,10 @@
 		),
 	);
 
-	let isSelected: boolean[] | undefined = $derived(values?.map((v => (Boolean(selectedvalue) && (v == selectedvalue)))) ?? undefined);
+	let isSelected: boolean[] | undefined = $derived(
+		values?.map((v) => Boolean(selectedvalue) && v == selectedvalue) ??
+			undefined,
+	);
 </script>
 
 {#key texts || actions || emojis}
@@ -49,10 +52,12 @@
 	>
 		{#each { length: length } as _, i (i)}
 			<button
-				class="{css} {isSelected?.at(i) ? selectedcss : ""} flex grow flex-row items-center justify-center gap-1 p-2 ps-3 pe-3 font-bold hover:translate-0! hover:brightness-75 active:brightness-50"
-				style="{style} {isSelected?.at(i) ? selectedstyle : ""}"
+				class="{css} {isSelected?.at(i)
+					? selectedcss
+					: ''} flex grow flex-row items-center justify-center gap-1 p-2 ps-3 pe-3 font-bold hover:translate-0! hover:brightness-75 active:brightness-50"
+				style="{style} {isSelected?.at(i) ? selectedstyle : ''}"
 				onclick={() => {
-					value = values?.at(i) ?? "";
+					value = values?.at(i) ?? '';
 
 					const f = actions?.at(i);
 					if (f) f();

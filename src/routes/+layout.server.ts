@@ -29,7 +29,7 @@ export const load = async (event) => {
 					r: databaseSchema.user.r,
 					g: databaseSchema.user.g,
 					b: databaseSchema.user.b,
-					language: databaseSchema.user.language
+					language: databaseSchema.user.language,
 				})
 				.from(databaseSchema.user)
 				.leftJoin(
@@ -48,7 +48,7 @@ export const load = async (event) => {
 		)[0];
 	}
 
-	if(user) setLocale(user.language as Locale);
+	if (user) setLocale(user.language as Locale);
 
 	return {
 		color: user ? makeHex(user.r, user.g, user.b) : DEFAULT_ACCENT_COLOR,

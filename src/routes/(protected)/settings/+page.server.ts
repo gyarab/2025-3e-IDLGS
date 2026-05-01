@@ -8,7 +8,7 @@ import { locales } from '$lib/paraglide/runtime.js';
 import { hashPassword, verifyPassword } from '$lib/server/user/index.js';
 import { getRGBFromHex } from '$lib';
 
-export const load = async (event) => { };
+export const load = async (event) => {};
 
 export const actions = {
 	updatePersonalInfo: async (event) => {
@@ -34,7 +34,8 @@ export const actions = {
 			['language'],
 			true,
 			async (data: FormDataType, user: UserTypeFull | undefined) => {
-				if (!(locales.map((v => String(v)))).includes(data.language)) return fail(400);
+				if (!locales.map((v) => String(v)).includes(data.language))
+					return fail(400);
 
 				await event.locals.db
 					.update(databaseSchema.user)
@@ -67,7 +68,14 @@ export const actions = {
 			['email', 'password'],
 			true,
 			async (data: FormDataType, user: UserTypeFull | undefined) => {
-				if (verifyPassword(data.password, user!.salt, user!.iterations, user!.password)) {
+				if (
+					verifyPassword(
+						data.password,
+						user!.salt,
+						user!.iterations,
+						user!.password,
+					)
+				) {
 					//TODO email confirm
 					await event.locals.db
 						.update(databaseSchema.user)
@@ -75,7 +83,7 @@ export const actions = {
 							email: data.email,
 						})
 						.where(eq(databaseSchema.user.id, user!.id));
-				};
+				}
 			},
 		);
 	},
@@ -100,13 +108,23 @@ export const actions = {
 			['password', 'newpass'],
 			true,
 			async (data: FormDataType, user: UserTypeFull | undefined) => {
-				if (verifyPassword(data.password, user!.salt, user!.iterations, user!.password)) {
+				if (
+					verifyPassword(
+						data.password,
+						user!.salt,
+						user!.iterations,
+						user!.password,
+					)
+				) {
 					const newPass = hashPassword(data.newpass);
-					await event.locals.db.update(databaseSchema.user).set({
-						password: newPass.password,
-						iterations: newPass.iterations,
-						salt: newPass.salt
-					}).where(eq(databaseSchema.user.id, user!.id));
+					await event.locals.db
+						.update(databaseSchema.user)
+						.set({
+							password: newPass.password,
+							iterations: newPass.iterations,
+							salt: newPass.salt,
+						})
+						.where(eq(databaseSchema.user.id, user!.id));
 				}
 			},
 		);
@@ -125,7 +143,7 @@ export const actions = {
 
 				await event.locals.db
 					.update(databaseSchema.user)
-					.set({ r, g, b, })
+					.set({ r, g, b })
 					.where(eq(databaseSchema.user.uuid, user!.uuid));
 
 				return;

@@ -165,7 +165,7 @@
 	>
 		<h1>{m.description()}</h1>
 
-		<TextArea 
+		<TextArea
 			placeholder={m.description()}
 			darkMode={data.darkMode}
 			color={data.color}
@@ -213,7 +213,7 @@
 
 		<!-- TODO some premade themes -->
 
-		<input 
+		<input
 			type="color"
 			name="color"
 			class="w-full rounded-lg border-2 border-white shadow"
@@ -274,7 +274,7 @@
 	>
 		<h1>{m.changeEmail()}</h1>
 
-<TextInput
+		<TextInput
 			type="password"
 			name="password"
 			placeholder={m.password()}
@@ -282,7 +282,7 @@
 			color={data.color}
 		/>
 
-<TextInput
+		<TextInput
 			type="email"
 			name="email"
 			placeholder={m.newEmail()}
