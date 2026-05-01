@@ -4,7 +4,24 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
+/* https://trycap.dev/guide/widget.html#styling */ 
+/* list of attributes */
+
 cap-widget {
+	--cap-widget-width: 100%;
+	--cap-font: 'Inter', sans-serif;
+	--cap-spinner-color: "#ff8800";
+}
+
+.lightCap {
+	--cap-background: #ffffff;
+	--cap-color: #000000;
+	--cap-border-color: #ffffff00;
+}
+.darkCap {
+	--cap-background: oklch(26.9% 0 0);
+	--cap-color: #ffffff;
+	--cap-border-color: #00000000;
 }
 
 @theme {
@@ -21,16 +38,16 @@ cap-widget {
 
 @layer components {
 	h1 {
-		@apply text-2xl font-bold;
+		@apply text-2xl font-bold mb-1;
 	}
 	h2 {
-		@apply text-lg font-bold;
+		@apply text-lg font-bold mb-1;
 	}
 	hr {
 		@apply opacity-10;
 	}
 	button {
-		@apply transition-all duration-100 hover:brightness-70 not-disabled:hover:-translate-0.5 active:brightness-50 disabled:brightness-50 disabled:saturate-0;
+		@apply transition-all duration-100 hover:brightness-90 not-disabled:hover:-translate-px active:brightness-70 disabled:brightness-50 disabled:saturate-0;
 	}
 	.buttonPrimary {
 		@apply rounded-full p-2 ps-3 pe-3 font-bold;
@@ -46,5 +63,25 @@ cap-widget {
 	}
 	textarea::placeholder {
 		@apply opacity-70;
+	}
+
+	.markdownText {
+		@apply flex w-full grow flex-col gap-2;
+	}
+	.markdownText ul {
+		@apply list-inside list-disc;
+	}
+	.markdownText ol {
+		@apply list-inside list-decimal;
+	}
+
+	/* printable pages TODO */
+	@media print {
+		body {
+			@apply bg-white! bg-none! text-black! **:border-black! **:bg-white! **:bg-none! **:text-black!;
+		}
+		#contentarea {
+			width: 100%;
+		}
 	}
 }

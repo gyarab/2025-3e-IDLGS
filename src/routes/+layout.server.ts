@@ -1,11 +1,11 @@
-import { TEMP_ACCENT_COLOR } from '$lib';
+import { makeHex, DEFAULT_ACCENT_COLOR } from '$lib';
 import type { UserType } from '$lib/types.js';
 import { schema as databaseSchema } from '$lib/server/db/schema';
 import { eq } from 'drizzle-orm';
 
 //TODO cookies for open and close states of navbar, sidebar
 export const load = async (event) => {
-	const sessionToken: string | undefined = event.cookies.get('sessionToken');
+	const sessionToken: string | undefined = event.cookies.get('sessionTokenIDLGS');
 	let user: UserType | undefined = undefined;
 
 	if (sessionToken) {
@@ -45,7 +45,7 @@ export const load = async (event) => {
 	}
 
 	return {
-		color: TEMP_ACCENT_COLOR,
+		color: user ? makeHex(user.r, user.g, user.b) : DEFAULT_ACCENT_COLOR,
 		darkMode: event.cookies.get('darkMode') == 'dark',
 		navbarOpen: event.cookies.get('navbarOpen') == 'true',
 		sidebarOpen: event.cookies.get('sidebarOpen') == 'true',

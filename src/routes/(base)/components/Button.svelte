@@ -32,13 +32,13 @@
 	{disabled}
 	aria-label={label}
 	title={label}
-	class="{css} flex flex-row items-center justify-center gap-1"
+	class="{css} group flex flex-row items-center justify-center gap-1 text-white!"
 	{onclick}
 	{style}
 >
 	<HoverEmoji
 		{emoji}
-		css="text-2xl {hecss}"
+		css="text-2xl text-white! {hecss}"
 	/>
 	{text}
 </button>

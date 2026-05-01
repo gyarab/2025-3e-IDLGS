@@ -63,5 +63,11 @@
 	"noResults": "No results",
 	"searchForTextbook": "Search for textbook",
 	"yourTextbooks": "Your textbooks",
-	"createTextbook": "Create textbook"
+	"createTextbook": "Create textbook",
+	"enterYourPassword": "Enter your password",
+	"enterYourEmail": "Enter your email",
+	"login": "Login",
+	"showPassword": "Show password",
+	"hidePassword": "Hide password",
+	"logout": "Logout"
 }

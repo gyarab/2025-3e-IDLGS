@@ -24,3 +24,15 @@ export const hashPassword = (
 		iterations,
 	};
 };
+
+export const verifyPassword = (
+	password: string,
+	salt: string,
+	iterations: number,
+	hashedPassword: string,
+): boolean => {
+	return crypto.timingSafeEqual(
+		Buffer.from(hashedPassword),
+		Buffer.from(crypto.pbkdf2Sync(password, salt, iterations, 64, 'sha512').toString("hex"))
+	)
+};

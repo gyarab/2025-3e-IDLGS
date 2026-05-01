@@ -1,6 +1,6 @@
 import { browser } from '$app/environment';
 
-export const TEMP_ACCENT_COLOR = '#ff8800';
+export const DEFAULT_ACCENT_COLOR = '#ff8800';
 
 export const isInViewport = (element: HTMLElement): Promise<boolean> => {
 	return new Promise((resolve) => {

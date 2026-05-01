@@ -63,5 +63,11 @@
 	"noResults": "Brak wyników",
 	"searchForTextbook": "Szukaj podręcznika",
 	"yourTextbooks": "Twoje podręczniki",
-	"createTextbook": "Utwórz podręcznik"
+	"createTextbook": "Utwórz podręcznik",
+	"enterYourPassword": "Wprowadź swoje hasło",
+	"enterYourEmail": "Wprowadź swój email",
+	"login": "Zaloguj się",
+	"showPassword": "Pokaż hasło",
+	"hidePassword": "Ukryj hasło",
+	"logout": "Wyloguj się"
 }

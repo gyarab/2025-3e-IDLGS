@@ -63,5 +63,11 @@
 	"noResults": "Žádné výsledky",
 	"searchForTextbook": "Hledat učebnici",
 	"yourTextbooks": "Vaše učebnice",
-	"createTextbook": "Vytvořit učebnici"
+	"createTextbook": "Vytvořit učebnici",
+	"enterYourPassword": "Zadejte své heslo",
+	"enterYourEmail": "Zadejte svůj email",
+	"login": "Přihlásit se",
+	"showPassword": "Zobrazit heslo",
+	"hidePassword": "Skrýt heslo",
+	"logout": "Odhlásit se"
 }

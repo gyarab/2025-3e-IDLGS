@@ -1,4 +1,4 @@
-import type { Handle } from '@sveltejs/kit';
+import type { Handle, ServerInit } from '@sveltejs/kit';
 import { getTextDirection } from '$lib/paraglide/runtime';
 import { paraglideMiddleware } from '$lib/paraglide/server';
 import { sequence } from '@sveltejs/kit/hooks';
@@ -7,6 +7,7 @@ import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 import { count } from 'drizzle-orm';
 import { hashPassword } from '$lib/server/user';
+import { initMail } from '$lib/server/mail';
 
 const handleParaglide: Handle = ({ event, resolve }) =>
 	paraglideMiddleware(event.request, ({ request, locale }) => {
@@ -69,15 +70,6 @@ const handleInitialUser: Handle = async ({ event, resolve }) => {
 	return resolve(event);
 };
 
-const handleStandaloneMode: Handle = async ({ event, resolve }) => {
-	if (!process.env.MODE || process.env.MODE == 'normal')
-		return resolve(event);
-
-	//TODO standalone textbook mode (uuid)
-
-	return resolve(event);
-};
-
 const securityHeaders = {
 	'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
 	'Permissions-Policy': 'camera=(), microphone=(), interest-cohort=()',
@@ -100,7 +92,32 @@ const handleSecurity: Handle = async ({ event, resolve }) => {
 export const handle: Handle = sequence(
 	handleSecurity,
 	handleParaglide,
-	handleStandaloneMode,
 	handleDatabase,
 	handleInitialUser,
 );
+
+export const init: ServerInit = async () => {
+	
+
+	if(!process.env.MAIL_SOURCE_ADDRESS)
+		throw Error("No email address provided!");
+	if(!process.env.MAIL_CLIENT_ID)
+		throw Error("No Gmail client ID provided!");
+	if(!process.env.MAIL_CLIENT_SECRET)
+		throw Error("No Gmail client secret provided!");
+	if(!process.env.MAIL_REFRESH_TOKEN)
+		throw Error("No Gmail refresh token provided!");
+
+	await initMail(
+		process.env.MAIL_SOURCE_ADDRESS,
+		process.env.MAIL_CLIENT_ID,
+		process.env.MAIL_CLIENT_SECRET,
+		process.env.MAIL_REFRESH_TOKEN,
+	);
+
+	if (process.env.MODE && process.env.MODE != 'normal') {
+		//TODO standalone textbook mode (uuid)
+	}
+
+	console.log("Initialization done!");
+}
