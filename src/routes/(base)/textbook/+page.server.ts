@@ -1,10 +1,11 @@
 import { schema as databaseSchema } from '$lib/server/db/schema';
 import { redirect } from '@sveltejs/kit';
 import { eq, desc } from 'drizzle-orm';
+import { resolve } from '$app/paths';
 
 export const load = async (event) => {
 	const pd = await event.parent();
-	if (!pd.user) return redirect(302, '/login');
+	if(!pd.user) redirect(302, resolve("/(protected)/login"));
 
 	return {
 		textbooks: await event.locals.db

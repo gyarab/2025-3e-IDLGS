@@ -117,15 +117,7 @@
 			degree: 'dr inż.',
 			institution: 'AGH',
 			profilePicture: '',
-			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-			registeredAt: new Date(),
-			lastSeenAt: new Date(),
-			email: 'alyun@agh.pl',
 			uuid: '123e4567-e89b-12d3-a456-426614174000',
-			r: 128,
-			g: 128,
-			b: 128,
 		}}
 	/>
 

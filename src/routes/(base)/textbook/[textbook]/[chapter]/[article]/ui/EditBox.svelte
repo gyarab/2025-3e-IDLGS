@@ -3,10 +3,11 @@
 	import { getDateTimeString } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import Button from '$src/routes/(base)/components/Button.svelte';
-	import type { UserType } from '$lib/types';
+	import type { UserTypeInfo } from '$lib/types';
 	import UserLink from '$src/routes/(base)/components/UserLink.svelte';
 	import { page } from '$app/state';
 	import { darkenHex } from '$lib';
+	import { resolve } from '$app/paths';
 
 	let {
 		darkMode,
@@ -19,7 +20,7 @@
 		color: string;
 		isEditor: boolean;
 		lastEditedDate: Date;
-		lastEditor: UserType;
+		lastEditor: UserTypeInfo;
 	} = $props();
 </script>
 
@@ -51,7 +52,14 @@
 		type="button"
 		onclick={() => {
 			goto(
-				`/textbook/${page.params.textbook}/${page.params.chapter}/${page.params.article}/history`,
+				resolve(
+					'/(base)/textbook/[textbook]/[chapter]/[article]/history',
+					{
+						textbook: page.params.textbook!,
+						chapter: page.params.chapter!,
+						article: page.params.article!,
+					},
+				),
 			);
 		}}
 		css="buttonPrimary"
@@ -65,7 +73,14 @@
 			type="button"
 			onclick={() => {
 				goto(
-					`/textbook/${page.params.textbook}/${page.params.chapter}/${page.params.article}/edit`,
+					resolve(
+						'/(base)/textbook/[textbook]/[chapter]/[article]/edit',
+						{
+							textbook: page.params.textbook!,
+							chapter: page.params.chapter!,
+							article: page.params.article!,
+						},
+					),
 				);
 			}}
 			css="buttonPrimary"

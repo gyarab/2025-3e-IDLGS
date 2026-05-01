@@ -58,7 +58,7 @@
 	<cap-widget
 		id="cap"
 		class={data.darkMode ? 'darkCap' : 'lightCap'}
-		data-cap-api-endpoint="https://captcha.martinbykov.eu/645d6876bc"
+		data-cap-api-endpoint="https://captcha.martinbykov.eu/5a4899a4b6"
 		onsolve={() => {
 			solved = true;
 		}}

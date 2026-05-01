@@ -8,12 +8,16 @@
 		stage = $bindable(),
 		disableNext,
 		disablePrev,
+		nextButtonCreate,
+		createText,
 	}: {
 		color: string;
 		darkMode: boolean;
 		stage: number;
 		disableNext: boolean;
 		disablePrev: boolean;
+		nextButtonCreate: boolean;
+		createText: string;
 	} = $props();
 </script>
 
@@ -22,9 +26,10 @@
 
 	<SelectionButton
 		style="background-color: {color};"
-		texts={[m.goBack(), m.goForward()]}
+		texts={[m.goBack(), nextButtonCreate ? createText : m.goForward()]}
 		disabled={[stage == 0 || disablePrev, disableNext]}
 		actions={[() => stage--, () => stage++]}
-		emojis={['arrow-left-double', 'arrow-right-double']}
+		emojis={['arrow-left-double', nextButtonCreate ? 'check-double' : 'arrow-right-double']}
+		types={nextButtonCreate ? ['submit', 'button'] : ['button', 'button']}
 	/>
 </div>

@@ -5,6 +5,7 @@ import { eq } from 'drizzle-orm';
 import { fail, redirect } from '@sveltejs/kit';
 import { verifyPassword } from '$lib/server/user/index.js';
 import { page } from '$app/state';
+import { resolve } from '$app/paths';
 
 export const load = async (event) => {
 	const pd = await event.parent();
@@ -21,14 +22,14 @@ export const actions = {
 			async (data: FormDataType, user: UserTypeFull | undefined) => {
 				if (!process.env.IGNORE_CAPTCHA) {
 					const captchaResponse = await event.fetch(
-						'https://captcha.martinbykov.eu/645d6876bc/siteverify',
+						'https://captcha.martinbykov.eu/5a4899a4b6/siteverify',
 						{
 							method: 'POST',
 							headers: {
 								'Content-Type': 'application/json',
 							},
 							body: JSON.stringify({
-								secret: process.env.CAPTCHA,
+								secret: process.env.CAPTCHA_SECRET_KEY,
 								response: data['cap-token'],
 							}),
 						},
@@ -74,7 +75,7 @@ export const actions = {
 							token: sessionToken,
 						});
 
-					return redirect(303, '/profile/');
+					return redirect(302, resolve("/(protected)/login"));
 				} else return fail(401);
 			},
 		);

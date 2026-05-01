@@ -89,5 +89,19 @@
 	"language": "Language",
 	"languageName": "English",
 	"degree": "Degree",
-	"newEmail": "New email"
+	"newEmail": "New email",
+	"textbookStructure": "Textbook structure",
+	"newTextbook": "New textbook",
+	"basicInformation": "Basic information",
+	"authors": "Authors",
+	"resources": "Resources",
+	"basicTextbookInformation": "Basic textbook information",
+	"reviewInformation": "Review information",
+	"review": "Review",
+	"textbookResources": "Textbook resources",
+	"textbookResourcesDescription": "Resources used in the textbook, such as images, PDF files, links, etc.",
+	"reviewInformationDescription": "Review of the entered information",
+	"additionalAuthors": "Additional authors",
+	"additionalAuthorsDescription": "Additional authors of the textbook who contributed to its creation",
+	"textbookStructureDesciption": "Structure of the textbook, i.e. chapters and articles contained in them"
 }

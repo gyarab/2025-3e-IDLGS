@@ -15,6 +15,7 @@
 		style,
 		cssTop,
 		disabled,
+		types,
 	}: {
 		texts?: string[];
 		labels?: string[];
@@ -29,6 +30,7 @@
 		style?: string;
 		cssTop?: string;
 		disabled?: boolean[];
+		types?: ("button" | "submit" | "reset")[];
 	} = $props();
 
 	let length: number = $derived(
@@ -65,7 +67,7 @@
 				title={labels?.at(i) ?? ''}
 				aria-label={labels?.at(i) ?? ''}
 				disabled={disabled?.at(i) ?? false}
-				type="button"
+				type={types?.at(i) ?? 'button'}
 			>
 				{#if emojis}
 					<HoverEmoji

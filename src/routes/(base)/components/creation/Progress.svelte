@@ -1,31 +1,30 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { m } from '$lib/paraglide/messages';
-	import ProgressItem from '../../../../../components/ProgressItem.svelte';
+	import ProgressItem from './ProgressItem.svelte';
 	import SelectionButton from '$src/routes/(base)/components/SelectionButton.svelte';
 	import { goto, invalidateAll } from '$app/navigation';
 	import { darkenHex, setDarkMode } from '$lib';
-	import { resolve } from '$app/paths';
-	import { page } from '$app/state';
-
+	
 	let {
 		stage = $bindable(0),
 		color,
 		darkMode,
+		texts,
+		title,
+		backLink,
+		helpLink,
+		emoji,
 	}: {
 		stage: number;
 		color: string;
 		darkMode: boolean;
+		texts: string[],
+		title: string,
+		backLink: string,
+		helpLink: string,
+		emoji: string,
 	} = $props();
-
-	let texts = $derived([
-		m.exerciseType(),
-		m.basicExerciseInformation(),
-		m.exerciseStructure(),
-		m.exerciseGrading(),
-		m.referencesToMaterial(),
-		m.finish(),
-	]);
 </script>
 
 <div
@@ -36,8 +35,8 @@
 >
 	<div class="relative flex w-full flex-col gap-2">
 		<div class="flex w-full flex-row items-center gap-1 text-2xl">
-			<i class="ri-function-add-line"></i>
-			<h1 class="text-2xl! font-bold">{m.newExercise()}</h1>
+			<i class={emoji}></i>
+			<h1 class="text-2xl! font-bold mb-0!">{title}</h1>
 		</div>
 
 		{#key stage}
@@ -65,12 +64,9 @@
 		]}
 		actions={[
 			() =>
-				goto(
-					resolve('/(base)/textbook/[textbook]/exercises', {
-						textbook: page.params.textbook!,
-					}),
-				),
-			() => goto(resolve('/help/exercises/creation')),
+				goto(backLink
+					),
+			() => goto(helpLink),
 			async () => {
 				await setDarkMode(!darkMode);
 				await invalidateAll();

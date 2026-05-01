@@ -89,5 +89,18 @@
 	"language": "Język",
 	"languageName": "Polski",
 	"degree": "Tytuł",
-	"newEmail": "Nowy email"
+	"newEmail": "Nowy email",
+	"textbookStructure": "Struktura podręcznika",
+	"newTextbook": "Nowy podręcznik",
+	"authors": "Autorzy",
+	"resources": "Zasoby",
+	"basicTextbookInformation": "Podstawowe informacje o podręczniku",
+	"reviewInformation": "Przegląd informacji",
+	"review": "Przegląd",
+	"textbookResources": "Zasoby podręcznika",
+	"textbookResourcesDescription": "Zasoby użyte w podręczniku, takie jak obrazy, pliki PDF, linki itp.",
+	"reviewInformationDescription": "Przegląd wprowadzonych informacji",
+	"additionalAuthors": "Dodatkowi autorzy",
+	"additionalAuthorsDescription": "Dodatkowi autorzy podręcznika, którzy przyczynili się do jego stworzenia",
+	"textbookStructureDesciption": "Struktura podręcznika, tzn. rozdziały oraz artykuły w nich zawarte"
 }

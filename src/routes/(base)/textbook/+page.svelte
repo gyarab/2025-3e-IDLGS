@@ -2,8 +2,9 @@
 	import TextbookCard from './ui/TextbookCard.svelte';
 	import { m } from '$lib/paraglide/messages';
 	import type { TextbookType, UserType } from '$lib/types';
-	import { darkenHex } from '$lib';
 	import Button from '../components/Button.svelte';
+	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 
 	let {
 		data,
@@ -35,7 +36,9 @@
 			type="button"
 			css="buttonPrimary"
 			style="background-color: {data.color};"
-			onclick={() => {}}
+			onclick={() => {
+				goto(resolve("/(base)/textbook/create"));
+			}}
 		/>
 	</div>
 	<div class="grid w-full grow grid-cols-3 gap-2">

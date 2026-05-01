@@ -92,6 +92,4 @@
 	</div>
 
 	<div class="h-[7svh] w-screen"></div>
-{:else}
-	<div class="h-8 w-screen"></div>
 {/if}

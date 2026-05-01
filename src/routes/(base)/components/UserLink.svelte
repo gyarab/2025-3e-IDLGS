@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { UserType } from '$lib/types';
+	import type { UserTypeInfo } from '$lib/types';
 
 	let {
 		user,
 	}: {
-		user: UserType;
+		user: UserTypeInfo;
 	} = $props();
 </script>
 

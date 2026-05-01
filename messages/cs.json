@@ -89,5 +89,19 @@
 	"language": "Jazyk",
 	"languageName": "Čeština",
 	"degree": "Titul",
-	"newEmail": "Nový email"
+	"newEmail": "Nový email",
+	"textbookStructure": "Struktura učebnice",
+	"newTextbook": "Nová učebnice",
+	"basicInformation": "Základní informace",
+	"authors": "Autoři",
+	"resources": "Zdroje",
+	"basicTextbookInformation": "Základní informace o učebnici",
+	"reviewInformation": "Přehled informací",
+	"review": "Přehled",
+	"textbookResources": "Zdroje učebnice",
+	"textbookResourcesDescription": "Zdroje použité v učebnici, jako jsou obrázky, PDF soubory, odkazy atd.",
+	"reviewInformationDescription": "Přehled zadaných informací",
+	"additionalAuthors": "Další autoři",
+	"additionalAuthorsDescription": "Další autoři učebnice, kteří přispěli k jejímu vytvoření",
+	"textbookStructureDesciption": "Struktura učebnice, tj. kapitoly a články v nich obsažené"
 }
