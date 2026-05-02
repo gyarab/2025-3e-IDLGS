@@ -309,7 +309,7 @@
 	{darkMode}
 	css="min-h-0! min-w-1/4!"
 >
-	<div class="flex w-full grow flex-col gap-1">
+	<div class="flex w-full grow flex-col gap-2">
 		<h1>{m.addArticle()}</h1>
 		<div class="flex w-full grow flex-col gap-2">
 			<TextInput

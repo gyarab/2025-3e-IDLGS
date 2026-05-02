@@ -1,3 +1,5 @@
+import type { FileType } from "./server/filesave";
+
 export type UserTypeInfo = {
 	degree: string | null;
 	institution: string | null;
@@ -31,14 +33,19 @@ export type UserTypeFull = UserType & {
 };
 
 export type TextbookType = {
-	id: number;
 	uuid: string;
 	title: string;
+	description: string;
+	lastEditedAt: Date;
 	r: number;
 	g: number;
 	b: number;
 	educationLevel: number;
 	authors: UserTypeInfo[];
+};
+
+export type TextbookTypeFull = TextbookType & {
+	id: number;
 };
 
 export type ChapterType = {
@@ -63,6 +70,14 @@ export type ArticleTypeFull = ArticleType & {
 	textbookId: number;
 	uuid: string;
 	textCompressed: string;
+};
+
+export type ResourceType = {
+	id: number;
+	uuid: string;
+	title: string;
+	type: FileType;
+	url: string;
 };
 
 export type ExerciseType = {

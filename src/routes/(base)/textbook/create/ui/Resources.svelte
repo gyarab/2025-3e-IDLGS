@@ -2,6 +2,8 @@
 	import { darkenHex } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import Button from '$src/routes/(base)/components/Button.svelte';
+	import ConfirmDeleteDialog from '$src/routes/(base)/components/ConfirmDeleteDialog.svelte';
+	import Dialog from '$src/routes/(base)/components/Dialog.svelte';
 	import TextArea from '$src/routes/(base)/components/TextArea.svelte';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
 	import { fly } from 'svelte/transition';
@@ -13,6 +15,10 @@
 		darkMode: boolean;
 		color: string;
 	} = $props();
+
+	let showAddResourceDialog = $state(false);
+	let showEditResourceDialog = $state(false);
+	let showRemoveResourceDialog = $state(false);
 </script>
 
 <div class="flex w-full grow flex-col gap-2">
@@ -51,3 +57,29 @@
 		/>
 	</div>
 </div>
+
+<Dialog
+	bind:open={showAddResourceDialog}
+	{darkMode}
+	css="min-h-0! min-w-1/4!"
+>
+	<div class="flex flex-col w-full grow">
+	</div>
+</Dialog>
+
+<Dialog
+	bind:open={showEditResourceDialog}
+	{darkMode}
+	css="min-h-0! min-w-1/4!"
+>
+	<div class="flex flex-col w-full grow">
+	</div>
+</Dialog>
+
+<ConfirmDeleteDialog
+	bind:open={showRemoveResourceDialog}
+	{darkMode}
+	{color}
+	confirm={async () => {}}
+	cancel={async () => {}}
+ />

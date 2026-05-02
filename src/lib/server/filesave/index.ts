@@ -21,7 +21,9 @@ export type cloudinaryResponse = {
 
 export const CLOUDINARY_FOLDER = 'idlgs';
 
-const cloudinaryUpload = async (file: File): Promise<string | undefined> => {
+export type FileType = "image" | "video" | "raw";
+
+const cloudinaryUpload = async (file: File, type: FileType): Promise<string | undefined> => {
 	if (!file || file.size === 0) return undefined;
 
 	const byteArrayBuffer = Buffer.from(await file.arrayBuffer());
@@ -31,7 +33,7 @@ const cloudinaryUpload = async (file: File): Promise<string | undefined> => {
 			.upload_stream(
 				{
 					folder: CLOUDINARY_FOLDER,
-					resource_type: 'image',
+					resource_type: type,
 					quality: 'auto',
 					fetch_format: 'auto',
 				},
@@ -71,8 +73,8 @@ const cloudinaryDelete = async (url: string): Promise<void> => {
 // other providers?
 
 //saves a file to the server and returns the path
-export const saveToCloud = async (file: File): Promise<string | undefined> => {
-	return await cloudinaryUpload(file);
+export const saveToCloud = async (file: File, type: FileType): Promise<string | undefined> => {
+	return await cloudinaryUpload(file, type);
 };
 
 export const deleteInCloud = async (path: string): Promise<void> => {

@@ -77,6 +77,8 @@ export const resource = pgTable('resource', {
 	id: serial('id').primaryKey(),
 	title: text('title').notNull(),
 	url: text('url').notNull().default(''),
-	//VID / IMG / PDF / TXT / LNK
+	//image, video, raw
 	type: text('type').notNull(),
-});
+}, (table) => [
+	check('type', sql`${table.type} IN ('image', 'video', 'raw')`),
+]);

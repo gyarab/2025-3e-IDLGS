@@ -88,24 +88,12 @@
 		</span>
 
 		<span
-			in:fly|global={{
-				x: 1000,
-				y: 0,
-				duration: 300,
-				delay: 700,
-				opacity: 0,
-			}}
-		>
-			<ColorInput bind:color />
-		</span>
-
-		<span
 			class="flex w-full grow flex-col"
 			in:fly|global={{
 				x: 1000,
 				y: 0,
 				duration: 300,
-				delay: 900,
+				delay: 700,
 				opacity: 0,
 			}}
 		>
@@ -116,6 +104,18 @@
 				bind:value={description}
 				css="grow"
 			/>
+		</span>
+
+				<span
+			in:fly|global={{
+				x: 1000,
+				y: 0,
+				duration: 300,
+				delay: 900,
+				opacity: 0,
+			}}
+		>
+			<ColorInput bind:color />
 		</span>
 	</div>
 </div>
