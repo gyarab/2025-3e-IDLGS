@@ -123,5 +123,8 @@
 	"addArticle": "Přidat článek",
 	"editChapter": "Upravit kapitolu",
 	"removeArticle": "Odstranit článek",
-	"removeChapter": "Odstranit kapitolu"
+	"removeChapter": "Odstranit kapitolu",
+	"areYouSure": "Jste si jisti?",
+	"thisActionCannotBeUndone": "Tato akce není vratná",
+	"selectAChapterToViewArticles": "Vyberte kapitolu pro zobrazení jejích článků"
 }

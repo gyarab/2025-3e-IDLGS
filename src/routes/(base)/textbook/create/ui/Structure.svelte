@@ -3,6 +3,8 @@
 	import { m } from '$lib/paraglide/messages';
 	import type { ArticleType, ChapterType } from '$lib/types';
 	import Button from '$src/routes/(base)/components/Button.svelte';
+	import ConfirmCancel from '$src/routes/(base)/components/ConfirmCancel.svelte';
+	import ConfirmDeleteDialog from '$src/routes/(base)/components/ConfirmDeleteDialog.svelte';
 	import Dialog from '$src/routes/(base)/components/Dialog.svelte';
 	import TextArea from '$src/routes/(base)/components/TextArea.svelte';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
@@ -23,6 +25,9 @@
 
 	let showChapterDialog: boolean = $state(false);
 	let showArticleDialog: boolean = $state(false);
+
+	let deleteChapter: boolean = $state(false);
+	let deleteArticle: boolean = $state(false);
 </script>
 
 <div class="flex w-full grow flex-col gap-2">
@@ -43,7 +48,7 @@
 					text={m.addChapter()}
 					style="background-color: {color};"
 					css="buttonPrimary w-full"
-					onclick={() => {}}
+					onclick={() => { showChapterDialog = true; }}
 					emoji="add-box"
 					type="button"
 				/>
@@ -74,7 +79,7 @@
 					text={m.addArticle()}
 					style="background-color: {color};"
 					css="buttonPrimary w-full"
-					onclick={() => {}}
+					onclick={() => { showArticleDialog = true; }}
 					emoji="add-circle"
 					type="button"
 				/>
@@ -105,6 +110,27 @@
 >
 	<div class="flex w-full grow flex-col">
 		<h2>{m.addChapter()}</h2>
+		<div class="flex flex-col gap-2 w-full grow">
+			<TextInput 
+				{darkMode}
+				{color}
+				type="text"
+			/>
+		</div>
+		<ConfirmCancel 
+			{darkMode}
+			{color}
+			bind:open={showArticleDialog}
+			confirm={async () => {
+				chapters.push({
+					
+				});
+				showArticleDialog = false;
+			}}
+			cancel={async () => {
+				showArticleDialog = false;
+			}}
+		/>
 	</div>
 </Dialog>
 
@@ -114,7 +140,39 @@
 >
 	<div class="flex w-full grow flex-col">
 		<h2>{m.addArticle()}</h2>
+		<div class="flex flex-col gap-2 w-full grow">
+			<TextInput 
+				{darkMode}
+				{color}
+				type="text"
+			/>
+		</div>
+		<ConfirmCancel 
+			{darkMode}
+			{color}
+			bind:open={showArticleDialog}
+			confirm={async () => {
+				articles.push({
+					
+				});
+				showArticleDialog = false;
+			}}
+			cancel={async () => {
+				showArticleDialog = false;
+			}}
+		/>
 	</div>
 </Dialog>
 
-<ConfirmDeleteDialog />
+<ConfirmDeleteDialog 
+	open={deleteArticle || deleteChapter}
+	{darkMode}
+	{color}
+	confirm={async () => {
+		if(deleteArticle) {
+			
+		} else if(deleteChapter) {
+			
+		}
+	}}
+/>

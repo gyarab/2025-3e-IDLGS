@@ -3,6 +3,7 @@
 	import TextArea from '$src/routes/(base)/components/TextArea.svelte';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
 	import { fly } from 'svelte/transition';
+	import Form from '$src/routes/(base)/components/Form.svelte';
 
 	let {
 		darkMode,

@@ -122,5 +122,8 @@
 	"addArticle": "Dodaj artykuł",
 	"editChapter": "Edytuj rozdział",
 	"removeArticle": "Usuń artykuł",
-	"removeChapter": "Usuń rozdział"
+	"removeChapter": "Usuń rozdział",
+	"areYouSure": "Czy jesteś pewien?",
+	"thisActionCannotBeUndone": "Ta akcja nie może zostać cofnięta",
+	"selectAChapterToViewArticles": "Wybierz rozdział, aby zobaczyć jego artykuły"
 }

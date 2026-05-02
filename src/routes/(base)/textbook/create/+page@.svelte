@@ -8,6 +8,7 @@
 	import Resources from './ui/Resources.svelte';
 	import Review from './ui/Review.svelte';
 	import PageControl from '../../components/PageControl.svelte';
+	import type { ArticleType, ChapterType } from '$lib/types';
 
 	let {
 		data,
@@ -23,6 +24,8 @@
 	let description: string = $state('');
 	let textbookColor: string = $derived(data.color);
 	let educationLevel: string = $state('');
+	let chapters: ChapterType[] = $state([]);
+	let articles: ArticleType[] = $state([]);
 </script>
 
 <svelte:head>
@@ -59,6 +62,8 @@
 		<Structure
 			darkMode={data.darkMode}
 			color={textbookColor}
+			bind:chapters
+			bind:articles
 		/>
 	{:else if stage == 2}
 		<Resources
