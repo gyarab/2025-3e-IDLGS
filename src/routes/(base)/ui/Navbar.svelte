@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { m } from '$lib/paraglide/messages';
-	import NavButton from '$src/routes/(base)/components/NavBarButton.svelte';
+	import { goto } from '$app/navigation';
 	import { setNavbarOpen } from '$lib';
+	import Button from '../components/Button.svelte';
 
 	let {
 		accentColor,
@@ -53,40 +54,39 @@
 			<div class="grow"></div>
 
 			<nav class="flex h-full items-center gap-2">
-				<NavButton
-					onclick={() => {}}
-					icon="ri-user-line"
-					{accentColor}
-				>
-					{m.profile()}
-				</NavButton>
+				<Button
+					emoji="user"
+					text={m.profile()}
+					type="button"
+					css="px-1"
+					hecss="text-lg"
+					onclick={() => {
+						goto('/profile')
+					}}
+				/>
 
-				<NavButton
-					onclick={() => {}}
-					icon="ri-book-open-line"
-					{accentColor}
-				>
-					{m.gallery()}
-				</NavButton>
+				<Button
+					emoji="settings"
+					text={m.settings()}
+					type="button"
+					css="px-1"
+					hecss="text-lg"
+					onclick={() => {
+						goto('/settings');
+					}}
+				/>
 
-				<NavButton
-					onclick={() => {}}
-					icon="ri-settings-4-line"
-					{accentColor}
-				>
-					{m.settings()}
-				</NavButton>
-
-				<button
+				<Button
+					emoji="close"
+					text=""
+					type="button"
 					onclick={async () => {
 						open = false;
 						await setNavbarOpen(false);
 					}}
-					class="ml-4 p-2 opacity-50 hover:opacity-100"
-					aria-label={m.collapse()}
-				>
-					<i class="ri-close-line text-xl"></i>
-				</button>
+					css="p-2 opacity-50 hover:opacity-100 hover:translate-0!"
+					label={m.collapse()}
+				/>
 			</nav>
 		</div>
 	</div>
