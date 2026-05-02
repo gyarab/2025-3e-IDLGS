@@ -137,24 +137,62 @@
 			darkMode={data.darkMode}
 			color={data.color}
 			success={async () => {
-				goto(resolve('/(base)/textbook/[textbook]/exercises', {
-					textbook: page.params.textbook!,
-				}));
+				goto(
+					resolve('/(base)/textbook/[textbook]/exercises', {
+						textbook: page.params.textbook!,
+					}),
+				);
 			}}
 			failure={async () => {
 				stage--;
 				//TODO popup message @AY-GA
 			}}
 		>
-			<input type="hidden" name="name" value={name} />
-			<input type="hidden" name="description" value={description} />
-			<input type="hidden" name="thumbnail" value={thumbnail} />
-			<input type="hidden" name="backgroundColorR" value={backgroundColorR} />
-			<input type="hidden" name="backgroundColorG" value={backgroundColorG} />
-			<input type="hidden" name="backgroundColorB" value={backgroundColorB} />
-			<input type="hidden" name="foregroundColorR" value={foregroundColorR} />
-			<input type="hidden" name="foregroundColorG" value={foregroundColorG} />
-			<input type="hidden" name="foregroundColorB" value={foregroundColorB} />
+			<input
+				type="hidden"
+				name="name"
+				value={name}
+			/>
+			<input
+				type="hidden"
+				name="description"
+				value={description}
+			/>
+			<input
+				type="hidden"
+				name="thumbnail"
+				value={thumbnail}
+			/>
+			<input
+				type="hidden"
+				name="backgroundColorR"
+				value={backgroundColorR}
+			/>
+			<input
+				type="hidden"
+				name="backgroundColorG"
+				value={backgroundColorG}
+			/>
+			<input
+				type="hidden"
+				name="backgroundColorB"
+				value={backgroundColorB}
+			/>
+			<input
+				type="hidden"
+				name="foregroundColorR"
+				value={foregroundColorR}
+			/>
+			<input
+				type="hidden"
+				name="foregroundColorG"
+				value={foregroundColorG}
+			/>
+			<input
+				type="hidden"
+				name="foregroundColorB"
+				value={foregroundColorB}
+			/>
 
 			<!-- TODO -->
 

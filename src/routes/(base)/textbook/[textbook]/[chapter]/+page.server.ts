@@ -40,10 +40,12 @@ export const load = async (event) => {
 				order: databaseSchema.article.order,
 			})
 			.from(databaseSchema.article)
-			.where(and(
-				eq(databaseSchema.article.textbookId, textbookId.id),
-				eq(databaseSchema.article.chapterId, chapterId.id),
-			))
+			.where(
+				and(
+					eq(databaseSchema.article.textbookId, textbookId.id),
+					eq(databaseSchema.article.chapterId, chapterId.id),
+				),
+			)
 			.orderBy(asc(databaseSchema.article.order)),
 	};
 };

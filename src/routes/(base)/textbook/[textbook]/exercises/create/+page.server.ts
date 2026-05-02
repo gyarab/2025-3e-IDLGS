@@ -18,33 +18,63 @@ const EXT_FIELDS = [];
 
 export const actions = {
 	makeCRW: async (event) => {
-		return await formRunner(event, [], true, async (data: FormDataType, user: UserTypeFull | undefined) => {
-			console.log("CRW", data);
-		});
+		return await formRunner(
+			event,
+			[],
+			true,
+			async (data: FormDataType, user: UserTypeFull | undefined) => {
+				console.log('CRW', data);
+			},
+		);
 	},
 	makeCRS: async (event) => {
-		return await formRunner(event, [], true, async (data: FormDataType, user: UserTypeFull | undefined) => {
-			console.log("CRS", data);
-		});
+		return await formRunner(
+			event,
+			[],
+			true,
+			async (data: FormDataType, user: UserTypeFull | undefined) => {
+				console.log('CRS', data);
+			},
+		);
 	},
 	makeDEF: async (event) => {
-		return await formRunner(event, [], true, async (data: FormDataType, user: UserTypeFull | undefined) => {
-			console.log("DEF", data);
-		});
+		return await formRunner(
+			event,
+			[],
+			true,
+			async (data: FormDataType, user: UserTypeFull | undefined) => {
+				console.log('DEF', data);
+			},
+		);
 	},
 	makeGRP: async (event) => {
-		return await formRunner(event, [], true, async (data: FormDataType, user: UserTypeFull | undefined) => {
-			console.log("GRP", data);
-		});
+		return await formRunner(
+			event,
+			[],
+			true,
+			async (data: FormDataType, user: UserTypeFull | undefined) => {
+				console.log('GRP', data);
+			},
+		);
 	},
 	makeGEO: async (event) => {
-		return await formRunner(event, [], true, async (data: FormDataType, user: UserTypeFull | undefined) => {
-			console.log("GEO", data);
-		});
+		return await formRunner(
+			event,
+			[],
+			true,
+			async (data: FormDataType, user: UserTypeFull | undefined) => {
+				console.log('GEO', data);
+			},
+		);
 	},
 	makeEXT: async (event) => {
-		return await formRunner(event, [], true, async (data: FormDataType, user: UserTypeFull | undefined) => {
-			console.log("EXT", data);
-		});
+		return await formRunner(
+			event,
+			[],
+			true,
+			async (data: FormDataType, user: UserTypeFull | undefined) => {
+				console.log('EXT', data);
+			},
+		);
 	},
 };

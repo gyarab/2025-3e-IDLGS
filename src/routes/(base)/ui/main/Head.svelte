@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { m } from "$lib/paraglide/messages";
-	import { darkenHex } from "$lib";
+	import { m } from '$lib/paraglide/messages';
+	import { darkenHex } from '$lib';
 </script>
 
-<div class="relative w-full flex flex-col h-screen">
+<div class="relative flex h-screen w-full flex-col">
 	<div></div>
 </div>

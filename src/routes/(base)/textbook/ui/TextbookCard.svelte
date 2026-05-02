@@ -22,7 +22,7 @@
 <button
 	title={textbookString}
 	aria-label={textbookString}
-	class="flex w-full flex-col rounded-lg p-2 shadow-xl min-h-[15vh]"
+	class="flex min-h-[15vh] w-full flex-col rounded-lg p-2 shadow-xl"
 	style="background-color: {textbookColor}; border: 1px solid {textbookColor};"
 	onclick={() => {
 		goto(

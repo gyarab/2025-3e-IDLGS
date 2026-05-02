@@ -18,7 +18,9 @@
 </script>
 
 <svelte:head>
-	<title>{m.textbookInteractiveExercises()} | {data.textbook.title} |  {m.idlgs()}</title>
+	<title
+		>{m.textbookInteractiveExercises()} | {data.textbook.title} | {m.idlgs()}</title
+	>
 </svelte:head>
 
 <div

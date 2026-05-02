@@ -115,7 +115,9 @@
 		</Form>
 
 		{#if !data.darkMode}
-			<p class="text-center text-xs opacity-40">{m.secureEncryptedLogin()}</p>
+			<p class="text-center text-xs opacity-40">
+				{m.secureEncryptedLogin()}
+			</p>
 		{/if}
 	</div>
 </div>

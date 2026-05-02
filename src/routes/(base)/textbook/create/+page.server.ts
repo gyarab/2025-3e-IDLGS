@@ -34,7 +34,9 @@ export const actions = {
 			true,
 			async (data: FormDataType, user: UserTypeFull | undefined) => {
 				const chapters = JSON.parse(data.chapters) as ChapterTypeRaw[];
-				const articles = JSON.parse(data.articles) as ArticleTypeRaw[][];
+				const articles = JSON.parse(
+					data.articles,
+				) as ArticleTypeRaw[][];
 				const authors = JSON.parse(data.authors) as string[]; //uuids
 
 				if (

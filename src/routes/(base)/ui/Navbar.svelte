@@ -90,7 +90,7 @@
 					css="px-1"
 					hecss="text-lg"
 					onclick={async () => {
-						await logout();	
+						await logout();
 						goto(resolve('/(protected)/login'));
 					}}
 				/>

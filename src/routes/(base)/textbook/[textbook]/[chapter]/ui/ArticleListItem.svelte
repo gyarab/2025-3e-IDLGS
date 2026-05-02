@@ -12,16 +12,18 @@
 	} = $props();
 </script>
 
-<button 
-	class="flex flex-row w-full"
+<button
+	class="flex w-full flex-row"
 	title="{m.openArticle()} {article.title}}"
 	aria-label="{m.openArticle()} {article.title}}"
 	onclick={() => {
-		goto(resolve("/(base)/textbook/[textbook]/[chapter]/[article]", {
-			article: article.uuid,
-			chapter: page.params.chapter!,
-			textbook: page.params.textbook!
-		}));
+		goto(
+			resolve('/(base)/textbook/[textbook]/[chapter]/[article]', {
+				article: article.uuid,
+				chapter: page.params.chapter!,
+				textbook: page.params.textbook!,
+			}),
+		);
 	}}
 >
 	<h2>{article.title}</h2>

@@ -82,7 +82,7 @@ export const logout = async () => {
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded',
 		},
-		body: "",
+		body: '',
 	});
 };
 
