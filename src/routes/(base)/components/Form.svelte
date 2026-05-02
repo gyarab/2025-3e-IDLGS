@@ -16,6 +16,7 @@
 		failure = async () => {},
 		final = async () => {},
 		element = $bindable(),
+		color,
 	}: {
 		target: string;
 		children: Snippet;
@@ -29,6 +30,7 @@
 		reset?: boolean;
 		invalidateAll?: boolean;
 		element?: HTMLFormElement;
+		color: string;
 	} = $props();
 </script>
 
@@ -56,7 +58,7 @@
 	}}
 >
 	{#if loading}
-		<LoadingAnimationHandler />
+		<LoadingAnimationHandler {color} />
 	{:else}
 		{@render children()}
 	{/if}

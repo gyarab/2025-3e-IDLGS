@@ -110,6 +110,7 @@
 			stage = 4;
 			//TODO popup message @AY-GA
 		}}
+		color={data.color}
 	>
 		<input
 			type="hidden"

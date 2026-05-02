@@ -36,6 +36,7 @@
 
 <div class="flex w-full grow flex-col items-center gap-4">
 	<Form
+		color={data.color}
 		darkMode={data.darkMode}
 		css="w-1/4!"
 		success={async () => {}}
@@ -87,6 +88,7 @@
 		success={async () => {}}
 		failure={async () => {}}
 		target="?/updateInstitutionInfo"
+		color={data.color}
 	>
 		<h1>{m.institution()}</h1>
 
@@ -128,6 +130,7 @@
 		final={async () => {
 			setLocale(language as Locale);
 		}}
+		color={data.color}
 	>
 		<h1>{m.language()}</h1>
 
@@ -161,6 +164,7 @@
 		success={async () => {}}
 		failure={async () => {}}
 		target="?/updateDescription"
+		color={data.color}
 	>
 		<h1>{m.description()}</h1>
 
@@ -188,6 +192,7 @@
 		success={async () => {}}
 		failure={async () => {}}
 		target="?/updateProfilePicture"
+		color={data.color}
 	>
 		<h1>{m.profilePicture()}</h1>
 
@@ -207,6 +212,7 @@
 		success={async () => {}}
 		failure={async () => {}}
 		target="?/updateColor"
+		color={data.color}
 	>
 		<h1>{m.theme()}</h1>
 
@@ -230,6 +236,7 @@
 		success={async () => {}}
 		failure={async () => {}}
 		target="?/updatePassword"
+		color={data.color}
 	>
 		<h1>{m.updatePassword()}</h1>
 
@@ -265,6 +272,7 @@
 		success={async () => {}}
 		failure={async () => {}}
 		target="?/updateEmail"
+		color={data.color}
 	>
 		<h1>{m.changeEmail()}</h1>
 

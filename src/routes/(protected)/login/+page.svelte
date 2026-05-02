@@ -71,6 +71,7 @@
 				redirect(303, '/profile/');
 			}}
 			failure={async () => {}}
+			color={data.color}
 		>
 			<div class="space-y-4">
 				<TextInput
