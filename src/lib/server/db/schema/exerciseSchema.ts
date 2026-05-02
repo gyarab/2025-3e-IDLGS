@@ -5,7 +5,7 @@ import { resource } from './userSchema.ts';
 export const exercise = pgTable(
 	'exercise',
 	{
-		id: serial('id').primaryKey().notNull().unique(),
+		id: serial('id').primaryKey().notNull(),
 		/*
 	- CRS crossword
 	- CRW crossword without result
@@ -69,7 +69,7 @@ export const exercise = pgTable(
 );
 
 export const exerciseResource = pgTable('exerciseResource', {
-	id: serial('id').primaryKey().notNull().unique(),
+	id: serial('id').primaryKey().notNull(),
 	exerciseId: integer('exerciseId')
 		.notNull()
 		.references(() => exercise.id),
@@ -79,7 +79,7 @@ export const exerciseResource = pgTable('exerciseResource', {
 });
 
 export const exerciseCrossword = pgTable('exerciseCrossword', {
-	id: serial('id').primaryKey().notNull().unique(),
+	id: serial('id').primaryKey().notNull(),
 	solution: text('solution'),
 	words: text('words')
 		.array()
@@ -93,7 +93,7 @@ export const exerciseCrossword = pgTable('exerciseCrossword', {
 });
 
 export const exerciseCRW = pgTable('exerciseCRW', {
-	id: serial('id').primaryKey().notNull().unique(),
+	id: serial('id').primaryKey().notNull(),
 	// starting positions and direction of words
 	xStarts: integer('xStarts')
 		.array()
@@ -119,7 +119,7 @@ export const exerciseCRW = pgTable('exerciseCRW', {
 });
 
 export const exerciseCRS = pgTable('exerciseCRS', {
-	id: serial('id').primaryKey().notNull().unique(),
+	id: serial('id').primaryKey().notNull(),
 	offsets: integer('offsets')
 		.array()
 		.default(sql`ARRAY[]::integer[]`)
@@ -128,23 +128,23 @@ export const exerciseCRS = pgTable('exerciseCRS', {
 });
 
 export const exerciseDefinitions = pgTable('exerciseDefinitions', {
-	id: serial('id').primaryKey().notNull().unique(),
+	id: serial('id').primaryKey().notNull(),
 });
 
 export const exerciseGraph = pgTable('exerciseGraph', {
-	id: serial('id').primaryKey().notNull().unique(),
+	id: serial('id').primaryKey().notNull(),
 });
 
 export const exerciseGraphFunction = pgTable('exerciseGraphFunction', {
-	id: serial('id').primaryKey().notNull().unique(),
+	id: serial('id').primaryKey().notNull(),
 	latex: text('latex').notNull(),
 });
 
 export const exerciseGeometry = pgTable('exerciseGeometry', {
-	id: serial('id').primaryKey().notNull().unique(),
+	id: serial('id').primaryKey().notNull(),
 });
 
 export const exerciseEmbed = pgTable('exerciseEmbed', {
-	id: serial('id').primaryKey().notNull().unique(),
+	id: serial('id').primaryKey().notNull(),
 	link: text('link').notNull(),
 });

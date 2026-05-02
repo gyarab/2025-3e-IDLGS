@@ -46,7 +46,7 @@
 		<p>{m.textbookStructureDesciption()}</p>
 	</div>
 
-	<div class="flex w-full grow flex-row">
+	<div class="flex w-full grow flex-row gap-2">
 		<div class="flex max-w-1/2 grow flex-col gap-2">
 			<h2
 				in:fly|global={{
@@ -59,9 +59,30 @@
 			>
 				{m.chapters()}
 			</h2>
-			<div class="flex grow flex-col">
+			<div
+				class="flex grow flex-col gap-2 overflow-x-hidden overflow-y-scroll"
+			>
 				{#each chapters as chapter, i (i)}
-					<Chapter />
+					<Chapter
+						{darkMode}
+						{chapter}
+						{i}
+						amount={chapters.length}
+						selected={selectedChapterId === i}
+						{color}
+						onclick={() => {
+							selectedChapterId = i;
+							selectedArticleId = undefined;
+						}}
+						onup={() => {}}
+						ondown={() => {}}
+					/>
+				{:else}
+					<div
+						class="flex flex-col justify-center items-center grow w-full italic opacity-70"
+					>
+						{m.noChaptersYet()}
+					</div>
 				{/each}
 			</div>
 			<div class="flex w-full flex-row gap-1">
@@ -104,7 +125,7 @@
 							onclick={() => {}}
 							emoji="edit-box"
 							type="button"
-							disabled={!selectedChapterId}
+							disabled={selectedChapterId == undefined}
 						/>
 					</span>
 					<span
@@ -126,7 +147,7 @@
 							}}
 							emoji="delete-bin-2"
 							type="button"
-							disabled={!selectedChapterId}
+							disabled={selectedChapterId == undefined}
 						/>
 					</span>
 				{/if}
@@ -145,10 +166,28 @@
 			>
 				{m.articles()}
 			</h2>
-			{#if selectedChapterId}
-				<div class="flex grow flex-col">
+			{#if selectedChapterId != undefined}
+				<div
+					class="flex grow flex-col gap-2 overflow-x-hidden overflow-y-scroll"
+				>
 					{#each articles[selectedChapterId] as article, i (i)}
-						<Article />
+						<Article
+							{darkMode}
+							{article}
+							{color}
+							{i}
+							selected={selectedArticleId === i}
+							amount={articles[selectedChapterId].length}
+							onclick={() => {
+								selectedArticleId = i;
+							}}
+							onup={() => {}}
+							ondown={() => {}}
+						/>
+					{:else}
+						<div class="flex flex-col justify-center items-center italic opacity-70 grow w-full">
+							{m.noArticlesInChapterYet()}
+						</div>
 					{/each}
 				</div>
 				<div class="flex w-full flex-row gap-1">
@@ -171,7 +210,7 @@
 							}}
 							emoji="add-circle"
 							type="button"
-							disabled={!selectedChapterId}
+							disabled={selectedChapterId == undefined}
 						/>
 					</span>
 					<span
@@ -191,7 +230,8 @@
 							onclick={() => {}}
 							emoji="edit-circle"
 							type="button"
-							disabled={!selectedArticleId || !selectedChapterId}
+							disabled={selectedArticleId == undefined ||
+								selectedChapterId == undefined}
 						/>
 					</span>
 					<span
@@ -213,7 +253,8 @@
 							}}
 							emoji="close-circle"
 							type="button"
-							disabled={!selectedArticleId || !selectedChapterId}
+							disabled={selectedArticleId == undefined ||
+								selectedChapterId == undefined}
 						/>
 					</span>
 				</div>
@@ -254,6 +295,7 @@
 					order: chapters.length,
 				});
 				articles.push([]);
+				tempTitleValue = '';
 			}}
 			cancel={async () => {}}
 		/>
@@ -285,6 +327,7 @@
 					title: tempTitleValue,
 					order: articles[selectedChapterId!].length,
 				});
+				tempTitleValue = '';
 			}}
 			cancel={async () => {}}
 		/>
@@ -297,9 +340,10 @@
 	{color}
 	confirm={async () => {
 		if (deleteArticle) {
-			articles.splice(selectedArticleId!, 1);
+			articles[selectedChapterId!].splice(selectedArticleId!, 1);
 		} else if (deleteChapter) {
 			chapters.splice(selectedChapterId!, 1);
+			articles.splice(selectedChapterId!, 1);
 		}
 
 		deleteArticle = false;

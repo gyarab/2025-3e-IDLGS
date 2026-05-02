@@ -127,5 +127,14 @@
 	"thisActionCannotBeUndone": "Ta akcja nie może zostać cofnięta",
 	"selectAChapterToViewArticles": "Wybierz rozdział, aby zobaczyć jego artykuły",
 	"articleTitle": "Tytuł artykułu",
-	"chapterTitle": "Tytuł rozdziału"
+	"chapterTitle": "Tytuł rozdziału",
+	"moveChapterUp": "Przenieś rozdział w górę",
+	"moveChapterDown": "Przenieś rozdział w dół",
+	"moveArticleUp": "Przenieś artykuł w górę",
+	"moveArticleDown": "Przenieś artykuł w dół",
+	"noArticlesInChapterYet": "Brak artykułów w rozdziale",
+	"noChaptersYet": "Brak rozdziałów",
+	"addResource": "Dodaj zasób",
+	"editResource": "Edytuj zasób",
+	"removeResource": "Usuń zasób"
 }

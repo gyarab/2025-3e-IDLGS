@@ -128,5 +128,14 @@
 	"thisActionCannotBeUndone": "This action cannot be undone",
 	"selectAChapterToViewArticles": "Select a chapter to view its articles",
 	"articleTitle": "Article title",
-	"chapterTitle": "Chapter title"
+	"chapterTitle": "Chapter title",
+	"moveChapterUp": "Move chapter up",
+	"moveChapterDown": "Move chapter down",
+	"moveArticleUp": "Move article up",
+	"moveArticleDown": "Move article down",
+	"noArticlesInChapterYet": "No articles in this chapter yet",
+	"noChaptersYet": "No chapters yet",
+	"addResource": "Add resource",
+	"editResource": "Edit resource",
+	"removeResource": "Remove resource"
 }
