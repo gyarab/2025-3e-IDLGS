@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { TextbookType, UserType } from "$lib/types";
-	import type { ResourceType } from "cloudinary";
+	import type { TextbookType, UserType } from '$lib/types';
+	import type { ResourceType } from 'cloudinary';
 
 	let {
 		darkMode,
@@ -10,13 +10,11 @@
 		darkMode: boolean;
 		color: string;
 		data: {
-			user: UserType,
-			textbook: TextbookType,
-			resources: ResourceType[],
-		}
+			user: UserType;
+			textbook: TextbookType;
+			resources: ResourceType[];
+		};
 	} = $props();
 </script>
 
-<div>
-
-</div>
+<div></div>

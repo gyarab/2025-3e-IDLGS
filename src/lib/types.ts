@@ -1,4 +1,4 @@
-import type { FileType } from "./server/filesave";
+import type { FileType } from './server/filesave';
 
 export type UserTypeInfo = {
 	degree: string | null;

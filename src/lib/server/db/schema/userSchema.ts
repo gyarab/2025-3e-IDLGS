@@ -73,12 +73,14 @@ export const session = pgTable('session', {
 		}),
 });
 
-export const resource = pgTable('resource', {
-	id: serial('id').primaryKey(),
-	title: text('title').notNull(),
-	url: text('url').notNull().default(''),
-	//image, video, raw
-	type: text('type').notNull(),
-}, (table) => [
-	check('type', sql`${table.type} IN ('image', 'video', 'raw')`),
-]);
+export const resource = pgTable(
+	'resource',
+	{
+		id: serial('id').primaryKey(),
+		title: text('title').notNull(),
+		url: text('url').notNull().default(''),
+		//image, video, raw
+		type: text('type').notNull(),
+	},
+	(table) => [check('type', sql`${table.type} IN ('image', 'video', 'raw')`)],
+);

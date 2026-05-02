@@ -106,7 +106,7 @@
 			/>
 		</span>
 
-				<span
+		<span
 			in:fly|global={{
 				x: 1000,
 				y: 0,

@@ -63,8 +63,7 @@
 	{darkMode}
 	css="min-h-0! min-w-1/4!"
 >
-	<div class="flex flex-col w-full grow">
-	</div>
+	<div class="flex w-full grow flex-col"></div>
 </Dialog>
 
 <Dialog
@@ -72,8 +71,7 @@
 	{darkMode}
 	css="min-h-0! min-w-1/4!"
 >
-	<div class="flex flex-col w-full grow">
-	</div>
+	<div class="flex w-full grow flex-col"></div>
 </Dialog>
 
 <ConfirmDeleteDialog
@@ -82,4 +80,4 @@
 	{color}
 	confirm={async () => {}}
 	cancel={async () => {}}
- />
+/>

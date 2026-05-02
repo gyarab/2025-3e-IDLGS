@@ -3,21 +3,23 @@ import { schema as databaseSchema } from '$lib/server/db/schema';
 import { eq } from 'drizzle-orm';
 
 export const load = async (event) => {
-	const textbookRawData = (await event.locals.db
-		.select()
-		.from(databaseSchema.textbook)
-		.where(eq(databaseSchema.textbook.uuid, event.params.textbook))
-		.limit(1))[0];
+	const textbookRawData = (
+		await event.locals.db
+			.select()
+			.from(databaseSchema.textbook)
+			.where(eq(databaseSchema.textbook.uuid, event.params.textbook))
+			.limit(1)
+	)[0];
 
 	const users = await event.locals.db
 		.select({
-		name: databaseSchema.user.name,
-		middlename: databaseSchema.user.middlename,
-		surname: databaseSchema.user.surname,
-		uuid: databaseSchema.user.uuid,
-		profilePicture: databaseSchema.resource.url,
-		degree: databaseSchema.user.degree,
-		institution: databaseSchema.user.institution,
+			name: databaseSchema.user.name,
+			middlename: databaseSchema.user.middlename,
+			surname: databaseSchema.user.surname,
+			uuid: databaseSchema.user.uuid,
+			profilePicture: databaseSchema.resource.url,
+			degree: databaseSchema.user.degree,
+			institution: databaseSchema.user.institution,
 		})
 		.from(databaseSchema.user)
 		.leftJoin(
@@ -32,7 +34,10 @@ export const load = async (event) => {
 			),
 		)
 		.where(
-			eq(databaseSchema.textbookUserLinker.textbookId, textbookRawData.id),
+			eq(
+				databaseSchema.textbookUserLinker.textbookId,
+				textbookRawData.id,
+			),
 		);
 
 	const textbook: TextbookType = {
@@ -48,6 +53,6 @@ export const load = async (event) => {
 	};
 
 	return {
-		textbook: textbook
+		textbook: textbook,
 	};
 };
