@@ -4,9 +4,7 @@
 	import Button from '$src/routes/(base)/components/Button.svelte';
 	import { darkenHex } from '$lib';
 
-	// Fallback data in case the error happens before data is loaded
-	// You can also try to pull these from a shared store or page state
-	const color = '#3b82f6'; // Primary brand color
+	const color = '#e04040';
 	const darkMode = true;
 </script>
 
@@ -18,7 +16,7 @@
 	class="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden p-4"
 	style="background: linear-gradient(135deg, {color}, {darkenHex(
 		color,
-		80,
+		50,
 	)}); --brand: {color};"
 >
 	<i
