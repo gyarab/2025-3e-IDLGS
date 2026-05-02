@@ -61,7 +61,7 @@
 					css="px-1"
 					hecss="text-lg"
 					onclick={() => {
-						goto('/profile')
+						goto('/profile');
 					}}
 				/>
 
