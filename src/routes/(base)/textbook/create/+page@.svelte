@@ -11,7 +11,7 @@
 	import type { ArticleType, ChapterType, UserTypeInfo } from '$lib/types';
 	import Form from '$src/routes/(base)/components/Form.svelte';
 	import LoadingAnimationHandler from '../../components/loading/LoadingAnimationHandler.svelte';
-	import { redirect } from '@sveltejs/kit';
+	import { goto } from '$app/navigation';
 
 	let {
 		data,
@@ -104,7 +104,7 @@
 			stage = 5;
 		}}
 		success={async () => {
-			redirect(302, resolve('/(base)/textbook'));
+			goto(resolve('/(base)/textbook'));
 		}}
 		failure={async () => {
 			stage = 4;

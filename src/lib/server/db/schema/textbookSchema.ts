@@ -8,7 +8,7 @@ import {
 	timestamp,
 } from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm';
-import { resource } from './userSchema';
+import { user, resource } from './userSchema';
 
 export const textbook = pgTable(
 	'textbook',
@@ -58,7 +58,7 @@ export const textbookUserLinker = pgTable('textbookUserLinker', {
 		.references(() => textbook.id, { onDelete: 'cascade' }),
 	userId: integer('userId')
 		.notNull()
-		.references(() => resource.id, { onDelete: 'cascade' }),
+		.references(() => user.id, { onDelete: 'cascade' }),
 });
 
 export const chapter = pgTable('chapter', {
@@ -98,7 +98,7 @@ export const articleHistory = pgTable('articleHistory', {
 		.references(() => article.id),
 	userId: integer('userId')
 		.notNull()
-		.references(() => resource.id),
+		.references(() => user.id),
 	textCompressed: text('textCompressed').notNull(),
 	visitedAt: integer('visitedAt').notNull(),
 });
