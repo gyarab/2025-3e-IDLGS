@@ -38,8 +38,7 @@ export const actions = {
 			event,
 			[],
 			true,
-			async (data: FormDataType, user: UserType | undefined) => {
-
-			});
+			async (data: FormDataType, user: UserType | undefined) => {},
+		);
 	},
 };

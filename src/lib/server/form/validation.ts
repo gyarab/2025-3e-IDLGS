@@ -29,7 +29,7 @@ export const formRunner = async (
 
 	if (userNeeded) {
 		const session = event.cookies.get('sessionTokenIDLGS');
-		if(!session) return fail(401);
+		if (!session) return fail(401);
 
 		const value = (
 			await (event.locals.db as DBType)
@@ -49,7 +49,7 @@ export const formRunner = async (
 				.where(eq(databaseSchema.session.token, session))
 		)[0];
 
-		if(!value) return fail(401);
+		if (!value) return fail(401);
 
 		user = {
 			...value.user,

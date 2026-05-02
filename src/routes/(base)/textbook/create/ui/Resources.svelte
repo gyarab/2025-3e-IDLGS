@@ -23,11 +23,9 @@
 		<h2 class="text-2xl font-bold">{m.textbookResources()}</h2>
 		<p>{m.textbookResourcesDescription()}</p>
 	</div>
-	<div class="flex flex-col grow w-full gap-2">
-
-	</div>
-	<div class="flex flex-row w-full gap-2">
-		<Button 
+	<div class="flex w-full grow flex-col gap-2"></div>
+	<div class="flex w-full flex-row gap-2">
+		<Button
 			text={m.addResource()}
 			emoji="file-add"
 			type="button"
@@ -35,7 +33,7 @@
 			css="buttonPrimary grow"
 			style="background-color: {color};"
 		/>
-		<Button 
+		<Button
 			text={m.editResource()}
 			emoji="file-edit"
 			type="button"
@@ -43,7 +41,7 @@
 			css="buttonPrimary grow"
 			style="background-color: {darkenHex(color, 50)};"
 		/>
-		<Button 
+		<Button
 			text={m.removeResource()}
 			emoji="file-reduce"
 			type="button"
@@ -51,5 +49,5 @@
 			css="buttonPrimary grow"
 			style="background-color: {darkenHex(color, 80)};"
 		/>
-	</div>	
+	</div>
 </div>

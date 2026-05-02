@@ -27,6 +27,9 @@
 		{darkMode}
 		css="flex flex-col w-full grow gap-2"
 	>
-		<input type="hidden" name="name" />
+		<input
+			type="hidden"
+			name="name"
+		/>
 	</Form>
 </div>

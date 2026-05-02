@@ -87,7 +87,11 @@
 		color={textbookColor}
 		disableNext={(stage == 0 &&
 			(!name || !description || !educationLevel)) ||
-			(stage == 1 && (chapters.length == 0 || chapters.map((_c, i) => articles[i].length).every((len) => len === 0))) ||
+			(stage == 1 &&
+				(chapters.length == 0 ||
+					chapters
+						.map((_c, i) => articles[i].length)
+						.every((len) => len === 0))) ||
 			false}
 		disablePrev={false}
 		createText={m.createTextbook()}

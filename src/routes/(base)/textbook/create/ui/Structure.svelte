@@ -185,7 +185,9 @@
 							ondown={() => {}}
 						/>
 					{:else}
-						<div class="flex flex-col justify-center items-center italic opacity-70 grow w-full">
+						<div
+							class="flex flex-col justify-center items-center italic opacity-70 grow w-full"
+						>
 							{m.noArticlesInChapterYet()}
 						</div>
 					{/each}

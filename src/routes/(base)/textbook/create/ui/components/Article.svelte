@@ -49,7 +49,9 @@
 		class="flex grow flex-row items-center gap-2"
 		{onclick}
 	>
-		<HoverEmoji emoji={selected ? 'checkbox-circle' : 'checkbox-blank-circle'} />
+		<HoverEmoji
+			emoji={selected ? 'checkbox-circle' : 'checkbox-blank-circle'}
+		/>
 		<h2 class="mb-0!">{article.title}</h2>
 		<div class="grow"></div>
 	</button>
