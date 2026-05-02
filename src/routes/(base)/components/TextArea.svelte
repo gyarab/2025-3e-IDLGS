@@ -22,7 +22,7 @@
 	} = $props();
 </script>
 
-<div class="overflow-hidden! rounded-lg! {css} flex flex-col w-full">
+<div class="overflow-hidden! rounded-lg! {css} flex w-full flex-col">
 	<textarea
 		bind:value
 		{placeholder}

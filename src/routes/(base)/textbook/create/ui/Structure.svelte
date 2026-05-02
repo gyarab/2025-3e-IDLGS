@@ -99,7 +99,7 @@
 	</div>
 </div>
 
-<Dialog 
+<Dialog
 	bind:open={showChapterDialog}
 	{darkMode}
 >

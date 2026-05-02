@@ -51,7 +51,7 @@ export const actions = {
 						.limit(1)
 				)[0];
 
-				if(!userData) return fail(401);
+				if (!userData) return fail(401);
 
 				if (
 					verifyPassword(

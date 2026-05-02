@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { darkenHex } from '$lib';
-import { m } from '$lib/paraglide/messages';
+	import { m } from '$lib/paraglide/messages';
 	import ColorInput from '$src/routes/(base)/components/ColorInput.svelte';
 	import SelectionButton from '$src/routes/(base)/components/SelectionButton.svelte';
 	import TextArea from '$src/routes/(base)/components/TextArea.svelte';
@@ -38,9 +38,29 @@ import { m } from '$lib/paraglide/messages';
 			bind:value={name}
 		/>
 
-		<SelectionButton 
-			texts={[m.isced0(), m.isced1(), m.isced2(), m.isced3(), m.isced4(), m.isced5(), m.isced6(), m.isced7(), m.isced8()]}
-			values={['kindergarten', 'elementary', 'firstgym', 'secondgym', 'prevs', 'shortvs', 'bachelor', 'master', 'doctor']}
+		<SelectionButton
+			texts={[
+				m.isced0(),
+				m.isced1(),
+				m.isced2(),
+				m.isced3(),
+				m.isced4(),
+				m.isced5(),
+				m.isced6(),
+				m.isced7(),
+				m.isced8(),
+			]}
+			values={[
+				'kindergarten',
+				'elementary',
+				'firstgym',
+				'secondgym',
+				'prevs',
+				'shortvs',
+				'bachelor',
+				'master',
+				'doctor',
+			]}
 			bind:value={education}
 			style="background-color: {color};"
 			css="buttonPrimary text-sm"

@@ -1,7 +1,5 @@
 <script lang="ts">
-	import Dialog from "./Dialog.svelte";
+	import Dialog from './Dialog.svelte';
 </script>
 
-<div class="">
-
-</div>
+<div class=""></div>

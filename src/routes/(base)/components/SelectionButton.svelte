@@ -41,8 +41,7 @@
 	);
 
 	let isSelected: boolean[] | undefined = $derived(
-		values?.map((v) => Boolean(value) && v == value) ??
-			undefined,
+		values?.map((v) => Boolean(value) && v == value) ?? undefined,
 	);
 </script>
 

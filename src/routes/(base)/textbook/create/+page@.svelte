@@ -19,10 +19,10 @@
 	} = $props();
 
 	let stage: number = $state(0);
-	let name: string = $state("");
-	let description: string = $state("");
+	let name: string = $state('');
+	let description: string = $state('');
 	let textbookColor: string = $derived(data.color);
-	let educationLevel: string = $state("");
+	let educationLevel: string = $state('');
 </script>
 
 <svelte:head>
@@ -80,7 +80,9 @@
 		bind:stage
 		darkMode={data.darkMode}
 		color={textbookColor}
-		disableNext={(stage == 0 && (!name || !description || !educationLevel)) || false}
+		disableNext={(stage == 0 &&
+			(!name || !description || !educationLevel)) ||
+			false}
 		disablePrev={false}
 		createText={m.createTextbook()}
 		nextButtonCreate={stage == 4}

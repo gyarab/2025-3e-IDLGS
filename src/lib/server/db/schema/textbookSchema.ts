@@ -34,7 +34,10 @@ export const textbook = pgTable(
 		check('r', sql`${table.r} >= 0 AND ${table.r} <= 255`),
 		check('g', sql`${table.g} >= 0 AND ${table.g} <= 255`),
 		check('b', sql`${table.b} >= 0 AND ${table.b} <= 255`),
-		check('isced', sql`${table.educationLevel} >= 0 AND ${table.educationLevel} <= 8`)
+		check(
+			'isced',
+			sql`${table.educationLevel} >= 0 AND ${table.educationLevel} <= 8`,
+		),
 	],
 );
 
