@@ -3,8 +3,8 @@
 	import Button from '$src/routes/(base)/components/Button.svelte';
 	import Form from '$src/routes/(base)/components/Form.svelte';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
-	import { redirect } from '@sveltejs/kit';
 	import { darkenHex } from '$lib';
+	import { goto } from '$app/navigation';
 
 	let {
 		data,
@@ -68,7 +68,7 @@
 			darkMode={data.darkMode}
 			css="flex flex-col gap-4"
 			success={async () => {
-				redirect(303, '/profile/');
+				goto('/profile/');
 			}}
 			failure={async () => {}}
 			color={data.color}
