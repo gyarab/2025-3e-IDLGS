@@ -5,6 +5,7 @@
 	import Button from '$src/routes/(base)/components/Button.svelte';
 	import HoverEmoji from '$src/routes/(base)/components/HoverEmoji.svelte';
 	import { fly } from 'svelte/transition';
+	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
 
 	let {
 		article,
@@ -16,6 +17,7 @@
 		onclick,
 		onup,
 		ondown,
+		onedit,
 	}: {
 		article: ArticleType;
 		darkMode: boolean;
@@ -26,7 +28,11 @@
 		onclick: () => void;
 		onup: () => void;
 		ondown: () => void;
+		onedit: (v: string) => void;
 	} = $props();
+
+	let tempTitleValue: string = $derived(article.title);
+	let editMode: boolean = $state(false);
 </script>
 
 <div
@@ -44,35 +50,78 @@
 		opacity: 0,
 	}}
 >
-	<button
-		type="button"
-		class="flex grow flex-row items-center gap-2"
-		{onclick}
-	>
-		<HoverEmoji
-			emoji={selected ? 'checkbox-circle' : 'checkbox-blank-circle'}
+	{#if editMode}
+		<TextInput
+			{darkMode}
+			{color}
+			type="text"
+			placeholder={m.articleTitle()}
+			bind:value={tempTitleValue}
+			css="grow"
 		/>
-		<h2 class="mb-0!">{article.title}</h2>
-		<div class="grow"></div>
-	</button>
-	<Button
-		label={m.moveArticleUp()}
-		emoji="arrow-up-double"
-		type="button"
-		onclick={() => {
-			onup();
-		}}
-		text=""
-		disabled={i === 0}
-	/>
-	<Button
-		label={m.moveArticleDown()}
-		emoji="arrow-down-double"
-		type="button"
-		onclick={() => {
-			ondown();
-		}}
-		text=""
-		disabled={i === amount - 1}
-	/>
+		<Button
+			label={m.confirm()}
+			emoji="check"
+			type="button"
+			onclick={() => {
+				onedit(tempTitleValue);
+				editMode = false;
+			}}
+			text=""
+		/>
+		<Button
+			label={m.cancel()}
+			emoji="close"
+			type="button"
+			onclick={() => {
+				tempTitleValue = article.title;
+				editMode = false;
+			}}
+			text=""
+		/>
+	{:else}
+		<button
+			type="button"
+			class="flex grow flex-row items-center gap-2"
+			{onclick}
+			title={m.selectArticle()}
+			aria-label={m.selectArticle()}
+		>
+			<HoverEmoji
+				emoji={selected ? 'checkbox-circle' : 'checkbox-blank-circle'}
+			/>
+			<h2 class="mb-0!">{article.title}</h2>
+			<div class="grow"></div>
+		</button>
+
+		<Button
+			label={m.editArticle()}
+			emoji="edit-box"
+			type="button"
+			onclick={() => {
+				editMode = true;
+			}}
+			text=""
+		/>
+		<Button
+			label={m.moveArticleUp()}
+			emoji="arrow-up-double"
+			type="button"
+			onclick={() => {
+				onup();
+			}}
+			text=""
+			disabled={i === 0}
+		/>
+		<Button
+			label={m.moveArticleDown()}
+			emoji="arrow-down-double"
+			type="button"
+			onclick={() => {
+				ondown();
+			}}
+			text=""
+			disabled={i === amount - 1}
+		/>
+	{/if}
 </div>

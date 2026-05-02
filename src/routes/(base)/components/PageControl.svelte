@@ -33,6 +33,6 @@
 			'arrow-left-double',
 			nextButtonCreate ? 'check-double' : 'arrow-right-double',
 		]}
-		types={nextButtonCreate ? ['submit', 'button'] : ['button', 'button']}
+		types={nextButtonCreate ? ['button', 'submit'] : ['button', 'button']}
 	/>
 </div>

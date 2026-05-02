@@ -1,66 +1,23 @@
 <script lang="ts">
-	import { m } from '$lib/paraglide/messages';
-	import { onDestroy, onMount } from 'svelte';
-
-	let timeoutMessageChange: NodeJS.Timeout | undefined = $state(undefined);
-	let intervalDot: NodeJS.Timeout | undefined = $state(undefined);
-	let dots: number = $state(1);
-	let newMessage = $state(false);
-
 	let {
-		text = true,
-		smallerBubbles = false,
-		textColorR = 0,
-		textColorG = 0,
-		textColorB = 0,
+		color,
 	}: {
-		text?: boolean;
-		smallerBubbles?: boolean;
-		textColorR?: number;
-		textColorG?: number;
-		textColorB?: number;
+		color: string;
 	} = $props();
-
-	onMount(() => {
-		timeoutMessageChange = setTimeout(() => {
-			newMessage = true;
-		}, 6000);
-		intervalDot = setInterval(() => {
-			dots++;
-			if (dots == 4) dots = 1;
-		}, 330);
-	});
-	onDestroy(() => {
-		clearTimeout(timeoutMessageChange);
-		clearInterval(intervalDot);
-	});
 </script>
 
-<div class="flex flex-col items-center gap-0 p-4">
-	<div
-		class="flex flex-row gap-1 {smallerBubbles ? 'text-sm' : 'text-lg'}"
-		style="color: rgb({textColorR}, {textColorG}, {textColorB});"
-	>
-		<i class="ri-circle-fill animate-bounce [animation-delay:-0.66s]"></i>
-		<i class="ri-circle-fill animate-bounce [animation-delay:-0.33s]"></i>
-		<i class="ri-circle-fill animate-bounce"></i>
-	</div>
-	{#if text}
-		<div class="flex flex-row gap-0">
-			<span>
-				{#if newMessage}
-					{m.itsTakingLongerThanExpected()}
-				{:else}
-					{m.loading()}
-				{/if}
-			</span>
-			<span>
-				{#key dots}
-					{#each new Array(dots).fill('.') as dot, i (i)}
-						{dot}
-					{/each}
-				{/key}
-			</span>
-		</div>
-	{/if}
+<div class="h-16 w-16 animate-pulse">
+	<svg class="w-16 h-16" viewBox="0 0 100 100">
+		<circle
+			class="animate-variable-spin"
+			style="stroke: {color};"
+			cx="50"
+			cy="50"
+			r="40"
+			stroke-width="12"
+			fill="none"
+			stroke-dasharray="160 250"
+			stroke-linecap="round"	
+		/>
+	</svg>
 </div>

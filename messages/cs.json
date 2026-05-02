@@ -137,5 +137,17 @@
 	"noChaptersYet": "Zatím nejsou přidány žádné kapitoly",
 	"addResource": "Přidat zdroj",
 	"editResource": "Upravit zdroj",
-	"removeResource": "Odstranit zdroj"
+	"removeResource": "Odstranit zdroj",
+	"selectChapter": "Vyberte kapitolu",
+	"selectArticle": "Vyberte článek",
+	"searchAuthor": "Hledat autora",
+	"addAuthor": "Přidat autora",
+	"removeAuthor": "Odstranit autora",
+	"noUsersFound": "Nenalezeni žádní uživatelé",
+	"typeToSearchUsers": "Zadejte pro hledání uživatelů",
+	"pleaseTypeMoreThanCharacters": "Zadejte více než {number} znaků pro vyhledání",
+	"searching": "Hledám",
+	"educationLevel": "Vzdělávací úroveň",
+	"chapterAmount": "Počet kapitol",
+	"articleAmount": "Počet článků"
 }

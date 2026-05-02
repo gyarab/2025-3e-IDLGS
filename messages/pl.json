@@ -136,5 +136,17 @@
 	"noChaptersYet": "Brak rozdziałów",
 	"addResource": "Dodaj zasób",
 	"editResource": "Edytuj zasób",
-	"removeResource": "Usuń zasób"
+	"removeResource": "Usuń zasób",
+	"selectChapter": "Wybierz rozdział",
+	"selectArticle": "Wybierz artykuł",
+	"searchAuthor": "Szukaj autora",
+	"addAuthor": "Dodaj autora",
+	"removeAuthor": "Usuń autora",
+	"noUsersFound": "Nie znaleziono użytkowników",
+	"typeToSearchUsers": "Wpisz, aby wyszukać użytkowników",
+	"pleaseTypeMoreThanCharacters": "Wpisz większą ilość znaków niż {number} aby rozpocząć wyszukiwanie",
+	"searching": "Szukam",
+	"educationLevel": "Poziom edukacji",
+	"chapterAmount": "Liczba rozdziałów",
+	"articleAmount": "Liczba artykułów"
 }

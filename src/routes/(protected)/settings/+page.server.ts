@@ -8,7 +8,10 @@ import { locales } from '$lib/paraglide/runtime.js';
 import { hashPassword, verifyPassword } from '$lib/server/user/index.js';
 import { getRGBFromHex } from '$lib';
 
-export const load = async (event) => {};
+export const load = async (event) => {
+	const pd = await event.parent();
+	if (!pd.user) return fail(401);
+};
 
 export const actions = {
 	updatePersonalInfo: async (event) => {

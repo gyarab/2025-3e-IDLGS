@@ -28,6 +28,20 @@ cap-widget {
 	--font-inter: 'Inter', sans-serif;
 	--font-mulish: 'Mulish', sans-serif;
 	--font-wix: 'Wix Madefor Text', sans-serif;
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+}
+
+.animate-variable-spin {
+	transform-origin: center;
+	animation: spin 1s cubic-bezier(0.25, 0.5, 0.75, 0.5) infinite;
 }
 
 @layer base {

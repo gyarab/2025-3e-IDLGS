@@ -40,8 +40,8 @@ export const user = pgTable(
 		),
 		description: text('description').notNull().default(''),
 		lastSeenAt: timestamp('lastSeenAt').notNull().defaultNow(),
-		r: integer('r').notNull().default(0),
-		g: integer('g').notNull().default(0),
+		r: integer('r').notNull().default(255),
+		g: integer('g').notNull().default(128),
 		b: integer('b').notNull().default(0),
 		uuid: text('uuid')
 			.notNull()
@@ -81,6 +81,10 @@ export const resource = pgTable(
 		url: text('url').notNull().default(''),
 		//image, video, raw
 		type: text('type').notNull(),
+		uuid: text('uuid')
+			.notNull()
+			.unique()
+			.$defaultFn(() => crypto.randomUUID()),
 	},
 	(table) => [check('type', sql`${table.type} IN ('image', 'video', 'raw')`)],
 );

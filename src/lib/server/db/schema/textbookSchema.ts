@@ -41,6 +41,16 @@ export const textbook = pgTable(
 	],
 );
 
+export const textbookResourceLinker = pgTable('textbookResourceLinker', {
+	id: serial('id').primaryKey(),
+	textbookId: integer('textbookId')
+		.notNull()
+		.references(() => textbook.id, { onDelete: 'cascade' }),
+	resourceId: integer('resourceId')
+		.notNull()
+		.references(() => resource.id, { onDelete: 'cascade' }),
+});
+
 export const textbookUserLinker = pgTable('textbookUserLinker', {
 	id: serial('id').primaryKey(),
 	textbookId: integer('textbookId')
@@ -91,16 +101,6 @@ export const articleHistory = pgTable('articleHistory', {
 		.references(() => resource.id),
 	textCompressed: text('textCompressed').notNull(),
 	visitedAt: integer('visitedAt').notNull(),
-});
-
-export const articleResource = pgTable('articleResource', {
-	id: serial('id').primaryKey(),
-	articleId: integer('articleId')
-		.notNull()
-		.references(() => article.id),
-	resourceId: integer('resourceId')
-		.notNull()
-		.references(() => resource.id),
 });
 
 export const question = pgTable('question', {

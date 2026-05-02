@@ -1,6 +1,7 @@
 import { browser } from '$app/environment';
 
 export const DEFAULT_ACCENT_COLOR = '#ff8800';
+export const DEFAULT_MS_UNTIL_REQUEST = 500; //from end of typing until request is sent
 
 export const isInViewport = (element: HTMLElement): Promise<boolean> => {
 	return new Promise((resolve) => {

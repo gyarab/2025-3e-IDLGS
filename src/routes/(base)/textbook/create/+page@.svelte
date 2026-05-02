@@ -8,7 +8,10 @@
 	import Resources from './ui/Resources.svelte';
 	import Review from './ui/Review.svelte';
 	import PageControl from '../../components/PageControl.svelte';
-	import type { ArticleType, ChapterType } from '$lib/types';
+	import type { ArticleType, ChapterType, UserTypeInfo } from '$lib/types';
+	import Form from '$src/routes/(base)/components/Form.svelte';
+	import LoadingAnimationHandler from '../../components/loading/LoadingAnimationHandler.svelte';
+	import { redirect } from '@sveltejs/kit';
 
 	let {
 		data,
@@ -16,6 +19,7 @@
 		data: {
 			darkMode: boolean;
 			color: string;
+			user: UserTypeInfo;
 		};
 	} = $props();
 
@@ -26,6 +30,7 @@
 	let educationLevel: string = $state('');
 	let chapters: ChapterType[] = $state([]);
 	let articles: ArticleType[][] = $state([]);
+	let authorUuids: string[] = $state([]);
 </script>
 
 <svelte:head>
@@ -74,27 +79,97 @@
 		<Authors
 			darkMode={data.darkMode}
 			color={textbookColor}
+			bind:authors={authorUuids}
+			user={data.user}
 		/>
 	{:else if stage == 4}
 		<Review
 			darkMode={data.darkMode}
 			color={textbookColor}
+			name={name}
+			description={description}
+			educationLevel={educationLevel}
+			chapters={chapters}
+			articles={articles}
+			authors={authorUuids}
+		/>
+	{:else if stage == 5}
+		<LoadingAnimationHandler 
+			color={textbookColor}
 		/>
 	{/if}
-	<PageControl
-		bind:stage
+	<Form
+		target="?/makeTextbook"
 		darkMode={data.darkMode}
-		color={textbookColor}
-		disableNext={(stage == 0 &&
-			(!name || !description || !educationLevel)) ||
-			(stage == 1 &&
-				(chapters.length == 0 ||
-					chapters
-						.map((_c, i) => articles[i].length)
-						.every((len) => len === 0))) ||
-			false}
-		disablePrev={false}
-		createText={m.createTextbook()}
-		nextButtonCreate={stage == 4}
-	/>
+		css="bg-transparent! shadow-none! p-0! flex flex-row w-full gap-2"
+		start={async () => {
+			stage = 5;
+		}}
+		success={async () => {
+			redirect(302, resolve('/(base)/textbook'));
+		}}
+		failure={async () => {
+			stage = 4;
+			//TODO popup message @AY-GA
+		}}
+	>
+		<input
+			type="hidden"
+			name="color"
+			value={textbookColor}
+			required
+		/>
+		<input
+			type="hidden"
+			name="name"
+			value={name}
+			required
+		/>
+		<input
+			type="hidden"
+			name="description"
+			value={description}
+			required
+		/>
+		<input
+			type="hidden"
+			name="educationLevel"
+			value={educationLevel}
+			required
+		/>
+		<input
+			type="hidden"
+			name="chapters"
+			value={JSON.stringify(chapters)}
+			required
+		/>
+		<input
+			type="hidden"
+			name="articles"
+			value={JSON.stringify(articles)}
+			required
+		/>
+		<input
+			type="hidden"
+			name="authors"
+			value={JSON.stringify(authorUuids)}
+			required
+		/>
+		<PageControl
+			bind:stage
+			darkMode={data.darkMode}
+			color={textbookColor}
+			disableNext={(stage == 0 &&
+				(!name || !description || !educationLevel)) ||
+				(stage == 1 &&
+					(chapters.length == 0 ||
+						articles
+							.map((c) => c.length)
+							.every((len) => len === 0))) ||
+				false}
+			disablePrev={false}
+			createText={m.createTextbook()}
+			nextButtonCreate={stage >= 4}
+		/>
+	</Form>
 </CreateArea>

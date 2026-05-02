@@ -137,5 +137,17 @@
 	"noChaptersYet": "No chapters yet",
 	"addResource": "Add resource",
 	"editResource": "Edit resource",
-	"removeResource": "Remove resource"
+	"removeResource": "Remove resource",
+	"selectChapter": "Select chapter",
+	"selectArticle": "Select article",
+	"searchAuthor": "Search author",
+	"addAuthor": "Add author",
+	"removeAuthor": "Remove author",
+	"noUsersFound": "No users found",
+	"typeToSearchUsers": "Type to search users",
+	"pleaseTypeMoreThanCharacters": "Please type more than {number} characters to search",
+	"searching": "Searching",
+	"educationLevel": "Education level",
+	"chapterAmount": "Chapter amount",
+	"articleAmount": "Article amount"
 }

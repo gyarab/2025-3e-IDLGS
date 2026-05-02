@@ -5,7 +5,7 @@ import { schema as databaseSchema } from '$lib/server/db/schema';
 import type { DBType } from '../db';
 import { eq } from 'drizzle-orm';
 
-export type FormRunnerResult = void | ActionFailure<any>;
+export type FormRunnerResult = unknown | void | ActionFailure<any>;
 export type FormDataType = { [field: string]: string };
 
 export const formRunner = async (

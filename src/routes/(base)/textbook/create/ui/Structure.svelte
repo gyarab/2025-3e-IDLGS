@@ -35,6 +35,14 @@
 	let selectedArticleId: number | undefined = $state(undefined);
 
 	let tempTitleValue: string = $state('');
+
+	let sortedChapters = $derived.by(() => {
+		return chapters.slice().sort((a, b) => a.order - b.order);
+	});
+	let sortedArticles = $derived.by(() => {
+		if (selectedChapterId == undefined) return [];
+		return articles[selectedChapterId].slice().sort((a, b) => a.order - b.order);
+	});
 </script>
 
 <div class="flex w-full grow flex-col gap-2">
@@ -62,7 +70,7 @@
 			<div
 				class="flex grow flex-col gap-2 overflow-x-hidden overflow-y-scroll"
 			>
-				{#each chapters as chapter, i (i)}
+				{#each sortedChapters as chapter, i (i)}
 					<Chapter
 						{darkMode}
 						{chapter}
@@ -74,8 +82,19 @@
 							selectedChapterId = i;
 							selectedArticleId = undefined;
 						}}
-						onup={() => {}}
-						ondown={() => {}}
+						onup={() => {
+							//swap order values with previous chapter
+							const prevOrder = chapters[i - 1].order;
+							chapters[i - 1].order = chapters[i].order;
+							chapters[i].order = prevOrder;
+						}}
+						ondown={() => {
+							//swap order values with next chapter
+							const nextOrder = chapters[i + 1].order;
+							chapters[i + 1].order = chapters[i].order;
+							chapters[i].order = nextOrder;
+						}}
+						onedit={(v: string) => (chapters[i].title = v)}
 					/>
 				{:else}
 					<div
@@ -119,26 +138,6 @@
 						}}
 					>
 						<Button
-							text={m.editChapter()}
-							style="background-color: {darkenHex(color, 50)};"
-							css="buttonPrimary w-full"
-							onclick={() => {}}
-							emoji="edit-box"
-							type="button"
-							disabled={selectedChapterId == undefined}
-						/>
-					</span>
-					<span
-						class="flex grow flex-col gap-1"
-						in:fly|global={{
-							x: 1000,
-							y: 0,
-							duration: 300,
-							delay: 1100,
-							opacity: 0,
-						}}
-					>
-						<Button
 							text={m.removeChapter()}
 							style="background-color: {darkenHex(color, 80)};"
 							css="buttonPrimary w-full"
@@ -170,7 +169,7 @@
 				<div
 					class="flex grow flex-col gap-2 overflow-x-hidden overflow-y-scroll"
 				>
-					{#each articles[selectedChapterId] as article, i (i)}
+					{#each sortedArticles as article, i (i)}
 						<Article
 							{darkMode}
 							{article}
@@ -181,8 +180,25 @@
 							onclick={() => {
 								selectedArticleId = i;
 							}}
-							onup={() => {}}
-							ondown={() => {}}
+							onup={() => {
+								//same as chapter
+								const prevOrder =
+									articles[selectedChapterId!][i - 1].order;
+								articles[selectedChapterId!][i - 1].order =
+									articles[selectedChapterId!][i].order;
+								articles[selectedChapterId!][i].order =
+									prevOrder;
+							}}
+							ondown={() => {
+								const nextOrder =
+									articles[selectedChapterId!][i + 1].order;
+								articles[selectedChapterId!][i + 1].order =
+									articles[selectedChapterId!][i].order;
+								articles[selectedChapterId!][i].order =
+									nextOrder;
+							}}
+							onedit={(v: string) =>
+								(articles[selectedChapterId!][i].title = v)}
 						/>
 					{:else}
 						<div
@@ -222,27 +238,6 @@
 							y: 0,
 							duration: 300,
 							delay: 300,
-							opacity: 0,
-						}}
-					>
-						<Button
-							text={m.editArticle()}
-							style="background-color: {darkenHex(color, 50)};"
-							css="buttonPrimary w-full"
-							onclick={() => {}}
-							emoji="edit-circle"
-							type="button"
-							disabled={selectedArticleId == undefined ||
-								selectedChapterId == undefined}
-						/>
-					</span>
-					<span
-						class="flex grow flex-col gap-1"
-						in:fly|global={{
-							x: 1000,
-							y: 0,
-							duration: 300,
-							delay: 500,
 							opacity: 0,
 						}}
 					>
@@ -294,12 +289,13 @@
 			confirm={async () => {
 				chapters.push({
 					title: tempTitleValue,
-					order: chapters.length,
+					order: (chapters.at(-1)?.order ?? -1) + 1,
 				});
 				articles.push([]);
 				tempTitleValue = '';
 			}}
 			cancel={async () => {}}
+			disabled={tempTitleValue.trim() === ''}
 		/>
 	</div>
 </Dialog>
@@ -327,11 +323,13 @@
 			confirm={async () => {
 				articles[selectedChapterId!].push({
 					title: tempTitleValue,
-					order: articles[selectedChapterId!].length,
+					order:
+						(articles[selectedChapterId!].at(-1)?.order ?? -1) + 1,
 				});
 				tempTitleValue = '';
 			}}
 			cancel={async () => {}}
+			disabled={tempTitleValue.trim() === ''}
 		/>
 	</div>
 </Dialog>

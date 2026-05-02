@@ -4,6 +4,7 @@
 	import type { ChapterType } from '$lib/types';
 	import Button from '$src/routes/(base)/components/Button.svelte';
 	import HoverEmoji from '$src/routes/(base)/components/HoverEmoji.svelte';
+	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
 	import { fly } from 'svelte/transition';
 
 	let {
@@ -16,6 +17,7 @@
 		onclick,
 		ondown,
 		onup,
+		onedit,
 	}: {
 		chapter: ChapterType;
 		darkMode: boolean;
@@ -26,7 +28,11 @@
 		onclick: () => void;
 		ondown: () => void;
 		onup: () => void;
+		onedit: (v: string) => void;
 	} = $props();
+
+	let tempTitleValue: string = $derived(chapter.title);
+	let editMode: boolean = $state(false);
 </script>
 
 <div
@@ -44,33 +50,75 @@
 		opacity: 0,
 	}}
 >
-	<button
-		type="button"
-		class="flex grow flex-row items-center gap-2"
-		{onclick}
-	>
-		<HoverEmoji emoji={selected ? 'checkbox' : 'checkbox-blank'} />
-		<h2 class="mb-0!">{chapter.title}</h2>
-		<div class="grow"></div>
-	</button>
-	<Button
-		label={m.moveChapterUp()}
-		emoji="arrow-up-double"
-		type="button"
-		onclick={() => {
-			onup();
-		}}
-		text=""
-		disabled={i === 0}
-	/>
-	<Button
-		label={m.moveChapterDown()}
-		emoji="arrow-down-double"
-		type="button"
-		onclick={() => {
-			ondown();
-		}}
-		text=""
-		disabled={i === amount - 1}
-	/>
+	{#if editMode}
+		<TextInput 
+			{darkMode}
+			{color}
+			type="text"
+			placeholder={m.chapterTitle()}
+			bind:value={tempTitleValue}
+			css="grow"
+		/>
+		<Button 
+			label={m.confirm()}
+			emoji="save-2"
+			type="button"
+			onclick={() => {
+				editMode = false;
+				onedit(tempTitleValue);
+			}}
+			text=""
+		/>
+		<Button
+			label={m.cancel()}
+			emoji="close"
+			type="button"
+			onclick={() => {
+				tempTitleValue = chapter.title;
+				editMode = false;
+			}}
+			text=""
+		/>
+	{:else}
+		<button
+			type="button"
+			class="flex grow flex-row items-center gap-2 mt-1 mb-1"
+			{onclick}
+			title={m.selectChapter()}
+			aria-label={m.selectChapter()}
+		>
+			<HoverEmoji emoji={selected ? 'checkbox' : 'checkbox-blank'} />
+			<h2 class="mb-0!">{chapter.title}</h2>
+			<div class="grow"></div>
+		</button>
+		<Button
+			label={m.editChapter()}
+			emoji="edit-box"
+			type="button"
+			onclick={() => {
+				editMode = true;
+			}}
+			text=""
+		/>
+		<Button
+			label={m.moveChapterUp()}
+			emoji="arrow-up-double"
+			type="button"
+			onclick={() => {
+				onup();
+			}}
+			text=""
+			disabled={i === 0}
+		/>
+		<Button
+			label={m.moveChapterDown()}
+			emoji="arrow-down-double"
+			type="button"
+			onclick={() => {
+				ondown();
+			}}
+			text=""
+			disabled={i === amount - 1}
+		/>
+	{/if}
 </div>

@@ -9,12 +9,14 @@
 		open = $bindable(false),
 		confirm,
 		cancel,
+		disabled,
 	}: {
 		darkMode: boolean;
 		color: string;
 		open: boolean;
 		confirm: () => Promise<void>;
 		cancel: () => Promise<void>;
+		disabled?: boolean;
 	} = $props();
 </script>
 
@@ -29,6 +31,7 @@
 		text={m.confirm()}
 		type="button"
 		css="buttonPrimary grow"
+		{disabled}
 	/>
 	<Button
 		emoji="close"

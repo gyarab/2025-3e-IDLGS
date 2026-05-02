@@ -35,43 +35,45 @@
 
 <!-- OOBE style creation dialogue -->
 
-{#key runAnim}
-	<div
-		class="relative flex h-screen! w-screen! max-w-screen flex-col items-center justify-center overflow-hidden bg-linear-to-br from-white from-0% to-white to-100%"
-		style="--tw-gradient-from: {color}; --tw-gradient-to: {darkenHex(
-			color,
-			80,
-		)};"
-	>
-		<i
-			in:fade={{ delay: 100, duration: 500 }}
-			class="{emoji} absolute right-1/25 bottom-1/8 scale-200 rotate-15 text-9xl text-white! opacity-30"
-		></i>
-		<i
-			in:fade={{ delay: 200, duration: 500 }}
-			class="{emoji} absolute top-2/8 left-1/25 scale-200 -rotate-15 text-9xl text-white! opacity-30"
-		></i>
+{#if runAnim}
+	{#key runAnim}
 		<div
-			in:fly={{ duration: 300, x: 0, y: -100, opacity: 0 }}
-			class="shadow-lg backdrop-blur {darkMode
-				? 'bg-neutral-700/70 text-white!'
-				: 'bg-neutral-100/70 text-black!'} flex h-4/5 w-3/4 flex-col gap-2 overflow-hidden rounded-lg"
+			class="relative flex h-screen! w-screen! max-w-screen flex-col items-center justify-center overflow-hidden bg-linear-to-br from-white from-0% to-white to-100%"
+			style="--tw-gradient-from: {color}; --tw-gradient-to: {darkenHex(
+				color,
+				80,
+			)};"
 		>
-			<div class="flex w-full grow flex-row">
-				<Progress
-					bind:stage
-					{darkMode}
-					{color}
-					{title}
-					{backLink}
-					{helpLink}
-					{texts}
-					{emoji}
-				/>
-				<div class="flex w-full grow flex-col gap-4 p-4">
-					{@render children()}
+			<i
+				in:fade={{ delay: 100, duration: 500 }}
+				class="{emoji} absolute right-1/25 bottom-1/8 scale-200 rotate-15 text-9xl text-white! opacity-30"
+			></i>
+			<i
+				in:fade={{ delay: 200, duration: 500 }}
+				class="{emoji} absolute top-2/8 left-1/25 scale-200 -rotate-15 text-9xl text-white! opacity-30"
+			></i>
+			<div
+				in:fly={{ duration: 300, x: 0, y: -100, opacity: 0 }}
+				class="shadow-lg backdrop-blur {darkMode
+					? 'bg-neutral-700/70 text-white!'
+					: 'bg-neutral-100/70 text-black!'} flex h-4/5 w-3/4 flex-col gap-2 overflow-hidden rounded-lg"
+			>
+				<div class="flex w-full grow flex-row">
+					<Progress
+						bind:stage
+						{darkMode}
+						{color}
+						{title}
+						{backLink}
+						{helpLink}
+						{texts}
+						{emoji}
+					/>
+					<div class="flex w-full grow flex-col gap-4 p-4">
+						{@render children()}
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-{/key}
+	{/key}
+{/if}

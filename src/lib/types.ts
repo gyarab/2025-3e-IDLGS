@@ -73,11 +73,14 @@ export type ArticleTypeFull = ArticleType & {
 };
 
 export type ResourceType = {
-	id: number;
 	uuid: string;
 	title: string;
 	type: FileType;
 	url: string;
+};
+
+export type ResourceTypeFull = ResourceType & {
+	id: number;
 };
 
 export type ExerciseType = {
