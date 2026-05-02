@@ -1,15 +1,24 @@
 <script lang="ts">
-	import { m } from '$lib/paraglide/messages';
+	import { darkenHex } from '$lib';
+import { m } from '$lib/paraglide/messages';
+	import ColorInput from '$src/routes/(base)/components/ColorInput.svelte';
+	import SelectionButton from '$src/routes/(base)/components/SelectionButton.svelte';
 	import TextArea from '$src/routes/(base)/components/TextArea.svelte';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
 	import { fly } from 'svelte/transition';
 
 	let {
 		darkMode,
-		color,
+		name = $bindable(''),
+		description = $bindable(''),
+		color = $bindable(''),
+		education = $bindable(''),
 	}: {
 		darkMode: boolean;
+		name: string;
+		description: string;
 		color: string;
+		education: string;
 	} = $props();
 </script>
 
@@ -20,5 +29,32 @@
 	>
 		<h2 class="text-2xl font-bold">{m.basicTextbookInformation()}</h2>
 	</div>
-	<div class="flex w-full flex-col gap-2"></div>
+	<div class="flex w-full grow flex-col gap-2">
+		<TextInput
+			{darkMode}
+			{color}
+			type="text"
+			placeholder={m.textbookName()}
+			bind:value={name}
+		/>
+
+		<SelectionButton 
+			texts={[m.isced0(), m.isced1(), m.isced2(), m.isced3(), m.isced4(), m.isced5(), m.isced6(), m.isced7(), m.isced8()]}
+			values={['kindergarten', 'elementary', 'firstgym', 'secondgym', 'prevs', 'shortvs', 'bachelor', 'master', 'doctor']}
+			bind:value={education}
+			style="background-color: {color};"
+			css="buttonPrimary text-sm"
+			selectedstyle="background-color: {darkenHex(color, 50)};"
+		/>
+
+		<ColorInput bind:color />
+
+		<TextArea
+			{darkMode}
+			{color}
+			placeholder={m.textbookDescription()}
+			bind:value={description}
+			css="grow"
+		/>
+	</div>
 </div>

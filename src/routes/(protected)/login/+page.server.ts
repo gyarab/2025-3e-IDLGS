@@ -4,7 +4,6 @@ import { schema as databaseSchema } from '$lib/server/db/schema';
 import { eq } from 'drizzle-orm';
 import { fail, redirect } from '@sveltejs/kit';
 import { verifyPassword } from '$lib/server/user/index.js';
-import { page } from '$app/state';
 import { resolve } from '$app/paths';
 
 export const load = async (event) => {
@@ -51,6 +50,8 @@ export const actions = {
 						.where(eq(databaseSchema.user.email, data.email))
 						.limit(1)
 				)[0];
+
+				if(!userData) return fail(401);
 
 				if (
 					verifyPassword(

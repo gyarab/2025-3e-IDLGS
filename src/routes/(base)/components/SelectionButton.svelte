@@ -9,7 +9,6 @@
 		css,
 		selectedcss,
 		selectedstyle,
-		selectedvalue,
 		value = $bindable(''),
 		values,
 		style,
@@ -26,7 +25,6 @@
 		selectedcss?: string;
 		value?: string;
 		values?: string[];
-		selectedvalue?: string;
 		style?: string;
 		cssTop?: string;
 		disabled?: boolean[];
@@ -43,7 +41,7 @@
 	);
 
 	let isSelected: boolean[] | undefined = $derived(
-		values?.map((v) => Boolean(selectedvalue) && v == selectedvalue) ??
+		values?.map((v) => Boolean(value) && v == value) ??
 			undefined,
 	);
 </script>

@@ -41,6 +41,30 @@ export type TextbookType = {
 	authors: UserTypeInfo[];
 };
 
+export type ChapterType = {
+	uuid: string;
+	title: string;
+	order: number;
+};
+
+export type ChapterTypeFull = ChapterType & {
+	id: number;
+	textbookId: number;
+};
+
+export type ArticleType = {
+	uuid: string;
+	title: string;
+	order: number;
+	textCompressed: string;
+};
+
+export type ArticleTypeFull = ArticleType & {
+	id: number;
+	chapterId: number;
+	textbookId: number;
+};
+
 export type ExerciseType = {
 	type: 'CRS' | 'IMG' | 'GRP' | 'GEO' | 'PRG';
 	//TODO

@@ -2,6 +2,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import TextArea from '$src/routes/(base)/components/TextArea.svelte';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
+	import VerticalLine from '$src/routes/(base)/components/VerticalLine.svelte';
 	import { fly } from 'svelte/transition';
 
 	let {
@@ -21,9 +22,9 @@
 		<h2 class="text-2xl font-bold">{m.additionalAuthors()}</h2>
 		<p>{m.additionalAuthorsDescription()}</p>
 	</div>
-	<div class="flex w-full flex-row">
+	<div class="flex w-full flex-row grow">
 		<div class="flex grow flex-col gap-2"></div>
-		<div class="h-1 {darkMode ? 'bg-black' : 'bg-white'}"></div>
+		<VerticalLine {darkMode} />
 		<div class="flex grow flex-col gap-2"></div>
 	</div>
 </div>

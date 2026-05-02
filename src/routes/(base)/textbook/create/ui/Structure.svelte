@@ -1,16 +1,28 @@
 <script lang="ts">
+	import { darkenHex } from '$lib';
 	import { m } from '$lib/paraglide/messages';
+	import type { ArticleType, ChapterType } from '$lib/types';
+	import Button from '$src/routes/(base)/components/Button.svelte';
+	import Dialog from '$src/routes/(base)/components/Dialog.svelte';
 	import TextArea from '$src/routes/(base)/components/TextArea.svelte';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
+	import VerticalLine from '$src/routes/(base)/components/VerticalLine.svelte';
 	import { fly } from 'svelte/transition';
 
 	let {
 		darkMode,
 		color,
+		chapters = $bindable([]),
+		articles = $bindable([]),
 	}: {
 		darkMode: boolean;
 		color: string;
+		chapters: ChapterType[];
+		articles: ArticleType[];
 	} = $props();
+
+	let showChapterDialog: boolean = $state(false);
+	let showArticleDialog: boolean = $state(false);
 </script>
 
 <div class="flex w-full grow flex-col gap-2">
@@ -21,4 +33,88 @@
 		<h2 class="text-2xl font-bold">{m.textbookStructure()}</h2>
 		<p>{m.textbookStructureDesciption()}</p>
 	</div>
+
+	<div class="flex w-full grow flex-row">
+		<div class="flex grow flex-col gap-2">
+			<h2>{m.chapters()}</h2>
+			<div class="flex grow flex-col"></div>
+			<div class="flex w-full flex-row gap-1">
+				<Button
+					text={m.addChapter()}
+					style="background-color: {color};"
+					css="buttonPrimary w-full"
+					onclick={() => {}}
+					emoji="add-box"
+					type="button"
+				/>
+				<Button
+					text={m.editChapter()}
+					style="background-color: {darkenHex(color, 50)};"
+					css="buttonPrimary w-full"
+					onclick={() => {}}
+					emoji="edit-box"
+					type="button"
+				/>
+				<Button
+					text={m.removeChapter()}
+					style="background-color: {darkenHex(color, 80)};"
+					css="buttonPrimary w-full"
+					onclick={() => {}}
+					emoji="delete-bin-2"
+					type="button"
+				/>
+			</div>
+		</div>
+		<VerticalLine {darkMode} />
+		<div class="flex grow flex-col gap-2 ps-2">
+			<h2>{m.articles()}</h2>
+			<div class="flex grow flex-col"></div>
+			<div class="flex w-full flex-row gap-1">
+				<Button
+					text={m.addArticle()}
+					style="background-color: {color};"
+					css="buttonPrimary w-full"
+					onclick={() => {}}
+					emoji="add-circle"
+					type="button"
+				/>
+				<Button
+					text={m.editArticle()}
+					style="background-color: {darkenHex(color, 50)};"
+					css="buttonPrimary w-full"
+					onclick={() => {}}
+					emoji="edit-circle"
+					type="button"
+				/>
+				<Button
+					text={m.removeArticle()}
+					style="background-color: {darkenHex(color, 80)};"
+					css="buttonPrimary w-full"
+					onclick={() => {}}
+					emoji="close-circle"
+					type="button"
+				/>
+			</div>
+		</div>
+	</div>
 </div>
+
+<Dialog 
+	bind:open={showChapterDialog}
+	{darkMode}
+>
+	<div class="flex w-full grow flex-col">
+		<h2>{m.addChapter()}</h2>
+	</div>
+</Dialog>
+
+<Dialog
+	bind:open={showArticleDialog}
+	{darkMode}
+>
+	<div class="flex w-full grow flex-col">
+		<h2>{m.addArticle()}</h2>
+	</div>
+</Dialog>
+
+<ConfirmDeleteDialog />

@@ -25,7 +25,7 @@
 	let passwordShown = $state(false);
 </script>
 
-<div class="flex grow flex-row overflow-hidden! rounded-lg! {css}">
+<div class="flex flex-row overflow-hidden! rounded-lg! {css}">
 	<input
 		{name}
 		bind:value

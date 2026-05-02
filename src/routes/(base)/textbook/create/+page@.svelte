@@ -2,7 +2,6 @@
 	import { m } from '$lib/paraglide/messages';
 	import CreateArea from '../../components/creation/CreateArea.svelte';
 	import { resolve } from '$app/paths';
-	import { page } from '$app/state';
 	import BasicInformation from './ui/BasicInformation.svelte';
 	import Structure from './ui/Structure.svelte';
 	import Authors from './ui/Authors.svelte';
@@ -20,6 +19,10 @@
 	} = $props();
 
 	let stage: number = $state(0);
+	let name: string = $state("");
+	let description: string = $state("");
+	let textbookColor: string = $derived(data.color);
+	let educationLevel: string = $state("");
 </script>
 
 <svelte:head>
@@ -29,7 +32,7 @@
 </svelte:head>
 
 <CreateArea
-	color={data.color}
+	color={textbookColor}
 	darkMode={data.darkMode}
 	texts={[
 		m.basicInformation(),
@@ -47,34 +50,37 @@
 	{#if stage == 0}
 		<BasicInformation
 			darkMode={data.darkMode}
-			color={data.color}
+			bind:name
+			bind:description
+			bind:color={textbookColor}
+			bind:education={educationLevel}
 		/>
 	{:else if stage == 1}
 		<Structure
 			darkMode={data.darkMode}
-			color={data.color}
+			color={textbookColor}
 		/>
 	{:else if stage == 2}
 		<Resources
 			darkMode={data.darkMode}
-			color={data.color}
+			color={textbookColor}
 		/>
 	{:else if stage == 3}
 		<Authors
 			darkMode={data.darkMode}
-			color={data.color}
+			color={textbookColor}
 		/>
 	{:else if stage == 4}
 		<Review
 			darkMode={data.darkMode}
-			color={data.color}
+			color={textbookColor}
 		/>
 	{/if}
 	<PageControl
 		bind:stage
 		darkMode={data.darkMode}
-		color={data.color}
-		disableNext={false}
+		color={textbookColor}
+		disableNext={(stage == 0 && (!name || !description || !educationLevel)) || false}
 		disablePrev={false}
 		createText={m.createTextbook()}
 		nextButtonCreate={stage == 4}

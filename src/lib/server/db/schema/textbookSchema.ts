@@ -19,6 +19,7 @@ export const textbook = pgTable(
 		g: integer('g').notNull().default(0),
 		b: integer('b').notNull().default(0),
 		//education level according to ISCED
+		//https://iqa.international/isced-levels/
 		educationLevel: integer().notNull().default(0),
 		lastEditedAt: timestamp('lastEditedAt')
 			.notNull()
@@ -33,6 +34,7 @@ export const textbook = pgTable(
 		check('r', sql`${table.r} >= 0 AND ${table.r} <= 255`),
 		check('g', sql`${table.g} >= 0 AND ${table.g} <= 255`),
 		check('b', sql`${table.b} >= 0 AND ${table.b} <= 255`),
+		check('isced', sql`${table.educationLevel} >= 0 AND ${table.educationLevel} <= 8`)
 	],
 );
 
@@ -52,6 +54,8 @@ export const chapter = pgTable('chapter', {
 		.notNull()
 		.unique()
 		.$defaultFn(() => crypto.randomUUID()),
+	title: text('title').notNull(),
+	order: integer('order').notNull().default(0),
 	textbookId: integer('textbookId')
 		.notNull()
 		.references(() => textbook.id),
@@ -63,6 +67,8 @@ export const article = pgTable('article', {
 		.notNull()
 		.unique()
 		.$defaultFn(() => crypto.randomUUID()),
+	title: text('title').notNull(),
+	order: integer('order').notNull().default(0),
 	textCompressed: text('textCompressed').notNull(),
 	chapterId: integer('chapterId')
 		.notNull()

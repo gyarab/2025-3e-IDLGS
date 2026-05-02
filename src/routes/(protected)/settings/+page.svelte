@@ -12,7 +12,7 @@
 	} from '$lib/paraglide/runtime';
 	import type { UserType } from '$lib/types';
 	import TextArea from '$src/routes/(base)/components/TextArea.svelte';
-	import { makeHex } from '$lib';
+	import ColorInput from '$src/routes/(base)/components/ColorInput.svelte';
 
 	let {
 		data,
@@ -141,7 +141,6 @@
 			emojis={[]}
 			bind:value={language}
 			values={[...locales]}
-			selectedvalue={language}
 			selectedcss="text-neutral-200!"
 			selectedstyle="background-color: {data.color};"
 		/>
@@ -213,12 +212,7 @@
 
 		<!-- TODO some premade themes -->
 
-		<input
-			type="color"
-			name="color"
-			class="w-full rounded-lg border-2 border-white shadow"
-			value={data.color}
-		/>
+		<ColorInput color={data.color} />
 
 		<Button
 			text={m.saveChanges()}
