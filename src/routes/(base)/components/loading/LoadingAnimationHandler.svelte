@@ -7,13 +7,11 @@
 		children,
 	}: {
 		color: string;
-		children?: Snippet
+		children?: Snippet;
 	} = $props();
 </script>
 
 <div class="flex w-full grow flex-col items-center justify-center gap-2">
-	<LoadingAnimation
-		{color}
-	/>
+	<LoadingAnimation {color} />
 	{@render children?.()}
 </div>

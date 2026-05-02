@@ -116,7 +116,7 @@
 		<div class="flex w-full flex-row gap-0">
 			<span class="font-bold">{m.authors()}:</span>
 			<div class="grow border-b border-dashed border-white"></div>
-			{authors.length+1}
+			{authors.length + 1}
 		</div>
 	</div>
 </div>

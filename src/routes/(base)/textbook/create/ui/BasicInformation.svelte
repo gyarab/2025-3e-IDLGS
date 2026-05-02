@@ -69,17 +69,7 @@
 					m.isced7(),
 					m.isced8(),
 				]}
-				values={[
-					'0',
-					'1',
-					'2',
-					'3',
-					'4',
-					'5',
-					'6',
-					'7',
-					'8',
-				]}
+				values={['0', '1', '2', '3', '4', '5', '6', '7', '8']}
 				bind:value={education}
 				style="background-color: {color};"
 				css="buttonPrimary text-sm"

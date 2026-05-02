@@ -51,7 +51,7 @@
 	}}
 >
 	{#if editMode}
-		<TextInput 
+		<TextInput
 			{darkMode}
 			{color}
 			type="text"
@@ -59,7 +59,7 @@
 			bind:value={tempTitleValue}
 			css="grow"
 		/>
-		<Button 
+		<Button
 			label={m.confirm()}
 			emoji="save-2"
 			type="button"
@@ -82,7 +82,7 @@
 	{:else}
 		<button
 			type="button"
-			class="flex grow flex-row items-center gap-2 mt-1 mb-1"
+			class="mt-1 mb-1 flex grow flex-row items-center gap-2"
 			{onclick}
 			title={m.selectChapter()}
 			aria-label={m.selectChapter()}

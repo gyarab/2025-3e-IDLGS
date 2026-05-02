@@ -12,12 +12,19 @@ export const actions = {
 	makeTextbook: async (event) => {
 		return await formRunner(
 			event,
-			['name', 'description', 'educationLevel', 'color', 'chapters', 'articles', 'authors'],
+			[
+				'name',
+				'description',
+				'educationLevel',
+				'color',
+				'chapters',
+				'articles',
+				'authors',
+			],
 			true,
 			async (data: FormDataType, user: UserTypeInfo | undefined) => {
-				console.log(data, "FORM DATA");
+				console.log(data, 'FORM DATA');
 			},
 		);
 	},
-
 };

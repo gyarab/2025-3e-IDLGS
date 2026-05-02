@@ -26,7 +26,7 @@
 		: 'bg-neutral-200 text-black'} rounded-lg"
 	title={add ? m.addAuthor() : m.removeAuthor()}
 	aria-label={add ? m.addAuthor() : m.removeAuthor()}
-	onclick={onclick}
+	{onclick}
 >
 	<UserLink
 		{user}
@@ -34,12 +34,8 @@
 	/>
 	<div class="grow"></div>
 	{#if add}
-		<HoverEmoji
-			emoji="user-add"
-		/>
+		<HoverEmoji emoji="user-add" />
 	{:else}
-		<HoverEmoji
-			emoji="user-minus"
-		/>
+		<HoverEmoji emoji="user-minus" />
 	{/if}
 </button>

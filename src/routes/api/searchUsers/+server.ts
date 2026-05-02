@@ -6,7 +6,13 @@ import { error, json } from '@sveltejs/kit';
 
 export const POST = async (event) => {
 	const data = await event.request.json();
-	if (!data.query || !data.exclude || typeof data.query !== 'string' || !Array.isArray(data.exclude)) return error(400);
+	if (
+		!data.query ||
+		!data.exclude ||
+		typeof data.query !== 'string' ||
+		!Array.isArray(data.exclude)
+	)
+		return error(400);
 
 	if (data.query.length < 3) return json({ results: [] });
 
@@ -34,7 +40,10 @@ export const POST = async (event) => {
 		isCaseSensitive: false,
 	});
 
-	const results = fuse.search(data.query, { limit: 5 }).map((result) => result.item).filter((user) => !data.exclude.includes(user.uuid));
+	const results = fuse
+		.search(data.query, { limit: 5 })
+		.map((result) => result.item)
+		.filter((user) => !data.exclude.includes(user.uuid));
 
 	return json({ results });
 };

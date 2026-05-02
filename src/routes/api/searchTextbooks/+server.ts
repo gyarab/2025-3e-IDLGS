@@ -34,7 +34,9 @@ export const POST = async (event) => {
 		isCaseSensitive: false,
 	});
 
-	const textbooks = fuse.search(data.query, { limit: 5 }).map((result) => result.item);
+	const textbooks = fuse
+		.search(data.query, { limit: 5 })
+		.map((result) => result.item);
 	let result: TextbookType[] = [];
 
 	for (const textbook of textbooks) {
@@ -51,7 +53,10 @@ export const POST = async (event) => {
 			.from(databaseSchema.user)
 			.leftJoin(
 				databaseSchema.resource,
-				eq(databaseSchema.user.profilePicture, databaseSchema.resource.id),
+				eq(
+					databaseSchema.user.profilePicture,
+					databaseSchema.resource.id,
+				),
 			)
 			.leftJoin(
 				databaseSchema.textbookUserLinker,
@@ -61,10 +66,7 @@ export const POST = async (event) => {
 				),
 			)
 			.where(
-				eq(
-					databaseSchema.textbookUserLinker.textbookId,
-					textbook.id,
-				),
+				eq(databaseSchema.textbookUserLinker.textbookId, textbook.id),
 			);
 
 		result.push({

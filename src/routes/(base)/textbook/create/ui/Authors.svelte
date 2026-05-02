@@ -35,7 +35,9 @@
 	let selectedUsers: UserTypeInfo[] = $state([]);
 
 	const timerInterval = async () => {
-		authors = selectedUsers.map((u) => u.uuid).filter((uuid) => uuid != user.uuid);
+		authors = selectedUsers
+			.map((u) => u.uuid)
+			.filter((uuid) => uuid != user.uuid);
 
 		msUntilRequest -= 50;
 		if (msUntilRequest <= 0) {

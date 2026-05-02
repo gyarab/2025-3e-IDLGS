@@ -41,7 +41,9 @@
 	});
 	let sortedArticles = $derived.by(() => {
 		if (selectedChapterId == undefined) return [];
-		return articles[selectedChapterId].slice().sort((a, b) => a.order - b.order);
+		return articles[selectedChapterId]
+			.slice()
+			.sort((a, b) => a.order - b.order);
 	});
 </script>
 

@@ -86,17 +86,15 @@
 		<Review
 			darkMode={data.darkMode}
 			color={textbookColor}
-			name={name}
-			description={description}
-			educationLevel={educationLevel}
-			chapters={chapters}
-			articles={articles}
+			{name}
+			{description}
+			{educationLevel}
+			{chapters}
+			{articles}
 			authors={authorUuids}
 		/>
 	{:else if stage == 5}
-		<LoadingAnimationHandler 
-			color={textbookColor}
-		/>
+		<LoadingAnimationHandler color={textbookColor} />
 	{/if}
 	<Form
 		target="?/makeTextbook"
