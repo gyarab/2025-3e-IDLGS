@@ -1,26 +1,31 @@
 <script lang="ts">
 	import { darkenHex } from '$lib';
+	import type { TextbookType, UserType } from '$lib/types';
+	import { m } from '$lib/paraglide/messages';
 
-	let { data = { darkMode: false, color: '#f97316' } } = $props();
+	let {
+		data,
+	}: {
+		data: {
+			darkMode: boolean;
+			color: string;
+			user: UserType;
+			textbooks: TextbookType[];
+		};
+	} = $props();
 
 	let profile = {
-		name: 'John Doe',
-		major: 'Neuroscience',
-		institution: 'State University',
 		stats: [
 			{ label: 'Time Spent Reading', value: '1240 min' },
 			{ label: 'Textbooks Finished', value: '8' },
 		],
-		courses: [
-			{ name: 'Organic Chemistry', teacher: 'Dr. Smith', progress: 85 },
-			{ name: 'Neural Pathways', teacher: 'Sarah Jenkins', progress: 30 },
-			{ name: 'Intro to Ethics', teacher: 'Prof. Marcus', progress: 100 },
-		],
 	};
+
+	// TODO @AY-GA fix this so it shows correct data
 </script>
 
 <svelte:head>
-	<title>{profile.name} | Profile</title>
+	<title>{data.user.name} | {m.profile()} | {m.idlgs()}</title>
 </svelte:head>
 
 <div
@@ -53,9 +58,9 @@
 				>
 			</div>
 			<div>
-				<h1 class="text-2xl font-bold sm:text-3xl">{profile.name}</h1>
+				<h1 class="text-2xl font-bold sm:text-3xl">{data.user.name}</h1>
 				<p class="text-sm font-medium opacity-60 sm:text-base">
-					{profile.major} • {profile.institution}
+					{data.user.degree} • {data.user.institution}
 				</p>
 			</div>
 		</header>
@@ -92,15 +97,15 @@
 				Current Study Stack
 			</h2>
 			<div class="space-y-6">
-				{#each profile.courses as { name, teacher, progress }}
+				{#each data.textbooks as { title, uuid }}
 					<div class="flex items-center justify-between gap-4">
 						<div class="flex-1">
 							<h3
 								class="text-sm leading-tight font-semibold sm:text-base"
 							>
-								{name}
+								{title}
 							</h3>
-							<p class="text-sm opacity-50">{teacher}</p>
+							<p class="text-sm opacity-50">{uuid}</p>
 						</div>
 						<div class="flex w-1/2 items-center gap-4">
 							<div
@@ -108,13 +113,13 @@
 							>
 								<div
 									class="h-full transition-all duration-1000"
-									style:width="{progress}%"
+									style:width="{title}%"
 									style:background-color="var(--brand)"
 								></div>
 							</div>
 							<span
 								class="w-10 text-sm font-black"
-								style:color="var(--brand)">{progress}%</span
+								style:color="var(--brand)">{title}%</span
 							>
 						</div>
 					</div>

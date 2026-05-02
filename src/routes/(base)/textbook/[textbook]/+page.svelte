@@ -1,7 +1,8 @@
 <script lang="ts">
-	import type { TextbookType, ChapterTypeRaw } from '$lib/types';
+	import type { TextbookType, ChapterType } from '$lib/types';
 	import { m } from '$lib/paraglide/messages';
 	import Button from '../../components/Button.svelte';
+	import ChapterCard from './ui/ChapterCard.svelte';
 
 	let {
 		data,
@@ -10,7 +11,7 @@
 			darkMode: boolean;
 			color: string;
 			textbook: TextbookType;
-			chapters: ChapterTypeRaw[];
+			chapters: ChapterType[];
 		};
 	} = $props();
 </script>
@@ -42,10 +43,18 @@
 
 	<div>
 		QUICK ACTIONS: open definitions, open textbook settings, open authors
-		list, open resource list
+		list, open resource list, OPEN EXERCISES
 	</div>
 
-	{#each data.chapters as chapter}
-		<div>{JSON.stringify(chapter)}</div>
-	{/each}
+	<a href="/textbook/{data.textbook.uuid}/exercises">Exercises</a>
+
+	<div class="grid w-full grow grid-cols-2 gap-2">
+		{#each data.chapters as chapter, i (i)}
+			<ChapterCard
+				{chapter}
+				textbook={data.textbook}
+				textbookColor={data.color}
+			/>
+		{/each}
+	</div>
 </div>

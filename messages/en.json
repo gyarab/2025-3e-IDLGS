@@ -155,5 +155,12 @@
 	"textbookSettings": "Textbook settings",
 	"textbookAuthorsList": "Textbook authors list",
 	"chapterDoesntExist": "Chapter doesn't exist",
-	"articleDoesntExist": "Article doesn't exist"
+	"articleDoesntExist": "Article doesn't exist",
+	"secureEncryptedLogin": "Secure, encrypted login",
+	"aboutUs": "About us",
+	"contact": "Contact",
+	"ourTeam": "Our team",
+	"features": "Features",
+	"openChapter": "Open chapter",
+	"openArticle": "Open article"
 }

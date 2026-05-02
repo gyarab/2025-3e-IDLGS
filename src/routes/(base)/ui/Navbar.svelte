@@ -2,8 +2,9 @@
 	import { fly } from 'svelte/transition';
 	import { m } from '$lib/paraglide/messages';
 	import { goto } from '$app/navigation';
-	import { setNavbarOpen } from '$lib';
+	import { logout, setNavbarOpen } from '$lib';
 	import Button from '../components/Button.svelte';
+	import { resolve } from '$app/paths';
 
 	let {
 		accentColor,
@@ -45,6 +46,12 @@
 		<div class="flex h-full w-full items-center px-4">
 			<div class="w-[7svh] shrink-0"></div>
 
+			<img
+				src="/logo.svg"
+				alt="Logo"
+				class="h-12 sm:h-16"
+			/>
+
 			<h2
 				class="text-sm+ hidden shrink-0 px-4 font-bold tracking-widest sm:block"
 			>
@@ -73,6 +80,18 @@
 					hecss="text-lg"
 					onclick={() => {
 						goto('/settings');
+					}}
+				/>
+
+				<Button
+					emoji="logout-box"
+					text={m.logout()}
+					type="button"
+					css="px-1"
+					hecss="text-lg"
+					onclick={async () => {
+						await logout();	
+						goto(resolve('/(protected)/login'));
 					}}
 				/>
 

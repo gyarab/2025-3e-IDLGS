@@ -1,6 +1,6 @@
 import { formRunner, type FormDataType } from '$lib/server/form/validation.js';
 import type {
-	ArticleType,
+	ArticleTypeRaw,
 	ArticleTypeFullNoId,
 	ChapterTypeRaw,
 	UserTypeFull,
@@ -34,7 +34,7 @@ export const actions = {
 			true,
 			async (data: FormDataType, user: UserTypeFull | undefined) => {
 				const chapters = JSON.parse(data.chapters) as ChapterTypeRaw[];
-				const articles = JSON.parse(data.articles) as ArticleType[][];
+				const articles = JSON.parse(data.articles) as ArticleTypeRaw[][];
 				const authors = JSON.parse(data.authors) as string[]; //uuids
 
 				if (

@@ -60,7 +60,7 @@ export type ChapterTypeNoId = ChapterTypeRaw & {
 	textbookId: number;
 };
 
-export type ChapterType = ChapterTypeNoId & {
+export type ChapterType = ChapterTypeRaw & {
 	uuid: string;
 };
 
@@ -68,7 +68,7 @@ export type ChapterTypeFull = ChapterType & {
 	id: number;
 };
 
-export type ArticleType = {
+export type ArticleTypeRaw = {
 	title: string;
 	order: number;
 };
@@ -79,9 +79,13 @@ export type ArticleTypeFullNoId = ArticleType & {
 	textCompressed: string;
 };
 
+export type ArticleType = ArticleTypeRaw & {
+	uuid: string;
+	textCompressed: string;
+};
+
 export type ArticleTypeFull = ArticleTypeFullNoId & {
 	id: number;
-	uuid: string;
 };
 
 export type ResourceType = {

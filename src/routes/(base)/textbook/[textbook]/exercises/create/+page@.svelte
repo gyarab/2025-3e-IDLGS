@@ -13,6 +13,10 @@
 	import { page } from '$app/state';
 	import CreateArea from '$src/routes/(base)/components/creation/CreateArea.svelte';
 	import Review from './ui/Review.svelte';
+	import Form from '$src/routes/(base)/components/Form.svelte';
+	import { goto } from '$app/navigation';
+	import Grading from './ui/Grading.svelte';
+	import References from './ui/References.svelte';
 
 	let {
 		data,
@@ -120,22 +124,54 @@
 			<EXTEditor />
 		{/if}
 	{:else if stage == 3}
+		<Grading />
+	{:else if stage == 4}
+		<References />
+	{:else if stage == 5}
 		<Review />
 	{/if}
 	{#if stage != 0}
-		<PageControl
-			bind:stage
+		<Form
+			target="?/make{type.toUpperCase()}"
+			css="invisibleForm"
 			darkMode={data.darkMode}
 			color={data.color}
-			disableNext={(stage == 1 &&
-				(name.length == 0 ||
-					description.length == 0 ||
-					thumbnail.length == 0)) ||
-				stage == 2 ||
-				false}
-			disablePrev={false}
-			createText={m.createExercise()}
-			nextButtonCreate={stage == 3}
-		/>
+			success={async () => {
+				goto(resolve('/(base)/textbook/[textbook]/exercises', {
+					textbook: page.params.textbook!,
+				}));
+			}}
+			failure={async () => {
+				stage--;
+				//TODO popup message @AY-GA
+			}}
+		>
+			<input type="hidden" name="name" value={name} />
+			<input type="hidden" name="description" value={description} />
+			<input type="hidden" name="thumbnail" value={thumbnail} />
+			<input type="hidden" name="backgroundColorR" value={backgroundColorR} />
+			<input type="hidden" name="backgroundColorG" value={backgroundColorG} />
+			<input type="hidden" name="backgroundColorB" value={backgroundColorB} />
+			<input type="hidden" name="foregroundColorR" value={foregroundColorR} />
+			<input type="hidden" name="foregroundColorG" value={foregroundColorG} />
+			<input type="hidden" name="foregroundColorB" value={foregroundColorB} />
+
+			<!-- TODO -->
+
+			<PageControl
+				bind:stage
+				darkMode={data.darkMode}
+				color={data.color}
+				disableNext={(stage == 1 &&
+					(name.length == 0 ||
+						description.length == 0 ||
+						thumbnail.length == 0)) ||
+					stage == 2 ||
+					false}
+				disablePrev={false}
+				createText={m.createExercise()}
+				nextButtonCreate={stage == 3}
+			/>
+		</Form>
 	{/if}
 </CreateArea>

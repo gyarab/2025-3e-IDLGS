@@ -44,7 +44,7 @@
 		/>
 	</div>
 	<div class="grid w-full grow grid-cols-2 gap-2">
-		{#each data.textbooks as textbook}
+		{#each data.textbooks as textbook, i (i)}
 			<TextbookCard {textbook} />
 		{/each}
 	</div>

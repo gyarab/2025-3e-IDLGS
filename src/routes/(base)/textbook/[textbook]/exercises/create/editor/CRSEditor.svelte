@@ -46,7 +46,7 @@
 	let dialogDescValue = $state('');
 </script>
 
-<div class="relative flex w-full grow flex-col gap-2">
+<div class="relative flex w-full grow flex-col gap-2 overflow-x-hidden overflow-y-scroll">
 	<div
 		class="mb-2 flex w-full flex-row"
 		in:fly={{ x: 1000, y: 0, duration: 300, delay: 100, opacity: 0 }}

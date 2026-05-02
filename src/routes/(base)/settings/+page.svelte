@@ -51,7 +51,7 @@
 
 	<header class="flex flex-col items-center gap-1 text-center text-white">
 		<img
-			src="src/lib/assets/favicon.svg"
+			src="/logo.svg"
 			alt="Logo"
 			class="h-12 sm:h-16"
 		/>

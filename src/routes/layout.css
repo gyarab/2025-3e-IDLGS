@@ -98,4 +98,8 @@ cap-widget {
 			width: 100%;
 		}
 	}
+
+	.invisibleForm {
+		@apply bg-transparent! shadow-none! p-0! flex flex-row w-full gap-2;
+	}
 }

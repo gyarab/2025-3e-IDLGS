@@ -10,6 +10,7 @@
 	import SideBox from './ui/SideBox.svelte';
 	import InteractiveExerciseBox from './ui/InteractiveExerciseBox.svelte';
 	import ArticleNavbox from './ui/ArticleNavbox.svelte';
+	import type { ArticleType, TextbookType, ChapterType } from '$lib/types';
 
 	let {
 		data,
@@ -19,6 +20,9 @@
 			darkMode: boolean;
 			navbarOpen: boolean;
 			sidebarOpen: boolean;
+			textbook: TextbookType;
+			chapter: ChapterType;
+			article: ArticleType;
 		};
 	} = $props();
 

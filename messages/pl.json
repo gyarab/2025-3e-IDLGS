@@ -154,5 +154,12 @@
 	"textbookSettings": "Ustawienia podręcznika",
 	"textbookAuthorsList": "Lista autorów podręcznika",
 	"chapterDoesntExist": "Rozdział nie istnieje",
-	"articleDoesntExist": "Artykuł nie istnieje"
+	"articleDoesntExist": "Artykuł nie istnieje",
+	"secureEncryptedLogin": "Bezpieczne, zaszyfrowane logowanie",
+	"aboutUs": "O nas",
+	"contact": "Kontakt",
+	"ourTeam": "Nasz zespół",
+	"features": "Funkcje",
+	"openChapter": "Otwórz rozdział",
+	"openArticle": "Otwórz artykuł"
 }

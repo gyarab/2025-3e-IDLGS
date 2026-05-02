@@ -4,6 +4,7 @@
 	import { page } from '$app/state';
 	import { m } from '$lib/paraglide/messages';
 	import Button from '$src/routes/(base)/components/Button.svelte';
+	import type { TextbookType } from '$lib/types';
 
 	let {
 		data,
@@ -11,9 +12,14 @@
 		data: {
 			color: string;
 			darkMode: boolean;
+			textbook: TextbookType;
 		};
 	} = $props();
 </script>
+
+<svelte:head>
+	<title>{m.textbookInteractiveExercises()} | {data.textbook.title} |  {m.idlgs()}</title>
+</svelte:head>
 
 <div
 	class="flex w-full grow flex-col items-center p-4"
@@ -30,7 +36,7 @@
 				class="font-bold"
 				style="color: {data.color} !important;"
 			>
-				aaa
+				{data.textbook.title}
 			</h1>
 			<div class="grow"></div>
 			<Button

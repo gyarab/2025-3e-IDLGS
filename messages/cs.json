@@ -155,5 +155,12 @@
 	"textbookSettings": "Nastavení učebnice",
 	"textbookAuthorsList": "Seznam autorů učebnice",
 	"chapterDoesntExist": "Kapitola neexistuje",
-	"articleDoesntExist": "Článek neexistuje"
+	"articleDoesntExist": "Článek neexistuje",
+	"secureEncryptedLogin": "Bezpečné, šifrované přihlášení",
+	"aboutUs": "O nás",
+	"contact": "Kontakt",
+	"ourTeam": "Náš tým",
+	"features": "Funkce",
+	"openChapter": "Otevřít kapitolu",
+	"openArticle": "Otevřít článek"
 }

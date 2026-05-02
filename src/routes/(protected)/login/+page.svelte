@@ -50,7 +50,7 @@
 	>
 		<header class="flex flex-col items-center gap-1 pt-2 text-center">
 			<img
-				src="src/lib/assets/favicon.svg"
+				src="/logo.svg"
 				alt="Logo"
 				class="h-12 sm:h-14"
 			/>
@@ -115,7 +115,7 @@
 		</Form>
 
 		{#if !data.darkMode}
-			<p class="text-center text-xs opacity-40">Secure Encrypted Login</p>
+			<p class="text-center text-xs opacity-40">{m.secureEncryptedLogin()}</p>
 		{/if}
 	</div>
 </div>

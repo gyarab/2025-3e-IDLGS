@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
 	import { fly } from 'svelte/transition';
-	import type { ChapterTypeRaw, ArticleType } from '$lib/types';
+	import type { ChapterTypeRaw, ArticleTypeRaw } from '$lib/types';
 
 	let {
 		darkMode,
@@ -19,7 +19,7 @@
 		description: string;
 		educationLevel: string;
 		chapters: ChapterTypeRaw[];
-		articles: ArticleType[][];
+		articles: ArticleTypeRaw[][];
 		authors: string[];
 	} = $props();
 

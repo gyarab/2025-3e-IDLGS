@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ArticleType } from '$lib/types';
+	import type { ArticleTypeRaw } from '$lib/types';
 	import { darkenHex } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import Button from '$src/routes/(base)/components/Button.svelte';
@@ -19,7 +19,7 @@
 		ondown,
 		onedit,
 	}: {
-		article: ArticleType;
+		article: ArticleTypeRaw;
 		darkMode: boolean;
 		i: number;
 		amount: number;

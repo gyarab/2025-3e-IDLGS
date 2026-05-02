@@ -3,7 +3,7 @@ import { resolve } from '$app/paths';
 import { m } from '$lib/paraglide/messages';
 import { error } from '@sveltejs/kit';
 import { schema as databaseSchema } from '$lib/server/db/schema';
-import { asc, eq } from 'drizzle-orm';
+import { and, asc, eq } from 'drizzle-orm';
 
 export const load = async (event) => {
 	const pd = await event.parent();
@@ -40,7 +40,10 @@ export const load = async (event) => {
 				order: databaseSchema.article.order,
 			})
 			.from(databaseSchema.article)
-			.where(eq(databaseSchema.article.textbookId, textbookId.id))
+			.where(and(
+				eq(databaseSchema.article.textbookId, textbookId.id),
+				eq(databaseSchema.article.chapterId, chapterId.id),
+			))
 			.orderBy(asc(databaseSchema.article.order)),
 	};
 };

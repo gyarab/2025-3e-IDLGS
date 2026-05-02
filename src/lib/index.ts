@@ -75,6 +75,17 @@ export const setSidebarOpen = async (enabled: boolean) => {
 	});
 };
 
+//client side
+export const logout = async () => {
+	await fetch('/login/?/logout', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+		},
+		body: "",
+	});
+};
+
 export const getDateTimeString = (date: Date): string => {
 	let string = '';
 
