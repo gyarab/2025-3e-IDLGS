@@ -2,7 +2,7 @@
 	import { darkenHex } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import ColorInput from '$src/routes/(base)/components/ColorInput.svelte';
-	import SelectionButton from '$src/routes/(base)/components/SelectionButton.svelte';
+	import SelectionBtnList from '$src/routes/(base)/components/SelectionBtnList.svelte';
 	import TextArea from '$src/routes/(base)/components/TextArea.svelte';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
 	import { fly } from 'svelte/transition';
@@ -57,7 +57,7 @@
 				opacity: 0,
 			}}
 		>
-			<SelectionButton
+			<SelectionBtnList
 				texts={[
 					m.isced0(),
 					m.isced1(),

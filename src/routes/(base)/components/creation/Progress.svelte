@@ -28,7 +28,7 @@
 </script>
 
 <div
-	class="flex max-w-1/5 grow flex-col gap-2 rounded-e-2xl p-4 shadow-lg {darkMode
+	class="flex max-w-1/5 min-w-40 grow flex-col gap-2 rounded-e-2xl p-4 shadow-lg {darkMode
 		? 'bg-neutral-900'
 		: 'bg-neutral-300'}"
 	in:fly|global={{ duration: 300, delay: 300, x: -500, y: 0, opacity: 0 }}
