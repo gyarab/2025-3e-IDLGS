@@ -149,5 +149,11 @@
 	"searching": "Hledám",
 	"educationLevel": "Vzdělávací úroveň",
 	"chapterAmount": "Počet kapitol",
-	"articleAmount": "Počet článků"
+	"articleAmount": "Počet článků",
+	"openTextbook": "Otevřít učebnici",
+	"textbookDoesntExist": "Učebnice neexistuje",
+	"textbookSettings": "Nastavení učebnice",
+	"textbookAuthorsList": "Seznam autorů učebnice",
+	"chapterDoesntExist": "Kapitola neexistuje",
+	"articleDoesntExist": "Článek neexistuje"
 }

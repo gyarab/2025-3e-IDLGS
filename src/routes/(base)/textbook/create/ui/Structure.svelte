@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { darkenHex } from '$lib';
 	import { m } from '$lib/paraglide/messages';
-	import type { ArticleType, ChapterType } from '$lib/types';
+	import type { ArticleType, ChapterTypeRaw } from '$lib/types';
 	import Button from '$src/routes/(base)/components/Button.svelte';
 	import ConfirmCancel from '$src/routes/(base)/components/ConfirmCancel.svelte';
 	import ConfirmDeleteDialog from '$src/routes/(base)/components/ConfirmDeleteDialog.svelte';
@@ -21,7 +21,7 @@
 	}: {
 		darkMode: boolean;
 		color: string;
-		chapters: ChapterType[];
+		chapters: ChapterTypeRaw[];
 		articles: ArticleType[][];
 	} = $props();
 

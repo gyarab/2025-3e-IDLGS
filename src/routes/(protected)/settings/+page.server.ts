@@ -17,14 +17,14 @@ export const actions = {
 	updatePersonalInfo: async (event) => {
 		return await formRunner(
 			event,
-			['name', 'middlename', 'surname'],
+			['name', 'surname'],
 			true,
 			async (data: FormDataType, user: UserTypeFull | undefined) => {
 				await event.locals.db
 					.update(databaseSchema.user)
 					.set({
 						name: data.name,
-						middlename: data.middlename,
+						middlename: data.middlename ?? '',
 						surname: data.surname,
 					})
 					.where(eq(databaseSchema.user.id, user!.id));

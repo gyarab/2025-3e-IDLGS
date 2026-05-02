@@ -32,7 +32,7 @@ export type UserTypeFull = UserType & {
 	firstLogin: boolean;
 };
 
-export type TextbookType = {
+export type TextbookTypeNoAuthors = {
 	uuid: string;
 	title: string;
 	description: string;
@@ -41,6 +41,9 @@ export type TextbookType = {
 	g: number;
 	b: number;
 	educationLevel: number;
+};
+
+export type TextbookType =  TextbookTypeNoAuthors & {
 	authors: UserTypeInfo[];
 };
 
@@ -48,18 +51,21 @@ export type TextbookTypeFull = TextbookType & {
 	id: number;
 };
 
-export type ChapterType = {
+export type ChapterTypeRaw = {
 	title: string;
 	order: number;
 };
 
-export type ChapterTypeNoId = ChapterType & {
+export type ChapterTypeNoId = ChapterTypeRaw & {
 	textbookId: number;
 };
 
-export type ChapterTypeFull = ChapterTypeNoId & {
-	id: number;
+export type ChapterType = ChapterTypeNoId & {
 	uuid: string;
+};
+
+export type ChapterTypeFull = ChapterType & {
+	id: number;
 };
 
 export type ArticleType = {

@@ -148,5 +148,11 @@
 	"searching": "Szukam",
 	"educationLevel": "Poziom edukacji",
 	"chapterAmount": "Liczba rozdziałów",
-	"articleAmount": "Liczba artykułów"
+	"articleAmount": "Liczba artykułów",
+	"openTextbook": "Otwórz podręcznik",
+	"textbookDoesntExist": "Podręcznik nie istnieje",
+	"textbookSettings": "Ustawienia podręcznika",
+	"textbookAuthorsList": "Lista autorów podręcznika",
+	"chapterDoesntExist": "Rozdział nie istnieje",
+	"articleDoesntExist": "Artykuł nie istnieje"
 }

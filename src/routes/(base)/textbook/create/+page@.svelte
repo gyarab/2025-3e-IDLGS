@@ -8,7 +8,7 @@
 	import Resources from './ui/Resources.svelte';
 	import Review from './ui/Review.svelte';
 	import PageControl from '../../components/PageControl.svelte';
-	import type { ArticleType, ChapterType, UserTypeInfo } from '$lib/types';
+	import type { ArticleType, ChapterTypeRaw, UserTypeInfo } from '$lib/types';
 	import Form from '$src/routes/(base)/components/Form.svelte';
 	import LoadingAnimationHandler from '../../components/loading/LoadingAnimationHandler.svelte';
 	import { goto } from '$app/navigation';
@@ -28,7 +28,7 @@
 	let description: string = $state('');
 	let textbookColor: string = $derived(data.color);
 	let educationLevel: string = $state('');
-	let chapters: ChapterType[] = $state([]);
+	let chapters: ChapterTypeRaw[] = $state([]);
 	let articles: ArticleType[][] = $state([]);
 	let authorUuids: string[] = $state([]);
 </script>

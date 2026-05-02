@@ -1,6 +1,8 @@
 import type { TextbookType } from '$lib/types';
 import { schema as databaseSchema } from '$lib/server/db/schema';
 import { eq } from 'drizzle-orm';
+import { error } from '@sveltejs/kit';
+import { m } from '$lib/paraglide/messages.js';
 
 export const load = async (event) => {
 	const textbookRawData = (
@@ -10,6 +12,8 @@ export const load = async (event) => {
 			.where(eq(databaseSchema.textbook.uuid, event.params.textbook))
 			.limit(1)
 	)[0];
+
+	if(!textbookRawData) return error(404, m.textbookDoesntExist());
 
 	const users = await event.locals.db
 		.select({

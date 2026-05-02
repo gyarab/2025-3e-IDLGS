@@ -149,5 +149,11 @@
 	"searching": "Searching",
 	"educationLevel": "Education level",
 	"chapterAmount": "Chapter amount",
-	"articleAmount": "Article amount"
+	"articleAmount": "Article amount",
+	"openTextbook": "Open textbook",
+	"textbookDoesntExist": "Textbook doesn't exist",
+	"textbookSettings": "Textbook settings",
+	"textbookAuthorsList": "Textbook authors list",
+	"chapterDoesntExist": "Chapter doesn't exist",
+	"articleDoesntExist": "Article doesn't exist"
 }

@@ -16,6 +16,8 @@
 			user: UserType | undefined;
 		};
 	} = $props();
+
+	$inspect(data.textbooks);
 </script>
 
 <svelte:head>
@@ -23,7 +25,7 @@
 </svelte:head>
 
 <div
-	class="flex min-h-[33svh] w-1/2 flex-col rounded-2xl p-4 shadow-xl {data.darkMode
+	class="flex min-h-[33svh] w-1/2 flex-col gap-4 rounded-2xl p-4 shadow-xl {data.darkMode
 		? 'bg-neutral-800'
 		: 'bg-neutral-200'}"
 >
@@ -41,13 +43,9 @@
 			}}
 		/>
 	</div>
-	<div class="grid w-full grow grid-cols-3 gap-2">
+	<div class="grid w-full grow grid-cols-2 gap-2">
 		{#each data.textbooks as textbook}
-			<TextbookCard
-				{textbook}
-				darkMode={data.darkMode}
-				color={data.color}
-			/>
+			<TextbookCard {textbook} />
 		{/each}
 	</div>
 </div>

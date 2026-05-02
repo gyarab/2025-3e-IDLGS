@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { darkenHex } from '$lib';
 	import { m } from '$lib/paraglide/messages';
-	import type { ChapterType } from '$lib/types';
+	import type { ChapterTypeRaw } from '$lib/types';
 	import Button from '$src/routes/(base)/components/Button.svelte';
 	import HoverEmoji from '$src/routes/(base)/components/HoverEmoji.svelte';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
@@ -19,7 +19,7 @@
 		onup,
 		onedit,
 	}: {
-		chapter: ChapterType;
+		chapter: ChapterTypeRaw;
 		darkMode: boolean;
 		selected?: boolean;
 		i: number;
