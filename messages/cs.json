@@ -128,5 +128,14 @@
 	"thisActionCannotBeUndone": "Tato akce není vratná",
 	"selectAChapterToViewArticles": "Vyberte kapitolu pro zobrazení jejích článků",
 	"articleTitle": "Název článku",
-	"chapterTitle": "Název kapitoly"
+	"chapterTitle": "Název kapitoly",
+	"moveChapterUp": "Posunout kapitolu nahoru",
+	"moveChapterDown": "Posunout kapitolu dolů",
+	"moveArticleUp": "Posunout článek nahoru",
+	"moveArticleDown": "Posunout článek dolů",
+	"noArticlesInChapterYet": "V této kapitole zatím nejsou žádné články",
+	"noChaptersYet": "Zatím nejsou přidány žádné kapitoly",
+	"addResource": "Přidat zdroj",
+	"editResource": "Upravit zdroj",
+	"removeResource": "Odstranit zdroj"
 }

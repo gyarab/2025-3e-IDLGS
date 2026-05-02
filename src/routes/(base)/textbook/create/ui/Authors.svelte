@@ -22,7 +22,7 @@
 		<h2 class="text-2xl font-bold">{m.additionalAuthors()}</h2>
 		<p>{m.additionalAuthorsDescription()}</p>
 	</div>
-	<div class="flex w-full grow flex-row">
+	<div class="flex w-full grow flex-row gap-2">
 		<div class="flex grow flex-col gap-2"></div>
 		<VerticalLine {darkMode} />
 		<div class="flex grow flex-col gap-2"></div>

@@ -19,29 +19,27 @@ CREATE TABLE "exercise" (
 	"foregroundColorR" integer DEFAULT 0 NOT NULL,
 	"foregroundColorG" integer DEFAULT 0 NOT NULL,
 	"foregroundColorB" integer DEFAULT 0 NOT NULL,
-	CONSTRAINT "exercise_id_unique" UNIQUE("id"),
 	CONSTRAINT "type" CHECK ("exercise"."type" IN ('CRS', 'CRW', 'DEF', 'GRP', 'GEO', 'EXT')),
-	CONSTRAINT "exerciseTypeData" CHECK ((type = 'CRS' AND crs IS NOT NULL AND crosswordDataId IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL) OR
-			(type = 'CRW' AND crw IS NOT NULL AND crosswordDataId IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL) OR
-			(type = 'DEF' AND def IS NOT NULL AND crosswordDataId IS NULL AND crs IS NULL AND crw IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL) OR
-			(type = 'GRP' AND grp IS NOT NULL AND crosswordDataId IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND geo IS NULL AND ext IS NULL) OR
-			(type = 'GEO' AND geo IS NOT NULL AND crosswordDataId IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND grp IS NULL AND ext IS NULL) OR
-			(type = 'EXT' AND ext IS NOT NULL AND crosswordDataId IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL) OR
-			(type = 'CRW' AND crosswordDataId IS NOT NULL AND crs IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL)
+	CONSTRAINT "exerciseTypeData" CHECK ((type = 'CRS' AND crs IS NOT NULL AND "crosswordDataId" IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL) OR
+			(type = 'CRW' AND crw IS NOT NULL AND "crosswordDataId" IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL) OR
+			(type = 'DEF' AND def IS NOT NULL AND "crosswordDataId" IS NULL AND crs IS NULL AND crw IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL) OR
+			(type = 'GRP' AND grp IS NOT NULL AND "crosswordDataId" IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND geo IS NULL AND ext IS NULL) OR
+			(type = 'GEO' AND geo IS NOT NULL AND "crosswordDataId" IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND grp IS NULL AND ext IS NULL) OR
+			(type = 'EXT' AND ext IS NOT NULL AND "crosswordDataId" IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL) OR
+			(type = 'CRW' AND "crosswordDataId" IS NOT NULL AND crs IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL)
 			),
-	CONSTRAINT "colorValues" CHECK ((backgroundColorR >= 0 AND backgroundColorR <= 255) AND
-			(backgroundColorG >= 0 AND backgroundColorG <= 255) AND
-			(backgroundColorB >= 0 AND backgroundColorB <= 255) AND
-			(foregroundColorR >= 0 AND foregroundColorR <= 255) AND
-			(foregroundColorG >= 0 AND foregroundColorG <= 255) AND
-			(foregroundColorB >= 0 AND foregroundColorB <= 255))
+	CONSTRAINT "colorValues" CHECK (("backgroundColorR" >= 0 AND "backgroundColorR" <= 255) AND
+			("backgroundColorG" >= 0 AND "backgroundColorG" <= 255) AND
+			("backgroundColorB" >= 0 AND "backgroundColorB" <= 255) AND
+			("foregroundColorR" >= 0 AND "foregroundColorR" <= 255) AND
+			("foregroundColorG" >= 0 AND "foregroundColorG" <= 255) AND
+			("foregroundColorB" >= 0 AND "foregroundColorB" <= 255))
 );
 --> statement-breakpoint
 CREATE TABLE "exerciseCRS" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"offsets" integer[] DEFAULT ARRAY[]::integer[] NOT NULL,
-	"columnId" integer DEFAULT 0 NOT NULL,
-	CONSTRAINT "exerciseCRS_id_unique" UNIQUE("id")
+	"columnId" integer DEFAULT 0 NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "exerciseCRW" (
@@ -50,8 +48,7 @@ CREATE TABLE "exerciseCRW" (
 	"yStarts" integer[] DEFAULT ARRAY[]::integer[] NOT NULL,
 	"directions" text[] DEFAULT ARRAY[]::text[] NOT NULL,
 	"xIds" integer[] DEFAULT ARRAY[]::integer[] NOT NULL,
-	"yIds" integer[] DEFAULT ARRAY[]::integer[] NOT NULL,
-	CONSTRAINT "exerciseCRW_id_unique" UNIQUE("id")
+	"yIds" integer[] DEFAULT ARRAY[]::integer[] NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "exerciseCrossword" (
@@ -59,47 +56,42 @@ CREATE TABLE "exerciseCrossword" (
 	"solution" text,
 	"words" text[] DEFAULT ARRAY[]::text[],
 	"descriptions" text[] DEFAULT ARRAY[]::text[],
-	"clue" text[] DEFAULT ARRAY[]::text[],
-	CONSTRAINT "exerciseCrossword_id_unique" UNIQUE("id")
+	"clue" text[] DEFAULT ARRAY[]::text[]
 );
 --> statement-breakpoint
 CREATE TABLE "exerciseDefinitions" (
-	"id" serial PRIMARY KEY NOT NULL,
-	CONSTRAINT "exerciseDefinitions_id_unique" UNIQUE("id")
+	"id" serial PRIMARY KEY NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "exerciseEmbed" (
 	"id" serial PRIMARY KEY NOT NULL,
-	"link" text NOT NULL,
-	CONSTRAINT "exerciseEmbed_id_unique" UNIQUE("id")
+	"link" text NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "exerciseGeometry" (
-	"id" serial PRIMARY KEY NOT NULL,
-	CONSTRAINT "exerciseGeometry_id_unique" UNIQUE("id")
+	"id" serial PRIMARY KEY NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "exerciseGraph" (
-	"id" serial PRIMARY KEY NOT NULL,
-	CONSTRAINT "exerciseGraph_id_unique" UNIQUE("id")
+	"id" serial PRIMARY KEY NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "exerciseGraphFunction" (
 	"id" serial PRIMARY KEY NOT NULL,
-	"latex" text NOT NULL,
-	CONSTRAINT "exerciseGraphFunction_id_unique" UNIQUE("id")
+	"latex" text NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "exerciseResource" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"exerciseId" integer NOT NULL,
-	"resourceId" integer NOT NULL,
-	CONSTRAINT "exerciseResource_id_unique" UNIQUE("id")
+	"resourceId" integer NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "article" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"uuid" text NOT NULL,
+	"title" text NOT NULL,
+	"order" integer DEFAULT 0 NOT NULL,
 	"textCompressed" text NOT NULL,
 	"chapterId" integer NOT NULL,
 	"textbookId" integer NOT NULL,
@@ -123,6 +115,8 @@ CREATE TABLE "articleResource" (
 CREATE TABLE "chapter" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"uuid" text NOT NULL,
+	"title" text NOT NULL,
+	"order" integer DEFAULT 0 NOT NULL,
 	"textbookId" integer NOT NULL,
 	CONSTRAINT "chapter_uuid_unique" UNIQUE("uuid")
 );
@@ -145,7 +139,8 @@ CREATE TABLE "textbook" (
 	CONSTRAINT "textbook_uuid_unique" UNIQUE("uuid"),
 	CONSTRAINT "r" CHECK ("textbook"."r" >= 0 AND "textbook"."r" <= 255),
 	CONSTRAINT "g" CHECK ("textbook"."g" >= 0 AND "textbook"."g" <= 255),
-	CONSTRAINT "b" CHECK ("textbook"."b" >= 0 AND "textbook"."b" <= 255)
+	CONSTRAINT "b" CHECK ("textbook"."b" >= 0 AND "textbook"."b" <= 255),
+	CONSTRAINT "isced" CHECK ("textbook"."educationLevel" >= 0 AND "textbook"."educationLevel" <= 8)
 );
 --> statement-breakpoint
 CREATE TABLE "textbookUserLinker" (
@@ -180,6 +175,7 @@ CREATE TABLE "user" (
 	"salt" text NOT NULL,
 	"registeredAt" timestamp DEFAULT now() NOT NULL,
 	"firstLogin" boolean DEFAULT true NOT NULL,
+	"language" text DEFAULT 'en' NOT NULL,
 	"playedTextbookTutorial" boolean DEFAULT false NOT NULL,
 	"playedLibraryTutorial" boolean DEFAULT false NOT NULL,
 	"playedGalleryTutorial" boolean DEFAULT false NOT NULL,
@@ -188,8 +184,14 @@ CREATE TABLE "user" (
 	"profilePicture" integer,
 	"description" text DEFAULT '' NOT NULL,
 	"lastSeenAt" timestamp DEFAULT now() NOT NULL,
+	"r" integer DEFAULT 0 NOT NULL,
+	"g" integer DEFAULT 0 NOT NULL,
+	"b" integer DEFAULT 0 NOT NULL,
 	"uuid" text NOT NULL,
-	CONSTRAINT "user_uuid_unique" UNIQUE("uuid")
+	CONSTRAINT "user_uuid_unique" UNIQUE("uuid"),
+	CONSTRAINT "colorValues" CHECK ((r >= 0 AND r <= 255) AND
+		(g >= 0 AND g <= 255) AND
+		(b >= 0 AND b <= 255))
 );
 --> statement-breakpoint
 ALTER TABLE "exercise" ADD CONSTRAINT "exercise_thumbnail_resource_id_fk" FOREIGN KEY ("thumbnail") REFERENCES "public"."resource"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint

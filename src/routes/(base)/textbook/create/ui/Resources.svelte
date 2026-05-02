@@ -1,5 +1,7 @@
 <script lang="ts">
+	import { darkenHex } from '$lib';
 	import { m } from '$lib/paraglide/messages';
+	import Button from '$src/routes/(base)/components/Button.svelte';
 	import TextArea from '$src/routes/(base)/components/TextArea.svelte';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
 	import { fly } from 'svelte/transition';
@@ -20,5 +22,32 @@
 	>
 		<h2 class="text-2xl font-bold">{m.textbookResources()}</h2>
 		<p>{m.textbookResourcesDescription()}</p>
+	</div>
+	<div class="flex w-full grow flex-col gap-2"></div>
+	<div class="flex w-full flex-row gap-2">
+		<Button
+			text={m.addResource()}
+			emoji="file-add"
+			type="button"
+			onclick={() => {}}
+			css="buttonPrimary grow"
+			style="background-color: {color};"
+		/>
+		<Button
+			text={m.editResource()}
+			emoji="file-edit"
+			type="button"
+			onclick={() => {}}
+			css="buttonPrimary grow"
+			style="background-color: {darkenHex(color, 50)};"
+		/>
+		<Button
+			text={m.removeResource()}
+			emoji="file-reduce"
+			type="button"
+			onclick={() => {}}
+			css="buttonPrimary grow"
+			style="background-color: {darkenHex(color, 80)};"
+		/>
 	</div>
 </div>

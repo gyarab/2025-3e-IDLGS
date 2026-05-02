@@ -22,4 +22,14 @@
 		<h2 class="text-2xl font-bold">{m.reviewInformation()}</h2>
 		<p>{m.reviewInformationDescription()}</p>
 	</div>
+	<Form
+		target="?/makeTextbook"
+		{darkMode}
+		css="flex flex-col w-full grow gap-2"
+	>
+		<input
+			type="hidden"
+			name="name"
+		/>
+	</Form>
 </div>
