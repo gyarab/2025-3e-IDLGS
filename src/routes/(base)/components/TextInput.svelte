@@ -32,7 +32,7 @@
 		type={type == 'password' ? (passwordShown ? 'text' : 'password') : type}
 		{placeholder}
 		{required}
-		class="grow border-0 border-b-2 px-3 py-1.5 {darkMode
+		class="w-full border-0 border-b-2 px-3 py-1.5 {darkMode
 			? 'bg-neutral-700 text-white! placeholder:text-white!'
 			: 'bg-neutral-200 text-black! placeholder:text-black!'}"
 		style="border-color: {color};"

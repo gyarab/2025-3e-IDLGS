@@ -36,7 +36,7 @@
 	bind:this={element}
 	method="POST"
 	enctype="multipart/form-data"
-	class="{css} flex w-full flex-col gap-2 rounded-lg p-4 shadow-lg {darkMode
+	class="{css} flex w-full flex-col gap-2 rounded-xl p-4 shadow-lg {darkMode
 		? 'bg-neutral-800 text-white'
 		: 'bg-neutral-100 text-black'}"
 	action={target}
