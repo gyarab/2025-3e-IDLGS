@@ -42,7 +42,6 @@ export type TextbookType = {
 };
 
 export type ChapterType = {
-	uuid: string;
 	title: string;
 	order: number;
 };
@@ -50,19 +49,21 @@ export type ChapterType = {
 export type ChapterTypeFull = ChapterType & {
 	id: number;
 	textbookId: number;
+	uuid: string;
 };
 
 export type ArticleType = {
-	uuid: string;
 	title: string;
 	order: number;
-	textCompressed: string;
 };
 
 export type ArticleTypeFull = ArticleType & {
 	id: number;
 	chapterId: number;
 	textbookId: number;
+	uuid: string;
+	textCompressed: string;
+
 };
 
 export type ExerciseType = {
