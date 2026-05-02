@@ -30,7 +30,15 @@
 		<h2 class="text-2xl font-bold">{m.basicTextbookInformation()}</h2>
 	</div>
 	<div class="flex w-full grow flex-col gap-2">
-		<span in:fly|global={{ x: 1000, y: 0, duration: 300, delay: 300, opacity: 0 }}>
+		<span
+			in:fly|global={{
+				x: 1000,
+				y: 0,
+				duration: 300,
+				delay: 300,
+				opacity: 0,
+			}}
+		>
 			<TextInput
 				{darkMode}
 				{color}
@@ -40,7 +48,15 @@
 			/>
 		</span>
 
-		<span in:fly|global={{ x: 1000, y: 0, duration: 300, delay: 500, opacity: 0 }}>
+		<span
+			in:fly|global={{
+				x: 1000,
+				y: 0,
+				duration: 300,
+				delay: 500,
+				opacity: 0,
+			}}
+		>
 			<SelectionButton
 				texts={[
 					m.isced0(),
@@ -71,11 +87,28 @@
 			/>
 		</span>
 
-		<span in:fly|global={{ x: 1000, y: 0, duration: 300, delay: 700, opacity: 0 }}>
+		<span
+			in:fly|global={{
+				x: 1000,
+				y: 0,
+				duration: 300,
+				delay: 700,
+				opacity: 0,
+			}}
+		>
 			<ColorInput bind:color />
 		</span>
 
-		<span class="grow flex flex-col w-full" in:fly|global={{ x: 1000, y: 0, duration: 300, delay: 900, opacity: 0 }}>
+		<span
+			class="flex w-full grow flex-col"
+			in:fly|global={{
+				x: 1000,
+				y: 0,
+				duration: 300,
+				delay: 900,
+				opacity: 0,
+			}}
+		>
 			<TextArea
 				{darkMode}
 				{color}

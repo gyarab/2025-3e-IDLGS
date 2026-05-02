@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { ChapterType } from "$lib/types";
-	import { fly } from "svelte/transition";
+	import type { ChapterType } from '$lib/types';
+	import { fly } from 'svelte/transition';
 
 	let {
 		chapter,
@@ -11,6 +11,6 @@
 	} = $props();
 </script>
 
-<div class="flex flex-row w-full gap-2">
+<div class="flex w-full flex-row gap-2">
 	<div class="grow"></div>
 </div>

@@ -18,7 +18,8 @@
 		bind:value={color}
 		bind:this={inputElement}
 	/>
-	<div class="absolute top-1/2 left-1/2 -translate-1/2 text-white italic"
+	<div
+		class="absolute top-1/2 left-1/2 -translate-1/2 text-white italic"
 		onclick={() => inputElement.click()}
 		onkeydown={(e) => {
 			if (e.key === 'Enter' || e.key === ' ') {
