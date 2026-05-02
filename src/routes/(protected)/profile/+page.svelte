@@ -6,7 +6,7 @@
 	let profile = {
 		name: 'John Doe',
 		major: 'Neuroscience',
-		university: 'State University',
+		institution: 'State University',
 		stats: [
 			{ label: 'Time Spent Reading', value: '1240 min' },
 			{ label: 'Textbooks Finished', value: '8' },
@@ -55,7 +55,7 @@
 			<div>
 				<h1 class="text-2xl font-bold sm:text-3xl">{profile.name}</h1>
 				<p class="text-sm font-medium opacity-60 sm:text-base">
-					{profile.major} • {profile.university}
+					{profile.major} • {profile.institution}
 				</p>
 			</div>
 		</header>
