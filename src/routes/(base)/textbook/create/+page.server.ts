@@ -24,19 +24,20 @@ export const actions = {
 			],
 			true,
 			async (data: FormDataType, user: UserTypeInfo | undefined) => {
-				const chapters  = JSON.parse(data.chapters) as ChapterType[];
+				const chapters = JSON.parse(data.chapters) as ChapterType[];
 				const articles = JSON.parse(data.articles) as ArticleType[][];
 				const authors = JSON.parse(data.authors) as string[]; //uuids
 
 				await event.locals.db.transaction(async (tx) => {
-					const textbook = await event.locals.db.insert(databaseSchema.textbook).values({
-						name: data.name,
-						description: data.description,
-						educationLevel: data.educationLevel,
-						color: data.color,
-					}).returning();
-
-				
+					const textbook = await event.locals.db
+						.insert(databaseSchema.textbook)
+						.values({
+							name: data.name,
+							description: data.description,
+							educationLevel: data.educationLevel,
+							color: data.color,
+						})
+						.returning();
 				});
 			},
 		);
