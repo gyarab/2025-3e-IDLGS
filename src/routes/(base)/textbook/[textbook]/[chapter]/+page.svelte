@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { ArticleType, TextbookType } from "$lib/types";
-	import { m } from "$lib/paraglide/messages";
+	import type { ArticleType, TextbookType } from '$lib/types';
+	import { m } from '$lib/paraglide/messages';
 
 	let {
 		data,
@@ -14,8 +14,8 @@
 	} = $props();
 </script>
 
-<div class="flex min-h-[33svh] w-1/2 flex-col rounded-2xl p-4 shadow-xl gap-4">
+<div class="flex min-h-[33svh] w-1/2 flex-col gap-4 rounded-2xl p-4 shadow-xl">
 	{#each data.articles as article}
 		<div>{JSON.stringify(article)}</div>
 	{/each}
-</div>	
+</div>

@@ -13,7 +13,7 @@ export const load = async (event) => {
 			.limit(1)
 	)[0];
 
-	if(!textbookRawData) return error(404, m.textbookDoesntExist());
+	if (!textbookRawData) return error(404, m.textbookDoesntExist());
 
 	const users = await event.locals.db
 		.select({

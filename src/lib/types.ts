@@ -43,7 +43,7 @@ export type TextbookTypeNoAuthors = {
 	educationLevel: number;
 };
 
-export type TextbookType =  TextbookTypeNoAuthors & {
+export type TextbookType = TextbookTypeNoAuthors & {
 	authors: UserTypeInfo[];
 };
 

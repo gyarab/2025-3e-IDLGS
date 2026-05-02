@@ -18,9 +18,9 @@ export const load = async (event) => {
 			.limit(1)
 	)[0];
 
-	if(!chapter) return error(404, m.chapterDoesntExist());
+	if (!chapter) return error(404, m.chapterDoesntExist());
 
 	return {
-		chapter
+		chapter,
 	};
 };

@@ -3,7 +3,12 @@ import { redirect } from '@sveltejs/kit';
 import { eq, desc } from 'drizzle-orm';
 import { resolve } from '$app/paths';
 import { formRunner, type FormDataType } from '$lib/server/form/validation.js';
-import type { TextbookTypeFull, TextbookTypeNoAuthors, UserType, UserTypeInfo } from '$lib/types.js';
+import type {
+	TextbookTypeFull,
+	TextbookTypeNoAuthors,
+	UserType,
+	UserTypeInfo,
+} from '$lib/types.js';
 
 export const load = async (event) => {
 	const pd = await event.parent();
@@ -65,17 +70,24 @@ export const load = async (event) => {
 					databaseSchema.textbookUserLinker.userId,
 				),
 			)
-			.where(eq(databaseSchema.textbookUserLinker.textbookId, textbooks[i].id));
+			.where(
+				eq(
+					databaseSchema.textbookUserLinker.textbookId,
+					textbooks[i].id,
+				),
+			);
 
 		textbookAuthors.push(users);
 	}
 
 	return {
-		textbooks: textbooks.map((textbook: TextbookTypeNoAuthors, index: number) => ({
-			...textbook,
-			id: undefined,
-			authors: textbookAuthors[index],
-		})),
+		textbooks: textbooks.map(
+			(textbook: TextbookTypeNoAuthors, index: number) => ({
+				...textbook,
+				id: undefined,
+				authors: textbookAuthors[index],
+			}),
+		),
 		user: pd.user,
 	};
 };
@@ -86,7 +98,7 @@ export const actions = {
 			event,
 			[],
 			true,
-			async (data: FormDataType, user: UserType | undefined) => { },
+			async (data: FormDataType, user: UserType | undefined) => {},
 		);
 	},
 };

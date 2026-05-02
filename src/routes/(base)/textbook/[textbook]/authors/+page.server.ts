@@ -8,13 +8,14 @@ import { eq } from 'drizzle-orm';
 export const load = async (event) => {
 	const pd = await event.parent();
 	if (!pd.user) redirect(302, resolve('/(protected)/login'));
-	if(!pd.textbook) return error(404, m.textbookDoesntExist());
+	if (!pd.textbook) return error(404, m.textbookDoesntExist());
 
-	const textbookId = (await event.locals.db
-		.select({ id: databaseSchema.textbook.id })
-		.from(databaseSchema.textbook)
-		.where(eq(databaseSchema.textbook.uuid, pd.textbook.uuid))
-		.limit(1)
+	const textbookId = (
+		await event.locals.db
+			.select({ id: databaseSchema.textbook.id })
+			.from(databaseSchema.textbook)
+			.where(eq(databaseSchema.textbook.uuid, pd.textbook.uuid))
+			.limit(1)
 	)[0];
 
 	return {
@@ -31,7 +32,10 @@ export const load = async (event) => {
 			.from(databaseSchema.user)
 			.leftJoin(
 				databaseSchema.resource,
-				eq(databaseSchema.user.profilePicture, databaseSchema.resource.id),
+				eq(
+					databaseSchema.user.profilePicture,
+					databaseSchema.resource.id,
+				),
 			)
 			.leftJoin(
 				databaseSchema.textbookUserLinker,
@@ -41,10 +45,7 @@ export const load = async (event) => {
 				),
 			)
 			.where(
-				eq(
-					databaseSchema.textbookUserLinker.textbookId,
-					textbookId.id,
-				),
+				eq(databaseSchema.textbookUserLinker.textbookId, textbookId.id),
 			),
 	};
-}
+};
