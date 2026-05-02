@@ -35,6 +35,8 @@
 	"helpMenu": "Help",
 	"goBack": "Go back",
 	"goForward": "Go forward",
+	"back": "Back",
+	"next": "Next",
 	"cancel": "Cancel",
 	"exerciseName": "Exercise name",
 	"enterExerciseName": "Enter exercise name",

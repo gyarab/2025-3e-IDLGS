@@ -26,7 +26,7 @@
 
 	<SelectionButton
 		style="background-color: {color};"
-		texts={[m.goBack(), nextButtonCreate ? createText : m.goForward()]}
+		texts={[m.back(), nextButtonCreate ? createText : m.next()]}
 		disabled={[stage == 0 || disablePrev, disableNext]}
 		actions={[() => stage--, () => stage++]}
 		emojis={[

@@ -35,6 +35,8 @@
 	"helpMenu": "Pomoc",
 	"goBack": "Wstecz",
 	"goForward": "Dalej",
+	"back": "Wstecz",
+	"next": "Dalej",
 	"cancel": "Anuluj",
 	"exerciseName": "Nazwa ćwiczenia",
 	"enterExerciseName": "Wprowadź nazwę ćwiczenia",
