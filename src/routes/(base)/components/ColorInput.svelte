@@ -10,16 +10,19 @@
 	let inputElement: HTMLInputElement;
 </script>
 
-<div class="relative flex w-full flex-row">
+<div class="relative flex w-full flex-row items-center">
 	<input
 		type="color"
 		name="color"
-		class="w-full rounded-lg border-2 border-white shadow"
+		class="w-full cursor-pointer rounded-lg border-2 border-white shadow"
+		style="height: 40px;"
 		bind:value={color}
 		bind:this={inputElement}
 	/>
+
+	<!-- Changed: removed -translate and left-1/2, added w-full and text-center -->
 	<div
-		class="absolute top-1/2 left-1/2 -translate-1/2 text-white italic"
+		class="pointer-events-none absolute inset-0 flex items-center justify-center px-2 text-center text-white italic"
 		onclick={() => inputElement.click()}
 		onkeydown={(e) => {
 			if (e.key === 'Enter' || e.key === ' ') {
@@ -30,6 +33,8 @@
 		tabindex="-1"
 		role="button"
 	>
-		{m.clickToChangeColor()}...
+		<span class="w-full truncate">
+			{m.clickToChangeColor()}...
+		</span>
 	</div>
 </div>

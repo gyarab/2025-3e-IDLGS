@@ -53,7 +53,7 @@
 			<button
 				class="{css} {isSelected?.at(i)
 					? selectedcss
-					: ''} flex grow flex-row items-center justify-center gap-1 p-2 ps-3 pe-3 font-bold hover:translate-0! hover:brightness-75 active:brightness-50"
+					: ''} flex grow flex-row items-center justify-center gap-1 p-2 font-bold hover:translate-0! hover:brightness-75 active:brightness-50"
 				style="{style} {isSelected?.at(i) ? selectedstyle : ''}"
 				onclick={() => {
 					value = values?.at(i) ?? '';

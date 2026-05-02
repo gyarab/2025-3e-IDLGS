@@ -13,6 +13,7 @@
 	import type { UserType } from '$lib/types';
 	import TextArea from '$src/routes/(base)/components/TextArea.svelte';
 	import ColorInput from '$src/routes/(base)/components/ColorInput.svelte';
+	import { darkenHex } from '$lib';
 
 	let {
 		data,
@@ -34,271 +35,328 @@
 	</title>
 </svelte:head>
 
-<div class="flex w-full grow flex-col items-center gap-4">
-	<Form
-		color={data.color}
-		darkMode={data.darkMode}
-		css="w-1/4!"
-		success={async () => {}}
-		failure={async () => {}}
-		target="?/updatePersonalInfo"
-	>
-		<h1>{m.personalInformation()}</h1>
+<div
+	class="relative flex min-h-screen w-full flex-col items-center gap-8 overflow-x-hidden p-6 py-12"
+	style="background: linear-gradient(135deg, {data.color}, {darkenHex(
+		data.color,
+		80,
+	)}); --brand: {data.color};"
+>
+	<i
+		class="ri-settings-4-line absolute top-1/10 right-1/10 scale-250 rotate-12 text-9xl text-white opacity-10"
+	></i>
+	<i
+		class="ri-user-settings-line absolute bottom-1/4 left-1/15 scale-250 -rotate-12 text-9xl text-white opacity-10"
+	></i>
 
-		<TextInput
-			type="text"
-			name="name"
-			placeholder={m.name()}
-			darkMode={data.darkMode}
-			color={data.color}
-			value={data.user.name}
+	<header class="flex flex-col items-center gap-1 text-center text-white">
+		<img
+			src="src/lib/assets/favicon.svg"
+			alt="Logo"
+			class="h-12 sm:h-16"
 		/>
+		<h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">
+			{m.settings()}
+		</h1>
+	</header>
 
-		<TextInput
-			type="text"
-			name="middle"
-			placeholder={m.middlename()}
-			darkMode={data.darkMode}
-			color={data.color}
-			value={data.user.middlename}
-		/>
+	<div class="z-10 flex w-full max-w-2xl flex-col gap-6">
+		<!-- Personal Information Section -->
+		<section
+			class="rounded-3xl p-6 shadow-2xl sm:p-8 {data.darkMode
+				? 'bg-neutral-800/80 text-white'
+				: 'bg-white/90 text-black'}"
+		>
+			<div class="mb-6 flex items-center gap-3">
+				<i
+					class="ri-user-line text-2xl"
+					style="color: {data.color}"
+				></i>
+				<h2 class="text-xl font-bold">{m.personalInformation()}</h2>
+			</div>
+			<Form
+				color={data.color}
+				darkMode={data.darkMode}
+				css="flex flex-col gap-4"
+				success={async () => {}}
+				failure={async () => {}}
+				target="?/updatePersonalInfo"
+			>
+				<div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+					<TextInput
+						type="text"
+						name="name"
+						placeholder={m.name()}
+						darkMode={data.darkMode}
+						color={data.color}
+						value={data.user.name}
+					/>
+					<TextInput
+						type="text"
+						name="middle"
+						placeholder={m.middlename()}
+						darkMode={data.darkMode}
+						color={data.color}
+						value={data.user.middlename}
+						required={false}
+					/>
+					<TextInput
+						type="text"
+						name="surname"
+						placeholder={m.surname()}
+						darkMode={data.darkMode}
+						color={data.color}
+						value={data.user.surname}
+					/>
+				</div>
+				<Button
+					text={m.saveChanges()}
+					emoji="save-3"
+					type="submit"
+					css="buttonPrimary"
+					style="background-color: {data.color};"
+					onclick={() => {}}
+				/>
+			</Form>
+		</section>
 
-		<TextInput
-			type="text"
-			name="surname"
-			placeholder={m.surname()}
-			darkMode={data.darkMode}
-			color={data.color}
-			value={data.user.surname}
-		/>
+		<!-- Institution Section -->
+		<section
+			class="rounded-3xl p-6 shadow-2xl sm:p-8 {data.darkMode
+				? 'bg-neutral-800/80 text-white'
+				: 'bg-white/90 text-black'}"
+		>
+			<div class="mb-6 flex items-center gap-3">
+				<i
+					class="ri-bank-line text-2xl"
+					style="color: {data.color}"
+				></i>
+				<h2 class="text-xl font-bold">{m.institution()}</h2>
+			</div>
+			<Form
+				darkMode={data.darkMode}
+				css="flex flex-col gap-4"
+				success={async () => {}}
+				failure={async () => {}}
+				target="?/updateInstitutionInfo"
+				color={data.color}
+			>
+				<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+					<TextInput
+						type="text"
+						name="institution"
+						placeholder={m.institution()}
+						darkMode={data.darkMode}
+						color={data.color}
+						value={data.user.institution ?? undefined}
+					/>
+					<TextInput
+						type="text"
+						name="degree"
+						placeholder={m.degree()}
+						darkMode={data.darkMode}
+						color={data.color}
+						value={data.user.degree ?? undefined}
+					/>
+				</div>
+				<Button
+					text={m.saveChanges()}
+					emoji="save-3"
+					type="submit"
+					css="buttonPrimary"
+					style="background-color: {data.color};"
+					onclick={() => {}}
+				/>
+			</Form>
+		</section>
 
-		<Button
-			text={m.saveChanges()}
-			emoji="save-3"
-			onclick={() => {}}
-			type="submit"
-			css="buttonPrimary"
-			style="background-color: {data.color};"
-		/>
-	</Form>
+		<!-- Language & Appearance (Side by Side on desktop) -->
+		<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+			<!-- Language -->
+			<section
+				class="rounded-3xl p-6 shadow-2xl {data.darkMode
+					? 'bg-neutral-800/80 text-white'
+					: 'bg-white/90 text-black'}"
+			>
+				<h2 class="mb-4 text-lg font-bold">{m.language()}</h2>
+				<Form
+					darkMode={data.darkMode}
+					target="?/updateLanguage"
+					bind:element={languageForm}
+					final={async () => {
+						setLocale(language as Locale);
+					}}
+					color={data.color}
+					css="flex flex-col gap-4"
+				>
+					<input
+						type="hidden"
+						value={language}
+						name="language"
+					/>
+					<SelectionButton
+						texts={locales.map((v) =>
+							m.languageName({}, { locale: v }),
+						)}
+						emojis={[]}
+						bind:value={language}
+						values={[...locales]}
+						selectedcss="text-neutral-200!"
+						selectedstyle="background-color: {data.color};"
+					/>
+					<Button
+						text={m.saveChanges()}
+						emoji="save-3"
+						type="submit"
+						css="buttonPrimary"
+						style="background-color: {data.color};"
+						onclick={() => {}}
+					/>
+				</Form>
+			</section>
 
-	<Form
-		darkMode={data.darkMode}
-		css="w-1/4!"
-		success={async () => {}}
-		failure={async () => {}}
-		target="?/updateInstitutionInfo"
-		color={data.color}
-	>
-		<h1>{m.institution()}</h1>
+			<!-- Theme -->
+			<section
+				class="rounded-3xl p-6 shadow-2xl {data.darkMode
+					? 'bg-neutral-800/80 text-white'
+					: 'bg-white/90 text-black'}"
+			>
+				<h2 class="mb-4 text-lg font-bold">{m.theme()}</h2>
+				<Form
+					darkMode={data.darkMode}
+					target="?/updateColor"
+					color={data.color}
+					css="flex flex-col gap-4"
+				>
+					<ColorInput color={data.color} />
+					<Button
+						text={m.saveChanges()}
+						emoji="save-3"
+						type="submit"
+						css="buttonPrimary"
+						style="background-color: {data.color};"
+						onclick={() => {}}
+					/>
+				</Form>
+			</section>
+		</div>
 
-		<TextInput
-			type="text"
-			name="institution"
-			placeholder={m.institution()}
-			darkMode={data.darkMode}
-			color={data.color}
-			value={data.user.institution ?? undefined}
-		/>
+		<!-- Description Section -->
+		<section
+			class="rounded-3xl p-6 shadow-2xl sm:p-8 {data.darkMode
+				? 'bg-neutral-800/80 text-white'
+				: 'bg-white/90 text-black'}"
+		>
+			<h2 class="mb-4 text-xl font-bold">{m.description()}</h2>
+			<Form
+				darkMode={data.darkMode}
+				target="?/updateDescription"
+				color={data.color}
+				css="flex flex-col gap-4"
+			>
+				<TextArea
+					placeholder={m.description()}
+					darkMode={data.darkMode}
+					color={data.color}
+					name="description"
+					value={data.user.description}
+				/>
+				<Button
+					text={m.saveChanges()}
+					emoji="save-3"
+					type="submit"
+					css="buttonPrimary"
+					style="background-color: {data.color};"
+					onclick={() => {}}
+				/>
+			</Form>
+		</section>
 
-		<TextInput
-			type="text"
-			name="degree"
-			placeholder={m.degree()}
-			darkMode={data.darkMode}
-			color={data.color}
-			value={data.user.degree ?? undefined}
-		/>
+		<!-- Security Section -->
+		<section
+			class="rounded-3xl p-6 shadow-2xl sm:p-8 {data.darkMode
+				? 'bg-neutral-800/80 text-white'
+				: 'bg-white/90 text-black'}"
+		>
+			<div class="mb-6 flex items-center gap-3">
+				<i
+					class="ri-shield-keyhole-line text-2xl"
+					style="color: {data.color}"
+				></i>
+				<h2 class="text-xl font-bold">
+					{m.updatePassword()} / {m.changeEmail()}
+				</h2>
+			</div>
 
-		<Button
-			text={m.saveChanges()}
-			emoji="save-3"
-			onclick={() => {}}
-			type="submit"
-			css="buttonPrimary"
-			style="background-color: {data.color};"
-		/>
-	</Form>
+			<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+				<!-- Password Form -->
+				<Form
+					darkMode={data.darkMode}
+					target="?/updatePassword"
+					color={data.color}
+					css="flex flex-col gap-3"
+				>
+					<TextInput
+						type="password"
+						name="password"
+						placeholder={m.currentPassword()}
+						darkMode={data.darkMode}
+						color={data.color}
+					/>
+					<TextInput
+						type="password"
+						name="newpass"
+						placeholder={m.newPassword()}
+						darkMode={data.darkMode}
+						color={data.color}
+					/>
+					<Button
+						text={m.updatePassword()}
+						emoji="lock-password-line"
+						type="submit"
+						css="buttonPrimary"
+						style="background-color: {data.color};"
+						onclick={() => {}}
+					/>
+				</Form>
 
-	<Form
-		darkMode={data.darkMode}
-		css="w-1/4!"
-		success={async () => {}}
-		failure={async () => {}}
-		target="?/updateLanguage"
-		bind:element={languageForm}
-		final={async () => {
-			setLocale(language as Locale);
-		}}
-		color={data.color}
-	>
-		<h1>{m.language()}</h1>
+				<!-- Email Form -->
+				<Form
+					darkMode={data.darkMode}
+					target="?/updateEmail"
+					color={data.color}
+					css="flex flex-col gap-3"
+				>
+					<TextInput
+						type="password"
+						name="password"
+						placeholder={m.password()}
+						darkMode={data.darkMode}
+						color={data.color}
+					/>
+					<TextInput
+						type="email"
+						name="email"
+						placeholder={m.newEmail()}
+						darkMode={data.darkMode}
+						color={data.color}
+					/>
+					<Button
+						text={m.changeEmail()}
+						emoji="mail-line"
+						type="submit"
+						css="buttonPrimary"
+						style="background-color: {data.color};"
+						onclick={() => {}}
+					/>
+				</Form>
+			</div>
+		</section>
+	</div>
 
-		<input
-			type="hidden"
-			value={language}
-			name="language"
-		/>
-		<SelectionButton
-			texts={locales.map((v) => m.languageName({}, { locale: v }))}
-			emojis={[]}
-			bind:value={language}
-			values={[...locales]}
-			selectedcss="text-neutral-200!"
-			selectedstyle="background-color: {data.color};"
-		/>
-
-		<Button
-			text={m.saveChanges()}
-			emoji="save-3"
-			onclick={() => {}}
-			type="submit"
-			css="buttonPrimary"
-			style="background-color: {data.color};"
-		/>
-	</Form>
-
-	<Form
-		darkMode={data.darkMode}
-		css="w-1/4!"
-		success={async () => {}}
-		failure={async () => {}}
-		target="?/updateDescription"
-		color={data.color}
-	>
-		<h1>{m.description()}</h1>
-
-		<TextArea
-			placeholder={m.description()}
-			darkMode={data.darkMode}
-			color={data.color}
-			name="description"
-			value={data.user.description}
-		/>
-
-		<Button
-			text={m.saveChanges()}
-			emoji="save-3"
-			onclick={() => {}}
-			type="submit"
-			css="buttonPrimary"
-			style="background-color: {data.color};"
-		/>
-	</Form>
-
-	<Form
-		darkMode={data.darkMode}
-		css="w-1/4!"
-		success={async () => {}}
-		failure={async () => {}}
-		target="?/updateProfilePicture"
-		color={data.color}
-	>
-		<h1>{m.profilePicture()}</h1>
-
-		<Button
-			text={m.saveChanges()}
-			emoji="save-3"
-			onclick={() => {}}
-			type="submit"
-			css="buttonPrimary"
-			style="background-color: {data.color};"
-		/>
-	</Form>
-
-	<Form
-		darkMode={data.darkMode}
-		css="w-1/4!"
-		success={async () => {}}
-		failure={async () => {}}
-		target="?/updateColor"
-		color={data.color}
-	>
-		<h1>{m.theme()}</h1>
-
-		<!-- TODO some premade themes -->
-
-		<ColorInput color={data.color} />
-
-		<Button
-			text={m.saveChanges()}
-			emoji="save-3"
-			onclick={() => {}}
-			type="submit"
-			css="buttonPrimary"
-			style="background-color: {data.color};"
-		/>
-	</Form>
-
-	<Form
-		darkMode={data.darkMode}
-		css="w-1/4!"
-		success={async () => {}}
-		failure={async () => {}}
-		target="?/updatePassword"
-		color={data.color}
-	>
-		<h1>{m.updatePassword()}</h1>
-
-		<TextInput
-			type="password"
-			name="password"
-			placeholder={m.currentPassword()}
-			darkMode={data.darkMode}
-			color={data.color}
-		/>
-
-		<TextInput
-			type="password"
-			name="newpass"
-			placeholder={m.newPassword()}
-			darkMode={data.darkMode}
-			color={data.color}
-		/>
-
-		<Button
-			text={m.saveChanges()}
-			emoji="save-3"
-			onclick={() => {}}
-			type="submit"
-			css="buttonPrimary"
-			style="background-color: {data.color};"
-		/>
-	</Form>
-
-	<Form
-		darkMode={data.darkMode}
-		css="w-1/4!"
-		success={async () => {}}
-		failure={async () => {}}
-		target="?/updateEmail"
-		color={data.color}
-	>
-		<h1>{m.changeEmail()}</h1>
-
-		<TextInput
-			type="password"
-			name="password"
-			placeholder={m.password()}
-			darkMode={data.darkMode}
-			color={data.color}
-		/>
-
-		<TextInput
-			type="email"
-			name="email"
-			placeholder={m.newEmail()}
-			darkMode={data.darkMode}
-			color={data.color}
-		/>
-
-		<Button
-			text={m.saveChanges()}
-			emoji="save-3"
-			onclick={() => {}}
-			type="submit"
-			css="buttonPrimary"
-			style="background-color: {data.color};"
-		/>
-	</Form>
+	{#if !data.darkMode}
+		<p class="text-center text-xs text-white opacity-60">
+			All changes are saved securely to your profile.
+		</p>
+	{/if}
 </div>
