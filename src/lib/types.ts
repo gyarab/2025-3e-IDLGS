@@ -63,7 +63,6 @@ export type ArticleTypeFull = ArticleType & {
 	textbookId: number;
 	uuid: string;
 	textCompressed: string;
-
 };
 
 export type ExerciseType = {

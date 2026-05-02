@@ -48,7 +48,9 @@
 					text={m.addChapter()}
 					style="background-color: {color};"
 					css="buttonPrimary w-full"
-					onclick={() => { showChapterDialog = true; }}
+					onclick={() => {
+						showChapterDialog = true;
+					}}
 					emoji="add-box"
 					type="button"
 				/>
@@ -79,7 +81,9 @@
 					text={m.addArticle()}
 					style="background-color: {color};"
 					css="buttonPrimary w-full"
-					onclick={() => { showArticleDialog = true; }}
+					onclick={() => {
+						showArticleDialog = true;
+					}}
 					emoji="add-circle"
 					type="button"
 				/>
@@ -110,21 +114,19 @@
 >
 	<div class="flex w-full grow flex-col">
 		<h2>{m.addChapter()}</h2>
-		<div class="flex flex-col gap-2 w-full grow">
-			<TextInput 
+		<div class="flex w-full grow flex-col gap-2">
+			<TextInput
 				{darkMode}
 				{color}
 				type="text"
 			/>
 		</div>
-		<ConfirmCancel 
+		<ConfirmCancel
 			{darkMode}
 			{color}
 			bind:open={showArticleDialog}
 			confirm={async () => {
-				chapters.push({
-					
-				});
+				chapters.push({});
 				showArticleDialog = false;
 			}}
 			cancel={async () => {
@@ -140,21 +142,19 @@
 >
 	<div class="flex w-full grow flex-col">
 		<h2>{m.addArticle()}</h2>
-		<div class="flex flex-col gap-2 w-full grow">
-			<TextInput 
+		<div class="flex w-full grow flex-col gap-2">
+			<TextInput
 				{darkMode}
 				{color}
 				type="text"
 			/>
 		</div>
-		<ConfirmCancel 
+		<ConfirmCancel
 			{darkMode}
 			{color}
 			bind:open={showArticleDialog}
 			confirm={async () => {
-				articles.push({
-					
-				});
+				articles.push({});
 				showArticleDialog = false;
 			}}
 			cancel={async () => {
@@ -164,15 +164,13 @@
 	</div>
 </Dialog>
 
-<ConfirmDeleteDialog 
+<ConfirmDeleteDialog
 	open={deleteArticle || deleteChapter}
 	{darkMode}
 	{color}
 	confirm={async () => {
-		if(deleteArticle) {
-			
-		} else if(deleteChapter) {
-			
+		if (deleteArticle) {
+		} else if (deleteChapter) {
 		}
 	}}
 />

@@ -23,13 +23,13 @@
 	bind:open
 	{darkMode}
 >
-	<div class="flex flex-col w-full gap-2 grow">
+	<div class="flex w-full grow flex-col gap-2">
 		<h2 class="text-2xl font-bold">{m.areYouSure()}</h2>
 		<p>{m.thisActionCannotBeUndone()}!</p>
-		<ConfirmCancel 
+		<ConfirmCancel
 			{darkMode}
 			{color}
-			bind:open	
+			bind:open
 			{confirm}
 			{cancel}
 		/>
