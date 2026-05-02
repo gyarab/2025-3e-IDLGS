@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Button from './Button.svelte';
 	import { m } from '$lib/paraglide/messages';
+	import { darkenHex } from '$lib';
 
 	let {
 		darkMode,
@@ -27,15 +28,17 @@
 		}}
 		text={m.confirm()}
 		type="button"
+		css="buttonPrimary grow"
 	/>
 	<Button
 		emoji="close"
-		style="background-color: {color};"
+		style="background-color: {darkenHex(color, 50)};"
 		onclick={async () => {
 			open = false;
 			await cancel();
 		}}
 		text={m.cancel()}
 		type="button"
+		css="buttonPrimary grow"
 	/>
 </div>

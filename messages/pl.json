@@ -125,5 +125,7 @@
 	"removeChapter": "Usuń rozdział",
 	"areYouSure": "Czy jesteś pewien?",
 	"thisActionCannotBeUndone": "Ta akcja nie może zostać cofnięta",
-	"selectAChapterToViewArticles": "Wybierz rozdział, aby zobaczyć jego artykuły"
+	"selectAChapterToViewArticles": "Wybierz rozdział, aby zobaczyć jego artykuły",
+	"articleTitle": "Tytuł artykułu",
+	"chapterTitle": "Tytuł rozdziału"
 }

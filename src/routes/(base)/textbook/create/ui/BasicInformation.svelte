@@ -25,56 +25,64 @@
 <div class="flex w-full grow flex-col gap-2">
 	<div
 		class="mb-2 flex w-full flex-row items-center gap-2"
-		in:fly={{ x: 1000, y: 0, duration: 300, delay: 100, opacity: 0 }}
+		in:fly|global={{ x: 1000, y: 0, duration: 300, delay: 100, opacity: 0 }}
 	>
 		<h2 class="text-2xl font-bold">{m.basicTextbookInformation()}</h2>
 	</div>
 	<div class="flex w-full grow flex-col gap-2">
-		<TextInput
-			{darkMode}
-			{color}
-			type="text"
-			placeholder={m.textbookName()}
-			bind:value={name}
-		/>
+		<span in:fly|global={{ x: 1000, y: 0, duration: 300, delay: 300, opacity: 0 }}>
+			<TextInput
+				{darkMode}
+				{color}
+				type="text"
+				placeholder={m.textbookName()}
+				bind:value={name}
+			/>
+		</span>
 
-		<SelectionButton
-			texts={[
-				m.isced0(),
-				m.isced1(),
-				m.isced2(),
-				m.isced3(),
-				m.isced4(),
-				m.isced5(),
-				m.isced6(),
-				m.isced7(),
-				m.isced8(),
-			]}
-			values={[
-				'kindergarten',
-				'elementary',
-				'firstgym',
-				'secondgym',
-				'prevs',
-				'shortvs',
-				'bachelor',
-				'master',
-				'doctor',
-			]}
-			bind:value={education}
-			style="background-color: {color};"
-			css="buttonPrimary text-sm"
-			selectedstyle="background-color: {darkenHex(color, 50)};"
-		/>
+		<span in:fly|global={{ x: 1000, y: 0, duration: 300, delay: 500, opacity: 0 }}>
+			<SelectionButton
+				texts={[
+					m.isced0(),
+					m.isced1(),
+					m.isced2(),
+					m.isced3(),
+					m.isced4(),
+					m.isced5(),
+					m.isced6(),
+					m.isced7(),
+					m.isced8(),
+				]}
+				values={[
+					'kindergarten',
+					'elementary',
+					'firstgym',
+					'secondgym',
+					'prevs',
+					'shortvs',
+					'bachelor',
+					'master',
+					'doctor',
+				]}
+				bind:value={education}
+				style="background-color: {color};"
+				css="buttonPrimary text-sm"
+				selectedstyle="background-color: {darkenHex(color, 50)};"
+			/>
+		</span>
 
-		<ColorInput bind:color />
+		<span in:fly|global={{ x: 1000, y: 0, duration: 300, delay: 700, opacity: 0 }}>
+			<ColorInput bind:color />
+		</span>
 
-		<TextArea
-			{darkMode}
-			{color}
-			placeholder={m.textbookDescription()}
-			bind:value={description}
-			css="grow"
-		/>
+		<span class="grow flex flex-col w-full" in:fly|global={{ x: 1000, y: 0, duration: 300, delay: 900, opacity: 0 }}>
+			<TextArea
+				{darkMode}
+				{color}
+				placeholder={m.textbookDescription()}
+				bind:value={description}
+				css="grow"
+			/>
+		</span>
 	</div>
 </div>

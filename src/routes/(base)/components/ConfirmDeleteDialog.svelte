@@ -22,6 +22,7 @@
 <Dialog
 	bind:open
 	{darkMode}
+	css="min-h-0! min-w-1/4!"
 >
 	<div class="flex w-full grow flex-col gap-2">
 		<h2 class="text-2xl font-bold">{m.areYouSure()}</h2>
