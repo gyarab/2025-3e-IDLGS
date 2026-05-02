@@ -1,7 +1,8 @@
 import { formRunner, type FormDataType } from '$lib/server/form/validation.js';
-import type { UserTypeInfo } from '$lib/types.js';
+import type { ArticleType, ChapterType, UserTypeInfo } from '$lib/types.js';
 import { resolve } from '$app/paths';
 import { redirect } from '@sveltejs/kit';
+import { schema as databaseSchema } from '$lib/server/db/schema';
 
 export const load = async (event) => {
 	const pd = await event.parent();
@@ -23,7 +24,20 @@ export const actions = {
 			],
 			true,
 			async (data: FormDataType, user: UserTypeInfo | undefined) => {
-				console.log(data, 'FORM DATA');
+				const chapters  = JSON.parse(data.chapters) as ChapterType[];
+				const articles = JSON.parse(data.articles) as ArticleType[][];
+				const authors = JSON.parse(data.authors) as string[]; //uuids
+
+				await event.locals.db.transaction(async (tx) => {
+					const textbook = await event.locals.db.insert(databaseSchema.textbook).values({
+						name: data.name,
+						description: data.description,
+						educationLevel: data.educationLevel,
+						color: data.color,
+					}).returning();
+
+				
+				});
 			},
 		);
 	},
