@@ -19,7 +19,7 @@
     style="background: linear-gradient(135deg, {color}, {darkenHex(color, 80)}); --brand: {color};"
 >
     <i class="ri-error-warning-line absolute right-1/10 top-1/6 scale-150 rotate-12 text-9xl text-white opacity-10"></i>
-    <i class="ri-ghost-line absolute bottom-1/4 left-1/10 scale-150 -rotate-12 text-9xl text-white opacity-10"></i>
+    <i class="ri-link-unlink absolute bottom-1/4 left-1/10 scale-150 -rotate-12 text-9xl text-white opacity-10"></i>
 
     <div
         class="z-10 flex w-full max-w-md flex-col items-center gap-8 rounded-3xl p-4 sm:p-8 shadow-2xl backdrop-blur-sm sm:rounded-4xl {darkMode
