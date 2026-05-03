@@ -76,7 +76,7 @@
 				opacity: 0,
 			}}
 		>
-			<h4 class="font-medium py-1">{m.educationLevel()}</h4>
+			<h4 class="py-1 font-medium">{m.educationLevel()}</h4>
 			<SelectionBtnList
 				texts={[
 					m.isced0(),

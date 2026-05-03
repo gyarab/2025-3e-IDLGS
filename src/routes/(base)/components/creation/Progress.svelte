@@ -36,7 +36,7 @@
 	<div
 		class="relative flex w-full flex-col gap-2 overflow-x-hidden overflow-y-auto"
 	>
-		<div class="flex w-full flex-row items-start pt-1 px-1 sm:px-2">
+		<div class="flex w-full flex-row items-start px-1 pt-1 sm:px-2">
 			<h1 class="text-xl font-bold sm:text-2xl">{title}</h1>
 			<i class="absolute top-0 right-0 md:right-1 {emoji} text-3xl"></i>
 		</div>
