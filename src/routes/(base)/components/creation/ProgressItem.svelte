@@ -11,7 +11,7 @@
 		color: string;
 	} = $props();
 
-	const textSize = "text-2xl md:text-3xl";
+	const textSize = 'text-2xl md:text-3xl';
 </script>
 
 <div class="relative z-50! flex w-full flex-row items-center gap-1">

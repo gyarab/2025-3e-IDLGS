@@ -57,8 +57,8 @@
 			{#each { length: length } as _, i (i)}
 				<button
 					class="{css} {isSelected?.at(i) ? selectedcss : ''}
-						flex grow flex-row items-center justify-center sm:gap-1 px-2 py-0.5 md:py-1 font-semibold
-						hover:translate-0! hover:brightness-75 active:brightness-50"
+						flex grow flex-row items-center justify-center px-2 py-0.5 font-semibold hover:translate-0! hover:brightness-75
+						active:brightness-50 sm:gap-1 md:py-1"
 					style="{style} {isSelected?.at(i) ? selectedstyle : ''}"
 					onclick={() => {
 						value = values?.at(i) ?? '';
