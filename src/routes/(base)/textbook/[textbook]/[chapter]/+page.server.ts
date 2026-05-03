@@ -4,6 +4,8 @@ import { m } from '$lib/paraglide/messages';
 import { error } from '@sveltejs/kit';
 import { schema as databaseSchema } from '$lib/server/db/schema';
 import { and, asc, eq } from 'drizzle-orm';
+import { formRunner, type FormDataType } from '$lib/server/form/validation.js';
+import type { UserTypeFull } from '$lib/types';
 
 export const load = async (event) => {
 	const pd = await event.parent();
@@ -48,4 +50,37 @@ export const load = async (event) => {
 			)
 			.orderBy(asc(databaseSchema.article.order)),
 	};
+};
+
+export const actions = {
+	addArticle: async (event) => {
+		return await formRunner(event, [], true, async (data: FormDataType, user: UserTypeFull | undefined) => {
+
+		});
+	},
+	editArticle: async (event) => {
+		return await formRunner(event, ['text'], true, async (data: FormDataType, user: UserTypeFull | undefined) => {
+
+		});
+	},
+	deleteArticle: async (event) => {
+		return await formRunner(event, [], true, async (data: FormDataType, user: UserTypeFull | undefined) => {
+
+		});
+	},
+	moveArticleUp: async (event) => {
+		return await formRunner(event, [], true, async (data: FormDataType, user: UserTypeFull | undefined) => {
+
+		});
+	},
+	moveArticleDown: async (event) => {
+		return await formRunner(event, [], true, async (data: FormDataType, user: UserTypeFull | undefined) => {
+
+		});
+	},
+	moveArticleChapter: async (event) => {
+		return await formRunner(event, [], true, async (data: FormDataType, user: UserTypeFull | undefined) => {
+
+		});
+	},
 };

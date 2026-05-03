@@ -28,7 +28,7 @@
 	>
 		<i
 			class="ri-arrow-down-s-fill {darkMode
-				? 'text-neutral-700'
+				? 'text-black'
 				: 'text-white'} absolute -top-6 left-3/4 text-6xl!"
 			transition:fly|global={{ y: -50, duration: 200, opacity: 0 }}
 		></i>
@@ -60,12 +60,12 @@
 
 			<div class="grow"></div>
 
-			<nav class="flex h-full items-center gap-2">
+			<nav class="flex h-full items-center gap-2 {darkMode ? '**:text-white' : '**:text-black!'}">
 				<Button
 					emoji="user"
 					text={m.profile()}
 					type="button"
-					css="px-1"
+					rmwhite={darkMode}
 					hecss="text-lg"
 					onclick={() => {
 						goto('/profile');
@@ -76,7 +76,7 @@
 					emoji="settings"
 					text={m.settings()}
 					type="button"
-					css="px-1"
+					rmwhite={darkMode}
 					hecss="text-lg"
 					onclick={() => {
 						goto('/settings');
@@ -87,7 +87,7 @@
 					emoji="logout-box"
 					text={m.logout()}
 					type="button"
-					css="px-1"
+					rmwhite={darkMode}
 					hecss="text-lg"
 					onclick={async () => {
 						await logout();

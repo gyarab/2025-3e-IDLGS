@@ -49,13 +49,13 @@
 		class="ri-user-settings-line absolute bottom-1/4 left-1/15 scale-250 -rotate-12 text-9xl text-white opacity-10"
 	></i>
 
-	<header class="flex flex-col items-center gap-1 text-center text-white">
+	<header class="flex flex-col items-center gap-1 text-center text-white!">
 		<img
 			src="/logo.svg"
 			alt="Logo"
 			class="h-12 sm:h-16"
 		/>
-		<h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">
+		<h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl text-white!">
 			{m.settings()}
 		</h1>
 	</header>
@@ -355,9 +355,7 @@
 		</section>
 	</div>
 
-	{#if !data.darkMode}
-		<p class="text-center text-xs text-white opacity-60">
-			All changes are saved securely to your profile.
+		<p class="text-center text-xs {data.darkMode ? 'text-black!' : 'text-white!'} opacity-60">
+			{m.allYourChangesAreSavedSecurelyToYourProfile()}.
 		</p>
-	{/if}
 </div>

@@ -3,6 +3,7 @@ import { schema as databaseSchema } from '$lib/server/db/schema';
 import { eq } from 'drizzle-orm';
 import { error } from '@sveltejs/kit';
 import { m } from '$lib/paraglide/messages.js';
+import { makeHex } from '$lib';
 
 export const load = async (event) => {
 	const textbookRawData = (
@@ -57,6 +58,8 @@ export const load = async (event) => {
 	};
 
 	return {
+		//override user color with textbook color
+		color: makeHex(textbook.r, textbook.g, textbook.b),
 		textbook: textbook,
 	};
 };

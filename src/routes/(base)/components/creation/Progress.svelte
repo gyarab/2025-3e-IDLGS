@@ -51,6 +51,8 @@
 		{/key}
 	</div>
 
+	<div class="grow"></div>
+
 	<SelectionButton
 		orientation="port"
 		style="background-color: {darkenHex(color, 50)};"

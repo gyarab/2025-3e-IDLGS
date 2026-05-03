@@ -30,6 +30,7 @@ export type UserTypeFull = UserType & {
 	playedLibraryTutorial: boolean;
 	playedGalleryTutorial: boolean;
 	firstLogin: boolean;
+	isAdmin: boolean;
 };
 
 export type TextbookTypeNoAuthors = {
@@ -81,7 +82,7 @@ export type ArticleTypeFullNoId = ArticleType & {
 
 export type ArticleType = ArticleTypeRaw & {
 	uuid: string;
-	textCompressed: string;
+	text: string;
 };
 
 export type ArticleTypeFull = ArticleTypeFullNoId & {

@@ -27,8 +27,6 @@
 		const tagNameActive = document.activeElement?.tagName.toLowerCase();
 		if (tagNameActive == 'input' || tagNameActive == 'button') return;
 
-		console.log(tagNameActive);
-
 		if (e.key === 'f' || e.key === 'F') {
 			e.preventDefault();
 			navbarOpen = !navbarOpen;

@@ -47,6 +47,7 @@ export const user = pgTable(
 			.notNull()
 			.unique()
 			.$defaultFn(() => crypto.randomUUID()),
+		isAdmin: boolean('isAdmin').notNull().default(false),
 	},
 	() => [
 		check(

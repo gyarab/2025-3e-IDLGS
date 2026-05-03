@@ -30,6 +30,7 @@ export const load = async (event) => {
 					g: databaseSchema.user.g,
 					b: databaseSchema.user.b,
 					language: databaseSchema.user.language,
+					isAdmin: databaseSchema.user.isAdmin,
 				})
 				.from(databaseSchema.user)
 				.leftJoin(

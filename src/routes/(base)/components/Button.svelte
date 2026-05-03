@@ -13,6 +13,7 @@
 		hecss,
 		style,
 		onclick,
+		rmwhite,
 	}: {
 		emoji: string;
 		text: string;
@@ -24,6 +25,7 @@
 		style?: string;
 		hecss?: string;
 		onclick: (event: Event) => void;
+		rmwhite?: boolean;
 	} = $props();
 </script>
 
@@ -33,13 +35,13 @@
 	{disabled}
 	aria-label={label}
 	title={label}
-	class="{css} group flex flex-row items-center justify-center gap-1 text-white!"
+	class="group flex flex-row items-center justify-center gap-1 {rmwhite ? '' : 'text-white!'} {css}"
 	{onclick}
 	{style}
 >
 	<HoverEmoji
 		{emoji}
-		css="text-2xl text-white! {hecss}"
+		css="text-2xl {rmwhite ? '' : 'text-white!'} {hecss}"
 	/>
 	{text}
 </button>

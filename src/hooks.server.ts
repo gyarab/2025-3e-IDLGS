@@ -64,6 +64,7 @@ const handleInitialUser: Handle = async ({ event, resolve }) => {
 			password: password.password,
 			salt: password.salt,
 			iterations: password.iterations,
+			isAdmin: true,
 		});
 	}
 

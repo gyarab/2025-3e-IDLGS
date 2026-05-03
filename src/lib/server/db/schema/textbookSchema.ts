@@ -6,6 +6,8 @@ import {
 	boolean,
 	check,
 	timestamp,
+	customType,
+	
 } from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm';
 import { user, resource } from './userSchema';
@@ -82,7 +84,7 @@ export const article = pgTable('article', {
 		.$defaultFn(() => crypto.randomUUID()),
 	title: text('title').notNull(),
 	order: integer('order').notNull().default(0),
-	textCompressed: text('textCompressed').notNull(),
+	text: text('text').notNull().default(''),
 	chapterId: integer('chapterId')
 		.notNull()
 		.references(() => chapter.id),
