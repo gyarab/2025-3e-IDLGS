@@ -33,7 +33,7 @@
 	let type: string = $state('');
 	let name: string = $state('');
 	let description: string = $state('');
-	let thumbnail: Uint8Array[] = $state([]);
+	let thumbnail: File[] = $state([]);
 
 	let backgroundColorR: number = $state(255);
 	let backgroundColorG: number = $state(255);
@@ -200,6 +200,9 @@
 			failure={async () => {
 				stage--;
 				//TODO popup message @AY-GA
+			}}
+			start={async (formData) => {
+				formData!.append('thumbnail', thumbnail[0]);
 			}}
 		>
 			<input

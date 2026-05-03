@@ -8,6 +8,7 @@ import postgres from 'postgres';
 import { count } from 'drizzle-orm';
 import { hashPassword } from '$lib/server/user';
 import { initMail } from '$lib/server/mail';
+import { v2 as cloudinary } from 'cloudinary';
 
 const handleParaglide: Handle = ({ event, resolve }) =>
 	paraglideMiddleware(event.request, ({ request, locale }) => {
@@ -111,6 +112,13 @@ export const init: ServerInit = async () => {
 	if (process.env.MODE && process.env.MODE != 'normal') {
 		//TODO standalone textbook mode (uuid)
 	}
+
+	cloudinary.config({
+		cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+		api_key: process.env.CLOUDINARY_API_KEY,
+		api_secret: process.env.CLOUDINARY_API_SECRET,
+		secure: true,
+	});
 
 	console.log('Initialization done!');
 };

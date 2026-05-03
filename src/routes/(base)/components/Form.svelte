@@ -22,7 +22,7 @@
 		children: Snippet;
 		css?: string;
 		darkMode: boolean;
-		start?: () => Promise<void>;
+		start?: (formData?: FormData, formElement?: HTMLFormElement, action?: URL, submitter?: HTMLElement | null, cancel?: () => void) => Promise<void>;
 		success?: (data: unknown) => Promise<void>;
 		failure?: (data: unknown) => Promise<void>;
 		final?: () => Promise<void>;
@@ -42,9 +42,9 @@
 		? 'bg-neutral-800 text-white'
 		: 'bg-neutral-100 text-black'}"
 	action={target}
-	use:enhance={async () => {
+	use:enhance={async ({ formData, formElement, action, cancel, submitter }) => {
 		loading = true;
-		await start();
+		await start(formData, formElement, action, submitter, cancel);
 		return async ({ update, result }) => {
 			await update({ reset: reset, invalidateAll: invalidateAll });
 

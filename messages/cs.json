@@ -219,5 +219,8 @@
 	"pointsP": "bodů",
 	"uploaded": "nahráno",
 	"selectedThumbnail": "Vybraný náhled",
-	"thumbnailPreview": "Náhled náhledu"
+	"thumbnailPreview": "Náhled náhledu",
+	"noAdditionalAuthorsSelected": "Žádní další autoři nebyli vybráni",
+	"thumbnail": "Náhled",
+	"noThumbnail": "Žádný náhled"
 }

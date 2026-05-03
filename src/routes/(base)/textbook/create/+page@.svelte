@@ -35,7 +35,16 @@
 	let chapters: ChapterTypeRaw[] = $state([]);
 	let articles: ArticleTypeRaw[][] = $state([]);
 	let authorUuids: string[] = $state([]);
-	let thumbnail: Uint8Array[] = $state([]);
+	let thumbnail: File[] = $state([]);
+
+	let stage0Condition: boolean = $derived(
+		!name || !description || !educationLevel,
+	);
+	let stage1Condition: boolean = $derived(
+		chapters.length == 0 ||
+			articles.map((c) => c.length).every((len) => len === 0),
+	);
+	let stage2Condition: boolean = $derived(false); //TODO resources
 </script>
 
 <svelte:head>
@@ -99,6 +108,7 @@
 				{chapters}
 				{articles}
 				authors={authorUuids}
+				thumbnail={thumbnail[0]}
 			/>
 		{:else if stage == 5}
 			<LoadingAnimationHandler color={textbookColor} />
@@ -108,8 +118,9 @@
 		target="?/makeTextbook"
 		darkMode={data.darkMode}
 		css="invisibleForm -mt-2"
-		start={async () => {
+		start={async (formData) => {
 			stage = 5;
+			formData!.append('thumbnail', thumbnail[0]);
 		}}
 		success={async () => {
 			goto(resolve('/(base)/textbook'));
@@ -166,14 +177,9 @@
 			bind:stage
 			darkMode={data.darkMode}
 			color={textbookColor}
-			disableNext={(stage == 0 &&
-				(!name || !description || !educationLevel)) ||
-				(stage == 1 &&
-					(chapters.length == 0 ||
-						articles
-							.map((c) => c.length)
-							.every((len) => len === 0))) ||
-				false}
+			disableNext={(stage == 0 && stage0Condition) ||
+				(stage == 1 && stage1Condition) ||
+				(stage == 2 && stage2Condition)}
 			disablePrev={false}
 			createText={m.createTextbook()}
 			nextButtonCreate={stage >= 4}

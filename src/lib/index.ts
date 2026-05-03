@@ -114,3 +114,7 @@ export const getRGBFromHex = (color: string): number[] => {
 		parseInt(color.slice(-2), 16),
 	];
 };
+
+export const makeURLFromImage = (data: File): string => {
+	return URL.createObjectURL(data);
+};

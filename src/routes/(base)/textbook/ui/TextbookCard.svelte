@@ -22,7 +22,7 @@
 <button
 	title={textbookString}
 	aria-label={textbookString}
-	class="flex min-h-[15vh] w-full flex-col rounded-lg p-2 shadow-xl"
+	class="relative flex min-h-[15vh] w-full flex-col rounded-lg p-2 shadow-xl overflow-hidden"
 	style="background-color: {textbookColor}; border: 1px solid {textbookColor};"
 	onclick={() => {
 		goto(
@@ -30,6 +30,13 @@
 		);
 	}}
 >
+	{#if textbook.thumbnail}
+		<img
+			src={textbook.thumbnail}
+			alt={textbook.title}
+			class="absolute h-full w-full rounded-lg object-cover opacity-30 overflow-hidden top-0 left-0"
+		/>
+	{/if}
 	<div class="grow"></div>
 	<div class="flex w-full flex-row">
 		<div class="grow"></div>

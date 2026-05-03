@@ -219,5 +219,8 @@
 	"pointsP": "points",
 	"uploaded": "uploaded",
 	"selectedThumbnail": "Selected thumbnail",
-	"thumbnailPreview": "Thumbnail preview"
+	"thumbnailPreview": "Thumbnail preview",
+	"noAdditionalAuthorsSelected": "No additional authors selected",
+	"thumbnail": "Thumbnail",
+	"noThumbnail": "No thumbnail"
 }

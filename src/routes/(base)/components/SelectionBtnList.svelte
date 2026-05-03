@@ -46,7 +46,7 @@
 </script>
 
 {#key texts || actions || emojis}
-	<div class="{cssTop} grid grid-cols-1 gap-2 text-white! md:grid-cols-2">
+	<div class="{cssTop} grid grid-cols-1 gap-2 text-white! md:grid-cols-2 lg:grid-cols-3">
 		{#each { length: length } as _, i (i)}
 			<button
 				class="{css} {isSelected?.at(i)

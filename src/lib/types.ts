@@ -42,6 +42,7 @@ export type TextbookTypeNoAuthors = {
 	g: number;
 	b: number;
 	educationLevel: number;
+	thumbnail: string | null; //url
 };
 
 export type TextbookType = TextbookTypeNoAuthors & {
@@ -77,7 +78,7 @@ export type ArticleTypeRaw = {
 export type ArticleTypeFullNoId = ArticleType & {
 	chapterId: number;
 	textbookId: number;
-	textCompressed: string;
+	text: string;
 };
 
 export type ArticleType = ArticleTypeRaw & {

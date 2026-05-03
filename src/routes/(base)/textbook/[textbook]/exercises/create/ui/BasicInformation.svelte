@@ -5,6 +5,7 @@
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
 	import { onDestroy } from 'svelte';
 	import { fly } from 'svelte/transition';
+	import { makeURLFromImage } from '$lib';
 
 	let {
 		stage = $bindable(1),
@@ -19,14 +20,10 @@
 		color: string;
 		name: string;
 		description: string;
-		thumbnail: Uint8Array[];
+		thumbnail: File[];
 	} = $props();
 
-	let imagePreview: string = $derived.by(() => {
-		return URL.createObjectURL(
-			new Blob([thumbnail[0].buffer as BlobPart], { type: 'image/*' }),
-		);
-	});
+	let imagePreview: string = $derived(makeURLFromImage(thumbnail[0]));
 
 	onDestroy(() => {
 		URL.revokeObjectURL(imagePreview);
@@ -81,7 +78,7 @@
 			<img
 				src={imagePreview}
 				alt={m.thumbnailPreview()}
-				class="h-32 w-32 rounded-lg object-cover"
+				class="aspect-2/1 w-[50svh] rounded-lg object-cover"
 			/>
 		{/if}
 	</span>

@@ -218,5 +218,8 @@
 	"pointsP": "punktów",
 	"uploaded": "przesłane",
 	"selectedThumbnail": "Wybrana miniatura",
-	"thumbnailPreview": "Podgląd miniatury"
+	"thumbnailPreview": "Podgląd miniatury",
+	"noAdditionalAuthorsSelected": "Brak wybranych dodatkowych autorów",
+	"thumbnail": "Miniatura",
+	"noThumbnail": "Brak miniatury"
 }

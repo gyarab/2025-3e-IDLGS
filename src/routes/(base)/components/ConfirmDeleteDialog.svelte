@@ -31,8 +31,14 @@
 			{darkMode}
 			{color}
 			bind:open
-			{confirm}
-			{cancel}
+			confirm={async () => {
+				await confirm();
+				open = false;
+			}}
+			cancel={async () => {
+				await cancel();
+				open = false;
+			}}
 		/>
 	</div>
 </Dialog>

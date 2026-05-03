@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { darkenHex } from '$lib';
+	import { darkenHex, makeURLFromImage } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import ColorInput from '$src/routes/(base)/components/ColorInput.svelte';
 	import SelectionBtnList from '$src/routes/(base)/components/SelectionBtnList.svelte';
@@ -22,14 +22,10 @@
 		description: string;
 		color: string;
 		education: string;
-		thumbnail: Uint8Array[];
+		thumbnail: File[];
 	} = $props();
 
-	let imagePreview: string = $derived.by(() => {
-		return URL.createObjectURL(
-			new Blob([thumbnail[0].buffer as BlobPart], { type: 'image/*' }),
-		);
-	});
+	let imagePreview: string = $derived(makeURLFromImage(thumbnail[0]));
 
 	onDestroy(() => {
 		URL.revokeObjectURL(imagePreview);
@@ -68,7 +64,7 @@
 				x: 1000,
 				y: 0,
 				duration: 300,
-				delay: 700,
+				delay: 500,
 				opacity: 0,
 			}}
 		>
@@ -86,7 +82,7 @@
 				x: 1000,
 				y: 0,
 				duration: 300,
-				delay: 500,
+				delay: 700,
 				opacity: 0,
 			}}
 		>
@@ -124,7 +120,13 @@
 		</span>
 
 		<span
-			in:fly={{ x: 1000, y: 0, duration: 300, delay: 700, opacity: 0 }}
+			in:fly|global={{
+				x: 1000,
+				y: 0,
+				duration: 300,
+				delay: 1100,
+				opacity: 0,
+			}}
 			class="flex w-full flex-col gap-2"
 		>
 			<ImageInput
@@ -140,7 +142,7 @@
 				<img
 					src={imagePreview}
 					alt={m.thumbnailPreview()}
-					class="h-32 w-32 rounded-lg object-cover"
+					class="aspect-2/1 w-[50svh] rounded-lg object-cover"
 				/>
 			{/if}
 		</span>

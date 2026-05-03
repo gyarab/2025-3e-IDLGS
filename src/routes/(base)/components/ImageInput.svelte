@@ -16,7 +16,7 @@
 		color: string;
 		css?: string;
 		placeholder: string;
-		value: Uint8Array[];
+		value: File[];
 		resizable?: boolean;
 		required?: boolean;
 		multiple?: boolean;
@@ -69,7 +69,7 @@
 			if (inputElement!.files && inputElement!.files.length > 0) {
 				let arr = [];
 				for (const file of inputElement!.files) {
-					arr.push(await file.bytes());
+					arr.push(new File([await file.arrayBuffer()], file.name, { type: file.type }));
 				}
 				value = arr;
 			}

@@ -99,6 +99,9 @@
 				editMode = true;
 			}}
 			text=""
+			css={darkMode ? 'text-white!' : 'text-black!'}
+			hecss={darkMode ? 'text-white!' : 'text-black!'}
+			rmwhite={true}
 		/>
 		<Button
 			label={m.moveChapterUp()}
@@ -109,6 +112,9 @@
 			}}
 			text=""
 			disabled={i === 0}
+			css={darkMode ? 'text-white!' : 'text-black!'}
+			hecss={darkMode ? 'text-white!' : 'text-black!'}
+			rmwhite={true}
 		/>
 		<Button
 			label={m.moveChapterDown()}
@@ -119,6 +125,9 @@
 			}}
 			text=""
 			disabled={i === amount - 1}
+			css={darkMode ? 'text-white!' : 'text-black!'}
+			hecss={darkMode ? 'text-white!' : 'text-black!'}
+			rmwhite={true}
 		/>
 	{/if}
 </div>
