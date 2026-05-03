@@ -176,5 +176,6 @@
 	"advancedMode": "Tryb zaawansowany",
 	"edit": "Edytuj",
 	"checkCrossword": "Sprawdź krzyżówkę",
-	"noWordsInCrossword": "Brak słów w krzyżówce"
+	"noWordsInCrossword": "Brak słów w krzyżówce",
+	"incorrectEmailOrPassword": "Nieprawidłowy e-mail lub hasło"
 }

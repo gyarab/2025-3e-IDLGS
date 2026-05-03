@@ -177,5 +177,6 @@
 	"advancedMode": "Pokročilý režim",
 	"edit": "Upravit",
 	"checkCrossword": "Zkontrolovat křížovku",
-	"noWordsInCrossword": "Žádná slova v křížovce"
+	"noWordsInCrossword": "Žádná slova v křížovce",
+	"incorrectEmailOrPassword": "Nesprávný e-mail nebo heslo"
 }

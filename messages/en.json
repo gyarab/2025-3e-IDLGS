@@ -177,5 +177,6 @@
 	"advancedMode": "Advanced mode",
 	"edit": "Edit",
 	"checkCrossword": "Check crossword",
-	"noWordsInCrossword": "No words in crossword"
+	"noWordsInCrossword": "No words in crossword",
+	"incorrectEmailOrPassword": "Incorrect email or password"
 }

@@ -33,7 +33,12 @@
 		tabindex="-1"
 		role="button"
 	>
-		<span class="w-full truncate font-medium">
+		<span
+			class="w-full truncate font-medium"
+			style="color: {parseInt(color.slice(1), 16) > 0x999999
+				? 'black'
+				: 'white'};"
+		>
 			{m.clickToChangeColor()}...
 		</span>
 	</div>

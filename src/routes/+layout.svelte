@@ -3,6 +3,7 @@
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import 'remixicon/fonts/remixicon.css';
+	import Toast from './(base)/components/Toast.svelte';
 
 	let {
 		children,
@@ -18,4 +19,5 @@
 	/>
 </svelte:head>
 
+<Toast />
 {@render children()}

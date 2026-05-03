@@ -3,6 +3,7 @@
 	import Button from '$src/routes/(base)/components/Button.svelte';
 	import Form from '$src/routes/(base)/components/Form.svelte';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
+	import { addToast } from '$lib/toast';
 	import { darkenHex } from '$lib';
 	import { goto } from '$app/navigation';
 
@@ -70,7 +71,10 @@
 			success={async () => {
 				goto('/profile/');
 			}}
-			failure={async () => {}}
+			failure={async () => {
+				addToast(m.incorrectEmailOrPassword(), 'error');
+				solved = false
+			}}
 			color={data.color}
 		>
 			<div class="space-y-4">
@@ -113,11 +117,5 @@
 				onclick={() => {}}
 			/>
 		</Form>
-
-		{#if !data.darkMode}
-			<p class="text-center text-xs opacity-40">
-				{m.secureEncryptedLogin()}
-			</p>
-		{/if}
 	</div>
 </div>
