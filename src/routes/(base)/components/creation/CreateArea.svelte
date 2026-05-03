@@ -70,7 +70,7 @@
 						{emoji}
 					/>
 					<div
-						class="flex w-full grow flex-col gap-4 overflow-x-hidden overflow-y-auto p-4"
+						class="flex w-full grow flex-col gap-4 overflow-x-hidden overflow-y-auto p-3 sm:p-4"
 					>
 						{@render children()}
 					</div>
