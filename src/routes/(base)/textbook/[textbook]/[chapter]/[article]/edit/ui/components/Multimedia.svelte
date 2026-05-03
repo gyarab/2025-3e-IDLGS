@@ -5,9 +5,15 @@
 	let {
 		darkMode,
 		color,
+		articleText = $bindable(''),
+		selectionStart = $bindable(0),
+		selectionEnd = $bindable(0),
 	}: {
 		darkMode: boolean;
 		color: string;
+		articleText: string;
+		selectionStart: number;
+		selectionEnd: number;
 	} = $props();
 </script>
 

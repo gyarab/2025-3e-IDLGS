@@ -32,16 +32,25 @@
 	<FontEdit
 		{darkMode}
 		{color}
+		bind:selectionStart
+		bind:selectionEnd
+		bind:articleText
 	/>
 	<ColoredVerticalLine {color} />
 	<Multimedia
 		{darkMode}
 		{color}
+		bind:articleText
+		bind:selectionStart
+		bind:selectionEnd
 	/>
 	<ColoredVerticalLine {color} />
 	<Headers
 		{darkMode}
 		{color}
+		bind:selectionStart
+		bind:selectionEnd
+		bind:articleText
 	/>
 	<ColoredVerticalLine {color} />
 	<Didatic

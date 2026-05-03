@@ -52,12 +52,12 @@
 	//TODO finish, make editable (remappable)
 	const keyboardHandler = (e: KeyboardEvent) => {
 		//Ctrl+K or Cmd+K to open command palette
-		if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+		if ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey)) {
 			e.preventDefault();
 			commandPaletteOpen = !commandPaletteOpen;
 		}
 		//F for focus mode (hide navbar and sidebar)
-		else if (e.key === 'f') {
+		else if (e.key === 'f' || e.key === 'F') {
 			e.preventDefault();
 			focusMode = !focusMode;
 
@@ -65,7 +65,7 @@
 			commandPaletteOpen = focusMode;
 		}
 		//go to top with u
-		else if (e.key === 'u') {
+		else if (e.key === 'u' || e.key === 'U') {
 			e.preventDefault();
 			window.scrollTo({ top: 0, behavior: 'smooth' });
 		} else {

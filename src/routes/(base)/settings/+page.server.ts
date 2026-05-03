@@ -129,7 +129,7 @@ export const actions = {
 						})
 						.where(eq(databaseSchema.user.id, user!.id));
 				}
-			},
+			}
 		);
 	},
 	updateColor: async (event) => {
@@ -156,13 +156,53 @@ export const actions = {
 	updateProfilePicture: async (event) => {
 		return await formRunner(
 			event,
-			['profilePictureName', 'profilePictureData'],
+			['picture'],
 			true,
-			async (data: FormDataType, user: UserTypeFull | undefined) => {
-				//TODO
-				//await deleteInCloud("");
-				//await saveToCloud(new File());
+			async (data: FormDataType, user: UserTypeFull | undefined, formData?: FormDataType) => {
+				const thumbnail = formData!.get('picture') as File;
+				if (!thumbnail || thumbnail.size === 0) return fail(400);
+
+				const thumbnailUrl = await saveToCloud(thumbnail, 'image');
+				if (!thumbnailUrl) return fail(502);
+
+				const oldPicture = (await event.locals.db
+					.select({ id: databaseSchema.resource.id, url: databaseSchema.resource.url })
+					.from(databaseSchema.user)
+					.leftJoin(
+						databaseSchema.resource,
+						eq(
+							databaseSchema.user.profilePicture,
+							databaseSchema.resource.id,
+						),
+					)
+					.where(eq(databaseSchema.user.id, user!.id))
+				)[0];
+
+				if(oldPicture?.url) {
+					await deleteInCloud(oldPicture.url);
+				}
+
+				await event.locals.db.transaction(async (tx) => {
+					const resource = await tx
+						.insert(databaseSchema.resource)
+						.values({
+							url: thumbnailUrl,
+							title: 'profile picture',
+							type: 'image',
+						})
+						.returning();
+
+					await tx
+						.update(databaseSchema.user)
+						.set({ profilePicture: resource[0].id })
+						.where(eq(databaseSchema.user.id, user!.id));
+
+					await tx
+						.delete(databaseSchema.resource)
+						.where(eq(databaseSchema.resource.id, oldPicture?.id ?? -1));					
+				});			
 			},
+			['picture'],
 		);
 	},
 };
