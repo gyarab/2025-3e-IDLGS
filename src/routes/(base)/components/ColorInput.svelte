@@ -33,7 +33,7 @@
 		tabindex="-1"
 		role="button"
 	>
-		<span class="w-full truncate">
+		<span class="w-full truncate font-medium">
 			{m.clickToChangeColor()}...
 		</span>
 	</div>

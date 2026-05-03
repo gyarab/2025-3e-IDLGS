@@ -72,7 +72,7 @@
 				values={['0', '1', '2', '3', '4', '5', '6', '7', '8']}
 				bind:value={education}
 				style="background-color: {color};"
-				css="buttonPrimary text-sm"
+				css="buttonPrimary text-sm rounded-xl"
 				selectedstyle="background-color: {darkenHex(color, 50)};"
 			/>
 		</span>

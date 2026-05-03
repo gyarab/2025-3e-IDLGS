@@ -23,7 +23,7 @@
 	{:else}
 		<i class="ri-checkbox-blank-circle-line text-3xl"></i>
 	{/if}
-	<p class="text-lg">
+	<p class="sm:text-lg">
 		{text}
 	</p>
 </div>
