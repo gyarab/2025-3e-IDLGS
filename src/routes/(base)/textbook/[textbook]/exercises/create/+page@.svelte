@@ -16,6 +16,7 @@
 	import Form from '$src/routes/(base)/components/Form.svelte';
 	import { goto } from '$app/navigation';
 	import type { ArticleTypeRawUuid } from '$lib/types';
+	import { addToast } from '$lib/toast';
 
 	let {
 		data,
@@ -192,7 +193,7 @@
 			}}
 			failure={async () => {
 				stage--;
-				//TODO popup message @AY-GA
+				addToast("Failed to create exercise", "error")
 			}}
 			start={async (formData) => {
 				formData!.append('thumbnail', thumbnail[0]);

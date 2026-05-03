@@ -233,5 +233,6 @@
 	"heading2": "Nadpis 2",
 	"heading3": "Nadpis 3",
 	"line": "Čára",
-	"sidebox": "Boční box"
+	"sidebox": "Boční box",
+	"failedToCreateExercise": "Vytvoření cvičení se nezdařilo"
 }
