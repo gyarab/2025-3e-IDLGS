@@ -2,6 +2,8 @@
 	import { darkenHex } from '$lib';
 	import type { TextbookType, UserType } from '$lib/types';
 	import { m } from '$lib/paraglide/messages';
+	import Button from '../components/Button.svelte';
+	import { goto } from '$app/navigation';
 
 	let {
 		data,
@@ -16,8 +18,8 @@
 
 	let profile = {
 		stats: [
-			{ label: 'Time Spent Reading', value: '1240 min' },
-			{ label: 'Textbooks Finished', value: '8' },
+			// { label: 'Time Spent Reading', value: '1240 min' },
+			// { label: 'Textbooks Finished', value: '8' },
 		],
 	};
 
@@ -58,9 +60,11 @@
 			/>
 			<div>
 				<h1 class="text-2xl font-bold sm:text-3xl">{data.user.name}</h1>
-				<p class="text-sm font-medium opacity-60 sm:text-base">
-					{data.user.degree} • {data.user.institution}
-				</p>
+				{#if data.user.degree && data.user.institution}
+					<p class="text-sm font-medium opacity-60 sm:text-base">
+						{data.user.degree} • {data.user.institution}
+					</p>
+				{/if}
 			</div>
 		</header>
 
@@ -96,7 +100,7 @@
 				Recently opened
 			</h2>
 			<div class="space-y-6">
-				{#each data.textbooks as { title, uuid }}
+				{#each data.textbooks as { title, description, uuid }}
 					<div class="flex items-center justify-between gap-4">
 						<div class="flex-1">
 							<h3
@@ -104,9 +108,21 @@
 							>
 								{title}
 							</h3>
-							<p class="text-sm opacity-50">{uuid}</p>
+							<p class="text-sm opacity-50">{description}</p>
 						</div>
-						<div class="flex w-1/2 items-center gap-4">
+						<div class="flex items-center gap-3">
+							<Button
+								text="Open"
+								emoji="book-open"
+								type="button"
+								css="rounded-full px-4 py-2 text-sm font-semibold hover:bg-white/20"
+								style="background-color: {darkenHex(
+									data.color,
+									20,
+								)};"
+								onclick={() => goto(`/textbook/${uuid}`)}
+							/>
+							<!--
 							<div
 								class="h-2.5 w-full overflow-hidden rounded-full bg-black/5 dark:bg-white/10"
 							>
@@ -120,6 +136,7 @@
 								class="w-10 text-sm font-black"
 								style:color="var(--brand)">{title}%</span
 							>
+							-->
 						</div>
 					</div>
 				{/each}
