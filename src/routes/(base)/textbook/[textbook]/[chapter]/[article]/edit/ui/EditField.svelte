@@ -13,11 +13,12 @@
 	} = $props();
 </script>
 
-<div class="flex w-full flex-col gap-4">
+<div class="flex w-full flex-col gap-4 min-h-[30vh]">
 	<TextArea
 		{darkMode}
 		{color}
 		bind:value={articleText}
 		placeholder={m.enterArticleText()}
+		css="w-full h-full grow"
 	/>
 </div>

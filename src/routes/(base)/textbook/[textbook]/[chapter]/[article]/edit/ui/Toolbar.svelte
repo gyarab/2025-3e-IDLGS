@@ -3,17 +3,24 @@
 	import ColoredVerticalLine from '$src/routes/(base)/components/ColoredVerticalLine.svelte';
 	import FontEdit from './components/FontEdit.svelte';
 	import Multimedia from './components/Multimedia.svelte';
-	import RawMode from './components/RawMode.svelte';
+	import Headers from './components/Headers.svelte';
 	import ToolbarButton from './components/ToolbarButton.svelte';
+	import Didatic from './components/Didatic.svelte';
 
 	let {
 		darkMode,
 		color,
 		advancedMode = $bindable(false),
+		selectionStart = $bindable(0),
+		selectionEnd = $bindable(0),
+		articleText = $bindable(''),
 	}: {
 		darkMode: boolean;
 		color: string;
 		advancedMode: boolean;
+		selectionStart: number;
+		selectionEnd: number;
+		articleText: string;
 	} = $props();
 </script>
 
@@ -32,10 +39,19 @@
 		{color}
 	/>
 	<ColoredVerticalLine {color} />
-	<RawMode
+	<Headers
 		{darkMode}
 		{color}
 	/>
+	<ColoredVerticalLine {color} />
+	<Didatic
+		{darkMode}
+		{color}
+		bind:selectionStart
+		bind:selectionEnd
+		bind:articleText
+	/>
+	<ColoredVerticalLine {color} />
 
 	<div class="grow"></div>
 

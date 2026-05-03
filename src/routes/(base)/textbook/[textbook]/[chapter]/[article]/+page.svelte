@@ -131,7 +131,9 @@
 		}}
 	/>
 
-	<ReadBox>
+	<ReadBox
+		darkMode={data.darkMode}
+	>
 		{data.article.text}
 	</ReadBox>
 

@@ -228,5 +228,10 @@
 	"image": "Image",
 	"embed": "Embed",
 	"video": "Video",
-	"document": "Document"
+	"document": "Document",
+	"heading1": "Heading 1",
+	"heading2": "Heading 2",
+	"heading3": "Heading 3",
+	"line": "Line",
+	"sidebox": "Sidebox"
 }
