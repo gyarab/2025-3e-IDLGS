@@ -94,7 +94,7 @@
 			<h2
 				class="mb-6 text-xl font-bold tracking-tight uppercase opacity-80"
 			>
-				Current Study Stack
+				Recently opened
 			</h2>
 			<div class="space-y-6">
 				{#each data.textbooks as { title, uuid }}

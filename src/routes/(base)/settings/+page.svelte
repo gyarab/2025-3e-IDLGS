@@ -195,6 +195,7 @@
 						name="language"
 					/>
 					<SelectionButton
+						orientation="land"
 						texts={locales.map((v) =>
 							m.languageName({}, { locale: v }),
 						)}

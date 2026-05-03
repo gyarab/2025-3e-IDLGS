@@ -46,7 +46,7 @@
 </script>
 
 {#key texts || actions || emojis}
-	<div class="overflow-auto rounded-2xl">
+	<div class="overflow-hidden rounded-2xl">
 		<div
 			class="flex text-white! {orientation === 'port'
 				? 'flex-col md:divide-y'
