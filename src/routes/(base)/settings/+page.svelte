@@ -55,7 +55,9 @@
 			alt="Logo"
 			class="h-12 sm:h-16"
 		/>
-		<h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl text-white!">
+		<h1
+			class="text-4xl font-extrabold tracking-tight text-white! sm:text-5xl"
+		>
 			{m.settings()}
 		</h1>
 	</header>
@@ -355,7 +357,11 @@
 		</section>
 	</div>
 
-		<p class="text-center text-xs {data.darkMode ? 'text-black!' : 'text-white!'} opacity-60">
-			{m.allYourChangesAreSavedSecurelyToYourProfile()}.
-		</p>
+	<p
+		class="text-center text-xs {data.darkMode
+			? 'text-black!'
+			: 'text-white!'} opacity-60"
+	>
+		{m.allYourChangesAreSavedSecurelyToYourProfile()}.
+	</p>
 </div>

@@ -54,33 +54,51 @@ export const load = async (event) => {
 
 export const actions = {
 	addArticle: async (event) => {
-		return await formRunner(event, [], true, async (data: FormDataType, user: UserTypeFull | undefined) => {
-
-		});
+		return await formRunner(
+			event,
+			[],
+			true,
+			async (data: FormDataType, user: UserTypeFull | undefined) => {},
+		);
 	},
 	editArticle: async (event) => {
-		return await formRunner(event, ['text'], true, async (data: FormDataType, user: UserTypeFull | undefined) => {
-
-		});
+		return await formRunner(
+			event,
+			['text'],
+			true,
+			async (data: FormDataType, user: UserTypeFull | undefined) => {},
+		);
 	},
 	deleteArticle: async (event) => {
-		return await formRunner(event, [], true, async (data: FormDataType, user: UserTypeFull | undefined) => {
-
-		});
+		return await formRunner(
+			event,
+			[],
+			true,
+			async (data: FormDataType, user: UserTypeFull | undefined) => {},
+		);
 	},
 	moveArticleUp: async (event) => {
-		return await formRunner(event, [], true, async (data: FormDataType, user: UserTypeFull | undefined) => {
-
-		});
+		return await formRunner(
+			event,
+			[],
+			true,
+			async (data: FormDataType, user: UserTypeFull | undefined) => {},
+		);
 	},
 	moveArticleDown: async (event) => {
-		return await formRunner(event, [], true, async (data: FormDataType, user: UserTypeFull | undefined) => {
-
-		});
+		return await formRunner(
+			event,
+			[],
+			true,
+			async (data: FormDataType, user: UserTypeFull | undefined) => {},
+		);
 	},
 	moveArticleChapter: async (event) => {
-		return await formRunner(event, [], true, async (data: FormDataType, user: UserTypeFull | undefined) => {
-
-		});
+		return await formRunner(
+			event,
+			[],
+			true,
+			async (data: FormDataType, user: UserTypeFull | undefined) => {},
+		);
 	},
 };

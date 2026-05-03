@@ -7,7 +7,6 @@ import {
 	check,
 	timestamp,
 	customType,
-	
 } from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm';
 import { user, resource } from './userSchema';

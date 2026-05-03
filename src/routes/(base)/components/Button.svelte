@@ -35,7 +35,9 @@
 	{disabled}
 	aria-label={label}
 	title={label}
-	class="group flex flex-row items-center justify-center gap-1 {rmwhite ? '' : 'text-white!'} {css}"
+	class="group flex flex-row items-center justify-center gap-1 {rmwhite
+		? ''
+		: 'text-white!'} {css}"
 	{onclick}
 	{style}
 >

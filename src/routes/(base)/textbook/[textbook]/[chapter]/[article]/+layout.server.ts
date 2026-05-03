@@ -6,9 +6,9 @@ import { resolve } from '$app/paths';
 
 export const load = async (event) => {
 	const pd = await event.parent();
-	if(!pd.user) redirect(302, resolve('/(protected)/login'));
-	if(!pd.textbook) return error(404, m.textbookDoesntExist());
-	if(!pd.chapter) return error(404, m.chapterDoesntExist());
+	if (!pd.user) redirect(302, resolve('/(protected)/login'));
+	if (!pd.textbook) return error(404, m.textbookDoesntExist());
+	if (!pd.chapter) return error(404, m.chapterDoesntExist());
 
 	const article = (
 		await event.locals.db
@@ -27,14 +27,19 @@ export const load = async (event) => {
 			)
 			.leftJoin(
 				databaseSchema.textbook,
-				eq(databaseSchema.textbook.id, databaseSchema.article.textbookId),
+				eq(
+					databaseSchema.textbook.id,
+					databaseSchema.article.textbookId,
+				),
 			)
 			.where(eq(databaseSchema.article.uuid, event.params.article))
 			.limit(1)
 	)[0];
 
-	if(article.textbookUuid !== event.params.textbook) return error(404, m.articleDoesntExist());
-	if(article.chapterUuid !== event.params.chapter) return error(404, m.articleDoesntExist());
+	if (article.textbookUuid !== event.params.textbook)
+		return error(404, m.articleDoesntExist());
+	if (article.chapterUuid !== event.params.chapter)
+		return error(404, m.articleDoesntExist());
 
 	if (!article) return error(404, m.articleDoesntExist());
 
@@ -43,6 +48,6 @@ export const load = async (event) => {
 			...article,
 			chapterUuid: undefined,
 			textbookUuid: undefined,
-		}
+		},
 	};
 };

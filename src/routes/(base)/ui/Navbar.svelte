@@ -60,7 +60,11 @@
 
 			<div class="grow"></div>
 
-			<nav class="flex h-full items-center gap-2 {darkMode ? '**:text-white' : '**:text-black!'}">
+			<nav
+				class="flex h-full items-center gap-2 {darkMode
+					? '**:text-white'
+					: '**:text-black!'}"
+			>
 				<Button
 					emoji="user"
 					text={m.profile()}

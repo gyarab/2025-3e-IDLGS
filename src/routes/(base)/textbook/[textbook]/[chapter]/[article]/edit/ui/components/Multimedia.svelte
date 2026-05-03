@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ToolbarButton from "./ToolbarButton.svelte";
-	import { m } from "$lib/paraglide/messages";
+	import ToolbarButton from './ToolbarButton.svelte';
+	import { m } from '$lib/paraglide/messages';
 
 	let {
 		darkMode,
