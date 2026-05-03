@@ -28,7 +28,8 @@
 
 <svelte:head>
 	<title>
-		{m.edit()} {data.article.title} 
+		{m.edit()}
+		{data.article.title}
 	</title>
 </svelte:head>
 

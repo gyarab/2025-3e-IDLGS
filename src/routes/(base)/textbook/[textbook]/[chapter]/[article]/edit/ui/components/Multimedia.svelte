@@ -15,9 +15,7 @@
 	<ToolbarButton
 		emoji="box-3-line"
 		label={m.model3d()}
-		onclick={() => {
-
-		}}
+		onclick={() => {}}
 		{darkMode}
 		{color}
 	/>

@@ -56,7 +56,7 @@
 		<h2 class="text-2xl font-bold">{m.crosswordWithGuess()}</h2>
 	</div>
 
-	<div class=" absolute left-4 bottom-4 z-50">
+	<div class=" absolute bottom-4 left-4 z-50">
 		<Button
 			emoji="add-box"
 			type="button"

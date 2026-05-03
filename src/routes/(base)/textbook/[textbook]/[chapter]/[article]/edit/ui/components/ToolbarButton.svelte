@@ -23,13 +23,13 @@
 <button
 	aria-label={label}
 	title={label}
-	class="relative group pb-1 pt-1"
-	{onclick}	
+	class="group relative pt-1 pb-1"
+	{onclick}
 	bind:this={button}
 	{style}
 >
 	<span
-		class="rounded-lg pointer-events-none top-0 left-0 w-full h-full group-hover:opacity-50 opacity-0 z-50 absolute"
+		class="pointer-events-none absolute top-0 left-0 z-50 h-full w-full rounded-lg opacity-0 group-hover:opacity-50"
 		style="background-color: {color};"
 		onclick={() => button!.click()}
 		tabindex="-1"
@@ -43,7 +43,6 @@
 			}
 		}}
 	>
-
 	</span>
 	<i class="ri-{emoji}"></i>
 </button>

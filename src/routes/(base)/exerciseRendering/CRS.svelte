@@ -89,7 +89,9 @@
 					</CRWordElement>
 				</div>
 			{:else}
-				<div class="flex flex-col grow w-full justify-center items-center">
+				<div
+					class="flex flex-col grow w-full justify-center items-center"
+				>
 					{m.noWordsInCrossword()}
 				</div>
 			{/each}

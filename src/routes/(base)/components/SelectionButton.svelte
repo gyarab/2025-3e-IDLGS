@@ -47,7 +47,7 @@
 	);
 
 	let classList = $derived.by(() => {
-		switch(orientation) {
+		switch (orientation) {
 			case 'port':
 				return 'flex-col md:divide-y';
 			case 'mixed':
@@ -55,14 +55,12 @@
 			default:
 				return 'flex-row md:divide-x';
 		}
-	})
+	});
 </script>
 
 {#key texts || actions || emojis}
 	<div class="overflow-hidden rounded-2xl {cssTop}">
-		<div
-			class="flex text-white! {classList} divide-white"
-		>
+		<div class="flex text-white! {classList} divide-white">
 			{#each { length: length } as _, i (i)}
 				<button
 					class="{css} {isSelected?.at(i) ? selectedcss : ''}
