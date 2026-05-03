@@ -12,7 +12,7 @@
 		value = $bindable(''),
 		values,
 		style,
-		cssTop,
+		orientation,
 		disabled,
 		types,
 	}: {
@@ -26,7 +26,7 @@
 		value?: string;
 		values?: string[];
 		style?: string;
-		cssTop?: string;
+		orientation: 'port' | 'land';
 		disabled?: boolean[];
 		types?: ('button' | 'submit' | 'reset')[];
 	} = $props();
@@ -46,36 +46,40 @@
 </script>
 
 {#key texts || actions || emojis}
-	<div
-		class="{cssTop} flex flex-row text-white! *:border-collapse *:rounded-none *:border *:border-t-0 *:border-b-0 *:border-white *:first:rounded-s-full *:first:border-s-0 *:last:rounded-e-full *:last:border-e-0"
-	>
-		{#each { length: length } as _, i (i)}
-			<button
-				class="{css} {isSelected?.at(i)
-					? selectedcss
-					: ''} flex grow flex-row items-center justify-center gap-1 p-2 font-bold hover:translate-0! hover:brightness-75 active:brightness-50"
-				style="{style} {isSelected?.at(i) ? selectedstyle : ''}"
-				onclick={() => {
-					value = values?.at(i) ?? '';
+	<div class="overflow-auto rounded-2xl">
+		<div
+			class="flex text-white! {orientation === 'port'
+				? 'flex-col md:divide-y'
+				: 'flex-row md:divide-x'} divide-white"
+		>
+			{#each { length: length } as _, i (i)}
+				<button
+					class="{css} {isSelected?.at(i)
+						? selectedcss
+						: ''} flex grow flex-row items-center justify-center gap-1 px-2 py-1 font-bold hover:translate-0! hover:brightness-75 active:brightness-50"
+					style="{style} {isSelected?.at(i) ? selectedstyle : ''}"
+					onclick={() => {
+						value = values?.at(i) ?? '';
 
-					const f = actions?.at(i);
-					if (f) f();
-				}}
-				title={labels?.at(i) ?? ''}
-				aria-label={labels?.at(i) ?? ''}
-				disabled={disabled?.at(i) ?? false}
-				type={types?.at(i) ?? 'button'}
-			>
-				{#if emojis}
-					<HoverEmoji
-						emoji={emojis[i]}
-						css="text-2xl"
-					/>
-				{/if}
-				{#if texts}
-					{texts[i]}
-				{/if}
-			</button>
-		{/each}
+						const f = actions?.at(i);
+						if (f) f();
+					}}
+					title={labels?.at(i) ?? ''}
+					aria-label={labels?.at(i) ?? ''}
+					disabled={disabled?.at(i) ?? false}
+					type={types?.at(i) ?? 'button'}
+				>
+					{#if emojis}
+						<HoverEmoji
+							emoji={emojis[i]}
+							css="text-2xl"
+						/>
+					{/if}
+					{#if texts}
+						{texts[i]}
+					{/if}
+				</button>
+			{/each}
+		</div>
 	</div>
 {/key}

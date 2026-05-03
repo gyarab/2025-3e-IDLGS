@@ -28,15 +28,15 @@
 </script>
 
 <div
-	class="flex max-w-1/5 min-w-40 grow flex-col gap-2 rounded-e-2xl p-4 shadow-lg {darkMode
+	class="flex max-w-1/4 min-w-40 grow min-h-0 flex-col gap-2 rounded-e-2xl p-4 overflow-auto shadow-lg {darkMode
 		? 'bg-neutral-900'
 		: 'bg-neutral-300'}"
 	in:fly|global={{ duration: 300, delay: 300, x: -500, y: 0, opacity: 0 }}
 >
 	<div class="relative flex w-full flex-col gap-2">
-		<div class="flex w-full flex-row items-center gap-1 text-2xl">
-			<i class={emoji}></i>
-			<h1 class="mb-0! text-2xl! font-bold">{title}</h1>
+		<div class="flex w-full flex-row items-start gap-1">
+			<h1 class="text-xl sm:text-2xl font-bold">{title}</h1>
+			<i class="{emoji} text-3xl"></i>
 		</div>
 
 		{#key stage}
@@ -51,9 +51,8 @@
 		{/key}
 	</div>
 
-	<div class="grow"></div>
-
 	<SelectionButton
+		orientation="port"
 		style="background-color: {darkenHex(color, 50)};"
 		texts={[m.cancel(), '', '']}
 		emojis={['arrow-left-double', 'question', darkMode ? 'sun' : 'moon']}
