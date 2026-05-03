@@ -42,7 +42,9 @@ const cloudinaryUpload = async (
 				},
 				(error, uploadResult) => {
 					if (error) {
-						console.error(`Error uploading file: ${error}`);
+						console.error(
+							`Error uploading file: ${error.http_code} ${error.name} ${error.message}`,
+						);
 						resolve(undefined);
 						return undefined;
 					}
@@ -51,7 +53,7 @@ const cloudinaryUpload = async (
 			)
 			.end(byteArrayBuffer);
 	}).then((uploadResult) => {
-		console.log(`Error uploading file: ${JSON.stringify(uploadResult)}`);
+		console.log(`File uploaded: ${JSON.stringify(uploadResult)}`);
 		return uploadResult;
 	});
 
@@ -80,6 +82,7 @@ export const saveToCloud = async (
 	file: File,
 	type: FileType,
 ): Promise<string | undefined> => {
+	console.log(file.type, file.size);
 	return await cloudinaryUpload(file, type);
 };
 

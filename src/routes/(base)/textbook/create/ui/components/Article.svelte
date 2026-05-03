@@ -89,6 +89,7 @@
 		>
 			<HoverEmoji
 				emoji={selected ? 'checkbox-circle' : 'checkbox-blank-circle'}
+				css={darkMode ? 'text-white' : 'text-black'}
 			/>
 			<h2 class="mb-0!">{article.title}</h2>
 			<div class="grow"></div>
@@ -102,6 +103,9 @@
 				editMode = true;
 			}}
 			text=""
+			css={darkMode ? 'text-white!' : 'text-black!'}
+			hecss={darkMode ? 'text-white!' : 'text-black!'}
+			rmwhite={true}
 		/>
 		<Button
 			label={m.moveArticleUp()}
@@ -112,6 +116,9 @@
 			}}
 			text=""
 			disabled={i === 0}
+			css={darkMode ? 'text-white!' : 'text-black!'}
+			hecss={darkMode ? 'text-white!' : 'text-black!'}
+			rmwhite={true}
 		/>
 		<Button
 			label={m.moveArticleDown()}
@@ -122,6 +129,9 @@
 			}}
 			text=""
 			disabled={i === amount - 1}
+			css={darkMode ? 'text-white!' : 'text-black!'}
+			hecss={darkMode ? 'text-white!' : 'text-black!'}
+			rmwhite={true}
 		/>
 	{/if}
 </div>

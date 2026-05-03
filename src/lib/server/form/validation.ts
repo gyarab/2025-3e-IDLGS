@@ -1,4 +1,4 @@
-import type { UserType, UserTypeFull } from '$lib/types';
+import type { UserTypeFull } from '$lib/types';
 import type { ActionFailure } from '@sveltejs/kit';
 import { fail, isActionFailure } from '@sveltejs/kit';
 import { schema as databaseSchema } from '$lib/server/db/schema';
@@ -6,7 +6,7 @@ import type { DBType } from '../db';
 import { eq } from 'drizzle-orm';
 
 export type FormRunnerResult = unknown | void | ActionFailure<any>;
-export type FormDataType = { [field: string]: string };
+export type FormDataType = { [field: string]: any };
 
 export const formRunner = async (
 	event: any,
@@ -15,14 +15,17 @@ export const formRunner = async (
 	f: (
 		data: FormDataType,
 		user: UserTypeFull | undefined,
+		formData?: FormData,
 	) => Promise<FormRunnerResult>,
+	ignoredItems: string[] = [],
 ): Promise<FormRunnerResult> => {
 	const formData: FormData = await event.request.formData();
 
 	const data: FormDataType = {};
 	for (const field of fields) {
 		if (!formData.has(field)) return fail(400);
-		else data[field] = formData.get(field) as string;
+		else if (!ignoredItems.includes(field))
+			data[field] = formData.get(field) as string;
 	}
 
 	let user: UserTypeFull | undefined = undefined;
@@ -58,7 +61,7 @@ export const formRunner = async (
 	}
 
 	try {
-		return await f(data, user);
+		return await f(data, user, formData);
 	} catch (e) {
 		if (isActionFailure(e)) return e;
 		else throw e;

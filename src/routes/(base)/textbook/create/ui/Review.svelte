@@ -2,6 +2,8 @@
 	import { m } from '$lib/paraglide/messages';
 	import { fly } from 'svelte/transition';
 	import type { ChapterTypeRaw, ArticleTypeRaw } from '$lib/types';
+	import { makeURLFromImage } from '$lib';
+	import { onDestroy } from 'svelte';
 
 	let {
 		darkMode,
@@ -12,6 +14,7 @@
 		chapters,
 		articles,
 		authors,
+		thumbnail,
 	}: {
 		darkMode: boolean;
 		color: string;
@@ -21,6 +24,7 @@
 		chapters: ChapterTypeRaw[];
 		articles: ArticleTypeRaw[][];
 		authors: string[];
+		thumbnail: File;
 	} = $props();
 
 	let functionIsced = (level: string) => {
@@ -47,6 +51,11 @@
 				return '';
 		}
 	};
+
+	let imagePreview: string = $derived(makeURLFromImage(thumbnail));
+	onDestroy(() => {
+		URL.revokeObjectURL(imagePreview);
+	});
 </script>
 
 <div class="flex w-full grow flex-col gap-2">
@@ -60,26 +69,42 @@
 	<div class="flex w-full grow flex-col gap-2">
 		<div class="flex w-full flex-row gap-0">
 			<span class="font-bold">{m.textbookName()}:</span>
-			<div class="grow border-b border-dashed border-white"></div>
+			<div
+				class="grow border-b border-dashed {darkMode
+					? 'border-white'
+					: 'border-black'}"
+			></div>
 			{name}
 		</div>
 
 		<div class="flex w-full flex-row gap-0">
 			<span class="font-bold">{m.textbookDescription()}:</span>
-			<div class="grow border-b border-dashed border-white"></div>
+			<div
+				class="grow border-b border-dashed {darkMode
+					? 'border-white'
+					: 'border-black'}"
+			></div>
 			{description}
 		</div>
 
 		<div class="flex w-full flex-row gap-0">
 			<span class="font-bold">{m.educationLevel()}:</span>
-			<div class="grow border-b border-dashed border-white"></div>
+			<div
+				class="grow border-b border-dashed {darkMode
+					? 'border-white'
+					: 'border-black'}"
+			></div>
 			{functionIsced(educationLevel)} (ISCED {educationLevel})
 		</div>
 
 		<div class="flex w-full flex-col items-end gap-0">
 			<div class="flex w-full flex-row gap-0">
 				<span class="font-bold">{m.chapterAmount()}:</span>
-				<div class="grow border-b border-dashed border-white"></div>
+				<div
+					class="grow border-b border-dashed {darkMode
+						? 'border-white'
+						: 'border-black'}"
+				></div>
 				{chapters.length}
 			</div>
 			<!-- list of chapters -->
@@ -96,7 +121,11 @@
 		<div class="flex w-full flex-col items-end gap-0">
 			<div class="flex w-full flex-row gap-0">
 				<span class="font-bold">{m.articleAmount()}:</span>
-				<div class="grow border-b border-dashed border-white"></div>
+				<div
+					class="grow border-b border-dashed {darkMode
+						? 'border-white'
+						: 'border-black'}"
+				></div>
 				{articles.reduce((acc, curr) => acc + curr.length, 0)}
 			</div>
 			<!-- list of articles -->
@@ -115,8 +144,36 @@
 		<!-- authors -->
 		<div class="flex w-full flex-row gap-0">
 			<span class="font-bold">{m.authors()}:</span>
-			<div class="grow border-b border-dashed border-white"></div>
+			<div
+				class="grow border-b border-dashed {darkMode
+					? 'border-white'
+					: 'border-black'}"
+			></div>
 			{authors.length + 1}
+		</div>
+
+		<!-- thumbnail -->
+		<div class="flex w-full flex-col gap-0">
+			<div class="flex w-full flex-row gap-0">
+				<span class="font-bold">{m.thumbnail()}:</span>
+				<div
+					class="grow border-b border-dashed {darkMode
+						? 'border-white'
+						: 'border-black'}"
+				></div>
+			</div>
+			<div class="flex w-full flex-row">
+				<div class="grow"></div>
+				{#if thumbnail}
+					<img
+						src={imagePreview}
+						alt={m.thumbnailPreview()}
+						class="aspect-2/1 w-[30svh] rounded-lg object-cover"
+					/>
+				{:else}
+					<p>{m.noThumbnail()}</p>
+				{/if}
+			</div>
 		</div>
 	</div>
 </div>

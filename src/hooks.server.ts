@@ -8,6 +8,7 @@ import postgres from 'postgres';
 import { count } from 'drizzle-orm';
 import { hashPassword } from '$lib/server/user';
 import { initMail } from '$lib/server/mail';
+import { v2 as cloudinary } from 'cloudinary';
 
 const handleParaglide: Handle = ({ event, resolve }) =>
 	paraglideMiddleware(event.request, ({ request, locale }) => {
@@ -74,12 +75,7 @@ const handleInitialUser: Handle = async ({ event, resolve }) => {
 const securityHeaders = {
 	'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
 	'Permissions-Policy': 'camera=(), microphone=(), interest-cohort=()',
-	'Cross-Origin-Resource-Policy': 'same-site',
-	'Cross-Origin-Embedder-Policy': 'credentialless',
-	'Cross-Origin-Opener-Policy': 'same-origin',
-	'X-Frame-Options': 'SAMEORIGIN',
-	'X-Content-Type-Options': 'nosniff',
-	'Referrer-Policy': 'strict-origin-when-cross-origin',
+	'Access-Control-Allow-Origin': '*',
 };
 
 const handleSecurity: Handle = async ({ event, resolve }) => {
@@ -117,6 +113,13 @@ export const init: ServerInit = async () => {
 	if (process.env.MODE && process.env.MODE != 'normal') {
 		//TODO standalone textbook mode (uuid)
 	}
+
+	cloudinary.config({
+		cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+		api_key: process.env.CLOUDINARY_API_KEY,
+		api_secret: process.env.CLOUDINARY_API_SECRET,
+		secure: true,
+	});
 
 	console.log('Initialization done!');
 };

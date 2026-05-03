@@ -3,6 +3,8 @@ import { browser } from '$app/environment';
 export const DEFAULT_ACCENT_COLOR = '#ff8800';
 export const DEFAULT_MS_UNTIL_REQUEST = 500; //from end of typing until request is sent
 
+export const IFRAME_TIMEOUT = 3000;
+
 export const isInViewport = (element: HTMLElement): Promise<boolean> => {
 	return new Promise((resolve) => {
 		const observer = new IntersectionObserver(
@@ -113,4 +115,8 @@ export const getRGBFromHex = (color: string): number[] => {
 		parseInt(color.slice(-4, -2), 16),
 		parseInt(color.slice(-2), 16),
 	];
+};
+
+export const makeURLFromImage = (data: File): string => {
+	return URL.createObjectURL(data);
 };

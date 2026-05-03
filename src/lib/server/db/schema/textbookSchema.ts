@@ -3,10 +3,8 @@ import {
 	serial,
 	integer,
 	text,
-	boolean,
 	check,
 	timestamp,
-	customType,
 } from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm';
 import { user, resource } from './userSchema';
@@ -30,6 +28,9 @@ export const textbook = pgTable(
 			.notNull()
 			.unique()
 			.$defaultFn(() => crypto.randomUUID()),
+		thumbnail: integer('thumbnail').references(() => resource.id, {
+			onDelete: 'set null',
+		}),
 	},
 	(table) => [
 		check('r', sql`${table.r} >= 0 AND ${table.r} <= 255`),

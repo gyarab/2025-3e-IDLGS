@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
 	import SelectionButton from '$src/routes/(base)/components/SelectionButton.svelte';
-	import { darkenHex } from '$lib';
 
 	let {
 		color,
@@ -27,7 +26,7 @@
 
 	<SelectionButton
 		orientation="land"
-		style="background-color: var(--color-yellow);"
+		style="background-color: {color};"
 		texts={[m.back(), nextButtonCreate ? createText : m.next()]}
 		disabled={[stage == 0 || disablePrev, disableNext]}
 		actions={[() => stage--, () => stage++]}

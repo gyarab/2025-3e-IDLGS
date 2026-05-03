@@ -12,6 +12,7 @@ import { fail, redirect } from '@sveltejs/kit';
 import { schema as databaseSchema } from '$lib/server/db/schema';
 import { getRGBFromHex } from '$lib';
 import { asc, eq, inArray } from 'drizzle-orm';
+import { saveToCloud } from '$lib/server/filesave/index.js';
 
 export const load = async (event) => {
 	const pd = await event.parent();
@@ -30,14 +31,21 @@ export const actions = {
 				'chapters',
 				'articles',
 				'authors',
+				'thumbnail',
 			],
 			true,
-			async (data: FormDataType, user: UserTypeFull | undefined) => {
+			async (
+				data: FormDataType,
+				user: UserTypeFull | undefined,
+				formData?: FormData,
+			) => {
 				const chapters = JSON.parse(data.chapters) as ChapterTypeRaw[];
 				const articles = JSON.parse(
 					data.articles,
 				) as ArticleTypeRaw[][];
 				const authors = JSON.parse(data.authors) as string[]; //uuids
+
+				const thumbnail = formData?.get('thumbnail') as File;
 
 				if (
 					!Array.isArray(chapters) ||
@@ -45,7 +53,9 @@ export const actions = {
 					!Array.isArray(authors) ||
 					chapters.length === 0 ||
 					articles.length === 0 ||
-					chapters.length !== articles.length
+					chapters.length !== articles.length ||
+					!thumbnail ||
+					thumbnail.size === 0
 				)
 					return fail(400);
 
@@ -57,7 +67,21 @@ export const actions = {
 				if (isNaN(eduLevel) || eduLevel < 0 || eduLevel > 8)
 					return fail(400);
 
+				const textbookUuid = crypto.randomUUID();
+				const thumbnailUrl = await saveToCloud(thumbnail, 'image');
+
+				if (!thumbnailUrl) return fail(502);
+
 				await event.locals.db.transaction(async (tx) => {
+					const resource = await tx
+						.insert(databaseSchema.resource)
+						.values({
+							url: thumbnailUrl,
+							title: 'thumbnail',
+							type: 'image',
+						})
+						.returning();
+
 					const textbook = (
 						await tx
 							.insert(databaseSchema.textbook)
@@ -68,6 +92,8 @@ export const actions = {
 								r: r,
 								g: g,
 								b: b,
+								thumbnail: resource[0].id,
+								uuid: textbookUuid,
 							})
 							.returning()
 					)[0];
@@ -128,7 +154,8 @@ export const actions = {
 								order: a.order,
 								chapterId: chapterIds[i],
 								textbookId: textbook.id,
-								textCompressed: '',
+								text: '',
+								uuid: crypto.randomUUID(),
 							});
 						}
 					}
@@ -138,6 +165,7 @@ export const actions = {
 
 				return;
 			},
+			['thumbnail'],
 		);
 	},
 };

@@ -6,7 +6,6 @@
 	import ConfirmCancel from '$src/routes/(base)/components/ConfirmCancel.svelte';
 	import ConfirmDeleteDialog from '$src/routes/(base)/components/ConfirmDeleteDialog.svelte';
 	import Dialog from '$src/routes/(base)/components/Dialog.svelte';
-	import TextArea from '$src/routes/(base)/components/TextArea.svelte';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
 	import VerticalLine from '$src/routes/(base)/components/VerticalLine.svelte';
 	import { fly } from 'svelte/transition';
@@ -106,7 +105,7 @@
 					</div>
 				{/each}
 			</div>
-			<div class="flex w-full flex-col gap-1">
+			<div class="flex w-full flex-row gap-1">
 				<span
 					class="flex grow flex-col gap-1"
 					in:fly|global={{
@@ -120,7 +119,7 @@
 					<Button
 						text={m.addChapter()}
 						style="background-color: {color};"
-						css="buttonPrimary w-full hover:bg-green-600!"
+						css="buttonPrimary w-full"
 						onclick={() => {
 							showChapterDialog = true;
 						}}

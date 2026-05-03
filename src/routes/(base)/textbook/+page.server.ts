@@ -25,6 +25,7 @@ export const load = async (event) => {
 			educationLevel: databaseSchema.textbook.educationLevel,
 			uuid: databaseSchema.textbook.uuid,
 			description: databaseSchema.textbook.description,
+			thumbnail: databaseSchema.resource.url,
 		})
 		.from(databaseSchema.textbook)
 		.leftJoin(
@@ -41,7 +42,12 @@ export const load = async (event) => {
 				databaseSchema.user.id,
 			),
 		)
-		.where(eq(databaseSchema.user.uuid, pd.user.uuid));
+		.leftJoin(
+			databaseSchema.resource,
+			eq(databaseSchema.textbook.thumbnail, databaseSchema.resource.id),
+		)
+		.where(eq(databaseSchema.user.uuid, pd.user.uuid))
+		.orderBy(desc(databaseSchema.textbook.lastEditedAt));
 
 	const textbookAuthors: UserTypeInfo[][] = [];
 	for (let i = 0; i < textbooks.length; i++) {

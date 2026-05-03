@@ -24,6 +24,8 @@
 	} = $props();
 
 	let advancedMode = $state(false);
+
+	let articleText = $derived(data.article.text);
 </script>
 
 <svelte:head>
@@ -45,9 +47,14 @@
 			<EditField
 				darkMode={data.darkMode}
 				color={data.color}
+				bind:articleText
 			/>
 		{:else}
-			<WYSIWYG />
+			<WYSIWYG
+				darkMode={data.darkMode}
+				color={data.color}
+				bind:articleText
+			/>
 		{/if}
 	</div>
 </div>
