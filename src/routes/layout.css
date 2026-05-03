@@ -47,6 +47,9 @@ cap-widget {
 @layer base {
 	:root {
 		@apply m-0 overflow-x-hidden overflow-y-scroll p-0 font-inter font-light;
+	    --color-red: #b03030;
+	    --color-yellow: #c0c030;
+		--color-green: #30b030;
 	}
 }
 
