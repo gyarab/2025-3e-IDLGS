@@ -26,6 +26,8 @@
 	let advancedMode = $state(false);
 
 	let articleText = $derived(data.article.text);
+	let selectionStart = $state(0);
+	let selectionEnd = $state(0);
 </script>
 
 <svelte:head>
@@ -41,6 +43,9 @@
 			darkMode={data.darkMode}
 			color={data.color}
 			bind:advancedMode
+			bind:selectionStart
+			bind:selectionEnd
+			bind:articleText
 		/>
 
 		{#if advancedMode}

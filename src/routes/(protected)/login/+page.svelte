@@ -73,7 +73,7 @@
 			}}
 			failure={async () => {
 				addToast(m.incorrectEmailOrPassword(), 'error');
-				solved = false
+				solved = false;
 			}}
 			color={data.color}
 		>

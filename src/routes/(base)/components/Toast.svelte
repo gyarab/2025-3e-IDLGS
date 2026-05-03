@@ -18,7 +18,9 @@
 			animate:flip
 			in:fly={{ x: 50, duration: 300 }}
 			out:fade
-			class="flex items-center justify-between rounded-lg border-l-4 p-4 text-white shadow-lg {typeStyles[toast.type]}"
+			class="flex items-center justify-between rounded-lg border-l-4 p-4 text-white shadow-lg {typeStyles[
+				toast.type
+			]}"
 		>
 			<span class="text-sm font-medium">{toast.message}</span>
 			<button
