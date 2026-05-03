@@ -2,9 +2,9 @@
 	import { fly } from 'svelte/transition';
 	import { m } from '$lib/paraglide/messages';
 	import ProgressItem from './ProgressItem.svelte';
-	import SelectionButton from '$src/routes/(base)/components/SelectionButton.svelte';
 	import { goto, invalidateAll } from '$app/navigation';
 	import { darkenHex, setDarkMode } from '$lib';
+	import TBGridToolbar from '../TBGridToolbar.svelte';
 
 	let {
 		stage = $bindable(0),
@@ -36,9 +36,9 @@
 	<div
 		class="relative flex w-full flex-col gap-2 overflow-x-hidden overflow-y-auto"
 	>
-		<div class="flex w-full flex-row items-start px-1">
+		<div class="flex w-full flex-row items-start pt-1 px-1 sm:px-2">
 			<h1 class="text-xl font-bold sm:text-2xl">{title}</h1>
-			<i class="absolute top-0 right-0 {emoji} text-3xl"></i>
+			<i class="absolute top-0 right-0 md:right-1 {emoji} text-3xl"></i>
 		</div>
 
 		{#key stage}
@@ -55,8 +55,7 @@
 
 	<div class="grow"></div>
 
-	<SelectionButton
-		orientation="mixed"
+	<TBGridToolbar
 		style="background-color: {darkenHex(color, 50)};"
 		texts={[m.cancel(), '', '']}
 		emojis={['arrow-left-double', 'question', darkMode ? 'sun' : 'moon']}
