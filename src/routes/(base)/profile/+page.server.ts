@@ -17,6 +17,7 @@ export const load = async (event) => {
 	const textbooks = await event.locals.db
 		.select({
 			title: databaseSchema.textbook.title,
+			description: databaseSchema.textbook.description,
 			uuid: databaseSchema.textbook.uuid,
 		})
 		.from(databaseSchema.textbook)
