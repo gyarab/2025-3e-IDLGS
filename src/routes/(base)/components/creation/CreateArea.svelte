@@ -56,9 +56,9 @@
 				in:fly={{ duration: 300, x: 0, y: -100, opacity: 0 }}
 				class="shadow-lg backdrop-blur-xs {darkMode
 					? 'bg-neutral-700/70 text-white!'
-					: 'bg-neutral-100/70 text-black!'} flex h-full w-full flex-col gap-2 overflow-hidden rounded-xl sm:h-5/6 sm:w-5/6"
+					: 'bg-neutral-100/70 text-black!'} flex h-full w-full sm:h-5/6 sm:w-5/6 flex-col gap-2 overflow-hidden rounded-xl"
 			>
-				<div class="flex w-full grow flex-row">
+				<div class="flex w-full grow flex-row overflow-hidden">
 					<Progress
 						bind:stage
 						{darkMode}
@@ -69,7 +69,7 @@
 						{texts}
 						{emoji}
 					/>
-					<div class="flex w-full grow flex-col gap-4 p-4">
+					<div class="flex w-full grow flex-col gap-4 p-4 overflow-x-hidden overflow-y-auto">
 						{@render children()}
 					</div>
 				</div>
