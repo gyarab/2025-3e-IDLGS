@@ -1,5 +1,4 @@
 <script lang="ts">
-
 	let {
 		darkMode,
 		color,
@@ -11,6 +10,4 @@
 	} = $props();
 </script>
 
-<div class="flex flex-col gap-4 w-full">
-	
-</div>
+<div class="flex w-full flex-col gap-4"></div>

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { m } from "$lib/paraglide/messages";
-	import TextArea from "$src/routes/(base)/components/TextArea.svelte"
+	import { m } from '$lib/paraglide/messages';
+	import TextArea from '$src/routes/(base)/components/TextArea.svelte';
 
 	let {
 		darkMode,
@@ -13,10 +13,10 @@
 	} = $props();
 </script>
 
-<div class="flex flex-col gap-4 w-full">
-	<TextArea 
-		darkMode={darkMode}
-		color={color}
+<div class="flex w-full flex-col gap-4">
+	<TextArea
+		{darkMode}
+		{color}
 		bind:value={articleText}
 		placeholder={m.enterArticleText()}
 	/>

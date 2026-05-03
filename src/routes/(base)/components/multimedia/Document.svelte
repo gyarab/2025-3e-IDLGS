@@ -1,7 +1,4 @@
 <script lang="ts">
-
 </script>
 
-<object>
-	
-</object>
+<object> </object>

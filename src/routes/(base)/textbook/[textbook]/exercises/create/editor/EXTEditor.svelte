@@ -22,12 +22,12 @@
 	let error = $derived(extUrl.length <= 3);
 
 	$effect(() => {
-		if(extUrl.length <= 3) return;
+		if (extUrl.length <= 3) return;
 		untrack(() => {
 			window.setTimeout(() => {
-				if(loading) error = true;
+				if (loading) error = true;
 			}, IFRAME_TIMEOUT);
-		})
+		});
 	});
 	let loading = $derived(extUrl.length > 3);
 </script>

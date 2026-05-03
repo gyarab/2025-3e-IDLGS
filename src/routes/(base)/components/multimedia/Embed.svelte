@@ -1,7 +1,4 @@
 <script lang="ts">
-
 </script>
 
-<iframe>
-	
-</iframe>
+<iframe> </iframe>

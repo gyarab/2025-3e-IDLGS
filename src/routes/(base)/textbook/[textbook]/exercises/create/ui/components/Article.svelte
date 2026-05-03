@@ -21,7 +21,5 @@
 >
 	<h2 class="text-xl font-bold">{article.title}</h2>
 	<div class="grow"></div>
-	<HoverEmoji
-		emoji="plus"
-	/>
+	<HoverEmoji emoji="plus" />
 </button>

@@ -54,7 +54,7 @@
 				darkMode={data.darkMode}
 				color={data.color}
 				bind:articleText
-			 />
+			/>
 		{/if}
 	</div>
 </div>

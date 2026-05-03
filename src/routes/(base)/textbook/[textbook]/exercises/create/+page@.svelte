@@ -24,7 +24,6 @@
 			darkMode: boolean;
 			color: string;
 			articles: ArticleTypeRawUuid[];
-
 		};
 	} = $props();
 

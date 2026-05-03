@@ -1,12 +1,8 @@
 <script lang="ts">
-	import { m } from "$lib/paraglide/messages";
-	import { fly } from "svelte/transition";
+	import { m } from '$lib/paraglide/messages';
+	import { fly } from 'svelte/transition';
 
-	let {
-
-	}: {
-
-	} = $props();
+	let {}: {} = $props();
 </script>
 
 <div class="flex w-full grow flex-col gap-2">
@@ -17,7 +13,5 @@
 		<h2 class="text-2xl font-bold">{m.review()}</h2>
 	</div>
 
-	<div class="flex flex-col w-full grow">
-		
-	</div>
+	<div class="flex w-full grow flex-col"></div>
 </div>

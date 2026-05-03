@@ -33,9 +33,7 @@ export const load = async (event) => {
 			order: databaseSchema.article.order,
 		})
 		.from(databaseSchema.article)
-		.where(
-			eq(databaseSchema.article.textbookId, textbook.id),
-		);
+		.where(eq(databaseSchema.article.textbookId, textbook.id));
 
 	if (!textbook) return error(404, m.textbookDoesntExist());
 
@@ -57,20 +55,44 @@ export const actions = {
 	makeCRW: async (event) => {
 		return await formRunner(
 			event,
-			['name', 'description', 'foregroundColorR', 'foregroundColorG', 'foregroundColorB', 'backgroundColorR', 'backgroundColorG', 'backgroundColorB'],
+			[
+				'name',
+				'description',
+				'foregroundColorR',
+				'foregroundColorG',
+				'foregroundColorB',
+				'backgroundColorR',
+				'backgroundColorG',
+				'backgroundColorB',
+			],
 			true,
-			async (data: FormDataType, user: UserTypeFull | undefined, formData?: FormData) => {
-				
-			},
+			async (
+				data: FormDataType,
+				user: UserTypeFull | undefined,
+				formData?: FormData,
+			) => {},
 			['thumbnail'],
 		);
 	},
 	makeCRS: async (event) => {
 		return await formRunner(
 			event,
-			['name', 'description', 'foregroundColorR', 'foregroundColorG', 'foregroundColorB', 'backgroundColorR', 'backgroundColorG', 'backgroundColorB'],
+			[
+				'name',
+				'description',
+				'foregroundColorR',
+				'foregroundColorG',
+				'foregroundColorB',
+				'backgroundColorR',
+				'backgroundColorG',
+				'backgroundColorB',
+			],
 			true,
-			async (data: FormDataType, user: UserTypeFull | undefined, formData?: FormData) => {
+			async (
+				data: FormDataType,
+				user: UserTypeFull | undefined,
+				formData?: FormData,
+			) => {
 				console.log('CRS', data);
 			},
 			['thumbnail'],
@@ -79,9 +101,22 @@ export const actions = {
 	makeDEF: async (event) => {
 		return await formRunner(
 			event,
-			['name', 'description', 'foregroundColorR', 'foregroundColorG', 'foregroundColorB', 'backgroundColorR', 'backgroundColorG', 'backgroundColorB'],
+			[
+				'name',
+				'description',
+				'foregroundColorR',
+				'foregroundColorG',
+				'foregroundColorB',
+				'backgroundColorR',
+				'backgroundColorG',
+				'backgroundColorB',
+			],
 			true,
-			async (data: FormDataType, user: UserTypeFull | undefined, formData?: FormData) => {
+			async (
+				data: FormDataType,
+				user: UserTypeFull | undefined,
+				formData?: FormData,
+			) => {
 				console.log('DEF', data);
 			},
 			['thumbnail'],
@@ -90,9 +125,22 @@ export const actions = {
 	makeGRP: async (event) => {
 		return await formRunner(
 			event,
-			['name', 'description', 'foregroundColorR', 'foregroundColorG', 'foregroundColorB', 'backgroundColorR', 'backgroundColorG', 'backgroundColorB'],
+			[
+				'name',
+				'description',
+				'foregroundColorR',
+				'foregroundColorG',
+				'foregroundColorB',
+				'backgroundColorR',
+				'backgroundColorG',
+				'backgroundColorB',
+			],
 			true,
-			async (data: FormDataType, user: UserTypeFull | undefined, formData?: FormData) => {
+			async (
+				data: FormDataType,
+				user: UserTypeFull | undefined,
+				formData?: FormData,
+			) => {
 				console.log('GRP', data);
 			},
 			['thumbnail'],
@@ -101,9 +149,22 @@ export const actions = {
 	makeGEO: async (event) => {
 		return await formRunner(
 			event,
-			['name', 'description', 'foregroundColorR', 'foregroundColorG', 'foregroundColorB', 'backgroundColorR', 'backgroundColorG', 'backgroundColorB'],
+			[
+				'name',
+				'description',
+				'foregroundColorR',
+				'foregroundColorG',
+				'foregroundColorB',
+				'backgroundColorR',
+				'backgroundColorG',
+				'backgroundColorB',
+			],
 			true,
-			async (data: FormDataType, user: UserTypeFull | undefined, formData?: FormData) => {
+			async (
+				data: FormDataType,
+				user: UserTypeFull | undefined,
+				formData?: FormData,
+			) => {
 				console.log('GEO', data);
 			},
 			['thumbnail'],
@@ -112,14 +173,34 @@ export const actions = {
 	makeEXT: async (event) => {
 		return await formRunner(
 			event,
-			['url', 'name', 'description', 'backgroundColorR', 'foregroundColorR', 'backgroundColorG', 'foregroundColorG', 'backgroundColorB', 'foregroundColorB'],
+			[
+				'url',
+				'name',
+				'description',
+				'backgroundColorR',
+				'foregroundColorR',
+				'backgroundColorG',
+				'foregroundColorG',
+				'backgroundColorB',
+				'foregroundColorB',
+			],
 			true,
-			async (data: FormDataType, user: UserTypeFull | undefined, formData?: FormData) => {
+			async (
+				data: FormDataType,
+				user: UserTypeFull | undefined,
+				formData?: FormData,
+			) => {
 				const thumbnail = formData!.get('thumbnail') as File;
 
 				const thumbnailUrl = await saveToCloud(thumbnail, 'image');
 
-				if (!data.url || !data.name || !data.description || !thumbnail || thumbnail.size === 0) {
+				if (
+					!data.url ||
+					!data.name ||
+					!data.description ||
+					!thumbnail ||
+					thumbnail.size === 0
+				) {
 					return fail(400);
 				}
 
@@ -130,11 +211,31 @@ export const actions = {
 				const fg = parseInt(data.foregroundColorG);
 				const fb = parseInt(data.foregroundColorB);
 
-				if (isNaN(r) || isNaN(g) || isNaN(b) || r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) {
+				if (
+					isNaN(r) ||
+					isNaN(g) ||
+					isNaN(b) ||
+					r < 0 ||
+					r > 255 ||
+					g < 0 ||
+					g > 255 ||
+					b < 0 ||
+					b > 255
+				) {
 					return fail(400);
 				}
 
-				if (isNaN(fr) || isNaN(fg) || isNaN(fb) || fr < 0 || fr > 255 || fg < 0 || fg > 255 || fb < 0 || fb > 255) {
+				if (
+					isNaN(fr) ||
+					isNaN(fg) ||
+					isNaN(fb) ||
+					fr < 0 ||
+					fr > 255 ||
+					fg < 0 ||
+					fg > 255 ||
+					fb < 0 ||
+					fb > 255
+				) {
 					return fail(400);
 				}
 
@@ -172,6 +273,8 @@ export const actions = {
 						})
 						.returning();
 				});
-			}, ['thumbnail']);
+			},
+			['thumbnail'],
+		);
 	},
 };
