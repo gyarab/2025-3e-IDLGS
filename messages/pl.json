@@ -237,5 +237,7 @@
 	"formula": "Formuła",
 	"saveArticle": "Zapisz artykuł",
 	"select3DModel": "Wybierz model 3D",
-	"modelSelected": "Model wybrany"
+	"modelSelected": "Model wybrany",
+	"failedToCreateExercise": "Nie udało się utworzyć ćwiczenia",
+	"textbooks": "Podręczniki"
 }

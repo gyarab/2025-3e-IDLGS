@@ -39,21 +39,21 @@
 	<div
 		class="{darkMode
 			? 'bg-neutral-800 text-white'
-			: 'bg-white text-black'} fixed top-0 z-10 flex h-[7svh] w-screen items-center border-b-2 shadow-xl"
+			: 'bg-white text-black'} fixed bottom-0 sm:top-0 sm:bottom-auto z-10 flex h-[7svh] w-screen items-center border-t-2 sm:border-t-0 sm:border-b-2 shadow-xl"
 		style="border-color: {accentColor};"
 		transition:fly|global={{ y: -100, duration: 200, opacity: 0 }}
 	>
 		<div class="flex h-full w-full items-center px-4">
-			<div class="w-[7svh] shrink-0"></div>
+			<div class="sm:w-[7svh] shrink-0"></div>
 
 			<img
 				src="/logo.svg"
 				alt="Logo"
-				class="h-10"
+				class="h-10 hidden sm:inline"
 			/>
 
 			<h2
-				class="text-sm+ hidden shrink-0 px-4 font-bold tracking-widest sm:block"
+				class="text-nowrap hidden px-4 font-bold tracking-widest md:inline"
 			>
 				DIGITALNI UCEBNICA
 			</h2>
@@ -70,9 +70,24 @@
 					text={m.profile()}
 					type="button"
 					rmwhite={darkMode}
+					css="min-w-10 text-nowrap"
 					hecss="text-lg"
+					txtcss="hidden sm:inline"
 					onclick={() => {
 						goto('/profile');
+					}}
+				/>
+
+				<Button
+					emoji="health-book"
+					text={m.textbooks()}
+					type="button"
+					rmwhite={darkMode}
+					css="min-w-10 text-nowrap"
+					hecss="text-lg"
+					txtcss="hidden sm:inline"
+					onclick={() => {
+						goto(resolve('/(base)/textbook'));
 					}}
 				/>
 
@@ -81,7 +96,9 @@
 					text={m.settings()}
 					type="button"
 					rmwhite={darkMode}
+					css="min-w-10 text-nowrap"
 					hecss="text-lg"
+					txtcss="hidden sm:inline"
 					onclick={() => {
 						goto('/settings');
 					}}
@@ -92,7 +109,9 @@
 					text={m.logout()}
 					type="button"
 					rmwhite={darkMode}
+					css="min-w-10 text-nowrap"
 					hecss="text-lg"
+					txtcss="hidden sm:inline"
 					onclick={async () => {
 						await logout();
 						goto(resolve('/(protected)/login'));
@@ -100,19 +119,20 @@
 				/>
 
 				<Button
-					emoji="close"
+					emoji="fullscreen"
 					text=""
 					type="button"
 					onclick={async () => {
 						open = false;
 						await setNavbarOpen(false);
 					}}
-					css="p-2 opacity-50 hover:opacity-100 hover:translate-0!"
+					css="p-2 opacity-50 hover:opacity-100 hover:translate-0! hidden lg:inline"
+					hecss=""
 					label={m.collapse()}
 				/>
 			</nav>
 		</div>
 	</div>
 
-	<div class="h-[7svh] w-screen"></div>
+	<div class="h-[7svh] w-screen hidden sm:block"></div>
 {/if}

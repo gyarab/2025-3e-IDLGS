@@ -55,6 +55,7 @@
 	"dependencies": {
 		"chart.js": "^4.5.1",
 		"cloudinary": "^2.9.0",
+		"colord": "^2.9.3",
 		"function-plot": "^1.25.4",
 		"fuse.js": "^7.3.0",
 		"highlight.js": "^11.11.1",

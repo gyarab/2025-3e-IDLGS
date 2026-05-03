@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { colord } from "colord";
 
 export const DEFAULT_ACCENT_COLOR = '#ff8800';
 export const DEFAULT_MS_UNTIL_REQUEST = 500; //from end of typing until request is sent
@@ -120,3 +121,18 @@ export const getRGBFromHex = (color: string): number[] => {
 export const makeURLFromImage = (data: File): string => {
 	return URL.createObjectURL(data);
 };
+
+export function sanitizeColor(hex: string): string {
+    const color = colord(hex);
+    const hsl = color.toHsl();
+
+    const isGray = hsl.s === 0;
+    const newS = isGray ? 0 : Math.max(hsl.s, 20); 
+    const newL = Math.max(40, Math.min(70, hsl.l));
+
+    return colord({
+        h: hsl.h,
+        s: newS,
+        l: newL
+    }).toHex();
+}

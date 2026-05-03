@@ -238,5 +238,7 @@
 	"formula": "Formula",
 	"saveArticle": "Save article",
 	"select3DModel": "Select 3D model",	
-	"modelSelected": "Model selected"
+	"modelSelected": "Model selected",
+	"failedToCreateExercise": "Failed to create exercise",
+	"textbooks": "Textbooks"
 }

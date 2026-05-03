@@ -70,30 +70,32 @@
 
 		<hr class="opacity-20" />
 
-		<div class="grid grid-cols-2 gap-4">
-			{#each profile.stats as { label, value }}
-				<div
-					class="flex flex-col items-center justify-center rounded-2xl border p-2 text-center transition-transform hover:scale-105 md:px-6 {data.darkMode
-						? 'border-white/10 bg-neutral-700'
-						: 'border-orange-100 bg-orange-50'}"
-				>
-					<p
-						class="mb-1 text-sm font-semibold tracking-tighter uppercase opacity-60"
-						style="font-size: clamp(.5rem, 2.5vw, 1rem);"
+		{#if profile.stats.length > 0}
+			<div class="grid grid-cols-2 gap-4">
+				{#each profile.stats as { label, value }}
+					<div
+						class="flex flex-col items-center justify-center rounded-2xl border p-2 text-center transition-transform hover:scale-105 md:px-6 {data.darkMode
+							? 'border-white/10 bg-neutral-700'
+							: 'border-orange-100 bg-orange-50'}"
 					>
-						{label}
-					</p>
-					<p
-						class="font-extrabold"
-						style="color: var(--brand); font-size: clamp(1rem, 5vw, 1.6rem);"
-					>
-						{value}
-					</p>
-				</div>
-			{/each}
-		</div>
+						<p
+							class="mb-1 text-sm font-semibold tracking-tighter uppercase opacity-60"
+							style="font-size: clamp(.5rem, 2.5vw, 1rem);"
+						>
+							{label}
+						</p>
+						<p
+							class="font-extrabold"
+							style="color: var(--brand); font-size: clamp(1rem, 5vw, 1.6rem);"
+						>
+							{value}
+						</p>
+					</div>
+				{/each}
+			</div>
+		{/if}
 
-		<section class="mt-2">
+		<section>
 			<h2
 				class="mb-6 text-xl font-bold tracking-tight uppercase opacity-80"
 			>

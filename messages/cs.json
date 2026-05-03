@@ -238,5 +238,7 @@
 	"formula": "Vzorec",
 	"saveArticle": "Uložit článek",
 	"select3DModel": "Vyberte 3D model",
-	"modelSelected": "Model vybrán"
+	"modelSelected": "Model vybrán",
+	"failedToCreateExercise": "Vytvoření cvičení se nezdařilo",
+	"textbooks": "Učebnice"
 }
