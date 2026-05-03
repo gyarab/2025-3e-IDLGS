@@ -22,7 +22,7 @@
 	} = $props();
 </script>
 
-<div class="flex w-full flex-row gap-2">
+<div class="flex w-full flex-row">
 	<div class="grow"></div>
 
 	<SelectionButton

@@ -7,6 +7,7 @@
 		emojis,
 		actions,
 		css,
+		cssTop,
 		selectedcss,
 		selectedstyle,
 		value = $bindable(''),
@@ -21,6 +22,7 @@
 		emojis?: string[];
 		actions?: (() => void)[];
 		css?: string;
+		cssTop?: string;
 		selectedstyle?: string;
 		selectedcss?: string;
 		value?: string;
@@ -57,15 +59,15 @@
 </script>
 
 {#key texts || actions || emojis}
-	<div class="overflow-hidden rounded-2xl">
+	<div class="overflow-hidden rounded-2xl {cssTop}">
 		<div
 			class="flex text-white! {classList} divide-white"
 		>
 			{#each { length: length } as _, i (i)}
 				<button
-					class="{css} {isSelected?.at(i)
-						? selectedcss
-						: ''} flex grow flex-row items-center justify-center gap-1 px-2 py-1 font-bold hover:translate-0! hover:brightness-75 active:brightness-50"
+					class="{css} {isSelected?.at(i) ? selectedcss : ''}
+						flex grow flex-row items-center justify-center px-2 py-0.5 font-semibold hover:translate-0! hover:brightness-75
+						active:brightness-50 sm:gap-1 md:py-1"
 					style="{style} {isSelected?.at(i) ? selectedstyle : ''}"
 					onclick={() => {
 						value = values?.at(i) ?? '';

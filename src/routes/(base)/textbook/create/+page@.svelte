@@ -105,7 +105,7 @@
 	<Form
 		target="?/makeTextbook"
 		darkMode={data.darkMode}
-		css="invisibleForm"
+		css="invisibleForm -mt-2"
 		start={async () => {
 			stage = 5;
 		}}
