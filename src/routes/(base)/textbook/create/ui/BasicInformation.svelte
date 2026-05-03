@@ -61,6 +61,25 @@
 		</span>
 
 		<span
+			class="flex w-full grow flex-col"
+			in:fly|global={{
+				x: 1000,
+				y: 0,
+				duration: 300,
+				delay: 700,
+				opacity: 0,
+			}}
+		>
+			<TextArea
+				{darkMode}
+				{color}
+				placeholder={m.textbookDescription()}
+				bind:value={description}
+				css="grow"
+			/>
+		</span>
+
+		<span
 			in:fly|global={{
 				x: 1000,
 				y: 0,
@@ -69,6 +88,7 @@
 				opacity: 0,
 			}}
 		>
+			<h4 class="py-1 font-medium">{m.educationLevel()}</h4>
 			<SelectionBtnList
 				texts={[
 					m.isced0(),
@@ -86,25 +106,6 @@
 				style="background-color: {color};"
 				css="buttonPrimary text-sm rounded-xl"
 				selectedstyle="background-color: {darkenHex(color, 50)};"
-			/>
-		</span>
-
-		<span
-			class="flex w-full grow flex-col"
-			in:fly|global={{
-				x: 1000,
-				y: 0,
-				duration: 300,
-				delay: 700,
-				opacity: 0,
-			}}
-		>
-			<TextArea
-				{darkMode}
-				{color}
-				placeholder={m.textbookDescription()}
-				bind:value={description}
-				css="grow"
 			/>
 		</span>
 

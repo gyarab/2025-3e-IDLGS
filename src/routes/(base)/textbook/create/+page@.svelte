@@ -60,7 +60,7 @@
 	backLink={resolve('/(base)/textbook')}
 	bind:stage
 >
-	<div class="flex w-full grow flex-col overflow-x-hidden overflow-y-scroll">
+	<div class="flex w-full grow flex-col overflow-x-hidden overflow-y-auto">
 		{#if stage == 0}
 			<BasicInformation
 				darkMode={data.darkMode}

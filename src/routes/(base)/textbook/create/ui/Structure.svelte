@@ -106,7 +106,7 @@
 					</div>
 				{/each}
 			</div>
-			<div class="flex w-full flex-row gap-1">
+			<div class="flex w-full flex-col gap-1">
 				<span
 					class="flex grow flex-col gap-1"
 					in:fly|global={{
@@ -120,11 +120,11 @@
 					<Button
 						text={m.addChapter()}
 						style="background-color: {color};"
-						css="buttonPrimary w-full"
+						css="buttonPrimary w-full hover:bg-green-600!"
 						onclick={() => {
 							showChapterDialog = true;
 						}}
-						emoji="add-box"
+						emoji="add"
 						type="button"
 					/>
 				</span>
@@ -135,18 +135,18 @@
 							x: 1000,
 							y: 0,
 							duration: 300,
-							delay: 900,
+							delay: 300,
 							opacity: 0,
 						}}
 					>
 						<Button
 							text={m.removeChapter()}
-							style="background-color: {darkenHex(color, 80)};"
-							css="buttonPrimary w-full"
+							style="background-color: {darkenHex(color, 50)};"
+							css="buttonPrimary w-full hover:bg-red-700!"
 							onclick={() => {
 								deleteChapter = true;
 							}}
-							emoji="delete-bin-2"
+							emoji="close"
 							type="button"
 							disabled={selectedChapterId == undefined}
 						/>
@@ -228,7 +228,7 @@
 							onclick={() => {
 								showArticleDialog = true;
 							}}
-							emoji="add-circle"
+							emoji="add"
 							type="button"
 							disabled={selectedChapterId == undefined}
 						/>
@@ -250,7 +250,7 @@
 							onclick={() => {
 								deleteArticle = true;
 							}}
-							emoji="close-circle"
+							emoji="close"
 							type="button"
 							disabled={selectedArticleId == undefined ||
 								selectedChapterId == undefined}

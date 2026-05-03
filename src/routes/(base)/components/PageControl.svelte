@@ -27,7 +27,7 @@
 
 	<SelectionButton
 		orientation="land"
-		style="background-color: {darkenHex(color, 20)};"
+		style="background-color: var(--color-yellow);"
 		texts={[m.back(), nextButtonCreate ? createText : m.next()]}
 		disabled={[stage == 0 || disablePrev, disableNext]}
 		actions={[() => stage--, () => stage++]}
