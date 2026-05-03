@@ -6,6 +6,8 @@
 	import TextArea from '$src/routes/(base)/components/TextArea.svelte';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
 	import { fly } from 'svelte/transition';
+	import ImageInput from '$src/routes/(base)/components/ImageInput.svelte';
+	import { onDestroy } from 'svelte';
 
 	let {
 		darkMode,
@@ -13,13 +15,23 @@
 		description = $bindable(''),
 		color = $bindable(''),
 		education = $bindable(''),
+		thumbnail = $bindable([]),
 	}: {
 		darkMode: boolean;
 		name: string;
 		description: string;
 		color: string;
 		education: string;
+		thumbnail: Uint8Array[];
 	} = $props();
+
+	let imagePreview: string = $derived.by(() => {
+		return URL.createObjectURL(new Blob([thumbnail[0].buffer as BlobPart], { type: 'image/*' }));
+	});
+
+	onDestroy(() => {
+		URL.revokeObjectURL(imagePreview);
+	});
 </script>
 
 <div class="flex w-full grow flex-col gap-2">
@@ -106,6 +118,28 @@
 			}}
 		>
 			<ColorInput bind:color />
+		</span>
+
+		<span
+			in:fly={{ x: 1000, y: 0, duration: 300, delay: 700, opacity: 0 }}
+			class="flex w-full flex-col gap-2"
+		>
+			<ImageInput
+				bind:value={thumbnail}
+				multiple={false}
+				{darkMode}
+				{color}
+				css="w-1/2"
+				placeholder={m.uploadThumbnail()}
+			/>
+			{#if thumbnail && thumbnail.length > 0}
+				<h2>{m.thumbnailPreview()}</h2>
+				<img
+					src={imagePreview}
+					alt={m.thumbnailPreview()}
+					class="h-32 w-32 rounded-lg object-cover"
+				/>
+			{/if}
 		</span>
 	</div>
 </div>

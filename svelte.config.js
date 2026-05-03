@@ -19,22 +19,17 @@ const config = {
 					'wasm-unsafe-eval',
 				],
 				'object-src': ['self'],
-				'img-src': ['self', 'res.cloudinary.com', 'data:'],
+				'img-src': ['self', 'res.cloudinary.com', 'data:', 'blob:'],
 				//sveltekit announcer issue + we use this
 				'style-src': ['self', 'fonts.googleapis.com', 'unsafe-inline'],
-				'frame-ancestors': ['none'],
+				'frame-ancestors': ['self'],
 				'connect-src': [
 					'cdn.jsdelivr.net/npm/@cap.js/',
 					'self',
 					'captcha.martinbykov.eu',
 				],
 				'frame-src': [
-					'www.youtube-nocookie.com',
-					'youtube-nocookie.com',
-					'youtube.com',
-					'www.youtube.com',
-					'consent.youtube.com',
-					'self',
+					'*'
 				],
 				'media-src': ['self'],
 				'base-uri': ['self'],

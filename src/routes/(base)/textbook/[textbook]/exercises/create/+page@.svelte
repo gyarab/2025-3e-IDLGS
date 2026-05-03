@@ -33,7 +33,7 @@
 	let type: string = $state('');
 	let name: string = $state('');
 	let description: string = $state('');
-	let thumbnail: string = $state('');
+	let thumbnail: Uint8Array[] = $state([]);
 
 	let backgroundColorR: number = $state(255);
 	let backgroundColorG: number = $state(255);
@@ -51,6 +51,50 @@
 	//crs specific data
 	let crsOffsets: number[] = $state([]);
 	let crsColumnId: number = $state(0);
+
+	//geo specific data
+
+	//grp specific data
+
+	//def specific data
+
+	//ext specific
+	let extUrl: string = $state('');
+
+	let stage1Condition = $derived(
+		name.length == 0 || description.length == 0 || !thumbnail || thumbnail?.length == 0,
+	);
+	let stage2Condition = $derived.by(() => {
+		switch (type) {
+			case 'CRS':
+				return (
+					crWords.length == 0 ||
+					crClues.length == 0 ||
+					crDescriptions.length == 0 ||
+					crSolution.length == 0 ||
+					crsOffsets.length == 0
+				);
+			case 'CRW':
+				return (
+					crWords.length == 0 ||
+					crClues.length == 0 ||
+					crDescriptions.length == 0 ||
+					crSolution.length == 0
+				);
+			case 'DEF':
+				return false;
+			case 'GRP':
+				return false;
+			case 'GEO':
+				return false;
+			case 'EXT':
+				return extUrl.length == 0;
+			default:
+				return true;
+		}
+	});
+	let stage3Condition = $derived(false); //TODO
+	let stage4Condition = $derived(false); //TODO
 </script>
 
 <svelte:head>
@@ -122,7 +166,12 @@
 			{:else if type == 'GEO'}
 				<GEOEditor />
 			{:else if type == 'EXT'}
-				<EXTEditor />
+				<EXTEditor
+					darkMode={data.darkMode}
+					{name}
+					color={data.color}
+					bind:extUrl
+				/>
 			{/if}
 		{:else if stage == 3}
 			<Grading />
@@ -202,12 +251,10 @@
 				bind:stage
 				darkMode={data.darkMode}
 				color={data.color}
-				disableNext={(stage == 1 &&
-					(name.length == 0 ||
-						description.length == 0 ||
-						thumbnail.length == 0)) ||
-					stage == 2 ||
-					false}
+				disableNext={(stage == 1 && stage1Condition) ||
+					(stage == 2 && stage2Condition) ||
+					(stage == 3 && stage3Condition) ||
+					(stage == 4 && stage4Condition)}
 				disablePrev={false}
 				createText={m.createExercise()}
 				nextButtonCreate={stage == 3}

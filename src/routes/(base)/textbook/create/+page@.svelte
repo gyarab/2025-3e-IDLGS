@@ -35,6 +35,7 @@
 	let chapters: ChapterTypeRaw[] = $state([]);
 	let articles: ArticleTypeRaw[][] = $state([]);
 	let authorUuids: string[] = $state([]);
+	let thumbnail: Uint8Array[] = $state([]);
 </script>
 
 <svelte:head>
@@ -67,6 +68,7 @@
 				bind:description
 				bind:color={textbookColor}
 				bind:education={educationLevel}
+				bind:thumbnail
 			/>
 		{:else if stage == 1}
 			<Structure

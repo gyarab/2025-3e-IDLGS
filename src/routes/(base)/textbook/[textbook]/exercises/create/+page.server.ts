@@ -93,10 +93,20 @@ export const actions = {
 	makeEXT: async (event) => {
 		return await formRunner(
 			event,
-			[],
+			['url', 'name', 'description'],
 			true,
 			async (data: FormDataType, user: UserTypeFull | undefined) => {
-				console.log('EXT', data);
+				await event.locals.db
+					.insert(databaseSchema.exerciseEmbed)
+					.values({
+						link: data.url,
+					});
+
+				await event.locals.db
+					.insert(databaseSchema.exercise)
+					.values({
+
+					});
 			},
 		);
 	},

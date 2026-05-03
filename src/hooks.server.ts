@@ -74,12 +74,6 @@ const handleInitialUser: Handle = async ({ event, resolve }) => {
 const securityHeaders = {
 	'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
 	'Permissions-Policy': 'camera=(), microphone=(), interest-cohort=()',
-	'Cross-Origin-Resource-Policy': 'same-site',
-	'Cross-Origin-Embedder-Policy': 'credentialless',
-	'Cross-Origin-Opener-Policy': 'same-origin',
-	'X-Frame-Options': 'SAMEORIGIN',
-	'X-Content-Type-Options': 'nosniff',
-	'Referrer-Policy': 'strict-origin-when-cross-origin',
 };
 
 const handleSecurity: Handle = async ({ event, resolve }) => {

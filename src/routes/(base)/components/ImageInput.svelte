@@ -1,23 +1,26 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
+	import { files } from '$lib/plural';
 
 	let {
 		darkMode,
 		color,
 		css,
 		placeholder,
-		value = $bindable(''),
+		value = $bindable(),
 		required = true,
-		multiple = true,
+		multiple = false,
+		loading = $bindable(false),
 	}: {
 		darkMode: boolean;
 		color: string;
 		css?: string;
 		placeholder: string;
-		value: string;
+		value: Uint8Array[];
 		resizable?: boolean;
 		required?: boolean;
 		multiple?: boolean;
+		loading?: boolean;
 	} = $props();
 
 	let buttonElement: HTMLButtonElement | undefined = $state(undefined);
@@ -30,7 +33,7 @@
 	onclick={() => inputElement!.click()}
 >
 	<div
-		class="flex grow flex-row items-center justify-center gap-2 border-0 border-b-2 {darkMode
+		class="flex flex-row items-center justify-center gap-2 border-0 border-b-2 {darkMode
 			? 'bg-neutral-700 text-white! placeholder:text-white!'
 			: 'bg-neutral-100 text-black! placeholder:text-black!'} p-2"
 		style="border-color: {color};"
@@ -38,7 +41,7 @@
 		<i
 			class="ri-upload-line text-5xl font-bold transition-all duration-300 group-hover:-translate-y-1"
 		></i>
-		<div class="flex h-full grow flex-col gap-2">
+		<div class="flex h-full grow flex-col gap-2 items-center justify-center">
 			<h2 class="text-base opacity-70">
 				{#if value.length == 0}
 					{#if placeholder.length == 0}
@@ -47,7 +50,7 @@
 						{placeholder}
 					{/if}
 				{:else}
-					{value.split(/\\|\//gsu)}
+					{value.length} {files(value.length)} {m.uploaded()}
 				{/if}
 			</h2>
 		</div>
@@ -55,10 +58,19 @@
 	<input
 		bind:this={inputElement}
 		type="file"
-		bind:value
 		{required}
 		{multiple}
 		class="hidden"
 		tabindex="-1"
+		accept="image/*"
+		onchange={async () => {
+			if (inputElement!.files && inputElement!.files.length > 0) {
+				let arr = [];
+				for(const file of inputElement!.files) {
+					arr.push(await file.bytes());
+				}
+				value = arr;
+			}
+		}}
 	/>
 </button>
