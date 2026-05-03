@@ -104,9 +104,7 @@ export const actions = {
 
 				await event.locals.db
 					.insert(databaseSchema.exercise)
-					.values({
-
-					});
+					.values({});
 			},
 		);
 	},

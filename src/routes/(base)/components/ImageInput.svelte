@@ -41,7 +41,9 @@
 		<i
 			class="ri-upload-line text-5xl font-bold transition-all duration-300 group-hover:-translate-y-1"
 		></i>
-		<div class="flex h-full grow flex-col gap-2 items-center justify-center">
+		<div
+			class="flex h-full grow flex-col items-center justify-center gap-2"
+		>
 			<h2 class="text-base opacity-70">
 				{#if value.length == 0}
 					{#if placeholder.length == 0}
@@ -66,7 +68,7 @@
 		onchange={async () => {
 			if (inputElement!.files && inputElement!.files.length > 0) {
 				let arr = [];
-				for(const file of inputElement!.files) {
+				for (const file of inputElement!.files) {
 					arr.push(await file.bytes());
 				}
 				value = arr;

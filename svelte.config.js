@@ -28,9 +28,7 @@ const config = {
 					'self',
 					'captcha.martinbykov.eu',
 				],
-				'frame-src': [
-					'*'
-				],
+				'frame-src': ['*'],
 				'media-src': ['self'],
 				'base-uri': ['self'],
 			},

@@ -62,7 +62,10 @@
 	let extUrl: string = $state('');
 
 	let stage1Condition = $derived(
-		name.length == 0 || description.length == 0 || !thumbnail || thumbnail?.length == 0,
+		name.length == 0 ||
+			description.length == 0 ||
+			!thumbnail ||
+			thumbnail?.length == 0,
 	);
 	let stage2Condition = $derived.by(() => {
 		switch (type) {

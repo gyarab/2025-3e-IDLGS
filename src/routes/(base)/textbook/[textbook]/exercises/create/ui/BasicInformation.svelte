@@ -23,7 +23,9 @@
 	} = $props();
 
 	let imagePreview: string = $derived.by(() => {
-		return URL.createObjectURL(new Blob([thumbnail[0].buffer as BlobPart], { type: 'image/*' }));
+		return URL.createObjectURL(
+			new Blob([thumbnail[0].buffer as BlobPart], { type: 'image/*' }),
+		);
 	});
 
 	onDestroy(() => {
