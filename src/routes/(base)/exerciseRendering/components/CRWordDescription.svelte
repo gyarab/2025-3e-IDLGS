@@ -27,10 +27,11 @@
 		{#if !hintShown}
 			<Button
 				emoji="arrow-down-s"
-				css=""
+				css="{!hintShown ? 'opacity-20' : ''} text-black!"
 				text={m.showHint()}
 				onclick={() => (hintShown = true)}
 				type="button"
+				rmwhite={true}
 				hecss="text-lg!"
 			/>
 		{:else}
@@ -38,6 +39,8 @@
 		{/if}
 	</div>
 	{#if hintShown}
-		{hint}
+		<span class="ps-6 italic opacity-70">
+			{hint}
+		</span>
 	{/if}
 </div>

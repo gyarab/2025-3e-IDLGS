@@ -164,5 +164,17 @@
 	"features": "Funkcje",
 	"openChapter": "Otwórz rozdział",
 	"openArticle": "Otwórz artykuł",
-	"allYourChangesAreSavedSecurelyToYourProfile": "Wszystkie Twoje zmiany są bezpiecznie zapisywane w Twoim profilu"
+	"allYourChangesAreSavedSecurelyToYourProfile": "Wszystkie Twoje zmiany są bezpiecznie zapisywane w Twoim profilu",
+	"bold": "Pogrubienie",
+	"italic": "Kursywa",
+	"underline": "Podkreślenie",
+	"strikethrough": "Przekreślenie",
+	"highlight": "Podświetlenie",
+	"code": "Kod",
+	"blockquote": "Cytat",
+	"model3d": "Model 3D",
+	"advancedMode": "Tryb zaawansowany",
+	"edit": "Edytuj",
+	"checkCrossword": "Sprawdź krzyżówkę",
+	"noWordsInCrossword": "Brak słów w krzyżówce"
 }

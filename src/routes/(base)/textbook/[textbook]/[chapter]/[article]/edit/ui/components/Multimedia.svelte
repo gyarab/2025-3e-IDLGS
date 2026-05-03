@@ -11,11 +11,13 @@
 	} = $props();
 </script>
 
-<div>
+<div class="flex flex-row items-center gap-1">
 	<ToolbarButton
-		emoji=""
-		label=""
-		onclick={() => {}}
+		emoji="box-3-line"
+		label={m.model3d()}
+		onclick={() => {
+
+		}}
 		{darkMode}
 		{color}
 	/>

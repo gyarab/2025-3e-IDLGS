@@ -6,11 +6,15 @@
 		offset,
 		children,
 		columnId,
+		wordId,
+		uuid,
 	}: {
 		length: number;
 		offset: number;
 		children: Snippet;
 		columnId: number;
+		wordId: number;
+		uuid: string;
 	} = $props();
 </script>
 
@@ -27,6 +31,8 @@
 					: ''} flex aspect-square w-16 max-w-16 flex-col items-center justify-center overflow-hidden border-2 text-xl"
 			>
 				<input
+					id="{uuid}-{wordId}-{i}"
+					name="word-{wordId}-{i}"
 					type="text"
 					maxlength="1"
 					size="1"

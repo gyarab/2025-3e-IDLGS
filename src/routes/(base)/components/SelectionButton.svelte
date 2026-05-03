@@ -12,7 +12,7 @@
 		value = $bindable(''),
 		values,
 		style,
-		orientation,
+		orientation = 'land',
 		disabled,
 		types,
 	}: {
@@ -26,7 +26,7 @@
 		value?: string;
 		values?: string[];
 		style?: string;
-		orientation: 'port' | 'land';
+		orientation?: 'port' | 'land' | 'mixed';
 		disabled?: boolean[];
 		types?: ('button' | 'submit' | 'reset')[];
 	} = $props();
@@ -43,14 +43,23 @@
 	let isSelected: boolean[] | undefined = $derived(
 		values?.map((v) => Boolean(value) && v == value) ?? undefined,
 	);
+
+	let classList = $derived.by(() => {
+		switch(orientation) {
+			case 'port':
+				return 'flex-col md:divide-y';
+			case 'mixed':
+				return 'max-lg:flex-col max-lg:divide-y lg:flex-row lg:divide-x';
+			default:
+				return 'flex-row md:divide-x';
+		}
+	})
 </script>
 
 {#key texts || actions || emojis}
 	<div class="overflow-hidden rounded-2xl">
 		<div
-			class="flex text-white! {orientation === 'port'
-				? 'flex-col md:divide-y'
-				: 'flex-row md:divide-x'} divide-white"
+			class="flex text-white! {classList} divide-white"
 		>
 			{#each { length: length } as _, i (i)}
 				<button

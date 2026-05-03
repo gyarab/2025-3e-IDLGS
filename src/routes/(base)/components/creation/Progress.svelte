@@ -56,7 +56,7 @@
 	<div class="grow"></div>
 
 	<SelectionButton
-		orientation="port"
+		orientation="mixed"
 		style="background-color: {darkenHex(color, 50)};"
 		texts={[m.cancel(), '', '']}
 		emojis={['arrow-left-double', 'question', darkMode ? 'sun' : 'moon']}

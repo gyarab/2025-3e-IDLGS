@@ -11,10 +11,31 @@
 	} = $props();
 </script>
 
-<div>
+<div class="flex flex-row items-center gap-1">
 	<ToolbarButton
-		emoji=""
-		label=""
+		emoji="bold"
+		label={m.bold()}
+		onclick={() => {}}
+		{darkMode}
+		{color}
+	/>
+	<ToolbarButton
+		emoji="italic"
+		label={m.italic()}
+		onclick={() => {}}
+		{darkMode}
+		{color}
+	/>
+	<ToolbarButton
+		emoji="underline"
+		label={m.underline()}
+		onclick={() => {}}
+		{darkMode}
+		{color}
+	/>
+	<ToolbarButton
+		emoji="strikethrough"
+		label={m.strikethrough()}
 		onclick={() => {}}
 		{darkMode}
 		{color}

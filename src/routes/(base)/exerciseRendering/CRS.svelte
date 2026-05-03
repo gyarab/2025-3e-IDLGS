@@ -3,6 +3,8 @@
 	import CRWordElement from './components/CRWordElement.svelte';
 	import Dialog from '../components/Dialog.svelte';
 	import SelectionButton from '../components/SelectionButton.svelte';
+	import Button from '../components/Button.svelte';
+	import { m } from '$lib/paraglide/messages';
 
 	let {
 		backgroundColorR,
@@ -20,6 +22,7 @@
 		editMode = false,
 		color,
 		darkMode,
+		uuid,
 	}: {
 		backgroundColorR: number;
 		backgroundColorG: number;
@@ -36,6 +39,7 @@
 		editMode?: boolean;
 		color: string;
 		darkMode: boolean;
+		uuid: string;
 	} = $props();
 
 	let inputtedWords: string[] = $derived(new Array(words.length).fill(''));
@@ -44,7 +48,7 @@
 </script>
 
 <div
-	class="flex w-full grow flex-row overflow-scroll rounded-2xl"
+	class="relative flex w-full grow flex-row overflow-scroll rounded-2xl"
 	style="background-color: rgb({backgroundColorR}, {backgroundColorG}, {backgroundColorB}); color: rgb({foregroundColorR}, {foregroundColorG}, {foregroundColorB});"
 >
 	<div class="flex w-full grow flex-col items-center justify-center">
@@ -55,6 +59,8 @@
 						length={word.length}
 						offset={offsets[i]}
 						{columnId}
+						wordId={i}
+						{uuid}
 					>
 						{#if editMode}
 							<div
@@ -82,6 +88,10 @@
 						{/if}
 					</CRWordElement>
 				</div>
+			{:else}
+				<div class="flex flex-col grow w-full justify-center items-center">
+					{m.noWordsInCrossword()}
+				</div>
 			{/each}
 			<!-- TODO improve -->
 			<div class="flex w-full flex-row gap-0">
@@ -101,7 +111,9 @@
 	</div>
 
 	<!-- word descriptions -->
-	<div class="flex min-w-1/4 flex-col gap-2 border-s border-black ps-2 pe-2">
+	<div
+		class="flex min-w-1/4 flex-col gap-2 overflow-x-hidden overflow-y-scroll border-s border-black ps-2 pe-2"
+	>
 		{#each descriptions as desc, i (i)}
 			<CRWordDescription
 				hint={clues[i]}
@@ -112,9 +124,15 @@
 		{/each}
 	</div>
 
-	{#if !editMode}
-		<!-- TODO check button -->
-	{/if}
+	<!-- check button -->
+	<Button
+		emoji="check-double"
+		text={m.checkCrossword()}
+		onclick={() => (correctCheckDialog = true)}
+		type="button"
+		css="buttonPrimary absolute bottom-4 right-1/4 me-4"
+		style="background-color: {color};"
+	/>
 </div>
 
 <Dialog

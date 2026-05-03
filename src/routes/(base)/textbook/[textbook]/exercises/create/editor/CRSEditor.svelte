@@ -56,7 +56,7 @@
 		<h2 class="text-2xl font-bold">{m.crosswordWithGuess()}</h2>
 	</div>
 
-	<div class=" absolute right-1/4 bottom-4 pe-4">
+	<div class=" absolute left-4 bottom-4 z-50">
 		<Button
 			emoji="add-box"
 			type="button"
@@ -85,6 +85,7 @@
 		editMode={true}
 		{color}
 		{darkMode}
+		uuid="editor"
 	/>
 </div>
 
@@ -145,7 +146,7 @@
 						dialogDescValue.length == 0 ||
 						dialogHintValue.length == 0,
 				]}
-				css="buttonPrimary"
+				css=""
 				style="background-color: {color};"
 			/>
 		</div>

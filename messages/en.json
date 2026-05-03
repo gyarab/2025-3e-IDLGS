@@ -165,5 +165,17 @@
 	"features": "Features",
 	"openChapter": "Open chapter",
 	"openArticle": "Open article",
-	"allYourChangesAreSavedSecurelyToYourProfile": "All changes are saved securely to your profile"
+	"allYourChangesAreSavedSecurelyToYourProfile": "All changes are saved securely to your profile",
+	"bold": "Bold",
+	"italic": "Italic",
+	"underline": "Underline",
+	"strikethrough": "Strikethrough",
+	"highlight": "Highlight",
+	"code": "Code",
+	"blockquote": "Blockquote",
+	"model3d": "3D model",
+	"advancedMode": "Advanced mode",
+	"edit": "Edit",
+	"checkCrossword": "Check crossword",
+	"noWordsInCrossword": "No words in crossword"
 }

@@ -165,5 +165,17 @@
 	"features": "Funkce",
 	"openChapter": "Otevřít kapitolu",
 	"openArticle": "Otevřít článek",
-	"allYourChangesAreSavedSecurelyToYourProfile": "Všechny vaše změny jsou bezpečně uloženy ve vašem profilu"
+	"allYourChangesAreSavedSecurelyToYourProfile": "Všechny vaše změny jsou bezpečně uloženy ve vašem profilu",
+	"bold": "Tučné",
+	"italic": "Kurzíva",
+	"underline": "Podtržení",
+	"strikethrough": "Přeškrtnutí",
+	"highlight": "Zvýraznění",
+	"code": "Kód",
+	"blockquote": "Blok citace",
+	"model3d": "3D model",
+	"advancedMode": "Pokročilý režim",
+	"edit": "Upravit",
+	"checkCrossword": "Zkontrolovat křížovku",
+	"noWordsInCrossword": "Žádná slova v křížovce"
 }
