@@ -6,10 +6,14 @@
 		darkMode,
 		color,
 		articleText = $bindable(''),
+		selectionStart = $bindable(0),
+		selectionEnd = $bindable(0),
 	}: {
 		darkMode: boolean;
 		color: string;
 		articleText: string;
+		selectionStart: number;
+		selectionEnd: number;
 	} = $props();
 
 	let documentEditor: HTMLDivElement | undefined = $state();
@@ -20,17 +24,18 @@
 
 	onMount(() => {
 		if(!browser) return;
-		window.addEventListener('keydown', keystrokeHandler);
+		documentEditor!.addEventListener('keydown', keystrokeHandler);
 	})
 	onDestroy(() => {
 		if(!browser) return;
-		window.removeEventListener('keydown', keystrokeHandler);
+		documentEditor!.removeEventListener('keydown', keystrokeHandler);
 	})
 </script>
 
+<!-- editable prevents key events -->
 <div 
 	bind:this={documentEditor}
-	class="flex w-full flex-col gap-4 {darkMode ? 'bg-neutral-900 text-white' : 'bg-white text-black'} min-h-[30vh] rounded-lg! " contenteditable="true"
+	class="editable p-2 flex w-full flex-col gap-4 max-h-[80svh] overflow-x-hidden overflow-y-visible {darkMode ? 'bg-neutral-900 text-white' : 'bg-white text-black'} min-h-[30vh] rounded-lg! " contenteditable="true"
 >
 
 </div>

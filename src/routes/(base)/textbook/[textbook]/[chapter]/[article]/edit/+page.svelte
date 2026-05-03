@@ -59,6 +59,8 @@
 				darkMode={data.darkMode}
 				color={data.color}
 				bind:articleText
+				bind:selectionStart
+				bind:selectionEnd
 			/>
 		{/if}
 	</div>

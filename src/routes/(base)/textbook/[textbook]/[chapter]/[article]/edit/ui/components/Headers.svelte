@@ -5,9 +5,15 @@
 	let {
 		darkMode,
 		color,
+		articleText = $bindable(''),
+		selectionStart = $bindable(0),
+		selectionEnd = $bindable(0),
 	}: {
 		darkMode: boolean;
 		color: string;
+		articleText: string;
+		selectionStart: number;
+		selectionEnd: number;
 	} = $props();
 </script>
 
@@ -15,21 +21,27 @@
 	<ToolbarButton
 		emoji="h-1"
 		label={m.heading1()}
-		onclick={() => {}}
+		onclick={() => {
+
+		}}
 		{darkMode}
 		{color}
 	/>
 	<ToolbarButton
 		emoji="h-2"
 		label={m.heading2()}
-		onclick={() => {}}
+		onclick={() => {
+
+		}}
 		{darkMode}
 		{color}
 	/>
 	<ToolbarButton
 		emoji="h-3"
 		label={m.heading3()}
-		onclick={() => {}}
+		onclick={() => {
+
+		}}
 		{darkMode}
 		{color}
 	/>

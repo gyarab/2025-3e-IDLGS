@@ -26,7 +26,8 @@
 
 	const keyboardHandler = (e: KeyboardEvent) => {
 		const tagNameActive = document.activeElement?.tagName.toLowerCase();
-		if (tagNameActive == 'input' || tagNameActive == 'button') return;
+		const classList = document.activeElement?.classList.contains("editable");
+		if (classList || tagNameActive == 'input' || tagNameActive == 'button' || tagNameActive == 'textarea') return;
 
 		if (e.key === 'f' || e.key === 'F') {
 			e.preventDefault();

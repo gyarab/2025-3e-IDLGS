@@ -14,6 +14,7 @@
 	import TextArea from '$src/routes/(base)/components/TextArea.svelte';
 	import ColorInput from '$src/routes/(base)/components/ColorInput.svelte';
 	import { darkenHex } from '$lib';
+	import ImageInput from '../components/ImageInput.svelte';
 
 	let {
 		data,
@@ -27,6 +28,8 @@
 
 	let languageForm: HTMLFormElement | undefined = $state(undefined);
 	let language: string = $state(getLocale());
+
+	let fileData: File[] = $state([]);
 </script>
 
 <svelte:head>
@@ -111,6 +114,51 @@
 						value={data.user.surname}
 					/>
 				</div>
+				<Button
+					text={m.saveChanges()}
+					emoji="save-3"
+					type="submit"
+					css="buttonPrimary"
+					style="background-color: {data.color};"
+					onclick={() => {}}
+				/>
+			</Form>
+		</section>
+
+		<!-- Profile Picture Section -->
+		<section
+			class="rounded-3xl p-6 shadow-2xl sm:p-8 {data.darkMode
+				? 'bg-neutral-800/80 text-white'
+				: 'bg-white/90 text-black'}"
+		>
+			<div class="mb-6 flex items-center gap-3">
+				<i
+					class="ri-image-line text-2xl"
+					style="color: {data.color}"
+				></i>
+				<h2 class="text-xl font-bold">{m.profilePicture()}</h2>
+			</div>
+			<Form
+				darkMode={data.darkMode}
+				target="?/updateProfilePicture"
+				color={data.color}
+				css="flex flex-col gap-4"
+				success={async () => {}}
+				failure={async () => {}}
+				start={async (formData) => {
+					if (fileData.length === 0) return;
+					formData!.append('picture', fileData[0]);
+
+					fileData = [];
+				}}
+				>
+				<ImageInput
+					darkMode={data.darkMode}
+					color={data.color}
+					bind:value={fileData}
+					placeholder={m.uploadProfilePicture()}
+					css="w-full"
+				/>
 				<Button
 					text={m.saveChanges()}
 					emoji="save-3"

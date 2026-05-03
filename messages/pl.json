@@ -233,5 +233,6 @@
 	"heading3": "Nagłówek 3",
 	"line": "Linia",
 	"sidebox": "Pudełko boczne",
-	"failedToCreateExercise": "Nie udało się utworzyć ćwiczenia"
+	"failedToCreateExercise": "Nie udało się utworzyć ćwiczenia",
+	"uploadProfilePicture": "Prześlij zdjęcie profilowe"
 }

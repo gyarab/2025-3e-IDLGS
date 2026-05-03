@@ -24,6 +24,8 @@
 	};
 
 	// TODO @AY-GA fix this so it shows correct data
+
+	$inspect(data.user);
 </script>
 
 <svelte:head>
@@ -49,16 +51,13 @@
 			? 'bg-neutral-800/80 text-white'
 			: 'bg-white/90 text-black'}"
 	>
-		<header class="flex flex-col items-center gap-2 sm:flex-row sm:gap-6">
-			<div
-				class="flex h-20 w-20 items-center justify-center rounded-2xl border-2 sm:h-24 sm:w-24"
+		<header class="flex items-center gap-6">
+			<img
+				class="overflow-hidden flex h-20 w-20 items-center justify-center rounded-2xl border-2 sm:h-24 sm:w-24"
 				style:border-color="var(--brand)"
-			>
-				<span
-					class="px-2 text-center text-xs font-bold tracking-wider uppercase"
-					style:color="var(--brand)">Student Profile</span
-				>
-			</div>
+				alt={m.profilePicture()}
+				src={data.user.profilePicture}
+			/>
 			<div>
 				<h1 class="text-2xl font-bold sm:text-3xl">{data.user.name}</h1>
 				{#if data.user.degree && data.user.institution}

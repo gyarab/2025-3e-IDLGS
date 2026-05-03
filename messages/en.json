@@ -234,5 +234,6 @@
 	"heading3": "Heading 3",
 	"line": "Line",
 	"sidebox": "Sidebox",
-	"failedToCreateExercise": "Failed to create exercise"
+	"failedToCreateExercise": "Failed to create exercise",
+	"uploadProfilePicture": "Upload profile picture"
 }

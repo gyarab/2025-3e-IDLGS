@@ -87,5 +87,6 @@ export const saveToCloud = async (
 };
 
 export const deleteInCloud = async (path: string): Promise<void> => {
+	console.log(path);
 	return await cloudinaryDelete(path);
 };
