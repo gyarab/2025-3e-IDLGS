@@ -49,7 +49,7 @@
 			<img
 				src="/logo.svg"
 				alt="Logo"
-				class="h-12 sm:h-16"
+				class="h-10"
 			/>
 
 			<h2
