@@ -39,7 +39,7 @@
 </svelte:head>
 
 <div
-	class="relative flex min-h-screen w-full flex-col items-center gap-8 overflow-x-hidden p-6 py-12"
+	class="relative flex min-h-screen w-full flex-col items-center gap-8 overflow-x-hidden over p-6 py-12"
 	style="background: linear-gradient(135deg, {data.color}, {darkenHex(
 		data.color,
 		80,
@@ -72,7 +72,7 @@
 				? 'bg-neutral-800/80 text-white'
 				: 'bg-white/90 text-black'}"
 		>
-			<div class="mb-6 flex items-center gap-3">
+			<div class="flex items-center gap-3">
 				<i
 					class="ri-user-line text-2xl"
 					style="color: {data.color}"
@@ -131,7 +131,7 @@
 				? 'bg-neutral-800/80 text-white'
 				: 'bg-white/90 text-black'}"
 		>
-			<div class="mb-6 flex items-center gap-3">
+			<div class="flex items-center gap-3">
 				<i
 					class="ri-image-line text-2xl"
 					style="color: {data.color}"
@@ -176,7 +176,7 @@
 				? 'bg-neutral-800/80 text-white'
 				: 'bg-white/90 text-black'}"
 		>
-			<div class="mb-6 flex items-center gap-3">
+			<div class="flex items-center gap-3">
 				<i
 					class="ri-bank-line text-2xl"
 					style="color: {data.color}"
@@ -228,7 +228,7 @@
 					? 'bg-neutral-800/80 text-white'
 					: 'bg-white/90 text-black'}"
 			>
-				<h2 class="mb-4 text-lg font-bold">{m.language()}</h2>
+				<h2 class="text-lg font-bold">{m.language()}</h2>
 				<Form
 					darkMode={data.darkMode}
 					target="?/updateLanguage"
@@ -272,7 +272,7 @@
 					? 'bg-neutral-800/80 text-white'
 					: 'bg-white/90 text-black'}"
 			>
-				<h2 class="mb-4 text-lg font-bold">{m.theme()}</h2>
+				<h2 class="text-lg font-bold">{m.theme()}</h2>
 				<Form
 					darkMode={data.darkMode}
 					target="?/updateColor"
@@ -298,7 +298,7 @@
 				? 'bg-neutral-800/80 text-white'
 				: 'bg-white/90 text-black'}"
 		>
-			<h2 class="mb-4 text-xl font-bold">{m.description()}</h2>
+			<h2 class="text-xl font-bold">{m.description()}</h2>
 			<Form
 				darkMode={data.darkMode}
 				target="?/updateDescription"
@@ -329,7 +329,7 @@
 				? 'bg-neutral-800/80 text-white'
 				: 'bg-white/90 text-black'}"
 		>
-			<div class="mb-6 flex items-center gap-3">
+			<div class="flex items-center gap-3">
 				<i
 					class="ri-shield-keyhole-line text-2xl"
 					style="color: {data.color}"
@@ -339,7 +339,7 @@
 				</h2>
 			</div>
 
-			<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+			<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 				<!-- Password Form -->
 				<Form
 					darkMode={data.darkMode}
@@ -404,12 +404,4 @@
 			</div>
 		</section>
 	</div>
-
-	<p
-		class="text-center text-xs {data.darkMode
-			? 'text-black!'
-			: 'text-white!'} opacity-60"
-	>
-		{m.allYourChangesAreSavedSecurelyToYourProfile()}.
-	</p>
 </div>

@@ -127,7 +127,7 @@ export function sanitizeColor(hex: string): string {
     const hsl = color.toHsl();
 
     const isGray = hsl.s === 0;
-    const newS = isGray ? 0 : Math.max(hsl.s, 30); 
+    const newS = isGray ? 0 : Math.max(hsl.s, 20); 
     const newL = Math.max(40, Math.min(70, hsl.l));
 
     return colord({

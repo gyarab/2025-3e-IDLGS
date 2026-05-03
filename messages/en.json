@@ -235,5 +235,6 @@
 	"line": "Line",
 	"sidebox": "Sidebox",
 	"failedToCreateExercise": "Failed to create exercise",
-	"uploadProfilePicture": "Upload profile picture"
+	"uploadProfilePicture": "Upload profile picture",
+	"textbooks": "Textbooks"
 }

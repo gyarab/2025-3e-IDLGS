@@ -10,8 +10,9 @@
 		label = text,
 		id = '',
 		css,
-		hecss,
 		style,
+		hecss,
+		txtcss,
 		onclick,
 		rmwhite,
 	}: {
@@ -24,6 +25,7 @@
 		css?: string;
 		style?: string;
 		hecss?: string;
+		txtcss?: string;
 		onclick: (event: Event) => void;
 		rmwhite?: boolean;
 	} = $props();
@@ -35,7 +37,7 @@
 	{disabled}
 	aria-label={label}
 	title={label}
-	class="group flex flex-row items-center justify-center gap-1 {rmwhite
+	class="group flex flex-col sm:flex-row items-center justify-center sm:gap-1 {rmwhite
 		? ''
 		: 'text-white!'} {css}"
 	{onclick}
@@ -43,7 +45,9 @@
 >
 	<HoverEmoji
 		{emoji}
-		css="text-2xl {rmwhite ? '' : 'text-white!'} {hecss}"
+		css="text-2xl {hecss}"
 	/>
-	{text}
+	<span class="{txtcss}">
+        {text}
+    </span>
 </button>
