@@ -15,10 +15,10 @@
 	} = $props();
 
 	onMount(() => {
-		if(browser) {
+		if (browser) {
 			document.documentElement.style.scrollbarColor = `${darkenHex(data.color, 120)} rgba(0, 0, 0, 0) !important`;
 		}
-	})
+	});
 </script>
 
 <div

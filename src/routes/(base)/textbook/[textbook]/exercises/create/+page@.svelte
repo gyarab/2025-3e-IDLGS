@@ -79,58 +79,58 @@
 	bind:stage
 >
 	<div class="flex w-full grow flex-col overflow-x-hidden overflow-y-scroll">
-	{#if stage == 0}
-		<TypeSelection
-			color={data.color}
-			darkMode={data.darkMode}
-			bind:stage
-			bind:type
-		/>
-	{:else if stage == 1}
-		<BasicInformation
-			darkMode={data.darkMode}
-			color={data.color}
-			bind:stage
-			bind:name
-			bind:description
-			bind:thumbnail
-		/>
-	{:else if stage == 2}
-		{#if type == 'CRS'}
-			<CRSEditor
-				bind:backgroundColorR
-				bind:backgroundColorG
-				bind:backgroundColorB
-				bind:foregroundColorR
-				bind:foregroundColorG
-				bind:foregroundColorB
-				bind:crsOffsets
-				bind:crsColumnId
-				bind:crWords
-				bind:crClues
-				bind:crDescriptions
-				bind:crSolution
+		{#if stage == 0}
+			<TypeSelection
 				color={data.color}
 				darkMode={data.darkMode}
+				bind:stage
+				bind:type
 			/>
-		{:else if type == 'CRW'}
-			<CRWEditor />
-		{:else if type == 'DEF'}
-			<DEFEditor />
-		{:else if type == 'GRP'}
-			<GRPEditor />
-		{:else if type == 'GEO'}
-			<GEOEditor />
-		{:else if type == 'EXT'}
-			<EXTEditor />
+		{:else if stage == 1}
+			<BasicInformation
+				darkMode={data.darkMode}
+				color={data.color}
+				bind:stage
+				bind:name
+				bind:description
+				bind:thumbnail
+			/>
+		{:else if stage == 2}
+			{#if type == 'CRS'}
+				<CRSEditor
+					bind:backgroundColorR
+					bind:backgroundColorG
+					bind:backgroundColorB
+					bind:foregroundColorR
+					bind:foregroundColorG
+					bind:foregroundColorB
+					bind:crsOffsets
+					bind:crsColumnId
+					bind:crWords
+					bind:crClues
+					bind:crDescriptions
+					bind:crSolution
+					color={data.color}
+					darkMode={data.darkMode}
+				/>
+			{:else if type == 'CRW'}
+				<CRWEditor />
+			{:else if type == 'DEF'}
+				<DEFEditor />
+			{:else if type == 'GRP'}
+				<GRPEditor />
+			{:else if type == 'GEO'}
+				<GEOEditor />
+			{:else if type == 'EXT'}
+				<EXTEditor />
+			{/if}
+		{:else if stage == 3}
+			<Grading />
+		{:else if stage == 4}
+			<References />
+		{:else if stage == 5}
+			<Review />
 		{/if}
-	{:else if stage == 3}
-		<Grading />
-	{:else if stage == 4}
-		<References />
-	{:else if stage == 5}
-		<Review />
-	{/if}
 	</div>
 	{#if stage != 0}
 		<Form
