@@ -75,6 +75,7 @@ const handleInitialUser: Handle = async ({ event, resolve }) => {
 const securityHeaders = {
 	'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
 	'Permissions-Policy': 'camera=(), microphone=(), interest-cohort=()',
+	'Access-Control-Allow-Origin': '*',
 };
 
 const handleSecurity: Handle = async ({ event, resolve }) => {

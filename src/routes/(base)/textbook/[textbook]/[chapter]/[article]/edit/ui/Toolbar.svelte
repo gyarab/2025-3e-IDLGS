@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
 	import ColoredVerticalLine from '$src/routes/(base)/components/ColoredVerticalLine.svelte';
-	import VerticalLine from '$src/routes/(base)/components/VerticalLine.svelte';
 	import FontEdit from './components/FontEdit.svelte';
 	import Multimedia from './components/Multimedia.svelte';
 	import RawMode from './components/RawMode.svelte';
@@ -44,7 +43,6 @@
 		label={m.advancedMode()}
 		emoji="puzzle-fill"
 		onclick={() => (advancedMode = !advancedMode)}
-		style="background-color: {color};"
 		{darkMode}
 		{color}
 	/>

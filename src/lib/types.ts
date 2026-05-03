@@ -75,6 +75,10 @@ export type ArticleTypeRaw = {
 	order: number;
 };
 
+export type ArticleTypeRawUuid = ArticleTypeRaw & {
+	uuid: string;
+};
+
 export type ArticleTypeFullNoId = ArticleType & {
 	chapterId: number;
 	textbookId: number;

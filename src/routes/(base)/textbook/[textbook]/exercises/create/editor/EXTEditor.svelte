@@ -1,6 +1,9 @@
 <script lang="ts">
+	import { IFRAME_TIMEOUT } from '$lib';
 	import { m } from '$lib/paraglide/messages';
+	import LoadingAnimationHandler from '$src/routes/(base)/components/loading/LoadingAnimationHandler.svelte';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
+	import { untrack } from 'svelte';
 	import { fly } from 'svelte/transition';
 
 	let {
@@ -15,7 +18,18 @@
 		name: string;
 	} = $props();
 
-	let error = $derived(extUrl.length > 3);
+	let iframeElement: HTMLIFrameElement | undefined = $state();
+	let error = $derived(extUrl.length <= 3);
+
+	$effect(() => {
+		if(extUrl.length <= 3) return;
+		untrack(() => {
+			window.setTimeout(() => {
+				if(loading) error = true;
+			}, IFRAME_TIMEOUT);
+		})
+	});
+	let loading = $derived(extUrl.length > 3);
 </script>
 
 <div class="flex w-full grow flex-col overflow-x-hidden overflow-y-scroll">
@@ -34,7 +48,7 @@
 				{color}
 			/>
 		</div>
-		{#if extUrl.length === 0}
+		{#if extUrl.length <= 3}
 			<div
 				class="flex grow flex-col items-center justify-center gap-2 italic opacity-50 {darkMode
 					? 'text-white'
@@ -44,7 +58,7 @@
 			</div>
 		{:else if error}
 			<div
-				class="* flex grow flex-col items-center justify-center gap-2 rounded-lg p-4 text-center italic opacity-50 {darkMode
+				class="flex grow flex-col items-center justify-center gap-2 italic opacity-50 {darkMode
 					? 'text-white'
 					: 'text-black'}"
 			>
@@ -52,13 +66,19 @@
 			</div>
 		{:else}
 			<iframe
+				bind:this={iframeElement}
 				title={name}
-				src={extUrl}
-				class="w-full grow rounded-lg"
-				onerror={() => {
-					error = true;
+				class="w-full rounded-lg {loading
+					? 'h-0 opacity-0'
+					: 'grow opacity-100'} transition-opacity duration-300"
+				src="https://{extUrl}"
+				onload={() => {
+					loading = false;
 				}}
 			></iframe>
+			{#if loading}
+				<LoadingAnimationHandler {color} />
+			{/if}
 		{/if}
 	</div>
 </div>

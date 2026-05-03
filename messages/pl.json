@@ -221,5 +221,10 @@
 	"thumbnailPreview": "Podgląd miniatury",
 	"noAdditionalAuthorsSelected": "Brak wybranych dodatkowych autorów",
 	"thumbnail": "Miniatura",
-	"noThumbnail": "Brak miniatury"
+	"noThumbnail": "Brak miniatury",
+	"enterArticleText": "Wprowadź tekst artykułu",
+	"image": "Obraz",
+	"embed": "Osadź",
+	"video": "Wideo",
+	"document": "Dokument"
 }

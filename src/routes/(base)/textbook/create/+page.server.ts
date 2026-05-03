@@ -46,7 +46,6 @@ export const actions = {
 				const authors = JSON.parse(data.authors) as string[]; //uuids
 
 				const thumbnail = formData?.get('thumbnail') as File;
-				console.log('Thumbnail', thumbnail);
 
 				if (
 					!Array.isArray(chapters) ||

@@ -1,11 +1,12 @@
 import { resolve } from '$app/paths';
-import { error, redirect } from '@sveltejs/kit';
+import { error, fail, redirect } from '@sveltejs/kit';
 import { formRunner, type FormDataType } from '$lib/server/form/validation.js';
 import type { UserTypeFull } from '$lib/types.js';
 import { makeHex } from '$lib';
 import { schema as databaseSchema } from '$lib/server/db/schema';
 import { eq } from 'drizzle-orm';
 import { m } from '$lib/paraglide/messages';
+import { saveToCloud } from '$lib/server/filesave/index.js';
 
 export const load = async (event) => {
 	const pd = await event.parent();
@@ -24,10 +25,23 @@ export const load = async (event) => {
 			.limit(1)
 	)[0];
 
+	const articles = await event.locals.db
+		.select({
+			id: databaseSchema.article.id,
+			title: databaseSchema.article.title,
+			uuid: databaseSchema.article.uuid,
+			order: databaseSchema.article.order,
+		})
+		.from(databaseSchema.article)
+		.where(
+			eq(databaseSchema.article.textbookId, textbook.id),
+		);
+
 	if (!textbook) return error(404, m.textbookDoesntExist());
 
 	return {
 		color: makeHex(textbook.r, textbook.g, textbook.b),
+		articles,
 	};
 };
 
@@ -43,69 +57,121 @@ export const actions = {
 	makeCRW: async (event) => {
 		return await formRunner(
 			event,
-			[],
+			['name', 'description', 'foregroundColorR', 'foregroundColorG', 'foregroundColorB', 'backgroundColorR', 'backgroundColorG', 'backgroundColorB'],
 			true,
-			async (data: FormDataType, user: UserTypeFull | undefined) => {
-				console.log('CRW', data);
+			async (data: FormDataType, user: UserTypeFull | undefined, formData?: FormData) => {
+				
 			},
+			['thumbnail'],
 		);
 	},
 	makeCRS: async (event) => {
 		return await formRunner(
 			event,
-			[],
+			['name', 'description', 'foregroundColorR', 'foregroundColorG', 'foregroundColorB', 'backgroundColorR', 'backgroundColorG', 'backgroundColorB'],
 			true,
-			async (data: FormDataType, user: UserTypeFull | undefined) => {
+			async (data: FormDataType, user: UserTypeFull | undefined, formData?: FormData) => {
 				console.log('CRS', data);
 			},
+			['thumbnail'],
 		);
 	},
 	makeDEF: async (event) => {
 		return await formRunner(
 			event,
-			[],
+			['name', 'description', 'foregroundColorR', 'foregroundColorG', 'foregroundColorB', 'backgroundColorR', 'backgroundColorG', 'backgroundColorB'],
 			true,
-			async (data: FormDataType, user: UserTypeFull | undefined) => {
+			async (data: FormDataType, user: UserTypeFull | undefined, formData?: FormData) => {
 				console.log('DEF', data);
 			},
+			['thumbnail'],
 		);
 	},
 	makeGRP: async (event) => {
 		return await formRunner(
 			event,
-			[],
+			['name', 'description', 'foregroundColorR', 'foregroundColorG', 'foregroundColorB', 'backgroundColorR', 'backgroundColorG', 'backgroundColorB'],
 			true,
-			async (data: FormDataType, user: UserTypeFull | undefined) => {
+			async (data: FormDataType, user: UserTypeFull | undefined, formData?: FormData) => {
 				console.log('GRP', data);
 			},
+			['thumbnail'],
 		);
 	},
 	makeGEO: async (event) => {
 		return await formRunner(
 			event,
-			[],
+			['name', 'description', 'foregroundColorR', 'foregroundColorG', 'foregroundColorB', 'backgroundColorR', 'backgroundColorG', 'backgroundColorB'],
 			true,
-			async (data: FormDataType, user: UserTypeFull | undefined) => {
+			async (data: FormDataType, user: UserTypeFull | undefined, formData?: FormData) => {
 				console.log('GEO', data);
 			},
+			['thumbnail'],
 		);
 	},
 	makeEXT: async (event) => {
 		return await formRunner(
 			event,
-			['url', 'name', 'description'],
+			['url', 'name', 'description', 'backgroundColorR', 'foregroundColorR', 'backgroundColorG', 'foregroundColorG', 'backgroundColorB', 'foregroundColorB'],
 			true,
-			async (data: FormDataType, user: UserTypeFull | undefined) => {
-				await event.locals.db
-					.insert(databaseSchema.exerciseEmbed)
-					.values({
-						link: data.url,
-					});
+			async (data: FormDataType, user: UserTypeFull | undefined, formData?: FormData) => {
+				const thumbnail = formData!.get('thumbnail') as File;
 
-				await event.locals.db
-					.insert(databaseSchema.exercise)
-					.values({});
-			},
-		);
+				const thumbnailUrl = await saveToCloud(thumbnail, 'image');
+
+				if (!data.url || !data.name || !data.description || !thumbnail || thumbnail.size === 0) {
+					return fail(400);
+				}
+
+				const r = parseInt(data.backgroundColorR);
+				const g = parseInt(data.backgroundColorG);
+				const b = parseInt(data.backgroundColorB);
+				const fr = parseInt(data.foregroundColorR);
+				const fg = parseInt(data.foregroundColorG);
+				const fb = parseInt(data.foregroundColorB);
+
+				if (isNaN(r) || isNaN(g) || isNaN(b) || r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) {
+					return fail(400);
+				}
+
+				if (isNaN(fr) || isNaN(fg) || isNaN(fb) || fr < 0 || fr > 255 || fg < 0 || fg > 255 || fb < 0 || fb > 255) {
+					return fail(400);
+				}
+
+				await event.locals.db.transaction(async (tx) => {
+					const thumbnail = await tx
+						.insert(databaseSchema.resource)
+						.values({
+							url: thumbnailUrl,
+							title: 'thumbnail',
+							type: 'image',
+						})
+						.returning();
+
+					const exerciseEmbed = await tx
+						.insert(databaseSchema.exerciseEmbed)
+						.values({
+							link: data.url,
+						})
+						.returning();
+
+					await tx
+						.insert(databaseSchema.exercise)
+						.values({
+							type: 'EXT',
+							name: data.name,
+							description: data.description,
+							thumbnail: thumbnail[0].id,
+							ext: exerciseEmbed[0].id,
+							backgroundColorR: r,
+							backgroundColorG: g,
+							backgroundColorB: b,
+							foregroundColorR: fr,
+							foregroundColorG: fg,
+							foregroundColorB: fb,
+						})
+						.returning();
+				});
+			}, ['thumbnail']);
 	},
 };

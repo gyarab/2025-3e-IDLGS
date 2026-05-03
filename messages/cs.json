@@ -222,5 +222,10 @@
 	"thumbnailPreview": "Náhled náhledu",
 	"noAdditionalAuthorsSelected": "Žádní další autoři nebyli vybráni",
 	"thumbnail": "Náhled",
-	"noThumbnail": "Žádný náhled"
+	"noThumbnail": "Žádný náhled",
+	"enterArticleText": "Zadejte text článku",
+	"image": "Obrázek",
+	"embed": "Vložit",
+	"video": "Video",
+	"document": "Dokument"
 }

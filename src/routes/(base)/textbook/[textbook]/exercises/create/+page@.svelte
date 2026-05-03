@@ -15,8 +15,7 @@
 	import Review from './ui/Review.svelte';
 	import Form from '$src/routes/(base)/components/Form.svelte';
 	import { goto } from '$app/navigation';
-	import Grading from './ui/Grading.svelte';
-	import References from './ui/References.svelte';
+	import type { ArticleTypeRawUuid } from '$lib/types';
 
 	let {
 		data,
@@ -24,6 +23,8 @@
 		data: {
 			darkMode: boolean;
 			color: string;
+			articles: ArticleTypeRawUuid[];
+
 		};
 	} = $props();
 
@@ -96,8 +97,6 @@
 				return true;
 		}
 	});
-	let stage3Condition = $derived(false); //TODO
-	let stage4Condition = $derived(false); //TODO
 </script>
 
 <svelte:head>
@@ -113,7 +112,6 @@
 		m.exerciseType(),
 		m.basicExerciseInformation(),
 		m.exerciseStructure(),
-		m.exerciseGrading(),
 		m.referencesToMaterial(),
 		m.finish(),
 	]}
@@ -177,10 +175,6 @@
 				/>
 			{/if}
 		{:else if stage == 3}
-			<Grading />
-		{:else if stage == 4}
-			<References />
-		{:else if stage == 5}
 			<Review />
 		{/if}
 	</div>
@@ -251,16 +245,12 @@
 				value={foregroundColorB}
 			/>
 
-			<!-- TODO -->
-
 			<PageControl
 				bind:stage
 				darkMode={data.darkMode}
 				color={data.color}
 				disableNext={(stage == 1 && stage1Condition) ||
-					(stage == 2 && stage2Condition) ||
-					(stage == 3 && stage3Condition) ||
-					(stage == 4 && stage4Condition)}
+					(stage == 2 && stage2Condition)}
 				disablePrev={false}
 				createText={m.createExercise()}
 				nextButtonCreate={stage == 3}
