@@ -1,6 +1,7 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import { darkenHex } from '$lib';
-	import { type Snippet } from 'svelte';
+	import { onMount, type Snippet } from 'svelte';
 
 	let {
 		children,
@@ -12,6 +13,12 @@
 			darkMode: boolean;
 		};
 	} = $props();
+
+	onMount(() => {
+		if(browser) {
+			document.documentElement.style.scrollbarColor = `${darkenHex(data.color, 120)} rgba(0, 0, 0, 0) !important`;
+		}
+	})
 </script>
 
 <div

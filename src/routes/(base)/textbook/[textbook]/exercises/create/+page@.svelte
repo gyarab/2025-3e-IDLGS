@@ -78,6 +78,7 @@
 	emoji={'ri-function-add-line'}
 	bind:stage
 >
+	<div class="flex w-full grow flex-col overflow-x-hidden overflow-y-scroll">
 	{#if stage == 0}
 		<TypeSelection
 			color={data.color}
@@ -130,6 +131,7 @@
 	{:else if stage == 5}
 		<Review />
 	{/if}
+	</div>
 	{#if stage != 0}
 		<Form
 			target="?/make{type.toUpperCase()}"

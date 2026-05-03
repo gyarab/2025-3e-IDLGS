@@ -6,6 +6,7 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { setLocale, type Locale } from '$lib/paraglide/runtime';
 	import type { UserType } from '$lib/types';
+	import { darkenHex } from '$lib';
 
 	let {
 		children,
@@ -36,6 +37,8 @@
 	onMount(() => {
 		if (browser) {
 			addEventListener('keydown', keyboardHandler);
+
+			document.documentElement.style.scrollbarColor = `${darkenHex(data.color, 120)} rgba(0, 0, 0, 0)`;
 		}
 		if (data.user) setLocale(data.user.language as Locale);
 	});
@@ -55,7 +58,8 @@
 <div
 	class="{data.darkMode
 		? '**:text-white'
-		: '**:text-black'} relative flex min-h-screen w-screen max-w-screen grow flex-col items-center overflow-x-hidden overflow-y-scroll **:z-5"
+		: '**:text-black'} relative flex min-h-screen w-screen max-w-screen grow flex-col items-center overflow-x-hidden overflow-y-scroll **:z-5
+		"
 >
 	{@render children()}
 </div>

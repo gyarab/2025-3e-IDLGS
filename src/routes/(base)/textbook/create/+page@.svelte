@@ -59,47 +59,49 @@
 	backLink={resolve('/(base)/textbook')}
 	bind:stage
 >
-	{#if stage == 0}
-		<BasicInformation
-			darkMode={data.darkMode}
-			bind:name
-			bind:description
-			bind:color={textbookColor}
-			bind:education={educationLevel}
-		/>
-	{:else if stage == 1}
-		<Structure
-			darkMode={data.darkMode}
-			color={textbookColor}
-			bind:chapters
-			bind:articles
-		/>
-	{:else if stage == 2}
-		<Resources
-			darkMode={data.darkMode}
-			color={textbookColor}
-		/>
-	{:else if stage == 3}
-		<Authors
-			darkMode={data.darkMode}
-			color={textbookColor}
-			bind:authors={authorUuids}
-			user={data.user}
-		/>
-	{:else if stage == 4}
-		<Review
-			darkMode={data.darkMode}
-			color={textbookColor}
-			{name}
-			{description}
-			{educationLevel}
-			{chapters}
-			{articles}
-			authors={authorUuids}
-		/>
-	{:else if stage == 5}
-		<LoadingAnimationHandler color={textbookColor} />
-	{/if}
+	<div class="flex w-full grow flex-col overflow-x-hidden overflow-y-scroll">
+		{#if stage == 0}
+			<BasicInformation
+				darkMode={data.darkMode}
+				bind:name
+				bind:description
+				bind:color={textbookColor}
+				bind:education={educationLevel}
+			/>
+		{:else if stage == 1}
+			<Structure
+				darkMode={data.darkMode}
+				color={textbookColor}
+				bind:chapters
+				bind:articles
+			/>
+		{:else if stage == 2}
+			<Resources
+				darkMode={data.darkMode}
+				color={textbookColor}
+			/>
+		{:else if stage == 3}
+			<Authors
+				darkMode={data.darkMode}
+				color={textbookColor}
+				bind:authors={authorUuids}
+				user={data.user}
+			/>
+		{:else if stage == 4}
+			<Review
+				darkMode={data.darkMode}
+				color={textbookColor}
+				{name}
+				{description}
+				{educationLevel}
+				{chapters}
+				{articles}
+				authors={authorUuids}
+			/>
+		{:else if stage == 5}
+			<LoadingAnimationHandler color={textbookColor} />
+		{/if}
+	</div>
 	<Form
 		target="?/makeTextbook"
 		darkMode={data.darkMode}
