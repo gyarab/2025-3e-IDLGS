@@ -11,6 +11,7 @@
 	import InteractiveExerciseBox from './ui/InteractiveExerciseBox.svelte';
 	import ArticleNavbox from './ui/ArticleNavbox.svelte';
 	import type { ArticleType, TextbookType, ChapterType } from '$lib/types';
+	import { renderMarkdown } from '$lib/markdown';
 
 	let {
 		data,
@@ -72,7 +73,9 @@
 		}
 	};
 
-	onMount(() => {
+	let renderedText = $state('');
+
+	onMount(async () => {
 		if (browser) {
 			addEventListener('scroll', updateWindowScroll);
 			addEventListener('resize', updateDocumentHeight);
@@ -80,6 +83,8 @@
 
 			updateWindowScroll();
 			updateDocumentHeight();
+
+			renderedText = await renderMarkdown(data.article.text);
 		}
 	});
 	onDestroy(() => {
@@ -134,7 +139,7 @@
 	<ReadBox
 		darkMode={data.darkMode}
 	>
-		{data.article.text}
+		{@html renderedText}
 	</ReadBox>
 
 	<!-- TODO-->

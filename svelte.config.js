@@ -17,11 +17,12 @@ const config = {
 					'cdn.jsdelivr.net/npm/@cap.js/',
 					'blob:',
 					'wasm-unsafe-eval',
+					'ajax.googleapis.com',
 				],
 				'object-src': ['self'],
 				'img-src': ['self', 'res.cloudinary.com', 'data:', 'blob:'],
 				//sveltekit announcer issue + we use this
-				'style-src': ['self', 'fonts.googleapis.com', 'unsafe-inline'],
+				'style-src': ['self', 'fonts.googleapis.com', 'unsafe-inline', 'https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css'],
 				'frame-ancestors': ['self'],
 				'connect-src': [
 					'cdn.jsdelivr.net/npm/@cap.js/',

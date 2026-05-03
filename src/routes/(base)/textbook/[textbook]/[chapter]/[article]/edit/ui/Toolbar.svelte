@@ -35,6 +35,7 @@
 		bind:selectionStart
 		bind:selectionEnd
 		bind:articleText
+		bind:advanced={advancedMode}
 	/>
 	<ColoredVerticalLine {color} />
 	<Multimedia
@@ -43,6 +44,7 @@
 		bind:articleText
 		bind:selectionStart
 		bind:selectionEnd
+		bind:advanced={advancedMode}
 	/>
 	<ColoredVerticalLine {color} />
 	<Headers
@@ -51,6 +53,7 @@
 		bind:selectionStart
 		bind:selectionEnd
 		bind:articleText
+		bind:advanced={advancedMode}
 	/>
 	<ColoredVerticalLine {color} />
 	<Didatic
@@ -59,6 +62,7 @@
 		bind:selectionStart
 		bind:selectionEnd
 		bind:articleText
+		bind:advanced={advancedMode}
 	/>
 	<ColoredVerticalLine {color} />
 

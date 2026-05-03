@@ -9,8 +9,7 @@ import type { UserTypeFull } from '$lib/types';
 
 export const load = async (event) => {
 	const pd = await event.parent();
-	if (!pd.user) redirect(302, resolve('/(protected)/login'));
-	if (!pd.textbook) return error(404, m.textbookDoesntExist());
+ь	if (!pd.textbook) return error(404, m.textbookDoesntExist());
 
 	const textbookId = (
 		await event.locals.db

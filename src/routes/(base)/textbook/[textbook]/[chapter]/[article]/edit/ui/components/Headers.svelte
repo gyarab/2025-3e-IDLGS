@@ -8,12 +8,14 @@
 		articleText = $bindable(''),
 		selectionStart = $bindable(0),
 		selectionEnd = $bindable(0),
+		advanced = $bindable(false),
 	}: {
 		darkMode: boolean;
 		color: string;
 		articleText: string;
 		selectionStart: number;
 		selectionEnd: number;
+		advanced: boolean;
 	} = $props();
 </script>
 

@@ -234,5 +234,9 @@
 	"heading3": "Nadpis 3",
 	"line": "Čára",
 	"sidebox": "Boční box",
-	"uploadProfilePicture": "Nahrát profilový obrázek"
+	"uploadProfilePicture": "Nahrát profilový obrázek",
+	"formula": "Vzorec",
+	"saveArticle": "Uložit článek",
+	"select3DModel": "Vyberte 3D model",
+	"modelSelected": "Model vybrán"
 }

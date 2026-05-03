@@ -233,5 +233,9 @@
 	"heading3": "Nagłówek 3",
 	"line": "Linia",
 	"sidebox": "Pudełko boczne",
-	"uploadProfilePicture": "Prześlij zdjęcie profilowe"
+	"uploadProfilePicture": "Prześlij zdjęcie profilowe",
+	"formula": "Formuła",
+	"saveArticle": "Zapisz artykuł",
+	"select3DModel": "Wybierz model 3D",
+	"modelSelected": "Model wybrany"
 }

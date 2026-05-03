@@ -9,6 +9,9 @@
 	import EditField from './ui/EditField.svelte';
 	import Toolbar from './ui/Toolbar.svelte';
 	import WYSIWYG from './ui/WYSIWYG.svelte';
+	import Button from '$src/routes/(base)/components/Button.svelte';
+	import { darkenHex } from '$lib';
+	import Form from '$src/routes/(base)/components/Form.svelte';
 
 	let {
 		data,
@@ -63,5 +66,25 @@
 				bind:selectionEnd
 			/>
 		{/if}
+
+		<Form
+			css="flex w-full flex-row rounded-lg p-2 {data.darkMode
+				? 'bg-neutral-800 text-white'
+				: 'bg-neutral-200 text-black'}"
+			target="?/editText"
+			darkMode={data.darkMode}
+			color={data.color}
+		>
+			<input type="hidden" name="text" bind:value={articleText} />
+			<div class="grow"></div>
+			<Button
+				type="submit"
+				text={m.saveArticle()}
+				css="buttonPrimary"
+				style="background-color: {data.color};"
+				emoji="save-2"
+				onclick={() => {}}
+			/>
+		</Form>
 	</div>
 </div>

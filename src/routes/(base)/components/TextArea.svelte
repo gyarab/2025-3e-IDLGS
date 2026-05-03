@@ -9,6 +9,8 @@
 		rows = 2,
 		required = true,
 		name,
+		selectionStart = $bindable(0),
+		selectionEnd = $bindable(0),
 	}: {
 		darkMode: boolean;
 		color: string;
@@ -19,7 +21,11 @@
 		rows?: number;
 		required?: boolean;
 		name?: string;
+		selectionStart?: number;
+		selectionEnd?: number;
 	} = $props();
+
+	
 </script>
 
 <div class="overflow-hidden! rounded-lg! {css} flex w-full flex-col">

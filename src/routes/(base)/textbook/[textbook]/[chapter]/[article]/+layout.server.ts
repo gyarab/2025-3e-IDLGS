@@ -6,7 +6,6 @@ import { resolve } from '$app/paths';
 
 export const load = async (event) => {
 	const pd = await event.parent();
-	if (!pd.user) redirect(302, resolve('/(protected)/login'));
 	if (!pd.textbook) return error(404, m.textbookDoesntExist());
 	if (!pd.chapter) return error(404, m.chapterDoesntExist());
 

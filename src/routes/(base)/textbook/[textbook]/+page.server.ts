@@ -7,7 +7,6 @@ import { asc, eq } from 'drizzle-orm';
 
 export const load = async (event) => {
 	const pd = await event.parent();
-	if (!pd.user) redirect(302, resolve('/(protected)/login'));
 	if (!pd.textbook) return error(404, m.textbookDoesntExist());
 
 	const textbookId = (

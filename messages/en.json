@@ -234,5 +234,9 @@
 	"heading3": "Heading 3",
 	"line": "Line",
 	"sidebox": "Sidebox",
-	"uploadProfilePicture": "Upload profile picture"
+	"uploadProfilePicture": "Upload profile picture",
+	"formula": "Formula",
+	"saveArticle": "Save article",
+	"select3DModel": "Select 3D model",	
+	"modelSelected": "Model selected"
 }

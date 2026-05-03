@@ -2,8 +2,6 @@ import markdownit from 'markdown-it';
 import hljs from 'highlight.js';
 import katex from 'katex';
 
-let markdownInstance: markdownit;
-
 export const MARKDOWN_CONFIG_OPTIONS = {
 	html: true,
 	linkify: true,
@@ -16,8 +14,8 @@ export const MARKDOWN_CONFIG_OPTIONS = {
 	breaks: true,
 };
 
-export const initMdInstance = async () => {
-	markdownInstance = markdownit(MARKDOWN_CONFIG_OPTIONS);
+export const initMdInstance = () => {
+	return markdownit(MARKDOWN_CONFIG_OPTIONS);
 };
 
 //remove script, add math and render with syntax highlighting
@@ -32,5 +30,6 @@ export const renderMarkdown = async (text: string): Promise<string> => {
 			});
 		});
 
-	return `<div class="markdownText">${markdownInstance.render(markdown)}</div>`;
+	const mdInstance = initMdInstance();
+	return `<div class="markdownText">${mdInstance.render(markdown)}</div>`;
 };
