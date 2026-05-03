@@ -24,7 +24,8 @@ export const formRunner = async (
 	const data: FormDataType = {};
 	for (const field of fields) {
 		if (!formData.has(field)) return fail(400);
-		else if (!ignoredItems.includes(field)) data[field] = formData.get(field) as string;
+		else if (!ignoredItems.includes(field))
+			data[field] = formData.get(field) as string;
 	}
 
 	let user: UserTypeFull | undefined = undefined;

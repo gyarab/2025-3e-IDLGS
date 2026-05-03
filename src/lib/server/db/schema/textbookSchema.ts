@@ -28,8 +28,9 @@ export const textbook = pgTable(
 			.notNull()
 			.unique()
 			.$defaultFn(() => crypto.randomUUID()),
-		thumbnail: integer('thumbnail')
-			.references(() => resource.id, { onDelete: 'set null' }),
+		thumbnail: integer('thumbnail').references(() => resource.id, {
+			onDelete: 'set null',
+		}),
 	},
 	(table) => [
 		check('r', sql`${table.r} >= 0 AND ${table.r} <= 255`),

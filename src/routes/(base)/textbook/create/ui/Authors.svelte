@@ -143,7 +143,9 @@
 					}}
 				/>
 			{:else}
-				<div class="flex flex-col items-center justify-center gap-2 italic opacity-70 grow">
+				<div
+					class="flex flex-col items-center justify-center gap-2 italic opacity-70 grow"
+				>
 					{m.noAdditionalAuthorsSelected()}
 				</div>
 			{/each}

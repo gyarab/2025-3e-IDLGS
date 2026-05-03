@@ -34,7 +34,11 @@ export const actions = {
 				'thumbnail',
 			],
 			true,
-			async (data: FormDataType, user: UserTypeFull | undefined, formData?: FormData) => {
+			async (
+				data: FormDataType,
+				user: UserTypeFull | undefined,
+				formData?: FormData,
+			) => {
 				const chapters = JSON.parse(data.chapters) as ChapterTypeRaw[];
 				const articles = JSON.parse(
 					data.articles,
@@ -51,7 +55,8 @@ export const actions = {
 					chapters.length === 0 ||
 					articles.length === 0 ||
 					chapters.length !== articles.length ||
-					!thumbnail || thumbnail.size === 0
+					!thumbnail ||
+					thumbnail.size === 0
 				)
 					return fail(400);
 
@@ -66,8 +71,8 @@ export const actions = {
 				const textbookUuid = crypto.randomUUID();
 				const thumbnailUrl = await saveToCloud(thumbnail, 'image');
 
-				if(!thumbnailUrl) return fail(502);
-				
+				if (!thumbnailUrl) return fail(502);
+
 				await event.locals.db.transaction(async (tx) => {
 					const resource = await tx
 						.insert(databaseSchema.resource)
@@ -160,6 +165,8 @@ export const actions = {
 				});
 
 				return;
-			}, ['thumbnail']);
+			},
+			['thumbnail'],
+		);
 	},
 };

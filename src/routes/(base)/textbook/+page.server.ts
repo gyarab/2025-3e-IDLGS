@@ -44,10 +44,7 @@ export const load = async (event) => {
 		)
 		.leftJoin(
 			databaseSchema.resource,
-			eq(
-				databaseSchema.textbook.thumbnail,
-				databaseSchema.resource.id,
-			),
+			eq(databaseSchema.textbook.thumbnail, databaseSchema.resource.id),
 		)
 		.where(eq(databaseSchema.user.uuid, pd.user.uuid))
 		.orderBy(desc(databaseSchema.textbook.lastEditedAt));

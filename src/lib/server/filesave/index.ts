@@ -42,7 +42,9 @@ const cloudinaryUpload = async (
 				},
 				(error, uploadResult) => {
 					if (error) {
-						console.error(`Error uploading file: ${error.http_code} ${error.name} ${error.message}`);
+						console.error(
+							`Error uploading file: ${error.http_code} ${error.name} ${error.message}`,
+						);
 						resolve(undefined);
 						return undefined;
 					}
