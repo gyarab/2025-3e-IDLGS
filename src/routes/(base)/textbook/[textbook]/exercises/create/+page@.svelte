@@ -160,15 +160,30 @@
 					darkMode={data.darkMode}
 				/>
 			{:else if type == 'CRW'}
-				<CRWEditor />
+				<CRWEditor
+					darkMode={data.darkMode}
+					color={data.color}
+				 />
 			{:else if type == 'DEF'}
-				<DEFEditor />
+				<DEFEditor 
+					darkMode={data.darkMode}
+					color={data.color}
+				 />
 			{:else if type == 'DFT'}
-				<DFTEditor />
+				<DFTEditor
+					darkMode={data.darkMode}
+					color={data.color}
+				 />
 			{:else if type == 'GRP'}
-				<GRPEditor />
+				<GRPEditor
+					darkMode={data.darkMode}
+					color={data.color}
+				 />
 			{:else if type == 'GEO'}
-				<GEOEditor />
+				<GEOEditor
+					darkMode={data.darkMode}
+					color={data.color}
+				 />
 			{:else if type == 'EXT'}
 				<EXTEditor
 					darkMode={data.darkMode}
