@@ -21,7 +21,7 @@
 </svelte:head>
 
 <div
-	class="flex min-h-[33svh] w-1/2 flex-col gap-4 rounded-2xl p-4 shadow-xl {data.darkMode
+	class="flex min-h-[33svh] w-1/2 flex-col gap-4 rounded-2xl p-4 mt-20 shadow-xl {data.darkMode
 		? 'bg-neutral-800 text-white'
 		: 'bg-neutral-200 text-gray-800'}"
 >

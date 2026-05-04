@@ -22,7 +22,7 @@
 </script>
 
 <div
-	class="flex w-full grow flex-col items-center bg-linear-to-br from-white from-0% to-white to-100% p-4"
+	class="flex w-full grow flex-col overflow-y-auto items-center bg-linear-to-br from-white from-0% to-white to-100% p-4"
 	style="--tw-gradient-from: {data.color}; --tw-gradient-to: {darkenHex(
 		data.color,
 		80,
