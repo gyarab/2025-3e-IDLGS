@@ -4,7 +4,6 @@
 	import { m } from '$lib/paraglide/messages';
 	import { setDarkMode } from '$lib';
 	import NavButton from '../(base)/components/NavButton.svelte';
-	import { darkmode1 } from '$lib/paraglide/messages/en';
 
 	let {
 		darkMode,
@@ -17,11 +16,11 @@
 
 <div class="fixed top-0 mt-4 z-40 w-full">
 	<div
-		class="mx-auto flex h-[7svh] w-full max-w-7xl items-center justify-center px-4"
+		class="mx-auto flex h-[7svh] w-full max-w-6xl items-center justify-center px-4"
 	>
 		<div
 			class="relative flex w-full items-center rounded-full border text-sm shadow-lg backdrop-blur-xs {darkMode
-				? 'border-white/10 bg-black/10 text-white'
+				? 'border-white/20 bg-black/20 text-white'
 				: 'border-white/40 bg-white/40 text-black'}"
 		>
 			<img
@@ -38,7 +37,7 @@
 					location.reload();
 				}}
 				emoji={darkMode ? 'sun' : 'moon'}
-				css="buttonPrimary px-6"
+				css="buttonPrimary px-4"
 				label={darkMode ? m.lightMode() : m.darkMode()}
 				darkMode={darkMode}
 			/>

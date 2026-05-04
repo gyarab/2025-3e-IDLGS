@@ -25,7 +25,7 @@
 {#if ready}
 	{#key ready}
 		<div
-			class="relative flex h-[93svh] w-full flex-col items-center justify-center bg-linear-to-br from-white from-0% to-white to-100%"
+			class="relative flex h-[99svh] w-full flex-col items-center justify-center bg-linear-to-br from-white from-0% to-white to-100%"
 			style="
 		--tw-gradient-from: {color};
 		--tw-gradient-to: {darkenHex(color, 100)};
@@ -55,7 +55,7 @@
 				{m.theInteractiveDigitalTextbook()}
 			</div>
 			<div
-				class="absolute bottom-15 left-0 flex w-full flex-row justify-center text-white italic opacity-70"
+				class="floating-text absolute bottom-15 left-0 flex w-full flex-row justify-center text-white italic opacity-70"
 				in:fly|global={{ y: 50, duration: 1000, opacity: 0, delay: 500 }}
 			>
 				<i class="ri-arrow-down-double-line"></i>
@@ -65,3 +65,18 @@
 		</div>
 	{/key}
 {/if}
+
+<style>
+    .floating-text {
+        animation: float-and-pause 4s ease-in-out infinite;
+    }
+
+    @keyframes float-and-pause {
+        0%, 100%, 50% {
+            transform: translateY(0);
+        }
+        75% {
+            transform: translateY(10px);
+        }
+    }
+</style>
