@@ -62,7 +62,7 @@
                         class="relative z-10 text-lg leading-relaxed opacity-80 md:text-2xl md:leading-relaxed"
                         in:fly={{ y: 20, duration: 600, delay: 200 }}
                     >
-                        {m.about_description()}
+                        {m.aboutDescription()}
                     </p>
                 </div>
 

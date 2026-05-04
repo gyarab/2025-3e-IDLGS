@@ -64,7 +64,7 @@
 						class="text-lg leading-relaxed font-medium opacity-70"
 						in:fly={{ y: 20, duration: 600, delay: 100 }}
 					>
-						{m.team_description()}
+						{m.teamDescription()}
 					</p>
 				</div>
 			</header>
@@ -81,7 +81,7 @@
 					<TeamSvelte
 						name="Martin Bykov"
 						role="Project Manager"
-						description={m.martin_desc()}
+						description={m.martinDesc()}
 						{darkMode}
 					/>
 				</div>
@@ -93,7 +93,7 @@
 					<TeamSvelte
 						name="Ali Yunussov"
 						role="Lead Designer"
-						description={m.ali_desc()}
+						description={m.aliDesc()}
 						{darkMode}
 						reverse={true}
 					/>
@@ -106,7 +106,7 @@
 					<TeamSvelte
 						name="Kira Stepanova"
 						role="Education Lead"
-						description={m.kira_desc()}
+						description={m.kiraDesc()}
 						{darkMode}
 					/>
 				</div>

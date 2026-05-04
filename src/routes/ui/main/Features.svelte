@@ -50,7 +50,7 @@
                     class="text-lg leading-relaxed opacity-70"
                     in:fly={{ y: 30, duration: 600, delay: 100 }}
                 >
-                    {m.hero_description()}
+                    {m.heroDescription()}
                 </p>
             </header>
 
@@ -67,7 +67,7 @@
                     </div>
                     <h2 class="text-xl font-bold">{m.interactiveContent()}</h2>
                     <p class="text-sm leading-relaxed opacity-60">
-                        {m.feature_interactive_desc()}
+                        {m.featureInteractiveDesc()}
                     </p>
                 </div>
 
@@ -81,7 +81,7 @@
                     </div>
                     <h2 class="text-xl font-bold">{m.cuttingEdgeFeatures()}</h2>
                     <p class="text-sm leading-relaxed opacity-60">
-                        {m.feature_cutting_edge_desc()}
+                        {m.featureCuttingEdgeDesc()}
                     </p>
                 </div>
 
@@ -95,7 +95,7 @@
                     </div>
                     <h2 class="text-xl font-bold">{m.mutlimediaSupport()}</h2>
                     <p class="text-sm leading-relaxed opacity-60">
-                        {m.feature_multimedia_desc()}
+                        {m.featureMultimediaDesc()}
                     </p>
                 </div>
             </div>

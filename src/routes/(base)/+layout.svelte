@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import Navbar from '../ui/Navbar.svelte';
+	import UserNavbar from '../ui/UserNavbar.svelte';
 	import Footer from '../ui/Footer.svelte';
 	import { browser } from '$app/environment';
 	import { onMount, onDestroy } from 'svelte';
@@ -50,7 +50,7 @@
 	});
 </script>
 
-<Navbar
+<UserNavbar
 	{darkMode}
 	accentColor={data.color}
 />

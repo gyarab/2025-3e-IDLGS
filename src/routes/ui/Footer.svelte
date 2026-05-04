@@ -2,7 +2,6 @@
 	import { m } from '$lib/paraglide/messages';
 </script>
 
-<!-- Footer.svelte -->
 <div
 	class="relative z-5 flex h-[20svh] w-full min-w-screen! grow flex-row justify-center bg-neutral-700! py-2 text-white!"
 >
