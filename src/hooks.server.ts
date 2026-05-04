@@ -7,7 +7,7 @@ import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 import { count } from 'drizzle-orm';
 import { hashPassword } from '$lib/server/user';
-import { initMail } from '$lib/server/mail';
+import { initMail, checkConfig } from '$lib/server/mail';
 import { v2 as cloudinary } from 'cloudinary';
 
 const handleParaglide: Handle = ({ event, resolve }) =>
@@ -94,6 +94,8 @@ export const handle: Handle = sequence(
 );
 
 export const init: ServerInit = async () => {
+	checkConfig();
+
 	if (!process.env.MAIL_SOURCE_ADDRESS)
 		throw Error('No email address provided!');
 	if (!process.env.MAIL_CLIENT_ID)
