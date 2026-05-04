@@ -27,30 +27,19 @@
 		thumbnail: File;
 	} = $props();
 
-	let functionIsced = (level: string) => {
-		switch (level) {
-			case '0':
-				return m.isced0();
-			case '1':
-				return m.isced1();
-			case '2':
-				return m.isced2();
-			case '3':
-				return m.isced3();
-			case '4':
-				return m.isced4();
-			case '5':
-				return m.isced5();
-			case '6':
-				return m.isced6();
-			case '7':
-				return m.isced7();
-			case '8':
-				return m.isced8();
-			default:
-				return '';
-		}
+	const iscedMap: Record<string, () => string> = {
+		'0': m.isced0,
+		'1': m.isced1,
+		'2': m.isced2,
+		'3': m.isced3,
+		'4': m.isced4,
+		'5': m.isced5,
+		'6': m.isced6,
+		'7': m.isced7,
+		'8': m.isced8,
 	};
+
+	let functionIsced = (level: string) => iscedMap[level]?.() ?? '';
 
 	let imagePreview: string = $derived(makeURLFromImage(thumbnail));
 	onDestroy(() => {
