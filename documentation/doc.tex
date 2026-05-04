@@ -192,19 +192,32 @@ O hodnotě učebnice rozhodují různé funkce, jmenovitě:
 Funkci informační plní v učebnici text autora: ať už popisující, zhodnoťující, citace zdrojů atp. Mezi tyto texty jsou řazeny i definice pojmů či poznámky.  Jednoduše řečeno jedná se o funkci předávací, kde autor předává své znalosti uživatelům učebnice.
 \cite[str. 13]{PAN2023}
 
-Funkce tranformační označuje schopnost učebnice prezentovat věci z několika úhlů pohledu, všech samožřejmě faktuálně správných,  Tato funkce učebnice pomáhá uživatelům učebnice naučit se rozhodování a evaluaci jednotlivých možností, dovedností, které jsou v dnešním životě nezvykle obtížné.
+Funkce tranformační označuje schopnost učebnice prezentovat věci z několika úhlů pohledu, všech samožřejmě faktuálně správných,  Tato funkce učebnice pomáhá uživatelům učebnice naučit se rozhodování a evaluaci jednotlivých možností, dovedností, které jsou v dnešním životě nezvykle obtížné. Jeden z nejvýraznějších znaků správně implementované transformační funkce je následná schopnost žáka znovu vyjasnit informaci \textbf{vlastními slovy}, tzn. \textit{jinak než je uvedeno}, zachovávajíc při tom správnost výpovědi.
 \cite[str. 15]{PAN2023}
 
-Funkci samovyučující označuje schopnost učebnice vzbudit zájem o téma učebnice, o přečtení původních zdrojů učebnice a vyhledávání zdrojů mimo učebnice.
+\fillbreak
+
+Funkci samovyučující označuje schopnost učebnice vzbudit zájem o téma učebnice, o přečtení původních zdrojů učebnice a vyhledávání zdrojů mimo učebnice. Nejlepším způsobem, jak dosáhnout této funkce, je přídání vzorových řešení do učebnice, které \enquote*{ukáží žákovi jakou cestou se vydat}. Na základě této cesty si může pka žák jednodušeji tvořit nadstavbu. Funkce samovyučující má samožřejmě také \textbf{prvek vychovávající}. Učebnice by měla poskytovat žákům (nejen) etické vzory, a měla by žáky vzdělávat nejen v obsahu, nýbrž také v hodnotách společnosti. Tohoto se dá docílit mj. za pomocí úkolů \textit{ohodnoť chování} nebo \textit{zdůvodní svůj názor}, apod.
 \cite[str. 16]{PAN2023}
 
-Funkce motivační
-Od minulých funkcí se líší tím, že
+\fillbreak
+
+Funkce motivační motivuje žáky k samostatné práci (a i samostatnosti obecně) na základě učebnice. Cílem není tuto práci avšak donutit, cílem je, aby žák jí sám chtěl vykonávat, a, například, snažil se vytvořit něco nad rámec základu, který je od něj požadován.
+Od předem zmíněných funkcí se líší tím, že nemotivuje žáky k vyhledání zdrojů. Je nutno ale podotknout, že všechny funkce učebnice jsou mezi sebou úzce propojené, a při samostatné práci žáci určitě na jiné zdroje narazí.
+Výhodný způsob, jak této funkce docílit, je obracení se k žákovi napřímo,
+\cite[str. 17]{PAN2023}
+
+\fillbreak
+
+Funkce kontrolně-hodnotící
+
 
 Všechny funkce učebnice zcela závisí na jazykové úrovni učebnice.
 \cite[str. 8]{PAN2023}
 
-\textbf{Z předchozích definicí jasně plyne, že budoucí digitální učebnice musí }
+\fillbreak
+
+\textbf{Z předchozích definicí jasně plyne, že budoucí digitální učebnice musí zajištovat}  - tak, jak bylo již v předchozí kapitole zmíněno - \textbf{kvalitní obsah učebnice a napomáhat pedagogům při jeho tvorbě}, ale zároveň také \textbf{nejen předávat znalost uživatelům, ale taktéž uživatele motivovat, }
 
 \subsection{Problémy současného vzdělávání}
 \subsubsection{Rovnost, ideologie a sociální struktury ve vzdělávání}
@@ -642,18 +655,20 @@ Vnější cvičení jednoduše povoluje autorovi vestavit cvičení ze stránek 
 
 \subsection{Prvky sloužící k přívětivosti k novým uživatelům}
 \subsubsection{Tutoriál a OOBE}
+Při první návštevě nějaké podstatné stránky, nebo při prvním příhlášení,
+
 \subsubsection{Vestavěná pomoc a dokumentace}
 Každá stránka v učebnici má svojí stránku s dokumentací, podporou a častými dotazy.
 
 \subsection{Analytické prvky}
 \subsubsection{Analýza délky vět a slov}
-Učebnice neustále kontroluje průměrnou délku slov a vět v každé kapitole článku.
+Učebnice při úpravě textu neustále kontroluje průměrnou délku slov a vět v každé kapitole článku.
 \subsubsection{Analýza počtu multimediálních prvků}
-Učebnice kontroluje počet multimediálních prvků v porovnání s textem. Dle ...
+Učebnice při úpravě textu kontroluje počet multimediálních prvků v porovnání s textem. Dle ...
 \subsubsection{Analýza duplikátních titulků}
-Učebnice kontroluje taktéž, zda názvy kapitol obsahují duplikáty.
+Učebnice při úpravě textu kontroluje taktéž, zda názvy kapitol obsahují duplikáty.
 \subsubsection{Analýza vzácných a netypických slov}
-Učebnice analyzuje taktéž výskyt slov netypických a vzácných, na které pak, nejsou-li již přidány do seznamu pojmů, upozorní.
+Učebnice analyzuje při úpravě textu článku taktéž výskyt slov netypických a vzácných, na které pak, nejsou-li již přidány do seznamu pojmů, upozorní.
 
 \newpage
 \section{Implementace učebnice}
@@ -738,12 +753,12 @@ Jako CDN pro multimediální prvky bylo použito Cloudinary, a to z důvodu jedn
 	\listoffigures
 
 	% seznam tabulek
-	\newpage
-	\listoftables
+	%\newpage
+	%\listoftables
 
 	% seznam grafů
-	\newpage
-	\listof{graph}{Seznam grafů}
+	%\newpage
+	%\listof{graph}{Seznam grafů}
 
 	% citace
 	\newpage
