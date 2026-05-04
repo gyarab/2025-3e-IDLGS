@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fly, fade } from 'svelte/transition';
 	import { m } from '$lib/paraglide/messages';
-import { goto, invalidateAll } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 	import { logout, setDarkMode } from '$lib';
 	import Button from '../(base)/components/Button.svelte';
 	import Dialog from '../(base)/components/Dialog.svelte';
@@ -20,9 +20,9 @@ import { goto, invalidateAll } from '$app/navigation';
 	let showLogoutConfirm = $state(false);
 </script>
 
-<div 
-    class="fixed top-0 left-0 z-30 h-16 w-full pointer-events-none"
-    style="
+<div
+	class="pointer-events-none fixed top-0 left-0 z-30 h-16 w-full"
+	style="
         backdrop-filter: blur(2px);
         -webkit-backdrop-filter: blur(2px);
         background: linear-gradient(to bottom, 
@@ -45,13 +45,15 @@ import { goto, invalidateAll } from '$app/navigation';
 				: 'border-white/40 bg-white/50 text-black'}"
 		>
 			<div class="flex items-center gap-3 sm:px-2">
-				<img
-					src="/logo.svg"
-					alt="Logo"
-					class="h-12 w-12"
-				/>
+				<a href="/">
+					<img
+						src="/logo.svg"
+						alt="Logo"
+						class="h-12 w-12 transition-transform hover:scale-90"
+					/>
+				</a>
 				<h2
-					class="hidden text-nowrap font-black tracking-widest uppercase sm:inline"
+					class="hidden font-black tracking-widest text-nowrap uppercase sm:inline"
 				>
 					Digitalni Ucebnica
 				</h2>
@@ -132,7 +134,7 @@ import { goto, invalidateAll } from '$app/navigation';
 			</div>
 			<div>
 				<h3 class="text-xl font-bold">{m.logout()}?</h3>
-				<p class="text-sm opacity-60 font-medium">
+				<p class="text-sm font-medium opacity-60">
 					Are you sure you want to end your session?
 				</p>
 			</div>
