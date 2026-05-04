@@ -189,15 +189,19 @@ O hodnotě učebnice rozhodují různé funkce, jmenovitě:
 
 \cite[str. 8]{PAN2023}
 
-Funkci informační plní v učebnici text autora: ať už popisující, zhodnoťující, citace zdrojů atp. Mezi tyto texty jsou řazeny i definice pojmů či poznámky.
+Funkci informační plní v učebnici text autora: ať už popisující, zhodnoťující, citace zdrojů atp. Mezi tyto texty jsou řazeny i definice pojmů či poznámky.  Jednoduše řečeno jedná se o funkci předávací, kde autor předává své znalosti uživatelům učebnice.
 \cite[str. 13]{PAN2023}
 
-Funkce tranformační označuje schopnost učebnice prezentovat věci z několika úhlů pohledu
+Funkce tranformační označuje schopnost učebnice prezentovat věci z několika úhlů pohledu, všech samožřejmě faktuálně správných,  Tato funkce učebnice pomáhá uživatelům učebnice naučit se rozhodování a evaluaci jednotlivých možností, dovedností, které jsou v dnešním životě nezvykle obtížné.
 \cite[str. 15]{PAN2023}
 
-Funkci samovyučující označuje schopnost učebnice vzbudit zájem o vědu, o znalosti mimo informaci podanou v učebnici
+Funkci samovyučující označuje schopnost učebnice vzbudit zájem o téma učebnice, o přečtení původních zdrojů učebnice a vyhledávání zdrojů mimo učebnice.
+\cite[str. 16]{PAN2023}
 
-Všechny funkce učebnice závisí na jazykové úrovni učebnice.
+Funkce motivační
+Od minulých funkcí se líší tím, že
+
+Všechny funkce učebnice zcela závisí na jazykové úrovni učebnice.
 \cite[str. 8]{PAN2023}
 
 \textbf{Z předchozích definicí jasně plyne, že budoucí digitální učebnice musí }
@@ -402,8 +406,7 @@ Níže jsou uvedeny všechna kritéria, a jejich dodržení učebnicovým systé
 		}}
 	\end{quotation}
 
-	Toto pravidlo učebnice dodržuje za pomocí funkce \enquote{Definice pojmů} a za pomocí analýzy neznámých slov. Narazí-li program na slovo, které se nenachází v orientačním seznamu 10 000 slov (a není jeho tvarem - na záíkladní tvar ho převádí model NLP), a zároveň není v seznamu definicí, upozorní na to autora učebnice, a nabídne mu možnost přídání slova do definice.
-	% TODO CITACE WIKTIONARY SEZNAM 10000 NEJPOUŽÍVANĚJŠÍCH
+	Toto pravidlo učebnice dodržuje za pomocí funkce \enquote{Definice pojmů} a za pomocí analýzy neznámých slov. Narazí-li program na slovo, které se nenachází v orientačním seznamu 10 000 slov \cite{CNK} (a není jeho tvarem - na základní tvar ho převádí model NLP), a zároveň není v seznamu definicí, upozorní na to autora učebnice, a nabídne mu možnost přídání slova do definice.
 \end{samepage}
 
 \filbreak
@@ -558,39 +561,44 @@ Učebnice podporuje celkem 7  typů interaktivních cvičení, kterými jsou:
 
 \newpage
 
+\begin{samepage}
 \par
 Křížovka \enquote*{s hádankou} obsahuje jeden sloupec slov, různě posunutých, a sloupec obsahující hádanku.
 Uvnitř databáze je uložena jako dva různá pole a výsledek. Diaktrika je ignorována. Kontrola cvičení spoléhá na kontrole jak slov, tak i finální odpovědi.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[height=4cm]{crs.png}
+	\includegraphics[height=6cm]{crs.png}
 	\caption{Grafické znázornění křížovky s hádankou.}
 	\label{fig:crs}
 \end{figure}
+\end{samepage}
 
+\begin{samepage}
 \par
 Křížovka  \enquote*{bez hádanky}  obsahuje mřížku, na které jsou vykreslena jednotlivá slova. Tato hádanka nemá ani řešení, ani jasně daný směr - správně je pouze tehdy, jsou-li všechna slova správně zaplněna.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[height=4cm]{crw.png}
+	\includegraphics[height=6cm]{crw.png}
 	\caption{Grafické znázornění křížovky bez hádanky.}
 	\label{fig:crw}
 \end{figure}
+\end{samepage}
 
+\begin{samepage}
 \par
 Spojování pojmů a jejich skutečností spoléhá na pochopení nikoliv toho, co daný pojem znamená dle definice, ale také praktická schopnost ho najít a poznat v kontextu. Cvičení je správně, pokud jsou všechny dvojce spojené.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[height=4cm]{def.png}
+	\includegraphics[height=6cm]{def.png}
 	\caption{Grafické znázornění spojování definic.}
 	\label{fig:def}
 \end{figure}
+\end{samepage}
 
-\newpage
-
+\begin{samepage}
 \par
 Přiřazení pojmů a definicí spočívá na zapamatování, odvození či pochopení definice pojmu. Cvičení je správně, jsou-li všechny dvojice správně. Toto cvičení lze automaticky vygenerovat na základě seznamu definic pojmů, a to jak pouze z daného článku, tak i z celé kapitoly či učebnice.
 
@@ -600,16 +608,32 @@ Přiřazení pojmů a definicí spočívá na zapamatování, odvození či poch
 	\caption{Grafické znázornění přiřazování pojmů a definic.}
 	\label{fig:dft}
 \end{figure}
+\end{samepage}
+
+\begin{samepage}
+\par
+Grafická kalkulačka umožňuje vykreslení funkcí, rovnic a nerovnic, stejně jako vypočítání jejich hodnot. Zde je za správnou odpověď považován buď správný výsledek (a to buď ve formě ciferného, skalárního výsledku nebo i vektorového či komplexního), nebo správný předpis funkce.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=6cm]{grp.png}
+	\caption{Grafické znázornění funkcí, které je možné za pomocí grafické kalkulačky vykreslit.}
+	\label{fig:grp}
+\end{figure}
+
+\end{samepage}
 
 \par
-Grafická kalkulačka umožňuje vykreslení funkcí, rovnic a nerovnic.
+Geomterická pláň umožňuje vykreselní geometrických útvarů a zapsání postupu konstrukce.
 
-
-
-\par
-Geomterická pláň umožňuje
 Geometrická pláň podporuje pouze planimetrii, stereometrie není zatím podporována.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=6cm]{geo.png}
+	\caption{Grafické znázornění geometrckého útvaru sestrojitelného v cvičení}
+	\label{fig:geo}
+\end{figure}
 
 \par
 Vnější cvičení jednoduše povoluje autorovi vestavit cvičení ze stránek třetích stran, a to z jakéhokoliv odkazu. Zde není kontrola možná či potřebná, učebnice zde plně spoléhá na funkcionalitu třetí stran.
@@ -619,7 +643,7 @@ Vnější cvičení jednoduše povoluje autorovi vestavit cvičení ze stránek 
 \subsection{Prvky sloužící k přívětivosti k novým uživatelům}
 \subsubsection{Tutoriál a OOBE}
 \subsubsection{Vestavěná pomoc a dokumentace}
-Každá stránka v učebnici má svojí stránku s dokumentací
+Každá stránka v učebnici má svojí stránku s dokumentací, podporou a častými dotazy.
 
 \subsection{Analytické prvky}
 \subsubsection{Analýza délky vět a slov}
@@ -631,12 +655,13 @@ Učebnice kontroluje taktéž, zda názvy kapitol obsahují duplikáty.
 \subsubsection{Analýza vzácných a netypických slov}
 Učebnice analyzuje taktéž výskyt slov netypických a vzácných, na které pak, nejsou-li již přidány do seznamu pojmů, upozorní.
 
-Tímto učebnice splňuje pravidla
-
 \newpage
 \section{Implementace učebnice}
 \subsection{Postup}
 Učebnice byla implementována postupně, od základních funkcí do těch nejvíce komplikovaných. Jako první byla implementována základní struktura stránek, které byly postupně zaplňovány nejdřívě backendem a základním \enquote{programátorským} rozhraním, které bylo pak jiným členem vývojového týmu přepracováno.
+
+\subsection{Grafická a vizuální podoba}
+TODO ALI
 
 \subsection{Využití AI}
 AI bylo během vývoje použito v omezeném množství. Při vývoji za pomocí agenta byly ale dodrženy následující zásady:
@@ -663,7 +688,7 @@ Během vývoje učebnice byly použity nějnovější technologie dostupné pro 
 \cite{Drizzle} Tento výběr technologií nabízí velmi příjmenou zkušenost pro vývojáře za pomocí kvalitní dokumentace, jednoduchých integrací mezi sebou a jednoduchého modelu komponentů, který umožňuje vysoký úrověn abstrakce a vysoké procento přepoužitého kódu. Nevýhody jsou avšak nízká spolehlivost knihoven a balíčků - při jakékoliv sebemenší chybě např. v konfiguračním souboru je ihned spuštěna kaskádová reakce, která zničí celou stránku v programu, případně i celý program.
 
 Byl použit také značný počet balíčků, jako např. Nodemalier pro posílání emailových oznámení, \cite{Nodemailer}
-Tailwind pro jednodušší stylování elementů a prvků stránky a jako rozšíření CSS, \cite{Tailwind}, FuseJS pro funkci vyhledávání,  	\cite{FuseJS} ModelViewer by Google \cite{ModelViewer} nebo Chart.js \cite{ChartJS} pro implementaci grafů jakožto multimediální prvků.
+Tailwind pro jednodušší stylování elementů a prvků stránky a jako rozšíření CSS, \cite{Tailwind}, RemixIcons pro ikonky \cite{RemixIcons} FuseJS pro funkci vyhledávání,  \cite{FuseJS} ModelViewer by Google \cite{ModelViewer}, Math.js pro výpočty rovnic v článcích a grafickou kalkulačku \cite{MathJS}  nebo Chart.js \cite{ChartJS} pro implementaci grafů jakožto multimediální prvků.
 
 Pro informaci týkaícího se samotného programovacího jayzka - čili TypeSciptu - byla použita webová dokumentace nadace Mozilla, často označována jako MDN. \cite{MDN}
 
@@ -719,14 +744,6 @@ Jako CDN pro multimediální prvky bylo použito Cloudinary, a to z důvodu jedn
 	% seznam grafů
 	\newpage
 	\listof{graph}{Seznam grafů}
-
-	% seznam odb. pojmů
-	\newpage
-	\section*{Seznam odborných pojmů}
-	Zde se nachází seznam odborných pojmů, a zároveň jejich vysvětlení. Pojmy jsou seřazeny abecedně.
-
-	\textbf{NLP} \textit{angl. natural language processing, zpracování přirozeného jazyka} Model, který analyzuje věty a paragrafy a transformuje je na struktury, které je možné počítačem jednodušeji procesovat.
-	\newline
 
 	% citace
 	\newpage
