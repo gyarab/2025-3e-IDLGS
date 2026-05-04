@@ -17,6 +17,7 @@
 	import { goto } from '$app/navigation';
 	import type { ArticleTypeRawUuid } from '$lib/types';
 	import { addToast } from '$lib/toast';
+	import DFTEditor from './editor/DFTEditor.svelte';
 
 	let {
 		data,
@@ -162,6 +163,8 @@
 				<CRWEditor />
 			{:else if type == 'DEF'}
 				<DEFEditor />
+			{:else if type == 'DFT'}
+				<DFTEditor />
 			{:else if type == 'GRP'}
 				<GRPEditor />
 			{:else if type == 'GEO'}

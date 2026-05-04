@@ -52,6 +52,17 @@
 	<TypeSelectionButton
 		onclick={() => {
 			stage++;
+			type = 'DFT';
+		}}
+		{color}
+		{darkMode}
+		emoji="question"
+		i={3}
+		text={m.definitionsAndTerms()}
+	/>
+	<TypeSelectionButton
+		onclick={() => {
+			stage++;
 			type = 'GRP';
 		}}
 		{color}
