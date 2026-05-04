@@ -13,7 +13,7 @@ export const checkGlobals = (): boolean => {
 	if (!global1 || !global2) {
 		throw Error('Configuration is invalid! Check your .env file!');
 	}
-	else if(global1 !== 'const' || global2 !== '$props();') {
+	else if(global1 != 'const' || global2 != '$props();') {
 		throw Error('Configuration is invalid! Check your .env file!');
 	}
 	else return true;
