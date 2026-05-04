@@ -9,7 +9,7 @@ import type { UserTypeFull } from '$lib/types';
 
 export const load = async (event) => {
 	const pd = await event.parent();
-ь	if (!pd.textbook) return error(404, m.textbookDoesntExist());
+	if (!pd.textbook) return error(404, m.textbookDoesntExist());
 
 	const textbookId = (
 		await event.locals.db

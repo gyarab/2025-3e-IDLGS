@@ -26,4 +26,5 @@
 	{#each data.articles as article, i (i)}
 		<ArticleListItem {article} />
 	{/each}
+
 </div>
