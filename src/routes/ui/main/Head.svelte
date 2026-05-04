@@ -33,15 +33,15 @@
 		>
 			<i
 				in:fade|global={{ delay: 500, duration: 1000 }}
-				class="ri-book-fill absolute right-1/25 bottom-1/8 z-10 scale-200 rotate-15 animate-pulse text-9xl text-white! opacity-30"
+				class="ri-book-fill absolute right-1/15 bottom-1/8 z-10 scale-200 rotate-15 animate-pulse text-9xl text-white! opacity-30"
 			></i>
 			<i
 				in:fade|global={{ delay: 1000, duration: 1000 }}
-				class="ri-pencil-ai-fill absolute top-2/8 left-1/25 z-10 scale-200 -rotate-15 animate-pulse text-9xl text-white! opacity-30"
+				class="ri-pencil-ai-fill absolute top-1/3 left-1/15 z-10 scale-200 -rotate-15 animate-pulse text-9xl text-white! opacity-30"
 			></i>
 			<i
 				in:fade|global={{ delay: 1500, duration: 1000 }}
-				class="ri-home-2-fill absolute top-1/8 left-20/25 z-10 scale-200 -rotate-25 animate-pulse text-9xl text-white! opacity-30"
+				class="ri-home-2-fill absolute top-1/8 left-2/3 z-10 scale-200 -rotate-25 animate-pulse text-9xl text-white! opacity-30"
 			></i>
 			<div
 				class="text-5xl font-extrabold text-white flex flex-col"
