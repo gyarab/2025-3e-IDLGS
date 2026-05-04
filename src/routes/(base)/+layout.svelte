@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import Navbar from './ui/Navbar.svelte';
-	import Footer from './ui/Footer.svelte';
+	import Navbar from '../ui/Navbar.svelte';
+	import Footer from '../ui/Footer.svelte';
 	import { browser } from '$app/environment';
 	import { onMount, onDestroy } from 'svelte';
 	import { setLocale, type Locale } from '$lib/paraglide/runtime';

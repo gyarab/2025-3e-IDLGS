@@ -240,5 +240,15 @@
 	"select3DModel": "Vyberte 3D model",
 	"modelSelected": "Model vybrán",
 	"failedToCreateExercise": "Vytvoření cvičení se nezdařilo",
-	"textbooks": "Učebnice"
+	"textbooks": "Učebnice",
+	"allRightsReserved": "Všechna práva vyhrazena",
+	"contactUs": "Kontaktujte nás",
+	"theInteractiveDigitalTextbook": "Interaktivní digitální učebnice",
+	"scrollDownToExploreMore": "Sjeďte dolů pro více informací",
+	"interactiveContent": "Interaktivní obsah",
+	"cuttingEdgeFeatures": "Nejmodernější funkce",
+	"mutlimediaSupport": "Podpora multimédií",
+	"contactTheDevs": "Kontaktujte vývojáře",
+	"theTeam": "Tým",
+	"soundsInteresting": "Zní to zajímavě"
 }

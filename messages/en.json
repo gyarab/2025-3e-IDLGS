@@ -240,5 +240,15 @@
 	"select3DModel": "Select 3D model",	
 	"modelSelected": "Model selected",
 	"failedToCreateExercise": "Failed to create exercise",
-	"textbooks": "Textbooks"
+	"textbooks": "Textbooks",
+	"allRightsReserved": "All rights reserved",
+	"contactUs": "Contact us",
+	"theInteractiveDigitalTextbook": "The interactive digital textbook",
+	"scrollDownToExploreMore": "Scroll down to explore more",
+	"interactiveContent": "Interactive content",
+	"cuttingEdgeFeatures": "Cutting-edge features",
+	"mutlimediaSupport": "Multimedia support",
+	"contactTheDevs": "Contact the developers",
+	"theTeam": "The team",
+	"soundsInteresting": "Sounds interesting"
 }

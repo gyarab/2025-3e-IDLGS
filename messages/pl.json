@@ -239,5 +239,15 @@
 	"select3DModel": "Wybierz model 3D",
 	"modelSelected": "Model wybrany",
 	"failedToCreateExercise": "Nie udało się utworzyć ćwiczenia",
-	"textbooks": "Podręczniki"
+	"textbooks": "Podręczniki",
+	"allRightsReserved": "Wszystkie prawa zastrzeżone",
+	"contactUs": "Skontaktuj się z nami",
+	"theInteractiveDigitalTextbook": "Interaktywny podręcznik cyfrowy",
+	"scrollDownToExploreMore": "Przewiń w dół, aby dowiedzieć się więcej",
+	"interactiveContent": "Interaktywny content",
+	"cuttingEdgeFeatures": "Najnowocześniejsze funkcje",
+	"mutlimediaSupport": "Wsparcie multimediów",
+	"contactTheDevs": "Skontaktuj się z deweloperami",
+	"theTeam": "Zespół",
+	"soundsInteresting": "Brzmi interesująco"
 }

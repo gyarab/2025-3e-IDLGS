@@ -3,7 +3,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import { goto } from '$app/navigation';
 	import { logout, setNavbarOpen } from '$lib';
-	import Button from '../components/Button.svelte';
+	import Button from '../(base)/components/Button.svelte';
 	import { resolve } from '$app/paths';
 
 	let {

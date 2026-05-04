@@ -1,4 +1,10 @@
-import { fail, isActionFailure, type RequestEvent } from '@sveltejs/kit';
+import { fail, isActionFailure, redirect, type RequestEvent } from '@sveltejs/kit';
+import { resolve } from '$app/paths';
+
+export const load = async (event) => {
+	const pd = await event.parent();
+	if(pd.user) redirect(302, resolve('/(base)/textbook'));
+};
 
 const cookieSetupAction = async (
 	event: RequestEvent,
