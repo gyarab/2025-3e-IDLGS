@@ -83,7 +83,7 @@
 				/>
 
 				<Button
-					emoji="health-book"
+					emoji="book"
 					text={m.textbooks()}
 					type="button"
 					rmwhite={darkMode}

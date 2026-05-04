@@ -4,7 +4,7 @@
 
 <!-- Footer.svelte -->
 <div
-	class="relative z-5 flex h-[20svh] w-full min-w-screen! grow flex-row justify-center bg-neutral-700! pt-5 pb-5 text-white!"
+	class="relative z-5 flex h-[20svh] w-full min-w-screen! grow flex-row justify-center bg-neutral-700! py-2 text-white!"
 >
 	<div class="grid w-2/3 grid-cols-2 gap-2 *:justify-center">
 		<div class="flex flex-col gap-0">
