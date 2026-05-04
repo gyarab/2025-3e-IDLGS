@@ -45,9 +45,9 @@
 
 	{#if ready}
 		<div
-			class="z-10 flex w-full max-w-5xl flex-col gap-6 rounded-4xl border border-white/10 p-8 shadow-2xl backdrop-blur-xl sm:rounded-[3rem] md:p-12 {darkMode
+			class="z-10 flex w-full max-w-5xl flex-col gap-6 rounded-3xl border border-white/10 p-8 shadow-2xl backdrop-blur-xs sm:rounded-4xl md:p-12 {darkMode
 				? 'bg-black/60 text-white'
-				: 'bg-white/70 text-black'}"
+				: 'bg-white/80 text-black'}"
 			in:fade={{ duration: 400 }}
 		>
 			<header
@@ -70,7 +70,7 @@
 			</header>
 
 			<div
-				class="h-px w-full bg-linear-to-r from-transparent via-white/20 to-transparent mb-2"
+				class="mb-2 h-px w-full bg-linear-to-r from-transparent via-white/20 to-transparent"
 			></div>
 
 			<div class="flex flex-col gap-6">

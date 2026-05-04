@@ -27,7 +27,7 @@
 	</title>
 </svelte:head>
 
-<div class="max-w-screen overflow-x-hidden overflow-y-scroll flex h-full min-h-screen w-full flex-col gap-0 items-center justify-center">
+<div class="max-w-screen overflow-x-hidden overflow-y-auto flex h-full min-h-screen w-full flex-col gap-0 items-center justify-center">
 	<GuestNavbar darkMode={data.darkMode} color={data.color} />
 
 	<Head
