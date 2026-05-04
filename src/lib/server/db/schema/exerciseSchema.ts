@@ -45,7 +45,7 @@ export const exercise = pgTable(
 	(table) => [
 		check(
 			'type',
-			sql`${table.type} IN ('CRS', 'CRW', 'DEF', 'GRP', 'GEO', 'EXT')`,
+			sql`${table.type} IN ('CRS', 'CRW', 'DEF', 'GRP', 'GEO', 'EXT', 'DFT)`,
 		),
 		check(
 			'exerciseTypeData',
@@ -55,6 +55,7 @@ export const exercise = pgTable(
 			(type = 'GRP' AND grp IS NOT NULL AND "crosswordDataId" IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND geo IS NULL AND ext IS NULL) OR
 			(type = 'GEO' AND geo IS NOT NULL AND "crosswordDataId" IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND grp IS NULL AND ext IS NULL) OR
 			(type = 'EXT' AND ext IS NOT NULL AND "crosswordDataId" IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL) OR
+			(type = 'DFT' AND dft IS NOT NULL AND "crosswordDataId" IS NULL AND crs IS NULL AND crw IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL) OR
 			(type = 'CRW' AND "crosswordDataId" IS NOT NULL AND crs IS NULL AND def IS NULL AND grp IS NULL AND geo IS NULL AND ext IS NULL)
 			`,
 		),
@@ -135,6 +136,7 @@ export const exerciseDefinitions = pgTable('exerciseDefinitions', {
 
 export const exerciseGraph = pgTable('exerciseGraph', {
 	id: serial('id').primaryKey().notNull(),
+	task: text('task').notNull(),
 });
 
 export const exerciseGraphFunction = pgTable('exerciseGraphFunction', {
@@ -144,6 +146,22 @@ export const exerciseGraphFunction = pgTable('exerciseGraphFunction', {
 
 export const exerciseGeometry = pgTable('exerciseGeometry', {
 	id: serial('id').primaryKey().notNull(),
+	task: text('task').notNull(),
+});
+
+export const exerciseGeometryStepsLinker = pgTable('exerciseGeometryStepsLinker', {
+	id: serial('id').primaryKey().notNull(),
+	geometryId: integer('geometryId')
+		.notNull()
+		.references(() => exerciseGeometry.id, { onDelete: 'cascade' }),
+	stepsId: integer('stepsId')
+		.notNull()
+		.references(() => exerciseGeometryConstructionSteps.id, { onDelete: 'cascade' }),
+});
+
+export const exerciseGeometryConstructionSteps = pgTable('exerciseGeometryConstructionSteps', {
+	id: serial('id').primaryKey().notNull(),
+	text: text('text').notNull(),
 });
 
 export const exerciseEmbed = pgTable('exerciseEmbed', {
