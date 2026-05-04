@@ -32,14 +32,15 @@
 	)}); --brand: {data.color};"
 >
 	<i
-		class="ri-book-3-line absolute right-1/20 bottom-1/6 scale-200 rotate-15 text-9xl text-white opacity-20"
+		class="ri-book-3-line absolute right-1/15 bottom-1/6 scale-200 rotate-15 text-9xl text-white opacity-20"
 	></i>
 	<i
-		class="ri-stack-line absolute top-1/4 left-1/20 scale-200 -rotate-15 text-9xl text-white opacity-20"
+		class="ri-stack-line absolute top-1/4 left-1/15 scale-200 -rotate-15 text-9xl text-white opacity-20"
 	></i>
 
 	<div
-		class="z-10 flex w-full max-w-4xl flex-col gap-6 rounded-3xl p-6 shadow-2xl backdrop-blur-sm sm:rounded-4xl md:p-8 {data.darkMode
+		class="z-10 flex w-full max-w-4xl flex-col gap-6 rounded-3xl p-6 shadow-2xl backdrop-blur-sm
+			sm:rounded-4xl md:p-8 mt-20 {data.darkMode
 			? 'bg-neutral-800/80 text-white'
 			: 'bg-white/90 text-black'}"
 	>

@@ -39,7 +39,7 @@
 </svelte:head>
 
 <div
-	class="relative flex min-h-screen w-full flex-col items-center gap-8 overflow-hidden p-6 py-8"
+	class="relative flex min-h-screen w-full flex-col items-center gap-8 overflow-hidden p-6 py-8 pt-20"
 	style="background: linear-gradient(135deg, {data.color}, {darkenHex(
 		data.color,
 		80,

@@ -9,6 +9,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import Contact from './ui/main/Contact.svelte';
 	import Split from './ui/main/Split.svelte';
+	import { darkenHex } from '$lib';
 
 	let {
 		data,

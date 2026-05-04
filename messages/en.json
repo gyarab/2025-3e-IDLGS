@@ -237,7 +237,7 @@
 	"uploadProfilePicture": "Upload profile picture",
 	"formula": "Formula",
 	"saveArticle": "Save article",
-	"select3DModel": "Select 3D model",	
+	"select3DModel": "Select 3D model",
 	"modelSelected": "Model selected",
 	"failedToCreateExercise": "Failed to create exercise",
 	"textbooks": "Textbooks",
@@ -250,5 +250,14 @@
 	"mutlimediaSupport": "Multimedia support",
 	"contactTheDevs": "Contact the developers",
 	"theTeam": "The team",
-	"soundsInteresting": "Sounds interesting"
+	"soundsInteresting": "Sounds interesting",
+	"hero_description": "IDLGS brings a revolution in education - the interactive digital textbook - which, using scientifically proven methods, increases student motivation and engagement.",
+	"feature_interactive_desc": "Our textbooks feature interactive exercises, quizzes, and multimedia elements that enhance student engagement and facilitate understanding of complex concepts.",
+	"feature_cutting_edge_desc": "Our textbooks utilize the latest technologies and methods to ensure the best educational outcomes.",
+	"feature_multimedia_desc": "Our textbooks provide excellent support for multimedia learning, enhancing student understanding and engagement.",
+	"about_description": "IDLGS is an interactive digital textbook that revolutionizes education. Our platform offers a wide range of interactive content, including 3D models, multimedia elements, and innovative features that enhance student engagement and facilitate learning.",
+	"team_description": "Our team consists of enthusiastic developers, designers, and educators who are passionate about bringing innovation to education. Together, we work to ensure that IDLGS is not only functional but also user-friendly and effective for all users.",
+	"martin_desc": "Avid software engineer, psychology entusiast and main project manager.",
+	"ali_desc": "A skilled designer and front-end developer, responsible for the visual design and user experience of IDLGS.",
+	"kira_desc": "A passionate biologist and educator, dedicated to making science accessible and engaging for everyone."
 }

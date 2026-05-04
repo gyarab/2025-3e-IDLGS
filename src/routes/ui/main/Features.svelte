@@ -1,123 +1,105 @@
 <script lang="ts">
-	import { m } from '$lib/paraglide/messages';
-	import { darkenHex, isInViewport } from '$lib';
-	import { getLocale } from '$lib/paraglide/runtime';
-	import { fly } from 'svelte/transition';
-	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
+    import { m } from '$lib/paraglide/messages';
+    import { darkenHex, isInViewport } from '$lib';
+    import { fly, fade } from 'svelte/transition';
+    import { onMount } from 'svelte';
+    import { browser } from '$app/environment';
 
-	let locale = $derived(getLocale());
+    let {
+        darkMode,
+        color,
+    }: {
+        darkMode: boolean;
+        color: string;
+    } = $props();
 
-	let {
-		darkMode,
-		color,
-	}: {
-		darkMode: boolean;
-		color: string;
-	} = $props();
+    let container: HTMLDivElement | undefined = $state(undefined);
+    let ready = $state(false);
 
-	let container: HTMLDivElement | undefined = $state(undefined);
-	let ready = $state(false);
-
-	onMount(() => {
-		if (!browser) return;
-		isInViewport(container!).then(() => {
-			ready = true;
-		});
-	});
+    onMount(() => {
+        if (!browser) return;
+        setTimeout(() => {
+            isInViewport(container!).then(() => {
+                ready = true;
+            });
+        }, 100);
+    });
 </script>
 
 <div
-	class="flex w-1/2 flex-col p-2"
-	bind:this={container}
+    class="relative flex min-h-[70vh] w-full flex-col items-center justify-center overflow-hidden p-6"
+    style="background: linear-gradient(135deg, {color}, {darkenHex(color, 80)}); --brand: {color};"
+    bind:this={container}
 >
-	{#if ready}
-		{#key ready}
-			<h1 in:fly|global={{ x: 1000, duration: 500 }}>{m.features()}</h1>
-			<p class="text-justify" in:fly|global={{ x: 1000, duration: 500, delay: 200, opacity: 0 }}>
-				<!-- better to do like this, translations strings aren't great fo this and are for strings used more than once (usually) -->
-				{#if locale === 'cs'}
-					IDLGS přínáší revoluci ve vzdělávání - interaktivní
-					digitální učebnici - která za pomocí vědecky potvrzených
-					metod zvyšuje motivaci a zapojení studentů.
-				{:else if locale === 'pl'}
-					IDLGS przynosi rewolucję w edukacji - interaktywny
-					podręcznik cyfrowy - który za pomocą naukowo potwierdzonych
-					metod zwiększa motywację i zaangażowanie uczniów.
-				{:else}
-					IDLGS brings a revolution in education - the interactive
-					digital textbook - which, using scientifically proven
-					methods, increases student motivation and engagement.
-				{/if}
-			</p>
-			<div
-				class="grid grid-cols-3 gap-4 *:flex *:aspect-square *:flex-col *:rounded-2xl *:border-2 *:border-neutral-500/50 *:bg-neutral-500/50 *:p-2 *:backdrop-blur-sm"
-			>
-				<div
-					class=""
-					in:fly={{ y: 20, duration: 500 }}
-				>
-					<h2 class="text-neutral-700">{m.interactiveContent()}</h2>
-					<p class="text-justify text-black">
-						{#if locale === 'cs'}
-							Naše učebnice obsahují interaktivní cvičení, kvízy a
-							multimediální prvky, které zvyšují zapojení studentů
-							a usnadňují pochopení složitých konceptů.
-						{:else if locale === 'pl'}
-							Nasze podręczniki zawierają interaktywne ćwiczenia,
-							quizy i elementy multimedialne, które zwiększają
-							zaangażowanie uczniów i ułatwiają zrozumienie
-							skomplikowanych koncepcji.
-						{:else}
-							Our textbooks feature interactive exercises,
-							quizzes, and multimedia elements that enhance
-							student engagement and facilitate understanding of
-							complex concepts.
-						{/if}
-					</p>
-				</div>
-				<div
-					class=""
-					in:fly={{ y: 20, duration: 500, delay: 200 }}
-				>
-					<h2 class="text-neutral-700">{m.cuttingEdgeFeatures()}</h2>
-					<p class="text-justify text-black">
-						{#if locale === 'cs'}
-							Naše učebnice využívají nejnovější technologie a
-							metody, které zajišťují nejlepší výsledky ve
-							vzdělávání.
-						{:else if locale === 'pl'}
-							Nasze podręczniki wykorzystują najnowsze technologie
-							i metody, które zapewniają najlepsze wyniki w
-							edukacji.
-						{:else}
-							Our textbooks utilize the latest technologies and
-							methods to ensure the best educational outcomes.
-						{/if}
-					</p>
-				</div>
-				<div
-					class=""
-					in:fly={{ y: 20, duration: 500, delay: 400 }}
-				>
-					<h2 class="text-neutral-700">{m.mutlimediaSupport()}</h2>
-					<p class="text-justify text-black">
-						{#if locale === 'cs'}
-							Naše učebnice poskytují výbornou podporu pro
-							multimediální učení, což zlepšuje porozumění a
-							zapojení studentů.
-						{:else if locale === 'pl'}
-							Nasze podręczniki oferują excelentną obsługę uczenia
-							multimedialnego, co poprawia zrozumienie i
-							zaangażowanie uczniów.
-						{:else}
-							Our textbooks provide excellent support for
-							multimedia learning, enhancing student understanding
-							and engagement.
-						{/if}
-					</p>
-				</div>
-			</div>
-		{/key}
-	{/if}
+    <!-- Decorative Floating Icons -->
+    <i class="ri-rocket-2-line absolute right-1/10 top-1/6 scale-150 rotate-12 text-8xl text-white opacity-10"></i>
+    <i class="ri-lightbulb-line absolute left-1/10 bottom-1/4 scale-150 -rotate-12 text-8xl text-white opacity-10"></i>
+
+    {#if ready}
+        <div 
+            class="z-10 flex w-full max-w-5xl flex-col gap-8 rounded-3xl p-8 shadow-2xl backdrop-blur-md sm:rounded-4xl md:p-12 {darkMode ? 'bg-neutral-900/80 text-white' : 'bg-white/90 text-black'}"
+            in:fade={{ duration: 400 }}
+        >
+            <header class="max-w-2xl">
+                <h1 
+                    class="mb-4 text-3xl font-extrabold tracking-tight sm:text-5xl"
+                    in:fly={{ y: 30, duration: 600 }}
+                >
+                    {m.features()}
+                </h1>
+                <p 
+                    class="text-lg leading-relaxed opacity-70"
+                    in:fly={{ y: 30, duration: 600, delay: 100 }}
+                >
+                    {m.hero_description()}
+                </p>
+            </header>
+
+            <hr class="opacity-10" />
+
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                <!-- Interactive Content -->
+                <div 
+                    class="group flex flex-col gap-4 rounded-2xl border p-6 transition-all hover:scale-105 {darkMode ? 'border-white/10 bg-neutral-800/50' : 'border-black/5 bg-white/50'}"
+                    in:fly={{ y: 40, duration: 600, delay: 200 }}
+                >
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--brand)] text-2xl text-white shadow-lg">
+                        <i class="ri-cursor-line"></i>
+                    </div>
+                    <h2 class="text-xl font-bold">{m.interactiveContent()}</h2>
+                    <p class="text-sm leading-relaxed opacity-60">
+                        {m.feature_interactive_desc()}
+                    </p>
+                </div>
+
+                <!-- Cutting Edge -->
+                <div 
+                    class="group flex flex-col gap-4 rounded-2xl border p-6 transition-all hover:scale-105 {darkMode ? 'border-white/10 bg-neutral-800/50' : 'border-black/5 bg-white/50'}"
+                    in:fly={{ y: 40, duration: 600, delay: 300 }}
+                >
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--brand)] text-2xl text-white shadow-lg">
+                        <i class="ri-cpu-line"></i>
+                    </div>
+                    <h2 class="text-xl font-bold">{m.cuttingEdgeFeatures()}</h2>
+                    <p class="text-sm leading-relaxed opacity-60">
+                        {m.feature_cutting_edge_desc()}
+                    </p>
+                </div>
+
+                <!-- Multimedia -->
+                <div 
+                    class="group flex flex-col gap-4 rounded-2xl border p-6 transition-all hover:scale-105 {darkMode ? 'border-white/10 bg-neutral-800/50' : 'border-black/5 bg-white/50'}"
+                    in:fly={{ y: 40, duration: 600, delay: 400 }}
+                >
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--brand)] text-2xl text-white shadow-lg">
+                        <i class="ri-play-circle-line"></i>
+                    </div>
+                    <h2 class="text-xl font-bold">{m.mutlimediaSupport()}</h2>
+                    <p class="text-sm leading-relaxed opacity-60">
+                        {m.feature_multimedia_desc()}
+                    </p>
+                </div>
+            </div>
+        </div>
+    {/if}
 </div>
