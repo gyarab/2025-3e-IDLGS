@@ -283,5 +283,17 @@
 	"howDoIContactSupport": "Jak kontaktuji podporu?",
 	"youCanContactSupportByEmailingUsAtSupportIdlgsCom": "Podporu můžete kontaktovat zasláním e-mailu na support@idlgs.com",
 	"stillNeedHelp": "Stále potřebujete pomoc?",
-	"cantFindWhatYoureLookingFor": "Nemůžete najít, co hledáte?"
+	"cantFindWhatYoureLookingFor": "Nemůžete najít, co hledáte?",
+    "privacyPolicy": "Zásady ochrany osobních údajů",
+    "lastUpdated": "Poslední aktualizace",
+    "dataCollectionTitle": "Sběr dat",
+    "dataCollectionText": "Shromažďujeme údaje, které nám přímo poskytnete, jako je vaše jméno, e-mail a vzdělávací instituce, abychom vám mohli nabídnout personalizovaný zážitek ze čtení.",
+    "dataUsageTitle": "Jak využíváme data",
+    "dataUsageText": "Vaše údaje slouží ke sledování pokroku ve čtení, synchronizaci učebnic mezi zařízeními a generování osobních statistik učení.",
+    "securityTitle": "Zabezpečení",
+    "securityText": "K ochraně vašich osobních údajů a dat o čtení používáme standardní průmyslové šifrování.",
+    "cookiesTitle": "Soubory cookies",
+    "cookiesText": "Používáme nezbytné soubory cookies, abychom vás udrželi přihlášené a zapamatovali si vaše preference motivu.",
+    "contactPrompt": "Máte dotazy? Kontaktujte nás na",
+    "backToHome": "Zpět na domovskou stránku"
 }

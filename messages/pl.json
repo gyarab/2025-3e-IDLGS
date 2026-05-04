@@ -282,5 +282,17 @@
 	"howDoIContactSupport": "Jak skontaktować się z pomocą?",
 	"youCanContactSupportByEmailingUsAtSupportIdlgsCom": "Możesz skontaktować się z pomocą, wysyłając e-mail na support@idlgs.com",
 	"stillNeedHelp": "Nadal potrzebujesz pomocy?",
-	"cantFindWhatYoureLookingFor": "Nie możesz znaleźć tego, czego szukasz?"
+	"cantFindWhatYoureLookingFor": "Nie możesz znaleźć tego, czego szukasz?",
+    "privacyPolicy": "Polityka prywatności",
+    "lastUpdated": "Ostatnia aktualizacja",
+    "dataCollectionTitle": "Gromadzenie danych",
+    "dataCollectionText": "Gromadzimy informacje, które przekazujesz nam bezpośrednio, takie jak imię i nazwisko, adres e-mail oraz instytucja edukacyjna, aby zapewnić spersonalizowane wrażenia z czytania.",
+    "dataUsageTitle": "Jak wykorzystujemy dane",
+    "dataUsageText": "Twoje dane są wykorzystywane do śledzenia postępów w czytaniu, synchronizacji podręczników między urządzeniami oraz generowania osobistych statystyk nauki.",
+    "securityTitle": "Bezpieczeństwo",
+    "securityText": "Stosujemy branżowe standardy szyfrowania w celu ochrony Twoich danych osobowych oraz informacji o czytaniu.",
+    "cookiesTitle": "Pliki cookies",
+    "cookiesText": "Używamy niezbędnych plików cookies, aby utrzymać sesję logowania i zapamiętać Twoje preferencje dotyczące motywu.",
+    "contactPrompt": "Masz pytania? Skontaktuj się z nami pod adresem",
+    "backToHome": "Powrót do strony głównej"
 }
