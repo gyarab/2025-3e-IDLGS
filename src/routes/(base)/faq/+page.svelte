@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { darkenHex } from '$lib';
 	import { m } from '$lib/paraglide/messages';
+	import { fly } from 'svelte/transition';
 
 	let {
 		data,
@@ -14,20 +15,20 @@
 	let faqs = [
 		{
 			question: m.howDoICreateAnAccount(),
-			answer: m.toCreateAnAccountClickOnTheLoginButton()
+			answer: m.toCreateAnAccountClickOnTheLoginButton(),
 		},
 		{
 			question: m.howDoIAccessTextbooks(),
-			answer: m.youCanBrowseAndAccessTextbooksFromTheLibrary()
+			answer: m.youCanBrowseAndAccessTextbooksFromTheLibrary(),
 		},
 		{
 			question: m.whatAreInteractiveExercises(),
-			answer: m.interactiveExercisesAreDesignedToHelpYouPractice()
+			answer: m.interactiveExercisesAreDesignedToHelpYouPractice(),
 		},
-		{
-			question: m.howDoIContactSupport(),
-			answer: m.youCanContactSupportByEmailingUsAtSupportIdlgsCom()
-		}
+		// {
+		// 	question: m.howDoIContactSupport(),
+		// 	answer: m.youCanContactSupportByEmailingUsAt()
+		// }
 	];
 </script>
 
@@ -61,9 +62,20 @@
 
 		<hr class="opacity-20" />
 
-		<section class="space-y-6">
+		<section class="space-y-4">
 			{#each faqs as { question, answer }}
-				<div class="rounded-2xl border p-6 {data.darkMode ? 'border-white/10 bg-neutral-700/50' : 'border-gray-200 bg-gray-50'}">
+				<div
+					class="rounded-2xl border p-4 {data.darkMode
+						? 'border-white/10 bg-neutral-700/50'
+						: 'border-gray-200 bg-gray-50'}"
+					in:fly={{
+						x: 100,
+						y: 0,
+						duration: 300,
+						delay: 0,
+						opacity: 0,
+					}}
+				>
 					<h3 class="mb-2 text-lg font-semibold">{question}</h3>
 					<p class="opacity-80">{answer}</p>
 				</div>
@@ -75,9 +87,15 @@
 		<section class="text-center">
 			<h2 class="mb-4 text-xl font-bold">{m.stillNeedHelp()}</h2>
 			<p class="mb-4 opacity-80">
-				{m.cantFindWhatYoureLookingFor()} {m.contactOurSupportTeam()}.
+				{m.cantFindWhatYoureLookingFor()}
+				{m.contactOurSupportTeam()}.
 			</p>
-			<a href="mailto:support@idlgs.com" class="inline-flex items-center gap-2 rounded-2xl border px-6 py-3 font-semibold transition-colors {data.darkMode ? 'border-white/20 bg-neutral-700/50 hover:bg-neutral-700 text-white' : 'border-gray-300 bg-gray-100 hover:bg-gray-200 text-black'}">
+			<a
+				href="mailto:support@idlgs.com"
+				class="inline-flex items-center gap-2 rounded-2xl border px-6 py-3 font-semibold transition-colors {data.darkMode
+					? 'border-white/20 bg-neutral-700/50 text-white hover:bg-neutral-700'
+					: 'border-gray-300 bg-gray-100 text-black hover:bg-gray-200'}"
+			>
 				<i class="ri-mail-line"></i>
 				{m.contactSupport()}
 			</a>

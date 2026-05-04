@@ -14,25 +14,24 @@
     } = $props();
 
     const sections = [
-        { title: m.privacy_data_collection_title(), content: m.privacy_data_collection_body() },
-        { title: m.privacy_usage_title(), content: m.privacy_usage_body() },
-        { title: m.privacy_security_title(), content: m.privacy_security_body() },
-        { title: m.privacy_cookies_title(), content: m.privacy_cookies_body() }
+        { title: m.dataCollectionTitle(), content: m.dataCollectionText() },
+        { title: m.dataUsageTitle(), content: m.dataUsageText() },
+        { title: m.securityTitle(), content: m.securityText() },
+        { title: m.cookiesTitle(), content: m.cookiesText() }
     ];
 </script>
 
 <svelte:head>
-    <title>{m.privacy_policy()} | {m.idlgs()}</title>
+    <title>{m.privacyPolicy()} | {m.idlgs()}</title>
 </svelte:head>
 
 <div
-    class="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden p-4 py-12"
+    class="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden p-4 py-8 pt-20"
     style="background: linear-gradient(135deg, {data.color}, {darkenHex(
         data.color,
         80,
     )}); --brand: {data.color};"
 >
-    <!-- Decorative Background Icons -->
     <i class="ri-shield-check-line absolute right-1/20 bottom-1/6 scale-200 rotate-15 text-9xl text-white opacity-20"></i>
     <i class="ri-lock-password-line absolute top-1/4 left-1/20 scale-200 -rotate-15 text-9xl text-white opacity-20"></i>
 
@@ -43,21 +42,23 @@
     >
         <header class="flex flex-col gap-2">
             <div class="flex items-center gap-4">
-                 <Button 
+                <!--
+                <Button 
                     text="" 
                     emoji="arrow-left" 
                     type="button" 
                     css="rounded-full p-2 h-10 w-10 flex items-center justify-center bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10"
                     onclick={() => history.back()}
                 />
+                -->
                 <h1 class="text-3xl font-black tracking-tight sm:text-4xl">{m.privacyPolicy()}</h1>
             </div>
-            <p class="text-sm opacity-60">{m.lastUpdated()}: </p>
+            <p class="text-sm opacity-60">{m.lastUpdated()}: 04.05.2026</p>
         </header>
 
         <hr class="opacity-20" />
 
-        <div class="space-y-8 overflow-y-auto max-h-[60vh] pr-2 custom-scrollbar">
+        <div class="space-y-8 overflow-y-auto min-h-1/2 pr-2 custom-scrollbar">
             {#each sections as section}
                 <section>
                     <h2 class="mb-3 text-lg font-bold uppercase tracking-wider" style="color: var(--brand)">
