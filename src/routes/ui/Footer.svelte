@@ -3,7 +3,7 @@
 </script>
 
 <div
-	class="relative z-5 flex h-[20svh] w-full min-w-screen! grow flex-row justify-center bg-neutral-700! py-2 text-white!"
+	class="relative z-5 flex h-1/4 w-full min-w-screen! grow flex-row justify-center bg-neutral-700! py-4 text-white!"
 >
 	<div class="grid w-2/3 grid-cols-2 gap-2 *:justify-center">
 		<div class="flex flex-col gap-0">
@@ -13,7 +13,11 @@
 			<span>
 				{m.allRightsReserved()}.
 			</span>
+			<a href="/privacy" class="text-sm underline opacity-80 hover:opacity-100 transition-opacity">
+                {m.privacyPolicy()}
+            </a>
 			<div class="h-2"></div>
+			<!--
 			<h2>
 				{m.contactUs()}:
 			</h2>
@@ -21,6 +25,7 @@
 				<i class="ri-mail-send-line"></i>
 				<a href="mailto:idylliceggs@gmail.com">idylliceggs@gmail.com</a>
 			</div>
+			-->
 		</div>
 		<div class="flex flex-col gap-0">
 			<h2>
