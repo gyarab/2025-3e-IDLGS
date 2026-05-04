@@ -720,7 +720,35 @@ Učebnice je dostupná ve 3 různých jazycích, a to v angličtině, češtině
 Učebnice splňuje požadavky WAI-ARIA
 
 \subsection{Grafická a vizuální podoba}
-TODO ALI
+Vizuální styl projektu je v stylu moderního minimalismu který musí balancovat čistotu, čitelnost a estetickou hodnotu. Technicky je rozhraní realizováno pomocí utility-first frameworku Tailwind CSS, který umožňuje precizní kontrolu nad prvkami designu.
+
+\subsubsection{Barevné schéma a vizuální efekty}
+Aplikace plně podporuje přepínání mezi světlým a tmavým režimem (Dark Mode), čímž zvyšuje uživatelský komfort v různých světelných podmínkách.
+
+Vrstvení a hloubka: Design využívá techniku „Glassmorphismu“. Ta kombinuje poloprůhledné pozadí s efektem rozostření podkladu (backdrop blur), což vytváří dojem hloubky a hierarchie bez vizuálního chaosu.
+
+Práce s průhledností: Místo pevných barev jsou využívány transparentní varianty černé a bílé, které umožňují plynulé prolnutí prvků s barevnými gradienty na pozadí.
+
+\subsubsection{Typografie a rozložení (Layout)}
+Layout aplikace je vytvořen jako plně responsivní s využitím moderních metod flexibilního sázení (Flexbox).
+
+Kompozice: Hlavní navigační prvky jsou umístěny na středovou osu s proporcionálně definovanými rozestupy, což zajišťuje vizuální rovnováhu.
+
+Čitelnost: Maximální šířka obsahu je omezena (např. na 1152 px), aby byla zajištěna optimální délka řádků pro čtení na širokoúhlých monitorech.
+
+\subsubsection{Interaktivita a mikrointerakce}
+Pro zlepšení uživatelské zkušenosti (UX) jsou implementovány drobné, ale efektivní animace a transformace:
+
+Zpětná vazba: Interaktivní prvky reagují na akci uživatele (hover, focus) plynulou změnou měřítka nebo barvy. Tyto mikrointerakce poskytují okamžitou vizuální potvrzení o interakci.
+
+Vizuální komunikace: Standardní textové informace jsou doplněny o sady ikon a emoji, které slouží jako navigační vodítka a zlepšují celkový dojem z rozhraní.
+
+\subsubsection{Responsivita a adaptivní rozhraní}
+Klíčovým aspektem vývoje byla paralelní optimalizace pro mobilní i desktopová zařízení. Cílem bylo dosáhnout stoprocentní funkčnosti a estetické konzistence bez ohledu na typ koncového hardwaru.
+
+Univerzální přístup: Rozhraní využívá adaptivní breakpointy, které dynamicky mění layout z vertikálního (mobilního) na horizontální (desktopný) režim.
+
+Technické aspekty: Použití dynamických jednotek výšky viewportu (svh) a flexibilních kontejnerů garantuje, že projekt si zachovává přehlednost na malých displejích i velkých monitorech, přičemž obě platformy jsou považovány za prioritn
 
 \subsection{Využití AI}
 AI bylo během vývoje použito v omezeném množství. Při vývoji za pomocí agenta byly ale dodrženy následující zásady:
