@@ -43,3 +43,9 @@ export const sendMail = async (
 		console.error('Error: ', e);
 	}
 };
+
+export const checkConfig = () => {
+	if(!process.env.MAIL_CONFIG_VALID) {
+		throw Error('Configuration is invalid! Check your .env file!');
+	}
+};

@@ -8,8 +8,23 @@ import { makeHex } from '$lib';
 export const load = async (event) => {
 	const textbookRawData = (
 		await event.locals.db
-			.select()
+			.select({
+				id: databaseSchema.textbook.id,
+				uuid: databaseSchema.textbook.uuid,
+				title: databaseSchema.textbook.title,
+				description: databaseSchema.textbook.description,
+				lastEditedAt: databaseSchema.textbook.lastEditedAt,
+				r: databaseSchema.textbook.r,
+				g: databaseSchema.textbook.g,
+				b: databaseSchema.textbook.b,
+				educationLevel: databaseSchema.textbook.educationLevel,
+				thumbnail: databaseSchema.resource.url,
+			})
 			.from(databaseSchema.textbook)
+			.leftJoin(
+				databaseSchema.resource,
+				eq(databaseSchema.textbook.thumbnail, databaseSchema.resource.id),
+			)
 			.where(eq(databaseSchema.textbook.uuid, event.params.textbook))
 			.limit(1)
 	)[0];
@@ -55,6 +70,7 @@ export const load = async (event) => {
 		b: textbookRawData.b,
 		authors: users,
 		educationLevel: textbookRawData.educationLevel,
+		thumbnail: textbookRawData.thumbnail,
 	};
 
 	return {
