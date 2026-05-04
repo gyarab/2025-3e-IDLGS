@@ -59,7 +59,7 @@
 <div
 	class="{data.darkMode
 		? '**:text-white'
-		: '**:text-black'} relative flex min-h-screen w-screen max-w-screen grow flex-col items-center overflow-x-hidden overflow-y-scroll **:z-5
+		: '**:text-black'} relative flex min-h-screen w-screen max-w-screen grow flex-col items-center overflow-x-hidden overflow-y-auto **:z-5
 		"
 >
 	{@render children()}

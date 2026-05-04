@@ -4,6 +4,8 @@
 	import { goto } from '$app/navigation';
 	import { logout, setNavbarOpen } from '$lib';
 	import Button from '../(base)/components/Button.svelte';
+	import Dialog from '../(base)/components/Dialog.svelte';
+	import ConfirmCancel from '../(base)/components/ConfirmCancel.svelte';
 	import { resolve } from '$app/paths';
 
 	let {
@@ -15,6 +17,8 @@
 		open: boolean;
 		darkMode: boolean;
 	} = $props();
+
+	let showLogoutConfirm = $state(false);
 </script>
 
 {#if !open}
@@ -112,9 +116,8 @@
 					css="min-w-10 text-nowrap"
 					hecss="text-lg"
 					txtcss="hidden sm:inline"
-					onclick={async () => {
-						await logout();
-						goto(resolve('/(protected)/login'));
+					onclick={() => {
+						showLogoutConfirm = true;
 					}}
 				/>
 
@@ -135,4 +138,24 @@
 	</div>
 
 	<div class="h-[7svh] w-screen hidden sm:block"></div>
+
+	{#if showLogoutConfirm}
+		<Dialog {darkMode} open={showLogoutConfirm} css="min-h-20! p-4">
+			<div class="flex flex-col gap-4">
+				<p>{m.logout()}?</p>
+				<ConfirmCancel
+					{darkMode}
+					color={accentColor}
+					open={showLogoutConfirm}
+					confirm={async () => {
+						await logout();
+						goto(resolve('/(protected)/login'));
+					}}
+					cancel={async () => {
+						showLogoutConfirm = false;
+					}}
+				/>
+			</div>
+		</Dialog>
+	{/if}
 {/if}

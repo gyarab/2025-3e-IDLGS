@@ -23,7 +23,7 @@
 <div class="flex w-full flex-row gap-1">
 	<Button
 		emoji="check"
-		style="background-color: {color};"
+		style="background-color: {darkenHex(color, 20)};"
 		onclick={async () => {
 			open = false;
 			await confirm();
