@@ -52,7 +52,6 @@
 
 <Navbar
 	{darkMode}
-	bind:open={navbarOpen}
 	accentColor={data.color}
 />
 

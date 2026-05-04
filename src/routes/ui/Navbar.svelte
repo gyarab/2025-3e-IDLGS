@@ -1,161 +1,153 @@
 <script lang="ts">
-	import { fly } from 'svelte/transition';
+	import { fly, fade } from 'svelte/transition';
 	import { m } from '$lib/paraglide/messages';
 	import { goto } from '$app/navigation';
-	import { logout, setNavbarOpen } from '$lib';
+	import { logout, setDarkMode } from '$lib';
 	import Button from '../(base)/components/Button.svelte';
 	import Dialog from '../(base)/components/Dialog.svelte';
 	import ConfirmCancel from '../(base)/components/ConfirmCancel.svelte';
 	import { resolve } from '$app/paths';
+	import NavButton from '../(base)/components/NavButton.svelte';
 
 	let {
 		accentColor,
-		open = $bindable(false),
 		darkMode,
 	}: {
 		accentColor: string;
-		open: boolean;
 		darkMode: boolean;
 	} = $props();
 
 	let showLogoutConfirm = $state(false);
 </script>
 
-{#if !open}
-	<button
-		class="fixed top-0 z-20 flex h-8 w-screen items-start justify-center"
-		onclick={async () => {
-			open = true;
-			await setNavbarOpen(true);
-		}}
-		aria-label={m.openNavbar()}
-	>
-		<i
-			class="ri-arrow-down-s-fill {darkMode
-				? 'text-black'
-				: 'text-white'} absolute -top-6 left-3/4 text-6xl!"
-			transition:fly|global={{ y: -50, duration: 200, opacity: 0 }}
-		></i>
-	</button>
-{/if}
-
-{#if open}
+<div 
+    class="fixed top-0 left-0 z-30 h-16 w-full pointer-events-none"
+    style="
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        background: linear-gradient(to bottom, 
+            {darkMode ? 'rgba(80,80,80,0.4)' : 'rgba(240,240,240,0.2)'} 0%,
+            transparent 100%
+        );
+    "
+></div>
+<div
+	class="fixed top-0 z-40 mt-4 w-full"
+	transition:fly={{ y: -50, duration: 300 }}
+>
 	<div
-		class="{darkMode
-			? 'bg-neutral-800 text-white'
-			: 'bg-white text-black'} fixed bottom-0 sm:top-0 sm:bottom-auto z-10 flex h-[7svh] w-screen items-center border-t-2 sm:border-t-0 sm:border-b-2 shadow-xl"
-		style="border-color: {accentColor};"
-		transition:fly|global={{ y: -100, duration: 200, opacity: 0 }}
+		class="mx-auto flex h-[7svh] w-full max-w-6xl items-center justify-center px-4"
 	>
-		<div class="flex h-full w-full items-center px-4">
-			<div class="sm:w-[7svh] shrink-0"></div>
-
-			<img
-				src="/logo.svg"
-				alt="Logo"
-				class="h-10 hidden sm:inline"
-			/>
-
-			<h2
-				class="text-nowrap hidden px-4 font-bold tracking-widest md:inline"
-			>
-				DIGITALNI UCEBNICA
-			</h2>
+		<div
+			class="relative flex w-full items-center rounded-full border px-4 text-sm shadow-lg backdrop-blur-xs transition-colors
+                {darkMode
+				? 'border-white/20 bg-black/20 text-white'
+				: 'border-white/40 bg-white/50 text-black'}"
+		>
+			<div class="flex items-center gap-3 sm:px-2">
+				<img
+					src="/logo.svg"
+					alt="Logo"
+					class="h-12 w-12"
+				/>
+				<h2
+					class="hidden text-nowrap font-black tracking-widest uppercase sm:inline"
+				>
+					Digitalni Ucebnica
+				</h2>
+			</div>
 
 			<div class="grow"></div>
 
-			<nav
-				class="flex h-full items-center gap-2 {darkMode
-					? '**:text-white'
-					: '**:text-black!'}"
-			>
-				<Button
+			<nav class="flex items-center">
+				<NavButton
 					emoji="user"
 					text={m.profile()}
-					type="button"
-					rmwhite={darkMode}
-					css="min-w-10 text-nowrap"
-					hecss="text-lg"
-					txtcss="hidden sm:inline"
-					onclick={() => {
-						goto('/profile');
-					}}
+					{darkMode}
+					css="buttonPrimary text-nowrap"
+					txtcss="hidden lg:inline"
+					onclick={() => goto('/profile')}
 				/>
 
-				<Button
+				<NavButton
 					emoji="book"
 					text={m.textbooks()}
-					type="button"
-					rmwhite={darkMode}
-					css="min-w-10 text-nowrap"
-					hecss="text-lg"
-					txtcss="hidden sm:inline"
-					onclick={() => {
-						goto(resolve('/(base)/textbook'));
-					}}
+					{darkMode}
+					css="buttonPrimary text-nowrap"
+					txtcss="hidden lg:inline"
+					onclick={() => goto(resolve('/(base)/textbook'))}
 				/>
 
-				<Button
+				<NavButton
 					emoji="settings"
 					text={m.settings()}
-					type="button"
-					rmwhite={darkMode}
-					css="min-w-10 text-nowrap"
-					hecss="text-lg"
-					txtcss="hidden sm:inline"
-					onclick={() => {
-						goto('/settings');
-					}}
+					{darkMode}
+					css="buttonPrimary text-nowrap"
+					txtcss="hidden lg:inline"
+					onclick={() => goto('/settings')}
 				/>
 
-				<Button
-					emoji="logout-box"
-					text={m.logout()}
-					type="button"
-					rmwhite={darkMode}
-					css="min-w-10 text-nowrap"
-					hecss="text-lg"
-					txtcss="hidden sm:inline"
-					onclick={() => {
-						showLogoutConfirm = true;
-					}}
-				/>
+				<div
+					class="mx-1 h-6 w-px {darkMode
+						? 'bg-white/40'
+						: 'bg-black/20'}"
+				></div>
 
-				<Button
-					emoji="fullscreen"
-					text=""
-					type="button"
+				<NavButton
 					onclick={async () => {
-						open = false;
-						await setNavbarOpen(false);
+						await setDarkMode(!darkMode);
+						location.reload();
 					}}
-					css="p-2 opacity-50 hover:opacity-100 hover:translate-0! hidden lg:inline"
-					hecss=""
-					label={m.collapse()}
+					text=""
+					emoji={darkMode ? 'sun' : 'moon'}
+					css="buttonPrimary"
+					label={darkMode ? m.lightMode() : m.darkMode()}
+					{darkMode}
+				/>
+
+				<NavButton
+					emoji="logout-box"
+					text=""
+					{darkMode}
+					css="buttonPrimary"
+					label={m.logout()}
+					onclick={() => (showLogoutConfirm = true)}
 				/>
 			</nav>
 		</div>
 	</div>
+</div>
 
-	<div class="h-[7svh] w-screen hidden sm:block"></div>
-
-	{#if showLogoutConfirm}
-		<Dialog {darkMode} open={showLogoutConfirm} css="min-h-20! p-4">
-			<div class="flex flex-col gap-4">
-				<p>{m.logout()}?</p>
-				<ConfirmCancel
-					{darkMode}
-					color={accentColor}
-					open={showLogoutConfirm}
-					confirm={async () => {
-						await logout();
-						goto(resolve('/(protected)/login'));
-					}}
-					cancel={async () => {
-						showLogoutConfirm = false;
-					}}
-				/>
+{#if showLogoutConfirm}
+	<Dialog
+		{darkMode}
+		open={showLogoutConfirm}
+		css="p-6 rounded-3xl border border-white/10 backdrop-blur-xl"
+	>
+		<div class="flex flex-col items-center gap-6 text-center">
+			<div
+				class="flex h-16 w-16 items-center justify-center rounded-full bg-red-500/20 text-red-500"
+			>
+				<i class="ri-logout-circle-line text-3xl"></i>
 			</div>
-		</Dialog>
-	{/if}
+			<div>
+				<h3 class="text-xl font-bold">{m.logout()}?</h3>
+				<p class="text-sm opacity-60">
+					Are you sure you want to end your session?
+				</p>
+			</div>
+			<ConfirmCancel
+				{darkMode}
+				color={accentColor}
+				open={showLogoutConfirm}
+				confirm={async () => {
+					await logout();
+					goto(resolve('/(protected)/login'));
+				}}
+				cancel={async () => {
+					showLogoutConfirm = false;
+				}}
+			/>
+		</div>
+	</Dialog>
 {/if}
