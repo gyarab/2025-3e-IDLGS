@@ -1,39 +1,49 @@
 <script lang="ts">
-    let { 
-        name, 
-        role,
-        description, 
-        darkMode, 
-        reverse = false 
-    }: { 
-        name: string; 
-        role: string;
-        description: string; 
-        darkMode: boolean;
-        reverse?: boolean;
-    } = $props();
+	let {
+		name,
+		role,
+		description,
+		darkMode,
+		reverse = false,
+	}: {
+		name: string;
+		role: string;
+		description: string;
+		darkMode: boolean;
+		reverse?: boolean;
+	} = $props();
 </script>
 
-<div 
-    class="flex w-full items-center gap-6 rounded-2xl border p-4 transition-all hover:scale-[1.01] sm:p-6 
-    {darkMode ? 'border-white/10 bg-neutral-800/40' : 'border-black/5 bg-white/40'} 
-    {reverse ? 'flex-row-reverse text-right' : 'flex-row'}"
+<div
+	class="grid w-full gap-2 rounded-2xl border p-4 transition-all sm:p-6
+    grid-cols-[auto_1fr] sm:grid-rows-2
+    {darkMode
+		? 'border-white/10 bg-neutral-800/40'
+		: 'border-black/5 bg-white/40'} 
+    {reverse ? '[direction:rtl] text-right' : '[direction:ltr]'}"
 >
-    <div 
-        class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-(--brand) text-white shadow-inner sm:h-20 sm:w-20"
-    >
-        <span class="text-2xl font-black uppercase">{name.charAt(0)}</span>
-    </div>
+	<div
+		class="row-span-1 flex h-16 w-16 shrink-0 mx-4 items-center justify-center rounded-4xl bg-(--brand) text-white shadow-inner sm:row-span-2 sm:h-24 sm:w-24"
+	>
+		<img
+			src="{name.split(' ', 1).toString().toLowerCase()}.jpg"
+			alt={name.charAt(0).toUpperCase()}
+            class="h-full w-full object-cover rounded-4xl"
+		/>
+	</div>
 
-    <div class="flex flex-col gap-1">
-        <div class="flex flex-col {reverse ? 'items-end' : 'items-start'}">
-            <h3 class="text-xl font-bold leading-tight sm:text-2xl">{name}</h3>
-            <span class="text-xs font-black uppercase tracking-widest text-(--brand) opacity-80">
-                {role}
-            </span>
-        </div>
-        <p class="mt-2 text-sm leading-relaxed opacity-60 sm:text-base">
-            {description}
-        </p>
-    </div>
+	<div class="flex flex-col justify-center">
+		<h3 class="text-xl leading-tight font-bold sm:text-2xl">{name}</h3>
+		<span
+			class="text-xs font-black tracking-widest text-(--brand) uppercase opacity-80"
+		>
+			{role}
+		</span>
+	</div>
+
+	<div class="col-span-2 mt-1 sm:col-span-1">
+		<p class="text-sm leading-relaxed opacity-60 [direction:ltr] sm:text-base">
+			{description}
+		</p>
+	</div>
 </div>

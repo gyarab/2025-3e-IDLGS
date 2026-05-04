@@ -258,9 +258,9 @@
 	"aboutDescription": "IDLGS is an interactive digital textbook that revolutionizes education. Our platform offers a wide range of interactive content, including 3D models, multimedia elements, and innovative features that enhance student engagement and facilitate learning.",
 	"teamDescription": "Our team consists of enthusiastic developers, designers, and educators who are passionate about bringing innovation to education. Together, we work to ensure that IDLGS is not only functional but also user-friendly and effective for all users.",
 	"martinDesc": "Avid software engineer, psychology entusiast and main project manager.",
-	"aliDesc": "A skilled designer and front-end developer, responsible for the visual design and user experience of IDLGS.",
-	"kiraDesc": "A passionate biologist and educator, dedicated to making science accessible and engaging for everyone.",
-	"defintionsAndTerms": "Definitions and terms",
+	"aliDesc": "Skilled designer and front-end developer, responsible for the visual design and user experience of IDLGS.",
+	"kiraDesc": "Passionate biologist and educator, dedicated to making science accessible and engaging for everyone.",
+	"definitionsAndTerms": "Definitions and terms",
 	"help": "Help",
 	"needHelp": "Need help?",
 	"gettingStarted": "Getting started",
@@ -298,6 +298,6 @@
 	"securityText": "We use industry-standard encryption to protect your personal information and reading data.",
 	"cookiesTitle": "Cookies",
 	"cookiesText": "We use essential cookies to keep you logged in and remember your theme preferences.",
-	"contactPrompt": "Questions? Contact us at",
+	"contactAtPrompt": "Questions? Contact us at",
 	"backToHome":	"Back to Home"
 }
