@@ -10,6 +10,7 @@ export const exercise = pgTable(
 	- CRS crossword
 	- CRW crossword without result
 	- DEF matching definitions
+	- DFT definitons and terms
 	- GRP graphs of functions, items
 	- GEO geometry problems
 	- PRG client-side programming problems (future)
@@ -31,6 +32,7 @@ export const exercise = pgTable(
 		grp: integer('grp').references(() => exerciseGraph.id),
 		geo: integer('geo').references(() => exerciseGeometry.id),
 		ext: integer('ext').references(() => exerciseEmbed.id),
+		dft: integer('dft').references(() => exerciseDefinitionsTerms.id),
 
 		backgroundColorR: integer('backgroundColorR').notNull().default(255),
 		backgroundColorG: integer('backgroundColorG').notNull().default(255),
@@ -147,4 +149,16 @@ export const exerciseGeometry = pgTable('exerciseGeometry', {
 export const exerciseEmbed = pgTable('exerciseEmbed', {
 	id: serial('id').primaryKey().notNull(),
 	link: text('link').notNull(),
+});
+
+export const exerciseDefinitionsTerms = pgTable('exerciseDefinitionsTerms', {
+	id: serial('id').primaryKey().notNull(),
+	definitions: text('definitions')
+		.array()
+		.default(sql`ARRAY[]::text[]`)
+		.notNull(),
+	terms: text('terms')
+		.array()
+		.default(sql`ARRAY[]::text[]`)
+		.notNull(),
 });

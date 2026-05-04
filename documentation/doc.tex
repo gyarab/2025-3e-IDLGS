@@ -21,8 +21,9 @@ sorting=nyt,
 \usepackage{soul}
 %https://tex.stackexchange.com/questions/392208/command-k-unavailable-in-encoding-ot1-error-takes-me-to-line-which-doesnt-eve#392210
 \usepackage[T1]{fontenc}
+\usepackage{graphicx}
 
-\addbibresource{citace.bib}  
+\addbibresource{citace.bib}
 
 \titlelabel{\thetitle.\quad}
 
@@ -72,94 +73,94 @@ sorting=nyt,
 \date{4. května 2026}
 \postdate{
 	\end{center}
-	\vspace*{\fill}	
+	\vspace*{\fill}
 }
 
-\begin{document}			
+\begin{document}
 	\maketitle
 	\newpage
-	
+
 	% popisna strana
 	\noindent
 	\textbf{\Large Gymnázium Arabská, Praha 6, Arabská 14} 	\newline
 	Arabská 14, Praha 6, 160 00
 
 	\vspace*{\fill}
-	
+
 	\noindent
 	\textbf{Předmět:} Programování 	\newline
 	\textbf{Téma:} \thetitle
-	
+
 	\vspace*{\fill}
-	
+
 	\noindent
 	\textbf{Autoři:} {\theauthor} \newline
 	\textbf{Třída:} {3.E} \newline
 	\textbf{Školní rok:} {2025/2026} \newline
 	\textbf{Vedoucí práce:} {Mgr. Šimon Hrozinka} \newline
 	\textbf{Konzultanti:} {Mgr. Irena Skolilová, Mgr. Jan Lána} \newline
- 
+
  	 \newpage
  	\section*{Prohlášení}
  	Prohlašujeme, že jsme jedinými autory tohoto projektu, že všechny citace jsou řádně označené a že všechna použitá literatura či další zdroje jsou v práci uvedené.
  	Tímto dle zákona 121/2000 Sb. (tzv. Autorský zákon) ve znění pozdějších předpisů udělujeme bezúplatně škole Gymnázium, Praha 6, Arabská 14 oprávnění výkonu práva na rozmnožování díla (§ 13), práva na sdělování díla veřejnosti (§ 18) na dobu časově neomezenou bez omezení územního rozsahu.
- 	
+
  	\vspace*{2cm}
- 	
+
  	\noindent
  	Martin Bykov
  	\hrulefill
 
  	\vspace*{2cm}
-	
+
 	\noindent
  	 Kira Stěpanova
  	\hrulefill
- 
+
   	\vspace*{2cm}
- 
+
  	\noindent
   	Ali Yunussov
  	\hrulefill
- 	
+
  	 \vspace*{4cm}
- 	  	
+
  	  \hfill V Praze dne \hspace*{0,1cm}  \hrulefill \hspace*{0,1cm}  května 2026.
- 	
+
  	% anotace
  	 \newpage
  	  \section*{Anotace}
  	 	Tento projekt implementuje digitální učebnicový systém, který za pomoci moderních technologií splňuje všechny didaktické požadavky, rozvíjí dovednosti jak žáků, tak i studentů a zároveň napomáhá autorům při psaní kvalitního textu, informujíc o závadach v reálném čase. Cílem je taktéž motivace žáků prostřednictvím generace otázek modelem NLP a interaktivními otázkami, automaticky vytvořeným přehledným obsahem a navigací či stránkami obsahujícími definice pojmů.
- 	 
+
  	  \section*{Klíčová slova}
 		učebnice, vzdělání, platforma, interaktivita, generace cvičení
- 	 
+
  	  \section*{Abstract}
  	  This project implements a digital textbook system that - with the use of modern technologies - fulfills all didactic and pedagogical requirements, develops students' skills, helps the textbook authors with text quality and informs about any issues that may potentially arise in real time. The goal is also the motivation of students using NLP-based question generation and interactive exercises, automatically created tables of contents and navigation, as well as using pages with definitions of terms and unknown words.
- 	  
+
  	   \section*{Keywords}
 		textbook, education, platform, interactivity, exercise generation
- 	   
+
  	    \section*{Anotacja}
  	    Cel tego projektu do implementacja cyfrowego systemu podręcznikowego, który za użyciem technologii nowoczesnych spełnia wszystkie warunki dydaktyczne oraz pedagogiczne, rozwija umiejętności uczniów lub studentów, wspomaga autorom tekstu podręcznika z odnalezeniem błędów i informuje o blędach które mogłyby się hipotetycznie w textu pojawić.  Celem jest też motywacja studentów za pomocą modelu NLP formułującego pytania oraz ćwiczeń interaktywnych, za pomocą prostej nawigacji i spisów treści tak jak za pomocą stron z definicjami terminów naukowy oraz słów nieznanych.
- 	   
- 	    
+
+
  	    \section*{Słowa kłuczowe}
 		podręcznik, edukacja, platforma, interaktywność, generacja ćwiczeń
-		
+
 		 \newpage
-		 
+
 		 \section*{Poděkování}
 		 Rádi bychom poděkovali panu magistrovi Šimonovi Hroznikovi za nápovědu při vývoji učebnice, za poskytnutí i alternativního materiálu k učebnici a za pomoc při testování učebnice v produkci.
- 
+
  	% obsah
  	\newpage
 	\tableofcontents{}
-	
+
 	\newpage
 \section*{Úvod}
 	Cílem tohoto projektu je implementace digitálního učebnicového systému, řešícího a splňujícího všechna podstatná didaktická kritéria, řešícího všechny podstatné problémy a podporujícího všechny cílové skupiny - jak studenty při výuce za pomoci generace otázek modelem NLP či interaktivních cvičení, tak i učitele při psaní textu za pomoci analytických nástrojů a prvotřídní podpory multimediálních prvků. Učebnice zároveň podpuruje jednoduchou navigaci za pomoci příkazové palety, automatické generování slovníků a seznamu definic pojmů či neznámých.
-	
+
 	\newpage
 \section{Teoretické východisko}
 \subsection{Cílová skupina učebnice}
@@ -170,7 +171,7 @@ V následujícím textu budeme je avšak přezdívat jako \textit{učebnice digi
 Každá učebnice cílí na nějakou skupinu žáků: některé cílí na žáky škol základních, některé na středních a gymnazií, některé zase na žáky univerzit a vysokých škol. Text učebnice musí tím pádem být přizpůsoben úrovni cílové skupiny, a jak jayzkově, tak i informačně.
 \cite[str. 13]{PAN2023}
 
-\textbf{Je nutno taktéž podotknout, že cílovou skupinu učebnic nejsou jedině žáci, nýbrž také učitelé.} Žákům učebnice slouží jako prostředek a nápomoc k poznání tématu, prohloubení znalostí a k nabytí dovedností, zatímco pro učitele slouží jako nápomoc k předání znalostí a jako nástroj, který jim dělá život jednodušší. 
+\textbf{Je nutno taktéž podotknout, že cílovou skupinu učebnic nejsou jedině žáci, nýbrž také učitelé.} Žákům učebnice slouží jako prostředek a nápomoc k poznání tématu, prohloubení znalostí a k nabytí dovedností, zatímco pro učitele slouží jako nápomoc k předání znalostí a jako nástroj, který jim dělá život jednodušší.
 \cite[str. 6-7]{PAN2023}
 \textbf{Z toho plyne, že jakákoliv potenciální digitální učebnice by tím pádem měla pomáhat jak studentům a žákum, tak i učitelům a pedagogům, kterým by měla napomáhat při psaní kvalitnějšího textu.}
 
@@ -188,10 +189,10 @@ O hodnotě učebnice rozhodují různé funkce, jmenovitě:
 
 \cite[str. 8]{PAN2023}
 
-Funkci informační plní v učebnici text autora: ať už popisující, zhodnoťující, citace zdrojů atp. Mezi tyto texty jsou řazeny i definice pojmů či poznámky.  
+Funkci informační plní v učebnici text autora: ať už popisující, zhodnoťující, citace zdrojů atp. Mezi tyto texty jsou řazeny i definice pojmů či poznámky.
 \cite[str. 13]{PAN2023}
 
-Funkce tranformační označuje schopnost učebnice prezentovat věci z několika úhlů pohledu 
+Funkce tranformační označuje schopnost učebnice prezentovat věci z několika úhlů pohledu
 \cite[str. 15]{PAN2023}
 
 Funkci samovyučující označuje schopnost učebnice vzbudit zájem o vědu, o znalosti mimo informaci podanou v učebnici
@@ -209,7 +210,7 @@ Jeden z největších problémů školství jsou jeho neoficiální, skryté fun
 \cite{WPPzmiana}
 
 \subsubsection{Digitální kompetence mladých lidí}
-V dnešním světě je digitální gramotnost \textit{(angl. digital literacy)} velmi důležitou součástí jakéhokoliv vždelávacího programu. Digitální kompetence znamenají použití digitálních technologií k získání informaci, rozeznání pravdivé informace od lží a zpracování informace dostupné online, ať už pro cíle vzdělávací či pracovní, což je odborným pojmem označováno jako \enquote*{poznávací metabolismus}. 
+V dnešním světě je digitální gramotnost \textit{(angl. digital literacy)} velmi důležitou součástí jakéhokoliv vždelávacího programu. Digitální kompetence znamenají použití digitálních technologií k získání informaci, rozeznání pravdivé informace od lží a zpracování informace dostupné online, ať už pro cíle vzdělávací či pracovní, což je odborným pojmem označováno jako \enquote*{poznávací metabolismus}.
 
 TODO
 
@@ -232,7 +233,7 @@ Níže jsou uvedeny všechna kritéria, a jejich dodržení učebnicovým systé
 
 \textbf{Tyto pravidla určují především funkce, které má učebnice obsahovat.} Detailní popis těchto jednolivých funkcí, a zároveň podmínek, které musí splňovat, bude následovat v následujících kapitolách.
 
-% vyjmenujeme pravidla a pak komentář jak toho docílíme	
+% vyjmenujeme pravidla a pak komentář jak toho docílíme
 % sekce B str 77 sekce E str 123 sekce G 173
 
 \begin{samepage}
@@ -242,7 +243,7 @@ Níže jsou uvedeny všechna kritéria, a jejich dodržení učebnicovým systé
 				Učebnice musí obsahovat obsah - specifický prvek, který detailně popisuje celý obsah učebnice organizovaný dle jasných pravidel (např. logicky, chronologicky, dle tématu či hierarchicky).
 		}}
 	\end{quotation}
-	
+
 	Tento požadavek je splněn funkcí \enquote{Obsah učebnice}. Obsah učebnice je pro každou učebnici automaticky vygenerován na základě vnitřního dělení učebnice na kapitoly a články.
 \end{samepage}
 
@@ -255,7 +256,7 @@ Níže jsou uvedeny všechna kritéria, a jejich dodržení učebnicovým systé
 				Učebnice by měla obsahovat organizační prvky, jejichž hlavní funkcí je vytvoření schopnosti nezávislého použití učebnice studentem a jeho/její ability nalezení potřebné informace.
 		}}
 	\end{quotation}
-	
+
 	Toto pravidlo odkazuje především na různé indexy, směrovací prvky, seznamy obrázků, vysvětlivky atd. Seznamy obrázků jsou implementovány za pomocí funkce galerie. Směrovací prvky jsou implementovány v každém článku. Vysvětlovací prvky jsou implementovány za pomocí funkce \enquote{Definice pojmů}.
 \end{samepage}
 
@@ -268,7 +269,7 @@ Níže jsou uvedeny všechna kritéria, a jejich dodržení učebnicovým systé
 				Struktura učebnice musí být jasně typograficky označena čitelným způsobem, a tyto označení musí být užívany v celé knize.
 		}}
 	\end{quotation}
-	
+
 	Toto pravidlo učebnice splňuje svým grafickým designem. Všechny tématické celky jsou označeny jasným způsobem, a navigace mezi nimi je za pomocí přehledných rozcestníků a tzv.  \enquote{Příkazové palety} velmi jednoduchá.
 \end{samepage}
 
@@ -281,7 +282,7 @@ Níže jsou uvedeny všechna kritéria, a jejich dodržení učebnicovým systé
 				Definice každého nového specialistického pojmu, v textu použitého poprvé, musí být obsažena na stejné stránce, na které je pojem poprvé zmíněn a zároveň v přehledu na konci učebnice. Autor musí používat stejnou definici ve všech částech učebnice.
 		}}
 	\end{quotation}
-	
+
 	Tento požadavek je splněn funkcí \enquote{Definice pojmů}. Autor učebnice přídá pro každý pojem definici, a systém následně automaticky definici na stejné straně přídá při kliknutí na slovo. Zároveň strana definice pojmů pro uživatele plní funkci přehledu.
 \end{samepage}
 
@@ -294,7 +295,7 @@ Níže jsou uvedeny všechna kritéria, a jejich dodržení učebnicovým systé
 				Ilustrace, obrázky nebo ikonky musí mít jasný důvod; splňují specifickou funkci v učebnici a musí být umístěny všude, kde mohou účinněji přenést zprávu než by ji přenesli slova nebo čísla.
 		}}
 	\end{quotation}
-	
+
 	Tento požadavek je splněn funkcemi přídávání obrázků, grafů a materiálů, stejně jako systémem knihovny obrázků a automatické kontroly hustoty obrázků.
 \end{samepage}
 
@@ -307,7 +308,7 @@ Níže jsou uvedeny všechna kritéria, a jejich dodržení učebnicovým systé
 				Každá učebnice musí nepřetržitě prezentovat otázky a cvičení studentům, a to po ve všech částích knihy.
 		}}
 	\end{quotation}
-	
+
 	Tento požadavek je splněn funkcemi automatického procvičování v učebnici. Studenti si mohou, za pomoci umělé inteligence, vygenerovat otázky, které jsou na učebnice založené, a za jejich pomoci aktivně procvičovat. Tato funkce je reklamována pod každým článek tak, aby studenta co nejvíc motivovala k vyplnění co největšího počtu otázek.
 \end{samepage}
 
@@ -320,7 +321,7 @@ Níže jsou uvedeny všechna kritéria, a jejich dodržení učebnicovým systé
 				Učebnice by neměli obsahovat nesmyslné, nerealistické či nejednoznačné otázky či úkoly.
 		}}
 	\end{quotation}
-	
+
 	% TODO procenta
 	Tento požadavek je v učebnici splněn velmi přísným systémovým promptem pro umělou inteligenci, která otázky generuje. Systém generací otázek byl v praxi otestován, a pouze na TODO\% vygenerovaných otázek byly uživatelské reakce negativní.
 \end{samepage}
@@ -334,7 +335,7 @@ Níže jsou uvedeny všechna kritéria, a jejich dodržení učebnicovým systé
 				Učebnice musí obsahovat velmi různorodé otázky a cvičení, a to jak ve formě, úrovni složitosti a počtu osob potřebných a jejich vyřešení.
 		}}
 	\end{quotation}
-	
+
 	Tento požadek je taký částečně splněn automatickou generací otázek. Generuje se vždy několik různých typů otázek s různou složitostí. Počet potřebných osob pro vyřešení otázky je avšak ale vždy jeden.
 \end{samepage}
 
@@ -347,9 +348,9 @@ Níže jsou uvedeny všechna kritéria, a jejich dodržení učebnicovým systé
 				Otázky a úkoly v učebnicích by měly podporovat cíle a výsledky v daném předmětu za pomocí různých metod výuky a učení se.
 		}}
 	\end{quotation}
-	
+
 	Toto pravidlo je učebnicí splněno za pomoci interaktivních a multimediálních prvků.  Za užití jejich kombinace je možné docílit nejúčinnějšího způsobu učení většině typů lidem dle klasifikace VARK \cite{VARK} - tzn. vizuálního  (\enquote*{\textit{Visual}}) za pomocí multimediálních prvků, zvukového (\enquote*{\textit{Aural}}) za pomoci režimu text-to-speech a písemného (\enquote*{\textit{Read/Write}}) za pomoci hlavního textu učebnice. Kinestetický  (\enquote*{\textit{Kinesthetic}}) typ nemůže učebnice bohužel obsloužit - zde to závisí na autorovi učebnice, zda uskuteční realizaci cvičení mimo obrazovku (mj. i labolatorních) či ne.
-	
+
 	Dle dělení z pohledu pedagoga, a to na  \cite[s. 137]{PDO} TODO
 \end{samepage}
 
@@ -362,7 +363,7 @@ Níže jsou uvedeny všechna kritéria, a jejich dodržení učebnicovým systé
 				Pokud učebnice obsahuje otázky používáné k monitorování a hodnocení progresu učení, musí podporovat různé metody a úrovně učení se.
 		}}
 	\end{quotation}
-	
+
 	Toto pravidlo, které naráží na různé typy otázek a cvičení, které vyžadují různé typy odpovědí (tj. creativní a inovativní produkce, pochopení obsahu, aplikace znalostí apod.). Učebnice toto podporuje za pomoci funkce interaktivních cvičení a generovaných otázek, typu kterých má učebnice značný počet.
 \end{samepage}
 
@@ -374,7 +375,7 @@ Níže jsou uvedeny všechna kritéria, a jejich dodržení učebnicovým systé
 		\enquote{\textit{
 				V závislosti na typu a cílu předmětu, učebnice by měly tvořit situace takové, kde student může použít svojí kreativitu.
 	}}		\end{quotation}
-	
+
 	Toto pravidlo splňuje učebnice za pomocí formuláře, nalezeného na konci každého článku, který nabízí studentům možnost se volně vyjádřit a popsat, co se v dané kapitole naučili. Tato informace je následně přeposlána autorovi učebnice.
 \end{samepage}
 
@@ -387,7 +388,7 @@ Níže jsou uvedeny všechna kritéria, a jejich dodržení učebnicovým systé
 				Učebnice musí dodržovat pravidla a standardy jazyku, ve kterém je tištěna.
 		}}
 	\end{quotation}
-	
+
 	Toto pravidlo učebnice splňuje za pomocí integrované kontroly chyb v editoru textu. Při jakékoliv nalezené chybě bude autor učebnice před uložením textu upozoněn, a následně se může rozhodnout buď pro proignorování chyby, nebo pro její nápravu. \textbf{Tato podmínka je jedna z nejdůležitějších pro učebnice vůbec.} \cite[s. 81-87]{PAN2023} TODO PDO
 \end{samepage}
 
@@ -400,7 +401,7 @@ Níže jsou uvedeny všechna kritéria, a jejich dodržení učebnicovým systé
 				Pro každé slovo u kterého autor očekává to, že nebude většině studentů známo, musí být přídána jeho základní definice na první straně, na které se slovo nachází.
 		}}
 	\end{quotation}
-	
+
 	Toto pravidlo učebnice dodržuje za pomocí funkce \enquote{Definice pojmů} a za pomocí analýzy neznámých slov. Narazí-li program na slovo, které se nenachází v orientačním seznamu 10 000 slov (a není jeho tvarem - na záíkladní tvar ho převádí model NLP), a zároveň není v seznamu definicí, upozorní na to autora učebnice, a nabídne mu možnost přídání slova do definice.
 	% TODO CITACE WIKTIONARY SEZNAM 10000 NEJPOUŽÍVANĚJŠÍCH
 \end{samepage}
@@ -414,22 +415,22 @@ Níže jsou uvedeny všechna kritéria, a jejich dodržení učebnicovým systé
 				Délka vět v učebnicích musí být držena pod kontrolou a musí korespondovat k úrovni studentů.
 		}}
 	\end{quotation}
-	
-	Učebnice se aktivně pokouší vymáhat dodržování tohoto pravidla autory učebnice. Pří úpravě článku v učebnici se automaticky počítá délka věty - počet slov mezi interpunkcí - a zároveň průměrná délka slov v každé větě. Slovo je v tuto chvíli definováno jako určitý počet písmen obklopených mezerami. 
+
+	Učebnice se aktivně pokouší vymáhat dodržování tohoto pravidla autory učebnice. Pří úpravě článku v učebnici se automaticky počítá délka věty - počet slov mezi interpunkcí - a zároveň průměrná délka slov v každé větě. Slovo je v tuto chvíli definováno jako určitý počet písmen obklopených mezerami.
 \end{samepage}
 
 \filbreak
 
 \begin{samepage}
 	Učebnice vypíše varování nad danou větou pouze v následujících případech:
-	
+
 	\begin{itemize}
 		\item Průměrná délka slov v dané větě je nížší než 80\% průměrné délky slov.
 		\item Průměrná délka slov v dané větě je vyšší než 200\% průměrné délky slov.
 		\item Délka věty je nižší než 70\% průměrné délky věty.
 		\item Délka věty je vyšší než 150\% průměrné délky věty.
 	\end{itemize}
-	
+
 	Je-li věta kratší než 4 slova, není varování vypsáno. Takové krátké věty se považují za stylistický výběr, nikoliv přílišné snížení úrovně. Stejně tak tomu je, je-li průměrná délka slov ve větě menší než 2.
 \end{samepage}
 
@@ -446,7 +447,7 @@ Průměrná délka slova, která je při výpočtech použita, závisí na vybra
 				Elektronické verze učenice dávají smysl pokud obsahují materiál který není možné jednoduše zahrnout v tištěné podobě a který podstatně pomůže výuce.
 		}}
 	\end{quotation}
-	
+
 	Tento požadavek je učebnicí jednoznačně splněn. Učebnice obsahuje přehledný způsob upravování, podporu 3D modelů, interaktivních cvičení, automatického procvičování, obsahuje stylistické pomůcky a audiovizuální nástroje. Tyto funkce nejsou v standardní papírové učebnici dostupné a všechny tyto funkce jednoznačně prospějí vzdělávací hodnotě učebnice. Značný počet učebnic obsahuje online doplňky, případně CD disk.
 \end{samepage}
 
@@ -456,10 +457,10 @@ Průměrná délka slova, která je při výpočtech použita, závisí na vybra
 	\begin{quotation}
 		\textbf{G2. Poměr mezi různými typy elektronických záznamů (audio, video...) a jejich efekt na výuku.} \\
 		\enquote{\textit{
-				Přítomnost a poměr různých typů elektronických záznámů (audio, video, animace, testy...)  musí být určen na základě jejich přínosu k výuce. 
+				Přítomnost a poměr různých typů elektronických záznámů (audio, video, animace, testy...)  musí být určen na základě jejich přínosu k výuce.
 		}}
 	\end{quotation}
-	
+
 	Poměr jednotlivých typů interaktivních prvků určuje autor učebnice, učebnice ale všechny zmíněné interaktivní prvky podporuje.
 \end{samepage}
 
@@ -472,7 +473,7 @@ Průměrná délka slova, která je při výpočtech použita, závisí na vybra
 				Na rozdíl od zvyklých tištěných učebnic, kde obsah je propojen lineární strukturou, obsah v e-publikacích by měl tvořit širokou síť  která odpovídá struktuře daného předmětu.
 		}}
 	\end{quotation}
-	
+
 	Učebnice tento požadavek splňuje. V článku má autor učebnice možnost dodat odkazy na podstatné články, které se taktéž promítnou i do shrnutí na konci. Dodatečně je přecházení mezi články o mnoho jednodušší než v tradiční tištěné učebnici, a uživatel nemusí články v lineárním pořadí číst. Za pomocí této metody je možné učebnici procházet jak lineárně, tak i nelineárně. Samotná struktura učebnice závisí na její autorovi, nástroj ale podporuje jakoukoliv.
 \end{samepage}
 
@@ -485,9 +486,9 @@ Průměrná délka slova, která je při výpočtech použita, závisí na vybra
 				Jeden ze základních indikátorů kvality digitální učebnice je to, jak moc využivá učebnice možnosti digitálních médií, obzvláště jejich interaktivity. Je úspěšná v adaptaci obsahu pro různé zájmy? Slouží jako důležitý nástroj podporující proces vzdělání s pochopením?
 		}}
 	\end{quotation}
-	
+
 	Učebnice tento požadavek částečně splňuje.  Možnosti digitálních médií využivá svými funkcemi - podporou 3D modelů, generací otázek a karet k procvičování, sumarizací, podporou nelineární struktury atd. - naprosto dostatečně, a svými motivačními prvky proces vzdělávání žáka jednoznačně zrychluje a zpříjemňuje. Hlášky při akcích studenta jsou záměrně napsány tak, aby učebnice se k studenovi chovala - minimálně z pohledu studenta - s pochopením.
-	
+
 	Přizpůsobení obsahu studentům závisí na autorovi dané učebnice, nástroj do tohoto nezasahuje napřímo.
 \end{samepage}
 
@@ -503,9 +504,9 @@ Komunikativnost a pochopitelnost textu mají velmi podstatný vliv na pochopení
 	\item{} \textit{jednoduchost pochopení} - text musí být přizpůsoben úrovni cílové skupiny, nesmí ho číst s námahou.
 \end{itemize}
 
-Splnění všech těchto podmínek závisí na jazyce. 
+Splnění všech těchto podmínek závisí na jazyce.
 
-\cite[s. 35-40]{PAN2023} 
+\cite[s. 35-40]{PAN2023}
 
 Každá učebnice má nastavený úroveň vzdělání podle stupnice ISCED UNESCO.
 \cite{ISCED}
@@ -520,16 +521,16 @@ Pro lepší srozumitelnost textu je doporučeno využívat \textit{viz. pravidla
 Je třeba ale znovu zmínit, že učebnice nemůže autora k správným rozhodnutím donutit, může je pouze nabídnout.
 
 % TODO jasnopis.pl simulator basically (using NLP models!)
-\cite[s. 40-50]{PAN2023} 
+\cite[s. 40-50]{PAN2023}
 
 \subsubsection{Pravidla pro definice pojmů}
 
-\cite[s. 51-60]{PAN2023} 
+\cite[s. 51-60]{PAN2023}
 
 \subsubsection{Pravidla pro jednotlivá cvičení}
 
-\cite[s. 60-67]{PAN2023} 
-\cite[]{WPPmodel} TODO projít si ten model tady 
+\cite[s. 60-67]{PAN2023}
+\cite[]{WPPmodel} TODO projít si ten model tady
 
 \newpage
 \section{Funkce učebnice}
@@ -543,36 +544,75 @@ Učebnice podporují přídávání jak obrázků, videí, jiných stránek (tzv
 
 \subsection{Interaktivní prvky}
 \subsubsection{Interaktivní cvičení}
-Učebnice podporuje celkem 6 typů interaktivních cvičení, kterými jsou:
+Učebnice podporuje celkem 7  typů interaktivních cvičení, kterými jsou:
 
 \begin{itemize}
 	\item{} křížovka \enquote*{s hádankou}
-	\item{} křížovka \enquote*{bez hádanky}   	
-	\item{} spojování definic
+	\item{} křížovka \enquote*{bez hádanky}
+	\item{} spojování pojmů
+	\item{} přiřazení pojmu a definicí
 	\item{} grafická kalkulačka
 	\item{} geometrická pláň
 	\item{} vnější cvičení
 \end{itemize}
 
-Křížovka \enquote*{s hádankou} obsahuje jeden sloupec slov, různě posunutých, a sloupec obsahující hádanku. 
-Uvnitř databáze
-\newline
+\newpage
 
-Křížovka
-\newline
+\par
+Křížovka \enquote*{s hádankou} obsahuje jeden sloupec slov, různě posunutých, a sloupec obsahující hádanku.
+Uvnitř databáze je uložena jako dva různá pole a výsledek. Diaktrika je ignorována. Kontrola cvičení spoléhá na kontrole jak slov, tak i finální odpovědi.
 
-Spojování
-\newline
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=4cm]{crs.png}
+	\caption{Grafické znázornění křížovky s hádankou.}
+	\label{fig:crs}
+\end{figure}
 
-Grafická
-\newline
+\par
+Křížovka  \enquote*{bez hádanky}  obsahuje mřížku, na které jsou vykreslena jednotlivá slova. Tato hádanka nemá ani řešení, ani jasně daný směr - správně je pouze tehdy, jsou-li všechna slova správně zaplněna.
 
-	Geometrická pláň podporuje pouze planimetrii, stereometrie není zatím podporována.
-\newline
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=4cm]{crw.png}
+	\caption{Grafické znázornění křížovky bez hádanky.}
+	\label{fig:crw}
+\end{figure}
 
-Vnější cvičení
+\par
+Spojování pojmů a jejich skutečností spoléhá na pochopení nikoliv toho, co daný pojem znamená dle definice, ale také praktická schopnost ho najít a poznat v kontextu. Cvičení je správně, pokud jsou všechny dvojce spojené.
 
-Vnější cvičení jednoduše povoluje autorovi vestavit cvičení ze stránek třetích stran
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=4cm]{def.png}
+	\caption{Grafické znázornění spojování definic.}
+	\label{fig:def}
+\end{figure}
+
+\newpage
+
+\par
+Přiřazení pojmů a definicí spočívá na zapamatování, odvození či pochopení definice pojmu. Cvičení je správně, jsou-li všechny dvojice správně. Toto cvičení lze automaticky vygenerovat na základě seznamu definic pojmů, a to jak pouze z daného článku, tak i z celé kapitoly či učebnice.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=4cm]{dft.png}
+	\caption{Grafické znázornění přiřazování pojmů a definic.}
+	\label{fig:dft}
+\end{figure}
+
+\par
+Grafická kalkulačka umožňuje vykreslení funkcí, rovnic a nerovnic.
+
+
+
+\par
+Geomterická pláň umožňuje
+Geometrická pláň podporuje pouze planimetrii, stereometrie není zatím podporována.
+
+
+\par
+Vnější cvičení jednoduše povoluje autorovi vestavit cvičení ze stránek třetích stran, a to z jakéhokoliv odkazu. Zde není kontrola možná či potřebná, učebnice zde plně spoléhá na funkcionalitu třetí stran.
 
 \subsubsection{Procvičování a generátor otázek}
 
@@ -584,14 +624,14 @@ Každá stránka v učebnici má svojí stránku s dokumentací
 \subsection{Analytické prvky}
 \subsubsection{Analýza délky vět a slov}
 Učebnice neustále kontroluje průměrnou délku slov a vět v každé kapitole článku.
-\subsubsection{Analýza počtu multimediálních prvků}	
+\subsubsection{Analýza počtu multimediálních prvků}
 Učebnice kontroluje počet multimediálních prvků v porovnání s textem. Dle ...
 \subsubsection{Analýza duplikátních titulků}
 Učebnice kontroluje taktéž, zda názvy kapitol obsahují duplikáty.
 \subsubsection{Analýza vzácných a netypických slov}
-Učebnice analyzuje taktéž výskyt slov netypických a vzácných, na které pak, nejsou-li již přidány do seznamu pojmů, upozorní. 
+Učebnice analyzuje taktéž výskyt slov netypických a vzácných, na které pak, nejsou-li již přidány do seznamu pojmů, upozorní.
 
-Tímto učebnice splňuje pravidla 
+Tímto učebnice splňuje pravidla
 
 \newpage
 \section{Implementace učebnice}
@@ -609,7 +649,7 @@ AI bylo během vývoje použito v omezeném množství. Při vývoji za pomocí 
 	\item{} Bylo doporučeno použít jakéhokoliv agenta výhradně v režimu \enquote{inline}, tzn. pouze jako vestavěnou pomůcku pro doplnění funkcí, komponentů atp.
 \end{itemize}
 
-Ve vývojovém týmu panuje plná shoda o \textbf{nenahraditelnosti člověka}, a o použítí AI výhradně jako konzultanta, generátora tzv. boilerplate (tj. kódu, který je primitivní a často se opakující bez možnosti abstrakce) či nápomocníka při debugování kódu. 
+Ve vývojovém týmu panuje plná shoda o \textbf{nenahraditelnosti člověka}, a o použítí AI výhradně jako konzultanta, generátora tzv. boilerplate (tj. kódu, který je primitivní a často se opakující bez možnosti abstrakce) či nápomocníka při debugování kódu.
 
 Během experimentace mimo tento projekt bylo vývojovým týmem zjištěna velká chybovost a neschopnost AI pracovat bez přísného dohledu.
 
@@ -639,44 +679,63 @@ Jako CDN pro multimediální prvky bylo použito Cloudinary, a to z důvodu jedn
 
 \newpage
 \section{Testový obsah učebnice}
-\subsection{Učebnice Biologie}
-	
-	\newpage
-		
-	\section{Vyjádření pedagogů}
+    \subsection{Principy tvorby učebnice Biologie}
+	\subsubsection{Zaměření obsahu na srozumitelnost}
+	Při tvorbě textového obsahu pro digitální učebnici biologie bylo jedním z hlavních cílů vytvořit materiál, který bude studentům snadno pochopitelný a přehledný. Biologie pracuje s velkým množstvím odborných pojmů a složitých procesů, které mohou být při nevhodném podání obtížně pochopitelné. Z tohoto důvodu bylo nutné volit takový styl psaní, který zachová odbornou správnost, ale zároveň bude jazykově přístupný cílové skupině.
+
+	Text jednotlivých kapitol byl proto formulován jednodušeji než odborná literatura. Složitější biologické procesy byly vysvětlovány postupně, pomocí kratších vět a logicky navazujících informací. Cílem nebylo čtenáře zahlcovat množstvím detailních informací, ale umožnit mu pochopit základní princip fungování biologických struktur a dějů.
+
+	\subsubsection{Strukturování kapitol a členění informací}
+	Důležitou součástí tvorby obsahu bylo také vhodné členění textu. Každá kapitola byla rozdělena do menších tematických bloků pomocí podnadpisů, které oddělují jednotlivé části probírané problematiky. Nejčastěji se jednalo o členění na stavbu orgánu nebo soustavy, její funkci, případně význam pro organismus nebo související zdravotní problematiku.
+
+	Takové rozdělení informací zvyšuje přehlednost textu a studentům usnadňuje orientaci v učivu. Kratší úseky textu jsou navíc vhodnější i z hlediska digitálního zpracování, protože lépe fungují ve spojení s ilustracemi, schématy a dalšími vizuálními prvky.
+
+	\subsubsection{Práce s odbornou biologickou terminologií}
+		Biologický obsah se neobejde bez odborného názvosloví. Při psaní textu bylo proto důležité zachovat správnou terminologii, která odpovídá biologickým poznatkům, ale současně ji vhodně vysvětlit. Odborné pojmy nebyly z textu vynechávány, protože jejich znalost tvoří důležitou součást biologického vzdělání, avšak byly uváděny v kontextu, který usnadňuje jejich pochopení.
+
+	Například při popisu svalové tkáně byly použity pojmy jako svalová vlákna, myofibrily, aktin a myozin, ale jejich význam byl vysvětlen prostřednictvím popisu jejich funkce a vzájemného působení. Student si tak neosvojuje pouze samotný pojem, ale zároveň chápe jeho biologický význam.
+
+	\subsubsection{Logická návaznost biologických informací}
+	Při zpracování obsahu byl kladen důraz také na logickou posloupnost informací. Většina kapitol byla sestavena tak, aby student nejprve porozuměl stavbě daného orgánu nebo soustavy, následně její funkci a poté širším souvislostem v organismu.
+
+	Tento způsob zpracování odpovídá přirozenému procesu osvojování znalostí. Student si nejprve vytvoří základní představu o tom, jak daná struktura vypadá a z čeho se skládá, následně pochopí její funkci a teprve poté je schopen porozumět složitějším biologickým vztahům a procesům.
+	\subsubsection{Přizpůsobení obsahu digitálnímu formátu}
+	Textový obsah byl od začátku vytvářen s ohledem na to, že bude součástí digitální učebnice. To ovlivnilo nejen délku jednotlivých odstavců, ale také celkový styl zpracování. Delší souvislé textové bloky byly omezeny ve prospěch kratších a informačně hutnějších částí, které jsou pro čtení na obrazovce vhodnější.
+
+	Obsah byl zároveň koncipován tak, aby bylo možné jednotlivé části doplnit o obrázky, schémata nebo interaktivní prvky. Text tak nepředstavuje izolovanou složku učebnice, ale základní informační vrstvu, na kterou mohou navazovat další formy prezentace učiva.
 
 	% závěr
 	\newpage
 	\section{Závěr}
-		
+
 	% seznam obrázků
 	\newpage
 	\listoffigures
-	
+
 	% seznam tabulek
 	\newpage
 	\listoftables
-	
+
 	% seznam grafů
 	\newpage
 	\listof{graph}{Seznam grafů}
-	
+
 	% seznam odb. pojmů
 	\newpage
 	\section*{Seznam odborných pojmů}
 	Zde se nachází seznam odborných pojmů, a zároveň jejich vysvětlení. Pojmy jsou seřazeny abecedně.
-	
+
 	\textbf{NLP} \textit{angl. natural language processing, zpracování přirozeného jazyka} Model, který analyzuje věty a paragrafy a transformuje je na struktury, které je možné počítačem jednodušeji procesovat.
 	\newline
-	
+
 	% citace
 	\newpage
 	\section*{Citace}
 		Během psaní dokumentace nebyla umělá inteligence použita. Během psaní kódu byla použita ve velmi omezeném množství, a za všechny architektonické, algoritmické či jiné rozhodnutí stále odpovídají jednotliví autoři.
-		
+
 		\noindent
 		Všechny citace jsou uvedeny ve formátu ČSN ISO 690.
-		
+
 		\nocite{Hrozinka}
 		\nocite{HrozinkaDva}
 		\nocite{MDN}
@@ -684,8 +743,7 @@ Jako CDN pro multimediální prvky bylo použito Cloudinary, a to z důvodu jedn
      	\nocite{Tailwind}
      	\nocite{Cloudinary}
      	\nocite{FuseJS}
-     	  \nocite{Quill}
-		
+
 		\printbibliography[title=\empty]
-	
+
 \end{document}

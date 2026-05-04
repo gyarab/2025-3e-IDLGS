@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { m } from '$lib/paraglide/messages';
-	import CRW from '$src/routes/(base)/exerciseRendering/CRW.svelte';
+	import DFT from '$src/routes/(base)/exerciseRendering/DFT.svelte';
 	import Button from '$src/routes/(base)/components/Button.svelte';
 	import Dialog from '$src/routes/(base)/components/Dialog.svelte';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
