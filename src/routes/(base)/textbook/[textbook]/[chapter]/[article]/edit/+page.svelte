@@ -13,6 +13,13 @@
 	import { darkenHex } from '$lib';
 	import Form from '$src/routes/(base)/components/Form.svelte';
 
+	//TODO anaylse text, warn if anything wrong
+	//TODO recommend adding sideboxes
+	//TODO recommend adding multimedia if none
+	//TODO recommend adding exercises if none
+
+	//TODO analyze definitions so they dont contain same words as the term being defined
+
 	let {
 		data,
 	}: {
