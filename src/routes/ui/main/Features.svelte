@@ -62,7 +62,7 @@
                     class="group flex flex-col gap-4 rounded-2xl border p-6 transition-all hover:scale-105 {darkMode ? 'border-white/10 bg-neutral-800/50' : 'border-black/5 bg-white/50'}"
                     in:fly={{ y: 40, duration: 600, delay: 200 }}
                 >
-                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--brand)] text-2xl text-white shadow-lg">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-(--brand) text-2xl text-white shadow-lg">
                         <i class="ri-cursor-line"></i>
                     </div>
                     <h2 class="text-xl font-bold">{m.interactiveContent()}</h2>
@@ -76,7 +76,7 @@
                     class="group flex flex-col gap-4 rounded-2xl border p-6 transition-all hover:scale-105 {darkMode ? 'border-white/10 bg-neutral-800/50' : 'border-black/5 bg-white/50'}"
                     in:fly={{ y: 40, duration: 600, delay: 300 }}
                 >
-                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--brand)] text-2xl text-white shadow-lg">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-(--brand) text-2xl text-white shadow-lg">
                         <i class="ri-cpu-line"></i>
                     </div>
                     <h2 class="text-xl font-bold">{m.cuttingEdgeFeatures()}</h2>
@@ -90,7 +90,7 @@
                     class="group flex flex-col gap-4 rounded-2xl border p-6 transition-all hover:scale-105 {darkMode ? 'border-white/10 bg-neutral-800/50' : 'border-black/5 bg-white/50'}"
                     in:fly={{ y: 40, duration: 600, delay: 400 }}
                 >
-                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--brand)] text-2xl text-white shadow-lg">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-(--brand) text-2xl text-white shadow-lg">
                         <i class="ri-play-circle-line"></i>
                     </div>
                     <h2 class="text-xl font-bold">{m.mutlimediaSupport()}</h2>

@@ -107,44 +107,47 @@
 			/>
 		</span>
 
-		<span
-			in:fly|global={{
-				x: 1000,
-				y: 0,
-				duration: 300,
-				delay: 900,
-				opacity: 0,
-			}}
-		>
-			<ColorInput bind:color />
-		</span>
+		<span class="flex flex-col sm:flex-row gap-2 py-2">
+			<span
+				class="flex grow"
+				in:fly|global={{
+					x: 1000,
+					y: 0,
+					duration: 300,
+					delay: 900,
+					opacity: 0,
+				}}
+			>
+				<ColorInput bind:color />
+			</span>
 
-		<span
-			in:fly|global={{
-				x: 1000,
-				y: 0,
-				duration: 300,
-				delay: 1100,
-				opacity: 0,
-			}}
-			class="flex w-full flex-col gap-2"
-		>
-			<ImageInput
-				bind:value={thumbnail}
-				multiple={false}
-				{darkMode}
-				{color}
-				css="w-1/2"
-				placeholder={m.uploadThumbnail()}
-			/>
-			{#if thumbnail && thumbnail.length > 0}
-				<h2>{m.thumbnailPreview()}</h2>
-				<img
-					src={imagePreview}
-					alt={m.thumbnailPreview()}
-					class="aspect-2/1 w-[50svh] rounded-lg object-cover"
+			<span
+				in:fly|global={{
+					x: 1000,
+					y: 0,
+					duration: 300,
+					delay: 1100,
+					opacity: 0,
+				}}
+				class="flex flex-col gap-2"
+			>
+				<ImageInput
+					bind:value={thumbnail}
+					multiple={false}
+					{darkMode}
+					{color}
+					css="w-1/2"
+					placeholder={m.uploadThumbnail()}
 				/>
-			{/if}
+				{#if thumbnail && thumbnail.length > 0}
+					<h2>{m.thumbnailPreview()}</h2>
+					<img
+						src={imagePreview}
+						alt={m.thumbnailPreview()}
+						class="aspect-2/1 w-[50svh] rounded-lg object-cover"
+					/>
+				{/if}
+			</span>
 		</span>
 	</div>
 </div>

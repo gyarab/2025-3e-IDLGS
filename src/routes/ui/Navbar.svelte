@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fly, fade } from 'svelte/transition';
 	import { m } from '$lib/paraglide/messages';
-	import { goto } from '$app/navigation';
+import { goto, invalidateAll } from '$app/navigation';
 	import { logout, setDarkMode } from '$lib';
 	import Button from '../(base)/components/Button.svelte';
 	import Dialog from '../(base)/components/Dialog.svelte';
@@ -96,7 +96,7 @@
 				<NavButton
 					onclick={async () => {
 						await setDarkMode(!darkMode);
-						location.reload();
+						await invalidateAll();
 					}}
 					text=""
 					emoji={darkMode ? 'sun' : 'moon'}
@@ -132,12 +132,12 @@
 			</div>
 			<div>
 				<h3 class="text-xl font-bold">{m.logout()}?</h3>
-				<p class="text-sm opacity-60">
+				<p class="text-sm opacity-60 font-medium">
 					Are you sure you want to end your session?
 				</p>
 			</div>
 			<ConfirmCancel
-				{darkMode}
+				dangerous={true}
 				color={accentColor}
 				open={showLogoutConfirm}
 				confirm={async () => {

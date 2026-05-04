@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
+import { goto, invalidateAll } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import { m } from '$lib/paraglide/messages';
 	import { setDarkMode } from '$lib';
@@ -34,7 +34,7 @@
 			<NavButton
 				onclick={async () => {
 					await setDarkMode(!darkMode);
-					location.reload();
+					await invalidateAll();
 				}}
 				emoji={darkMode ? 'sun' : 'moon'}
 				css="buttonPrimary px-4"
