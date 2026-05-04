@@ -31,7 +31,6 @@
     style="background: linear-gradient(135deg, {color}, {darkenHex(color, 80)}); --brand: {color};"
     bind:this={container}
 >
-    <!-- Decorative Floating Icons -->
     <i class="ri-rocket-2-line absolute right-1/10 top-1/6 scale-150 rotate-12 text-8xl text-white opacity-10"></i>
     <i class="ri-lightbulb-line absolute left-1/10 bottom-1/4 scale-150 -rotate-12 text-8xl text-white opacity-10"></i>
 

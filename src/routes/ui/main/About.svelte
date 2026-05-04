@@ -25,7 +25,6 @@
     class="relative flex min-h-[60vh] w-full flex-col items-center justify-center overflow-hidden p-6"
     style="background: linear-gradient(135deg, {color}, {darkenHex(color, 80)}); --brand: {color};"
 >
-    <!-- Background Decorative Elements -->
     <i class="ri-information-line absolute right-1/10 bottom-1/10 scale-150 rotate-12 text-9xl text-white opacity-10"></i>
     <i class="ri-global-line absolute left-1/10 top-1/10 scale-150 -rotate-12 text-9xl text-white opacity-10"></i>
 
@@ -38,7 +37,7 @@
         >
             <header class="flex items-center gap-6">
                 <div 
-                    class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[var(--brand)] text-white shadow-lg"
+                    class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-(--brand) text-white shadow-lg"
                     in:fly={{ x: -20, duration: 600 }}
                 >
                     <i class="ri-team-line text-3xl"></i>
@@ -57,7 +56,6 @@
 
             <div class="grid grid-cols-1 gap-8 md:grid-cols-12">
                 <div class="relative md:col-span-8">
-                    <!-- Large Quote Mark Decor -->
                     <span class="absolute -top-6 -left-4 text-7xl opacity-10 font-serif">“</span>
                     
                     <p 
@@ -81,7 +79,7 @@
                                 { icon: 'ri-shield-flash-line', text: 'Innovation' }
                             ] as item}
                                 <li class="flex items-center gap-3">
-                                    <i class="{item.icon} text-[var(--brand)]"></i>
+                                    <i class="{item.icon} text-(--brand)"></i>
                                     <span class="text-sm font-semibold">{item.text}</span>
                                 </li>
                             {/each}
