@@ -4,7 +4,7 @@
 	import Features from './ui/main/Features.svelte';
 	import Head from './ui/main/Head.svelte';
 	import Team from './ui/main/Team.svelte';
-	import NavbarLoggedOut from './ui/NavbarLoggedOut.svelte';
+	import GuestNavbar from './ui/GuestNavbar.svelte';
 	import CallToAction from './ui/main/CallToAction.svelte';
 	import { m } from '$lib/paraglide/messages';
 	import Contact from './ui/main/Contact.svelte';
@@ -28,7 +28,7 @@
 </svelte:head>
 
 <div class="max-w-screen overflow-x-hidden overflow-y-scroll flex h-full min-h-screen w-full flex-col gap-0 items-center justify-center">
-	<NavbarLoggedOut darkMode={data.darkMode} color={data.color} />
+	<GuestNavbar darkMode={data.darkMode} color={data.color} />
 
 	<Head
 		darkMode={data.darkMode}
