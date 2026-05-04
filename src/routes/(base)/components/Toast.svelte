@@ -24,7 +24,7 @@
 		>
 			<span class="text-sm font-medium">{toast.message}</span>
 			<button
-				on:click={() =>
+				onclick={() =>
 					toasts.update((all) =>
 						all.filter((t) => t.id !== toast.id),
 					)}
