@@ -28,7 +28,7 @@
 		<h2 class="text-2xl font-bold">{m.areYouSure()}</h2>
 		<p>{m.thisActionCannotBeUndone()}!</p>
 		<ConfirmCancel
-			{darkMode}
+			dangerous={true}
 			{color}
 			bind:open
 			confirm={async () => {

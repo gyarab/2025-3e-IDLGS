@@ -100,7 +100,7 @@
 				</div>
 
 				<div
-					class="overflow-hidden rounded-tl-[4rem] rounded-tr-3xl rounded-br-lg rounded-bl-3xl border-l-4 border-[var(--brand)] shadow-2xl"
+					class="overflow-hidden rounded-tl-[4rem] rounded-tr-3xl rounded-br-lg rounded-bl-3xl border-l-4 border-(--brand) shadow-2xl"
 					in:fly={{ x: -30, duration: 700, delay: 600 }}
 				>
 					<TeamSvelte

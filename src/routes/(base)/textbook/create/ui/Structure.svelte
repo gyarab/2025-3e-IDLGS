@@ -284,7 +284,7 @@
 			/>
 		</div>
 		<ConfirmCancel
-			{darkMode}
+			dangerous={true}
 			{color}
 			bind:open={showChapterDialog}
 			confirm={async () => {
@@ -318,7 +318,7 @@
 			/>
 		</div>
 		<ConfirmCancel
-			{darkMode}
+			dangerous={true}
 			{color}
 			bind:open={showArticleDialog}
 			confirm={async () => {
