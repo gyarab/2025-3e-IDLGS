@@ -25,10 +25,12 @@
 		thumbnail: File[];
 	} = $props();
 
-	let imagePreview: string = $derived(makeURLFromImage(thumbnail[0]));
+	let imagePreview: string = $derived(
+		thumbnail?.[0] ? makeURLFromImage(thumbnail[0]) : '',
+	);
 
 	onDestroy(() => {
-		if(imagePreview) {
+		if (imagePreview) {
 			URL.revokeObjectURL(imagePreview);
 		}
 	});
@@ -37,14 +39,14 @@
 <div class="flex w-full grow flex-col gap-2">
 	<div
 		class="mb-2 flex w-full flex-row items-center gap-2"
-		in:fly|global={{ x: 1000, y: 0, duration: 300, delay: 100, opacity: 0 }}
+		in:fly|global={{ x: 600, y: 0, duration: 300, delay: 100, opacity: 0 }}
 	>
 		<h2 class="text-2xl font-bold">{m.basicTextbookInformation()}</h2>
 	</div>
 	<div class="flex w-full grow flex-col gap-2">
 		<span
 			in:fly|global={{
-				x: 1000,
+				x: 600,
 				y: 0,
 				duration: 300,
 				delay: 300,
@@ -63,7 +65,7 @@
 		<span
 			class="flex w-full grow flex-col"
 			in:fly|global={{
-				x: 1000,
+				x: 600,
 				y: 0,
 				duration: 300,
 				delay: 500,
@@ -81,7 +83,7 @@
 
 		<span
 			in:fly|global={{
-				x: 1000,
+				x: 600,
 				y: 0,
 				duration: 300,
 				delay: 700,
@@ -113,7 +115,7 @@
 			<span
 				class="flex grow"
 				in:fly|global={{
-					x: 1000,
+					x: 600,
 					y: 0,
 					duration: 300,
 					delay: 900,
@@ -125,7 +127,7 @@
 
 			<span
 				in:fly|global={{
-					x: 1000,
+					x: 600,
 					y: 0,
 					duration: 300,
 					delay: 1100,

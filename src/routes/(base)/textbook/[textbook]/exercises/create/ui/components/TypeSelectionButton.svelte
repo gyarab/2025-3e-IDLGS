@@ -20,10 +20,10 @@
 </script>
 
 <button
-	class="group buttonLarge flex w-full flex-col items-center justify-center gap-2 rounded-lg shadow-lg {darkMode
+	class="group buttonLarge flex w-full flex-col items-center justify-center gap-2 rounded-xl shadow-lg {darkMode
 		? ' bg-neutral-800'
 		: ' bg-neutral-200'}"
-	in:fade|global={{ duration: 300, delay: 100 + 200 * i }}
+	in:fade|global={{ duration: 300, delay: 100 + 100 * i }}
 	{onclick}
 	aria-label={text}
 	title={text}

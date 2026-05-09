@@ -6,6 +6,8 @@
 	import { addToast } from '$lib/toast';
 	import { darkenHex } from '$lib';
 	import { goto } from '$app/navigation';
+	import { fly } from 'svelte/transition';
+	import GuestNavbar from '$src/routes/ui/GuestNavbar.svelte';
 
 	let {
 		data,
@@ -30,6 +32,11 @@
 	</title>
 </svelte:head>
 
+<GuestNavbar
+	darkMode={data.darkMode}
+	css="max-w-lg"
+/>
+
 <div
 	class="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden p-4"
 	style="background: linear-gradient(135deg, {data.color}, {darkenHex(
@@ -48,6 +55,7 @@
 		class="z-10 flex w-full max-w-md flex-col gap-4 rounded-3xl p-4 shadow-2xl backdrop-blur-sm sm:gap-6 sm:rounded-4xl sm:p-8 {data.darkMode
 			? 'bg-neutral-800/80 text-white'
 			: 'bg-white/90 text-black'}"
+		in:fly|global={{ x: 200, duration: 400 }}
 	>
 		<header class="flex flex-col items-center gap-1 pt-2 text-center">
 			<img

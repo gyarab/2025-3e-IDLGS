@@ -247,7 +247,7 @@
 	"scrollDownToExploreMore": "Sjeďte dolů pro více informací",
 	"interactiveContent": "Interaktivní obsah",
 	"cuttingEdgeFeatures": "Nejmodernější funkce",
-	"mutlimediaSupport": "Podpora multimédií",
+	"multimediaSupport": "Podpora multimédií",
 	"contactTheDevs": "Kontaktujte vývojáře",
 	"theTeam": "Tým",
 	"soundsInteresting": "Zní to zajímavě",
@@ -299,5 +299,6 @@
     "cookiesTitle": "Soubory cookies",
     "cookiesText": "Používáme nezbytné soubory cookies, abychom vás udrželi přihlášené a zapamatovali si vaše preference motivu.",
     "contactAtPrompt": "Máte dotazy? Kontaktujte nás na",
-    "backToHome": "Zpět na domovskou stránku"
+    "backToHome": "Zpět na domovskou stránku",
+	"recentlyOpened": "Nedávno otevřené"
 }

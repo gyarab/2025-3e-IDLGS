@@ -114,7 +114,7 @@
 					>
 						<i class="ri-play-circle-line"></i>
 					</div>
-					<h2 class="text-xl font-bold">{m.mutlimediaSupport()}</h2>
+					<h2 class="text-xl font-bold">{m.multimediaSupport()}</h2>
 					<p class="text-sm leading-relaxed opacity-60">
 						{m.featureMultimediaDesc()}
 					</p>

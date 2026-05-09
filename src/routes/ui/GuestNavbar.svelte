@@ -4,30 +4,37 @@
 	import { m } from '$lib/paraglide/messages';
 	import { setDarkMode } from '$lib';
 	import NavButton from '../(base)/components/NavButton.svelte';
+	import { scale } from 'svelte/transition';
 
 	let {
 		darkMode,
-		color,
+		css,
 	}: {
 		darkMode: boolean;
-		color: string;
+		css?: string;
 	} = $props();
 </script>
 
-<div class="fixed top-0 z-40 mt-4 w-full">
+<div
+	class="fixed top-4 z-40 w-full"
+	in:scale={{ duration: 600, start: 1.3 }}
+>
 	<div
-		class="mx-auto flex h-[7svh] w-full max-w-6xl items-center justify-center px-4"
+		class="mx-auto flex h-12 w-full max-w-5xl items-center justify-center px-4 {css}"
 	>
 		<div
-			class="relative flex w-full items-center rounded-full border text-sm shadow-lg backdrop-blur-xs {darkMode
-				? 'border-white/20 bg-black/20 text-white'
-				: 'border-white/40 bg-white/40 text-black'}"
+			class="relative flex w-full items-center
+				rounded-full border text-sm shadow-[0_8px_40px_rgba(80,80,80,0.4)]
+				backdrop-blur-sm transition-all sm:px-4 sm:shadow-[0_-8px_32px_rgba(80,80,80,0.3)]
+			{darkMode
+				? 'border-white/30 bg-black/30 text-white'
+				: 'border-black/20 bg-white/60 text-black'}"
 		>
 			<a href="/">
 				<img
 					src="/logo.svg"
 					alt="Logo"
-					class="hidden h-10 px-4 sm:inline hover:scale-90 transition-transform"
+					class="h-10 px-2 transition-transform hover:scale-90"
 				/>
 			</a>
 

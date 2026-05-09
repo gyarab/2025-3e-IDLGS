@@ -3,11 +3,11 @@
 	import { m } from '$lib/paraglide/messages';
 	import { goto, invalidateAll } from '$app/navigation';
 	import { logout, setDarkMode } from '$lib';
-	import Button from '../(base)/components/Button.svelte';
 	import Dialog from '../(base)/components/Dialog.svelte';
 	import ConfirmCancel from '../(base)/components/ConfirmCancel.svelte';
 	import { resolve } from '$app/paths';
 	import NavButton from '../(base)/components/NavButton.svelte';
+	import { onMount } from 'svelte';
 
 	let {
 		accentColor,
@@ -18,42 +18,37 @@
 	} = $props();
 
 	let showLogoutConfirm = $state(false);
+	let visible = $state(false);
+	onMount(() => {
+		visible = true;
+	});
 </script>
 
 <div
-	class="pointer-events-none fixed top-0 left-0 z-30 h-16 w-full"
-	style="
-        backdrop-filter: blur(2px);
-        -webkit-backdrop-filter: blur(2px);
-        background: linear-gradient(to bottom, 
-            {darkMode ? 'rgba(80,80,80,0.4)' : 'rgba(240,240,240,0.2)'} 0%,
-            transparent 100%
-        );
-    "
-></div>
-<div
-	class="fixed top-0 z-40 mt-4 w-full"
-	transition:fly={{ y: -50, duration: 300 }}
+	class="pointer-events-none fixed bottom-4 z-40 w-full sm:top-4"
+	in:fly={{ y: -40, duration: 300 }}
 >
 	<div
-		class="mx-auto flex h-[7svh] w-full max-w-6xl items-center justify-center px-4"
+		class="pointer-events-auto mx-auto flex h-12 w-full max-w-5xl items-center justify-center px-4 sm:px-8"
 	>
-		<div
-			class="relative flex w-full items-center rounded-full border px-4 text-sm shadow-lg backdrop-blur-xs transition-colors
+		<nav
+			class="relative flex w-full items-center overflow-x-visible overflow-y-hidden
+				rounded-full border text-sm shadow-[0_8px_40px_rgba(80,80,80,0.5)]
+				backdrop-blur-sm transition-all sm:px-4 sm:shadow-[0_-8px_32px_rgba(80,80,80,0.4)]
                 {darkMode
-				? 'border-white/20 bg-black/20 text-white'
-				: 'border-white/40 bg-white/50 text-black'}"
+				? 'border-white/30 bg-black/30 text-white'
+				: 'border-black/30 bg-white/60 text-black'}"
 		>
-			<div class="flex items-center gap-3 sm:px-2">
+			<div class="flex shrink-0 items-center gap-3 ps-2">
 				<a href="/">
 					<img
 						src="/logo.svg"
 						alt="Logo"
-						class="h-12 w-12 transition-transform hover:scale-90"
+						class="h-12 w-12 transition-transform active:scale-90"
 					/>
 				</a>
 				<h2
-					class="hidden font-black tracking-widest text-nowrap uppercase sm:inline"
+					class="my-auto hidden font-black tracking-widest text-nowrap uppercase md:inline"
 				>
 					Digitalni Ucebnica
 				</h2>
@@ -61,7 +56,7 @@
 
 			<div class="grow"></div>
 
-			<nav class="flex items-center">
+			<div class="flex items-center">
 				<NavButton
 					emoji="user"
 					text={m.profile()}
@@ -97,10 +92,19 @@
 
 				<NavButton
 					onclick={async () => {
+						goto('/help');
+					}}
+					emoji="question"
+					css="buttonPrimary"
+					label={m.help()}
+					{darkMode}
+				/>
+
+				<NavButton
+					onclick={async () => {
 						await setDarkMode(!darkMode);
 						await invalidateAll();
 					}}
-					text=""
 					emoji={darkMode ? 'sun' : 'moon'}
 					css="buttonPrimary"
 					label={darkMode ? m.lightMode() : m.darkMode()}
@@ -109,14 +113,13 @@
 
 				<NavButton
 					emoji="logout-box"
-					text=""
 					{darkMode}
 					css="buttonPrimary"
 					label={m.logout()}
 					onclick={() => (showLogoutConfirm = true)}
 				/>
-			</nav>
-		</div>
+			</div>
+		</nav>
 	</div>
 </div>
 

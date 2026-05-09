@@ -51,7 +51,7 @@
 >
 	<div
 		class="mb-2 flex w-full flex-row"
-		in:fly={{ x: 1000, y: 0, duration: 300, delay: 100, opacity: 0 }}
+		in:fly={{ x: 600, y: 0, duration: 300, delay: 100, opacity: 0 }}
 	>
 		<h2 class="text-2xl font-bold">{m.crosswordWithGuess()}</h2>
 	</div>

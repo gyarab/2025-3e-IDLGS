@@ -35,7 +35,7 @@
 <div class="flex w-full grow flex-col overflow-x-hidden overflow-y-scroll">
 	<div
 		class="mb-2 flex w-full flex-row"
-		in:fly={{ x: 1000, y: 0, duration: 300, delay: 100, opacity: 0 }}
+		in:fly={{ x: 600, y: 0, duration: 300, delay: 100, opacity: 0 }}
 	>
 		<h2 class="text-2xl font-bold">{m.externalEmbeddedExercise()}</h2>
 	</div>

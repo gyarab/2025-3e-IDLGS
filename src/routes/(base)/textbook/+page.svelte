@@ -42,7 +42,7 @@
 		class="z-10 flex w-full max-w-4xl flex-col gap-6 rounded-3xl p-6 shadow-2xl backdrop-blur-sm
 			sm:rounded-4xl md:p-8 mt-20 {data.darkMode
 			? 'bg-neutral-800/80 text-white'
-			: 'bg-white/90 text-black'}"
+			: 'bg-white/80 text-black'}"
 	>
 		<header
 			class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
@@ -61,7 +61,7 @@
 				text={m.createTextbook()}
 				emoji="health-book"
 				type="button"
-				css="rounded-full px-6 py-2.5 text-sm font-semibold shadow-lg transition-transform hover:scale-105"
+				css="rounded-4xl px-6 py-2 text-sm font-semibold shadow-lg flex-row"
 				style="background-color: var(--brand); color: white;"
 				onclick={() => {
 					goto(resolve('/(base)/textbook/create'));

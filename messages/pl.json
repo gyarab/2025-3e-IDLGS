@@ -298,5 +298,6 @@
     "cookiesTitle": "Pliki cookies",
     "cookiesText": "Używamy niezbędnych plików cookies, aby utrzymać sesję logowania i zapamiętać Twoje preferencje dotyczące motywu.",
     "contactAtPrompt": "Masz pytania? Skontaktuj się z nami pod adresem",
-    "backToHome": "Powrót do strony głównej"
+    "backToHome": "Powrót do strony głównej",
+	"recentlyOpened": "Niedawno otwarte"
 }

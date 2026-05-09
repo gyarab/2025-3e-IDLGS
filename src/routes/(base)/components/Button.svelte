@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { fly } from 'svelte/transition';
 	import HoverEmoji from './HoverEmoji.svelte';
 
 	let {

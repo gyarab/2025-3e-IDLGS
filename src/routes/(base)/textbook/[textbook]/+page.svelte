@@ -21,7 +21,7 @@
 </svelte:head>
 
 <div
-	class="flex min-h-[33svh] w-1/2 flex-col gap-4 rounded-2xl p-4 mt-20 shadow-xl {data.darkMode
+	class="mt-20 flex min-h-[33svh] w-full flex-col gap-4 rounded-2xl p-4 shadow-xl sm:w-2/3 {data.darkMode
 		? 'bg-neutral-800 text-white'
 		: 'bg-neutral-200 text-gray-800'}"
 >
@@ -46,7 +46,19 @@
 		list, open resource list, OPEN EXERCISES
 	</div>
 
-	<a href="/textbook/{data.textbook.uuid}/exercises">Exercises</a>
+	<a
+		href="/textbook/{data.textbook.uuid}/exercises"
+		class="font-bold"
+	>
+		Exercises
+		<i
+			class="ri-arrow-right-s-line transition-transform group-hover:translate-x-10"
+		></i>
+	</a>
+
+	<div class="font-bold">
+		{m.chapters()}
+	</div>
 
 	<div class="grid w-full grow grid-cols-2 gap-2">
 		{#each data.chapters as chapter, i (i)}

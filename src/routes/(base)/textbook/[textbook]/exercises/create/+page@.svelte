@@ -124,7 +124,7 @@
 	emoji={'ri-function-add-line'}
 	bind:stage
 >
-	<div class="flex w-full grow flex-col overflow-x-hidden overflow-y-scroll">
+	<div class="flex w-full grow flex-col overflow-x-hidden overflow-y-auto">
 		{#if stage == 0}
 			<TypeSelection
 				color={data.color}
@@ -163,27 +163,27 @@
 				<CRWEditor
 					darkMode={data.darkMode}
 					color={data.color}
-				 />
+				/>
 			{:else if type == 'DEF'}
-				<DEFEditor 
+				<DEFEditor
 					darkMode={data.darkMode}
 					color={data.color}
-				 />
+				/>
 			{:else if type == 'DFT'}
 				<DFTEditor
 					darkMode={data.darkMode}
 					color={data.color}
-				 />
+				/>
 			{:else if type == 'GRP'}
 				<GRPEditor
 					darkMode={data.darkMode}
 					color={data.color}
-				 />
+				/>
 			{:else if type == 'GEO'}
 				<GEOEditor
 					darkMode={data.darkMode}
 					color={data.color}
-				 />
+				/>
 			{:else if type == 'EXT'}
 				<EXTEditor
 					darkMode={data.darkMode}
@@ -196,7 +196,7 @@
 			<Review />
 		{/if}
 	</div>
-	{#if stage != 0}
+	{#if stage > 0}
 		<Form
 			target="?/make{type.toUpperCase()}"
 			css="invisibleForm"

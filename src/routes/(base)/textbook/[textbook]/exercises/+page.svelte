@@ -24,13 +24,13 @@
 </svelte:head>
 
 <div
-	class="flex w-full grow flex-col items-center p-4"
+	class="flex w-full grow flex-col items-center p-6 pt-20"
 	style="background-color: {data.color};"
 >
 	<div
-		class="flex w-1/2 grow flex-col p-7 {data.darkMode
-			? 'bg-neutral-700'
-			: 'bg-neutral-100'} rounded-lg shadow-lg"
+		class="flex w-1/2 grow flex-col p-6 {data.darkMode
+			? 'bg-black/60'
+			: 'bg-white/80'} rounded-lg shadow-lg"
 	>
 		<div class="mb-4 flex w-full flex-row items-center gap-1">
 			<h1 class="">{m.textbookInteractiveExercises()}</h1>

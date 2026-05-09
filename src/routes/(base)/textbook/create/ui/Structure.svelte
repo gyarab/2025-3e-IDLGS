@@ -49,7 +49,7 @@
 <div class="flex w-full grow flex-col gap-2">
 	<div
 		class="mb-2 flex w-full flex-col items-center gap-2 sm:flex-row"
-		in:fly|global={{ x: 1000, y: 0, duration: 300, delay: 100, opacity: 0 }}
+		in:fly|global={{ x: 600, y: 0, duration: 300, delay: 100, opacity: 0 }}
 	>
 		<h2 class="text-2xl font-bold">{m.textbookStructure()}</h2>
 		<p>{m.textbookStructureDesciption()}</p>
@@ -59,7 +59,7 @@
 		<div class="flex max-w-1/2 grow flex-col gap-2">
 			<h2
 				in:fly|global={{
-					x: 1000,
+					x: 600,
 					y: 0,
 					duration: 300,
 					delay: 300,
@@ -109,7 +109,7 @@
 				<span
 					class="flex grow flex-col gap-1"
 					in:fly|global={{
-						x: 1000,
+						x: 600,
 						y: 0,
 						duration: 300,
 						delay: 700,
@@ -131,7 +131,7 @@
 					<span
 						class="flex grow flex-col gap-1"
 						in:fly|global={{
-							x: 1000,
+							x: 600,
 							y: 0,
 							duration: 300,
 							delay: 300,
@@ -157,7 +157,7 @@
 		<div class="flex max-w-1/2 grow flex-col gap-2 ps-2">
 			<h2
 				in:fly|global={{
-					x: 1000,
+					x: 600,
 					y: 0,
 					duration: 300,
 					delay: 500,
@@ -213,7 +213,7 @@
 					<span
 						class="flex grow flex-col gap-1"
 						in:fly|global={{
-							x: 1000,
+							x: 600,
 							y: 0,
 							duration: 300,
 							delay: 100,
@@ -235,7 +235,7 @@
 					<span
 						class="flex grow flex-col gap-1"
 						in:fly|global={{
-							x: 1000,
+							x: 600,
 							y: 0,
 							duration: 300,
 							delay: 300,
@@ -284,7 +284,6 @@
 			/>
 		</div>
 		<ConfirmCancel
-			dangerous={true}
 			{color}
 			bind:open={showChapterDialog}
 			confirm={async () => {
@@ -318,7 +317,6 @@
 			/>
 		</div>
 		<ConfirmCancel
-			dangerous={true}
 			{color}
 			bind:open={showArticleDialog}
 			confirm={async () => {

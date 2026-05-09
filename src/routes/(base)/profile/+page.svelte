@@ -4,6 +4,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import Button from '../components/Button.svelte';
 	import { goto } from '$app/navigation';
+	import { fly } from 'svelte/transition';
 
 	let {
 		data,
@@ -49,11 +50,12 @@
 	<div
 		class="z-10 flex w-full max-w-lg flex-col gap-6 rounded-3xl p-6 shadow-2xl backdrop-blur-sm sm:rounded-4xl md:p-8 {data.darkMode
 			? 'bg-neutral-800/80 text-white'
-			: 'bg-white/90 text-black'}"
+			: 'bg-white/80 text-black'}"
+		in:fly={{ y: 40, duration: 400 }}
 	>
 		<header class="flex items-center gap-6">
 			<img
-				class="overflow-hidden flex h-20 w-20 items-center justify-center rounded-2xl border-2 sm:h-24 sm:w-24"
+				class="flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl border-2 sm:h-24 sm:w-24"
 				style:border-color="var(--brand)"
 				alt={m.profilePicture()}
 				src={data.user.profilePicture}
@@ -99,7 +101,7 @@
 			<h2
 				class="mb-6 text-xl font-bold tracking-tight uppercase opacity-80"
 			>
-				Recently opened
+				{m.recentlyOpened()}
 			</h2>
 			<div class="space-y-6">
 				{#each data.textbooks as { title, description, uuid }}

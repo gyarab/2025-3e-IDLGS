@@ -28,6 +28,7 @@ const config = {
 					'cdn.jsdelivr.net/npm/@cap.js/',
 					'self',
 					'captcha.martinbykov.eu',
+					'ajax.googleapis.com'
 				],
 				'frame-src': ['*'],
 				'media-src': ['self'],

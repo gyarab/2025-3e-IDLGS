@@ -35,12 +35,12 @@
 <div class="flex w-full grow flex-col gap-2">
 	<div
 		class="mb-2 flex w-full flex-row"
-		in:fly={{ x: 1000, y: 0, duration: 300, delay: 100, opacity: 0 }}
+		in:fly={{ x: 600, y: 0, duration: 300, delay: 100, opacity: 0 }}
 	>
 		<h2 class="text-2xl font-bold">{m.basicExerciseInformation()}</h2>
 	</div>
 
-	<span in:fly={{ x: 1000, y: 0, duration: 300, delay: 300, opacity: 0 }}>
+	<span in:fly={{ x: 600, y: 0, duration: 300, delay: 300, opacity: 0 }}>
 		<TextInput
 			bind:value={name}
 			{darkMode}
@@ -52,7 +52,7 @@
 
 	<span
 		class="flex max-h-1/4 grow flex-col"
-		in:fly={{ x: 1000, y: 0, duration: 300, delay: 500, opacity: 0 }}
+		in:fly={{ x: 600, y: 0, duration: 300, delay: 500, opacity: 0 }}
 	>
 		<TextArea
 			bind:value={description}
@@ -64,7 +64,7 @@
 	</span>
 
 	<span
-		in:fly={{ x: 1000, y: 0, duration: 300, delay: 700, opacity: 0 }}
+		in:fly={{ x: 600, y: 0, duration: 300, delay: 700, opacity: 0 }}
 		class="flex w-full flex-col gap-2"
 	>
 		<ImageInput

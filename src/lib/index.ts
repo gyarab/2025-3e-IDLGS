@@ -118,7 +118,8 @@ export const getRGBFromHex = (color: string): number[] => {
 	];
 };
 
-export const makeURLFromImage = (data: File): string => {
+export const makeURLFromImage = (data?: File | null): string => {
+	if (!data) return '';
 	return URL.createObjectURL(data);
 };
 
