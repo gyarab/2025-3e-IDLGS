@@ -1,42 +1,31 @@
-# sv
+# IDLGS
+The digital textbook platform.
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+# Installation instructions
+You need to have docker installed on your system. Your local PostgreSQL instance has to be disabled (port 5432).
 
-## Creating a project
+Don't forget to set up .env file with all of the required keys, as laid out in .env.example.
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project
-npx sv create my-app
+```
+git clone git@github.com:gyarab/2025-3e-idlgs.git
+npm install
+npm run db:start
+in a separate terminal: npm run dev
 ```
 
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv@0.12.7 create --template minimal --types ts --add prettier eslint tailwindcss="plugins:typography,forms" sveltekit-adapter="adapter:node" drizzle="database:postgresql+postgresql:postgres.js+docker:yes" paraglide="languageTags:en, cs+demo:no" --install npm ./
+# Hosting
+Compile using
 ```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
 npm run build
 ```
+Then start the Node server according to the SvelteKit documentation.
 
-You can preview the production build with `npm run preview`.
+# Error checking
+```
+npm run check
+npm run lint
+npm run format
+```
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+# Authors
+Ali Yunussov, Martin Bykov, Kira Stepanova
