@@ -71,7 +71,7 @@
 
 		<hr class="opacity-20" />
 
-		<section class="custom-scrollbar max-h-[60vh] overflow-y-auto pr-2">
+		<section class="custom-scrollbar max-h-[60vh] pr-2">
 			{#if data.textbooks.length > 0}
 				<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 					{#each data.textbooks as textbook, i (textbook.uuid || i)}
