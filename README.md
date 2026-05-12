@@ -7,10 +7,14 @@ You need to have docker installed on your system. Your local PostgreSQL instance
 Don't forget to set up .env file with all of the required keys, as laid out in .env.example.
 
 ```
-git clone git@github.com:gyarab/2025-3e-idlgs.git
+# 1. Clone repository
+git clone git@github.com:gyarab/2025-3e-IDLGS.git
+
+# 2. Install dependencies
 npm install
-npm run db:start
-in a separate terminal: npm run dev
+
+# 3. Run project
+npm run dev:all
 ```
 
 # Hosting
@@ -19,6 +23,7 @@ Compile using
 npm run build
 ```
 Then start the Node server according to the SvelteKit documentation.
+https://svelte.dev/docs/kit/adapter-node
 
 # Error checking
 ```
@@ -28,4 +33,4 @@ npm run format
 ```
 
 # Authors
-Ali Yunussov, Martin Bykov, Kira Stepanova
+Martin Bykov, Ali Yunussov, Kira Stepanova
