@@ -43,20 +43,12 @@
 			in:fade={{ duration: 400 }}
 		>
 			<header class="flex items-center gap-6">
-				<div
-					class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-(--brand) text-white shadow-lg"
-					in:fly={{ x: -20, duration: 600 }}
+				<h1
+					class="text-3xl font-extrabold tracking-tight sm:text-5xl"
+					in:fly={{ x: 20, duration: 600 }}
 				>
-					<i class="ri-team-line text-3xl"></i>
-				</div>
-				<div>
-					<h1
-						class="text-3xl font-extrabold tracking-tight sm:text-5xl"
-						in:fly={{ x: 20, duration: 600 }}
-					>
-						{m.aboutUs()}
-					</h1>
-				</div>
+					{m.aboutUs()}
+				</h1>
 			</header>
 
 			<hr class="opacity-10" />
@@ -65,11 +57,12 @@
 				<div class="relative md:col-span-8">
 					<span
 						class="absolute -top-6 -left-4 font-serif text-7xl opacity-10"
-						>“</span
 					>
+						“
+					</span>
 
 					<p
-						class="relative z-10 text-lg leading-relaxed opacity-80 md:text-2xl md:leading-relaxed"
+						class="relative z-10 text-lg leading-relaxed opacity-80 md:text-xl md:leading-relaxed"
 						in:fly={{ y: 20, duration: 600, delay: 200 }}
 					>
 						{m.aboutDescription()}
@@ -81,7 +74,7 @@
 					in:fly={{ x: 20, duration: 600, delay: 400 }}
 				>
 					<div
-						class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm"
+						class="rounded-2xl border border-white/10 opacity-80 p-4 backdrop-blur-sm"
 					>
 						<p
 							class="mb-3 text-xs font-bold tracking-widest uppercase opacity-50"

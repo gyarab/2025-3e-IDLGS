@@ -35,6 +35,7 @@
 <GuestNavbar
 	darkMode={data.darkMode}
 	css="max-w-lg"
+	startScale={1.3}
 />
 
 <div

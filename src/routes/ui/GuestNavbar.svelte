@@ -9,15 +9,17 @@
 	let {
 		darkMode,
 		css,
+		startScale = 1,
 	}: {
 		darkMode: boolean;
 		css?: string;
+		startScale: number;
 	} = $props();
 </script>
 
 <div
 	class="fixed top-4 z-40 w-full"
-	in:scale={{ duration: 600, start: 1.3 }}
+	in:scale={{ duration: 600, start: startScale }}
 >
 	<div
 		class="mx-auto flex h-12 w-full max-w-5xl items-center justify-center px-4 {css}"

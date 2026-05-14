@@ -94,8 +94,6 @@ export const handle: Handle = sequence(
 );
 
 export const init: ServerInit = async () => {
-	checkConfig();
-
 	if (!process.env.MAIL_SOURCE_ADDRESS)
 		throw Error('No email address provided!');
 	if (!process.env.MAIL_CLIENT_ID)
