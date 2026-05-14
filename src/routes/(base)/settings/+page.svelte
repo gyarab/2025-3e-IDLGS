@@ -15,6 +15,7 @@
 	import ColorInput from '$src/routes/(base)/components/ColorInput.svelte';
 	import { darkenHex } from '$lib';
 	import ImageInput from '../components/ImageInput.svelte';
+	import { fade } from 'svelte/transition';
 
 	let {
 		data,
@@ -71,6 +72,7 @@
 			class="rounded-3xl p-6 shadow-2xl sm:p-8 {data.darkMode
 				? 'bg-neutral-800/80 text-white'
 				: 'bg-white/90 text-black'}"
+			in:fade={{ duration: 400, delay: 100 }}
 		>
 			<div class="flex items-center gap-3">
 				<i
@@ -130,6 +132,7 @@
 			class="rounded-3xl p-6 shadow-2xl sm:p-8 {data.darkMode
 				? 'bg-neutral-800/80 text-white'
 				: 'bg-white/90 text-black'}"
+			in:fade={{ duration: 400, delay: 300 }}
 		>
 			<div class="flex items-center gap-3">
 				<i
@@ -151,7 +154,7 @@
 
 					fileData = [];
 				}}
-				>
+			>
 				<ImageInput
 					darkMode={data.darkMode}
 					color={data.color}
@@ -175,6 +178,7 @@
 			class="rounded-3xl p-6 shadow-2xl sm:p-8 {data.darkMode
 				? 'bg-neutral-800/80 text-white'
 				: 'bg-white/90 text-black'}"
+			in:fade={{ duration: 400, delay: 500 }}
 		>
 			<div class="flex items-center gap-3">
 				<i
@@ -221,7 +225,10 @@
 		</section>
 
 		<!-- Language & Appearance (Side by Side on desktop) -->
-		<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+		<div
+			class="grid grid-cols-1 gap-6 md:grid-cols-2"
+			in:fade={{ duration: 400, delay: 700 }}
+		>
 			<!-- Language -->
 			<section
 				class="rounded-3xl p-6 shadow-2xl {data.darkMode
@@ -297,6 +304,7 @@
 			class="rounded-3xl p-6 shadow-2xl sm:p-8 {data.darkMode
 				? 'bg-neutral-800/80 text-white'
 				: 'bg-white/90 text-black'}"
+			in:fade={{ duration: 400, delay: 900 }}
 		>
 			<h2 class="text-xl font-bold">{m.description()}</h2>
 			<Form
@@ -328,6 +336,7 @@
 			class="rounded-3xl p-6 shadow-2xl sm:p-8 {data.darkMode
 				? 'bg-neutral-800/80 text-white'
 				: 'bg-white/90 text-black'}"
+			in:fade={{ duration: 400, delay: 1100 }}
 		>
 			<div class="flex items-center gap-3">
 				<i

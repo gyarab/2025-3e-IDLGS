@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { darkenHex } from '$lib';
+	import { darkenHex, sanitizeColor } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import Button from '../components/Button.svelte';
 	import { goto } from '$app/navigation';
@@ -17,7 +17,7 @@
 	const sections = [
 		{ title: m.dataCollectionTitle(), content: m.dataCollectionText() },
 		{ title: m.dataUsageTitle(), content: m.dataUsageText() },
-		{ title: m.securityTitle(), content: m.securityText() },
+		// { title: m.securityTitle(), content: m.securityText() },
 		{ title: m.cookiesTitle(), content: m.cookiesText() },
 	];
 </script>
@@ -43,7 +43,7 @@
 	<div
 		class="z-10 flex w-full max-w-2xl flex-col gap-6 rounded-3xl p-6 shadow-2xl backdrop-blur-sm sm:rounded-4xl md:p-10 {data.darkMode
 			? 'bg-neutral-800/80 text-white'
-			: 'bg-white/90 text-black'}"
+			: 'bg-white/80 text-black'}"
 	>
 		<header class="flex flex-col gap-2">
 			<div class="flex items-center gap-4">
@@ -65,12 +65,12 @@
 
 		<hr class="opacity-20" />
 
-		<div class="custom-scrollbar min-h-1/2 space-y-8 overflow-y-auto pr-2">
+		<div class="min-h-1/2 space-y-8 overflow-y-auto pr-2">
 			{#each sections as section}
 				<section>
 					<h2
 						class="mb-3 text-lg font-bold tracking-wider uppercase"
-						style="color: var(--brand)"
+						style="color: {sanitizeColor(data.color, 40)}"
 					>
 						{section.title}
 					</h2>
@@ -90,7 +90,7 @@
 				{m.contactAtPrompt()}
 				<a
 					class="font-bold"
-					style="color: var(--brand)"
+					style="color: {sanitizeColor(data.color, 40)}"
 					href="mailto:{PUBLIC_EMAIL_M}?subject=Support Request - IDLGS"
 					>{PUBLIC_EMAIL_M}</a
 				>
@@ -100,7 +100,7 @@
 				emoji="home"
 				type="button"
 				css="rounded-full px-6 py-2 font-semibold hover:opacity-90"
-				style="background-color: var(--brand); color: white;"
+				style="background-color: {sanitizeColor(data.color, 45)}; color: white;"
 				onclick={() => goto('/')}
 			/>
 		</footer>

@@ -24,38 +24,41 @@
 </svelte:head>
 
 <div
-	class="flex w-full grow flex-col items-center p-6 pt-20"
+	class="flex w-full grow flex-col items-center p-4 pt-20"
 	style="background-color: {data.color};"
 >
 	<div
-		class="flex w-1/2 grow flex-col p-6 {data.darkMode
+		class="flex w-full grow flex-col p-4 sm:p-6 lg:w-3/4 {data.darkMode
 			? 'bg-black/60'
 			: 'bg-white/80'} rounded-lg shadow-lg"
 	>
-		<div class="mb-4 flex w-full flex-row items-center gap-1">
+		<div class="mb-4 flex w-full flex-col items-center gap-4 sm:flex-row">
 			<h1 class="">{m.textbookInteractiveExercises()}</h1>
-			<h1
-				class="font-bold"
-				style="color: {data.color} !important;"
+			<div
+				class="my-auto flex grow flex-col items-center justify-end gap-4 sm:flex-row"
 			>
-				{data.textbook.title}
-			</h1>
-			<div class="grow"></div>
-			<Button
-				emoji="function-add"
-				type="button"
-				text={m.createExercise()}
-				css="buttonPrimary"
-				style="background-color: {data.color};"
-				onclick={() => {
-					goto(
-						resolve(
-							'/(base)/textbook/[textbook]/exercises/create',
-							{ textbook: page.params.textbook! },
-						),
-					);
-				}}
-			/>
+				<h1
+					class="font-bold"
+					style="color: {data.color} !important;"
+				>
+					{data.textbook.title}
+				</h1>
+				<Button
+					emoji="function-add"
+					type="button"
+					text={m.createExercise()}
+					css="buttonPrimary flex-row gap-2"
+					style="background-color: {data.color};"
+					onclick={() => {
+						goto(
+							resolve(
+								'/(base)/textbook/[textbook]/exercises/create',
+								{ textbook: page.params.textbook! },
+							),
+						);
+					}}
+				/>
+			</div>
 		</div>
 		<hr />
 	</div>

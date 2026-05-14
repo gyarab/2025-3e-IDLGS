@@ -299,5 +299,7 @@
     "cookiesText": "Używamy niezbędnych plików cookies, aby utrzymać sesję logowania i zapamiętać Twoje preferencje dotyczące motywu.",
     "contactAtPrompt": "Masz pytania? Skontaktuj się z nami pod adresem",
     "backToHome": "Powrót do strony głównej",
-	"recentlyOpened": "Niedawno otwarte"
+	"recentlyOpened": "Niedawno otwarte",
+	"checkOutYourProfilePage": "Sprawdź swoją stronę profilu",
+	"adjustSomeSettings": "Dostosuj niektóre ustawienia"
 }

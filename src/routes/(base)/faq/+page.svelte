@@ -53,7 +53,7 @@
 	<div
 		class="z-10 flex w-full max-w-4xl flex-col gap-6 rounded-3xl p-6 shadow-2xl backdrop-blur-sm sm:rounded-4xl md:p-8 {data.darkMode
 			? 'bg-neutral-800/80 text-white'
-			: 'bg-white/90 text-black'}"
+			: 'bg-white/80 text-black'}"
 	>
 		<header class="text-center">
 			<h1 class="text-3xl font-bold sm:text-4xl">{m.faq()}</h1>

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { sanitizeColor } from '$lib';
+
 	let {
 		color,
 	}: {
@@ -13,7 +15,7 @@
 	>
 		<circle
 			class="animate-variable-spin"
-			style="stroke: {color};"
+			style="stroke: {sanitizeColor(color, 45)};"
 			cx="50"
 			cy="50"
 			r="40"

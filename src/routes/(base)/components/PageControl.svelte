@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { sanitizeColor } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import SelectionButton from '$src/routes/(base)/components/SelectionButton.svelte';
 
@@ -26,7 +27,7 @@
 
 	<SelectionButton
 		orientation="land"
-		style="background-color: {color};"
+		style="background-color: {sanitizeColor(color, 45)};"
 		texts={[m.back(), nextButtonCreate ? createText : m.next()]}
 		disabled={[stage == 0 || disablePrev, disableNext]}
 		actions={[() => stage--, () => stage++]}

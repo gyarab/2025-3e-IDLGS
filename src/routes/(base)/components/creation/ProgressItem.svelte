@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { sanitizeColor } from '$lib';
+
 	let {
 		done,
 		current,
@@ -18,7 +20,7 @@
 	{#if current}
 		<i
 			class="ri-login-circle-fill {textSize}"
-			style="color: {color} !important;"
+			style="color: {sanitizeColor(color, 45)};"
 		></i>
 	{:else if done}
 		<i class="ri-checkbox-circle-fill {textSize} text-green-600!"></i>

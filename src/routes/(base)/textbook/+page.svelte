@@ -5,8 +5,9 @@
 	import Button from '../components/Button.svelte';
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
-	import { darkenHex } from '$lib';
+	import { darkenHex, sanitizeColor } from '$lib';
 	import { textbooks } from '$lib/plural';
+	import { fly } from 'svelte/transition';
 
 	let {
 		data,
@@ -39,10 +40,11 @@
 	></i>
 
 	<div
-		class="z-10 flex w-full max-w-4xl flex-col gap-6 rounded-3xl p-6 shadow-2xl backdrop-blur-sm
-			sm:rounded-4xl md:p-8 mt-20 {data.darkMode
+		class="z-10 mt-20 flex w-full max-w-4xl flex-col gap-6 rounded-3xl p-6 shadow-2xl
+			backdrop-blur-sm sm:rounded-4xl md:p-8 {data.darkMode
 			? 'bg-neutral-800/80 text-white'
 			: 'bg-white/80 text-black'}"
+		in:fly={{ y: 40, duration: 400 }}
 	>
 		<header
 			class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
@@ -61,8 +63,11 @@
 				text={m.createTextbook()}
 				emoji="health-book"
 				type="button"
-				css="rounded-4xl px-6 py-2 text-sm font-semibold shadow-lg flex-row"
-				style="background-color: var(--brand); color: white;"
+				css="rounded-4xl px-6 py-2 text-sm font-semibold shadow-lg flex-row gap-2"
+				style="background-color:{sanitizeColor(
+					data.color,
+					50,
+				)}; color: white;"
 				onclick={() => {
 					goto(resolve('/(base)/textbook/create'));
 				}}

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Button from './Button.svelte';
 	import { m } from '$lib/paraglide/messages';
-	import { darkenHex } from '$lib';
+	import { darkenHex, sanitizeColor } from '$lib';
 
 	let {
 		dangerous,
@@ -19,11 +19,11 @@
 		disabled?: boolean;
 	} = $props();
 
-	let bgOk = $derived(dangerous ? "bg-red-500/80" : darkenHex(color, 20));
-	let bgCancel = $derived(dangerous ? "bg-green-600/80" : darkenHex(color, 50));
+	let bgOk = $derived(dangerous ? "bg-red-500/80" : sanitizeColor(color, 45));
+	let bgCancel = $derived(dangerous ? "bg-green-700/80" : sanitizeColor(color, 50));
 </script>
 
-<div class="flex w-full flex-row gap-1">
+<div class="flex w-full flex-row gap-4">
 	<Button
 		emoji="check"
 		onclick={async () => {

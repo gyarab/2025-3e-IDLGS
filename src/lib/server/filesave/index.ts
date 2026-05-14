@@ -29,7 +29,7 @@ const cloudinaryUpload = async (
 ): Promise<string | undefined> => {
 	if (!file || file.size === 0) return undefined;
 
-	const byteArrayBuffer = Buffer.from(await file.arrayBuffer());
+	const byteArrayBuffer = Buffer.from(await new Response(file).arrayBuffer());
 
 	const data = await new Promise((resolve) => {
 		cloudinary.uploader

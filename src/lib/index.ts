@@ -123,17 +123,17 @@ export const makeURLFromImage = (data?: File | null): string => {
 	return URL.createObjectURL(data);
 };
 
-export function sanitizeColor(hex: string): string {
-    const color = colord(hex);
-    const hsl = color.toHsl();
+export function sanitizeColor(hex: string, maxL: number = 60): string {
+	const color = colord(hex);
+	const hsl = color.toHsl();
 
-    const isGray = hsl.s === 0;
-    const newS = isGray ? 0 : Math.max(hsl.s, 20); 
-    const newL = Math.max(40, Math.min(70, hsl.l));
+	const isGray = hsl.s === 0;
+	const newS = isGray ? 0 : Math.max(hsl.s, 20);
+	const newL = Math.max(maxL * 0.8, Math.min(maxL, hsl.l));
 
-    return colord({
-        h: hsl.h,
-        s: newS,
-        l: newL
-    }).toHex();
+	return colord({
+		h: hsl.h,
+		s: newS,
+		l: newL
+	}).toHex();
 }

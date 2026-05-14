@@ -13,7 +13,6 @@
 		hecss,
 		txtcss,
 		onclick,
-		rmwhite,
 	}: {
 		emoji: string;
 		text: string;
@@ -26,7 +25,6 @@
 		hecss?: string;
 		txtcss?: string;
 		onclick: (event: Event) => void;
-		rmwhite?: boolean;
 	} = $props();
 </script>
 
@@ -36,9 +34,7 @@
 	{disabled}
 	aria-label={label}
 	title={label}
-	class="group flex flex-col sm:flex-row items-center justify-center sm:gap-1 {rmwhite
-		? ''
-		: 'text-white!'} {css}"
+	class="group flex flex-col sm:flex-row items-center justify-center sm:gap-1 {css}"
 	{onclick}
 	{style}
 >

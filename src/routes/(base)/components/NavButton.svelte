@@ -35,7 +35,7 @@
 	{disabled}
 	aria-label={label}
 	title={label}
-	class="group flex flex-row items-center justify-center gap-1 {darkMode
+	class="group flex flex-row items-center justify-center sm:gap-1 {darkMode
 		? 'text-white'
 		: 'text-black'} {css}"
 	{onclick}
@@ -43,7 +43,7 @@
 >
 	<HoverEmoji
 		{emoji}
-		css="text-2xl {hecss}"
+		css="text-xl sm:text-2xl {hecss}"
 	/>
 	<span class={text?.length == 0 ? 'hidden' : txtcss}>
 		{text}

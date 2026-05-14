@@ -76,7 +76,7 @@
 				/>
 
 				<NavButton
-					emoji="settings"
+					emoji="settings-4"
 					text={m.settings()}
 					{darkMode}
 					css="buttonPrimary text-nowrap"

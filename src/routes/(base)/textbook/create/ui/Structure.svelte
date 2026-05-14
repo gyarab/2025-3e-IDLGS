@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { darkenHex } from '$lib';
+	import {  sanitizeColor } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import type { ArticleTypeRaw, ChapterTypeRaw } from '$lib/types';
 	import Button from '$src/routes/(base)/components/Button.svelte';
@@ -23,6 +23,8 @@
 		chapters: ChapterTypeRaw[];
 		articles: ArticleTypeRaw[][];
 	} = $props();
+
+	const uiColor = sanitizeColor(color, 45);
 
 	let showChapterDialog: boolean = $state(false);
 	let showArticleDialog: boolean = $state(false);
@@ -118,7 +120,7 @@
 				>
 					<Button
 						text={m.addChapter()}
-						style="background-color: {color};"
+						style="background-color: {uiColor};"
 						css="buttonPrimary w-full"
 						onclick={() => {
 							showChapterDialog = true;
@@ -140,7 +142,7 @@
 					>
 						<Button
 							text={m.removeChapter()}
-							style="background-color: {darkenHex(color, 50)};"
+							style="background-color: #999999;"
 							css="buttonPrimary w-full hover:bg-red-700!"
 							onclick={() => {
 								deleteChapter = true;
@@ -222,7 +224,7 @@
 					>
 						<Button
 							text={m.addArticle()}
-							style="background-color: {color};"
+							style="background-color: {uiColor};"
 							css="buttonPrimary w-full"
 							onclick={() => {
 								showArticleDialog = true;
@@ -244,8 +246,8 @@
 					>
 						<Button
 							text={m.removeArticle()}
-							style="background-color: {darkenHex(color, 80)};"
-							css="buttonPrimary w-full"
+							style="background-color: #999999;"
+							css="buttonPrimary w-full hover:bg-red-700!"
 							onclick={() => {
 								deleteArticle = true;
 							}}

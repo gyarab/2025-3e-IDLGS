@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { darkenHex, makeURLFromImage } from '$lib';
+	import { darkenHex, makeURLFromImage, sanitizeColor } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import ColorInput from '$src/routes/(base)/components/ColorInput.svelte';
 	import SelectionBtnList from '$src/routes/(base)/components/SelectionBtnList.svelte';
@@ -25,6 +25,7 @@
 		thumbnail: File[];
 	} = $props();
 
+	const uiColor = sanitizeColor(color, 45);
 	let imagePreview: string = $derived(
 		thumbnail?.[0] ? makeURLFromImage(thumbnail[0]) : '',
 	);
@@ -105,9 +106,9 @@
 				]}
 				values={['0', '1', '2', '3', '4', '5', '6', '7', '8']}
 				bind:value={education}
-				style="background-color: {color};"
+				style="background-color: {uiColor};"
 				css="buttonPrimary text-sm rounded-xl"
-				selectedstyle="background-color: {darkenHex(color, 50)};"
+				selectedstyle="background-color: {darkenHex(uiColor, 50)};"
 			/>
 		</span>
 

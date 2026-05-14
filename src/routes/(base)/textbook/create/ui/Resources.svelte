@@ -37,7 +37,7 @@
 			type="button"
 			onclick={() => {}}
 			css="buttonPrimary grow"
-			style="background-color: {color};"
+			style="background-color: #30C030;"
 		/>
 		<Button
 			text={m.editResource()}
@@ -45,7 +45,7 @@
 			type="button"
 			onclick={() => {}}
 			css="buttonPrimary grow"
-			style="background-color: {darkenHex(color, 50)};"
+			style="background-color: #D0C030;"
 		/>
 		<Button
 			text={m.removeResource()}
@@ -53,7 +53,7 @@
 			type="button"
 			onclick={() => {}}
 			css="buttonPrimary grow"
-			style="background-color: {darkenHex(color, 80)};"
+			style="background-color: #D04040;"
 		/>
 	</div>
 </div>
