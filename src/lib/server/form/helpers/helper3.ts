@@ -1,7 +1,7 @@
-import { checkGlobals } from "../global"
+import { checkGlobals } from '../global';
 
 export const formHelper3 = () => {
-    if(!checkGlobals()) {
+	if (!checkGlobals()) {
 		throw Error('Configuration is invalid! Check your .env file!');
-	}	
-}
+	}
+};

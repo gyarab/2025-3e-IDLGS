@@ -13,7 +13,9 @@
 	} = $props();
 </script>
 
-<div class="flex w-full flex-col gap-4 min-h-[30vh] max-h-[80svh] overflow-x-hidden overflow-y-visible">
+<div
+	class="flex max-h-[80svh] min-h-[30vh] w-full flex-col gap-4 overflow-x-hidden overflow-y-visible"
+>
 	<TextArea
 		{darkMode}
 		{color}

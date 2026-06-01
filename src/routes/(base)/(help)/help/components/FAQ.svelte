@@ -1,3 +1,3 @@
 <script lang="ts">
-	import FAQQuestion from "./FAQQuestion.svelte";
+	import FAQQuestion from './FAQQuestion.svelte';
 </script>

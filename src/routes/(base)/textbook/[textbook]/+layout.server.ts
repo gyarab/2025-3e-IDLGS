@@ -23,7 +23,10 @@ export const load = async (event) => {
 			.from(databaseSchema.textbook)
 			.leftJoin(
 				databaseSchema.resource,
-				eq(databaseSchema.textbook.thumbnail, databaseSchema.resource.id),
+				eq(
+					databaseSchema.textbook.thumbnail,
+					databaseSchema.resource.id,
+				),
 			)
 			.where(eq(databaseSchema.textbook.uuid, event.params.textbook))
 			.limit(1)

@@ -12,6 +12,4 @@
 	} = $props();
 </script>
 
-<div>
-	
-</div>
+<div></div>

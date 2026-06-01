@@ -82,7 +82,11 @@
 			darkMode={data.darkMode}
 			color={data.color}
 		>
-			<input type="hidden" name="text" bind:value={articleText} />
+			<input
+				type="hidden"
+				name="text"
+				bind:value={articleText}
+			/>
 			<div class="grow"></div>
 			<Button
 				type="submit"

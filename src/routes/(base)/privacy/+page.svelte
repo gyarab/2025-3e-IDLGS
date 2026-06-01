@@ -100,7 +100,10 @@
 				emoji="home"
 				type="button"
 				css="rounded-full px-6 py-2 font-semibold hover:opacity-90"
-				style="background-color: {sanitizeColor(data.color, 45)}; color: white;"
+				style="background-color: {sanitizeColor(
+					data.color,
+					45,
+				)}; color: white;"
 				onclick={() => goto('/')}
 			/>
 		</footer>

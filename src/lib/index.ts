@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import { colord } from "colord";
+import { colord } from 'colord';
 
 export const DEFAULT_ACCENT_COLOR = '#ff8800';
 export const DEFAULT_MS_UNTIL_REQUEST = 500; //from end of typing until request is sent
@@ -134,6 +134,6 @@ export function sanitizeColor(hex: string, maxL: number = 60): string {
 	return colord({
 		h: hsl.h,
 		s: newS,
-		l: newL
+		l: newL,
 	}).toHex();
 }

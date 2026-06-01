@@ -57,7 +57,7 @@
 			<img
 				class="flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl border-2 sm:h-24 sm:w-24"
 				style:border-color="var(--brand)"
-				alt="{m.profilePicture()}"
+				alt={m.profilePicture()}
 				src={data.user.profilePicture}
 			/>
 			<div>
@@ -120,7 +120,10 @@
 								emoji="book-open"
 								type="button"
 								css="rounded-full px-4 py-2 text-sm font-semibold hover:bg-white/20"
-								style="background-color: {sanitizeColor(data.color, 45)};"
+								style="background-color: {sanitizeColor(
+									data.color,
+									45,
+								)};"
 								onclick={() => goto(`/textbook/${uuid}`)}
 							/>
 							<!--

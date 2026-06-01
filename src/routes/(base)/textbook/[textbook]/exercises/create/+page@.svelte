@@ -211,7 +211,7 @@
 			}}
 			failure={async () => {
 				stage--;
-				addToast("Failed to create exercise", "error")
+				addToast('Failed to create exercise', 'error');
 			}}
 			start={async (formData) => {
 				formData!.append('thumbnail', thumbnail[0]);

@@ -44,7 +44,7 @@
 				class="ri-home-2-fill absolute top-1/8 left-2/3 z-10 scale-200 -rotate-25 animate-pulse text-9xl text-white! opacity-30"
 			></i>
 			<div
-				class="text-5xl font-extrabold text-white flex flex-col"
+				class="flex flex-col text-5xl font-extrabold text-white"
 				in:fly|global={{ y: 50, duration: 1000, opacity: 0 }}
 			>
 				<img
@@ -56,7 +56,12 @@
 			</div>
 			<div
 				class="floating-text absolute bottom-15 left-0 flex w-full flex-row justify-center text-white italic opacity-70"
-				in:fly|global={{ y: 50, duration: 1000, opacity: 0, delay: 500 }}
+				in:fly|global={{
+					y: 50,
+					duration: 1000,
+					opacity: 0,
+					delay: 500,
+				}}
 			>
 				<i class="ri-arrow-down-double-line"></i>
 				{m.scrollDownToExploreMore()}
@@ -67,16 +72,18 @@
 {/if}
 
 <style>
-    .floating-text {
-        animation: float-and-pause 4s ease-in-out infinite;
-    }
+	.floating-text {
+		animation: float-and-pause 4s ease-in-out infinite;
+	}
 
-    @keyframes float-and-pause {
-        0%, 100%, 50% {
-            transform: translateY(0);
-        }
-        75% {
-            transform: translateY(10px);
-        }
-    }
+	@keyframes float-and-pause {
+		0%,
+		100%,
+		50% {
+			transform: translateY(0);
+		}
+		75% {
+			transform: translateY(10px);
+		}
+	}
 </style>

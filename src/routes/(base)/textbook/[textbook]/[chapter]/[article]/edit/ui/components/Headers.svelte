@@ -23,27 +23,21 @@
 	<ToolbarButton
 		emoji="h-1"
 		label={m.heading1()}
-		onclick={() => {
-
-		}}
+		onclick={() => {}}
 		{darkMode}
 		{color}
 	/>
 	<ToolbarButton
 		emoji="h-2"
 		label={m.heading2()}
-		onclick={() => {
-
-		}}
+		onclick={() => {}}
 		{darkMode}
 		{color}
 	/>
 	<ToolbarButton
 		emoji="h-3"
 		label={m.heading3()}
-		onclick={() => {
-
-		}}
+		onclick={() => {}}
 		{darkMode}
 		{color}
 	/>

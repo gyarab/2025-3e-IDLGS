@@ -129,7 +129,7 @@ export const actions = {
 						})
 						.where(eq(databaseSchema.user.id, user!.id));
 				}
-			}
+			},
 		);
 	},
 	updateColor: async (event) => {
@@ -158,27 +158,35 @@ export const actions = {
 			event,
 			['picture'],
 			true,
-			async (data: FormDataType, user: UserTypeFull | undefined, formData?: FormDataType) => {
+			async (
+				data: FormDataType,
+				user: UserTypeFull | undefined,
+				formData?: FormDataType,
+			) => {
 				const thumbnail = formData!.get('picture') as File;
 				if (!thumbnail || thumbnail.size === 0) return fail(400);
 
 				const thumbnailUrl = await saveToCloud(thumbnail, 'image');
 				if (!thumbnailUrl) return fail(502);
 
-				const oldPicture = (await event.locals.db
-					.select({ id: databaseSchema.resource.id, url: databaseSchema.resource.url })
-					.from(databaseSchema.user)
-					.leftJoin(
-						databaseSchema.resource,
-						eq(
-							databaseSchema.user.profilePicture,
-							databaseSchema.resource.id,
-						),
-					)
-					.where(eq(databaseSchema.user.id, user!.id))
+				const oldPicture = (
+					await event.locals.db
+						.select({
+							id: databaseSchema.resource.id,
+							url: databaseSchema.resource.url,
+						})
+						.from(databaseSchema.user)
+						.leftJoin(
+							databaseSchema.resource,
+							eq(
+								databaseSchema.user.profilePicture,
+								databaseSchema.resource.id,
+							),
+						)
+						.where(eq(databaseSchema.user.id, user!.id))
 				)[0];
 
-				if(oldPicture?.url) {
+				if (oldPicture?.url) {
 					await deleteInCloud(oldPicture.url);
 				}
 
@@ -199,8 +207,13 @@ export const actions = {
 
 					await tx
 						.delete(databaseSchema.resource)
-						.where(eq(databaseSchema.resource.id, oldPicture?.id ?? -1));					
-				});			
+						.where(
+							eq(
+								databaseSchema.resource.id,
+								oldPicture?.id ?? -1,
+							),
+						);
+				});
 			},
 			['picture'],
 		);

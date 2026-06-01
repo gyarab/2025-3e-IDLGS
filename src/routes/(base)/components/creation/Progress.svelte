@@ -38,7 +38,7 @@
 	>
 		<div class="flex w-full flex-row items-start px-1">
 			<i class="absolute top-0 right-0 {emoji} text-3xl"></i>
-			<h1 class="text-xl font-bold sm:text-2xl pe-8">{title}</h1>
+			<h1 class="pe-8 text-xl font-bold sm:text-2xl">{title}</h1>
 		</div>
 
 		{#key stage}

@@ -35,42 +35,52 @@
 	<ToolbarButton
 		emoji="file-image-line"
 		label={m.image()}
-		onclick={() => { showImageDialog = true; }}
+		onclick={() => {
+			showImageDialog = true;
+		}}
 		{darkMode}
 		{color}
 	/>
 	<ToolbarButton
 		emoji="link"
 		label={m.embed()}
-		onclick={() => { showLinkDialog = true; }}
+		onclick={() => {
+			showLinkDialog = true;
+		}}
 		{darkMode}
 		{color}
 	/>
 	<ToolbarButton
 		emoji="file-video-line"
 		label={m.video()}
-		onclick={() => { showVideoDialog = true; }}
+		onclick={() => {
+			showVideoDialog = true;
+		}}
 		{darkMode}
 		{color}
 	/>
 	<ToolbarButton
 		emoji="box-3-line"
 		label={m.model3d()}
-		onclick={() => { showModelDialog = true; }}
+		onclick={() => {
+			showModelDialog = true;
+		}}
 		{darkMode}
 		{color}
 	/>
 	<ToolbarButton
 		emoji="file-line"
 		label={m.document()}
-		onclick={() => { showDocumentDialog = true; }}
+		onclick={() => {
+			showDocumentDialog = true;
+		}}
 		{darkMode}
 		{color}
 	/>
 	<ToolbarButton
 		emoji="formula"
 		label={m.formula()}
-		onclick={() => { }}
+		onclick={() => {}}
 		{darkMode}
 		{color}
 	/>
@@ -111,10 +121,19 @@
 		<Input3D
 			{darkMode}
 			{color}
-		bind:value={fileValue}
+			bind:value={fileValue}
 		/>
 
-		<model-viewer alt="T3" src="/T3.glb" ar environment-image="" poster="T3.webp" shadow-intensity="1" camera-controls touch-action="pan-y"></model-viewer>
+		<model-viewer
+			alt="T3"
+			src="/T3.glb"
+			ar
+			environment-image=""
+			poster="T3.webp"
+			shadow-intensity="1"
+			camera-controls
+			touch-action="pan-y"
+		></model-viewer>
 	</div>
 </Dialog>
 

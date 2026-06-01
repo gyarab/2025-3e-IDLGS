@@ -22,13 +22,18 @@ const config = {
 				'object-src': ['self'],
 				'img-src': ['self', 'res.cloudinary.com', 'data:', 'blob:'],
 				//sveltekit announcer issue + we use this
-				'style-src': ['self', 'fonts.googleapis.com', 'unsafe-inline', 'https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css'],
+				'style-src': [
+					'self',
+					'fonts.googleapis.com',
+					'unsafe-inline',
+					'https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css',
+				],
 				'frame-ancestors': ['self'],
 				'connect-src': [
 					'cdn.jsdelivr.net/npm/@cap.js/',
 					'self',
 					'captcha.martinbykov.eu',
-					'ajax.googleapis.com'
+					'ajax.googleapis.com',
 				],
 				'frame-src': ['*'],
 				'media-src': ['self'],

@@ -7,7 +7,7 @@ export const schema = {
 	...user,
 	...exercise,
 	...textbook,
-	...book
+	...book,
 };
 
 export default schema;
