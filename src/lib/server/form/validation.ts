@@ -22,8 +22,6 @@ export const formRunner = async (
 	) => Promise<FormRunnerResult>,
 	ignoredItems: string[] = [],
 ): Promise<FormRunnerResult> => {
-	formHelper1(); 
-
 	const formData: FormData = await event.request.formData();
 
 	const data: FormDataType = {};
@@ -32,8 +30,6 @@ export const formRunner = async (
 		else if (!ignoredItems.includes(field))
 			data[field] = formData.get(field) as string;
 	}
-
-	formHelper2(); 
 
 	let user: UserTypeFull | undefined = undefined;
 
@@ -66,8 +62,6 @@ export const formRunner = async (
 			profilePicture: value.resource?.url ?? null,
 		};
 	}
-
-	formHelper3(); 
 
 	try {
 		return await f(data, user, formData);

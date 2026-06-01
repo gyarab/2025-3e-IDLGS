@@ -34,7 +34,7 @@
 	{disabled}
 	aria-label={label}
 	title={label}
-	class="group flex flex-col sm:flex-row items-center justify-center sm:gap-1 {css}"
+	class="group flex flex-col items-center justify-center sm:flex-row sm:gap-1 {css}"
 	{onclick}
 	{style}
 >
@@ -42,7 +42,9 @@
 		{emoji}
 		css="text-2xl {hecss}"
 	/>
-	<span class="{txtcss}">
-        {text}
-    </span>
+	{#if text}
+		<span class={txtcss}>
+			{text}
+		</span>
+	{/if}
 </button>

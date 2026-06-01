@@ -7,7 +7,7 @@ import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 import { count } from 'drizzle-orm';
 import { hashPassword } from '$lib/server/user';
-import { initMail, checkConfig } from '$lib/server/mail';
+import { initMail } from '$lib/server/mail';
 import { v2 as cloudinary } from 'cloudinary';
 
 const handleParaglide: Handle = ({ event, resolve }) =>
