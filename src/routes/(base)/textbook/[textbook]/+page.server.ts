@@ -58,20 +58,45 @@ export const actions = {
 
 				// only author can delete
 				const linkerRows = await event.locals.db
-					.select({ userId: databaseSchema.textbookUserLinker.userId })
+					.select({
+						userId: databaseSchema.textbookUserLinker.userId,
+					})
 					.from(databaseSchema.textbookUserLinker)
-					.where(eq(databaseSchema.textbookUserLinker.textbookId, tb.id));
+					.where(
+						eq(databaseSchema.textbookUserLinker.textbookId, tb.id),
+					);
 
 				const linker = linkerRows.find((r) => r.userId === user!.id);
 
 				if (!linker) return fail(403);
 
 				await event.locals.db.transaction(async (tx) => {
-					await tx.delete(databaseSchema.article).where(eq(databaseSchema.article.textbookId, tb.id));
-					await tx.delete(databaseSchema.chapter).where(eq(databaseSchema.chapter.textbookId, tb.id));
-					await tx.delete(databaseSchema.textbookUserLinker).where(eq(databaseSchema.textbookUserLinker.textbookId, tb.id));
-					await tx.delete(databaseSchema.textbookResourceLinker).where(eq(databaseSchema.textbookResourceLinker.textbookId, tb.id));
-					await tx.delete(databaseSchema.textbook).where(eq(databaseSchema.textbook.id, tb.id));
+					await tx
+						.delete(databaseSchema.article)
+						.where(eq(databaseSchema.article.textbookId, tb.id));
+					await tx
+						.delete(databaseSchema.chapter)
+						.where(eq(databaseSchema.chapter.textbookId, tb.id));
+					await tx
+						.delete(databaseSchema.textbookUserLinker)
+						.where(
+							eq(
+								databaseSchema.textbookUserLinker.textbookId,
+								tb.id,
+							),
+						);
+					await tx
+						.delete(databaseSchema.textbookResourceLinker)
+						.where(
+							eq(
+								databaseSchema.textbookResourceLinker
+									.textbookId,
+								tb.id,
+							),
+						);
+					await tx
+						.delete(databaseSchema.textbook)
+						.where(eq(databaseSchema.textbook.id, tb.id));
 				});
 
 				throw redirect(302, resolve('/(base)/textbook'));
