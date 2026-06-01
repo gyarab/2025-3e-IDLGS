@@ -2,6 +2,8 @@
 	import type { TextbookType, ChapterType } from '$lib/types';
 	import { m } from '$lib/paraglide/messages';
 	import Button from '../../components/Button.svelte';
+	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import ChapterCard from './ui/ChapterCard.svelte';
 
 	let {
@@ -14,6 +16,8 @@
 			chapters: ChapterType[];
 		};
 	} = $props();
+
+	let deleteForm: HTMLFormElement | null = null;
 </script>
 
 <svelte:head>
@@ -28,14 +32,40 @@
 	<div class="flex w-full flex-row items-center gap-2">
 		<h1>{data.textbook.title}</h1>
 		<div class="grow"></div>
-		<Button
-			text={m.textbookSettings()}
-			emoji="pencil"
-			type="button"
-			css="buttonPrimary"
-			style="background-color: {data.color};"
-			onclick={() => {}}
-		/>
+		<form
+			method="POST"
+			action="?/deleteTextbook"
+			bind:this={deleteForm}
+			class="flex gap-2"
+		>
+			<input
+				type="hidden"
+				name="uuid"
+				value={data.textbook.uuid}
+			/>
+			<Button
+				text=""
+				emoji="pencil"
+				type="button"
+				css="buttonPrimary bg-neutral-600/30"
+				onclick={() => {
+					goto(
+						resolve('/(base)/textbook/create') + `?uuid=${data.textbook.uuid}`
+					);
+				}}
+			/>
+
+			<Button
+				text=""
+				emoji="delete-bin-7"
+				type="button"
+				css="buttonPrimary bg-red-600/40"
+				onclick={() => {
+					if (confirm(m.areYouSure() + ' ' + m.thisActionCannotBeUndone()))
+						deleteForm?.requestSubmit();
+				}}
+			/>
+		</form>
 	</div>
 	<p>
 		{data.textbook.description}
