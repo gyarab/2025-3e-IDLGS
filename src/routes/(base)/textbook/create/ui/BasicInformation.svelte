@@ -112,7 +112,7 @@
 			/>
 		</span>
 
-		<span class="flex flex-col sm:flex-row gap-2 py-2">
+		<span class="flex flex-col gap-2 py-2 sm:flex-row">
 			<span
 				class="flex grow"
 				in:fly|global={{

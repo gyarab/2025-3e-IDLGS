@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { browser } from "$app/environment";
-	import { onDestroy, onMount } from "svelte";
+	import { browser } from '$app/environment';
+	import { onDestroy, onMount } from 'svelte';
 
 	let {
 		darkMode,
@@ -24,26 +24,26 @@
 
 	const selectionHandler = (event: Event) => {
 		const selection = window.getSelection();
-		
 	};
 
 	onMount(() => {
-		if(!browser) return;
+		if (!browser) return;
 		documentEditor!.addEventListener('keydown', keystrokeHandler);
 		documentEditor!.addEventListener('select', selectionHandler);
-	})
+	});
 	onDestroy(() => {
-		if(!browser) return;
+		if (!browser) return;
 		documentEditor!.removeEventListener('keydown', keystrokeHandler);
 		documentEditor!.removeEventListener('select', selectionHandler);
-	})
+	});
 </script>
 
 <!-- editable prevents key events -->
-<div 
+<div
 	bind:this={documentEditor}
 	bind:innerText={articleText}
-	class="editable p-2 flex w-full flex-col gap-4 max-h-[80svh] overflow-x-hidden overflow-y-visible {darkMode ? 'bg-neutral-900 text-white' : 'bg-white text-black'} min-h-[30vh] rounded-lg! " contenteditable="true"
->
-
-</div>
+	class="editable flex max-h-[80svh] w-full flex-col gap-4 overflow-x-hidden overflow-y-visible p-2 {darkMode
+		? 'bg-neutral-900 text-white'
+		: 'bg-white text-black'} min-h-[30vh] rounded-lg!"
+	contenteditable="true"
+></div>

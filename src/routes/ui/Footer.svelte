@@ -5,7 +5,7 @@
 <div
 	class="relative z-5 flex w-full grow flex-row justify-center
             bg-linear-to-tr from-neutral-800
-           via-neutral-700 to-neutral-800! py-4 pb-20 sm:pb-8 text-white!"
+           via-neutral-700 to-neutral-800! py-4 pb-20 text-white! sm:pb-8"
 >
 	<div class="grid grid-cols-2 gap-2 px-3 *:justify-center sm:w-2/3">
 		<div class="flex flex-col">

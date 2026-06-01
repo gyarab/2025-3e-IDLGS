@@ -23,9 +23,7 @@
 	<ToolbarButton
 		emoji="info-i"
 		label={m.sidebox()}
-		onclick={() => {
-
-		}}
+		onclick={() => {}}
 		{darkMode}
 		{color}
 	/>

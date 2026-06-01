@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {  sanitizeColor } from '$lib';
+	import { sanitizeColor } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import type { ArticleTypeRaw, ChapterTypeRaw } from '$lib/types';
 	import Button from '$src/routes/(base)/components/Button.svelte';

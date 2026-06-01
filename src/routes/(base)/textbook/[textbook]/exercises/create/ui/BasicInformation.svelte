@@ -26,7 +26,7 @@
 	let imagePreview: string = $derived(makeURLFromImage(thumbnail[0]));
 
 	onDestroy(() => {
-		if(imagePreview) {
+		if (imagePreview) {
 			URL.revokeObjectURL(imagePreview);
 		}
 	});

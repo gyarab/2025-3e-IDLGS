@@ -136,9 +136,7 @@
 		}}
 	/>
 
-	<ReadBox
-		darkMode={data.darkMode}
-	>
+	<ReadBox darkMode={data.darkMode}>
 		{@html renderedText}
 	</ReadBox>
 

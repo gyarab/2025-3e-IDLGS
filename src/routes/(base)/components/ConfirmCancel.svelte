@@ -19,8 +19,10 @@
 		disabled?: boolean;
 	} = $props();
 
-	let bgOk = $derived(dangerous ? "bg-red-500/80" : sanitizeColor(color, 45));
-	let bgCancel = $derived(dangerous ? "bg-green-700/80" : sanitizeColor(color, 50));
+	let bgOk = $derived(dangerous ? 'bg-red-500/80' : sanitizeColor(color, 45));
+	let bgCancel = $derived(
+		dangerous ? 'bg-green-700/80' : sanitizeColor(color, 50),
+	);
 </script>
 
 <div class="flex w-full flex-row gap-4">

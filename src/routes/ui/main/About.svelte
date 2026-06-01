@@ -74,7 +74,7 @@
 					in:fly={{ x: 20, duration: 600, delay: 400 }}
 				>
 					<div
-						class="rounded-2xl border border-white/10 opacity-80 p-4 backdrop-blur-sm"
+						class="rounded-2xl border border-white/10 p-4 opacity-80 backdrop-blur-sm"
 					>
 						<p
 							class="mb-3 text-xs font-bold tracking-widest uppercase opacity-50"

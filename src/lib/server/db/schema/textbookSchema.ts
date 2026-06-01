@@ -91,7 +91,9 @@ export const article = pgTable('article', {
 	textbookId: integer('textbookId')
 		.notNull()
 		.references(() => textbook.id),
-	editedAt: timestamp('editedAt').notNull().$defaultFn(() => new Date()),
+	editedAt: timestamp('editedAt')
+		.notNull()
+		.$defaultFn(() => new Date()),
 });
 
 export const articleHistory = pgTable('articleHistory', {
@@ -103,7 +105,9 @@ export const articleHistory = pgTable('articleHistory', {
 		.notNull()
 		.references(() => user.id),
 	text: text('text').notNull(),
-	editedAt: timestamp('editedAt').notNull().$defaultFn(() => new Date()),
+	editedAt: timestamp('editedAt')
+		.notNull()
+		.$defaultFn(() => new Date()),
 });
 
 export const question = pgTable('question', {

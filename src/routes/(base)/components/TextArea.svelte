@@ -24,8 +24,6 @@
 		selectionStart?: number;
 		selectionEnd?: number;
 	} = $props();
-
-	
 </script>
 
 <div class="overflow-hidden! rounded-lg! {css} flex w-full flex-col">
