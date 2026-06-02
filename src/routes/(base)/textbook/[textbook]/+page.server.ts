@@ -58,9 +58,13 @@ export const actions = {
 
 				// only author can delete
 				const linkerRows = await event.locals.db
-					.select({ userId: databaseSchema.textbookUserLinker.userId })
+					.select({
+						userId: databaseSchema.textbookUserLinker.userId,
+					})
 					.from(databaseSchema.textbookUserLinker)
-					.where(eq(databaseSchema.textbookUserLinker.textbookId, tb.id));
+					.where(
+						eq(databaseSchema.textbookUserLinker.textbookId, tb.id),
+					);
 
 				const linker = linkerRows.find((r) => r.userId === user!.id);
 

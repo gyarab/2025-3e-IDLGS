@@ -50,7 +50,8 @@
 				css="buttonPrimary bg-neutral-600/30"
 				onclick={() => {
 					goto(
-						resolve('/(base)/textbook/create') + `?uuid=${data.textbook.uuid}`
+						resolve('/(base)/textbook/create') +
+							`?uuid=${data.textbook.uuid}`,
 					);
 				}}
 			/>
@@ -61,7 +62,11 @@
 				type="button"
 				css="buttonPrimary bg-red-600/40"
 				onclick={() => {
-					if (confirm(m.areYouSure() + ' ' + m.thisActionCannotBeUndone()))
+					if (
+						confirm(
+							m.areYouSure() + ' ' + m.thisActionCannotBeUndone(),
+						)
+					)
 						deleteForm?.requestSubmit();
 				}}
 			/>
