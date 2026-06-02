@@ -85,7 +85,7 @@
 		href="/textbook/{data.textbook.uuid}/exercises"
 		class="font-bold"
 	>
-		Exercises
+		{m.exercisesP()}
 		<i
 			class="ri-arrow-right-s-line transition-transform group-hover:translate-x-10"
 		></i>

@@ -2,7 +2,6 @@ import { m } from '$lib/paraglide/messages';
 import { error, redirect } from '@sveltejs/kit';
 import { schema as databaseSchema } from '$lib/server/db/schema';
 import { eq } from 'drizzle-orm';
-import { resolve } from '$app/paths';
 
 export const load = async (event) => {
 	const pd = await event.parent();

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { getDateTimeString } from '$lib';
+	import { saturateColor, getDateTimeString, sanitizeColor, alphaColor } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import Button from '$src/routes/(base)/components/Button.svelte';
 	import type { UserTypeInfo } from '$lib/types';
@@ -46,9 +46,30 @@
 
 	<div class="grow"></div>
 
+	{#if isEditor}
+		<Button
+			text=""
+			emoji="pencil"
+			type="button"
+			onclick={() => {
+				goto(
+					resolve(
+						'/(base)/textbook/[textbook]/[chapter]/[article]/edit',
+						{
+							textbook: page.params.textbook!,
+							chapter: page.params.chapter!,
+							article: page.params.article!,
+						},
+					),
+				);
+			}}
+			css="buttonPrimary bg-neutral-600/30"
+		/>
+	{/if}
+	
 	<Button
-		text={m.viewHistory()}
-		emoji="file-edit"
+		text=""
+		emoji="history"
 		type="button"
 		onclick={() => {
 			goto(
@@ -63,28 +84,6 @@
 			);
 		}}
 		css="buttonPrimary"
-		style="background-color: {darkenHex(color, 20)};"
+		style="background-color: {alphaColor(color, 0.45)};"
 	/>
-
-	{#if isEditor}
-		<Button
-			text={m.editArticle()}
-			emoji="file-edit"
-			type="button"
-			onclick={() => {
-				goto(
-					resolve(
-						'/(base)/textbook/[textbook]/[chapter]/[article]/edit',
-						{
-							textbook: page.params.textbook!,
-							chapter: page.params.chapter!,
-							article: page.params.article!,
-						},
-					),
-				);
-			}}
-			css="buttonPrimary"
-			style="background-color: {darkenHex(color, 50)};"
-		/>
-	{/if}
 </div>

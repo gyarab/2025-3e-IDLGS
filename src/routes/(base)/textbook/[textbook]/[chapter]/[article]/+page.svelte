@@ -102,13 +102,6 @@
 	</title>
 </svelte:head>
 
-<Sidebar
-	bind:darkMode
-	accentColor={data.color}
-	bind:commandPaletteOpen
-	bind:open={sidebarOpen}
-/>
-
 <div
 	class="relative mt-20 mb-4 flex min-h-screen w-screen grow flex-col items-center gap-4 overflow-x-hidden overflow-y-scroll **:z-5"
 >

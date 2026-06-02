@@ -137,3 +137,21 @@ export function sanitizeColor(hex: string, maxL: number = 60): string {
 		l: newL,
 	}).toHex();
 }
+
+export function saturateColor(hex: string, saturation: number): string {
+    const color = colord(hex);
+    const hsl = color.toHsl();
+
+    const newS = Math.max(0, saturation);
+
+    return colord({
+        h: hsl.h,
+        s: newS,
+        l: hsl.l,
+    }).toHex();
+}
+
+export function alphaColor(hex: string, alpha: number = 0.5): string {
+    const normalizedAlpha = Math.max(0, Math.min(1, alpha));
+    return colord(hex).alpha(normalizedAlpha).toHex();
+}

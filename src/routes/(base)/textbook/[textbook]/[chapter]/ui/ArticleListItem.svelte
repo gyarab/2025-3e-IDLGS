@@ -11,20 +11,18 @@
 		article: ArticleType;
 	} = $props();
 </script>
-
-<button
-	class="flex w-full flex-row"
-	title="{m.openArticle()} {article.title}}"
-	aria-label="{m.openArticle()} {article.title}}"
-	onclick={() => {
-		goto(
-			resolve('/(base)/textbook/[textbook]/[chapter]/[article]', {
-				article: article.uuid,
-				chapter: page.params.chapter!,
-				textbook: page.params.textbook!,
-			}),
-		);
-	}}
+<a
+    href={resolve('/(base)/textbook/[textbook]/[chapter]/[article]', {
+        article: article.uuid,
+        chapter: page.params.chapter!,
+        textbook: page.params.textbook!,
+    })}
+    class="flex w-full flex-row font-bold"
+    title="{m.openArticle()} {article.title}"
+    aria-label="{m.openArticle()} {article.title}"
 >
-	<h2>{article.title}</h2>
-</button>
+    <h2>{article.title}</h2>
+    <i
+        class="ri-arrow-right-s-line transition-transform group-hover:translate-x-10"
+    ></i>
+</a>
