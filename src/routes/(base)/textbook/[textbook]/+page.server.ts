@@ -3,7 +3,7 @@ import { resolve } from '$app/paths';
 import { m } from '$lib/paraglide/messages';
 import { error } from '@sveltejs/kit';
 import { schema as databaseSchema } from '$lib/server/db/schema';
-import { asc, eq } from 'drizzle-orm';
+import { asc, eq, inArray } from 'drizzle-orm';
 import { formRunner, type FormDataType } from '$lib/server/form/validation';
 import type { UserTypeFull } from '$lib/types';
 import { fail } from '@sveltejs/kit';
@@ -67,6 +67,18 @@ export const actions = {
 				if (!linker) return fail(403);
 
 				await event.locals.db.transaction(async (tx) => {
+					const existingArticleIds = (
+						await tx
+							.select({ id: databaseSchema.article.id })
+							.from(databaseSchema.article)
+							.where(eq(databaseSchema.article.textbookId, tb.id))
+					).map((r) => r.id);
+
+					if (existingArticleIds.length > 0)
+						await tx
+							.delete(databaseSchema.articleHistory)
+							.where(inArray(databaseSchema.articleHistory.articleId, existingArticleIds));
+					
 					await tx.delete(databaseSchema.article).where(eq(databaseSchema.article.textbookId, tb.id));
 					await tx.delete(databaseSchema.chapter).where(eq(databaseSchema.chapter.textbookId, tb.id));
 					await tx.delete(databaseSchema.textbookUserLinker).where(eq(databaseSchema.textbookUserLinker.textbookId, tb.id));

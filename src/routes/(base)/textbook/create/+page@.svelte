@@ -16,6 +16,8 @@
 	import Form from '$src/routes/(base)/components/Form.svelte';
 	import LoadingAnimationHandler from '../../components/loading/LoadingAnimationHandler.svelte';
 	import { goto } from '$app/navigation';
+	import { addToast } from '$lib/toast';
+	import { onMount } from 'svelte';
 
 	let {
 		data,
@@ -24,18 +26,33 @@
 			darkMode: boolean;
 			color: string;
 			user: UserTypeInfo;
+			textbook?: any;
 		};
 	} = $props();
 
 	let stage: number = $state(0);
 	let name: string = $state('');
 	let description: string = $state('');
-	let textbookColor: string = $derived(data.color);
+	let textbookColor: string = $state('');
 	let educationLevel: string = $state('');
 	let chapters: ChapterTypeRaw[] = $state([]);
 	let articles: ArticleTypeRaw[][] = $state([]);
 	let authorUuids: string[] = $state([]);
 	let thumbnail: File[] = $state([]);
+
+	onMount(() => {
+		if (data?.textbook) {
+			name = data.textbook.title ?? '';
+			description = data.textbook.description ?? '';
+			textbookColor = data.textbook.color ?? data.color;
+			educationLevel = data.textbook.educationLevel?.toString?.() ?? '';
+			chapters = data.textbook.chapters ?? [];
+			articles = data.textbook.articles ?? [];
+			authorUuids = data.textbook.authors ?? [];
+		} else {
+			textbookColor = data.color;
+		}
+	});
 
 	let stage0Condition: boolean = $derived(
 		!name || !description || !educationLevel,
@@ -63,7 +80,7 @@
 		m.authors(),
 		m.review(),
 	]}
-	title={m.newTextbook()}
+	title={data?.textbook ? m.textbookSettings() : m.newTextbook()}
 	emoji={'ri-health-book-line'}
 	helpLink={resolve('/help/textbook/creation')}
 	backLink={resolve('/(base)/textbook')}
@@ -115,7 +132,7 @@
 		{/if}
 	</div>
 	<Form
-		target="?/makeTextbook"
+		target={data?.textbook ? '?/updateTextbook' : '?/makeTextbook'}
 		darkMode={data.darkMode}
 		css="invisibleForm -mt-2"
 		start={async (formData) => {
@@ -123,14 +140,21 @@
 			formData!.append('thumbnail', thumbnail[0]);
 		}}
 		success={async () => {
-			goto(resolve('/(base)/textbook'));
+			if (data?.textbook) {
+				goto(resolve(`/textbook/${data.textbook.uuid}`));
+			} else {
+				goto(resolve('/(base)/textbook'));
+			}
 		}}
 		failure={async () => {
 			stage = 4;
-			//TODO popup message @AY-GA
+			addToast('Failed to save textbook. Please try again.', 'error');
 		}}
 		color={data.color}
 	>
+		{#if data?.textbook}
+			<input type="hidden" name="uuid" value={data.textbook.uuid} />
+		{/if}
 		<input
 			type="hidden"
 			name="color"
