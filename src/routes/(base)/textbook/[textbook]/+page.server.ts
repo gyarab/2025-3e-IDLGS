@@ -81,13 +81,39 @@ export const actions = {
 					if (existingArticleIds.length > 0)
 						await tx
 							.delete(databaseSchema.articleHistory)
-							.where(inArray(databaseSchema.articleHistory.articleId, existingArticleIds));
-					
-					await tx.delete(databaseSchema.article).where(eq(databaseSchema.article.textbookId, tb.id));
-					await tx.delete(databaseSchema.chapter).where(eq(databaseSchema.chapter.textbookId, tb.id));
-					await tx.delete(databaseSchema.textbookUserLinker).where(eq(databaseSchema.textbookUserLinker.textbookId, tb.id));
-					await tx.delete(databaseSchema.textbookResourceLinker).where(eq(databaseSchema.textbookResourceLinker.textbookId, tb.id));
-					await tx.delete(databaseSchema.textbook).where(eq(databaseSchema.textbook.id, tb.id));
+							.where(
+								inArray(
+									databaseSchema.articleHistory.articleId,
+									existingArticleIds,
+								),
+							);
+
+					await tx
+						.delete(databaseSchema.article)
+						.where(eq(databaseSchema.article.textbookId, tb.id));
+					await tx
+						.delete(databaseSchema.chapter)
+						.where(eq(databaseSchema.chapter.textbookId, tb.id));
+					await tx
+						.delete(databaseSchema.textbookUserLinker)
+						.where(
+							eq(
+								databaseSchema.textbookUserLinker.textbookId,
+								tb.id,
+							),
+						);
+					await tx
+						.delete(databaseSchema.textbookResourceLinker)
+						.where(
+							eq(
+								databaseSchema.textbookResourceLinker
+									.textbookId,
+								tb.id,
+							),
+						);
+					await tx
+						.delete(databaseSchema.textbook)
+						.where(eq(databaseSchema.textbook.id, tb.id));
 				});
 
 				throw redirect(302, resolve('/(base)/textbook'));

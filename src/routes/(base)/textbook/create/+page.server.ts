@@ -62,7 +62,9 @@ export const load = async (event) => {
 			.from(databaseSchema.article)
 			.where(eq(databaseSchema.article.chapterId, ch.id))
 			.orderBy(asc(databaseSchema.article.order));
-		articles2d.push(articles.map((a) => ({ title: a.title, order: a.order })));
+		articles2d.push(
+			articles.map((a) => ({ title: a.title, order: a.order })),
+		);
 	}
 
 	const linkerRows = await event.locals.db
@@ -73,9 +75,14 @@ export const load = async (event) => {
 	const authorRows =
 		linkerRows.length > 0
 			? await event.locals.db
-				  .select({ uuid: databaseSchema.user.uuid })
-				  .from(databaseSchema.user)
-				  .where(inArray(databaseSchema.user.id, linkerRows.map((r) => r.userId)))
+					.select({ uuid: databaseSchema.user.uuid })
+					.from(databaseSchema.user)
+					.where(
+						inArray(
+							databaseSchema.user.id,
+							linkerRows.map((r) => r.userId),
+						),
+					)
 			: [];
 
 	return {
@@ -86,7 +93,10 @@ export const load = async (event) => {
 			description: tbRow.description,
 			educationLevel: tbRow.educationLevel,
 			color: makeHex(tbRow.r, tbRow.g, tbRow.b),
-			chapters: chapterRows.map((c) => ({ title: c.title, order: c.order })),
+			chapters: chapterRows.map((c) => ({
+				title: c.title,
+				order: c.order,
+			})),
 			articles: articles2d,
 			authors: authorRows.map((a) => a.uuid),
 		},
@@ -296,7 +306,9 @@ export const actions = {
 						await tx
 							.select({ id: databaseSchema.textbook.id })
 							.from(databaseSchema.textbook)
-							.where(eq(databaseSchema.textbook.uuid, textbookUuid))
+							.where(
+								eq(databaseSchema.textbook.uuid, textbookUuid),
+							)
 							.limit(1)
 					)[0];
 
@@ -304,11 +316,18 @@ export const actions = {
 
 					let thumbnailId: number | undefined = undefined;
 					if (thumbnail && (thumbnail as File).size > 0) {
-						const thumbnailUrl = await saveToCloud(thumbnail as File, 'image');
+						const thumbnailUrl = await saveToCloud(
+							thumbnail as File,
+							'image',
+						);
 						if (!thumbnailUrl) return fail(502);
 						const resource = await tx
 							.insert(databaseSchema.resource)
-							.values({ url: thumbnailUrl, title: 'thumbnail', type: 'image' })
+							.values({
+								url: thumbnailUrl,
+								title: 'thumbnail',
+								type: 'image',
+							})
 							.returning();
 						thumbnailId = resource[0].id;
 					}
@@ -330,46 +349,80 @@ export const actions = {
 					// replace authors
 					await tx
 						.delete(databaseSchema.textbookUserLinker)
-						.where(eq(databaseSchema.textbookUserLinker.textbookId, tb.id));
+						.where(
+							eq(
+								databaseSchema.textbookUserLinker.textbookId,
+								tb.id,
+							),
+						);
 
 					const authorIds = await tx
-						.select({ id: databaseSchema.user.id, uuid: databaseSchema.user.uuid })
+						.select({
+							id: databaseSchema.user.id,
+							uuid: databaseSchema.user.uuid,
+						})
 						.from(databaseSchema.user)
-						.where(inArray(databaseSchema.user.uuid, [user!.uuid, ...authors]))
+						.where(
+							inArray(databaseSchema.user.uuid, [
+								user!.uuid,
+								...authors,
+							]),
+						)
 						.orderBy(asc(databaseSchema.user.uuid))
 						.limit(authors.length + 1);
 
-					const authorData: { textbookId: number; userId: number }[] = [];
+					const authorData: { textbookId: number; userId: number }[] =
+						[];
 					for (let i = 0; i < authorIds.length; i++)
-						authorData.push({ textbookId: tb.id, userId: authorIds[i].id });
-					
+						authorData.push({
+							textbookId: tb.id,
+							userId: authorIds[i].id,
+						});
+
 					if (authorData.length > 0)
-						await tx.insert(databaseSchema.textbookUserLinker).values(authorData);
+						await tx
+							.insert(databaseSchema.textbookUserLinker)
+							.values(authorData);
 
 					const existingArticleIds = (
 						await tx
 							.select({ id: databaseSchema.article.id })
 							.from(databaseSchema.article)
 							.where(eq(databaseSchema.article.textbookId, tb.id))
-						)
-						.map((r) => r.id);
+					).map((r) => r.id);
 
 					if (existingArticleIds.length > 0) {
 						await tx
 							.delete(databaseSchema.articleHistory)
-							.where(inArray(databaseSchema.articleHistory.articleId, existingArticleIds));
+							.where(
+								inArray(
+									databaseSchema.articleHistory.articleId,
+									existingArticleIds,
+								),
+							);
 					}
 
-					await tx.delete(databaseSchema.article).where(eq(databaseSchema.article.textbookId, tb.id));
-					await tx.delete(databaseSchema.chapter).where(eq(databaseSchema.chapter.textbookId, tb.id));
+					await tx
+						.delete(databaseSchema.article)
+						.where(eq(databaseSchema.article.textbookId, tb.id));
+					await tx
+						.delete(databaseSchema.chapter)
+						.where(eq(databaseSchema.chapter.textbookId, tb.id));
 
 					// new chapters
 					const chapterData: ChapterTypeNoId[] = [];
 					for (let c of chapters)
-						chapterData.push({ title: c.title, textbookId: tb.id, order: c.order });
+						chapterData.push({
+							title: c.title,
+							textbookId: tb.id,
+							order: c.order,
+						});
 
 					const chapterIds = (
-						await tx.insert(databaseSchema.chapter).values(chapterData).returning()
+						await tx
+							.insert(databaseSchema.chapter)
+							.values(chapterData)
+							.returning()
 					).map((c: ChapterTypeFull) => c.id);
 
 					const articleData: ArticleTypeFullNoId[] = [];
@@ -386,8 +439,10 @@ export const actions = {
 						}
 					}
 
-					if (articleData.length > 0) 
-						await tx.insert(databaseSchema.article).values(articleData);
+					if (articleData.length > 0)
+						await tx
+							.insert(databaseSchema.article)
+							.values(articleData);
 				});
 
 				return;
