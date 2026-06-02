@@ -1,6 +1,11 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { saturateColor, getDateTimeString, sanitizeColor, alphaColor } from '$lib';
+	import {
+		saturateColor,
+		getDateTimeString,
+		sanitizeColor,
+		alphaColor,
+	} from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import Button from '$src/routes/(base)/components/Button.svelte';
 	import type { UserTypeInfo } from '$lib/types';
@@ -66,7 +71,7 @@
 			css="buttonPrimary bg-neutral-600/30"
 		/>
 	{/if}
-	
+
 	<Button
 		text=""
 		emoji="history"
