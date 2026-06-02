@@ -153,7 +153,11 @@
 		color={data.color}
 	>
 		{#if data?.textbook}
-			<input type="hidden" name="uuid" value={data.textbook.uuid} />
+			<input
+				type="hidden"
+				name="uuid"
+				value={data.textbook.uuid}
+			/>
 		{/if}
 		<input
 			type="hidden"
