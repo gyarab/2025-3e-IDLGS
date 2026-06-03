@@ -106,13 +106,13 @@
 			<div class="space-y-6">
 				{#each data.textbooks as { title, description, uuid }}
 					<div class="flex items-center justify-between gap-4">
-						<div class="flex-1">
+						<div class="flex-1 min-w-0">
 							<h3
 								class="text-sm leading-tight font-semibold sm:text-base"
 							>
 								{title}
 							</h3>
-							<p class="text-sm opacity-50">{description}</p>
+							<p class="text-sm opacity-50 truncate">{description}</p>
 						</div>
 						<div class="flex items-center gap-3">
 							<Button
@@ -120,10 +120,7 @@
 								emoji="book-open"
 								type="button"
 								css="rounded-full px-4 py-2 text-sm font-semibold hover:bg-white/20"
-								style="background-color: {sanitizeColor(
-									data.color,
-									45,
-								)};"
+								style="background-color: {sanitizeColor(data.color, data.darkMode ? 40 : 60)};"
 								onclick={() => goto(`/textbook/${uuid}`)}
 							/>
 							<!--

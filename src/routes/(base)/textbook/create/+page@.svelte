@@ -55,7 +55,7 @@
 	});
 
 	let stage0Condition: boolean = $derived(
-		!name || !description || !educationLevel,
+		!name || !description || !educationLevel || thumbnail.length == 0,
 	);
 	let stage1Condition: boolean = $derived(
 		chapters.length == 0 ||

@@ -62,11 +62,7 @@
 				type="button"
 				css="buttonPrimary bg-red-600/40"
 				onclick={() => {
-					if (
-						confirm(
-							m.areYouSure() + ' ' + m.thisActionCannotBeUndone(),
-						)
-					)
+					if (confirm(m.areYouSure() + ' ' + m.thisActionCannotBeUndone()))
 						deleteForm?.requestSubmit();
 				}}
 			/>
@@ -85,7 +81,7 @@
 		href="/textbook/{data.textbook.uuid}/exercises"
 		class="font-bold"
 	>
-		{m.exercisesP()}
+		{m.exercises()}
 		<i
 			class="ri-arrow-right-s-line transition-transform group-hover:translate-x-10"
 		></i>

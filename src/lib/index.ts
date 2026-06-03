@@ -138,7 +138,7 @@ export function sanitizeColor(hex: string, maxL: number = 60): string {
 	}).toHex();
 }
 
-export function saturateColor(hex: string, saturation: number): string {
+export function saturateColor(hex: string, saturation: number = 50): string {
     const color = colord(hex);
     const hsl = color.toHsl();
 
@@ -151,7 +151,7 @@ export function saturateColor(hex: string, saturation: number): string {
     }).toHex();
 }
 
-export function alphaColor(hex: string, alpha: number = 0.5): string {
-    const normalizedAlpha = Math.max(0, Math.min(1, alpha));
+export function alphaColor(hex: string, alpha: number = 50): string {
+    const normalizedAlpha = Math.max(0, Math.min(1, alpha / 100));
     return colord(hex).alpha(normalizedAlpha).toHex();
 }

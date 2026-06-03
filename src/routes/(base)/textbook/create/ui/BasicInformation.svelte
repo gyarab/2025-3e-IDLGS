@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { darkenHex, makeURLFromImage, sanitizeColor } from '$lib';
+	import { alphaColor, darkenHex, makeURLFromImage, sanitizeColor, saturateColor } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import ColorInput from '$src/routes/(base)/components/ColorInput.svelte';
 	import SelectionBtnList from '$src/routes/(base)/components/SelectionBtnList.svelte';
@@ -25,15 +25,14 @@
 		thumbnail: File[];
 	} = $props();
 
-	const uiColor = sanitizeColor(color, 45);
+	const uiColor = $derived(sanitizeColor(color, 45));
 	let imagePreview: string = $derived(
 		thumbnail?.[0] ? makeURLFromImage(thumbnail[0]) : '',
 	);
 
 	onDestroy(() => {
-		if (imagePreview) {
+		if (imagePreview)
 			URL.revokeObjectURL(imagePreview);
-		}
 	});
 </script>
 
@@ -106,15 +105,16 @@
 				]}
 				values={['0', '1', '2', '3', '4', '5', '6', '7', '8']}
 				bind:value={education}
-				style="background-color: {uiColor};"
+				// style="background-color: {alphaColor(uiColor, 20)};"
 				css="buttonPrimary text-sm rounded-xl"
-				selectedstyle="background-color: {darkenHex(uiColor, 50)};"
+				// selectedcss={darkMode ? 'text-black' : 'text-white'}
+				selectedstyle="background-color: {alphaColor(uiColor, darkMode ? 70 : 60)};"
 			/>
 		</span>
 
-		<span class="flex flex-col gap-2 py-2 sm:flex-row">
+		<span class="flex flex-col gap-2 py-2 md:flex-row">
 			<span
-				class="flex grow"
+				class="w-full md:w-1/2 lg:w-1/3"
 				in:fly|global={{
 					x: 600,
 					y: 0,
@@ -138,6 +138,7 @@
 			>
 				<ImageInput
 					bind:value={thumbnail}
+					required={true}
 					multiple={false}
 					{darkMode}
 					{color}

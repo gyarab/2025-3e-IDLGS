@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Button from './Button.svelte';
 	import { m } from '$lib/paraglide/messages';
-	import { darkenHex, sanitizeColor } from '$lib';
+	import { alphaColor, darkenHex, sanitizeColor } from '$lib';
 
 	let {
 		dangerous,
@@ -19,10 +19,8 @@
 		disabled?: boolean;
 	} = $props();
 
-	let bgOk = $derived(dangerous ? 'bg-red-500/80' : sanitizeColor(color, 45));
-	let bgCancel = $derived(
-		dangerous ? 'bg-green-700/80' : sanitizeColor(color, 50),
-	);
+	let bgYes = $derived(dangerous ? 'bg-red-500/70' : alphaColor(color, 60));
+	let bgNo = $derived(dangerous ? 'bg-green-700/70' : alphaColor(color, 50));
 </script>
 
 <div class="flex w-full flex-row gap-4">
@@ -34,7 +32,7 @@
 		}}
 		text={m.confirm()}
 		type="button"
-		css="buttonPrimary grow {bgOk}"
+		css="buttonPrimary grow {bgYes}"
 		{disabled}
 	/>
 	<Button
@@ -45,6 +43,6 @@
 		}}
 		text={m.cancel()}
 		type="button"
-		css="buttonPrimary grow {bgCancel}"
+		css="buttonPrimary grow {bgNo}"
 	/>
 </div>

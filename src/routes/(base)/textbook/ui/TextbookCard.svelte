@@ -34,12 +34,12 @@
 		<img
 			src={textbook.thumbnail}
 			alt={textbook.title}
-			class="absolute top-0 left-0 h-full w-full overflow-hidden rounded-lg object-cover opacity-30"
+			class="absolute top-0 left-0 h-full w-full overflow-hidden rounded-lg object-cover opacity-20"
 		/>
 	{/if}
 	<div class="grow"></div>
 	<div class="flex w-full flex-row">
 		<div class="grow"></div>
-		<h1 class="font-light">{textbook.title}</h1>
+		<h1 class="font-semibold">{textbook.title}</h1>
 	</div>
 </button>
