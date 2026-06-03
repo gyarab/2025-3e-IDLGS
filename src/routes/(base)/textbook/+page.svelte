@@ -28,8 +28,7 @@
 <div
 	class="relative flex min-h-screen w-full flex-col items-center justify-start overflow-hidden px-4 py-8"
 	style="background: linear-gradient(135deg, {data.color}, {darkenHex(
-		data.color,
-		80,
+		data.color, data.darkMode ? 70 : 50
 	)}); --brand: {data.color};"
 >
 	<i
@@ -64,10 +63,7 @@
 				emoji="health-book"
 				type="button"
 				css="rounded-4xl px-6 py-2 text-sm font-semibold shadow-lg flex-row gap-2"
-				style="background-color:{sanitizeColor(
-					data.color,
-					50,
-				)}; color: white;"
+				style="background-color:{sanitizeColor(data.color, data.darkMode ? 40 : 60)}; color: white;"
 				onclick={() => {
 					goto(resolve('/(base)/textbook/create'));
 				}}

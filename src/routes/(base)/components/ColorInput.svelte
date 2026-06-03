@@ -12,10 +12,9 @@
 	let inputElement: HTMLInputElement;
 
 	$effect(() => {
-		const clean = sanitizeColor(color);
-		if (clean !== color.toLowerCase()) {
+		const clean = sanitizeColor(color, 55);
+		if (clean !== color.toLowerCase())
 			color = clean;
-		}
 	});
 
 	const textColor = $derived(colord(color).isLight() ? 'black' : 'white');

@@ -50,7 +50,7 @@
 		class="overflow-hidden rounded-xl {cssTop}"
 		style="background-color: white;"
 	>
-		<div class="grid grid-cols-2 gap-px text-white!">
+		<div class="grid grid-cols-2 gap-px">
 			{#each { length: length } as _, i (i)}
 				<button
 					class="{css} {isSelected?.at(i) ? selectedcss : ''}

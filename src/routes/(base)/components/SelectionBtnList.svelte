@@ -47,17 +47,16 @@
 
 {#key texts || actions || emojis}
 	<div
-		class="{cssTop} grid grid-cols-1 gap-2 text-white! md:grid-cols-2 lg:grid-cols-3"
+		class="{cssTop} grid grid-cols-1 gap-1.5 md:grid-cols-2 lg:grid-cols-3"
 	>
 		{#each { length: length } as _, i (i)}
 			<button
-				class="{css} {isSelected?.at(i)
-					? selectedcss
-					: ''} flex grow flex-row items-center justify-center gap-1 p-2 font-bold hover:translate-0! hover:brightness-75 active:brightness-50"
+				class="{css} {isSelected?.at(i) ? selectedcss : 'border border-neutral-500/20'} 
+					flex grow flex-row items-center justify-center 
+					gap-1 p-2 font-bold hover:translate-0!"
 				style="{style} {isSelected?.at(i) ? selectedstyle : ''}"
 				onclick={() => {
 					value = values?.at(i) ?? '';
-
 					const f = actions?.at(i);
 					if (f) f();
 				}}

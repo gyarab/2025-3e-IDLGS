@@ -5,6 +5,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import Button from '$src/routes/(base)/components/Button.svelte';
 	import type { TextbookType } from '$lib/types';
+	import { sanitizeColor } from '$lib';
 
 	let {
 		data,
@@ -32,23 +33,23 @@
 			? 'bg-black/60'
 			: 'bg-white/80'} rounded-lg shadow-lg"
 	>
-		<div class="mb-4 flex w-full flex-col items-center gap-4 sm:flex-row">
+		<div class="mb-4 flex w-full flex-col items-center gap-2 sm:flex-row">
 			<h1 class="">{m.textbookInteractiveExercises()}</h1>
+			<h1
+				class="font-bold"
+				style="color: {sanitizeColor(data.color, data.darkMode ? 70 : 40)} !important;"
+			>
+				{data.textbook.title}
+			</h1>
 			<div
 				class="my-auto flex grow flex-col items-center justify-end gap-4 sm:flex-row"
 			>
-				<h1
-					class="font-bold"
-					style="color: {data.color} !important;"
-				>
-					{data.textbook.title}
-				</h1>
 				<Button
 					emoji="function-add"
 					type="button"
 					text={m.createExercise()}
 					css="buttonPrimary flex-row gap-2"
-					style="background-color: {data.color};"
+					style="background-color: {sanitizeColor(data.color, data.darkMode ? 40 : 60)};"
 					onclick={() => {
 						goto(
 							resolve(

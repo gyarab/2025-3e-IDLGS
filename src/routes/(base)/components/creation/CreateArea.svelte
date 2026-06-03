@@ -39,10 +39,7 @@
 	{#key runAnim}
 		<div
 			class="relative flex h-screen! w-screen! max-w-screen flex-col items-center justify-center overflow-hidden bg-linear-to-br from-white from-0% to-white to-100%"
-			style="--tw-gradient-from: {color}; --tw-gradient-to: {darkenHex(
-				color,
-				80,
-			)};"
+			style="--tw-gradient-from: {darkenHex(color, darkMode ? 30 : 0)}; --tw-gradient-to: {darkenHex(color, darkMode ? 70 : 50)};"
 		>
 			<i
 				in:fade={{ delay: 100, duration: 500 }}
@@ -54,8 +51,8 @@
 			></i>
 			<div
 				class="shadow-lg backdrop-blur-xs {darkMode
-					? 'bg-neutral-700/70 text-white!'
-					: 'bg-neutral-100/70 text-black!'} flex h-full w-full flex-col gap-2 overflow-hidden rounded-xl sm:h-5/6 sm:w-5/6"
+					? 'bg-neutral-800/80 text-white!'
+					: 'bg-neutral-200/80 text-black!'} flex h-full w-full flex-col gap-2 overflow-hidden rounded-none sm:h-5/6 sm:w-5/6 sm:rounded-xl"
 			>
 				<div class="flex w-full grow flex-row overflow-hidden">
 					<Progress

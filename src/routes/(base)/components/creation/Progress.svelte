@@ -3,7 +3,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import ProgressItem from './ProgressItem.svelte';
 	import { goto, invalidateAll } from '$app/navigation';
-	import { darkenHex, setDarkMode } from '$lib';
+	import { sanitizeColor, setDarkMode } from '$lib';
 	import TBGridToolbar from '../TBGridToolbar.svelte';
 
 	let {
@@ -29,8 +29,8 @@
 
 <div
 	class="flex min-h-0 max-w-1/4 min-w-36 grow flex-col gap-2 overflow-auto rounded-e-2xl p-2 shadow-lg {darkMode
-		? 'bg-neutral-900'
-		: 'bg-neutral-300'}"
+		? 'bg-neutral-800/70'
+		: 'bg-neutral-200/70'}"
 	in:fly|global={{ duration: 300, delay: 300, x: -500, y: 0, opacity: 0 }}
 >
 	<div
@@ -56,7 +56,7 @@
 	<div class="grow"></div>
 
 	<TBGridToolbar
-		style="background-color: {darkenHex(color, 50)};"
+		style="background-color: {sanitizeColor(color, darkMode ? 30 : 80)};"
 		texts={[m.cancel(), '', '']}
 		emojis={['arrow-left-double', 'question', darkMode ? 'sun' : 'moon']}
 		labels={[

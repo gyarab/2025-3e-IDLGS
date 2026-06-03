@@ -84,6 +84,6 @@
 			);
 		}}
 		css="buttonPrimary"
-		style="background-color: {alphaColor(color, 0.45)};"
+		style="background-color: {alphaColor(color, 45)};"
 	/>
 </div>

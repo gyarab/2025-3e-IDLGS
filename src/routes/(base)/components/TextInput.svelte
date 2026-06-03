@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { alphaColor } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import Button from './Button.svelte';
 
@@ -35,7 +36,7 @@
 		class="w-full border-0 border-b-2 px-3 py-1.5 {darkMode
 			? 'bg-neutral-700 text-white! placeholder:text-white!'
 			: 'bg-neutral-200 text-black! placeholder:text-black!'}"
-		style="border-color: {color};"
+		style="border-color: {value ? color : alphaColor(color, 50)};"
 	/>
 	{#if type == 'password'}
 		<Button
