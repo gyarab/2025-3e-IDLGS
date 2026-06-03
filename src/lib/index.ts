@@ -78,7 +78,7 @@ export const setSidebarOpen = async (enabled: boolean) => {
 	});
 };
 
-//client side
+// client side
 export const logout = async () => {
 	await fetch('/login/?/logout', {
 		method: 'POST',
@@ -142,13 +142,13 @@ export function saturateColor(hex: string, saturation: number = 50): string {
     const color = colord(hex);
     const hsl = color.toHsl();
 
-    const newS = Math.max(0, saturation);
+	const newS = Math.max(0, saturation);
 
-    return colord({
-        h: hsl.h,
-        s: newS,
-        l: hsl.l,
-    }).toHex();
+	return colord({
+		h: hsl.h,
+		s: newS,
+		l: hsl.l,
+	}).toHex();
 }
 
 export function alphaColor(hex: string, alpha: number = 50): string {
