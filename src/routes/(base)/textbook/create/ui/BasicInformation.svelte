@@ -140,7 +140,7 @@
 				}}
 				class="flex flex-col gap-2"
 			>
-				<div class="w-full flex-row items-center gap-2 flex">
+				<div class="flex w-full flex-row items-center gap-2">
 					<ImageInput
 						bind:value={thumbnail}
 						required={true}
@@ -159,7 +159,7 @@
 							<div
 								class="flex flex-row items-center justify-center gap-2 border-0 border-b-2 {darkMode
 									? 'bg-neutral-700 text-white!'
-									: 'bg-neutral-100 text-black!'} py-1 px-1.5 sm:p-2"
+									: 'bg-neutral-100 text-black!'} px-1.5 py-1 sm:p-2"
 								style="border-color: {color};"
 							>
 								<i

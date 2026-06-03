@@ -42,7 +42,7 @@
 			class="ri-upload-line text-4xl font-bold transition-all duration-300 group-hover:-translate-y-1"
 		></i>
 		<div class="flex h-full grow flex-col justify-center gap-2">
-			<h2 class="text-left! text-sm sm:text-base opacity-70">
+			<h2 class="text-left! text-sm opacity-70 sm:text-base">
 				{#if value.length == 0}
 					{#if placeholder.length == 0}
 						{m.uploadFile()}
