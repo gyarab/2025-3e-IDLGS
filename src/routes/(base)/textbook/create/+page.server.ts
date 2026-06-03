@@ -28,6 +28,7 @@ export const load = async (event) => {
 				uuid: databaseSchema.textbook.uuid,
 				title: databaseSchema.textbook.title,
 				description: databaseSchema.textbook.description,
+				thumbnail: databaseSchema.textbook.thumbnail,
 				r: databaseSchema.textbook.r,
 				g: databaseSchema.textbook.g,
 				b: databaseSchema.textbook.b,
@@ -85,6 +86,18 @@ export const load = async (event) => {
 					)
 			: [];
 
+	let thumbnailUrl = null;
+	if (tbRow.thumbnail) {
+		const res = (
+			await event.locals.db
+				.select({ url: databaseSchema.resource.url })
+				.from(databaseSchema.resource)
+				.where(eq(databaseSchema.resource.id, tbRow.thumbnail))
+				.limit(1)
+		)[0];
+		thumbnailUrl = res?.url ?? null;
+	}
+
 	return {
 		user: pd.user,
 		textbook: {
@@ -99,6 +112,7 @@ export const load = async (event) => {
 			})),
 			articles: articles2d,
 			authors: authorRows.map((a) => a.uuid),
+			thumbnailUrl,
 		},
 	};
 };

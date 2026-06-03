@@ -35,14 +35,14 @@
 	<div
 		class="flex flex-row items-center justify-center gap-2 border-0 border-b-2 {darkMode
 			? 'bg-neutral-700 text-white! placeholder:text-white!'
-			: 'bg-neutral-100 text-black! placeholder:text-black!'} p-2"
+			: 'bg-neutral-100 text-black! placeholder:text-black!'} p-1 sm:p-2"
 		style="border-color: {color};"
 	>
 		<i
-			class="ri-upload-line text-5xl font-bold transition-all duration-300 group-hover:-translate-y-1"
+			class="ri-upload-line text-4xl font-bold transition-all duration-300 group-hover:-translate-y-1"
 		></i>
 		<div class="flex h-full grow flex-col justify-center gap-2">
-			<h2 class="text-left! text-base opacity-70">
+			<h2 class="text-left! text-sm sm:text-base opacity-70">
 				{#if value.length == 0}
 					{#if placeholder.length == 0}
 						{m.uploadFile()}

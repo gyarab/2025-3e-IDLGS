@@ -51,8 +51,8 @@
 			></i>
 			<div
 				class="shadow-lg backdrop-blur-xs {darkMode
-					? 'bg-neutral-800/80 text-white!'
-					: 'bg-neutral-200/80 text-black!'} flex h-full w-full flex-col gap-2 overflow-hidden rounded-none sm:h-5/6 sm:w-5/6 sm:rounded-xl"
+					? 'bg-neutral-800/70 text-white!'
+					: 'bg-neutral-100/80 text-black!'} flex h-full w-full flex-col gap-2 overflow-hidden rounded-none sm:h-5/6 sm:w-5/6 sm:rounded-xl"
 			>
 				<div class="flex w-full grow flex-row overflow-hidden">
 					<Progress

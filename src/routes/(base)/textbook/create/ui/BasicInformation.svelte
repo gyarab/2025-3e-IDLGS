@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { alphaColor, darkenHex, makeURLFromImage, sanitizeColor, saturateColor } from '$lib';
+	import { alphaColor, makeURLFromImage, sanitizeColor } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import ColorInput from '$src/routes/(base)/components/ColorInput.svelte';
 	import SelectionBtnList from '$src/routes/(base)/components/SelectionBtnList.svelte';
@@ -16,6 +16,7 @@
 		color = $bindable(''),
 		education = $bindable(''),
 		thumbnail = $bindable([]),
+		thumbnailUrl = undefined,
 	}: {
 		darkMode: boolean;
 		name: string;
@@ -23,16 +24,16 @@
 		color: string;
 		education: string;
 		thumbnail: File[];
+		thumbnailUrl?: string | null;
 	} = $props();
 
 	const uiColor = $derived(sanitizeColor(color, 45));
 	let imagePreview: string = $derived(
-		thumbnail?.[0] ? makeURLFromImage(thumbnail[0]) : '',
+		thumbnail?.[0] ? makeURLFromImage(thumbnail[0]) : (thumbnailUrl ?? ''),
 	);
 
 	onDestroy(() => {
-		if (imagePreview)
-			URL.revokeObjectURL(imagePreview);
+		if (imagePreview) URL.revokeObjectURL(imagePreview);
 	});
 </script>
 
@@ -41,7 +42,7 @@
 		class="mb-2 flex w-full flex-row items-center gap-2"
 		in:fly|global={{ x: 600, y: 0, duration: 300, delay: 100, opacity: 0 }}
 	>
-		<h2 class="text-2xl font-bold">{m.basicTextbookInformation()}</h2>
+		<h2 class="text-2xl font-bold">{m.basicInformation()}</h2>
 	</div>
 	<div class="flex w-full grow flex-col gap-2">
 		<span
@@ -108,7 +109,10 @@
 				// style="background-color: {alphaColor(uiColor, 20)};"
 				css="buttonPrimary text-sm rounded-xl"
 				// selectedcss={darkMode ? 'text-black' : 'text-white'}
-				selectedstyle="background-color: {alphaColor(uiColor, darkMode ? 70 : 60)};"
+				selectedstyle="background-color: {alphaColor(
+					uiColor,
+					darkMode ? 70 : 60,
+				)};"
 			/>
 		</span>
 
@@ -136,21 +140,46 @@
 				}}
 				class="flex flex-col gap-2"
 			>
-				<ImageInput
-					bind:value={thumbnail}
-					required={true}
-					multiple={false}
-					{darkMode}
-					{color}
-					css="w-1/2"
-					placeholder={m.uploadThumbnail()}
-				/>
-				{#if thumbnail && thumbnail.length > 0}
+				<div class="w-full flex-row items-center gap-2 flex">
+					<ImageInput
+						bind:value={thumbnail}
+						required={true}
+						multiple={false}
+						{darkMode}
+						{color}
+						placeholder={m.uploadThumbnail()}
+					/>
+					{#if imagePreview && thumbnailUrl}
+						<a
+							href={thumbnailUrl}
+							target="_blank"
+							class="group flex w-fit flex-col overflow-hidden! rounded-lg! hover:translate-0 hover:brightness-100"
+							aria-label={m.download() + ' ' + m.thumbnail()}
+						>
+							<div
+								class="flex flex-row items-center justify-center gap-2 border-0 border-b-2 {darkMode
+									? 'bg-neutral-700 text-white!'
+									: 'bg-neutral-100 text-black!'} py-1 px-1.5 sm:p-2"
+								style="border-color: {color};"
+							>
+								<i
+									class="ri-download-line text-4xl font-bold transition-all duration-300 group-hover:-translate-y-1"
+								></i>
+								<h2
+									class="hidden text-left! text-base opacity-70"
+								>
+									{m.download()}
+								</h2>
+							</div>
+						</a>
+					{/if}
+				</div>
+				{#if imagePreview}
 					<h2>{m.thumbnailPreview()}</h2>
 					<img
 						src={imagePreview}
 						alt={m.thumbnailPreview()}
-						class="aspect-2/1 w-[50svh] rounded-lg object-cover"
+						class="aspect-2/1 w-[40svh] rounded-lg object-cover"
 					/>
 				{/if}
 			</span>
