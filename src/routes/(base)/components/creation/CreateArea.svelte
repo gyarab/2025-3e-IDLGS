@@ -53,9 +53,10 @@
 				class="{emoji} absolute top-2/8 left-1/25 scale-200 -rotate-15 text-9xl text-white! opacity-30"
 			></i>
 			<div
-				class="shadow-lg backdrop-blur-xs {darkMode
-					? 'bg-neutral-800/70 text-white!'
-					: 'bg-neutral-100/80 text-black!'} flex h-full w-full flex-col gap-2 overflow-hidden rounded-none sm:h-5/6 sm:w-5/6 sm:rounded-xl"
+				class="flex h-full w-full flex-col gap-2 overflow-hidden rounded-none
+					shadow-lg backdrop-blur-xs sm:h-5/6 sm:w-5/6 sm:rounded-xl {darkMode
+					? 'bg-neutral-800/80 text-white!'
+					: 'bg-neutral-100/80 text-black!'}"
 			>
 				<div class="flex w-full grow flex-row overflow-hidden">
 					<Progress

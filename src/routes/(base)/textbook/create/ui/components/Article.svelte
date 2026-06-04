@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { ArticleTypeRaw } from '$lib/types';
-	import { darkenHex } from '$lib';
+	import { sanitizeColor } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import Button from '$src/routes/(base)/components/Button.svelte';
 	import HoverEmoji from '$src/routes/(base)/components/HoverEmoji.svelte';
@@ -40,7 +40,7 @@
 		? 'bg-neutral-800 text-white'
 		: 'bg-neutral-200 text-black'}"
 	style={selected
-		? `background-color: ${darkMode ? darkenHex(color, 80) : darkenHex(color, 0)} !important;`
+		? `background-color: ${sanitizeColor(color, darkMode ? 40 : 80)} !important;`
 		: ''}
 	in:fly|global={{
 		x: 100,
@@ -97,7 +97,7 @@
 
 		<Button
 			label={m.editArticle()}
-			emoji="edit-box"
+			emoji="pencil"
 			type="button"
 			onclick={() => {
 				editMode = true;

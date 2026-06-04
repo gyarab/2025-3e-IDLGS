@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { darkenHex } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import Button from '$src/routes/(base)/components/Button.svelte';
 	import ConfirmDeleteDialog from '$src/routes/(base)/components/ConfirmDeleteDialog.svelte';
@@ -23,37 +22,40 @@
 
 <div class="flex w-full grow flex-col gap-2">
 	<div
-		class="mb-2 flex w-full flex-row items-center gap-2"
-		in:fly={{ x: 600, y: 0, duration: 300, delay: 100, opacity: 0 }}
+		class="mb-2 flex w-full flex-col items-center gap-2 sm:flex-row"
+		in:fly={{ x: 300, y: 0, duration: 300, delay: 100, opacity: 0 }}
 	>
 		<h2 class="text-2xl font-bold">{m.textbookResources()}</h2>
 		<p>{m.textbookResourcesDescription()}</p>
 	</div>
 	<div class="flex w-full grow flex-col gap-2"></div>
-	<div class="flex w-full flex-row gap-2">
+	<div
+		class="flex w-full flex-row gap-1 sm:gap-2"
+		in:fly={{ x: 300, y: 0, duration: 300, delay: 200, opacity: 0 }}
+	>
 		<Button
 			text={m.addResource()}
 			emoji="file-add"
 			type="button"
 			onclick={() => {}}
-			css="buttonPrimary grow"
-			style="background-color: #30C030;"
+			css="buttonPrimary grow bg-green-400/70 hover:translate-0!"
+			txtcss="hidden sm:inline"
 		/>
 		<Button
 			text={m.editResource()}
 			emoji="file-edit"
 			type="button"
 			onclick={() => {}}
-			css="buttonPrimary grow"
-			style="background-color: #D0C030;"
+			css="buttonPrimary grow bg-yellow-400/60 hover:translate-0!"
+			txtcss="hidden sm:inline"
 		/>
 		<Button
-			text={m.removeResource()}
+			text={m.deleteResource()}
 			emoji="file-reduce"
 			type="button"
 			onclick={() => {}}
-			css="buttonPrimary grow"
-			style="background-color: #D04040;"
+			css="buttonPrimary grow bg-red-400/80 hover:translate-0!"
+			txtcss="hidden sm:inline"
 		/>
 	</div>
 </div>

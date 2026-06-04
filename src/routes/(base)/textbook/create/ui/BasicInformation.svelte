@@ -40,17 +40,17 @@
 <div class="flex w-full grow flex-col gap-2">
 	<div
 		class="mb-2 flex w-full flex-row items-center gap-2"
-		in:fly|global={{ x: 600, y: 0, duration: 300, delay: 100, opacity: 0 }}
+		in:fly|global={{ x: 300, y: 0, duration: 300, delay: 200, opacity: 0 }}
 	>
 		<h2 class="text-2xl font-bold">{m.basicInformation()}</h2>
 	</div>
 	<div class="flex w-full grow flex-col gap-2">
 		<span
 			in:fly|global={{
-				x: 600,
+				x: 300,
 				y: 0,
 				duration: 300,
-				delay: 300,
+				delay: 400,
 				opacity: 0,
 			}}
 		>
@@ -66,7 +66,7 @@
 		<span
 			class="flex w-full grow flex-col"
 			in:fly|global={{
-				x: 600,
+				x: 300,
 				y: 0,
 				duration: 300,
 				delay: 500,
@@ -84,10 +84,10 @@
 
 		<span
 			in:fly|global={{
-				x: 600,
+				x: 300,
 				y: 0,
 				duration: 300,
-				delay: 700,
+				delay: 600,
 				opacity: 0,
 			}}
 		>
@@ -120,10 +120,10 @@
 			<span
 				class="w-full md:w-1/2 lg:w-1/3"
 				in:fly|global={{
-					x: 600,
+					x: 300,
 					y: 0,
 					duration: 300,
-					delay: 900,
+					delay: 700,
 					opacity: 0,
 				}}
 			>
@@ -132,10 +132,10 @@
 
 			<span
 				in:fly|global={{
-					x: 600,
+					x: 300,
 					y: 0,
 					duration: 300,
-					delay: 1100,
+					delay: 800,
 					opacity: 0,
 				}}
 				class="flex flex-col gap-2"

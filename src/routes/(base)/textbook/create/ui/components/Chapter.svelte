@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { darkenHex } from '$lib';
+	import { sanitizeColor } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import type { ChapterTypeRaw } from '$lib/types';
 	import Button from '$src/routes/(base)/components/Button.svelte';
@@ -40,7 +40,7 @@
 		? 'bg-neutral-800 text-white'
 		: 'bg-neutral-200 text-black'}"
 	style={selected
-		? `background-color: ${darkMode ? darkenHex(color, 80) : darkenHex(color, 0)} !important;`
+		? `background-color: ${sanitizeColor(color, darkMode ? 40 : 80)} !important;`
 		: ''}
 	in:fly|global={{
 		x: 100,
@@ -93,7 +93,7 @@
 		</button>
 		<Button
 			label={m.editChapter()}
-			emoji="edit-box"
+			emoji="pencil"
 			type="button"
 			onclick={() => {
 				editMode = true;
