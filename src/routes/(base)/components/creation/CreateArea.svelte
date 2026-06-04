@@ -39,7 +39,10 @@
 	{#key runAnim}
 		<div
 			class="relative flex h-screen! w-screen! max-w-screen flex-col items-center justify-center overflow-hidden bg-linear-to-br from-white from-0% to-white to-100%"
-			style="--tw-gradient-from: {darkenHex(color, darkMode ? 30 : 0)}; --tw-gradient-to: {darkenHex(color, darkMode ? 70 : 50)};"
+			style="--tw-gradient-from: {darkenHex(
+				color,
+				darkMode ? 30 : 0,
+			)}; --tw-gradient-to: {darkenHex(color, darkMode ? 70 : 50)};"
 		>
 			<i
 				in:fade={{ delay: 100, duration: 500 }}

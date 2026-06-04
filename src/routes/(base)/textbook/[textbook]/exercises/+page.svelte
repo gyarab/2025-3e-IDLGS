@@ -37,7 +37,10 @@
 			<h1 class="">{m.textbookInteractiveExercises()}</h1>
 			<h1
 				class="font-bold"
-				style="color: {sanitizeColor(data.color, data.darkMode ? 70 : 40)} !important;"
+				style="color: {sanitizeColor(
+					data.color,
+					data.darkMode ? 70 : 40,
+				)} !important;"
 			>
 				{data.textbook.title}
 			</h1>
@@ -49,7 +52,10 @@
 					type="button"
 					text={m.createExercise()}
 					css="buttonPrimary flex-row gap-2"
-					style="background-color: {sanitizeColor(data.color, data.darkMode ? 40 : 60)};"
+					style="background-color: {sanitizeColor(
+						data.color,
+						data.darkMode ? 40 : 60,
+					)};"
 					onclick={() => {
 						goto(
 							resolve(

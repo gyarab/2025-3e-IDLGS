@@ -51,8 +51,10 @@
 	>
 		{#each { length: length } as _, i (i)}
 			<button
-				class="{css} {isSelected?.at(i) ? selectedcss : 'border border-neutral-500/20'} 
-					flex grow flex-row items-center justify-center 
+				class="{css} {isSelected?.at(i)
+					? selectedcss
+					: 'border border-neutral-500/20'} 
+					flex grow flex-row items-center justify-center
 					gap-1 p-2 font-bold hover:translate-0!"
 				style="{style} {isSelected?.at(i) ? selectedstyle : ''}"
 				onclick={() => {

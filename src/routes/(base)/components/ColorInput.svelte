@@ -13,8 +13,7 @@
 
 	$effect(() => {
 		const clean = sanitizeColor(color, 55);
-		if (clean !== color.toLowerCase())
-			color = clean;
+		if (clean !== color.toLowerCase()) color = clean;
 	});
 
 	const textColor = $derived(colord(color).isLight() ? 'black' : 'white');

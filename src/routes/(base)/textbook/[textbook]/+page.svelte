@@ -62,7 +62,11 @@
 				type="button"
 				css="buttonPrimary bg-red-600/40"
 				onclick={() => {
-					if (confirm(m.areYouSure() + ' ' + m.thisActionCannotBeUndone()))
+					if (
+						confirm(
+							m.areYouSure() + ' ' + m.thisActionCannotBeUndone(),
+						)
+					)
 						deleteForm?.requestSubmit();
 				}}
 			/>
