@@ -22,7 +22,7 @@
 
 <Dialog
 	bind:open
-	darkMode={darkMode}
+	{darkMode}
 	css="min-h-0! min-w-1/4!"
 >
 	<div class="flex w-full grow flex-col gap-2">
@@ -31,7 +31,7 @@
 		<div class="h-1"></div>
 		<ConfirmCancel
 			dangerous={true}
-			color={color}
+			{color}
 			bind:open
 			confirm={async () => {
 				await confirm();

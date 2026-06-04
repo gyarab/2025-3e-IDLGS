@@ -179,7 +179,7 @@
 					<img
 						src={imagePreview}
 						alt={m.thumbnailPreview()}
-						class="aspect-2/1 w-[40svh] rounded-lg object-cover border border-neutral-400/40"
+						class="aspect-2/1 w-[40svh] rounded-lg border border-neutral-400/40 object-cover"
 					/>
 				{/if}
 			</span>

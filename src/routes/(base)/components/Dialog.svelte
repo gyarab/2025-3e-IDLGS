@@ -35,11 +35,9 @@
 		<dialog
 			bind:this={dialog}
 			class="absolute top-1/2 left-1/2 z-51! flex min-h-40 sm:top-2/5 {css} 
-				min-w-4/5 grow -translate-1/2 flex-col gap-2 rounded-xl p-5 sm:min-w-1/2 
-				border border-neutral-400/40 backdrop-blur-xs
-				{darkMode
-				? 'bg-neutral-800/90 text-white'
-				: 'bg-neutral-100/90 text-black'}"
+				min-w-4/5 grow -translate-1/2 flex-col gap-2 rounded-xl border border-neutral-400/40
+				p-5 backdrop-blur-xs sm:min-w-1/2
+				{darkMode ? 'bg-neutral-800/90 text-white' : 'bg-neutral-100/90 text-black'}"
 			transition:fade|global={{ duration: 250 }}
 		>
 			{@render children()}
