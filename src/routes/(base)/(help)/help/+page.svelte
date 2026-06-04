@@ -2,6 +2,7 @@
 	import { darkenHex } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import HelpLink from '../../components/HelpLink.svelte';
+	import { env } from '$env/dynamic/public';
 
 	let {
 		data,
@@ -98,7 +99,7 @@
 			</p>
 			<div class="flex flex-col gap-4 sm:flex-row">
 				<a
-					href="mailto:support@idlgs.com"
+					href="mailto:{env.PUBLIC_EMAIL_M}"
 					class="flex items-center gap-2 rounded-2xl border px-4 py-2 transition-colors {data.darkMode
 						? 'border-white/20 bg-neutral-700/50 hover:bg-neutral-700'
 						: 'border-gray-300 bg-gray-100 hover:bg-gray-200'}"

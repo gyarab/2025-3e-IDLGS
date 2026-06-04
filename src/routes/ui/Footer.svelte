@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
+	import { env } from '$env/dynamic/public';
 </script>
 
 <div
@@ -22,31 +23,23 @@
 				{m.privacyPolicy()}
 			</a>
 			<div class="h-2"></div>
-			<!--
-			<h2>
-				{m.contactUs()}:
-			</h2>
-			<div class="flex flex-row gap-2">
-				<i class="ri-mail-send-line"></i>
-				<a href="mailto:idylliceggs@gmail.com">idylliceggs@gmail.com</a>
-			</div>
-			-->
 		</div>
+
 		<div class="flex flex-col">
 			<h2>
 				{m.contactTheDevs()}:
 			</h2>
 			<div class="flex flex-row gap-2">
 				<i class="ri-mail-send-line"></i>
-				<a href="mailto:martin.bykov.s@gyarab.cz">Martin Bykov</a>
+				<a href="mailto:{env.PUBLIC_EMAIL_M}">Martin Bykov</a>
 			</div>
 			<div class="flex flex-row gap-2">
 				<i class="ri-mail-send-line"></i>
-				<a href="mailto:ali.yunussov.s@gyarab.cz">Ali Yunussov</a>
+				<a href="mailto:{env.PUBLIC_EMAIL_A}">Ali Yunussov</a>
 			</div>
 			<div class="flex flex-row gap-2">
 				<i class="ri-mail-send-line"></i>
-				<a href="mailto:kira.stepanova.s@gyarab.cz">Kira Stepanova</a>
+				<a href="mailto:{env.PUBLIC_EMAIL_K}">Kira Stepanova</a>
 			</div>
 		</div>
 	</div>

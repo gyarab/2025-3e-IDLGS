@@ -24,7 +24,8 @@
 		articles: ArticleTypeRaw[][];
 	} = $props();
 
-	const uiColor = sanitizeColor(color, 45);
+	const uiColor = $derived(sanitizeColor(color, darkMode ? 40 : 60));
+	const delColor = $derived(darkMode ? "#884444" : "#cc8888");
 
 	let showChapterDialog: boolean = $state(false);
 	let showArticleDialog: boolean = $state(false);
@@ -71,7 +72,7 @@
 				{m.chapters()}
 			</h2>
 			<div
-				class="flex grow flex-col gap-2 overflow-x-hidden overflow-y-scroll"
+				class="flex grow flex-col gap-2 overflow-x-hidden overflow-y-auto"
 			>
 				{#each sortedChapters as chapter, i (i)}
 					<Chapter
@@ -111,10 +112,10 @@
 				<span
 					class="flex grow flex-col gap-1"
 					in:fly|global={{
-						x: 600,
+						x: 300,
 						y: 0,
 						duration: 300,
-						delay: 700,
+						delay: 300,
 						opacity: 0,
 					}}
 				>
@@ -133,17 +134,17 @@
 					<span
 						class="flex grow flex-col gap-1"
 						in:fly|global={{
-							x: 600,
+							x: 300,
 							y: 0,
 							duration: 300,
-							delay: 300,
+							delay: 500,
 							opacity: 0,
 						}}
 					>
 						<Button
 							text={m.removeChapter()}
-							style="background-color: #999999;"
-							css="buttonPrimary w-full hover:bg-red-700!"
+							style="background-color: {delColor};"
+							css="buttonPrimary w-full hover:bg-red-700/70!"
 							onclick={() => {
 								deleteChapter = true;
 							}}
@@ -246,8 +247,8 @@
 					>
 						<Button
 							text={m.removeArticle()}
-							style="background-color: #999999;"
-							css="buttonPrimary w-full hover:bg-red-700!"
+							style="background-color: {delColor};"
+							css="buttonPrimary w-full hover:bg-red-700/70!"
 							onclick={() => {
 								deleteArticle = true;
 							}}

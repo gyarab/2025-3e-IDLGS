@@ -19,8 +19,8 @@
 		disabled?: boolean;
 	} = $props();
 
-	let bgYes = $derived(dangerous ? 'bg-red-500/70' : alphaColor(color, 60));
-	let bgNo = $derived(dangerous ? 'bg-green-700/70' : alphaColor(color, 50));
+	let bgYes = $derived(dangerous ? 'bg-red-600/50' : alphaColor(color, 60));
+	let bgNo = $derived(dangerous ? 'bg-green-700/50' : alphaColor(color, 50));
 </script>
 
 <div class="flex w-full flex-row gap-4">

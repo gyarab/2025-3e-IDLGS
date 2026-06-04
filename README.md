@@ -41,3 +41,8 @@ npm run format
 # Authors
 
 Martin Bykov, Ali Yunussov, Kira Stepanova
+
+# Additions
+
+IDLGS Mobile (Android client)
+https://github.com/gyarab/2025-3e-IDLGS-Mobile

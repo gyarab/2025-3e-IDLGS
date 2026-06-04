@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { env } from '$env/dynamic/public';
 	import { darkenHex } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import { fly } from 'svelte/transition';
@@ -91,7 +92,7 @@
 				{m.contactOurSupportTeam()}.
 			</p>
 			<a
-				href="mailto:support@idlgs.com"
+				href="mailto:{env.PUBLIC_EMAIL_M}"
 				class="inline-flex items-center gap-2 rounded-2xl border px-6 py-3 font-semibold transition-colors {data.darkMode
 					? 'border-white/20 bg-neutral-700/50 text-white hover:bg-neutral-700'
 					: 'border-gray-300 bg-gray-100 text-black hover:bg-gray-200'}"
