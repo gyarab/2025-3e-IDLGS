@@ -7,10 +7,10 @@
 	import ConfirmDeleteDialog from '$src/routes/(base)/components/ConfirmDeleteDialog.svelte';
 	import Dialog from '$src/routes/(base)/components/Dialog.svelte';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
-	import VerticalLine from '$src/routes/(base)/components/VerticalLine.svelte';
-	import { fly, scale } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 	import Article from './components/Article.svelte';
 	import Chapter from './components/Chapter.svelte';
+	import Divider from '$src/routes/(base)/components/Divider.svelte';
 
 	let {
 		darkMode,
@@ -134,11 +134,10 @@
 			</div>
 		</div>
 
-		<div
-			class="mx-1 h-0.5 w-full sm:h-full sm:w-0.5 {darkMode
-				? 'bg-neutral-200/60'
-				: 'bg-neutral-800/60'}"
-		></div>
+		<Divider
+			{darkMode}
+			orientation="h sm:v"
+		/>
 
 		<div class="flex grow flex-col gap-2 ps-2 sm:w-1/2">
 			<div class="flex min-h-10 flex-row gap-1">

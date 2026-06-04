@@ -3,6 +3,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import HelpLink from '../../components/HelpLink.svelte';
 	import { env } from '$env/dynamic/public';
+	import LinkButton from '../../components/LinkButton.svelte';
 
 	let {
 		data,
@@ -98,24 +99,19 @@
 				{m.contactOurSupportTeam()}.
 			</p>
 			<div class="flex flex-col gap-4 sm:flex-row">
-				<a
+				<LinkButton
+					darkMode={data.darkMode}
 					href="mailto:{env.PUBLIC_EMAIL_M}"
-					class="flex items-center gap-2 rounded-2xl border px-4 py-2 transition-colors {data.darkMode
-						? 'border-white/20 bg-neutral-700/50 hover:bg-neutral-700'
-						: 'border-gray-300 bg-gray-100 hover:bg-gray-200'}"
-				>
-					<i class="ri-mail-line"></i>
-					{m.emailSupport()}
-				</a>
-				<a
+					text={m.emailSupport()}
+					icon="mail"
+					/>
+
+				<LinkButton
+					darkMode={data.darkMode}
 					href="/faq"
-					class="flex items-center gap-2 rounded-2xl border px-4 py-2 transition-colors {data.darkMode
-						? 'border-white/20 bg-neutral-700/50 hover:bg-neutral-700'
-						: 'border-gray-300 bg-gray-100 hover:bg-gray-200'}"
-				>
-					<i class="ri-question-line"></i>
-					{m.faq()}
-				</a>
+					text={m.faq()}
+					icon="information"
+				/>
 			</div>
 		</section>
 	</div>

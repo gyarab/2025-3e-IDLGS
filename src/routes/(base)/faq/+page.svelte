@@ -3,6 +3,7 @@
 	import { darkenHex } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import { fly } from 'svelte/transition';
+	import LinkButton from '../components/LinkButton.svelte';
 
 	let {
 		data,
@@ -67,8 +68,8 @@
 			{#each faqs as { question, answer }}
 				<div
 					class="rounded-2xl border p-4 {data.darkMode
-						? 'border-white/10 bg-neutral-700/50'
-						: 'border-gray-200 bg-gray-50'}"
+						? 'border-white/10 bg-neutral-600/50'
+						: 'border-black/10 bg-neutral-100'}"
 					in:fly={{
 						x: 100,
 						y: 0,
@@ -86,20 +87,17 @@
 		<hr class="opacity-20" />
 
 		<section class="text-center">
-			<h2 class="mb-4 text-xl font-bold">{m.stillNeedHelp()}</h2>
-			<p class="mb-4 opacity-80">
+			<h2 class="text-xl font-bold">{m.stillNeedHelp()}</h2>
+			<p class="mt-3 mb-4 opacity-80">
 				{m.cantFindWhatYoureLookingFor()}
 				{m.contactOurSupportTeam()}.
 			</p>
-			<a
+			<LinkButton
+				darkMode={data.darkMode}
 				href="mailto:{env.PUBLIC_EMAIL_M}"
-				class="inline-flex items-center gap-2 rounded-2xl border px-6 py-3 font-semibold transition-colors {data.darkMode
-					? 'border-white/20 bg-neutral-700/50 text-white hover:bg-neutral-700'
-					: 'border-gray-300 bg-gray-100 text-black hover:bg-gray-200'}"
-			>
-				<i class="ri-mail-line"></i>
-				{m.contactSupport()}
-			</a>
+				icon="mail"
+				text={m.contactSupport()}
+			/>
 		</section>
 	</div>
 </div>

@@ -39,6 +39,13 @@
 	let articles: ArticleTypeRaw[][] = $state([]);
 	let authorUuids: string[] = $state([]);
 	let thumbnail: File[] = $state([]);
+	let resources: {
+		title: string;
+		url?: string;
+		description?: string;
+		id?: string;
+		order?: number;
+	}[] = $state([]);
 
 	onMount(() => {
 		if (data?.textbook) {
@@ -48,6 +55,7 @@
 			educationLevel = data.textbook.educationLevel?.toString?.() ?? '';
 			chapters = data.textbook.chapters ?? [];
 			articles = data.textbook.articles ?? [];
+			resources = data.textbook.resources ?? [];
 			authorUuids = data.textbook.authors ?? [];
 		} else {
 			textbookColor = data.color;
@@ -55,7 +63,7 @@
 	});
 
 	let stage0Condition: boolean = $derived(
-		!name || !description || !educationLevel,
+		!name || !description || !educationLevel || thumbnail.length == 0,
 	);
 	let stage1Condition: boolean = $derived(
 		chapters.length == 0 ||
@@ -108,6 +116,7 @@
 			<Resources
 				darkMode={data.darkMode}
 				color={textbookColor}
+				bind:resources
 			/>
 		{:else if stage == 3}
 			<Authors
@@ -195,6 +204,11 @@
 			name="articles"
 			value={JSON.stringify(articles)}
 			required
+		/>
+		<input
+			type="hidden"
+			name="resources"
+			value={JSON.stringify(resources)}
 		/>
 		<input
 			type="hidden"

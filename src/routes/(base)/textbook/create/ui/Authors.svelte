@@ -2,7 +2,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import TextArea from '$src/routes/(base)/components/TextArea.svelte';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
-	import VerticalLine from '$src/routes/(base)/components/VerticalLine.svelte';
+	import Divider from '$src/routes/(base)/components/Divider.svelte';
 	import { onDestroy, onMount, untrack } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { DEFAULT_MS_UNTIL_REQUEST } from '$lib';
@@ -129,7 +129,12 @@
 				{/if}
 			</div>
 		</div>
-		<VerticalLine {darkMode} />
+
+		<Divider
+			{darkMode}
+			orientation="vertical"
+		/>
+
 		<div class="flex w-full grow flex-col gap-2">
 			{#each selectedUsers as user, i (i)}
 				<User

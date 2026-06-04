@@ -5,6 +5,7 @@
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import ChapterCard from './ui/ChapterCard.svelte';
+	import ConfirmDeleteDialog from '../../components/ConfirmDeleteDialog.svelte';
 
 	let {
 		data,
@@ -18,6 +19,7 @@
 	} = $props();
 
 	let deleteForm: HTMLFormElement | null = null;
+	let showDeleteDialog = $state(false);
 </script>
 
 <svelte:head>
@@ -25,7 +27,7 @@
 </svelte:head>
 
 <div
-	class="mt-20 flex min-h-[33svh] w-full flex-col gap-4 rounded-2xl p-4 shadow-xl sm:w-2/3 {data.darkMode
+	class="mt-20 flex min-h-[33svh] w-full flex-col gap-2 rounded-2xl p-4 shadow-xl sm:w-2/3 {data.darkMode
 		? 'bg-neutral-800 text-white'
 		: 'bg-neutral-200 text-gray-800'}"
 >
@@ -62,36 +64,39 @@
 				type="button"
 				css="buttonPrimary bg-red-600/40"
 				onclick={() => {
-					if (
-						confirm(
-							m.areYouSure() + ' ' + m.thisActionCannotBeUndone(),
-						)
-					)
-						deleteForm?.requestSubmit();
+					showDeleteDialog = true;
 				}}
 			/>
 		</form>
 	</div>
-	<p>
+	<p class="my-2 opacity-80">
 		{data.textbook.description}
 	</p>
 
-	<div>
+	<!-- <div>
 		QUICK ACTIONS: open definitions, open textbook settings, open authors
 		list, open resource list, OPEN EXERCISES
+	</div> -->
+
+	<div class="flex flex-row">
+		<a
+			href="/textbook/{data.textbook.uuid}/exercises"
+			class="flex h-8 w-1 items-center font-bold"
+		>
+			{m.exercises()}
+			<i class="ri-arrow-right-s-line"></i>
+		</a>
+
+		<a
+			href="/textbook/{data.textbook.uuid}/resources"
+			class="flex h-8 items-center font-bold"
+		>
+			{m.resources()}
+			<i class="ri-arrow-right-s-line"></i>
+		</a>
 	</div>
 
-	<a
-		href="/textbook/{data.textbook.uuid}/exercises"
-		class="font-bold"
-	>
-		{m.exercises()}
-		<i
-			class="ri-arrow-right-s-line transition-transform group-hover:translate-x-10"
-		></i>
-	</a>
-
-	<div class="font-bold">
+	<div class="my-2 font-bold">
 		{m.chapters()}
 	</div>
 
@@ -105,3 +110,14 @@
 		{/each}
 	</div>
 </div>
+
+<ConfirmDeleteDialog
+	bind:open={showDeleteDialog}
+	title="{m.deleteTextbook()}?"
+	darkMode={data.darkMode}
+	color={data.color}
+	confirm={async () => {
+		deleteForm?.requestSubmit();
+	}}
+	cancel={async () => {}}
+/>
