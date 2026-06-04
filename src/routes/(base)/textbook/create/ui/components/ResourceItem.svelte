@@ -78,8 +78,7 @@
 				<a
 					href="_blank"
 					class="text-sm text-blue-500 underline opacity-80"
-					onclick={() => openExternal(resource.url)}
-					>{resource.url}</a
+					onclick={() => openExternal(resource.url)}>{resource.url}</a
 				>
 			{/if}
 		</div>

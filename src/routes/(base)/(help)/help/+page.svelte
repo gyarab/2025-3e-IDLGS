@@ -104,7 +104,7 @@
 					href="mailto:{env.PUBLIC_EMAIL_M}"
 					text={m.emailSupport()}
 					icon="mail"
-					/>
+				/>
 
 				<LinkButton
 					darkMode={data.darkMode}
