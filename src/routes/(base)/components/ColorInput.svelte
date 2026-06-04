@@ -23,7 +23,7 @@
 	<input
 		type="color"
 		name="color"
-		class="w-full cursor-pointer rounded-lg border-2 border-white shadow transition-transform active:scale-95"
+		class="w-full px-0.5 cursor-pointer rounded-lg border-2 border-neutral-500 shadow transition-transform active:scale-95"
 		style="height: 40px;"
 		bind:value={color}
 		bind:this={inputElement}
@@ -45,7 +45,7 @@
 			class="w-full truncate font-medium"
 			style="color: {textColor};"
 		>
-			{m.clickToChangeColor()}...
+			{m.changeColor()}...
 		</span>
 	</div>
 </div>

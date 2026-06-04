@@ -80,8 +80,8 @@
 		m.authors(),
 		m.review(),
 	]}
-	title={data?.textbook ? m.textbookSettings() : m.newTextbook()}
-	emoji={'ri-health-book-line'}
+	title={data?.textbook ? m.editTextbook() : m.newTextbook()}
+	emoji={data?.textbook ? 'ri-edit-line' : 'ri-health-book-line'}
 	helpLink={resolve('/help/textbook/creation')}
 	backLink={resolve('/(base)/textbook')}
 	bind:stage

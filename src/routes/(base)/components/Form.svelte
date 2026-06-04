@@ -45,8 +45,8 @@
 	method="POST"
 	enctype="multipart/form-data"
 	class="flex w-full flex-col gap-2 rounded-xl p-4 shadow-lg {css} {darkMode
-		? 'bg-neutral-800 text-white'
-		: 'bg-neutral-100 text-black'}"
+		? 'bg-neutral-800/90 text-white'
+		: 'bg-neutral-100/90 text-black'}"
 	action={target}
 	use:enhance={async ({
 		formData,
@@ -64,7 +64,6 @@
 			else if (result.type == 'failure') await failure(result.data);
 
 			await final();
-
 			loading = false;
 		};
 	}}

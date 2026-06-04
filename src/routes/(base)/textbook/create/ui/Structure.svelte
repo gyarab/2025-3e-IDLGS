@@ -8,7 +8,7 @@
 	import Dialog from '$src/routes/(base)/components/Dialog.svelte';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
 	import VerticalLine from '$src/routes/(base)/components/VerticalLine.svelte';
-	import { fly } from 'svelte/transition';
+	import { fly, scale } from 'svelte/transition';
 	import Article from './components/Article.svelte';
 	import Chapter from './components/Chapter.svelte';
 
@@ -25,7 +25,6 @@
 	} = $props();
 
 	const uiColor = $derived(sanitizeColor(color, darkMode ? 40 : 60));
-	const delColor = $derived(darkMode ? "#884444" : "#cc8888");
 
 	let showChapterDialog: boolean = $state(false);
 	let showArticleDialog: boolean = $state(false);
@@ -52,25 +51,50 @@
 <div class="flex w-full grow flex-col gap-2">
 	<div
 		class="mb-2 flex w-full flex-col items-center gap-2 sm:flex-row"
-		in:fly|global={{ x: 600, y: 0, duration: 300, delay: 100, opacity: 0 }}
+		in:fly|global={{ x: 100, y: 0, duration: 300, delay: 100, opacity: 0 }}
 	>
 		<h2 class="text-2xl font-bold">{m.textbookStructure()}</h2>
+		<div class="hidden grow sm:block"></div>
 		<p>{m.textbookStructureDesciption()}</p>
 	</div>
 
-	<div class="flex w-full grow flex-row gap-2">
-		<div class="flex max-w-1/2 grow flex-col gap-2">
-			<h2
-				in:fly|global={{
-					x: 600,
-					y: 0,
-					duration: 300,
-					delay: 300,
-					opacity: 0,
-				}}
-			>
-				{m.chapters()}
-			</h2>
+	<div class="flex w-full grow flex-col gap-2 sm:flex-row">
+		<div class="flex grow flex-col gap-2 sm:w-1/2">
+			<div class="flex min-h-10 flex-row gap-1">
+				<h2
+					in:fly|global={{
+						x: 50,
+						y: 0,
+						duration: 300,
+						delay: 200,
+					}}
+					class="flex items-center"
+				>
+					{m.chapters()}
+				</h2>
+
+				<div class="flex grow"></div>
+
+				<Button
+					text=""
+					css="rounded-2xl px-2 font-bold bg-green-500/50 hover:bg-green-600/60!"
+					onclick={() => {
+						showChapterDialog = true;
+					}}
+					emoji="add"
+					type="button"
+				/>
+				<Button
+					text=""
+					css="rounded-2xl px-2 font-bold bg-red-500/50 hover:bg-red-600/60!"
+					onclick={() => {
+						deleteChapter = true;
+					}}
+					emoji="close"
+					type="button"
+					disabled={selectedChapterId == undefined}
+				/>
+			</div>
 			<div
 				class="flex grow flex-col gap-2 overflow-x-hidden overflow-y-auto"
 			>
@@ -108,70 +132,56 @@
 					</div>
 				{/each}
 			</div>
-			<div class="flex w-full flex-row gap-1">
-				<span
-					class="flex grow flex-col gap-1"
+		</div>
+
+		<div
+			class="mx-1 h-0.5 w-full sm:h-full sm:w-0.5 {darkMode
+				? 'bg-neutral-200/60'
+				: 'bg-neutral-800/60'}"
+		></div>
+
+		<div class="flex grow flex-col gap-2 ps-2 sm:w-1/2">
+			<div class="flex min-h-10 flex-row gap-1">
+				<h2
 					in:fly|global={{
-						x: 300,
+						x: 50,
 						y: 0,
 						duration: 300,
 						delay: 300,
 						opacity: 0,
 					}}
+					class="flex items-center"
 				>
-					<Button
-						text={m.addChapter()}
-						style="background-color: {uiColor};"
-						css="buttonPrimary w-full"
-						onclick={() => {
-							showChapterDialog = true;
-						}}
-						emoji="add"
-						type="button"
-					/>
-				</span>
-				{#if chapters.length > 0}
-					<span
-						class="flex grow flex-col gap-1"
-						in:fly|global={{
-							x: 300,
-							y: 0,
-							duration: 300,
-							delay: 500,
-							opacity: 0,
-						}}
-					>
-						<Button
-							text={m.removeChapter()}
-							style="background-color: {delColor};"
-							css="buttonPrimary w-full hover:bg-red-700/70!"
-							onclick={() => {
-								deleteChapter = true;
-							}}
-							emoji="close"
-							type="button"
-							disabled={selectedChapterId == undefined}
-						/>
-					</span>
-				{/if}
+					{m.articles()}
+				</h2>
+
+				<div class="flex grow"></div>
+
+				<Button
+					text=""
+					css="rounded-2xl px-2 font-bold bg-green-500/50 hover:bg-green-600/60!"
+					onclick={() => {
+						showArticleDialog = true;
+					}}
+					emoji="add"
+					type="button"
+					disabled={selectedChapterId == undefined}
+				/>
+				<Button
+					text=""
+					css="rounded-2xl px-2 font-bold bg-red-500/50 hover:bg-red-600/60!"
+					onclick={() => {
+						deleteArticle = true;
+					}}
+					emoji="close"
+					type="button"
+					disabled={selectedArticleId == undefined ||
+						selectedChapterId == undefined}
+				/>
 			</div>
-		</div>
-		<VerticalLine {darkMode} />
-		<div class="flex max-w-1/2 grow flex-col gap-2 ps-2">
-			<h2
-				in:fly|global={{
-					x: 600,
-					y: 0,
-					duration: 300,
-					delay: 500,
-					opacity: 0,
-				}}
-			>
-				{m.articles()}
-			</h2>
 			{#if selectedChapterId != undefined}
 				<div
-					class="flex grow flex-col gap-2 overflow-x-hidden overflow-y-scroll"
+					class="flex grow flex-col gap-2 overflow-x-hidden overflow-y-auto"
 				>
 					{#each sortedArticles as article, i (i)}
 						<Article
@@ -211,53 +221,6 @@
 							{m.noArticlesInChapterYet()}
 						</div>
 					{/each}
-				</div>
-				<div class="flex w-full flex-row gap-1">
-					<span
-						class="flex grow flex-col gap-1"
-						in:fly|global={{
-							x: 600,
-							y: 0,
-							duration: 300,
-							delay: 100,
-							opacity: 0,
-						}}
-					>
-						<Button
-							text={m.addArticle()}
-							style="background-color: {uiColor};"
-							css="buttonPrimary w-full"
-							onclick={() => {
-								showArticleDialog = true;
-							}}
-							emoji="add"
-							type="button"
-							disabled={selectedChapterId == undefined}
-						/>
-					</span>
-					<span
-						class="flex grow flex-col gap-1"
-						in:fly|global={{
-							x: 600,
-							y: 0,
-							duration: 300,
-							delay: 300,
-							opacity: 0,
-						}}
-					>
-						<Button
-							text={m.removeArticle()}
-							style="background-color: {delColor};"
-							css="buttonPrimary w-full hover:bg-red-700/70!"
-							onclick={() => {
-								deleteArticle = true;
-							}}
-							emoji="close"
-							type="button"
-							disabled={selectedArticleId == undefined ||
-								selectedChapterId == undefined}
-						/>
-					</span>
 				</div>
 			{:else}
 				<div
@@ -337,22 +300,45 @@
 </Dialog>
 
 <ConfirmDeleteDialog
-	open={deleteArticle || deleteChapter}
+	bind:open={deleteChapter}
+	title="{m.deleteChapter()}?"
 	{darkMode}
 	{color}
 	confirm={async () => {
-		if (deleteArticle) {
-			articles[selectedChapterId!].splice(selectedArticleId!, 1);
-		} else if (deleteChapter) {
+		try {
 			chapters.splice(selectedChapterId!, 1);
 			articles.splice(selectedChapterId!, 1);
+			selectedChapterId = undefined;
+			selectedArticleId = undefined;
+		} catch (e) {
+			console.error('Error deleting chapter', e);
+			throw e;
+		} finally {
+			deleteChapter = false;
 		}
-
-		deleteArticle = false;
+	}}
+	cancel={async () => {
 		deleteChapter = false;
+	}}
+/>
+
+<ConfirmDeleteDialog
+	bind:open={deleteArticle}
+	title="{m.deleteArticle()}?"
+	{darkMode}
+	{color}
+	confirm={async () => {
+		try {
+			articles[selectedChapterId!].splice(selectedArticleId!, 1);
+			selectedArticleId = undefined;
+		} catch (e) {
+			console.error('Error deleting article', e);
+			throw e;
+		} finally {
+			deleteArticle = false;
+		}
 	}}
 	cancel={async () => {
 		deleteArticle = false;
-		deleteChapter = false;
 	}}
 />

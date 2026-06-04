@@ -40,7 +40,7 @@
 	/>
 	{#if type == 'password'}
 		<Button
-			css="pe-1 ps-1 hover:translate-0!"
+			css="px-1 hover:translate-0!"
 			style="background-color: {color};"
 			text=""
 			type="button"

@@ -5,8 +5,8 @@
 
 	let {
 		dangerous,
-		color,
 		open = $bindable(false),
+		color,
 		confirm,
 		cancel,
 		disabled,
@@ -20,7 +20,7 @@
 	} = $props();
 
 	let bgYes = $derived(dangerous ? 'bg-red-600/50' : alphaColor(color, 60));
-	let bgNo = $derived(dangerous ? 'bg-green-700/50' : alphaColor(color, 50));
+	let bgNo = $derived(dangerous ? 'bg-green-600/50' : alphaColor(color, 50));
 </script>
 
 <div class="flex w-full flex-row gap-4">
