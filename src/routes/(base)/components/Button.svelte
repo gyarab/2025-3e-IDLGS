@@ -34,7 +34,7 @@
 	{disabled}
 	aria-label={label}
 	title={label}
-	class="group flex flex-col items-center justify-center sm:flex-row sm:gap-1 {css}"
+	class="group flex flex-row items-center justify-center gap-1 {css}"
 	{onclick}
 	{style}
 >

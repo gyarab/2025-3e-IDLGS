@@ -78,7 +78,7 @@
 		list, open resource list, OPEN EXERCISES
 	</div> -->
 
-	<div class="flex flex-row">
+	<div class="grid grid-cols-2">
 		<a
 			href="/textbook/{data.textbook.uuid}/exercises"
 			class="flex h-8 w-1 items-center font-bold"
@@ -86,7 +86,6 @@
 			{m.exercises()}
 			<i class="ri-arrow-right-s-line"></i>
 		</a>
-
 		<a
 			href="/textbook/{data.textbook.uuid}/resources"
 			class="flex h-8 items-center font-bold"

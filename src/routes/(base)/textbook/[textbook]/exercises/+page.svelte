@@ -5,7 +5,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import Button from '$src/routes/(base)/components/Button.svelte';
 	import type { TextbookType } from '$lib/types';
-	import { sanitizeColor } from '$lib';
+	import { alphaColor, sanitizeColor } from '$lib';
 
 	let {
 		data,
@@ -26,7 +26,7 @@
 
 <div
 	class="flex w-full grow flex-col items-center p-4 pt-20"
-	style="background-color: {data.color};"
+	style="background-color: {alphaColor(data.color, 60)};"
 >
 	<div
 		class="flex w-full grow flex-col p-4 sm:p-6 lg:w-3/4 {data.darkMode

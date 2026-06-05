@@ -70,7 +70,7 @@
 					emoji="book"
 					text={m.textbooks()}
 					{darkMode}
-					css="buttonPrimary text-nowrap"
+					css="buttonPrimary text-nowrap -mx-1"
 					txtcss="hidden lg:inline"
 					onclick={() => goto(resolve('/(base)/textbook'))}
 				/>
@@ -106,7 +106,7 @@
 						await invalidateAll();
 					}}
 					emoji={darkMode ? 'sun' : 'moon'}
-					css="buttonPrimary"
+					css="buttonPrimary -mx-1"
 					label={darkMode ? m.lightMode() : m.darkMode()}
 					{darkMode}
 				/>

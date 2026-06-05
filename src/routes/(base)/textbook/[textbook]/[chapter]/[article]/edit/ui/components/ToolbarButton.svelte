@@ -23,7 +23,7 @@
 <button
 	aria-label={label}
 	title={label}
-	class="group relative pt-1 pb-1"
+	class="group relative py-1"
 	{onclick}
 	bind:this={button}
 	{style}
