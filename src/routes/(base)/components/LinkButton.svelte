@@ -1,15 +1,15 @@
 <script lang="ts">
-	let { 
-		darkMode = false, 
-		href, 
+	let {
+		darkMode = false,
+		href,
 		text = href,
-		icon
+		icon,
 	}: {
-        darkMode?: boolean;
-        href: string;
-        text: string;
-        icon?: string;
-    } = $props();
+		darkMode?: boolean;
+		href: string;
+		text: string;
+		icon?: string;
+	} = $props();
 </script>
 
 <a

@@ -123,9 +123,9 @@
 						<ResourceItem
 							resource={r}
 							{darkMode}
-							i={i}
+							{i}
 							amount={resources.length}
-							color={color}
+							{color}
 							selected={selectedResourceIndex === i}
 							onclick={() => {
 								selectedResourceIndex = i;
@@ -188,7 +188,10 @@
 				bind:value={addImageFiles}
 			/>
 			{#if tempResource.imageData}
-				<img src={tempResource.imageData} class="h-12 w-12 rounded object-cover" />
+				<img
+					src={tempResource.imageData}
+					class="h-12 w-12 rounded object-cover"
+				/>
 			{/if}
 		</div>
 		<ConfirmCancel
@@ -251,7 +254,11 @@
 				bind:value={editImageFiles}
 			/>
 			{#if tempResource.imageData}
-				<img src={tempResource.imageData} alt="preview" class="h-12 w-12 rounded object-cover" />
+				<img
+					src={tempResource.imageData}
+					alt="preview"
+					class="h-12 w-12 rounded object-cover"
+				/>
 			{/if}
 		</div>
 		<ConfirmCancel
