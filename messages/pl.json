@@ -263,9 +263,9 @@
 	"featureMultimediaDesc": "Nasze podręczniki oferują excelentną obsługę uczenia multimedialnego, co poprawia zrozumienie i zaangażowanie uczniów.",
 	"aboutDescription": "IDLGS to interaktywny podręcznik cyfrowy, który rewolucjonizuje edukację. Nasza platforma oferuje szeroką gamę interaktywnych treści, w tym modele 3D, elementy multimedialne i innowacyjne funkcje, które zwiększają zaangażowanie uczniów i ułatwiają naukę.",
 	"teamDescription": "Nasz zespół składa się z entuzjastycznych programistów, projektantów i edukatorów, których pasją jest wprowadzanie innowacji do edukacji. Wspólnie pracujemy nad tym, aby IDLGS był nie tylko funkcjonalny, ale także przyjazny dla użytkownika i skuteczny dla wszystkich.",
-	"martinDesc": "Zapalony inżynier oprogramowania, entuzjasta psychologii i główny menedżer projektu.",
-	"aliDesc": "Utalentowany projektant i programista front-end, odpowiedzialny za oprawę wizualną i doświadczenie użytkownika (UX) IDLGS.",
-	"kiraDesc": "Pasjonatka biologii i edukatorka, oddana idei czynienia nauki dostępną i angażującą dla każdego.",
+	"descriptionMartin": "Zapalony inżynier oprogramowania, entuzjasta psychologii i główny menedżer projektu.",
+	"descriptionAli": "Utalentowany projektant i programista front-end, odpowiedzialny za oprawę wizualną i doświadczenie użytkownika (UX) IDLGS.",
+	"descriptionKira": "Pasjonatka biologii i edukatorka, oddana idei czynienia nauki dostępną i angażującą dla każdego.",
 	"definitionsAndTerms": "Definicje i pojęcia",
 	"help": "Pomoc",
 	"needHelp": "Potrzebujesz pomocy?",
@@ -314,5 +314,9 @@
 	"resourceTitle": "Tytuł zasobu",
 	"open": "Otwórz",
 	"delete": "Usuń",
-	"deleteTextbook": "Usuń podręcznik"
+	"deleteTextbook": "Usuń podręcznik",
+	"chapter": "Rozdział",
+	"article": "Artykuł",
+	"exercise": "Ćwiczenie",
+	"somethingWentWrong": "Coś poszło nie tak"
 }

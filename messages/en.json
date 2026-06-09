@@ -264,9 +264,9 @@
 	"featureMultimediaDesc": "Our textbooks provide excellent support for multimedia learning, enhancing student understanding and engagement.",
 	"aboutDescription": "IDLGS is an interactive digital textbook that revolutionizes education. Our platform offers a wide range of interactive content, including 3D models, multimedia elements, and innovative features that enhance student engagement and facilitate learning.",
 	"teamDescription": "Our team consists of enthusiastic developers, designers, and educators who are passionate about bringing innovation to education. Together, we work to ensure that IDLGS is not only functional but also user-friendly and effective for all users.",
-	"martinDesc": "Avid software engineer, psychology entusiast and main project manager.",
-	"aliDesc": "Skilled designer and front-end developer, responsible for the visual design and user experience of IDLGS.",
-	"kiraDesc": "Passionate biologist and educator, dedicated to making science accessible and engaging for everyone.",
+	"descriptionMartin": "Avid software engineer, psychology entusiast and main project manager.",
+	"descriptionAli": "Skilled designer and front-end developer, responsible for the visual design and user experience of IDLGS.",
+	"descriptionKira": "Passionate biologist and educator, dedicated to making science accessible and engaging for everyone.",
 	"definitionsAndTerms": "Definitions and terms",
 	"help": "Help",
 	"needHelp": "Need help?",
@@ -315,5 +315,9 @@
 	"resourceTitle": "Resource title",
 	"open": "Open",
 	"delete": "Delete",
-	"deleteTextbook": "Delete textbook"
+	"deleteTextbook": "Delete textbook",
+	"chapter": "Chapter",
+	"article": "Article",
+	"exercise": "Exercise",
+	"somethingWentWrong": "Something went wrong"
 }

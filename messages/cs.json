@@ -264,9 +264,9 @@
 	"featureMultimediaDesc": "Naše učebnice poskytují výbornou podporu pro multimediální učení, což zlepšuje porozumění a zapojení studentů.",
 	"aboutDescription": "IDLGS je interaktivní digitální učebnice, která přináší revoluci ve vzdělávání. Naše platforma nabízí širokou škálu interaktivního obsahu, včetně 3D modelů, multimediálních prvků a inovativních funkcí, které zvyšují zapojení studentů a usnadňují učení.",
 	"teamDescription": "Náš tým se skládá z nadšených vývojářů, designérů a pedagogů, kteří chtějí přinášet inovace do vzdělávání. Společně pracujeme na tom, aby byl systém IDLGS nejen funkční, ale také uživatelsky přívětivý a efektivní pro všechny uživatele.",
-	"martinDesc": "Zapálený softwarový inženýr, nadšenec do psychologie a hlavní projektový manažer.",
-	"aliDesc": "Talentovaný designér a front-end vývojář, zodpovědný za vizuální design a uživatelskou zkušenost IDLGS.",
-	"kiraDesc": "Vášnivá bioložka a pedagožka, oddaná tomu, aby věda byla přístupná a poutavá pro každého.",
+	"descriptionMartin": "Zapálený softwarový inženýr, nadšenec do psychologie a hlavní projektový manažer.",
+	"descriptionAli": "Talentovaný designér a front-end vývojář, zodpovědný za vizuální design a uživatelskou zkušenost IDLGS.",
+	"descriptionKira": "Vášnivá bioložka a pedagožka, oddaná tomu, aby věda byla přístupná a poutavá pro každého.",
 	"definitionsAndTerms": "Definice a pojmy",
 	"help": "Pomoc",
 	"needHelp": "Potřebujete pomoc?",
@@ -315,5 +315,9 @@
 	"resourceTitle": "Název zdroje",
 	"open": "Otevřít",
 	"delete": "Smazat",
-	"deleteTextbook": "Smazat učebnici"
+	"deleteTextbook": "Smazat učebnici",
+	"chapter": "Rozdział",
+	"article": "Artykuł",
+	"exercise": "Cvičení",
+	"somethingWentWrong": "Něco se pokazilo"
 }
