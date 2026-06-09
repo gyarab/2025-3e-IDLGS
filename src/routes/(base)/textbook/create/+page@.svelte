@@ -147,7 +147,8 @@
 		css="invisibleForm -mt-2"
 		start={async (formData) => {
 			stage = 5;
-			if (thumbnail && thumbnail[0]) formData!.append('thumbnail', thumbnail[0]);
+			if (thumbnail && thumbnail[0])
+				formData!.append('thumbnail', thumbnail[0]);
 		}}
 		success={async () => {
 			if (data?.textbook) {
