@@ -39,22 +39,22 @@
 		class="ri-article-line absolute top-1/4 left-1/15 scale-200 -rotate-15 text-9xl text-white opacity-20"
 	></i>
 
-    <div
-        class="z-10 flex w-full sm:w-sm flex-col gap-4 rounded-3xl p-4 shadow-xl backdrop-blur-sm sm:gap-6 sm:rounded-4xl sm:p-8 {data.darkMode
-            ? 'bg-neutral-800/80 text-white'
-            : 'bg-white/90 text-black'}"
-        in:fly|global={{ x: 200, duration: 400 }}
-    >
-        <header class="flex flex-col items-center gap-1 pt-2 text-center">
-            <div>
-                <h1 class="text-2xl font-bold tracking-tight sm:text-3xl">
-                    {data.chapter.title}
-                </h1>
-                <p class="mt-1 text-sm opacity-70">
-                    {data.textbook.title}
-                </p>
-            </div>
-        </header>
+	<div
+		class="z-10 flex w-full flex-col gap-4 rounded-3xl p-4 shadow-xl backdrop-blur-sm sm:w-sm sm:gap-6 sm:rounded-4xl sm:p-8 {data.darkMode
+			? 'bg-neutral-800/80 text-white'
+			: 'bg-white/90 text-black'}"
+		in:fly|global={{ x: 200, duration: 400 }}
+	>
+		<header class="flex flex-col items-center gap-1 pt-2 text-center">
+			<div>
+				<h1 class="text-2xl font-bold tracking-tight sm:text-3xl">
+					{data.chapter.title}
+				</h1>
+				<p class="mt-1 text-sm opacity-70">
+					{data.textbook.title}
+				</p>
+			</div>
+		</header>
 
 		<hr class="opacity-20" />
 

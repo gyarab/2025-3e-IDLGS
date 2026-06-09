@@ -76,14 +76,14 @@ export const load = async (event) => {
 	const authorRows =
 		linkerRows.length > 0
 			? await event.locals.db
-				.select({ uuid: databaseSchema.user.uuid })
-				.from(databaseSchema.user)
-				.where(
-					inArray(
-						databaseSchema.user.id,
-						linkerRows.map((r) => r.userId),
-					),
-				)
+					.select({ uuid: databaseSchema.user.uuid })
+					.from(databaseSchema.user)
+					.where(
+						inArray(
+							databaseSchema.user.id,
+							linkerRows.map((r) => r.userId),
+						),
+					)
 			: [];
 
 	let thumbnailUrl = null;
@@ -151,7 +151,8 @@ export const actions = {
 					chapters.length === 0 ||
 					articles.length === 0 ||
 					chapters.length !== articles.length
-				) return fail(400);
+				)
+					return fail(400);
 
 				authors.sort();
 
@@ -172,15 +173,16 @@ export const actions = {
 				}
 
 				await event.locals.db.transaction(async (tx) => {
-
-					const resource = thumbnailUrl ? (await tx
-						.insert(databaseSchema.resource)
-						.values({
-							url: thumbnailUrl,
-							title: 'thumbnail',
-							type: 'image',
-						})
-						.returning()) : [null];
+					const resource = thumbnailUrl
+						? await tx
+								.insert(databaseSchema.resource)
+								.values({
+									url: thumbnailUrl,
+									title: 'thumbnail',
+									type: 'image',
+								})
+								.returning()
+						: [null];
 
 					const textbook = (
 						await tx

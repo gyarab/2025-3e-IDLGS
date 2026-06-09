@@ -37,7 +37,7 @@
 	title={label}
 	class="group flex flex-row items-center justify-center {darkMode
 		? 'text-white'
-		: 'text-black'} font-bold gap-1 {css}"
+		: 'text-black'} gap-1 font-bold {css}"
 	{onclick}
 	{style}
 >
