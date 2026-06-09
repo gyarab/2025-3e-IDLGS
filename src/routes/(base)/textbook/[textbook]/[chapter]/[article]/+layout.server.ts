@@ -8,7 +8,11 @@ export const load = async (event) => {
 	if (!pd.textbook) return error(404, m.textbookDoesntExist());
 	if (!pd.chapter) return error(404, m.chapterDoesntExist());
 
-	const { textbook: textbookUuid, chapter: chapterUuid, article: articleUuid } = event.params;
+	const {
+		textbook: textbookUuid,
+		chapter: chapterUuid,
+		article: articleUuid,
+	} = event.params;
 	if (!textbookUuid || !chapterUuid || !articleUuid)
 		return error(404, m.articleDoesntExist());
 
