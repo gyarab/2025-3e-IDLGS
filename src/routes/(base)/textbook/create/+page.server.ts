@@ -76,14 +76,14 @@ export const load = async (event) => {
 	const authorRows =
 		linkerRows.length > 0
 			? await event.locals.db
-					.select({ uuid: databaseSchema.user.uuid })
-					.from(databaseSchema.user)
-					.where(
-						inArray(
-							databaseSchema.user.id,
-							linkerRows.map((r) => r.userId),
-						),
-					)
+				.select({ uuid: databaseSchema.user.uuid })
+				.from(databaseSchema.user)
+				.where(
+					inArray(
+						databaseSchema.user.id,
+						linkerRows.map((r) => r.userId),
+					),
+				)
 			: [];
 
 	let thumbnailUrl = null;
@@ -129,7 +129,6 @@ export const actions = {
 				'chapters',
 				'articles',
 				'authors',
-				'thumbnail',
 			],
 			true,
 			async (
@@ -151,11 +150,8 @@ export const actions = {
 					!Array.isArray(authors) ||
 					chapters.length === 0 ||
 					articles.length === 0 ||
-					chapters.length !== articles.length ||
-					!thumbnail ||
-					thumbnail.size === 0
-				)
-					return fail(400);
+					chapters.length !== articles.length
+				) return fail(400);
 
 				authors.sort();
 
@@ -166,19 +162,25 @@ export const actions = {
 					return fail(400);
 
 				const textbookUuid = crypto.randomUUID();
-				const thumbnailUrl = await saveToCloud(thumbnail, 'image');
+				let thumbnailUrl: string | null = null;
+				if (thumbnail && thumbnail.size > 0) {
+					//martins comment, ignore @AY-GA
+					let urlIfAvailable = await saveToCloud(thumbnail, 'image');
+					thumbnailUrl = urlIfAvailable ? urlIfAvailable : null;
 
-				if (!thumbnailUrl) return fail(502);
+					if (!thumbnailUrl) return fail(502);
+				}
 
 				await event.locals.db.transaction(async (tx) => {
-					const resource = await tx
+
+					const resource = thumbnailUrl ? (await tx
 						.insert(databaseSchema.resource)
 						.values({
 							url: thumbnailUrl,
 							title: 'thumbnail',
 							type: 'image',
 						})
-						.returning();
+						.returning()) : [null];
 
 					const textbook = (
 						await tx
@@ -190,7 +192,7 @@ export const actions = {
 								r: r,
 								g: g,
 								b: b,
-								thumbnail: resource[0].id,
+								thumbnail: resource[0]?.id ?? null,
 								uuid: textbookUuid,
 							})
 							.returning()
@@ -329,7 +331,7 @@ export const actions = {
 					if (!tb) return fail(404);
 
 					let thumbnailId: number | undefined = undefined;
-					if (thumbnail && (thumbnail as File).size > 0) {
+					if (thumbnail && thumbnail.size > 0) {
 						const thumbnailUrl = await saveToCloud(
 							thumbnail as File,
 							'image',

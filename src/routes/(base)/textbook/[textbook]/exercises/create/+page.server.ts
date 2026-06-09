@@ -192,17 +192,11 @@ export const actions = {
 			) => {
 				const thumbnail = formData!.get('thumbnail') as File;
 
-				const thumbnailUrl = await saveToCloud(thumbnail, 'image');
-
-				if (
-					!data.url ||
-					!data.name ||
-					!data.description ||
-					!thumbnail ||
-					thumbnail.size === 0
-				) {
+				if (!thumbnail || thumbnail.size === 0) {
 					return fail(400);
 				}
+
+				const thumbnailUrl = await saveToCloud(thumbnail, 'image');
 
 				const r = parseInt(data.backgroundColorR);
 				const g = parseInt(data.backgroundColorG);
