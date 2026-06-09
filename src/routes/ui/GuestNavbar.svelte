@@ -26,8 +26,8 @@
 	>
 		<div
 			class="relative flex w-full items-center
-				rounded-full border text-sm shadow-[0_8px_40px_rgba(80,80,80,0.4)]
-				backdrop-blur-xs transition-all px-1 sm:px-4 sm:shadow-[0_-8px_32px_rgba(80,80,80,0.3)]
+				rounded-full border px-1 text-sm
+				shadow-[0_8px_40px_rgba(80,80,80,0.4)] backdrop-blur-xs transition-all sm:px-4 sm:shadow-[0_-8px_32px_rgba(80,80,80,0.3)]
 			{darkMode
 				? 'border-white/30 bg-neutral-800/50 text-white'
 				: 'border-black/20 bg-neutral-50/70 text-black'}"
