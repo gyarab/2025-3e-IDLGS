@@ -22,21 +22,21 @@
 	in:scale={{ duration: 600, start: startScale }}
 >
 	<div
-		class="mx-auto flex h-12 w-full max-w-5xl items-center justify-center px-4 {css}"
+		class="mx-auto flex h-12 w-full max-w-3xl items-center justify-center px-4 {css}"
 	>
 		<div
 			class="relative flex w-full items-center
 				rounded-full border text-sm shadow-[0_8px_40px_rgba(80,80,80,0.4)]
-				backdrop-blur-sm transition-all sm:px-4 sm:shadow-[0_-8px_32px_rgba(80,80,80,0.3)]
+				backdrop-blur-xs transition-all px-1 sm:px-4 sm:shadow-[0_-8px_32px_rgba(80,80,80,0.3)]
 			{darkMode
-				? 'border-white/30 bg-black/30 text-white'
-				: 'border-black/20 bg-white/60 text-black'}"
+				? 'border-white/30 bg-neutral-800/50 text-white'
+				: 'border-black/20 bg-neutral-50/70 text-black'}"
 		>
 			<a href="/">
 				<img
 					src="/logo.svg"
 					alt="Logo"
-					class="h-10 px-2 transition-transform hover:scale-90"
+					class="h-10 py-0.5 transition-transform hover:scale-90"
 				/>
 			</a>
 
@@ -48,7 +48,7 @@
 					await invalidateAll();
 				}}
 				emoji={darkMode ? 'sun' : 'moon'}
-				css="buttonPrimary px-4"
+				css="p-2"
 				label={darkMode ? m.lightMode() : m.darkMode()}
 				{darkMode}
 			/>
@@ -59,7 +59,7 @@
 				}}
 				text={m.login()}
 				emoji="login-box"
-				css="buttonPrimary"
+				css="p-2 sm:px-3"
 				hecss="text-xl"
 				{darkMode}
 			/>

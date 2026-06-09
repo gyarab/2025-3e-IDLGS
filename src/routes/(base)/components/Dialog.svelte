@@ -6,7 +6,7 @@
 	let dialog: HTMLDialogElement | undefined = $state(undefined);
 
 	let {
-		open = $bindable(true),
+		open = $bindable(false),
 		darkMode,
 		children,
 		css,

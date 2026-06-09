@@ -17,7 +17,7 @@ export const actions = {
 	updatePersonalInfo: async (event) => {
 		return await formRunner(
 			event,
-			['name', 'surname'],
+			['name', 'middlename', 'surname'],
 			true,
 			async (data: FormDataType, user: UserTypeFull | undefined) => {
 				await event.locals.db

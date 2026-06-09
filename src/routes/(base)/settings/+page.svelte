@@ -100,7 +100,7 @@
 					/>
 					<TextInput
 						type="text"
-						name="middle"
+						name="middlename"
 						placeholder={m.middlename()}
 						darkMode={data.darkMode}
 						color={data.color}

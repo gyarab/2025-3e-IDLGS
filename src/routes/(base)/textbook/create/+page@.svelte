@@ -63,7 +63,7 @@
 	});
 
 	let stage0Condition: boolean = $derived(
-		!name || !description || !educationLevel || thumbnail.length == 0,
+		!name || !description || !educationLevel,
 	);
 	let stage1Condition: boolean = $derived(
 		chapters.length == 0 ||
@@ -147,7 +147,7 @@
 		css="invisibleForm -mt-2"
 		start={async (formData) => {
 			stage = 5;
-			formData!.append('thumbnail', thumbnail[0]);
+			if (thumbnail && thumbnail[0]) formData!.append('thumbnail', thumbnail[0]);
 		}}
 		success={async () => {
 			if (data?.textbook) {
