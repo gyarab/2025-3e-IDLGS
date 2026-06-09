@@ -11,9 +11,14 @@ export const actions: Record<string, unknown> = {
 			[],
 			true,
 			async (data: FormDataType, user: UserTypeFull | undefined) => {
-				const { textbook: textbookUuid, chapter: chapterUuid, article: articleUuid } = event.params;
+				const {
+					textbook: textbookUuid,
+					chapter: chapterUuid,
+					article: articleUuid,
+				} = event.params;
 
-				if (!textbookUuid || !chapterUuid || !articleUuid) return fail(400);
+				if (!textbookUuid || !chapterUuid || !articleUuid)
+					return fail(400);
 
 				const textbookRow = (
 					await event.locals.db
@@ -25,17 +30,28 @@ export const actions: Record<string, unknown> = {
 
 				const chapterRow = (
 					await event.locals.db
-						.select({ id: databaseSchema.chapter.id, textbookId: databaseSchema.chapter.textbookId })
+						.select({
+							id: databaseSchema.chapter.id,
+							textbookId: databaseSchema.chapter.textbookId,
+						})
 						.from(databaseSchema.chapter)
 						.where(eq(databaseSchema.chapter.uuid, chapterUuid))
 						.limit(1)
 				)[0];
 
-				if (!textbookRow || !chapterRow || chapterRow.textbookId !== textbookRow.id) return fail(404);
+				if (
+					!textbookRow ||
+					!chapterRow ||
+					chapterRow.textbookId !== textbookRow.id
+				)
+					return fail(404);
 
 				const articleRow = (
 					await event.locals.db
-						.select({ id: databaseSchema.article.id, order: databaseSchema.article.order })
+						.select({
+							id: databaseSchema.article.id,
+							order: databaseSchema.article.order,
+						})
 						.from(databaseSchema.article)
 						.where(eq(databaseSchema.article.uuid, articleUuid))
 						.limit(1)
@@ -56,22 +72,45 @@ export const actions: Record<string, unknown> = {
 
 				await event.locals.db.transaction(async (tx: any) => {
 					// delete history
-					await tx.delete(databaseSchema.articleHistory).where(eq(databaseSchema.articleHistory.articleId, articleRow.id));
+					await tx
+						.delete(databaseSchema.articleHistory)
+						.where(
+							eq(
+								databaseSchema.articleHistory.articleId,
+								articleRow.id,
+							),
+						);
 
 					// delete article
-					await tx.delete(databaseSchema.article).where(eq(databaseSchema.article.id, articleRow.id));
+					await tx
+						.delete(databaseSchema.article)
+						.where(eq(databaseSchema.article.id, articleRow.id));
 
 					// decrement order for following articles
 					const following = (await tx
-						.select({ id: databaseSchema.article.id, order: databaseSchema.article.order })
+						.select({
+							id: databaseSchema.article.id,
+							order: databaseSchema.article.order,
+						})
 						.from(databaseSchema.article)
-						.where(eq(databaseSchema.article.chapterId, chapterRow.id))
-						.orderBy(asc(databaseSchema.article.order))) as Array<{ id: number; order: number }>;
+						.where(
+							eq(databaseSchema.article.chapterId, chapterRow.id),
+						)
+						.orderBy(asc(databaseSchema.article.order))) as Array<{
+						id: number;
+						order: number;
+					}>;
 
-					const toUpdate = following.filter((a: { id: number; order: number }) => a.order > articleRow.order);
+					const toUpdate = following.filter(
+						(a: { id: number; order: number }) =>
+							a.order > articleRow.order,
+					);
 
 					for (const a of toUpdate) {
-						await tx.update(databaseSchema.article).set({ order: a.order - 1 }).where(eq(databaseSchema.article.id, a.id));
+						await tx
+							.update(databaseSchema.article)
+							.set({ order: a.order - 1 })
+							.where(eq(databaseSchema.article.id, a.id));
 					}
 				});
 			},
