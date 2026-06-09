@@ -1,9 +1,29 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
-	import { darkenHex, isInViewport } from '$lib';
+	import { darkenHex } from '$lib';
 	import { fly, fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
+
+	const FEATURES = [
+		{
+			icon: 'ri-cursor-line',
+			title: m.interactiveContent(),
+			desc: m.featureInteractiveDesc(),
+			delay: 200,
+		},
+		{
+			icon: 'ri-cpu-line',
+			title: m.cuttingEdgeFeatures(),
+			desc: m.featureCuttingEdgeDesc(),
+			delay: 300,
+		},
+		{
+			icon: 'ri-play-circle-line',
+			title: m.multimediaSupport(),
+			desc: m.featureMultimediaDesc(),
+			delay: 400,
+		},
+	];
 
 	let {
 		darkMode,
@@ -13,26 +33,21 @@
 		color: string;
 	} = $props();
 
-	let container: HTMLDivElement | undefined = $state(undefined);
 	let ready = $state(false);
 
 	onMount(() => {
-		if (!browser) return;
 		setTimeout(() => {
-			isInViewport(container!).then(() => {
-				ready = true;
-			});
+			ready = true;
 		}, 100);
 	});
 </script>
 
 <div
-	class="relative flex min-h-[70vh] w-full flex-col items-center justify-center overflow-hidden p-6"
+	class="relative flex min-h-[70vh] w-full flex-col items-center justify-center overflow-hidden p-4 sm:p-6"
 	style="background: linear-gradient(135deg, {color}, {darkenHex(
 		color,
 		80,
 	)}); --brand: {color};"
-	bind:this={container}
 >
 	<i
 		class="ri-rocket-2-line absolute top-1/6 right-1/15 scale-150 rotate-12 text-8xl text-white opacity-10"
@@ -66,59 +81,25 @@
 			<hr class="opacity-10" />
 
 			<div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-				<!-- Interactive Content -->
-				<div
-					class="group flex flex-col gap-4 rounded-2xl border p-6 transition-all hover:scale-105 {darkMode
-						? 'border-white/10 bg-neutral-800/50'
-						: 'border-black/5 bg-white/50'}"
-					in:fly={{ y: 40, duration: 600, delay: 200 }}
-				>
+				{#each FEATURES as feature}
 					<div
-						class="flex h-12 w-12 items-center justify-center rounded-xl bg-(--brand) text-2xl text-white shadow-lg"
+						class="group flex flex-col gap-4 rounded-2xl border p-6
+							shadow-sm transition-all hover:scale-105 {darkMode
+							? 'border-white/10 bg-neutral-800/50'
+							: 'border-black/5 bg-neutral-50/60'}"
+						in:fly={{ y: 40, duration: 600, delay: feature.delay }}
 					>
-						<i class="ri-cursor-line"></i>
+						<div
+							class="flex h-12 w-12 items-center justify-center rounded-xl bg-(--brand) text-2xl text-white shadow-lg"
+						>
+							<i class={feature.icon}></i>
+						</div>
+						<h2 class="text-xl font-bold">{feature.title}</h2>
+						<p class="text-sm leading-relaxed opacity-70">
+							{feature.desc}
+						</p>
 					</div>
-					<h2 class="text-xl font-bold">{m.interactiveContent()}</h2>
-					<p class="text-sm leading-relaxed opacity-60">
-						{m.featureInteractiveDesc()}
-					</p>
-				</div>
-
-				<!-- Cutting Edge -->
-				<div
-					class="group flex flex-col gap-4 rounded-2xl border p-6 transition-all hover:scale-105 {darkMode
-						? 'border-white/10 bg-neutral-800/50'
-						: 'border-black/5 bg-white/50'}"
-					in:fly={{ y: 40, duration: 600, delay: 300 }}
-				>
-					<div
-						class="flex h-12 w-12 items-center justify-center rounded-xl bg-(--brand) text-2xl text-white shadow-lg"
-					>
-						<i class="ri-cpu-line"></i>
-					</div>
-					<h2 class="text-xl font-bold">{m.cuttingEdgeFeatures()}</h2>
-					<p class="text-sm leading-relaxed opacity-60">
-						{m.featureCuttingEdgeDesc()}
-					</p>
-				</div>
-
-				<!-- Multimedia -->
-				<div
-					class="group flex flex-col gap-4 rounded-2xl border p-6 transition-all hover:scale-105 {darkMode
-						? 'border-white/10 bg-neutral-800/50'
-						: 'border-black/5 bg-white/50'}"
-					in:fly={{ y: 40, duration: 600, delay: 400 }}
-				>
-					<div
-						class="flex h-12 w-12 items-center justify-center rounded-xl bg-(--brand) text-2xl text-white shadow-lg"
-					>
-						<i class="ri-play-circle-line"></i>
-					</div>
-					<h2 class="text-xl font-bold">{m.multimediaSupport()}</h2>
-					<p class="text-sm leading-relaxed opacity-60">
-						{m.featureMultimediaDesc()}
-					</p>
-				</div>
+				{/each}
 			</div>
 		</div>
 	{/if}

@@ -69,7 +69,7 @@
 	<div class="z-10 flex w-full max-w-2xl flex-col gap-6">
 		<!-- Personal Information Section -->
 		<section
-			class="rounded-3xl p-6 shadow-2xl sm:p-8 {data.darkMode
+			class="rounded-3xl p-6 shadow-xl sm:p-8 {data.darkMode
 				? 'bg-neutral-800/80 text-white'
 				: 'bg-white/90 text-black'}"
 			in:fade={{ duration: 400, delay: 100 }}
@@ -129,7 +129,7 @@
 
 		<!-- Profile Picture Section -->
 		<section
-			class="rounded-3xl p-6 shadow-2xl sm:p-8 {data.darkMode
+			class="rounded-3xl p-6 shadow-xl sm:p-8 {data.darkMode
 				? 'bg-neutral-800/80 text-white'
 				: 'bg-white/90 text-black'}"
 			in:fade={{ duration: 400, delay: 300 }}
@@ -175,7 +175,7 @@
 
 		<!-- Institution Section -->
 		<section
-			class="rounded-3xl p-6 shadow-2xl sm:p-8 {data.darkMode
+			class="rounded-3xl p-6 shadow-xl sm:p-8 {data.darkMode
 				? 'bg-neutral-800/80 text-white'
 				: 'bg-white/90 text-black'}"
 			in:fade={{ duration: 400, delay: 500 }}
@@ -231,7 +231,7 @@
 		>
 			<!-- Language -->
 			<section
-				class="rounded-3xl p-6 shadow-2xl {data.darkMode
+				class="rounded-3xl p-6 shadow-xl {data.darkMode
 					? 'bg-neutral-800/80 text-white'
 					: 'bg-white/90 text-black'}"
 			>
@@ -275,7 +275,7 @@
 
 			<!-- Theme -->
 			<section
-				class="rounded-3xl p-6 shadow-2xl {data.darkMode
+				class="rounded-3xl p-6 shadow-xl {data.darkMode
 					? 'bg-neutral-800/80 text-white'
 					: 'bg-white/90 text-black'}"
 			>
@@ -301,7 +301,7 @@
 
 		<!-- Description Section -->
 		<section
-			class="rounded-3xl p-6 shadow-2xl sm:p-8 {data.darkMode
+			class="rounded-3xl p-6 shadow-xl sm:p-8 {data.darkMode
 				? 'bg-neutral-800/80 text-white'
 				: 'bg-white/90 text-black'}"
 			in:fade={{ duration: 400, delay: 900 }}
@@ -333,7 +333,7 @@
 
 		<!-- Security Section -->
 		<section
-			class="rounded-3xl p-6 shadow-2xl sm:p-8 {data.darkMode
+			class="rounded-3xl p-6 shadow-xl sm:p-8 {data.darkMode
 				? 'bg-neutral-800/80 text-white'
 				: 'bg-white/90 text-black'}"
 			in:fade={{ duration: 400, delay: 1100 }}

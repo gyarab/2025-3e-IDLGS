@@ -45,7 +45,9 @@
 
 	{#if ready}
 		<div
-			class="z-10 flex w-full max-w-5xl flex-col gap-6 rounded-3xl border border-white/10 p-8 shadow-2xl backdrop-blur-xs sm:rounded-4xl md:p-12 {darkMode
+			class="z-10 flex w-full max-w-5xl flex-col gap-6 rounded-3xl border
+				border-white/10 p-8 shadow-xl backdrop-blur-xs
+				sm:rounded-4xl md:p-12 {darkMode
 				? 'bg-black/60 text-white'
 				: 'bg-white/80 text-black'}"
 			in:fade={{ duration: 400 }}
@@ -61,7 +63,7 @@
 						{m.theTeam()}
 					</h1>
 					<p
-						class="text-lg leading-relaxed font-medium opacity-70"
+						class="text-lg leading-relaxed opacity-70"
 						in:fly={{ y: 20, duration: 600, delay: 100 }}
 					>
 						{m.teamDescription()}
@@ -75,7 +77,7 @@
 
 			<div class="flex flex-col gap-6">
 				<div
-					class="overflow-hidden rounded-tl-[4rem] rounded-tr-3xl rounded-br-lg rounded-bl-3xl border-l-4 border-(--brand) shadow-2xl"
+					class="overflow-hidden rounded-tl-[4rem] rounded-tr-3xl rounded-br-lg rounded-bl-3xl border-l-4 border-(--brand) shadow-xl"
 					in:fly={{ x: -30, duration: 700, delay: 200 }}
 				>
 					<TeamSvelte
@@ -87,7 +89,7 @@
 				</div>
 
 				<div
-					class="w-full self-end overflow-hidden rounded-tl-3xl rounded-tr-[4rem] rounded-br-3xl rounded-bl-lg border-r-4 border-(--brand) shadow-2xl sm:w-5/6"
+					class="w-full self-end overflow-hidden rounded-tl-3xl rounded-tr-[4rem] rounded-br-3xl rounded-bl-lg border-r-4 border-(--brand) shadow-xl sm:w-5/6"
 					in:fly={{ x: 30, duration: 700, delay: 400 }}
 				>
 					<TeamSvelte
@@ -100,7 +102,7 @@
 				</div>
 
 				<div
-					class="overflow-hidden rounded-tl-[4rem] rounded-tr-3xl rounded-br-lg rounded-bl-3xl border-l-4 border-(--brand) shadow-2xl"
+					class="overflow-hidden rounded-tl-[4rem] rounded-tr-3xl rounded-br-lg rounded-bl-3xl border-l-4 border-(--brand) shadow-xl"
 					in:fly={{ x: -30, duration: 700, delay: 600 }}
 				>
 					<TeamSvelte

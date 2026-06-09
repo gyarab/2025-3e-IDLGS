@@ -9,7 +9,6 @@
 	import { m } from '$lib/paraglide/messages';
 	import Contact from './ui/main/Contact.svelte';
 	import Split from './ui/main/Split.svelte';
-	import { darkenHex } from '$lib';
 
 	let {
 		data,
@@ -27,34 +26,31 @@
 	</title>
 </svelte:head>
 
-<div
-	class="flex h-full min-h-screen w-full max-w-screen flex-col items-center justify-center gap-0 overflow-x-hidden overflow-y-auto"
->
-	<GuestNavbar
-		darkMode={data.darkMode}
-		startScale={0.8}
-	/>
+<GuestNavbar
+	darkMode={data.darkMode}
+	startScale={0.8}
+/>
 
+<div
+	class="flex h-full min-h-svh w-full max-w-screen flex-col items-center justify-center gap-2
+		overflow-x-hidden overflow-y-auto {data.darkMode
+		? 'bg-neutral-600 text-white'
+		: 'bg-neutral-200 text-black'}"
+>
 	<Head
 		darkMode={data.darkMode}
 		color={data.color}
 	/>
-
-	<Split />
 
 	<About
 		darkMode={data.darkMode}
 		color={data.color}
 	/>
 
-	<Split />
-
 	<Features
 		darkMode={data.darkMode}
 		color={data.color}
 	/>
-
-	<Split />
 
 	<Team
 		darkMode={data.darkMode}
@@ -70,8 +66,6 @@
 		darkMode={data.darkMode}
 		color={data.color}
 	/>
-
-	<Split />
 
 	<Footer />
 </div>

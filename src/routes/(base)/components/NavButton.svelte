@@ -35,9 +35,9 @@
 	{disabled}
 	aria-label={label}
 	title={label}
-	class="group flex flex-row items-center justify-center sm:gap-1 {darkMode
+	class="group flex flex-row items-center justify-center {darkMode
 		? 'text-white'
-		: 'text-black'} {css}"
+		: 'text-black'} font-bold gap-1 {css}"
 	{onclick}
 	{style}
 >

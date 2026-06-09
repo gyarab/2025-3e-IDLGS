@@ -26,7 +26,7 @@
 </script>
 
 <div
-	class="flex w-full flex-col overflow-hidden py-4"
+	class="flex w-full flex-col overflow-hidden"
 	bind:this={mainElement}
 >
 	{#if ready}

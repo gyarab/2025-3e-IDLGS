@@ -27,7 +27,7 @@
 	></i>
 
 	<div
-		class="z-10 flex w-full max-w-md flex-col items-center gap-8 rounded-3xl p-4 shadow-2xl backdrop-blur-sm sm:rounded-4xl sm:p-8 {darkMode
+		class="z-10 flex w-full max-w-md flex-col items-center gap-8 rounded-3xl p-4 shadow-xl backdrop-blur-sm sm:rounded-4xl sm:p-8 {darkMode
 			? 'bg-neutral-800/80 text-white'
 			: 'bg-white/90 text-black'}"
 	>

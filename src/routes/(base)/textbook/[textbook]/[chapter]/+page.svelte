@@ -40,7 +40,7 @@
     ></i>
 
     <div
-        class="z-10 flex w-full sm:w-sm flex-col gap-4 rounded-3xl p-4 shadow-2xl backdrop-blur-sm sm:gap-6 sm:rounded-4xl sm:p-8 {data.darkMode
+        class="z-10 flex w-full sm:w-sm flex-col gap-4 rounded-3xl p-4 shadow-xl backdrop-blur-sm sm:gap-6 sm:rounded-4xl sm:p-8 {data.darkMode
             ? 'bg-neutral-800/80 text-white'
             : 'bg-white/90 text-black'}"
         in:fly|global={{ x: 200, duration: 400 }}

@@ -41,7 +41,8 @@
 	></i>
 
 	<div
-		class="z-10 flex w-full max-w-2xl flex-col gap-6 rounded-3xl p-6 shadow-2xl backdrop-blur-sm sm:rounded-4xl md:p-10 {data.darkMode
+		class="z-10 flex w-full max-w-2xl flex-col gap-6 rounded-3xl p-6
+			shadow-xl backdrop-blur-sm sm:rounded-4xl md:p-10 {data.darkMode
 			? 'bg-neutral-800/80 text-white'
 			: 'bg-white/80 text-black'}"
 	>
