@@ -8,6 +8,10 @@ export const load = async (event) => {
 	if (!pd.textbook) return error(404, m.textbookDoesntExist());
 	if (!pd.chapter) return error(404, m.chapterDoesntExist());
 
+	const { textbook: textbookUuid, chapter: chapterUuid, article: articleUuid } = event.params;
+	if (!textbookUuid || !chapterUuid || !articleUuid)
+		return error(404, m.articleDoesntExist());
+
 	const article = (
 		await event.locals.db
 			.select({
@@ -30,13 +34,13 @@ export const load = async (event) => {
 					databaseSchema.article.textbookId,
 				),
 			)
-			.where(eq(databaseSchema.article.uuid, event.params.article))
+			.where(eq(databaseSchema.article.uuid, articleUuid))
 			.limit(1)
 	)[0];
 
-	if (article.textbookUuid !== event.params.textbook)
+	if (article.textbookUuid !== textbookUuid)
 		return error(404, m.articleDoesntExist());
-	if (article.chapterUuid !== event.params.chapter)
+	if (article.chapterUuid !== chapterUuid)
 		return error(404, m.articleDoesntExist());
 
 	if (!article) return error(404, m.articleDoesntExist());

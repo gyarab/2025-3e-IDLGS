@@ -1,4 +1,4 @@
-import { redirect } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import { resolve } from '$app/paths';
 import { m } from '$lib/paraglide/messages';
 import { error } from '@sveltejs/kit';
@@ -53,12 +53,56 @@ export const load = async (event) => {
 
 export const actions = {
 	addArticle: async (event) => {
-		return await formRunner(
-			event,
-			[],
-			true,
-			async (data: FormDataType, user: UserTypeFull | undefined) => {},
-		);
+			return await formRunner(
+				event,
+				['title'],
+				true,
+				async (data: FormDataType, user: UserTypeFull | undefined) => {
+					const textbookUuid = event.params.textbook;
+					const chapterUuid = event.params.chapter;
+
+					const textbookRow = (
+						await event.locals.db
+							.select({ id: databaseSchema.textbook.id })
+							.from(databaseSchema.textbook)
+							.where(eq(databaseSchema.textbook.uuid, textbookUuid))
+							.limit(1)
+					)[0];
+
+					const chapterRow = (
+						await event.locals.db
+							.select({ id: databaseSchema.chapter.id, textbookId: databaseSchema.chapter.textbookId })
+							.from(databaseSchema.chapter)
+							.where(eq(databaseSchema.chapter.uuid, chapterUuid))
+							.limit(1)
+					)[0];
+
+					if (!textbookRow || !chapterRow || chapterRow.textbookId !== textbookRow.id)
+						return fail(404);
+
+					const lastArticle = (
+						await event.locals.db
+							.select({ order: databaseSchema.article.order })
+							.from(databaseSchema.article)
+							.where(
+								eq(databaseSchema.article.chapterId, chapterRow.id),
+							)
+							.orderBy(asc(databaseSchema.article.order))
+							.limit(1)
+					)[0];
+
+					const newOrder = (lastArticle?.order ?? -1) + 1;
+
+					await event.locals.db.insert(databaseSchema.article).values({
+						title: data.title,
+						order: newOrder,
+						chapterId: chapterRow.id,
+						textbookId: textbookRow.id,
+						uuid: crypto.randomUUID(),
+						text: '',
+					});
+				},
+			);
 	},
 	editArticle: async (event) => {
 		return await formRunner(
