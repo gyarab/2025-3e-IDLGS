@@ -103,27 +103,29 @@
 <ConfirmDeleteDialog
 	bind:open={showDeleteDialog}
 	title="{m.deleteArticle()}?"
-	darkMode={darkMode}
-		color={color}
-		confirm={async () => {
-			// call delete action on this article route
-			const form = new URLSearchParams();
-			const res = await fetch('?/deleteArticle', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-				body: form.toString(),
-			});
-			if (res.ok) {
-				// navigate back to chapter
-				goto(resolve('/(base)/textbook/[textbook]/[chapter]', {
+	{darkMode}
+	{color}
+	confirm={async () => {
+		// call delete action on this article route
+		const form = new URLSearchParams();
+		const res = await fetch('?/deleteArticle', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+			body: form.toString(),
+		});
+		if (res.ok) {
+			// navigate back to chapter
+			goto(
+				resolve('/(base)/textbook/[textbook]/[chapter]', {
 					textbook: page.params.textbook!,
 					chapter: page.params.chapter!,
-				}));
-			} else {
-				showDeleteDialog = false;
-			}
-		}}
-		cancel={async () => {
+				}),
+			);
+		} else {
 			showDeleteDialog = false;
-		}}
-	/>
+		}
+	}}
+	cancel={async () => {
+		showDeleteDialog = false;
+	}}
+/>

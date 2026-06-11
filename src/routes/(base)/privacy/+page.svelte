@@ -82,7 +82,10 @@
 				{m.contactAtPrompt()}
 				<a
 					class="font-bold"
-					style="color: {sanitizeColor(data.color, data.darkMode ? 60 : 40)}"
+					style="color: {sanitizeColor(
+						data.color,
+						data.darkMode ? 60 : 40,
+					)}"
 					href="mailto:{PUBLIC_EMAIL_M}?subject=Support Request - IDLGS"
 					>{PUBLIC_EMAIL_M}</a
 				>
