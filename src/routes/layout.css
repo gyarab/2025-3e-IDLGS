@@ -74,6 +74,9 @@ cap-widget {
 	.buttonLarge {
 		@apply p-2;
 	}
+	.buttonIcon {
+		@apply rounded-full p-1 px-2 font-bold;
+	}
 	input:focus {
 		@apply outline-0;
 	}
