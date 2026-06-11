@@ -728,6 +728,43 @@ Učebnice při úpravě textu také kontroluje, zda názvy kapitol neobsahují d
 \subsubsection{Analýza vzácných a netypických slov}
 Učebnice analyzuje při úpravě textu článku taktéž výskyt slov netypických a vzácných, na které pak, nejsou-li již přidány do seznamu pojmů, upozorní. Nástroj vykonující tuto funkci také nabídne přidání všech neznámých definic hned na místě za pomoci vyskakovacího okénka, čimž značně urychlí proces aktualizace článku.
 
+
+\subsection{Mobilní aplikace}
+
+Plánovaná mobilní platforma byla zaměřena na vývoj nativního Android klienta, který by fungoval jako rozšíření hlavní digitální učebnice.
+
+Ačkoli projekt nebyl dokončen, byly implementovány základní komponenty systému, zejména uživatelské rozhraní a částečná podpora komunikace s backendem.
+
+\subsubsection{Uživatelské rozhraní}
+
+UI bylo navrženo pomocí moderního nástroje Jetpack Compose. Compose umožňuje deklarativní tvorbu UI s vysokou úrovní přehlednosti a reaktivního chování.
+V rámci aplikace byly vytvořeny základní stránky (úvod, katalog učebnic, nastaveni a login), které odpovídají strukturovanému layoutu webové verze.
+
+\subsubsection{Backendová komunikace}
+
+Pro přenos dat mezi aplikací a serverem byl využit knihovna OkHttp.
+Ačkoli zatím neexistuje plně funkční API backend pro mobilní klient, byla vytvořena základní vrstva Repository, která může volat REST endpointy, pokud budou k dispozici.
+Tato vrstva je implementována v souladu s architekturou MVVM a využívá Kotlin Coroutines pro asynchronní operace.
+
+\subsubsection{Offline funkčnost}
+
+Jedním z hlavních cílů mobilního klienta bylo umožnit uživatelům pracovat i bez internetového připojení.
+Pro tento účel byla navržena lokální datová vrstva založená na databázi Room, jejíž implementace nebyla do dokončení projektu realizována.
+
+\subsubsection{Optimalizace pro mobilní a tabletové zařízení}
+
+Rozhraní je navrženo s ohledem na různé rozměry obrazovky. Většina komponent využívá \texttt{Modifier} s dynamickými paddingy a velikostmi, které se automaticky přizpůsobují šířce a výšce zařízení.
+Pro tablety je k dispozici upravený layout, který rozdělí obsah na více sloupců, čímž zvyšuje čitelnost a umožňuje paralelní prohlížení kapitol.
+
+\subsubsection{Stav projektu}
+
+Uživatelské rozhraní je kompletně implementováno v jazyce Kotlin s využitím frameworku Jetpack Compose.
+Komunikace s backendem je připravena prostřednictvím vrstvy \texttt{Repository} a klienta OkHttp, avšak v současné době není napojena na funkční API a pracuje pouze s mock daty.
+Lokální cache byla navržena s využitím knihovny Room, její implementace však zatím nebyla dokončena.
+
+Další rozvoj projektu vyžaduje implementaci backendového API zajišťujícího synchronizaci dat mezi webovou platformou a mobilním klientem.
+Po implementaci API bude možné nahradit testovací data reálnými a zajistit plnou funkcionalitu aplikace v produkčním prostředí.
+
 \newpage
 \section{Implementace učebnice}
 
