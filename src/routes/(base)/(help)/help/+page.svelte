@@ -50,7 +50,7 @@
 			<p class="mb-4 opacity-80">
 				{m.welcomeToIdlgs()}. {m.hereAreSomeTipsToGetYouStarted()}.
 			</p>
-			<ul class="flex flex-col gap-3 opacity-80">
+			<ul class="flex flex-col gap-2 opacity-80">
 				<HelpLink
 					href="/profile"
 					icon="ri-user-line"

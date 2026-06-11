@@ -48,15 +48,6 @@
 	>
 		<header class="flex flex-col gap-2">
 			<div class="flex items-center gap-4">
-				<!--
-                <Button 
-                    text="" 
-                    emoji="arrow-left" 
-                    type="button" 
-                    css="rounded-full p-2 h-10 w-10 flex items-center justify-center bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10"
-                    onclick={() => history.back()}
-                />
-                -->
 				<h1 class="text-3xl font-black tracking-tight sm:text-4xl">
 					{m.privacyPolicy()}
 				</h1>
@@ -71,7 +62,7 @@
 				<section>
 					<h2
 						class="mb-3 text-lg font-bold tracking-wider uppercase"
-						style="color: {sanitizeColor(data.color, 40)}"
+						style="color: {sanitizeColor(data.color, 45)}"
 					>
 						{section.title}
 					</h2>
@@ -91,7 +82,7 @@
 				{m.contactAtPrompt()}
 				<a
 					class="font-bold"
-					style="color: {sanitizeColor(data.color, 40)}"
+					style="color: {sanitizeColor(data.color, data.darkMode ? 60 : 40)}"
 					href="mailto:{PUBLIC_EMAIL_M}?subject=Support Request - IDLGS"
 					>{PUBLIC_EMAIL_M}</a
 				>
@@ -100,7 +91,7 @@
 				text={m.backToHome()}
 				emoji="home"
 				type="button"
-				css="rounded-full px-6 py-2 font-semibold hover:opacity-90"
+				css="rounded-full px-4 py-2 font-semibold"
 				style="background-color: {sanitizeColor(
 					data.color,
 					45,

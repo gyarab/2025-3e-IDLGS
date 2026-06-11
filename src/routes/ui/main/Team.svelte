@@ -18,7 +18,7 @@
 	onMount(() => {
 		setTimeout(() => {
 			ready = true;
-		}, 100);
+		}, 200);
 	});
 </script>
 
@@ -83,7 +83,7 @@
 					<TeamSvelte
 						name="Martin Bykov"
 						role="Project Manager"
-						description={m.martinDesc()}
+						description={m.descriptionMartin()}
 						{darkMode}
 					/>
 				</div>
@@ -95,7 +95,7 @@
 					<TeamSvelte
 						name="Ali Yunussov"
 						role="Lead Designer"
-						description={m.aliDesc()}
+						description={m.descriptionAli()}
 						{darkMode}
 						reverse={true}
 					/>
@@ -108,7 +108,7 @@
 					<TeamSvelte
 						name="Kira Stepanova"
 						role="Education Lead"
-						description={m.kiraDesc()}
+						description={m.descriptionKira()}
 						{darkMode}
 					/>
 				</div>

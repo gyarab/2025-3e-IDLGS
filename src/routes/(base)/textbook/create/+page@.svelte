@@ -152,7 +152,11 @@
 		}}
 		success={async () => {
 			if (data?.textbook) {
-				goto(resolve(`/textbook/${data.textbook.uuid}`));
+				goto(
+					resolve('/(base)/textbook/[textbook]', {
+						textbook: data.textbook.uuid,
+					}),
+				);
 			} else {
 				goto(resolve('/(base)/textbook'));
 			}

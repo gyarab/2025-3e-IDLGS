@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { m, noResourcesSoFar } from '$lib/paraglide/messages';
+	import { m } from '$lib/paraglide/messages';
 	import Button from '$src/routes/(base)/components/Button.svelte';
 	import ConfirmCancel from '$src/routes/(base)/components/ConfirmCancel.svelte';
 	import ConfirmDeleteDialog from '$src/routes/(base)/components/ConfirmDeleteDialog.svelte';

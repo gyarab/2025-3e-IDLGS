@@ -7,6 +7,7 @@
 	import UserLink from '$src/routes/(base)/components/UserLink.svelte';
 	import { page } from '$app/state';
 	import { resolve } from '$app/paths';
+	import ConfirmDeleteDialog from '$src/routes/(base)/components/ConfirmDeleteDialog.svelte';
 
 	let {
 		darkMode,
@@ -21,6 +22,8 @@
 		lastEditedDate: Date;
 		lastEditor: UserTypeInfo;
 	} = $props();
+
+	let showDeleteDialog = $state(false);
 </script>
 
 <div
@@ -62,11 +65,21 @@
 					),
 				);
 			}}
-			css="buttonPrimary bg-neutral-600/30"
+			css="buttonPrimary h-fit bg-neutral-600/30"
+		/>
+
+		<Button
+			text=""
+			emoji="delete-bin-7"
+			type="button"
+			onclick={() => {
+				showDeleteDialog = true;
+			}}
+			css="buttonPrimary h-fit bg-red-600/40"
 		/>
 	{/if}
 
-	<Button
+	<!-- <Button
 		text=""
 		emoji="history"
 		type="button"
@@ -82,7 +95,35 @@
 				),
 			);
 		}}
-		css="buttonPrimary"
+		css="buttonPrimary h-fit"
 		style="background-color: {alphaColor(color, 45)};"
-	/>
+	/> -->
 </div>
+
+<ConfirmDeleteDialog
+	bind:open={showDeleteDialog}
+	title="{m.deleteArticle()}?"
+	darkMode={darkMode}
+		color={color}
+		confirm={async () => {
+			// call delete action on this article route
+			const form = new URLSearchParams();
+			const res = await fetch('?/deleteArticle', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				body: form.toString(),
+			});
+			if (res.ok) {
+				// navigate back to chapter
+				goto(resolve('/(base)/textbook/[textbook]/[chapter]', {
+					textbook: page.params.textbook!,
+					chapter: page.params.chapter!,
+				}));
+			} else {
+				showDeleteDialog = false;
+			}
+		}}
+		cancel={async () => {
+			showDeleteDialog = false;
+		}}
+	/>

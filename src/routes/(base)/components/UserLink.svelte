@@ -20,7 +20,7 @@
 
 {#if !nolink}
 	<a
-		href={resolve(`/(protected)/profile/[uuid]`, {
+		href={resolve(`/(base)/profile/[uuid]`, {
 			uuid: user.uuid,
 		})}
 		target="_blank"

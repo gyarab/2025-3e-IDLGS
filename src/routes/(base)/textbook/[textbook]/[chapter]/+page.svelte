@@ -4,11 +4,13 @@
 	import ArticleListItem from './ui/ArticleListItem.svelte';
 	import Button from '$src/routes/(base)/components/Button.svelte';
 	import { darkenHex } from '$lib';
-	import { invalidateAll } from '$app/navigation';
 	import { fly } from 'svelte/transition';
 	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
 	import Dialog from '$src/routes/(base)/components/Dialog.svelte';
 	import ConfirmCancel from '$src/routes/(base)/components/ConfirmCancel.svelte';
+	import BackButton from '$src/routes/(base)/components/BackButton.svelte';
+	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 
 	let {
 		data,
@@ -54,26 +56,35 @@
 		in:fly|global={{ x: 200, duration: 400 }}
 	>
 		<div class="flex flex-row items-center gap-3">
-			<header class="flex grow flex-col gap-1 pt-2">
-				<div>
-					<h1 class="text-2xl font-bold sm:text-3xl">
-						{m.chapter()}
-						{data.chapter.title}
-					</h1>
-					<p class="mt-1 text-sm opacity-70">
-						{data.textbook.title}
-					</p>
-				</div>
+			<header class="flex grow flex-col">
+				<h1 class="text-2xl font-bold sm:text-3xl">
+					[{data.chapter.order}] {m.chapter()}
+					{data.chapter.title}
+				</h1>
+				<p class="mt-1 text-sm opacity-70">
+					{data.textbook.title}
+				</p>
 			</header>
 
 			<Button
 				text=""
-				css="rounded-full px-2 py-1 font-bold bg-green-500/50 hover:bg-green-600/60!"
+				css="rounded-full px-2 py-1 font-bold bg-green-500/50"
 				onclick={() => {
 					showArticleDialog = true;
 				}}
 				emoji="add"
 				type="button"
+			/>
+			<BackButton
+				color={data.color}
+				showText={false}
+				onclick={() => {
+					goto(
+						resolve('/(base)/textbook/[textbook]', {
+							textbook: data.textbook.uuid,
+						}),
+					);
+				}}
 			/>
 		</div>
 
@@ -85,15 +96,6 @@
 					class="flex flex-col items-center gap-4 py-4 text-center font-normal"
 				>
 					<p class="opacity-80">{m.noArticlesInChapterYet()}</p>
-
-					<Button
-						emoji="arrow-left-s"
-						text={m.goBack()}
-						type="button"
-						onclick={() => history.back()}
-						css="buttonPrimary w-full"
-						style="background-color: {data.color}; width: 100%;"
-					/>
 				</div>
 			{:else}
 				<div class="space-y-3">

@@ -24,8 +24,8 @@
 	} = $props();
 
 	let query: string = $state('');
-	//on every change of query reset timer
-	//then reaches zero: request with current query and reset timer again
+	// on every change of query reset timer
+	// then reaches zero: request with current query and reset timer again
 	let msUntilRequest: number = $derived(
 		query.trim().length > 3 ? DEFAULT_MS_UNTIL_REQUEST : 0,
 	);

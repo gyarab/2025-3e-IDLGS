@@ -8,7 +8,6 @@
 	import CallToAction from './ui/main/CallToAction.svelte';
 	import { m } from '$lib/paraglide/messages';
 	import Contact from './ui/main/Contact.svelte';
-	import Split from './ui/main/Split.svelte';
 
 	let {
 		data,
