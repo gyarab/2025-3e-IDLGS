@@ -77,7 +77,7 @@
 
 				<Button
 					text=""
-					css="rounded-full px-2 font-bold bg-green-500/50 hover:bg-green-600/60!"
+					css="rounded-full px-2 font-bold bg-green-500/50"
 					onclick={() => {
 						showChapterDialog = true;
 					}}
@@ -86,7 +86,7 @@
 				/>
 				<Button
 					text=""
-					css="rounded-full px-2 font-bold bg-red-500/50 hover:bg-red-600/60!"
+					css="rounded-full px-2 font-bold bg-red-500/50"
 					onclick={() => {
 						deleteChapter = true;
 					}}
@@ -158,7 +158,7 @@
 
 				<Button
 					text=""
-					css="rounded-full px-2 font-bold bg-green-500/50 hover:bg-green-600/60!"
+					css="rounded-full px-2 font-bold bg-green-500/50"
 					onclick={() => {
 						showArticleDialog = true;
 					}}
@@ -168,7 +168,7 @@
 				/>
 				<Button
 					text=""
-					css="rounded-full px-2 font-bold bg-red-500/50 hover:bg-red-600/60!"
+					css="rounded-full px-2 font-bold bg-red-500/50"
 					onclick={() => {
 						deleteArticle = true;
 					}}
