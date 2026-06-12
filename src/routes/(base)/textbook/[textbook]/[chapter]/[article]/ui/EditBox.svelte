@@ -65,7 +65,7 @@
 					),
 				);
 			}}
-			css="buttonPrimary h-fit bg-neutral-600/30"
+			css="buttonPrimary h-fit bg-neutral-500/30"
 		/>
 
 		<Button

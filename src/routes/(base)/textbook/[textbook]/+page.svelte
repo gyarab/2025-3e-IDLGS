@@ -6,6 +6,7 @@
 	import { resolve } from '$app/paths';
 	import ChapterCard from './ui/ChapterCard.svelte';
 	import ConfirmDeleteDialog from '../../components/ConfirmDeleteDialog.svelte';
+	import { fly } from 'svelte/transition';
 
 	let {
 		data,
@@ -27,9 +28,11 @@
 </svelte:head>
 
 <div
-	class="mt-20 flex min-h-[33svh] w-full flex-col gap-2 rounded-2xl p-4 shadow-xl sm:w-2/3 {data.darkMode
-		? 'bg-neutral-800 text-white'
-		: 'bg-neutral-200 text-gray-800'}"
+	class="mt-20 flex min-h-[33svh] w-full flex-col gap-2 rounded-2xl p-4 sm:w-2/3
+		shadow-xl backdrop-blur-xs {data.darkMode
+		? 'bg-neutral-800/60 text-white'
+		: 'bg-neutral-100/70 text-gray-800'}"
+	in:fly|global={{ y: 40, duration: 300 }}
 >
 	<div class="flex w-full flex-row items-center gap-2">
 		<h1>{data.textbook.title}</h1>
@@ -49,7 +52,7 @@
 				text=""
 				emoji="pencil"
 				type="button"
-				css="buttonPrimary bg-neutral-600/30"
+				css="buttonPrimary bg-neutral-500/30"
 				onclick={() => {
 					goto(
 						resolve('/(base)/textbook/create') +

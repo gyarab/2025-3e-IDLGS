@@ -55,37 +55,40 @@
 			: 'bg-white/90 text-black'}"
 		in:fly|global={{ x: 200, duration: 400 }}
 	>
-		<div class="flex flex-row items-center gap-3">
+		<div class="flex flex-row items-center">
 			<header class="flex grow flex-col">
 				<h1 class="text-2xl font-bold sm:text-3xl">
-					[{data.chapter.order}] {m.chapter()}
+					{m.chapter()}
 					{data.chapter.title}
 				</h1>
 				<p class="mt-1 text-sm opacity-70">
 					{data.textbook.title}
+					[{data.chapter.order}]
 				</p>
 			</header>
 
-			<Button
-				text=""
-				css="rounded-full px-2 py-1 font-bold bg-green-500/50"
-				onclick={() => {
-					showArticleDialog = true;
-				}}
-				emoji="add"
-				type="button"
-			/>
-			<BackButton
-				color={data.color}
-				showText={false}
-				onclick={() => {
-					goto(
-						resolve('/(base)/textbook/[textbook]', {
-							textbook: data.textbook.uuid,
-						}),
-					);
-				}}
-			/>
+			<div class="flex flex-col gap-2 sm:flex-row">
+				<BackButton
+					color={data.color}
+					showText={false}
+					onclick={() => {
+						goto(
+							resolve('/(base)/textbook/[textbook]', {
+								textbook: data.textbook.uuid,
+							}),
+						);
+					}}
+				/>
+				<Button
+					text=""
+					css="buttonIcon bg-green-500/50"
+					onclick={() => {
+						showArticleDialog = true;
+					}}
+					emoji="add"
+					type="button"
+				/>
+			</div>
 		</div>
 
 		<hr class="opacity-20" />

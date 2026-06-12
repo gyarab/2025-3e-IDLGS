@@ -46,11 +46,11 @@
 		>
 			<i
 				in:fade={{ delay: 100, duration: 500 }}
-				class="{emoji} absolute right-1/25 bottom-1/8 scale-200 rotate-15 text-9xl text-white! opacity-30"
+				class="{emoji} absolute right-1/15 bottom-1/8 scale-200 rotate-15 text-9xl text-white! opacity-30"
 			></i>
 			<i
 				in:fade={{ delay: 200, duration: 500 }}
-				class="{emoji} absolute top-2/8 left-1/25 scale-200 -rotate-15 text-9xl text-white! opacity-30"
+				class="{emoji} absolute top-1/4 left-1/20 scale-200 -rotate-15 text-9xl text-white! opacity-30"
 			></i>
 			<div
 				class="flex h-full w-full flex-col gap-2 overflow-hidden rounded-none

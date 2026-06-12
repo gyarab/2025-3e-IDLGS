@@ -38,6 +38,15 @@
 	let articleText = $derived(data.article.text);
 	let selectionStart = $state(0);
 	let selectionEnd = $state(0);
+	let editorRef = $state<any>(undefined);
+
+	function perform(cmd: string, value?: string) {
+		editorRef?.performCommand?.(cmd, value);
+	}
+
+	function isActive(name: string) {
+		return editorRef?.isActive?.(name) ?? false;
+	}
 </script>
 
 <svelte:head>
@@ -48,7 +57,7 @@
 </svelte:head>
 
 <div class="mt-20 flex w-full grow flex-col items-center">
-	<div class="flex w-1/2 flex-col gap-4 p-4">
+	<div class="flex w-full sm:w-1/2 flex-col gap-4 p-4">
 		<Toolbar
 			darkMode={data.darkMode}
 			color={data.color}
@@ -56,6 +65,8 @@
 			bind:selectionStart
 			bind:selectionEnd
 			bind:articleText
+			perform={perform}
+			isActive={isActive}
 		/>
 
 		{#if advancedMode}
@@ -66,6 +77,7 @@
 			/>
 		{:else}
 			<WYSIWYG
+				bind:this={editorRef}
 				darkMode={data.darkMode}
 				color={data.color}
 				bind:articleText

@@ -41,9 +41,9 @@
 
 	<div
 		class="z-10 mt-20 flex w-full max-w-4xl flex-col gap-6 rounded-3xl p-6 shadow-xl
-			backdrop-blur-sm sm:rounded-4xl md:p-8 {data.darkMode
-			? 'bg-neutral-800/80 text-white'
-			: 'bg-white/80 text-black'}"
+			backdrop-blur-xs sm:rounded-4xl md:p-8 {data.darkMode
+			? 'bg-neutral-800/60 text-white'
+			: 'bg-neutral-100/70 text-black'}"
 		in:fly={{ y: 40, duration: 400 }}
 	>
 		<header

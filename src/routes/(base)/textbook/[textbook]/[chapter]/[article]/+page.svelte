@@ -141,10 +141,10 @@
 		color={data.color}
 	/>
 
-	<FeedbackForm
+	<!-- <FeedbackForm
 		{darkMode}
 		color={data.color}
-	/>
+	/> -->
 
 	<ArticleNavbox
 		{darkMode}

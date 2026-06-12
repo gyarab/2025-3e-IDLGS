@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { sanitizeColor } from '$lib';
 	import { m } from '$lib/paraglide/messages';
 	import Button from './Button.svelte';
 
@@ -19,5 +20,5 @@
 	type="button"
 	{onclick}
 	css="buttonIcon"
-	style="background-color: {color};"
+	style="background-color: {sanitizeColor(color, 45)};"
 />
