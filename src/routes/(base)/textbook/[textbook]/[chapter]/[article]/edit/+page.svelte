@@ -57,7 +57,7 @@
 </svelte:head>
 
 <div class="mt-20 flex w-full grow flex-col items-center">
-	<div class="flex w-full sm:w-1/2 flex-col gap-4 p-4">
+	<div class="flex w-full flex-col gap-4 p-4 sm:w-1/2">
 		<Toolbar
 			darkMode={data.darkMode}
 			color={data.color}
@@ -65,8 +65,8 @@
 			bind:selectionStart
 			bind:selectionEnd
 			bind:articleText
-			perform={perform}
-			isActive={isActive}
+			{perform}
+			{isActive}
 		/>
 
 		{#if advancedMode}
