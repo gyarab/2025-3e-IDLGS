@@ -61,7 +61,7 @@
 		/>
 		<Button
 			label={m.confirm()}
-			emoji="save-2"
+			emoji="check"
 			type="button"
 			onclick={() => {
 				editMode = false;

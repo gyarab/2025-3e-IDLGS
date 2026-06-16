@@ -103,26 +103,28 @@
 						{darkMode}
 						{chapter}
 						{i}
-						amount={chapters.length}
-						selected={selectedChapterId === i}
+						amount={sortedChapters.length}
+						selected={selectedChapterId === chapters.findIndex((c) => c === chapter)}
 						{color}
 						onclick={() => {
-							selectedChapterId = i;
+							selectedChapterId = chapters.findIndex((c) => c === chapter);
 							selectedArticleId = undefined;
 						}}
 						onup={() => {
-							//swap order values with previous chapter
-							const prevOrder = chapters[i - 1].order;
-							chapters[i - 1].order = chapters[i].order;
-							chapters[i].order = prevOrder;
+							if (i <= 0) return;
+							const prev = sortedChapters[i - 1];
+							const prevOrder = prev.order;
+							prev.order = chapter.order;
+							chapter.order = prevOrder;
 						}}
 						ondown={() => {
-							//swap order values with next chapter
-							const nextOrder = chapters[i + 1].order;
-							chapters[i + 1].order = chapters[i].order;
-							chapters[i].order = nextOrder;
+							if (i >= sortedChapters.length - 1) return;
+							const next = sortedChapters[i + 1];
+							const nextOrder = next.order;
+							next.order = chapter.order;
+							chapter.order = nextOrder;
 						}}
-						onedit={(v: string) => (chapters[i].title = v)}
+						onedit={(v: string) => (chapter.title = v)}
 					/>
 				{:else}
 					<div
@@ -188,30 +190,33 @@
 							{article}
 							{color}
 							{i}
-							selected={selectedArticleId === i}
-							amount={articles[selectedChapterId].length}
+							selected={
+								selectedChapterId != undefined &&
+								selectedArticleId ===
+									articles[selectedChapterId!].findIndex((a) => a === article)
+							}
+							amount={sortedArticles.length}
 							onclick={() => {
-								selectedArticleId = i;
-							}}
+							// store selectedArticleId as index in underlying articles array
+							selectedArticleId = articles[selectedChapterId!].findIndex(
+								(a) => a === article
+							);
+						}}
 							onup={() => {
-								//same as chapter
-								const prevOrder =
-									articles[selectedChapterId!][i - 1].order;
-								articles[selectedChapterId!][i - 1].order =
-									articles[selectedChapterId!][i].order;
-								articles[selectedChapterId!][i].order =
-									prevOrder;
-							}}
+							if (i <= 0) return;
+							const prev = sortedArticles[i - 1];
+							const prevOrder = prev.order;
+							prev.order = article.order;
+							article.order = prevOrder;
+						}}
 							ondown={() => {
-								const nextOrder =
-									articles[selectedChapterId!][i + 1].order;
-								articles[selectedChapterId!][i + 1].order =
-									articles[selectedChapterId!][i].order;
-								articles[selectedChapterId!][i].order =
-									nextOrder;
-							}}
-							onedit={(v: string) =>
-								(articles[selectedChapterId!][i].title = v)}
+							if (i >= sortedArticles.length - 1) return;
+							const next = sortedArticles[i + 1];
+							const nextOrder = next.order;
+							next.order = article.order;
+							article.order = nextOrder;
+						}}
+							onedit={(v: string) => (article.title = v)}
 						/>
 					{:else}
 						<div

@@ -99,7 +99,7 @@
 			emoji="add"
 			type="button"
 			onclick={() => openAdd()}
-			css="buttonPrimary grow bg-green-400/70 hover:translate-0!"
+			css="buttonPrimary grow bg-green-500/50 hover:translate-0!"
 			txtcss="hidden md:inline"
 		/>
 		<Button
@@ -110,7 +110,7 @@
 				selectedResourceIndex != undefined
 					? openRemove(selectedResourceIndex)
 					: null}
-			css="buttonPrimary grow bg-red-400/80 hover:translate-0!"
+			css="buttonPrimary grow bg-red-500/50 hover:translate-0!"
 			txtcss="hidden md:inline"
 		/>
 	</div>
