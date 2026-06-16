@@ -104,10 +104,13 @@
 						{chapter}
 						{i}
 						amount={sortedChapters.length}
-						selected={selectedChapterId === chapters.findIndex((c) => c === chapter)}
+						selected={selectedChapterId ===
+							chapters.findIndex((c) => c === chapter)}
 						{color}
 						onclick={() => {
-							selectedChapterId = chapters.findIndex((c) => c === chapter);
+							selectedChapterId = chapters.findIndex(
+								(c) => c === chapter,
+							);
 							selectedArticleId = undefined;
 						}}
 						onup={() => {
@@ -190,32 +193,32 @@
 							{article}
 							{color}
 							{i}
-							selected={
-								selectedChapterId != undefined &&
+							selected={selectedChapterId != undefined &&
 								selectedArticleId ===
-									articles[selectedChapterId!].findIndex((a) => a === article)
-							}
+									articles[selectedChapterId!].findIndex(
+										(a) => a === article,
+									)}
 							amount={sortedArticles.length}
 							onclick={() => {
-							// store selectedArticleId as index in underlying articles array
-							selectedArticleId = articles[selectedChapterId!].findIndex(
-								(a) => a === article
-							);
-						}}
+								// store selectedArticleId as index in underlying articles array
+								selectedArticleId = articles[
+									selectedChapterId!
+								].findIndex((a) => a === article);
+							}}
 							onup={() => {
-							if (i <= 0) return;
-							const prev = sortedArticles[i - 1];
-							const prevOrder = prev.order;
-							prev.order = article.order;
-							article.order = prevOrder;
-						}}
+								if (i <= 0) return;
+								const prev = sortedArticles[i - 1];
+								const prevOrder = prev.order;
+								prev.order = article.order;
+								article.order = prevOrder;
+							}}
 							ondown={() => {
-							if (i >= sortedArticles.length - 1) return;
-							const next = sortedArticles[i + 1];
-							const nextOrder = next.order;
-							next.order = article.order;
-							article.order = nextOrder;
-						}}
+								if (i >= sortedArticles.length - 1) return;
+								const next = sortedArticles[i + 1];
+								const nextOrder = next.order;
+								next.order = article.order;
+								article.order = nextOrder;
+							}}
 							onedit={(v: string) => (article.title = v)}
 						/>
 					{:else}
