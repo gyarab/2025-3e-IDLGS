@@ -30,7 +30,9 @@
 		onclick={() => perform('h1')}
 		{darkMode}
 		{color}
-		style={isActive('h1') ? `background-color: ${color}; opacity: 0.6;` : ''}
+		style={isActive('h1')
+			? `background-color: ${color}; opacity: 0.6;`
+			: ''}
 	/>
 	<ToolbarButton
 		emoji="h-2"
@@ -38,7 +40,9 @@
 		onclick={() => perform('h2')}
 		{darkMode}
 		{color}
-		style={isActive('h2') ? `background-color: ${color}; opacity: 0.6;` : ''}
+		style={isActive('h2')
+			? `background-color: ${color}; opacity: 0.6;`
+			: ''}
 	/>
 	<ToolbarButton
 		emoji="h-3"
@@ -46,6 +50,8 @@
 		onclick={() => perform('h3')}
 		{darkMode}
 		{color}
-		style={isActive('h3') ? `background-color: ${color}; opacity: 0.6;` : ''}
+		style={isActive('h3')
+			? `background-color: ${color}; opacity: 0.6;`
+			: ''}
 	/>
 </div>

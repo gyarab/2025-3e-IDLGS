@@ -10,7 +10,7 @@
 		articleText = $bindable(''),
 		advanced = $bindable(false),
 		perform = (cmd: string, value?: string) => {},
- 		isActive = (name: string) => false,
+		isActive = (name: string) => false,
 	}: {
 		darkMode: boolean;
 		color: string;
@@ -19,7 +19,7 @@
 		articleText: string;
 		advanced: boolean;
 		perform: (cmd: string, value?: string) => void;
- 		isActive?: (name: string) => boolean;
+		isActive?: (name: string) => boolean;
 	} = $props();
 </script>
 
@@ -30,7 +30,9 @@
 		onclick={() => perform('bold')}
 		{darkMode}
 		{color}
-		style={isActive('bold') ? `background-color: ${color}; opacity: 0.6;` : ''}
+		style={isActive('bold')
+			? `background-color: ${color}; opacity: 0.6;`
+			: ''}
 	/>
 	<ToolbarButton
 		emoji="italic"
@@ -38,7 +40,9 @@
 		onclick={() => perform('italic')}
 		{darkMode}
 		{color}
-		style={isActive('italic') ? `background-color: ${color}; opacity: 0.6;` : ''}
+		style={isActive('italic')
+			? `background-color: ${color}; opacity: 0.6;`
+			: ''}
 	/>
 	<ToolbarButton
 		emoji="strikethrough"
@@ -46,7 +50,9 @@
 		onclick={() => perform('strike')}
 		{darkMode}
 		{color}
-		style={isActive('strike') ? `background-color: ${color}; opacity: 0.6;` : ''}
+		style={isActive('strike')
+			? `background-color: ${color}; opacity: 0.6;`
+			: ''}
 	/>
 	<ToolbarButton
 		emoji="link"
