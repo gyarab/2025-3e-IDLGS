@@ -23,7 +23,6 @@
 	} = $props();
 
 	let showImageDialog = $state(false);
-	let showLinkDialog = $state(false);
 	let showVideoDialog = $state(false);
 	let showModelDialog = $state(false);
 	let showDocumentDialog = $state(false);
@@ -37,15 +36,6 @@
 		label={m.image()}
 		onclick={() => {
 			showImageDialog = true;
-		}}
-		{darkMode}
-		{color}
-	/>
-	<ToolbarButton
-		emoji="link"
-		label={m.embed()}
-		onclick={() => {
-			showLinkDialog = true;
 		}}
 		{darkMode}
 		{color}

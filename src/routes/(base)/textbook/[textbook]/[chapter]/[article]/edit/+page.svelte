@@ -57,7 +57,7 @@
 </svelte:head>
 
 <div class="mt-20 flex w-full grow flex-col items-center">
-	<div class="flex w-full flex-col gap-4 p-4 sm:w-1/2">
+	<div class="flex w-full flex-col gap-4 p-4 sm:w-4/5 lg:w-3/5">
 		<Toolbar
 			darkMode={data.darkMode}
 			color={data.color}
