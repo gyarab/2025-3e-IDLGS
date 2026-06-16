@@ -28,7 +28,6 @@
 		data.darkMode ? 30 : 0,
 	)}; --tw-gradient-to: {darkenHex(data.color, data.darkMode ? 70 : 50)};"
 >
-
 	<i
 		class="ri-book-open-line absolute right-1/10 bottom-1/5 scale-150 rotate-15 text-9xl text-white opacity-20"
 	>

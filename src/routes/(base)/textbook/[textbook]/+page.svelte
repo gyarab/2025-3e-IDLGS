@@ -28,8 +28,8 @@
 </svelte:head>
 
 <div
-	class="mt-20 flex min-h-[33svh] w-full flex-col gap-2 rounded-2xl p-4 sm:w-2/3
-		shadow-xl backdrop-blur-xs {data.darkMode
+	class="mt-20 flex min-h-[33svh] w-full flex-col gap-2 rounded-2xl p-4 shadow-xl
+		backdrop-blur-xs sm:w-2/3 {data.darkMode
 		? 'bg-neutral-800/60 text-white'
 		: 'bg-neutral-100/70 text-gray-800'}"
 	in:fly|global={{ y: 40, duration: 300 }}
