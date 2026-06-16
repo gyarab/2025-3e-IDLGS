@@ -9,6 +9,8 @@
 		selectionEnd = $bindable(0),
 		articleText = $bindable(''),
 		advanced = $bindable(false),
+		perform = (cmd: string, value?: string) => {},
+ 		isActive = (name: string) => false,
 	}: {
 		darkMode: boolean;
 		color: string;
@@ -16,6 +18,8 @@
 		selectionEnd: number;
 		articleText: string;
 		advanced: boolean;
+		perform: (cmd: string, value?: string) => void;
+ 		isActive?: (name: string) => boolean;
 	} = $props();
 </script>
 
@@ -23,28 +27,34 @@
 	<ToolbarButton
 		emoji="bold"
 		label={m.bold()}
-		onclick={() => {}}
+		onclick={() => perform('bold')}
 		{darkMode}
 		{color}
+		style={isActive('bold') ? `background-color: ${color}; opacity: 0.6;` : ''}
 	/>
 	<ToolbarButton
 		emoji="italic"
 		label={m.italic()}
-		onclick={() => {}}
+		onclick={() => perform('italic')}
 		{darkMode}
 		{color}
-	/>
-	<ToolbarButton
-		emoji="underline"
-		label={m.underline()}
-		onclick={() => {}}
-		{darkMode}
-		{color}
+		style={isActive('italic') ? `background-color: ${color}; opacity: 0.6;` : ''}
 	/>
 	<ToolbarButton
 		emoji="strikethrough"
 		label={m.strikethrough()}
-		onclick={() => {}}
+		onclick={() => perform('strike')}
+		{darkMode}
+		{color}
+		style={isActive('strike') ? `background-color: ${color}; opacity: 0.6;` : ''}
+	/>
+	<ToolbarButton
+		emoji="link"
+		label="URL"
+		onclick={() => {
+			const url = prompt('Enter URL');
+			if (url) perform('link', url);
+		}}
 		{darkMode}
 		{color}
 	/>

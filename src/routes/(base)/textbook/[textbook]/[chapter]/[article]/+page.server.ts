@@ -116,4 +116,25 @@ export const actions: Record<string, unknown> = {
 			},
 		);
 	},
+	feedbackArticle: async (event: RequestEvent) => {
+		return await formRunner(
+			event,
+			['text', 'rating'],
+			false,
+			async (data: FormDataType) => {
+				try {
+					console.log('feedbackArticle:', {
+						textbook: event.params.textbook,
+						chapter: event.params.chapter,
+						article: event.params.article,
+						text: data.text,
+						rating: data.rating,
+					});
+				} catch (e) {
+					console.error('feedbackArticle error', e);
+				}
+				return;
+			},
+		);
+	},
 };

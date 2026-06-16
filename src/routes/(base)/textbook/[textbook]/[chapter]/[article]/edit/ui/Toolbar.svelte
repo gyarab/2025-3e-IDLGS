@@ -14,6 +14,8 @@
 		selectionStart = $bindable(0),
 		selectionEnd = $bindable(0),
 		articleText = $bindable(''),
+		perform = (cmd: string, value?: string) => {},
+		isActive = (name: string) => false,
 	}: {
 		darkMode: boolean;
 		color: string;
@@ -21,13 +23,15 @@
 		selectionStart: number;
 		selectionEnd: number;
 		articleText: string;
+		perform: (cmd: string, value?: string) => void;
+		isActive?: (name: string) => boolean;
 	} = $props();
 </script>
 
 <div
 	class="flex h-[5vh] w-full flex-row gap-1 rounded-lg p-2 text-2xl {darkMode
-		? 'bg-neutral-800 text-white'
-		: 'bg-neutral-200 text-black'}"
+		? 'bg-neutral-800/70 text-white'
+		: 'bg-neutral-200/70 text-black'}"
 >
 	<FontEdit
 		{darkMode}
@@ -36,6 +40,8 @@
 		bind:selectionEnd
 		bind:articleText
 		bind:advanced={advancedMode}
+		{perform}
+		{isActive}
 	/>
 	<ColoredVerticalLine {color} />
 	<Multimedia
@@ -54,6 +60,8 @@
 		bind:selectionEnd
 		bind:articleText
 		bind:advanced={advancedMode}
+		{perform}
+		{isActive}
 	/>
 	<ColoredVerticalLine {color} />
 	<Didatic

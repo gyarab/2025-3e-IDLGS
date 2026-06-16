@@ -8,13 +8,11 @@
 	import type { ResourceType } from 'cloudinary';
 
 	let {
-		darkMode,
-		color,
 		data,
 	}: {
-		darkMode: boolean;
-		color: string;
 		data: {
+			darkMode: boolean;
+			color: string;
 			user: UserType;
 			textbook: TextbookType;
 			resources: ResourceType[];
@@ -27,7 +25,7 @@
 </svelte:head>
 
 <div
-	class="mt-20 w-full max-w-xl rounded-2xl p-4 shadow-xl {darkMode
+	class="mt-20 w-full max-w-xl rounded-2xl p-4 shadow-xl {data.darkMode
 		? 'bg-neutral-800/60 text-white'
 		: 'bg-neutral-100/70 text-gray-800'}"
 >
@@ -35,7 +33,7 @@
 		<h1>{m.resources()}</h1>
 		<div class="grow"></div>
 		<BackButton
-			{color}
+			color={data.color}
 			showText={false}
 			onclick={() => {
 				goto(
@@ -52,7 +50,7 @@
 		<ul class="mt-4 flex flex-col gap-3">
 			{#each data.resources as r, i (r.id ?? i)}
 				<li
-					class="rounded p-3 {darkMode
+					class="rounded p-3 {data.darkMode
 						? 'bg-neutral-700/20'
 						: 'bg-white'}"
 				>
