@@ -58,8 +58,8 @@
 		<p>{m.textbookStructureDesciption()}</p>
 	</div>
 
-	<div class="flex w-full grow flex-col gap-4 lg:gap-8 md:flex-row">
-		<div class="flex grow flex-col gap-2 min-h-40 md:w-1/2">
+	<div class="flex w-full grow flex-col gap-4 md:flex-row lg:gap-8">
+		<div class="flex min-h-40 grow flex-col gap-2 md:w-1/2">
 			<div class="flex min-h-10 flex-row gap-1">
 				<h2
 					in:fly|global={{
@@ -139,7 +139,7 @@
 			</div>
 		</div>
 
-		<div class="flex grow flex-col gap-2 min-h-40 md:w-1/2">
+		<div class="flex min-h-40 grow flex-col gap-2 md:w-1/2">
 			<div class="flex min-h-10 flex-row gap-1">
 				<h2
 					in:fly|global={{

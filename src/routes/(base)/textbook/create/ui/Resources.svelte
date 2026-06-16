@@ -122,18 +122,25 @@
 							{color}
 							selected={selectedResourceIndex === i}
 							onclick={() => {
-								if (selectedResourceIndex === i) selectedResourceIndex = undefined;
+								if (selectedResourceIndex === i)
+									selectedResourceIndex = undefined;
 								else selectedResourceIndex = i;
 							}}
 							onedit={() => openEdit(i)}
 							onup={() => {
 								if (i > 0) {
-									[resources[i - 1], resources[i]] = [resources[i], resources[i - 1]];
+									[resources[i - 1], resources[i]] = [
+										resources[i],
+										resources[i - 1],
+									];
 								}
 							}}
 							ondown={() => {
 								if (i < resources.length - 1) {
-									[resources[i], resources[i + 1]] = [resources[i + 1], resources[i]];
+									[resources[i], resources[i + 1]] = [
+										resources[i + 1],
+										resources[i],
+									];
 								}
 							}}
 						/>
@@ -198,7 +205,8 @@
 					order: (resources.at(-1)?.order ?? -1) + 1,
 				};
 				if (entry.url && !isValidUrl(entry.url)) {
-					if (/^[\w-]+(\.[\w-]+)+/.test(entry.url)) entry.url = 'https://' + entry.url;
+					if (/^[\w-]+(\.[\w-]+)+/.test(entry.url))
+						entry.url = 'https://' + entry.url;
 					else {
 						alert('Invalid URL');
 						return;
@@ -206,7 +214,9 @@
 				}
 				if (addImageFiles.length > 0) {
 					try {
-						entry.imageData = await readFileAsDataUrl(addImageFiles[0]);
+						entry.imageData = await readFileAsDataUrl(
+							addImageFiles[0],
+						);
 					} catch (e) {
 						console.error('Failed to read added image', e);
 					}
@@ -275,7 +285,9 @@
 					}
 					if (editImageFiles.length > 0) {
 						try {
-							entry.imageData = await readFileAsDataUrl(editImageFiles[0]);
+							entry.imageData = await readFileAsDataUrl(
+								editImageFiles[0],
+							);
 						} catch (e) {
 							console.error('Failed to read edited image', e);
 						}
