@@ -195,6 +195,8 @@
 	"moveArticleUp": "Move article up",
 	"moveChapterDown": "Move chapter down",
 	"moveChapterUp": "Move chapter up",
+	"moveResourceDown": "Move resource down",
+	"moveResourceUp": "Move resource up",
 	"multimediaSupport": "Multimedia support",
 	"name": "Name",
 	"navigator": "Navigator",

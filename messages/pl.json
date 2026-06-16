@@ -194,6 +194,8 @@
 	"moveArticleUp": "Przenieś artykuł w górę",
 	"moveChapterDown": "Przenieś rozdział w dół",
 	"moveChapterUp": "Przenieś rozdział w górę",
+	"moveResourceDown": "Przenieś zasób w dół",
+	"moveResourceUp": "Przenieś zasób w górę",
 	"multimediaSupport": "Wsparcie multimediów",
 	"name": "Imię",
 	"navigator": "Nawigator",

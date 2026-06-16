@@ -3,7 +3,6 @@
 	import { m } from '$lib/paraglide/messages';
 	import Button from '$src/routes/(base)/components/Button.svelte';
 	import HoverEmoji from '$src/routes/(base)/components/HoverEmoji.svelte';
-	import TextInput from '$src/routes/(base)/components/TextInput.svelte';
 	import { fly } from 'svelte/transition';
 
 	let {
@@ -15,7 +14,8 @@
 		color,
 		onclick,
 		onedit,
-		onremove,
+		onup,
+		ondown,
 	}: {
 		resource: {
 			title: string;
@@ -32,13 +32,14 @@
 		color: string;
 		onclick: () => void;
 		onedit?: () => void;
-		onremove?: () => void;
+		onup: () => void;
+		ondown: () => void;
 	} = $props();
 
-	const openExternal = (url?: string) => {
+	const httpLink = (url?: string) => {
 		if (!url) return;
 		const norm = url.match(/^https?:\/\//i) ? url : `https://${url}`;
-		window.open(norm, '_blank', 'noopener');
+		return norm;
 	};
 </script>
 
@@ -76,10 +77,13 @@
 			<h2 class="mb-0!">{resource.title}</h2>
 			{#if resource.url}
 				<a
-					href="_blank"
-					class="text-sm text-blue-500 underline opacity-80"
-					onclick={() => openExternal(resource.url)}>{resource.url}</a
+					target="_blank"
+					class="text-sm font-medium text-blue-500 underline opacity-80"
+					href={httpLink(resource.url)}
+					rel="external"
 				>
+					{resource.url}
+				</a>
 			{/if}
 		</div>
 		<div class="grow"></div>
@@ -93,10 +97,27 @@
 		text=""
 	/>
 	<Button
-		label={m.deleteResource ? m.deleteResource() : 'Delete'}
-		emoji="close"
+		label={m.moveResourceUp()}
+		emoji="arrow-up-double"
 		type="button"
-		onclick={() => (typeof onremove === 'function' ? onremove() : null)}
+		onclick={() => {
+			onup();
+		}}
 		text=""
+		disabled={i === 0}
+		css={darkMode ? 'text-white!' : 'text-black!'}
+		hecss={darkMode ? 'text-white!' : 'text-black!'}
+	/>
+	<Button
+		label={m.moveResourceDown()}
+		emoji="arrow-down-double"
+		type="button"
+		onclick={() => {
+			ondown();
+		}}
+		text=""
+		disabled={i === amount - 1}
+		css={darkMode ? 'text-white!' : 'text-black!'}
+		hecss={darkMode ? 'text-white!' : 'text-black!'}
 	/>
 </div>

@@ -195,6 +195,8 @@
 	"moveArticleUp": "Posunout článek nahoru",
 	"moveChapterDown": "Posunout kapitolu dolů",
 	"moveChapterUp": "Posunout kapitolu nahoru",
+	"moveResourceDown": "Přesunout zdroj dolů",
+	"moveResourceUp": "Přesunout zdroj nahoru",
 	"multimediaSupport": "Podpora multimédií",
 	"name": "Jméno",
 	"navigator": "Navigátor",

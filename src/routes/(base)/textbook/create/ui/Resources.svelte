@@ -56,12 +56,6 @@
 			fr.readAsDataURL(file);
 		});
 
-	const openExternal = (url?: string) => {
-		if (!url) return;
-		const norm = url.match(/^https?:\/\//i) ? url : `https://${url}`;
-		window.open(norm, '_blank', 'noopener');
-	};
-
 	const openAdd = () => {
 		tempResource = { title: '', url: '', description: '', imageData: '' };
 		addImageFiles = [];
@@ -128,22 +122,21 @@
 							{color}
 							selected={selectedResourceIndex === i}
 							onclick={() => {
-								selectedResourceIndex = i;
+								if (selectedResourceIndex === i) selectedResourceIndex = undefined;
+								else selectedResourceIndex = i;
 							}}
 							onedit={() => openEdit(i)}
-							onremove={() => openRemove(i)}
+							onup={() => {
+								if (i > 0) {
+									[resources[i - 1], resources[i]] = [resources[i], resources[i - 1]];
+								}
+							}}
+							ondown={() => {
+								if (i < resources.length - 1) {
+									[resources[i], resources[i + 1]] = [resources[i + 1], resources[i]];
+								}
+							}}
 						/>
-						<div class="mt-1 flex gap-1">
-							{#if r.url}
-								<button
-									type="button"
-									class="text-sm text-blue-500 underline"
-									onclick={() => openExternal(r.url)}
-								>
-									{m.open()}
-								</button>
-							{/if}
-						</div>
 					</li>
 				{/each}
 			</ul>
@@ -190,7 +183,8 @@
 			{#if tempResource.imageData}
 				<img
 					src={tempResource.imageData}
-					class="h-12 w-12 rounded object-cover"
+					class="h-12 w-16 rounded object-cover"
+					alt="preview"
 				/>
 			{/if}
 		</div>
@@ -201,16 +195,20 @@
 				const entry = {
 					...tempResource,
 					id: Date.now().toString(),
-					order: resources.at(-1)?.order
-						? resources.at(-1).order + 1
-						: resources.length,
+					order: (resources.at(-1)?.order ?? -1) + 1,
 				};
 				if (entry.url && !isValidUrl(entry.url)) {
-					if (/^[\w-]+(\.[\w-]+)+/.test(entry.url))
-						entry.url = 'https://' + entry.url;
+					if (/^[\w-]+(\.[\w-]+)+/.test(entry.url)) entry.url = 'https://' + entry.url;
 					else {
 						alert('Invalid URL');
 						return;
+					}
+				}
+				if (addImageFiles.length > 0) {
+					try {
+						entry.imageData = await readFileAsDataUrl(addImageFiles[0]);
+					} catch (e) {
+						console.error('Failed to read added image', e);
 					}
 				}
 				resources.push(entry);
@@ -257,7 +255,7 @@
 				<img
 					src={tempResource.imageData}
 					alt="preview"
-					class="h-12 w-12 rounded object-cover"
+					class="h-12 w-16 rounded object-cover"
 				/>
 			{/if}
 		</div>
@@ -274,6 +272,13 @@
 						if (/^[\w-]+(\.[\w-]+)+/.test(entry.url))
 							entry.url = 'https://' + entry.url;
 						else alert('Invalid URL');
+					}
+					if (editImageFiles.length > 0) {
+						try {
+							entry.imageData = await readFileAsDataUrl(editImageFiles[0]);
+						} catch (e) {
+							console.error('Failed to read edited image', e);
+						}
 					}
 					resources[selectedResourceIndex] = entry;
 				}
